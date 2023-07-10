@@ -4,6 +4,8 @@ import TopHeader from "./TopHeader";
 import Account from "./Account";
 import Menubar from "./Menubar";
 import Footer from "./Footer";
+import CartDrawer from "./CartDrawer";
+import OTPModal from "./OTPModal";
 const BaseLayout = ({ children }) => {
   return (
     <>
@@ -11,6 +13,8 @@ const BaseLayout = ({ children }) => {
         <TopHeader />
         <Account />
         <Menubar />
+        <CartDrawer/>
+        <OTPModal/>
       </div>
       <Outlet />
       <Footer/>

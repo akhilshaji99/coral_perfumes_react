@@ -2039,8 +2039,6 @@ function Test() {
           </div>
         </div>
       </div>
-      {/* footer */}
-      
     </>
   );
 }
