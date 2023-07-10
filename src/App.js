@@ -1,26 +1,9 @@
 import logo from './logo.svg';
 import "./assets/css/style.css";
-import { BrowserRouter, Route,useRoutes } from "react-router-dom";
-import HomePage from "./pages/home/index";
-import TestPage from "./pages/test/index";
-import BaseLayout from "./layouts/BaseLayout";
+import { BrowserRouter } from "react-router-dom";
 
-const Router = () => {
-  const routes = [
-    {
-      path: "/",
-      element: <BaseLayout />,
-      children: [
-        { path: "/", element: <HomePage /> },
-        { path: "home", element: <TestPage /> },
-        // { path: "about", element: <About /> }
-      ]
-    }
-  ];
-  let element = useRoutes(routes);
+import Router from "./router/router"
 
-  return element;
-};
 function App() {
   return (
   <BrowserRouter>
