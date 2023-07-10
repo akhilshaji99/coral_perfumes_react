@@ -1,7 +1,7 @@
 import {useRoutes } from "react-router-dom";
 import HomePage from "../pages/home/index";
 import TestPage from "../pages/test/index";
-import BaseLayout from "../layouts/BaseLayout";
+import BaseLayout from "../layouts/BaseLayout/Index";
 const Router = () => {
     const routes = [
       {
