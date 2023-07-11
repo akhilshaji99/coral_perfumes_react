@@ -3,6 +3,27 @@
 .text-inherit {
   color: var(--fc-gray-800);
 }
+
+@font-face {
+  font-family: brandonTextLight;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Light.otf);
+}
+@font-face {
+  font-family: brandonTextThin;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Thin.otf);
+}
+@font-face {
+  font-family: brandonTextRegular;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Regular.otf);
+}
+@font-face {
+  font-family: brandonTextRegularI;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-RegularItalic.otf);
+}
+@font-face {
+  font-family: brandonTextBold;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Bold.otf);
+}
 .text-reset:hover {
   color: var(--fc-primary) !important;
 }
@@ -192,7 +213,7 @@ div.zoom img {
   --fc-dark-border-subtle: #889397;
   --fc-white-rgb: 255, 255, 255;
   --fc-black-rgb: 0, 0, 0;
-  --fc-font-sans-serif: "Inter", sans-serif;
+  --fc-font-regular: "brandonTextRegular", sans-serif;
   --fc-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   --fc-gradient: linear-gradient(
@@ -200,7 +221,7 @@ div.zoom img {
     hsla(0, 0%, 100%, 0.15),
     hsla(0, 0%, 100%, 0)
   );
-  --fc-body-font-family: var(--fc-font-sans-serif);
+  --fc-body-font-family: var(--fc-font-regular);
   --fc-body-font-size: 0.875rem;
   --fc-body-font-weight: 500;
   --fc-body-line-height: 1.6;
@@ -12033,7 +12054,7 @@ fieldset:disabled .btn {
 }
 .bg-dark {
   --fc-bg-opacity: 1;
-  background-color: #001e2b !important;
+  background-color: #000 !important;
 }
 .bg-gray-400 {
   --fc-bg-opacity: 1;
@@ -25787,4 +25808,16 @@ span.flatpickr-weekday {
 }
 .apexcharts-xaxis-label {
   fill: var(--fc-gray-500);
+}
+
+.marquee-text{
+  color: #FFF;
+font-family: brandonTextLight;
+font-size: 16px;
+font-style: normal;
+font-weight: 390;
+letter-spacing: 2.24px;
+line-height: normal;
+text-transform: uppercase; 
+margin-bottom: 0;
 }

@@ -13,11 +13,11 @@ const BaseLayout = ({ children }) => {
         <TopHeader />
         <Account />
         <Menubar />
-        <CartDrawer/>
-        <OTPModal/>
+        <CartDrawer />
+        <OTPModal />
       </div>
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 };
