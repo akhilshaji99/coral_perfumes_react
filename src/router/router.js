@@ -1,6 +1,6 @@
 import {useRoutes } from "react-router-dom";
 import HomePage from "../pages/home/index";
-import TestPage from "../pages/test/index";
+import LoginPage from "../pages/login/index";
 import BaseLayout from "../layouts/BaseLayout/Index";
 const Router = () => {
     const routes = [
@@ -9,7 +9,7 @@ const Router = () => {
         element: <BaseLayout />,
         children: [
           { path: "/", element: <HomePage /> },
-          { path: "home", element: <TestPage /> },
+          { path: "login", element: <LoginPage /> },
           // { path: "about", element: <About /> }
         ]
       }
