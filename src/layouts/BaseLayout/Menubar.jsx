@@ -1,7 +1,7 @@
 function Menubar() {
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light navbar-default py-0 pb-lg-4 "
+      className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
       <div className="container">
@@ -58,159 +58,6 @@ function Menubar() {
                   </span>
                 </div>
               </form>
-              <div className="mt-2">
-                <button
-                  type="button"
-                  className="btn  btn-outline-gray-400 text-muted w-100 "
-                  data-bs-toggle="modal"
-                  data-bs-target="#locationModal"
-                >
-                  <i className="feather-icon icon-map-pin me-2" />
-                  Pick Location
-                </button>
-              </div>
-            </div>
-            <div className="d-block d-lg-none mb-4">
-              <a
-                className="btn btn-primary w-100 d-flex justify-content-center align-items-center"
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <span className="me-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={16}
-                    height={16}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-grid"
-                  >
-                    <rect x={3} y={3} width={7} height={7} />
-                    <rect x={14} y={3} width={7} height={7} />
-                    <rect x={14} y={14} width={7} height={7} />
-                    <rect x={3} y={14} width={7} height={7} />
-                  </svg>
-                </span>{" "}
-                All Departments
-              </a>
-              <div className="collapse mt-2" id="collapseExample">
-                <div className="card card-body">
-                  <ul className="mb-0 list-unstyled">
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Dairy, Bread &amp; Eggs
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Snacks &amp; Munchies
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Fruits &amp; Vegetables
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Cold Drinks &amp; Juices
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Breakfast &amp; Instant Food
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Bakery &amp; Biscuits
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Chicken, Meat &amp; Fish
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="dropdown me-3 d-none d-lg-block">
-              <button
-                className="btn btn-primary px-6 "
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span className="me-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={16}
-                    height={16}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-grid"
-                  >
-                    <rect x={3} y={3} width={7} height={7} />
-                    <rect x={14} y={3} width={7} height={7} />
-                    <rect x={14} y={14} width={7} height={7} />
-                    <rect x={3} y={14} width={7} height={7} />
-                  </svg>
-                </span>{" "}
-                All Departments
-              </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Dairy, Bread &amp; Eggs
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Snacks &amp; Munchies
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Fruits &amp; Vegetables
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Cold Drinks &amp; Juices
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Breakfast &amp; Instant Food
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Bakery &amp; Biscuits
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="pages/shop-grid.html">
-                    Chicken, Meat &amp; Fish
-                  </a>
-                </li>
-              </ul>
             </div>
             <div className="">
               <ul className="navbar-nav align-items-center ">
@@ -224,9 +71,9 @@ function Menubar() {
                   >
                     Home
                   </a>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu justify-content-space-between">
                     <li>
-                      <a className="dropdown-item" href="index-2.html">
+                      <a className="dropdown-item" >
                         Home 1
                       </a>
                     </li>
