@@ -1,15 +1,17 @@
 import Logo from "../../assets/img/logo_coral.png";
+import { NavLink } from "react-router-dom";
 
 function Account() {
   return (
     <>
       <div className="py-5">
         <div className="container-fluid">
-          <div className="row w-100 align-items-center gx-lg-2 gx-0">
-            <div className="col-xxl-2 col-lg-2">
-              <a className="navbar-brand d-none d-lg-block">
+          <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
+            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
+              <NavLink className="navbar-brand d-none d-lg-block" to="/">
                 <img src={Logo} alt="Coral Perfumes" />
-              </a>
+              </NavLink>
+
               <div className="d-flex justify-content-between w-100 d-lg-none">
                 <a className="navbar-brand" href="index-2.html">
                   <img
@@ -101,7 +103,7 @@ function Account() {
               </div>
             </div>
 
-            <div className="col-xxl-6 col-lg-6 d-none d-lg-block">
+            <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
               <form action="#">
                 <div className="input-group ">
                   <input
@@ -134,8 +136,8 @@ function Account() {
                 </div>
               </form>
             </div>
-            <div className="col-md-4 col-xxl-4 text-end d-none d-lg-block">
-              <div className="list-inline custom-dropdown">
+            <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
+              <div className="list-inline custom-dropdown text-center">
                 <div className="list-inline-item me-5">
                   <div class="dropdown ">
                     <a
@@ -163,22 +165,147 @@ function Account() {
                     </a>
 
                     <ul
-                      class="dropdown-menu"
+                      class="dropdown-menu dropdown-menu-custom"
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Action
+                        <a class="btn btn-dark btn-custom" href="#">
+                          Sign In / Create Account
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Another action
+                        <a class="dropdown-item menu-drop-link">
+                          <span>
+                            <svg
+                              width="21"
+                              height="22"
+                              viewBox="0 0 21 22"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M2.03809 6.44L10.5002 11.55L18.9048 6.47M10.5002 20.61V11.54"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M8.51685 1.48L3.39935 4.45C2.23977 5.12 1.29102 6.8 1.29102 8.18V13.83C1.29102 15.21 2.23977 16.89 3.39935 17.56L8.51685 20.53C9.60935 21.16 11.4014 21.16 12.4939 20.53L17.6114 17.56C18.771 16.89 19.7198 15.21 19.7198 13.83V8.18C19.7198 6.8 18.771 5.12 17.6114 4.45L12.4939 1.48C11.3918 0.84 9.60935 0.84 8.51685 1.48Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M15.2918 12.24V8.57998L6.19727 3.09998"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>{" "}
+                          Orders
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Something else here
+                        <a class="dropdown-item menu-drop-link">
+                          <span>
+                            <svg
+                              width="21"
+                              height="24"
+                              viewBox="0 0 21 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7.33333 4.38969C8.28662 4.10355 9.33852 3.91646 10.5 3.91646C15.7486 3.91646 20 8.18659 20 13.4582C20 18.7299 15.7486 23 10.5 23C5.25144 23 1 18.7299 1 13.4582C1 11.4992 1.5917 9.67234 2.59977 8.15358M9.14129 1L5.97463 4.65383L9.66724 7.36118"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>{" "}
+                          Returns
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item menu-drop-link">
+                          <span>
+                            <svg
+                              width="19"
+                              height="17"
+                              viewBox="0 0 19 17"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M18 5.7143C18 11.6135 12.4944 15.0924 10.0277 15.9244C9.73523 16.0252 9.26477 16.0252 8.97233 15.9244C7.91698 15.5714 6.30217 14.7269 4.81451 13.4286C2.80553 11.6765 1 9.09245 1 5.7143C1 3.10506 3.1107 1.00002 5.71728 1.00002C7.26851 1.00002 8.64173 1.74372 9.50636 2.87817C10.144 2.03272 11.0512 1.42573 12.0806 1.15572C13.11 0.88572 14.2013 0.968554 15.1773 1.39078C16.8429 2.12187 18 3.77313 18 5.7143Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>{" "}
+                          Wishlist
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item menu-drop-link">
+                          <span>
+                            <svg
+                              width="21"
+                              height="21"
+                              viewBox="0 0 21 21"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M13.3753 0.916626V10.5C13.3753 11.5541 12.5128 12.4166 11.4587 12.4166H0.916992V4.74996C0.916992 2.63204 2.63241 0.916626 4.75033 0.916626H13.3753Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M20.0837 12.4166V15.2916C20.0837 16.8825 18.7995 18.1666 17.2087 18.1666H16.2503C16.2503 17.1125 15.3878 16.25 14.3337 16.25C13.2795 16.25 12.417 17.1125 12.417 18.1666H8.58366C8.58366 17.1125 7.72116 16.25 6.66699 16.25C5.61283 16.25 4.75033 17.1125 4.75033 18.1666H3.79199C2.20116 18.1666 0.916992 16.8825 0.916992 15.2916V12.4166H11.4587C12.5128 12.4166 13.3753 11.5541 13.3753 10.5V3.79163H15.1387C15.8287 3.79163 16.4612 4.16538 16.8062 4.75954L18.4449 7.62496H17.2087C16.6816 7.62496 16.2503 8.05621 16.2503 8.58329V11.4583C16.2503 11.9854 16.6816 12.4166 17.2087 12.4166H20.0837Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M6.66667 20.0833C7.175 20.0833 7.66251 19.8814 8.02195 19.522C8.3814 19.1625 8.58333 18.675 8.58333 18.1667C8.58333 17.6583 8.3814 17.1708 8.02195 16.8114C7.66251 16.4519 7.175 16.25 6.66667 16.25C6.15834 16.25 5.67082 16.4519 5.31138 16.8114C4.95193 17.1708 4.75 17.6583 4.75 18.1667C4.75 18.675 4.95193 19.1625 5.31138 19.522C5.67082 19.8814 6.15834 20.0833 6.66667 20.0833ZM14.3333 20.0833C14.8417 20.0833 15.3292 19.8814 15.6886 19.522C16.0481 19.1625 16.25 18.675 16.25 18.1667C16.25 17.6583 16.0481 17.1708 15.6886 16.8114C15.3292 16.4519 14.8417 16.25 14.3333 16.25C13.825 16.25 13.3375 16.4519 12.978 16.8114C12.6186 17.1708 12.4167 17.6583 12.4167 18.1667C12.4167 18.675 12.6186 19.1625 12.978 19.522C13.3375 19.8814 13.825 20.0833 14.3333 20.0833ZM20.0833 10.5V12.4167H17.2083C16.6812 12.4167 16.25 11.9854 16.25 11.4583V8.58333C16.25 8.05625 16.6812 7.625 17.2083 7.625H18.4446L20.0833 10.5Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>{" "}
+                          Shipping Address
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item menu-drop-link">
+                          <span>
+                            <svg
+                              width="21"
+                              height="21"
+                              viewBox="0 0 21 21"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M4.75 8.58329V6.66663C4.75 3.49454 5.70833 0.916626 10.5 0.916626C15.2917 0.916626 16.25 3.49454 16.25 6.66663V8.58329M10.5 16.7291C11.1354 16.7291 11.7448 16.4767 12.1941 16.0274C12.6434 15.5781 12.8958 14.9687 12.8958 14.3333C12.8958 13.6979 12.6434 13.0885 12.1941 12.6392C11.7448 12.1899 11.1354 11.9375 10.5 11.9375C9.86459 11.9375 9.2552 12.1899 8.80589 12.6392C8.35658 13.0885 8.10417 13.6979 8.10417 14.3333C8.10417 14.9687 8.35658 15.5781 8.80589 16.0274C9.2552 16.4767 9.86459 16.7291 10.5 16.7291Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M15.292 20.0833H5.70866C1.87533 20.0833 0.916992 19.125 0.916992 15.2916V13.375C0.916992 9.54165 1.87533 8.58331 5.70866 8.58331H15.292C19.1253 8.58331 20.0837 9.54165 20.0837 13.375V15.2916C20.0837 19.125 19.1253 20.0833 15.292 20.0833Z"
+                                stroke="black"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>{" "}
+                          Password & Personal Info
                         </a>
                       </li>
                     </ul>
