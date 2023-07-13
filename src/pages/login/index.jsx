@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState ,useRef} from "react";
 import {
   LoginSocialGoogle,
   LoginSocialFacebook,
@@ -15,6 +15,7 @@ const REDIRECT_URI = window.location.href;
 function Login() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
+  const facebookRef = useRef();
 
   const onLoginStart = useCallback(() => {
     alert("login start");
@@ -52,34 +53,24 @@ function Login() {
             <GoogleLoginButton />
           </LoginSocialGoogle>
           <LoginSocialFacebook
-            isOnlyGetToken
-            client_id={process.env.REACT_APP_FB_APP_ID || ""}
-            onLoginStart={onLoginStart}
-            onResolve={({ provider, data }) => {
-              setProvider(provider);
-              setProfile(data);
-            }}
-            onReject={(err) => {
-              console.log(err);
-            }}
-          >
-            {/* <h1>Google login</h1> */}
-            <FacebookLoginButton />
-          </LoginSocialFacebook>
-          {/* <LoginSocialApple
-            isOnlyGetToken
-            client_id={process.env.REACT_APP_APPLE_ID || ""}
-            onLoginStart={onLoginStart}
-            onResolve={({ provider, data }) => {
-              setProvider(provider);
-              setProfile(data);
-            }}
-            onReject={(err) => {
-              console.log(err);
-            }}
-          >
-            <AppleLoginButton />
-          </LoginSocialApple> */}
+          ref={facebookRef}
+          appId={process.env.REACT_APP_FB_APP_ID || ""}
+          onLoginStart={onLoginStart}
+          onLogoutSuccess={onLogoutSuccess}
+          onResolve={({ provider, data }) => {
+            setProvider(provider);
+            setProfile(data);
+            console.log(data, "data");
+            console.log(provider, "provider");
+          }}
+          onReject={(err) => {
+            console.log(err);
+          }}
+        >
+          <FacebookLoginButton />
+        </LoginSocialFacebook>
+        
+         
         </div>
       )}
     </>
