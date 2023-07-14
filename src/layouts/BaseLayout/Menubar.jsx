@@ -1,19 +1,258 @@
-
-import request from '../../utils/request';
-import { useEffect, useState } from 'react';
+import request from "../../utils/request";
+import { useEffect, useState } from "react";
 function Menubar() {
   useEffect(() => {
     getMenuList();
   }, []);
   const getMenuList = async () => {
     try {
-      const response = await request.get('/get_menus');
-      console.log('response',response);
-
+      const response = await request.get("/get_menus");
+      console.log("response", response);
     } catch (error) {
-      console.log('error',error);
+      console.log("error", error);
     }
   };
+  const [menuItems, setMenuItems] = useState([
+    {
+      name: "Sale",
+      name_ar: "أُوكَازيُون",
+      slug: "highlighted-menu",
+      shop_by_category: [
+        {
+          name: "Luggage Bags",
+          categ_link: "#",
+        },
+        {
+          name: "Perfumes",
+          categ_link: "#",
+        },
+        {
+          name: "Hand Bags",
+          categ_link: "#",
+        },
+        {
+          name: "Sunglasses",
+          categ_link: "#",
+        },
+      ],
+      shop_by_brand: [
+        {
+          name: "Adidas",
+          brand_link: "#",
+        },
+        {
+          name: "Burberry",
+          brand_link: "#",
+        },
+        {
+          name: "Chloe",
+          brand_link: "#",
+        },
+      ],
+      trending: [
+        {
+          trending_title: "Skin Care Sale",
+          trending_link: "#",
+          trending_image: "/media/menu_trending/Clean_and_Fresh_Scents.jpg",
+        },
+        {
+          trending_title: "Premium Watches",
+          trending_link: "#",
+          trending_image: "/media/menu_trending/Mini_and_Micro_walletes.jpg",
+        },
+        {
+          trending_title: "Clutch Bags",
+          trending_link: "#",
+          trending_image: "/media/menu_trending/Minimalist_Designs.jpg",
+        },
+        {
+          trending_title: "Organic Cosmetics",
+          trending_link: "#",
+          trending_image: "/media/menu_trending/Skincare-Infused_make-up.jpg",
+        },
+      ],
+      flashimages: [
+        {
+          image_link: "#",
+          image: "/media/menu_image/Dior.jpg",
+          image_alt: "Dior",
+        },
+        {
+          image_link: "#",
+          image: "/media/menu_image/Mac.jpg",
+          image_alt: "MAC",
+        },
+        {
+          image_link: "#",
+          image: "/media/menu_image/Ck.jpg",
+          image_alt: "CK",
+        },
+      ],
+    },
+    {
+      name: "Perfumes",
+      name_ar: "عطور",
+      slug: "perfumes",
+      shop_by_category: [
+        {
+          name: "Perfumes",
+          categ_link: "#",
+        },
+        {
+          name: "Luggage Bags",
+          categ_link: "#",
+        },
+        {
+          name: "Hand Bags",
+          categ_link: "#",
+        },
+        {
+          name: "Bracelets",
+          categ_link: "#",
+        },
+      ],
+      shop_by_brand: [
+        {
+          name: "Adidas",
+          brand_link: "#",
+        },
+        {
+          name: "Burberry",
+          brand_link: "#",
+        },
+        {
+          name: "Chloe",
+          brand_link: "#",
+        },
+        {
+          name: "Versace",
+          brand_link: "#",
+        },
+        {
+          name: "Dior",
+          brand_link: "#",
+        },
+      ],
+      trending: [
+        {
+          trending_title: "Niche Brands",
+          trending_link: "#",
+          trending_image:
+            "/media/menu_trending/Clean_and_Fresh_Scents_95uoKvy.jpg",
+        },
+        {
+          trending_title: "Inspired Scents",
+          trending_link: "#",
+          trending_image:
+            "/media/menu_trending/Mini_and_Micro_walletes_WmM5gDE.jpg",
+        },
+        {
+          trending_title: "For Her",
+          trending_link: "#",
+          trending_image: "/media/menu_trending/Minimalist_Designs_YJLw5iS.jpg",
+        },
+      ],
+      flashimages: [
+        {
+          image_link: "#",
+          image: "/media/menu_image/Dior_RXaf1te.jpg",
+          image_alt: "Dior",
+        },
+        {
+          image_link: "#",
+          image: "/media/menu_image/Ck_wcSjcfS.jpg",
+          image_alt: "Ck",
+        },
+        {
+          image_link: "#",
+          image: "/media/menu_image/Mac_Gzg83Zx.jpg",
+          image_alt: "MAC",
+        },
+      ],
+    },
+    {
+      name: "New Arrivals",
+      name_ar: "القادمون الجدد",
+      slug: "new-arrivals",
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 3",
+      name_ar: "",
+      slug: "menu-3",
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 4",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 5",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 6",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 7",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 8",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 9",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+    {
+      name: "Menu 10",
+      name_ar: null,
+      slug: null,
+      shop_by_category: [],
+      shop_by_brand: [],
+      trending: [],
+      flashimages: [],
+    },
+  ]);
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
@@ -76,361 +315,88 @@ function Menubar() {
             </div>
             <div className="">
               <ul className="navbar-nav align-items-center ">
-                <li className="nav-item dropdown w-100 w-lg-auto">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Home
-                  </a>
-                  <ul className="dropdown-menu justify-content-space-between">
-                    <li>
-                      <a className="dropdown-item" >
-                        Home 1
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/index-2.html">
-                        Home 2
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/index-3.html">
-                        Home 3
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/index-4.html">
-                        Home 4
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/index-5.html">
-                        Home 5{" "}
-                        <span className="badge bg-light-info text-dark-info ms-1">
-                          New
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown w-100 w-lg-auto">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Shop
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-grid.html">
-                        Shop Grid - Filter
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-grid-3-column.html"
-                      >
-                        Shop Grid - 3 column
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-list.html">
-                        Shop List - Filter
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-filter.html"
-                      >
-                        Shop - Filter
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-fullwidth.html"
-                      >
-                        Shop Wide
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-single.html"
-                      >
-                        Shop Single
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-single-2.html"
-                      >
-                        Shop Single v2
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-wishlist.html"
-                      >
-                        Shop Wishlist
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/shop-cart.html">
-                        Shop Cart
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/shop-checkout.html"
-                      >
-                        Shop Checkout
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown w-100 w-lg-auto">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Stores
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="pages/store-list.html">
-                        Store List
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="pages/store-grid.html">
-                        Store Grid
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="pages/store-single.html"
-                      >
-                        Store Single
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Mega menu
-                  </a>
-                  <div className=" dropdown-menu pb-0">
-                    <div className="row p-2 p-lg-4">
-                      <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                        <h6 className="text-primary ps-3">
-                          Dairy, Bread &amp; Eggs
-                        </h6>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Butter
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Milk Drinks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Curd &amp; Yogurt
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Eggs
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Buns &amp; Bakery
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Cheese
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Condensed Milk
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Dairy Products
-                        </a>
-                      </div>
-                      <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                        <h6 className="text-primary ps-3">
-                          Breakfast &amp; Instant Food
-                        </h6>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Breakfast Cereal
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Noodles, Pasta &amp; Soup
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Frozen Veg Snacks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Frozen Non-Veg Snacks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Vermicelli
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Instant Mixes
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Batter
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          {" "}
-                          Fruit and Juices
-                        </a>
-                      </div>
-                      <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                        <h6 className="text-primary ps-3">
-                          Cold Drinks &amp; Juices
-                        </h6>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Soft Drinks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Fruit Juices
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Coldpress
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Water &amp; Ice Cubes
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Soda &amp; Mixers
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Health Drinks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Herbal Drinks
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="pages/shop-grid.html"
-                        >
-                          Milk Drinks
-                        </a>
-                      </div>
-                      <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                        <div className="card border-0">
-                          <img
-                            src="assets/images/banner/menu-banner.jpg"
-                            alt="eCommerce HTML Template"
-                            className="img-fluid"
-                          />
-                          <div className="position-absolute ps-6 mt-8">
-                            <h5 className=" mb-0 ">
-                              Dont miss this <br />
-                              offer today.
-                            </h5>
-                            <a href="#" className="btn btn-primary btn-sm mt-3">
-                              Shop Now
-                            </a>
+
+                {menuItems.map((item) => (
+                  <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {item.name}
+                    </a>
+                    <div className=" dropdown-menu pb-0">
+                      <div className="row p-2 p-lg-4">
+                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                          <h6 className="text-primary ps-3">
+                            SHOP BY PRODUCTS
+                          </h6>
+                          {item.shop_by_category.map((item) => (
+                            <>
+                              <a
+                                className="dropdown-item"
+                                href="pages/shop-grid.html"
+                              >
+                                {item.name}
+                              </a>
+                            </>
+                          ))}
+                        </div>
+                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                          <h6 className="text-primary ps-3">SHOP BY BRAND</h6>
+                          {item.shop_by_brand.map((item) => (
+                            <>
+                              <a
+                                className="dropdown-item"
+                                href="pages/shop-grid.html"
+                              >
+                                {item.name}
+                              </a>
+                            </>
+                          ))}
+                        </div>
+                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                          <h6 className="text-primary ps-3">
+                          TRENDING NOW
+                          </h6>
+                          {item.trending.map((item) => (
+                            <>
+                            <div className="card border-0">
+                            <img
+                              src={process.env.REACT_APP_BASE_URL+item.trending_image}
+                              alt="eCommerce HTML Template"
+                              className="img-fluid"
+                            />
                           </div>
+                          <a
+                            className="dropdown-item"
+                            href="pages/shop-grid.html"
+                          >
+                            {item.trending_title}
+                          </a>
+                          </>
+                          ))}
+                        </div>
+                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                        {item.flashimages.map((item) => (
+                            <>
+                          <div className="card border-0">
+                            <img
+                              src={process.env.REACT_APP_BASE_URL+item.image}
+                              alt="eCommerce HTML Template"
+                              className="img-fluid"
+                            />
+                          </div>
+                          </>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-                <li className="nav-item dropdown w-100 w-lg-auto">
+                  </li>
+                ))}
+                {/* <li className="nav-item dropdown w-100 w-lg-auto">
                   <a
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -630,7 +596,7 @@ function Menubar() {
                       </div>
                     </a>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
