@@ -1,4 +1,19 @@
+
+import request from '../../utils/request';
+import { useEffect, useState } from 'react';
 function Menubar() {
+  useEffect(() => {
+    getMenuList();
+  }, []);
+  const getMenuList = async () => {
+    try {
+      const response = await request.get('/get_menus');
+      console.log('response',response);
+
+    } catch (error) {
+      console.log('error',error);
+    }
+  };
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
