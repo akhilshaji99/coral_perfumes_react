@@ -1,15 +1,13 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import {
   LoginSocialGoogle,
   LoginSocialFacebook,
-  LoginSocialApple,
+  // LoginSocialApple,
 } from "reactjs-social-login";
 
-const REDIRECT_URI = window.location.href;
-
 function Login() {
-  const [provider, setProvider] = useState("");
-  const [profile, setProfile] = useState(null);
+  // const [provider, setProvider] = useState("");
+  // const [profile, setProfile] = useState(null);
   const facebookRef = useRef();
 
   const onLoginStart = useCallback(() => {
@@ -17,8 +15,8 @@ function Login() {
   }, []);
 
   const onLogoutSuccess = useCallback(() => {
-    setProfile(null);
-    setProvider("");
+    // setProfile(null);
+    // setProvider("");
     alert("logout success");
   }, []);
   return (
@@ -31,8 +29,8 @@ function Login() {
               client_id={process.env.REACT_APP_GG_APP_ID || ""}
               onLoginStart={onLoginStart}
               onResolve={({ provider, data }) => {
-                setProvider(provider);
-                setProfile(data);
+                // setProvider(provider);
+                // setProfile(data);
               }}
               onReject={(err) => {
                 console.log(err);
@@ -57,8 +55,8 @@ function Login() {
               onLoginStart={onLoginStart}
               onLogoutSuccess={onLogoutSuccess}
               onResolve={({ provider, data }) => {
-                setProvider(provider);
-                setProfile(data);
+                // setProvider(provider);
+                // setProfile(data);
                 console.log(data, "data");
                 console.log(provider, "provider");
               }}

@@ -1,10 +1,10 @@
-// import MainBanner from "./blocks/MainBanner";
+import MainBanner from "./blocks/MainBanner";
 
 function Index() {
   return (
     <>
       <main>
-       {/* <MainBanner/> */}
+       <MainBanner/>
         {/* Category Section Start*/}
         <section className="mb-lg-10 mt-lg-14 my-8">
           <div className="container">
