@@ -169,9 +169,11 @@ function Account() {
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li>
-                        <a class="btn btn-dark btn-custom" href="#">
-                          Sign In / Create Account
-                        </a>
+                        <NavLink to="/login">
+                          <a class="btn btn-dark btn-custom" >
+                            Sign In / Create Account
+                          </a>
+                        </NavLink>
                       </li>
                       <li>
                         <a class="dropdown-item menu-drop-link">

@@ -1,12 +1,24 @@
-import MainBanner from "./blocks/MainBanner";
+// import MainBanner from "./blocks/MainBanner";
+import Deals from "./blocks/Deals";
+import TopCategories from "./blocks/TopCategories";
+import ShopMore from "./blocks/ShopMore";
+import AdsBlock from "./blocks/AdsBlock";
+import ShopPreferences from "./blocks/ShopPreferences";
 
 function Index() {
   return (
     <>
       <main>
-       <MainBanner/>
+        {/* <MainBanner/> */}
+        <section className="bg-middle">
+          <Deals />
+          <TopCategories />
+          <ShopPreferences/>
+          <AdsBlock/>
+          <ShopMore/>
+        </section>
         {/* Category Section Start*/}
-        <section className="mb-lg-10 mt-lg-14 my-8">
+        <section className="mb-lg-10 mt-lg-14 my-8 d-none">
           <div className="container">
             <div className="row">
               <div className="col-12 mb-6">
@@ -203,7 +215,7 @@ function Index() {
           </div>
         </section>
         {/* Category Section End*/}
-        <section>
+        <section className="d-none">
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-6 mb-3 mb-lg-0">
@@ -256,7 +268,7 @@ function Index() {
           </div>
         </section>
         {/* Popular Products Start*/}
-        <section className="my-lg-14 my-8">
+        <section className="my-lg-14 my-8 d-none">
           <div className="container">
             <div className="row">
               <div className="col-12 mb-6">
@@ -1283,7 +1295,7 @@ function Index() {
           </div>
         </section>
         {/* Popular Products End*/}
-        <section>
+        <section className="d-none">
           <div className="container">
             <div className="row">
               <div className="col-md-12 mb-6">
@@ -1656,7 +1668,7 @@ function Index() {
             </div>
           </div>
         </section>
-        <section className="my-lg-14 my-8">
+        <section className="my-lg-14 my-8 d-none">
           <div className="container">
             <div className="row">
               <div className="col-md-6 col-lg-3">

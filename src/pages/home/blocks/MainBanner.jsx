@@ -1,24 +1,27 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Banner1 from "../../../assets/img/banner/banner1.png";
 
 function MainBanner() {
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
     cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 1000,
+    autoplay: false,
+    autoplaySpeed: 3000,
     rtl: false,
+    arrows: true,
+    
   };
 
   return (
     <>
-      <section className="mt-8">
-        <div className="container">
+      <section className="">
+        <div className="container-fluid px-0">
           <div className="hero-slider ">
             {/* <Slider {...settings}>
               <div>
@@ -80,13 +83,13 @@ function MainBanner() {
             </Slider> */}
             <Slider {...settings}>
               <div>
-                <img src="https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_1280.png" />
+                <img src={Banner1} />
               </div>
               <div>
-                <img src="https://cdn.wpbeginner.com/wp-content/uploads/2019/04/bestwordpressslider.png" />
+                <img src={Banner1} />
               </div>
               <div>
-                <img src="https://smartslider3.com/wp-content/uploads/2019/05/sliderimages-780x410.png" />
+                <img src={Banner1} />
               </div>
             </Slider>
           </div>
