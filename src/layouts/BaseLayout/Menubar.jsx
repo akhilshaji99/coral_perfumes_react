@@ -6,7 +6,7 @@ function Menubar() {
   }, []);
   const getMenuList = async () => {
     try {
-      const response = await request.get("/get_menus");
+      const response = await request.get("get_menus/");
       console.log("response", response);
     } catch (error) {
       console.log("error", error);
