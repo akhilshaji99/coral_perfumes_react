@@ -1,257 +1,21 @@
 import request from "../../utils/request";
 import { useEffect, useState } from "react";
 function Menubar() {
+  const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
     getMenuList();
   }, []);
   const getMenuList = async () => {
     try {
       const response = await request.get("get_menus/");
+      setMenuItems(response.data);
+      console.log("menuItems", menuItems);
+
       console.log("response", response);
     } catch (error) {
       console.log("error", error);
     }
   };
-  const [menuItems, setMenuItems] = useState([
-    {
-      name: "Sale",
-      name_ar: "أُوكَازيُون",
-      slug: "highlighted-menu",
-      shop_by_category: [
-        {
-          name: "Luggage Bags",
-          categ_link: "#",
-        },
-        {
-          name: "Perfumes",
-          categ_link: "#",
-        },
-        {
-          name: "Hand Bags",
-          categ_link: "#",
-        },
-        {
-          name: "Sunglasses",
-          categ_link: "#",
-        },
-      ],
-      shop_by_brand: [
-        {
-          name: "Adidas",
-          brand_link: "#",
-        },
-        {
-          name: "Burberry",
-          brand_link: "#",
-        },
-        {
-          name: "Chloe",
-          brand_link: "#",
-        },
-      ],
-      trending: [
-        {
-          trending_title: "Skin Care Sale",
-          trending_link: "#",
-          trending_image: "/media/menu_trending/Clean_and_Fresh_Scents.jpg",
-        },
-        {
-          trending_title: "Premium Watches",
-          trending_link: "#",
-          trending_image: "/media/menu_trending/Mini_and_Micro_walletes.jpg",
-        },
-        {
-          trending_title: "Clutch Bags",
-          trending_link: "#",
-          trending_image: "/media/menu_trending/Minimalist_Designs.jpg",
-        },
-        {
-          trending_title: "Organic Cosmetics",
-          trending_link: "#",
-          trending_image: "/media/menu_trending/Skincare-Infused_make-up.jpg",
-        },
-      ],
-      flashimages: [
-        {
-          image_link: "#",
-          image: "/media/menu_image/Dior.jpg",
-          image_alt: "Dior",
-        },
-        {
-          image_link: "#",
-          image: "/media/menu_image/Mac.jpg",
-          image_alt: "MAC",
-        },
-        {
-          image_link: "#",
-          image: "/media/menu_image/Ck.jpg",
-          image_alt: "CK",
-        },
-      ],
-    },
-    {
-      name: "Perfumes",
-      name_ar: "عطور",
-      slug: "perfumes",
-      shop_by_category: [
-        {
-          name: "Perfumes",
-          categ_link: "#",
-        },
-        {
-          name: "Luggage Bags",
-          categ_link: "#",
-        },
-        {
-          name: "Hand Bags",
-          categ_link: "#",
-        },
-        {
-          name: "Bracelets",
-          categ_link: "#",
-        },
-      ],
-      shop_by_brand: [
-        {
-          name: "Adidas",
-          brand_link: "#",
-        },
-        {
-          name: "Burberry",
-          brand_link: "#",
-        },
-        {
-          name: "Chloe",
-          brand_link: "#",
-        },
-        {
-          name: "Versace",
-          brand_link: "#",
-        },
-        {
-          name: "Dior",
-          brand_link: "#",
-        },
-      ],
-      trending: [
-        {
-          trending_title: "Niche Brands",
-          trending_link: "#",
-          trending_image:
-            "/media/menu_trending/Clean_and_Fresh_Scents_95uoKvy.jpg",
-        },
-        {
-          trending_title: "Inspired Scents",
-          trending_link: "#",
-          trending_image:
-            "/media/menu_trending/Mini_and_Micro_walletes_WmM5gDE.jpg",
-        },
-        {
-          trending_title: "For Her",
-          trending_link: "#",
-          trending_image: "/media/menu_trending/Minimalist_Designs_YJLw5iS.jpg",
-        },
-      ],
-      flashimages: [
-        {
-          image_link: "#",
-          image: "/media/menu_image/Dior_RXaf1te.jpg",
-          image_alt: "Dior",
-        },
-        {
-          image_link: "#",
-          image: "/media/menu_image/Ck_wcSjcfS.jpg",
-          image_alt: "Ck",
-        },
-        {
-          image_link: "#",
-          image: "/media/menu_image/Mac_Gzg83Zx.jpg",
-          image_alt: "MAC",
-        },
-      ],
-    },
-    {
-      name: "New Arrivals",
-      name_ar: "القادمون الجدد",
-      slug: "new-arrivals",
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 3",
-      name_ar: "",
-      slug: "menu-3",
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 4",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 5",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 6",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 7",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 8",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 9",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-    {
-      name: "Menu 10",
-      name_ar: null,
-      slug: null,
-      shop_by_category: [],
-      shop_by_brand: [],
-      trending: [],
-      flashimages: [],
-    },
-  ]);
 
   return (
     <nav
@@ -315,87 +79,114 @@ function Menubar() {
             </div>
             <div className="">
               <ul className="navbar-nav align-items-center ">
-
-                {menuItems.map((item) => (
-                  <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      {item.name}
-                    </a>
-                    <div className=" dropdown-menu pb-0">
-                      <div className="row p-2 p-lg-4">
-                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                          <h6 className="text-primary ps-3">
-                            SHOP BY PRODUCTS
-                          </h6>
-                          {item.shop_by_category.map((item) => (
-                            <>
-                              <a
-                                className="dropdown-item"
-                                href="pages/shop-grid.html"
-                              >
-                                {item.name}
-                              </a>
-                            </>
-                          ))}
-                        </div>
-                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                          <h6 className="text-primary ps-3">SHOP BY BRAND</h6>
-                          {item.shop_by_brand.map((item) => (
-                            <>
-                              <a
-                                className="dropdown-item"
-                                href="pages/shop-grid.html"
-                              >
-                                {item.name}
-                              </a>
-                            </>
-                          ))}
-                        </div>
-                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                          <h6 className="text-primary ps-3">
-                          TRENDING NOW
-                          </h6>
-                          {item.trending.map((item) => (
-                            <>
-                            <div className="card border-0">
-                            <img
-                              src={process.env.REACT_APP_BASE_URL+item.trending_image}
-                              alt="eCommerce HTML Template"
-                              className="img-fluid"
-                            />
+                {Array.isArray(menuItems)
+                  ? menuItems.map((item) => (
+                      <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth">
+                        <a
+                          className="nav-link dropdown-toggle"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {item.name}
+                        </a>
+                        <div className=" dropdown-menu pb-0">
+                          <div className="row p-2 p-lg-4">
+                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                              <h6 className="text-primary ps-3">
+                                SHOP BY PRODUCTS
+                              </h6>
+                              {item.shop_by_category !== undefined &&
+                              Array.isArray(item.shop_by_category)
+                                ? item.shop_by_category.map((item) => (
+                                    <>
+                                      <a
+                                        className="dropdown-item"
+                                        href="pages/shop-grid.html"
+                                      >
+                                        {item.name}
+                                      </a>
+                                    </>
+                                  ))
+                                : null}
+                            </div>
+                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                              <h6 className="text-primary ps-3">
+                                SHOP BY BRAND
+                              </h6>
+                              {item.shop_by_brand !== undefined &&
+                              Array.isArray(item.shop_by_brand)
+                                ? item.shop_by_brand.map((item) => (
+                                    <>
+                                      <a
+                                        className="dropdown-item"
+                                        href="pages/shop-grid.html"
+                                      >
+                                        {item.name}
+                                      </a>
+                                    </>
+                                  ))
+                                : null}
+                            </div>
+                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                              <h6 className="text-primary ps-3">
+                                TRENDING NOW
+                              </h6>
+                              <div className="container-fluid my-5">
+                                <div className="row g-5 ads-block justify-content-center">
+                                  {item.trending !== undefined &&
+                                  Array.isArray(item.trending)
+                                    ? item.trending.map((item) => (
+                                        <>
+                                          <div className="col-md-5 col-6">
+                                          <div className="thumbnails">
+                                            <img
+                                              src={
+                                                process.env.REACT_APP_BASE_URL +
+                                                item.trending_image
+                                              }
+                                              alt="eCommerce HTML Template"
+                                              className="img-fluid"
+                                            />
+                                            </div>
+                                            <a
+                                              className="text-center"
+                                              href="pages/shop-grid.html"
+                                            >
+                                              {item.trending_title}
+                                            </a>
+                                          </div>
+                                        </>
+                                      ))
+                                    : null}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                              {item.flashimages !== undefined &&
+                              Array.isArray(item.flashimages)
+                                ? item.flashimages.map((item) => (
+                                    <>
+                                      <div className="card border-0">
+                                        <img
+                                          src={
+                                            process.env.REACT_APP_BASE_URL +
+                                            item.image
+                                          }
+                                          alt={item.image_alt}
+                                          className="img-fluid"
+                                        />
+                                      </div>
+                                    </>
+                                  ))
+                                : null}
+                            </div>
                           </div>
-                          <a
-                            className="dropdown-item"
-                            href="pages/shop-grid.html"
-                          >
-                            {item.trending_title}
-                          </a>
-                          </>
-                          ))}
                         </div>
-                        <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                        {item.flashimages.map((item) => (
-                            <>
-                          <div className="card border-0">
-                            <img
-                              src={process.env.REACT_APP_BASE_URL+item.image}
-                              alt="eCommerce HTML Template"
-                              className="img-fluid"
-                            />
-                          </div>
-                          </>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
+                      </li>
+                    ))
+                  : null}
                 {/* <li className="nav-item dropdown w-100 w-lg-auto">
                   <a
                     className="nav-link dropdown-toggle"
