@@ -1,99 +1,81 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Banner1 from "../../../assets/img/banner/banner1.png";
+import Banner1 from "../../../assets/img/slider/banner1.png";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function MainBanner() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    cssEase: "linear",
-    autoplay: false,
-    autoplaySpeed: 3000,
-    rtl: false,
-    arrows: true,
-    
-  };
-
   return (
     <>
-      <section className="">
-        <div className="container-fluid px-0">
-          <div className="hero-slider ">
-            {/* <Slider {...settings}>
-              <div>
-                <div
-                  style={{
-                    background:
-                      "url(https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_1280.png)no-repeat",
-                    backgroundSize: "cover",
-                    borderRadius: ".5rem",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center">
-                    <span className="badge text-bg-warning">
-                      Opening Sale Discount 50%
-                    </span>
-                    <h2 className="text-dark display-5 fw-bold mt-4">
-                      SuperMarket For Fresh Grocery{" "}
-                    </h2>
-                    <p className="lead">
-                      Introduced a new model for online grocery shopping and
-                      convenient home delivery.
-                    </p>
-                    <a href="#!" className="btn btn-dark mt-3">
-                      Shop Now{" "}
-                      <i className="feather-icon icon-arrow-right ms-1" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    background:
-                      "url(https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_1280.png)no-repeat",
-                    backgroundSize: "cover",
-                    borderRadius: ".5rem",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center">
-                    <span className="badge text-bg-warning">
-                      Opening Sale Discount 50%
-                    </span>
-                    <h2 className="text-dark display-5 fw-bold mt-4">
-                      SuperMarket For Fresh Grocery{" "}
-                    </h2>
-                    <p className="lead">
-                      Introduced a new model for online grocery shopping and
-                      convenient home delivery.
-                    </p>
-                    <a href="#!" className="btn btn-dark mt-3">
-                      Shop Now{" "}
-                      <i className="feather-icon icon-arrow-right ms-1" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Slider> */}
-            <Slider {...settings}>
-              <div>
-                <img src={Banner1} />
-              </div>
-              <div>
-                <img src={Banner1} />
-              </div>
-              <div>
-                <img src={Banner1} />
-              </div>
-            </Slider>
-          </div>
-        </div>
+      <section className="home-banner">
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          dots={false}
+          autoPlay
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=""
+          containerClass="container-fluid"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          partialVisible={false}
+          itemClass=""
+          pauseOnHover={false}
+          keyBoardControl
+          minimumTouchDrag={80}
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 1,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 1,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 1,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
+        >
+          <img
+            src={Banner1}
+            style={{
+              display: "block",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+          <img
+            src={Banner1}
+            style={{
+              display: "block",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+        </Carousel>
       </section>
     </>
   );

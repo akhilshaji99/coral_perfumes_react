@@ -1,16 +1,18 @@
-// import MainBanner from "./blocks/MainBanner";
+import MainBanner from "./blocks/MainBanner";
 import Deals from "./blocks/Deals";
 import TopCategories from "./blocks/TopCategories";
 import ShopMore from "./blocks/ShopMore";
 import AdsBlock from "./blocks/AdsBlock";
 import ShopPreferences from "./blocks/ShopPreferences";
+import FlashSale from "./blocks/FlashSale";
 
 function Index() {
   return (
     <>
       <main>
-        {/* <MainBanner/> */}
+        <MainBanner/>
         <section className="bg-middle">
+          <FlashSale/>
           <Deals />
           <TopCategories />
           <ShopPreferences/>
