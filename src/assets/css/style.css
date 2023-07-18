@@ -215,6 +215,8 @@ div.zoom img {
   --fc-black-rgb: 0, 0, 0;
   --fc-font-regular: "brandonTextRegular", sans-serif;
   --fc-font-thin: "brandonTextThin";
+  --fc-font-light: "brandonTextLight";
+  
   --fc-heading-font: "Poppins", sans-serif;
   --fc-font-bold: "brandonTextBold", sans-serif;
   --fc-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
@@ -26160,7 +26162,7 @@ span.flatpickr-weekday {
   font-size: 16px;
 }
 .home-banner .react-multiple-carousel__arrow {
-  top: 15%;
+  /* top: 15%; */
   background-color: var(--fc-white);
 }
 .home-banner .react-multiple-carousel__arrow::before {
@@ -26366,4 +26368,175 @@ text-transform: uppercase;
   text-align: center;
   font-family: var(--fc-font-bold);
   font-size: 25px;
+}
+.home-banner{
+ background: url('../img/bg.svg');
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.category-top-img{
+  margin: 0 auto;
+  text-align: center;
+}
+.category-top {
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+  padding: 43px 31px;
+}
+@media only screen and (min-width: 321px) and (max-width: 769px) {
+  .category-top {
+    padding: 13px 29px;
+  }
+  .top-categories h3 {
+    font-size: 12px !important;
+  }
+}
+.category-top h1 {
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--fc-black);
+  text-align: center;
+  font-family: var(--fc-font-bold);
+  font-size: 25px;
+}
+.banner-flashsale{
+ background-image: url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX43871794.jpg');
+ background-repeat: none;
+ background-size: cover;
+  padding: 44px 57px;
+}
+.timer-card{
+  border-radius: 9px;
+background: #FEFAEC;
+box-shadow: -4px 4px 3px 0px #000;
+display: flex;
+align-items: center;
+text-align: center;
+padding: 20px;
+justify-content: center;
+}
+.timer-card h1{
+  color: #000;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 46px;
+font-style: normal;
+font-weight: 400;
+line-height: 103.5%; /* 47.61px */
+text-transform: uppercase; 
+}
+.banner-flashsale h2{
+  color: #FFF;
+  font-family: Arial, Helvetica, sans-serif;
+font-size: 43px;
+font-style: normal;
+font-weight: 800;
+line-height: 103.5%; /* 44.505px */
+text-transform: uppercase; 
+}
+.banner-flashsale p{
+  color: #FFF;
+  font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 103.5%; /* 15.525px */
+letter-spacing: 1.05px;
+text-transform: uppercase; 
+}
+.banner-flashsale h5{
+  color: #FFF;
+font-family: var(--fc-font-regular);
+font-size: 12px;
+font-style: normal;
+font-weight: 390;
+line-height: normal;
+}
+.btn-outline-light{
+  border-radius: 52px;
+border: 1px solid #FFF;
+}
+.d-end{
+  display: flex;
+  justify-content: end;
+}
+.ads-banner{
+  background-image: url('../img/ad-banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 10% ;
+/* min-height: 588px; */
+  height: 100%;
+}
+.ads-banner h1{
+  color: #FFF;
+  font-family: Arial, Helvetica, sans-serif;
+font-size: 98px;
+font-style: normal;
+font-weight: 700;
+line-height: 108.5%; /* 106.33px */
+text-transform: uppercase; 
+}
+.ads-banner h4{
+  color: #FFF;
+  font-family: Arial, Helvetica, sans-serif;
+font-size: 31px;
+font-style: normal;
+font-weight: 700;
+line-height: 108.5%; /* 33.635px */
+text-transform: uppercase; 
+}
+.ads-banner .btn-light{
+  border-radius: 9px;
+background: #FFF; 
+padding: 16px 25px;
+}
+@media only screen and (min-width: 321px) and (max-width: 769px) {
+  .ads-banner{
+    background-image: url('../img/ad-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 20px ;
+  /* min-height: 588px; */
+    height: 100%;
+  }
+}
+.custom-mega-menu h6{
+  color: #000 !important;
+font-size: 16px;
+line-height: normal;
+text-transform: uppercase; 
+font-family: var(--fc-font-regular);
+}
+.custom-mega-menu .dropdown-item{
+  color: #000;
+font-family: var(--fc-font-light);
+font-size: 12px;
+line-height: normal;
+letter-spacing: 1.68px;
+text-transform: capitalize; 
+margin: 13px 0;
+}
+.custom-mega-menu .thumbnails{
+  width: 121px;
+  height: 121px;
+  border-radius: 50%;
+box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.86);
+}
+.custom-mega-menu .thumbnails img{
+object-fit: contain;
+}
+.megamenu-ads{
+  border-radius: 9px;
+  margin-bottom: 40px;
+}
+.custom-a{
+  color: var(--fc-black) !important;
+}
+.navbar .dropdown-fullwidth .dropdown-menu{
+  max-width: 100vw !important;
+  overflow: hidden;
 }

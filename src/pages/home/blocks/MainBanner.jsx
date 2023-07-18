@@ -1,6 +1,8 @@
-import Banner1 from "../../../assets/img/slider/banner1.png";
+import Banner1 from "../../../assets/img/slider/benner2.png";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import CategoryTop from "../blocks/CategoryTop";
+import BannerFlashSale from "./BannerFlashSale";
 
 function MainBanner() {
   return (
@@ -9,13 +11,11 @@ function MainBanner() {
         <Carousel
           additionalTransfrom={0}
           arrows
-          dots={false}
           autoPlay
           autoPlaySpeed={3000}
           centerMode={false}
           className=""
           containerClass="container-fluid"
-          dotListClass=""
           draggable
           focusOnSelect={false}
           infinite
@@ -54,7 +54,6 @@ function MainBanner() {
           rewindWithAnimation={false}
           rtl={false}
           shouldResetAutoplay
-          showDots
           sliderClass=""
           slidesToSlide={1}
           swipeable
@@ -76,6 +75,8 @@ function MainBanner() {
             }}
           />
         </Carousel>
+        <CategoryTop />
+        <BannerFlashSale />
       </section>
     </>
   );

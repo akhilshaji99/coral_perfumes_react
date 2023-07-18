@@ -1,8 +1,3 @@
-import Women from "../../../assets/img/shop-pref/women.jpg";
-import Men from "../../../assets/img/shop-pref/men.jpg";
-import Unisex from "../../../assets/img/shop-pref/unisex.jpg";
-import Edp from "../../../assets/img/shop-pref/edp.jpg";
-import Edt from "../../../assets/img/shop-pref/edt.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

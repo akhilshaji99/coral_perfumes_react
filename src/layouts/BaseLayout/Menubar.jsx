@@ -77,7 +77,7 @@ function Menubar() {
                 </div>
               </form>
             </div>
-            <div className="">
+            <div className="custom-mega-menu">
               <ul className="navbar-nav align-items-center ">
                 {Array.isArray(menuItems)
                   ? menuItems.map((item) => (
@@ -94,7 +94,7 @@ function Menubar() {
                         <div className=" dropdown-menu pb-0">
                           <div className="row p-2 p-lg-4">
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                              <h6 className="text-primary ps-3">
+                              <h6 className=" ps-3">
                                 SHOP BY PRODUCTS
                               </h6>
                               {item.shop_by_category !== undefined &&
@@ -111,8 +111,8 @@ function Menubar() {
                                   ))
                                 : null}
                             </div>
-                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                              <h6 className="text-primary ps-3">
+                            <div className="col-lg-2 col-12 mb-4 mb-lg-0">
+                              <h6 className=" ps-3">
                                 SHOP BY BRAND
                               </h6>
                               {item.shop_by_brand !== undefined &&
@@ -129,8 +129,8 @@ function Menubar() {
                                   ))
                                 : null}
                             </div>
-                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                              <h6 className="text-primary ps-3">
+                            <div className="col-lg-4 col-12 mb-4 mb-lg-0">
+                              <h6 className=" ps-3 text-center">
                                 TRENDING NOW
                               </h6>
                               <div className="container-fluid my-5">
@@ -139,7 +139,7 @@ function Menubar() {
                                   Array.isArray(item.trending)
                                     ? item.trending.map((item) => (
                                         <>
-                                          <div className="col-md-5 col-6">
+                                          <div className="col-md-6 col-6 text-center">
                                           <div className="thumbnails">
                                             <img
                                               src={
@@ -151,7 +151,7 @@ function Menubar() {
                                             />
                                             </div>
                                             <a
-                                              className="text-center"
+                                              className="text-center  custom-a"
                                               href="pages/shop-grid.html"
                                             >
                                               {item.trending_title}
@@ -175,7 +175,7 @@ function Menubar() {
                                             item.image
                                           }
                                           alt={item.image_alt}
-                                          className="img-fluid"
+                                          className="img-fluid megamenu-ads"
                                         />
                                       </div>
                                     </>
@@ -348,7 +348,7 @@ function Menubar() {
                           width={24}
                           height={24}
                           fill="currentColor"
-                          className="bi bi-file-text text-primary"
+                          className="bi bi-file-text "
                           viewBox="0 0 16 16"
                         >
                           <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
@@ -372,7 +372,7 @@ function Menubar() {
                           width={24}
                           height={24}
                           fill="currentColor"
-                          className="bi bi-layers text-primary"
+                          className="bi bi-layers "
                           viewBox="0 0 16 16"
                         >
                           <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z" />
@@ -381,7 +381,7 @@ function Menubar() {
                       <div className="ms-3 lh-1">
                         <h6 className="mb-1">
                           Changelog{" "}
-                          <span className="text-primary ms-1">v1.2.0</span>
+                          <span className=" ms-1">v1.2.0</span>
                         </h6>
                         <p className="mb-0 small">See what's new</p>
                       </div>

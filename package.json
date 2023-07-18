@@ -1,5 +1,5 @@
 {
-  "name": "sample",
+  "name": "coral-perfumes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +14,6 @@
     "react-multi-carousel": "^2.8.4",
     "react-scripts": "5.0.1",
     "reactjs-social-login": "^2.6.2",
-    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

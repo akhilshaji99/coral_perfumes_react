@@ -7,6 +7,8 @@ import ShopPreferences from "./blocks/ShopPreferences";
 import FlashSale from "./blocks/FlashSale";
 import WalletBanner from "./blocks/WalletBanner";
 import Brands from "./blocks/Brands";
+import AdsBanner from "./blocks/AdsBanner";
+
 
 function Index() {
   return (
@@ -18,6 +20,7 @@ function Index() {
           <FlashSale/>
           <Deals />
           <TopCategories />
+          <AdsBanner/>
           <ShopPreferences/>
           <AdsBlock/>
           <ShopMore/>
