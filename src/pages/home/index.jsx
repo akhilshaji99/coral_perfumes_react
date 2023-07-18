@@ -5,6 +5,8 @@ import ShopMore from "./blocks/ShopMore";
 import AdsBlock from "./blocks/AdsBlock";
 import ShopPreferences from "./blocks/ShopPreferences";
 import FlashSale from "./blocks/FlashSale";
+import WalletBanner from "./blocks/WalletBanner";
+import Brands from "./blocks/Brands";
 
 function Index() {
   return (
@@ -12,12 +14,14 @@ function Index() {
       <main>
         <MainBanner/>
         <section className="bg-middle">
+          <WalletBanner/>
           <FlashSale/>
           <Deals />
           <TopCategories />
           <ShopPreferences/>
           <AdsBlock/>
           <ShopMore/>
+          <Brands/>
         </section>
         {/* Category Section Start*/}
         <section className="mb-lg-10 mt-lg-14 my-8 d-none">

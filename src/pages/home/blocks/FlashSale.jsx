@@ -68,7 +68,7 @@ function FlashSale() {
 
           <Carousel
             additionalTransfrom={0}
-            autoPlay={true}
+            autoPlay={false}
             arrows
             autoPlaySpeed={3500}
             centerMode={false}
@@ -170,14 +170,14 @@ function FlashSale() {
                 </div>
               </div>
               <h4>Coral Escape Pour Femme...</h4>
-              <div className="row text-center">
-                <div className="col-md-4">
+              <div className="row custom-row1">
+                <div className="col-md-4 px-0">
                   <h5 className="selling-price">AED 200</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discounted-price">AED 400</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discount-percentage">20% off</h5>
                 </div>
               </div>
@@ -232,14 +232,14 @@ function FlashSale() {
                 </div>
               </div>
               <h4>Coral Escape Pour Femme...</h4>
-              <div className="row text-center">
-                <div className="col-md-4">
+              <div className="row custom-row1">
+                <div className="col-md-4 px-0">
                   <h5 className="selling-price">AED 200</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discounted-price">AED 400</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discount-percentage">20% off</h5>
                 </div>
               </div>
@@ -294,14 +294,14 @@ function FlashSale() {
                 </div>
               </div>
               <h4>Coral Escape Pour Femme...</h4>
-              <div className="row text-center">
-                <div className="col-md-4">
+              <div className="row custom-row1">
+                <div className="col-md-4 px-0">
                   <h5 className="selling-price">AED 200</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discounted-price">AED 400</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discount-percentage">20% off</h5>
                 </div>
               </div>
@@ -356,14 +356,14 @@ function FlashSale() {
                 </div>
               </div>
               <h4>Coral Escape Pour Femme...</h4>
-              <div className="row text-center">
-                <div className="col-md-4">
+              <div className="row custom-row1">
+                <div className="col-md-4 px-0">
                   <h5 className="selling-price">AED 200</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discounted-price">AED 400</h5>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 px-0">
                   <h5 className="discount-percentage">20% off</h5>
                 </div>
               </div>

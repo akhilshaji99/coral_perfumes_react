@@ -3,7 +3,7 @@ import Sticker from "../../../assets/img/sticker.svg"
 function Deals() {
   return (
     <>
-      <div className="container-fluid my-5">
+      <div className="container-fluid cc-margin">
         <div className="card deals-card">
           <div className="card-body deals-card-body">
             <div className="row align-items-center">
