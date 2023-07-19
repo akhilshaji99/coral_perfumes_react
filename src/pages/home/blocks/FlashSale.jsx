@@ -1,70 +1,94 @@
 import Sample from "../../../assets/img/sample-product.png";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import CountdownTimer from "react-component-countdown-timer";
 
 function FlashSale() {
   return (
     <>
       <div className="container-fluid my-5">
         <div className="card flash-sale-container mb-5">
-          <h1 className="mb-5 flash-sale">
-            {" "}
-            <span>
-              <svg
-                width="20"
-                height="17"
-                viewBox="0 0 20 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.09707 10.606L8.19229 8.80086V15.5701C8.19229 17.1496 9.21667 17.4693 10.4662 16.2846L18.9877 8.19915C20.0346 7.21196 19.5956 6.39401 18.0084 6.39401L11.9131 8.19915V1.42989C11.9131 -0.149606 10.8888 -0.469266 9.63924 0.715354L1.11771 8.80086C0.0820718 9.79744 0.521094 10.606 2.09707 10.606Z"
-                  fill="url(#paint0_linear_763_22017)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_763_22017"
-                    x1="6.70033"
-                    y1="5.36581"
-                    x2="17.1655"
-                    y2="16.6485"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#FAFF00" />
-                    <stop offset="1" stop-color="#FF9900" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-            Flash Sale{" "}
-            <span>
-              <svg
-                width="20"
-                height="17"
-                viewBox="0 0 20 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.09707 10.606L8.19229 8.80086V15.5701C8.19229 17.1496 9.21667 17.4693 10.4662 16.2846L18.9877 8.19915C20.0346 7.21196 19.5956 6.39401 18.0084 6.39401L11.9131 8.19915V1.42989C11.9131 -0.149606 10.8888 -0.469266 9.63924 0.715354L1.11771 8.80086C0.0820718 9.79744 0.521094 10.606 2.09707 10.606Z"
-                  fill="url(#paint0_linear_763_22017)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_763_22017"
-                    x1="6.70033"
-                    y1="5.36581"
-                    x2="17.1655"
-                    y2="16.6485"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#FAFF00" />
-                    <stop offset="1" stop-color="#FF9900" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-          </h1>
+          <div className="row d-end">
+            <div className="col-md-8 ">
+              <div className="row">
+                <div className="col-md-6">
+                  <h1 className="mb-5 flash-sale">
+                    {" "}
+                    <span>
+                      <svg
+                        width="20"
+                        height="17"
+                        viewBox="0 0 20 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.09707 10.606L8.19229 8.80086V15.5701C8.19229 17.1496 9.21667 17.4693 10.4662 16.2846L18.9877 8.19915C20.0346 7.21196 19.5956 6.39401 18.0084 6.39401L11.9131 8.19915V1.42989C11.9131 -0.149606 10.8888 -0.469266 9.63924 0.715354L1.11771 8.80086C0.0820718 9.79744 0.521094 10.606 2.09707 10.606Z"
+                          fill="url(#paint0_linear_763_22017)"
+                        />
+                        <defs>
+                          <linearGradient
+                            id="paint0_linear_763_22017"
+                            x1="6.70033"
+                            y1="5.36581"
+                            x2="17.1655"
+                            y2="16.6485"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#FAFF00" />
+                            <stop offset="1" stop-color="#FF9900" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                    Flash Sale{" "}
+                    <span>
+                      <svg
+                        width="20"
+                        height="17"
+                        viewBox="0 0 20 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.09707 10.606L8.19229 8.80086V15.5701C8.19229 17.1496 9.21667 17.4693 10.4662 16.2846L18.9877 8.19915C20.0346 7.21196 19.5956 6.39401 18.0084 6.39401L11.9131 8.19915V1.42989C11.9131 -0.149606 10.8888 -0.469266 9.63924 0.715354L1.11771 8.80086C0.0820718 9.79744 0.521094 10.606 2.09707 10.606Z"
+                          fill="url(#paint0_linear_763_22017)"
+                        />
+                        <defs>
+                          <linearGradient
+                            id="paint0_linear_763_22017"
+                            x1="6.70033"
+                            y1="5.36581"
+                            x2="17.1655"
+                            y2="16.6485"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#FAFF00" />
+                            <stop offset="1" stop-color="#FF9900" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                  </h1>
+                </div>
+                <div className="col-md-6 ">
+                  <div className="row align-items-center d-end">
+                    <div className="col-md-5 pr-0 text-end">
+                      <span className="timer-text">Ends In</span>{" "}
+                    </div>
+                    <div className="col-md-5">
+                      <CountdownTimer
+                        className="digital-text"
+                        responsive={true}
+                        size={25}
+                        count={5432}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <Carousel
             additionalTransfrom={0}
@@ -99,7 +123,7 @@ function FlashSale() {
                   max: 464,
                   min: 0,
                 },
-                items: 2,
+                items: 1,
                 partialVisibilityGutter: 30,
               },
               tablet: {
@@ -120,7 +144,7 @@ function FlashSale() {
             slidesToSlide={2}
             swipeable
           >
-             <div className="product-grid">
+            <div className="product-grid">
               <div className="card card-product product-box">
                 <div className="card-body">
                   <span className="badge custom-badge">
@@ -430,9 +454,6 @@ function FlashSale() {
                 </div>
               </div>
             </div>
-
-            
-           
           </Carousel>
         </div>
       </div>
