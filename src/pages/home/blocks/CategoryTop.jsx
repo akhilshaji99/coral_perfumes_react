@@ -1,4 +1,4 @@
-import Test from "../../../assets/img/test.png"
+import Test from "../../../assets/img/shop-pref/edp.jpg"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

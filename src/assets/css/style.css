@@ -26381,6 +26381,17 @@ span.flatpickr-weekday {
 .category-top-img {
   margin: 0 auto;
   text-align: center;
+ 
+  
+}
+.category-top-img img{
+  border-radius: 50%;
+  padding: 8px;
+  background: conic-gradient(from 180deg at 50% 50%, #00BB61 0deg, #97D25C 174.38deg, #F6E059 360deg),
+linear-gradient(0deg, #D9D9D9, #D9D9D9);
+max-width:121px;
+max-height: 121px;
+
 }
 .category-top {
   border-radius: 9px;
@@ -26547,7 +26558,7 @@ span.flatpickr-weekday {
 .digital-text {
   color: #000;
   text-align: center;
-  text-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.48);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.48);
   font-family: "DS-Digital Bold";
   font-size: 35px !important;
   font-style: normal;
@@ -26558,6 +26569,7 @@ span.flatpickr-weekday {
   border: 1px solid #000;
   background: rgba(255, 255, 255, 0.23);
   padding: 10px;
+  
 }
 .timer-text{
   color: #000;
@@ -26568,6 +26580,7 @@ font-family: var(--fc-font-bold);
 font-weight: 450;
 line-height: normal;
 text-transform: capitalize;
+
 }
 .pr-0{
   padding-right: 0 !important;
