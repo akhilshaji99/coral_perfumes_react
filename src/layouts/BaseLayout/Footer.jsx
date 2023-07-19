@@ -8,6 +8,7 @@ import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/flags/uae.svg";
 import { NavLink } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
 
 function Footer() {
   return (
@@ -337,6 +338,7 @@ function Footer() {
           </ol>
         </div>
       </div>
+      <ScrollToTop smooth />
     </footer>
   );
 }
