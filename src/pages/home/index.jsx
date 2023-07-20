@@ -1,3 +1,5 @@
+import request from "../../utils/request";
+import { useEffect, useState } from "react";
 import MainBanner from "./blocks/MainBanner";
 import Deals from "./blocks/Deals";
 import TopCategories from "./blocks/TopCategories";
@@ -10,6 +12,20 @@ import Brands from "./blocks/Brands";
 import AdsBanner from "./blocks/AdsBanner";
 
 function Index() {
+  const [homeContent, setHomeContent] = useState([]);
+  useEffect(() => {
+    getHomeContent();
+  }, []);
+  const getHomeContent = async () => {
+    try {
+      const response = await request.get("get_home_content/");
+      if (response.data) {
+        setHomeContent(response.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
       <main>
