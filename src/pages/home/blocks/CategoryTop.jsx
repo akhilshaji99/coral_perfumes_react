@@ -1,13 +1,16 @@
-import Test from "../../../assets/img/shop-pref/edp.jpg"
+import Test from "../../../assets/img/shop-pref/edp.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-function CategoryTop() {
+function CategoryTop({ componentDatas }) {
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
   return (
     <>
       <div className="container-fluid my-5">
-        <div className="card category-top mb-5">
-          <h1 className="mb-5">Shop by Category</h1>
+        <div className="card category-top mb-5" style={dynamicBackground}>
+          <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
             autoPlay
@@ -64,38 +67,38 @@ function CategoryTop() {
           >
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
             <div className="category-top-img">
               {" "}
-                <img src={Test} />
-                  <h3 className="text-dark py-3">Niche Perfumes</h3>
+              <img src={Test} alt="" />
+              <h3 className="text-dark py-3">Niche Perfumes</h3>
             </div>
           </Carousel>
         </div>
