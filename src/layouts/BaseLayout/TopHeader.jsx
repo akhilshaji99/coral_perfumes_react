@@ -2,7 +2,7 @@ import request from "../../utils/request";
 import Marquee from "react-fast-marquee";
 import { useEffect, useState } from "react";
 function TopHeader() {
-  const [marqueeText, setMarqueeText] = useState('');
+  const [marqueeText, setMarqueeText] = useState("");
   useEffect(() => {
     getMarqueeText();
   }, []);
@@ -17,24 +17,22 @@ function TopHeader() {
       console.log("error", error);
     }
   };
-  if(marqueeText != ''){
-  return (
-    <>
-      <div className="bg-dark py-2">
-        <div className="container-fluid">
-          <div className="row">
-            <Marquee>
-              <p className="marquee-text">{marqueeText}</p>
-            </Marquee>
+  if (marqueeText !== "") {
+    return (
+      <>
+        <div className="bg-dark py-2">
+          <div className="container-fluid">
+            <div className="row">
+              <Marquee>
+                <p className="marquee-text">{marqueeText}</p>
+              </Marquee>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-  }else{
-    return(
-      <></>
-    )
+      </>
+    );
+  } else {
+    return <></>;
   }
 }
 export default TopHeader;
