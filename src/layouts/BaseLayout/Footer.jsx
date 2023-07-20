@@ -1,3 +1,8 @@
+import { useEffect, useState,useCallback } from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import request from "../../utils/request";
+
 import FacebookIcon from "../../assets/img/icons/social/facebook.svg";
 import LinkedinIcon from "../../assets/img/icons/social/linkedin.svg";
 import InstagramIcon from "../../assets/img/icons/social/instagram.svg";
@@ -9,8 +14,43 @@ import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/flags/uae.svg";
 import { NavLink } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
-
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+});
 function Footer() {
+  const handleOnSubmit = (values) => {
+    subscribeNewsLetter(values);
+  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: schema,
+    onSubmit: handleOnSubmit,
+  });
+
+  const subscribeNewsLetter = async (values) => {
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append('email', values.email);
+      const response = await request.post("subscribe-newsletter/",bodyFormData);
+      
+      console.log("response", response);
+
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  const setInputValue = useCallback(
+    (key, value) =>
+      formik.setValues({
+        ...formik.values,
+        [key]: value,
+      }),
+    [formik]
+  );
+ 
+
   return (
     <footer className="footer">
       <div className="container">
@@ -174,23 +214,27 @@ function Footer() {
             </div>
           </div>
           <div className="col-md-5">
-            <div className="row">
-              <div className="col-md-8">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
+            <form onSubmit={formik.handleSubmit}>
+              <div className="row">
+                <div className="col-md-8">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    value={formik.values.email}
+                    onChange={(e) => setInputValue("email", e.target.value)}
+                    placeholder="Email"
+                  />
+                </div>
+                <div className="col-md-4">
+                  {/* <NavLink to="/login"> */}
+                    <button type="submit" disabled={!formik.isValid} class="btn btn-light w-100">
+                      Sign Up
+                    </button>
+                  {/* </NavLink> */}
+                </div>
               </div>
-              <div className="col-md-4">
-                <NavLink to="/login">
-                  <button type="button" class="btn btn-light w-100">
-                    Sign Up
-                  </button>
-                </NavLink>
-              </div>
-            </div>
+            </form>
             <div className="row mt-5 footer-row">
               <div className="col-md-8">
                 <div className="row">

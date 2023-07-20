@@ -10,7 +10,7 @@ service.interceptors.request.use(
     (config) => {
       const userData = JSON.parse(localStorage.getItem('userDatas'));
       config.headers = {
-        'content-type': 'application/json',
+        // 'content-type': 'application/json',
         // 'Access-Control-Allow-Origin': "*",
         // Accept: 'application/json',
         Authorization: userData ? 'Bearer ' + userData?.token : null
