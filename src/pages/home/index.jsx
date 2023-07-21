@@ -60,12 +60,12 @@ function Index() {
 
               {component.includes("product_carousel") &&
               homeContent[component] ? (
-                  <ProductCarousel />
+                  <ProductCarousel componentDatas={homeContent[component][0]}/>
               ) : null}
 
               {component.includes("small_square_carousel") &&
               homeContent[component] ? (
-                <WalletBanner />
+                <WalletBanner componentDatas={homeContent[component][0]}/>
               ) : null}
 
               {component.includes("banner_230") && homeContent[component] ? (
