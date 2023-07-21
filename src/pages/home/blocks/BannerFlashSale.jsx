@@ -1,20 +1,25 @@
 import "react-multi-carousel/lib/styles.css";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
 function BannerFlashSale({ componentDatas }) {
-
   const backgroundImage = {
-    backgroundImage: `url("`+process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image+`")`
-    // backgroundImage: process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image 
-}
+    backgroundImage:
+      `url("` +
+      deviceImageRender(
+        componentDatas?.datas?.[0].desktop_image,
+        componentDatas?.datas?.[0].mobile_image
+      ) +
+      `")`,
+  };
   return (
     <>
       <section className="banner-flashsale" style={backgroundImage}>
-        <div className="container my-5" >
+        <div className="container my-5">
           <div className="row align-items-center d-end">
             <div className="col-md-8">
               <div className="row align-items-center ">
                 <div className="col-md-4 text-center">
-                  <h2>flash</h2>
+                  {/* <h2>flash</h2>
                   <p>
                     <svg
                       width="38"
@@ -36,7 +41,7 @@ function BannerFlashSale({ componentDatas }) {
                       <path d="M0.5 1H37.5" stroke="white" />
                     </svg>
                   </p>
-                  <button className="btn  btn-outline-light">Shop Now</button>
+                  <button className="btn  btn-outline-light">Shop Now</button> */}
                 </div>
                 <div className="col-md-2">
                   <div className="timer-card">

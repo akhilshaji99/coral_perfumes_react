@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
 function CategoryTop({ componentDatas }) {
   const dynamicBackground = {
@@ -68,9 +69,10 @@ function CategoryTop({ componentDatas }) {
               return (
                 <div className="category-top-img" key={index}>
                   <img
-                    src={
-                      process.env.REACT_APP_BASE_URL + category?.desktop_image
-                    }
+                    src={deviceImageRender(
+                      category?.desktop_image,
+                      category?.mobile_image
+                    )}
                     alt={category?.image_alt}
                   />
                   <h3 className="text-dark py-3">{category?.title}</h3>

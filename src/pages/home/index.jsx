@@ -10,7 +10,6 @@ import FlashSale from "./blocks/FlashSale";
 import WalletBanner from "./blocks/WalletBanner";
 import Brands from "./blocks/Brands";
 import AdsBanner from "./blocks/AdsBanner";
-import deviceImageRender from "../../utils/deviceImageRender";
 import CategoryTop from "./blocks/CategoryTop";
 import BannerFlashSale from "./blocks/BannerFlashSale";
 import ProductCarousel from "./blocks/ProductCarousel";
@@ -22,7 +21,6 @@ function Index() {
     getHomeContent();
   }, []);
   const getHomeContent = async () => {
-    console.log(deviceImageRender());
     try {
       const response = await request.get("get_home_content/");
       if (response.data) {
