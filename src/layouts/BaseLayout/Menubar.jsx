@@ -1,5 +1,7 @@
 import request from "../../utils/request";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+
 function Menubar() {
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
@@ -9,9 +11,6 @@ function Menubar() {
     try {
       const response = await request.get("get_menus/");
       setMenuItems(response.data);
-      console.log("menuItems", menuItems);
-
-      console.log("response", response);
     } catch (error) {
       console.log("error", error);
     }
@@ -81,27 +80,29 @@ function Menubar() {
               <ul className="navbar-nav align-items-center ">
                 {Array.isArray(menuItems)
                   ? menuItems.map((item) => (
-                      <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth"  key={item.name}>
-                        <a
+                      <li
+                        className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth"
+                        key={item.name}
+                      >
+                        <NavLink
                           className="nav-link dropdown-toggle"
-                          href="#"
                           role="button"
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
+                          to="/"
                         >
                           {item.name}
-                        </a>
+                        </NavLink>
                         <div className=" dropdown-menu pb-0">
                           <div className="row p-2 p-lg-4">
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
-                              <h6 className=" ps-3">
-                                SHOP BY PRODUCTS
-                              </h6>
+                              <h6 className=" ps-3">SHOP BY PRODUCTS</h6>
                               {item.shop_by_category !== undefined &&
                               Array.isArray(item.shop_by_category)
-                                ? item.shop_by_category.map((item) => (
+                                ? item.shop_by_category.map((item, index) => (
                                     <>
                                       <a
+                                        key={index}
                                         className="dropdown-item"
                                         href="pages/shop-grid.html"
                                       >
@@ -112,14 +113,13 @@ function Menubar() {
                                 : null}
                             </div>
                             <div className="col-lg-2 col-12 mb-4 mb-lg-0">
-                              <h6 className=" ps-3">
-                                SHOP BY BRAND
-                              </h6>
+                              <h6 className=" ps-3">SHOP BY BRAND</h6>
                               {item.shop_by_brand !== undefined &&
                               Array.isArray(item.shop_by_brand)
-                                ? item.shop_by_brand.map((item) => (
+                                ? item.shop_by_brand.map((item, index) => (
                                     <>
                                       <a
+                                        key={index}
                                         className="dropdown-item"
                                         href="pages/shop-grid.html"
                                       >
@@ -137,18 +137,19 @@ function Menubar() {
                                 <div className="row g-5 ads-block justify-content-center">
                                   {item.trending !== undefined &&
                                   Array.isArray(item.trending)
-                                    ? item.trending.map((item) => (
+                                    ? item.trending.map((item,index) => (
                                         <>
-                                          <div className="col-md-6 col-6 text-center">
-                                          <div className="thumbnails">
-                                            <img
-                                              src={
-                                                process.env.REACT_APP_BASE_URL +
-                                                item.trending_image
-                                              }
-                                              alt="eCommerce HTML Template"
-                                              className="img-fluid"
-                                            />
+                                          <div className="col-md-6 col-6 text-center" key={index}>
+                                            <div className="thumbnails">
+                                              <img
+                                                src={
+                                                  process.env
+                                                    .REACT_APP_BASE_URL +
+                                                  item.trending_image
+                                                }
+                                                alt="eCommerce HTML Template"
+                                                className="img-fluid"
+                                              />
                                             </div>
                                             <a
                                               className="text-center  custom-a"
@@ -166,9 +167,12 @@ function Menubar() {
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                               {item.flashimages !== undefined &&
                               Array.isArray(item.flashimages)
-                                ? item.flashimages.map((item) => (
+                                ? item.flashimages.map((item, index) => (
                                     <>
-                                      <div className="card border-0">
+                                      <div
+                                        className="card border-0"
+                                        key={index}
+                                      >
                                         <img
                                           src={
                                             process.env.REACT_APP_BASE_URL +

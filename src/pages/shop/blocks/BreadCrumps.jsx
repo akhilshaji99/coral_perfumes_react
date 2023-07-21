@@ -1,15 +1,15 @@
 function BreadCrumps() {
     return(
       <>
-     <div class="mt-4">
-      <div class="container">
-        <div class="row ">
-          <div class="col-12">
+     <div className="mt-4">
+      <div className="container">
+        <div className="row ">
+          <div className="col-12">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#!">Home</a></li>
-                <li class="breadcrumb-item"><a href="#!">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Snacks & Munchies</li>
+              <ol className="breadcrumb mb-0">
+                <li className="breadcrumb-item"><a href="#!">Home</a></li>
+                <li className="breadcrumb-item"><a href="#!">Shop</a></li>
+                <li className="breadcrumb-item active" aria-current="page">Snacks & Munchies</li>
               </ol>
             </nav>
           </div>

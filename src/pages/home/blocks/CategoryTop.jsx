@@ -1,4 +1,3 @@
-import Test from "../../../assets/img/shop-pref/edp.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -65,41 +64,19 @@ function CategoryTop({ componentDatas }) {
             slidesToSlide={2}
             swipeable
           >
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
-            <div className="category-top-img">
-              {" "}
-              <img src={Test} alt="" />
-              <h3 className="text-dark py-3">Niche Perfumes</h3>
-            </div>
+            {componentDatas.datas?.map((category, index) => {
+              return (
+                <div className="category-top-img" key={index}>
+                  <img
+                    src={
+                      process.env.REACT_APP_BASE_URL + category?.desktop_image
+                    }
+                    alt={category?.image_alt}
+                  />
+                  <h3 className="text-dark py-3">{category?.title}</h3>
+                </div>
+              );
+            })}
           </Carousel>
         </div>
       </div>

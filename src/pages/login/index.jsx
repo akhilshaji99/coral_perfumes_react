@@ -114,10 +114,10 @@ function Login() {
                 </svg>
               </div>
             </div>
-            <div class="separator">
-              <div class="line"></div>
+            <div className="separator">
+              <div className="line"></div>
               <h2>OR</h2>
-              <div class="line"></div>
+              <div className="line"></div>
             </div>
             <p>LOGIN/SIGN UP</p>
             <form>

@@ -20,8 +20,8 @@ function WalletBanner() {
                 <path
                   d="M2 2.69653H170"
                   stroke="#F9F9F9"
-                  stroke-width="4"
-                  stroke-linecap="round"
+                  strokeWidth="4"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>

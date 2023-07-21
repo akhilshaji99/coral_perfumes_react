@@ -1,9 +1,7 @@
 import "react-multi-carousel/lib/styles.css";
 
 function BannerFlashSale({ componentDatas }) {
-  const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
-  };
+
   const backgroundImage = {
     backgroundImage: `url("`+process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image+`")`
     // backgroundImage: process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image 

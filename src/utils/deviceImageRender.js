@@ -1,4 +1,4 @@
-const deviceCheck = () => {
+const deviceImageRender = () => {
   const screensWidth = window.innerWidth;
   if (screensWidth <= 760) {
     return "Mobile";
@@ -6,4 +6,4 @@ const deviceCheck = () => {
     return "Desktop";
   }
 };
-export default deviceCheck;
+export default deviceImageRender;

@@ -1,4 +1,4 @@
-import { useEffect, useState,useCallback } from "react";
+import {useCallback } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
@@ -12,7 +12,6 @@ import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/flags/uae.svg";
-import { NavLink } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -219,7 +218,7 @@ function Footer() {
                 <div className="col-md-8">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="exampleFormControlInput1"
                     value={formik.values.email}
                     onChange={(e) => setInputValue("email", e.target.value)}
@@ -228,7 +227,7 @@ function Footer() {
                 </div>
                 <div className="col-md-4">
                   {/* <NavLink to="/login"> */}
-                    <button type="submit" disabled={!formik.isValid} class="btn btn-light w-100">
+                    <button type="submit" disabled={!formik.isValid} className="btn btn-light w-100">
                       Sign Up
                     </button>
                   {/* </NavLink> */}
@@ -272,19 +271,19 @@ function Footer() {
                         d="M20.8856 10.9537L20.8859 10.9538C21.4778 11.2821 21.7119 11.6798 21.7119 12.0231C21.7119 12.3669 21.4773 12.767 20.885 13.0997C20.8849 13.0997 20.8848 13.0998 20.8848 13.0998L16.5101 15.544L12.9824 12.0518V11.9923L16.4979 8.51217L20.8856 10.9537Z"
                         fill="white"
                         stroke="white"
-                        stroke-width="0.5"
+                        strokeWidth="0.5"
                       />
                       <path
                         d="M3.16264 23.001L3.14715 23.0097L3.13304 23.0204C2.9074 23.1925 2.62698 23.2819 2.34034 23.2723C2.14667 23.2659 1.95896 23.2146 1.79181 23.1245L12.7324 12.3725L16.1566 15.7376L3.16264 23.001Z"
                         fill="white"
                         stroke="white"
-                        stroke-width="0.5"
+                        strokeWidth="0.5"
                       />
                       <path
                         d="M3.13109 1.03092L3.14612 1.04262L3.16275 1.0519L16.1564 8.30644L12.7324 11.6715L1.79192 0.91958C1.95916 0.829711 2.14701 0.778967 2.34069 0.773452C2.62737 0.765288 2.90729 0.856764 3.13109 1.03092Z"
                         fill="white"
                         stroke="white"
-                        stroke-width="0.5"
+                        strokeWidth="0.5"
                       />
                       <path
                         opacity="0.2"

@@ -8,7 +8,7 @@ function Index() {
       <main>
         <div className="container-fluid">
           <BreadCrumps />
-          <div class="row gx-10">
+          <div className="row gx-10">
             <FilterSidebar />
             <ShopMain/>
           </div>

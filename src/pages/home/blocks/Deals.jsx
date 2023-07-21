@@ -16,7 +16,7 @@ function Deals() {
                 <img className="sticker" src={Sticker} alt="Coral" />
               </div>
               <div className="col-md-4 text-end">
-              <button type="button" class="btn btn-light w-100">Shop Now</button>
+              <button type="button" className="btn btn-light w-100">Shop Now</button>
               </div>
             </div>
           </div>
