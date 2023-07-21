@@ -4,10 +4,10 @@
 <rect x="7.5" y="7.5" width="12" height="12" stroke="white"/>
 <defs>
 <linearGradient id="paint0_linear_823_14922" x1="13.5" y1="0" x2="15.6094" y2="23.625" gradientUnits="userSpaceOnUse">
-<stop stop-color="#5317C0"/>
-<stop offset="0.276042" stop-color="#EF08EA"/>
-<stop offset="0.557292" stop-color="#FD2F57"/>
-<stop offset="1" stop-color="#FFC005"/>
+<stop stopColor="#5317C0"/>
+<stop offset="0.276042" stopColor="#EF08EA"/>
+<stop offset="0.557292" stopColor="#FD2F57"/>
+<stop offset="1" stopColor="#FFC005"/>
 </linearGradient>
 </defs>
 </svg>

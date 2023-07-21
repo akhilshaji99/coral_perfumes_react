@@ -29,6 +29,7 @@ function Index() {
         const mainKeys = Object.entries(response.data).map(([key]) => key);
         setHomeComponents(mainKeys);
         setHomeContent(response.data);
+        
       }
     } catch (error) {
       console.log("error", error);
@@ -51,17 +52,17 @@ function Index() {
               ) : null}
 
               {component.includes("timer_banner") && homeContent[component] ? (
-                <BannerFlashSale />
+                <BannerFlashSale componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("product_carousel_timer") &&
               homeContent[component] ? (
-                <FlashSale />
+                <FlashSale componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("product_carousel") &&
               homeContent[component] ? (
-                <ProductCarousel />
+                  <ProductCarousel />
               ) : null}
 
               {component.includes("small_square_carousel") &&

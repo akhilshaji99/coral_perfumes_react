@@ -81,7 +81,7 @@ function Menubar() {
               <ul className="navbar-nav align-items-center ">
                 {Array.isArray(menuItems)
                   ? menuItems.map((item) => (
-                      <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth">
+                      <li className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth"  key={item.name}>
                         <a
                           className="nav-link dropdown-toggle"
                           href="#"

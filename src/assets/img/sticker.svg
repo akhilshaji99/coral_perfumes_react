@@ -40,13 +40,13 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_629_17423" result="shape"/>
 </filter>
 <radialGradient id="paint0_radial_629_17423" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(131.958 52.5771) rotate(54.4328) scale(148.759 54.1453)">
-<stop stop-color="#CCBBA4"/>
-<stop offset="0.1" stop-color="#CDBDA6" stop-opacity="0.96"/>
-<stop offset="0.25" stop-color="#D0C1AD" stop-opacity="0.86"/>
-<stop offset="0.44" stop-color="#D4C9B8" stop-opacity="0.7"/>
-<stop offset="0.64" stop-color="#DAD3C8" stop-opacity="0.47"/>
-<stop offset="0.87" stop-color="#E2E0DC" stop-opacity="0.18"/>
-<stop offset="1" stop-color="#E7E8E8" stop-opacity="0"/>
+<stop stopColor="#CCBBA4"/>
+<stop offset="0.1" stopColor="#CDBDA6" stop-opacity="0.96"/>
+<stop offset="0.25" stopColor="#D0C1AD" stop-opacity="0.86"/>
+<stop offset="0.44" stopColor="#D4C9B8" stop-opacity="0.7"/>
+<stop offset="0.64" stopColor="#DAD3C8" stop-opacity="0.47"/>
+<stop offset="0.87" stopColor="#E2E0DC" stop-opacity="0.18"/>
+<stop offset="1" stopColor="#E7E8E8" stop-opacity="0"/>
 </radialGradient>
 </defs>
 </svg>

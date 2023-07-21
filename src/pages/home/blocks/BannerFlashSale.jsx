@@ -1,8 +1,17 @@
-function BannerFlashSale() {
+import "react-multi-carousel/lib/styles.css";
+
+function BannerFlashSale({ componentDatas }) {
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
+  const backgroundImage = {
+    backgroundImage: `url("`+process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image+`")`
+    // backgroundImage: process.env.REACT_APP_BASE_URL + componentDatas?.datas?.[0].desktop_image 
+}
   return (
     <>
-      <section className="banner-flashsale">
-        <div className="container my-5">
+      <section className="banner-flashsale" style={backgroundImage}>
+        <div className="container my-5" >
           <div className="row align-items-center d-end">
             <div className="col-md-8">
               <div className="row align-items-center ">
