@@ -23,7 +23,7 @@ function TopHeader() {
         <div className="bg-dark py-2">
           <div className="container-fluid">
             <div className="row">
-              <Marquee>
+              <Marquee autoFill>
                 <p className="marquee-text">{marqueeText}</p>
               </Marquee>
             </div>
