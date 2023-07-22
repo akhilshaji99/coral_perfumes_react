@@ -1,5 +1,3 @@
-
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
@@ -68,16 +66,20 @@ function Brands({ componentDatas }) {
             slidesToSlide={2}
             swipeable
           >
-              {brands.map((brand, index) => {
+            {brands.map((brand, index) => {
               return (
-            <div className="brand-img" key={index}>
-              <img src={deviceImageRender(
+                <div className="brand-img" key={index}>
+                  <img
+                    src={deviceImageRender(
                       brand.desktop_image,
                       brand.mobile_image
-                    )}  className="img-fluid" alt={brand.image_alt} />
-            </div>
-               )
-              })}
+                    )}
+                    className="img-fluid"
+                    alt={brand.image_alt}
+                  />
+                </div>
+              );
+            })}
           </Carousel>
         </div>
       </div>

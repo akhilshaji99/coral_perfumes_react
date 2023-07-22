@@ -66,24 +66,26 @@ function ShopMore({ componentDatas }) {
             slidesToSlide={2}
             swipeable
           >
-             {shopMoreItems.map((item, index) => {
+            {shopMoreItems.map((item, index) => {
               return (
-            <div className="" key={index}>
-              {" "}
-              <div className="thumbnails">
-                <img src={deviceImageRender(
-                      item.desktop_image,
-                      item.mobile_image
-                    )} alt={item.image_alt} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">{item.title}</h3>
+                <div className="" key={index}>
+                  {" "}
+                  <div className="thumbnails">
+                    <img
+                      src={deviceImageRender(
+                        item.desktop_image,
+                        item.mobile_image
+                      )}
+                      alt={item.image_alt}
+                    />
+                    <div className="black"></div>
+                    <div className="title">
+                      <h3 className="text-white">{item.title}</h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-             )
+              );
             })}
-         
           </Carousel>
         </div>
       </div>

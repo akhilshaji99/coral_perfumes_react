@@ -1,15 +1,18 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-function WalletBanner() {
+function WalletBanner({ componentDatas }) {
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
   return (
     <>
       <div className="container-fluid cc-margin ">
-        <div className="card wallet-banner mb-5">
+        <div className="card wallet-banner mb-5" style={dynamicBackground}>
           <div className="row align-items-center px-5">
             <div className="col-md-3">
-              <h1>wallet</h1>
-              <h5>friendly purchase</h5>
+              <h1>{componentDatas?.title}</h1>
+              <h5></h5>
               <svg
                 width="172"
                 height="5"
@@ -80,42 +83,24 @@ function WalletBanner() {
                 slidesToSlide={2}
                 swipeable
               >
-                <div className="wallet-card">
-                  <div className="">
-                    <h3>under</h3>
-                    <h2>100</h2>
-                    <h3>aed</h3>
-                  </div>
-                </div>
-                <div className="wallet-card">
-                  <div className="">
-                    <h3>under</h3>
-                    <h2>90</h2>
-                    <h3>aed</h3>
-                  </div>
-                </div>
-                <div className="wallet-card">
-                  <div className="">
-                    <h3>under</h3>
-                    <h2>80</h2>
-                    <h3>aed</h3>
-                  </div>
-                </div>
-
-                <div className="wallet-card">
-                  <div className="">
-                    <h3>under</h3>
-                    <h2>70</h2>
-                    <h3>aed</h3>
-                  </div>
-                </div>
-                <div className="wallet-card">
-                  <div className="">
-                    <h3>under</h3>
-                    <h2>60</h2>
-                    <h3>aed</h3>
-                  </div>
-                </div>
+                {componentDatas?.datas?.[0]?.collection?.map(
+                  (walletData, index) => {
+                    return (
+                      <>
+                        {walletData?.name &&
+                        walletData?.name.split(" ").length === 3 ? (
+                          <div className="wallet-card">
+                            <div className="" key={index}>
+                              <h3>{walletData?.name.split(" ")[0]}</h3>
+                              <h2>{walletData?.name.split(" ")[1]}</h2>
+                              <h3>{walletData?.name.split(" ")[2]}</h3>
+                            </div>
+                          </div>
+                        ) : null}
+                      </>
+                    );
+                  }
+                )}
               </Carousel>
             </div>
           </div>

@@ -27,7 +27,6 @@ function Index() {
         const mainKeys = Object.entries(response.data).map(([key]) => key);
         setHomeComponents(mainKeys);
         setHomeContent(response.data);
-        
       }
     } catch (error) {
       console.log("error", error);
@@ -36,12 +35,12 @@ function Index() {
   return (
     <>
       <main>
-        {homeComponents?.map((component,index) => {
+        {homeComponents?.map((component, index) => {
           return (
             <>
               {/* <section className="home-banner"> */}
               {component.includes("main_banner") && homeContent[component] ? (
-                <MainBanner  />
+                <MainBanner />
               ) : null}
 
               {component.includes("multiple_round_listing") &&
@@ -60,12 +59,12 @@ function Index() {
 
               {component.includes("product_carousel") &&
               homeContent[component] ? (
-                  <ProductCarousel componentDatas={homeContent[component][0]}/>
+                <ProductCarousel componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("small_square_carousel") &&
               homeContent[component] ? (
-                <WalletBanner componentDatas={homeContent[component][0]}/>
+                <WalletBanner componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("banner_230") && homeContent[component] ? (
@@ -98,9 +97,8 @@ function Index() {
 
               {component.includes("4_block_banner") &&
               homeContent[component] ? (
-                <AdsBlock />
+                <AdsBlock componentDatas={homeContent[component][0]}/>
               ) : null}
-              {/* </section> */}
             </>
           );
         })}
