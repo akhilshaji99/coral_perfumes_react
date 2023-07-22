@@ -1,19 +1,19 @@
-import Chloe from "../../../assets/img/brands/chloe.png";
-import Davidoff from "../../../assets/img/brands/davidoff.png";
-import Ferrari from "../../../assets/img/brands/ferrari.png";
-import Chanel from "../../../assets/img/brands/chanel.png";
-import Casio from "../../../assets/img/brands/casio.png";
-import Ck from "../../../assets/img/brands/ck.png";
+
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
-function Brands() {
+function Brands({ componentDatas }) {
+  const brands = componentDatas?.datas;
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
   return (
     <>
       <div className="container-fluid my-5">
-        <div className="card brands-card mb-5">
-          <h1 className="mb-5">Shop by brands</h1>
+        <div className="card brands-card mb-5" style={dynamicBackground}>
+          <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
             autoPlay
@@ -68,24 +68,16 @@ function Brands() {
             slidesToSlide={2}
             swipeable
           >
-            <div className="brand-img">
-              <img src={Chloe} className="img-fluid" alt="" />
+              {brands.map((brand, index) => {
+              return (
+            <div className="brand-img" key={index}>
+              <img src={deviceImageRender(
+                      brand.desktop_image,
+                      brand.mobile_image
+                    )}  className="img-fluid" alt={brand.image_alt} />
             </div>
-            <div className="brand-img">
-              <img src={Davidoff} className="img-fluid" alt="" />
-            </div>
-            <div className="brand-img">
-              <img src={Ferrari} className="img-fluid" alt="" />
-            </div>
-            <div className="brand-img">
-              <img src={Chanel} className="img-fluid" alt="" />
-            </div>
-            <div className="brand-img">
-              <img src={Casio} className="img-fluid" alt="" />
-            </div>
-            <div className="brand-img">
-              <img src={Ck} className="img-fluid" alt="" />
-            </div>
+               )
+              })}
           </Carousel>
         </div>
       </div>

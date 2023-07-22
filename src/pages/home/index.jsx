@@ -83,12 +83,12 @@ function Index() {
 
               {component.includes("5_round_listing") &&
               homeContent[component] ? (
-                <ShopPreferences />
+                <ShopPreferences componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("6_square_listing") &&
               homeContent[component] ? (
-                <Brands />
+                <Brands componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("4_round_listing") &&

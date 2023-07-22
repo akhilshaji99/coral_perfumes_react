@@ -1,4 +1,3 @@
-import Cosmetics from "../../../assets/img/top-categories/cosmetics.jpg";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
 function TopCategories({ componentDatas }) {
@@ -11,7 +10,7 @@ function TopCategories({ componentDatas }) {
     <>
       <div className="container-fluid my-5">
         <div className="card top-categories" style={dynamicBackground}>
-          <h1 className="mb-5">Top Categories</h1>
+          <h1 className="mb-5">{componentDatas?.title}</h1>
           <div className="row">
             {products.map((product, index) => {
               return (

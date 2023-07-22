@@ -1,17 +1,17 @@
-import Women from "../../../assets/img/shop-pref/women.jpg";
-import Men from "../../../assets/img/shop-pref/men.jpg";
-import Unisex from "../../../assets/img/shop-pref/unisex.jpg";
-import Edp from "../../../assets/img/shop-pref/edp.jpg";
-import Edt from "../../../assets/img/shop-pref/edt.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
-function ShopPreferences() {
+function ShopPreferences({ componentDatas }) {
+  const preferences = componentDatas?.datas;
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
   return (
     <>
-      <div className="container-fluid my-5">
-        <div className="card shop-preferences mb-5">
-          <h1 className="mb-5">Shop preferences</h1>
+      <div className="container-fluid my-5" >
+        <div className="card shop-preferences mb-5" style={dynamicBackground}>
+          <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
             autoPlay
@@ -66,52 +66,24 @@ function ShopPreferences() {
             slidesToSlide={2}
             swipeable
           >
-            <div>
+              {preferences.map((preference, index) => {
+              return (
+            <div key={index}>
               <div className="thumbnails">
-                <img src={Women} />
+                <img src={deviceImageRender(
+                      preference.desktop_image,
+                      preference.mobile_image
+                    )} 
+                    alt={preference.image_alt}
+                    />
                 <div className="black"></div>
                 <div className="title">
-                  <h3 className="text-white">Women</h3>
+                  <h3 className="text-white">{preference.title}</h3>
                 </div>
               </div>
             </div>
-            <div>
-            <div className="thumbnails">
-                <img src={Men} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">Men</h3>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="thumbnails">
-                <img src={Unisex} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">Unisex</h3>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="thumbnails">
-                <img src={Edp} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">edp</h3>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="thumbnails">
-                <img src={Edt} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">edt</h3>
-                </div>
-              </div>
-            </div>
+              )
+           })}
           </Carousel>
         </div>
       </div>
