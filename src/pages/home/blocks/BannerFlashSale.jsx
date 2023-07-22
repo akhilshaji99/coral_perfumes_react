@@ -19,11 +19,12 @@ function BannerFlashSale({ componentDatas }) {
   };
   const timeStart = componentDatas?.datas?.[0]?.start_time;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
+  // const timeEnd = '2023-07-23T23:59:00Z';
   const startDate = new Date(timeStart);
   startDate.setDate(startDate.getDate() - 1);
   const endDate = new Date(timeEnd);
   endDate.setDate(endDate.getDate() - 1);
-
+  console.log('timeEnd',endDate)
   const timer = async () => {
     var msDiff = endDate - new Date();
     console.log('msDiff',msDiff)
@@ -35,12 +36,10 @@ function BannerFlashSale({ componentDatas }) {
     setHours(hour);
     setMinutes(minutes);
     setSeconds(seconds)
-    console.log('hour',hours)
-
   };
   useEffect(() => {
-    var myVar = setInterval(timer, 15000);
-    console.log("hour", hours);
+    var myVar = setInterval(timer, 1000);
+   
   }, []);
   return (
     <>
@@ -84,8 +83,8 @@ function BannerFlashSale({ componentDatas }) {
                     <h1>{minutes}</h1>
                   </div>
                 </div>
-                <div className="col-md-2">
-                  <div className="timer-card">
+                <div className="col-md-2" >
+                  <div className="timer-card" style={{height:93}}>
                     <h1>{seconds}</h1>
                   </div>
                 </div>
