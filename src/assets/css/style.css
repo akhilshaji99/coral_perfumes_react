@@ -25954,6 +25954,9 @@ span.flatpickr-weekday {
   background: linear-gradient(90deg, #01c3de 0%, #00bba6 100%);
   border: none;
 }
+.deals-banner{
+  width: 100%;
+}
 .deals-card-body {
   padding: 40px 120px;
 }
@@ -26397,6 +26400,9 @@ span.flatpickr-weekday {
   }
   .top-categories h3 {
     font-size: 12px !important;
+  }
+  .cc-margin {
+    margin: .5rem 0;
   }
 }
 .brands-card h1 {
