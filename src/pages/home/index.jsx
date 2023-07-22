@@ -93,7 +93,7 @@ function Index() {
 
               {component.includes("4_round_listing") &&
               homeContent[component] ? (
-                <ShopMore />
+                <ShopMore componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("4_block_banner") &&

@@ -4,13 +4,18 @@ import Luggages from "../../../assets/img/shop-more/luggage.svg";
 import Bagpacks from "../../../assets/img/shop-more/bagpacks.svg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
-function ShopMore() {
+function ShopMore({ componentDatas }) {
+  const shopMoreItems = componentDatas?.datas;
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
   return (
     <>
       <div className="container-fluid my-5">
-        <div className="card shop-more mb-5">
-          <h1 className="mb-5">Shop more</h1>
+        <div className="card shop-more mb-5" style={dynamicBackground}>
+          <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
             autoPlay
@@ -65,44 +70,24 @@ function ShopMore() {
             slidesToSlide={2}
             swipeable
           >
-            <div className="">
+             {shopMoreItems.map((item, index) => {
+              return (
+            <div className="" key={index}>
               {" "}
               <div className="thumbnails">
-                <img src={Luggages} />
+                <img src={deviceImageRender(
+                      item.desktop_image,
+                      item.mobile_image
+                    )} alt={item.image_alt} />
                 <div className="black"></div>
                 <div className="title">
-                  <h3 className="text-white">Luggages</h3>
+                  <h3 className="text-white">{item.title}</h3>
                 </div>
               </div>
             </div>
-            <div className="">
-              <div className="thumbnails">
-                <img src={SunGlass} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">Sunglass</h3>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className="thumbnails">
-                <img src={Cosmetics} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">Cosmetics</h3>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              {" "}
-              <div className="thumbnails">
-                <img src={Bagpacks} />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">Bagpacks</h3>
-                </div>
-              </div>
-            </div>
+             )
+            })}
+         
           </Carousel>
         </div>
       </div>
