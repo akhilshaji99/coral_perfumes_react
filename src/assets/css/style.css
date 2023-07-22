@@ -26030,9 +26030,12 @@ span.flatpickr-weekday {
 }
 .shop-more {
   border-radius: 9px;
-  background: #fff;
+  background: #fff !important;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
   padding: 43px 169px;
+}
+.shop-more img{
+  border-radius: 50%;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-more {
@@ -26258,6 +26261,8 @@ span.flatpickr-weekday {
 .wishlist-button {
   position: absolute;
   right: 10%;
+  z-index: 999;
+  cursor: pointer;
 }
 .wishlist-button svg:hover {
   fill: rgba(128, 186, 39, 1);
@@ -26374,6 +26379,11 @@ span.flatpickr-weekday {
 }
 .brand-img {
   margin: 0 15px;
+  
+
+}
+.brand-img img{
+  border-radius: 9px; 
 }
 .brands-card {
   border-radius: 9px;

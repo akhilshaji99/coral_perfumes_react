@@ -1,7 +1,3 @@
-import Cosmetics from "../../../assets/img/shop-more/cosmetics.svg";
-import SunGlass from "../../../assets/img/shop-more/sunglass.svg";
-import Luggages from "../../../assets/img/shop-more/luggage.svg";
-import Bagpacks from "../../../assets/img/shop-more/bagpacks.svg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";

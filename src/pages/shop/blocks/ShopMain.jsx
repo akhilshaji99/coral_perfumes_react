@@ -1,4 +1,6 @@
 import Sample from "../../../assets/img/sample-product.png";
+import TestBanner from "../../../assets/img/test-banner.png"
+
 
 function ShopMain() {
   return (
@@ -6,9 +8,7 @@ function ShopMain() {
       <section className="col-lg-9 col-md-12">
         <div className="card mb-4 bg-light border-0">
           {/* card body */}
-          <div className=" card-body p-9">
-            <h2 className="mb-0 fs-1">Snacks &amp; Munchies</h2>
-          </div>
+          <img src={TestBanner} className="img-fluid" alt="Coral Perfumes" />
         </div>
         <div className="row">
           <div className="col-md-3">

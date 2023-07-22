@@ -9,8 +9,7 @@ function Deals({ componentDatas }) {
   return (
     <>
       <div className="container-fluid cc-margin">
-        <div className="card deals-card"  >
-          <div className="card" style={{height:150}}>
+          <div className="card deals-card" style={{height:150}}>
             <div className="row align-items-center">
               
               {/* <div className="col-md-2"> */}
@@ -21,7 +20,6 @@ function Deals({ componentDatas }) {
           </div>
 
         </div>
-      </div>
     </>
   );
 }
