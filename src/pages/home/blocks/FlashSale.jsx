@@ -8,6 +8,18 @@ function FlashSale({ componentDatas }) {
     backgroundColor: componentDatas?.bg_color,
   };
   const products = componentDatas?.datas?.[0]?.products;
+  const timeEnd = componentDatas?.datas?.[0]?.end_time;
+  let counterValue = 0;
+  const endDate = new Date(timeEnd);
+  endDate.setDate(endDate.getDate() - 1);
+  
+  var msDiff = endDate- new Date();    //Future date - current date
+  counterValue = Math.floor(msDiff / (1000));
+console.log('current time',new Date())
+console.log('end time',new Date(timeEnd))
+console.log('counterValue',counterValue)
+
+
   return (
     <>
       <div className="container-fluid my-5">
@@ -88,7 +100,7 @@ function FlashSale({ componentDatas }) {
                         className="digital-text"
                         responsive={true}
                         size={25}
-                        count={5432}
+                        count={counterValue}
                       />
                     </div>
                   </div>
