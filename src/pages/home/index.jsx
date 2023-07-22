@@ -36,12 +36,12 @@ function Index() {
   return (
     <>
       <main>
-        {homeComponents?.map((component) => {
+        {homeComponents?.map((component,index) => {
           return (
             <>
               {/* <section className="home-banner"> */}
               {component.includes("main_banner") && homeContent[component] ? (
-                <MainBanner />
+                <MainBanner  />
               ) : null}
 
               {component.includes("multiple_round_listing") &&
@@ -69,16 +69,16 @@ function Index() {
               ) : null}
 
               {component.includes("banner_230") && homeContent[component] ? (
-                <Deals />
+                <Deals componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("12_block_listing") &&
               homeContent[component] ? (
-                <TopCategories />
+                <TopCategories componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("banner_538") && homeContent[component] ? (
-                <AdsBanner />
+                <AdsBanner componentDatas={homeContent[component][0]} />
               ) : null}
 
               {component.includes("5_round_listing") &&

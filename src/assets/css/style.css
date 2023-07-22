@@ -25961,7 +25961,7 @@ span.flatpickr-weekday {
   padding: 0 12px;
 }
 .sticker {
-  position: absolute;
+  position: relative;
   top: -20%;
 }
 .deals-card h1 {

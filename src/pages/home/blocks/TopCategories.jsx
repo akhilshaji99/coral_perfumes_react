@@ -1,60 +1,32 @@
 import Cosmetics from "../../../assets/img/top-categories/cosmetics.jpg";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
-function TopCategories() {
+function TopCategories({ componentDatas }) {
+  const dynamicBackground = {
+    backgroundColor: componentDatas?.bg_color,
+  };
+  const products = componentDatas?.datas;
+
   return (
     <>
       <div className="container-fluid my-5">
-        <div className="card top-categories">
+        <div className="card top-categories" style={dynamicBackground}>
           <h1 className="mb-5">Top Categories</h1>
           <div className="row">
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>{" "}
-            <div className="col-md-2 col-6 text-center">
-              <img src={Cosmetics} alt="" />
-              <h3>cosmetics</h3>
-            </div>
+            {products.map((product, index) => {
+              return (
+                <div key={index} className="col-md-2 col-6 text-center">
+                  <img
+                    src={deviceImageRender(
+                      product.desktop_image,
+                      product.mobile_image
+                    )}
+                    alt={product.image_alt}
+                  />
+                  <h3>{product.title}</h3>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
