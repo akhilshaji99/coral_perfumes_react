@@ -26628,3 +26628,54 @@ text-transform: capitalize;
 .pl-0{
   padding-left: 0 !important;
 }
+.topArrow{
+  transform: rotate(90deg);
+}
+.bottomArrow{
+  transform: rotate(270deg);
+}
+.slick-slider .slick-next:hover, .slick-slider .slick-prev:hover {
+  background: rgba(235, 236, 233, 1);
+  color: var(--fc-white);
+  border: none !important;
+  outline: none;
+}
+.slick-slider .slick-next{
+  position: absolute;
+  left: 45%;
+  top: calc(5% + -20px);
+}
+.slick-slider .slick-prev{
+  position: absolute;
+  left: 65%;
+  top: calc(100% + 25px);
+  z-index: 999;
+}.px-5{
+  padding: 5rem;
+}
+.thumbnail-slide{
+  max-width: 136px;
+height: 136px;
+background: rgba(235, 236, 233, 1);
+display: flex !important;
+justify-content: center;
+align-items: center;
+margin-bottom: 27px;
+}
+.thumbnail-slide img{
+  width: 100px !important;
+  height: 100px;
+  object-fit: contain;
+
+}
+.product-showcase{
+  background: rgba(235, 236, 233, 1);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slick-slide div{
+  display: flex;
+  justify-content: center;
+}
