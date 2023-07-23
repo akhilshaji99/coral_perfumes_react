@@ -1,4 +1,3 @@
-
 import ProductBanner from "./ProductBanner";
 import request from "../../../utils/request";
 import React, { useState, useRef, useEffect, useCallback } from "react";
@@ -9,14 +8,21 @@ function ProductMain() {
   const [productBanner, setProductBanner] = useState(null);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
+  const [count, setCount] = useState(null);
 
   const handleObserver = useCallback((entries) => {
     const target = entries[0];
     if (target.isIntersecting) {
+      console.log('totalCount',count);
+      console.log('productList.length',productList);
+      if(count == null || count > productList.length){
       setPage((prev) => prev + 1);
       const queryParameters = new URLSearchParams(window.location.search);
-    const category = queryParameters.get("category");
-    getProductList(category);
+      const category = queryParameters.get("category");
+      getProductList(category);
+      }
+    
+
     }
   }, []);
 
@@ -24,7 +30,7 @@ function ProductMain() {
     const option = {
       root: null,
       rootMargin: "20px",
-      threshold: 0
+      threshold: 0,
     };
     const observer = new IntersectionObserver(handleObserver, option);
     if (loader.current) observer.observe(loader.current);
@@ -50,6 +56,7 @@ function ProductMain() {
   };
   const getProductList = async () => {
     try {
+
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
       if (category) {
@@ -57,8 +64,9 @@ function ProductMain() {
         if (response.data) {
           // setProductList(response.data.data);
           await setProductList((prev) => [
-            ...new Set([...prev, ...response.data.data])
+            ...new Set([...prev, ...response.data.data]),
           ]);
+          setCount(response.data.count)
         }
       }
     } catch (error) {
@@ -114,9 +122,7 @@ function ProductMain() {
                         <a href="#!">
                           {" "}
                           <img
-                             src={deviceImageRender(
-                              product.listing_image
-                            )}
+                            src={deviceImageRender(product.listing_image)}
                             alt="Coral Perfumes"
                             className="mb-3 img-fluid product-img"
                           />
@@ -130,13 +136,19 @@ function ProductMain() {
                   <h4>{product.name}</h4>
                   <div className="row custom-row1">
                     <div className="col-md-4 px-0">
-                      <h5 className="selling-price">AED {product.price_amount}</h5>
+                      <h5 className="selling-price">
+                        AED {product.price_amount}
+                      </h5>
                     </div>
                     <div className="col-md-4 px-0">
-                      <h5 className="discounted-price">AED {product.original_amount}</h5>
+                      <h5 className="discounted-price">
+                        AED {product.original_amount}
+                      </h5>
                     </div>
                     <div className="col-md-4 px-0">
-                      <h5 className="discount-percentage">{product.discount_percentage}% off</h5>
+                      <h5 className="discount-percentage">
+                        {product.discount_percentage}% off
+                      </h5>
                     </div>
                   </div>
                 </div>
@@ -145,7 +157,6 @@ function ProductMain() {
           })}
         </div>
         <div ref={loader} />
-
       </section>
     </>
   );
