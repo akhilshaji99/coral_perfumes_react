@@ -1,6 +1,6 @@
 import BreadCrumps from "./blocks/BreadCrumps";
 import FilterSidebar from "./blocks/FilterSidebar";
-import ShopMain from "./blocks/ShopMain";
+import ProductMain from "./blocks/ProductMain";
 
 function Index() {
   return (
@@ -10,7 +10,7 @@ function Index() {
           <BreadCrumps />
           <div className="row gx-10">
             <FilterSidebar />
-            <ShopMain/>
+            <ProductMain/>
           </div>
         </div>
       </main>

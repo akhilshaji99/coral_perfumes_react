@@ -1,8 +1,9 @@
 import request from "../../utils/request";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Menubar() {
+  const navigate = useNavigate();
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
     getMenuList();
@@ -15,7 +16,9 @@ function Menubar() {
       console.log("error", error);
     }
   };
-
+  const handleClick = (slug) => {
+    navigate("/product?category=" + slug);
+  };
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
@@ -104,7 +107,9 @@ function Menubar() {
                                       <a
                                         key={index}
                                         className="dropdown-item"
-                                        href="pages/shop-grid.html"
+                                        onClick={() => {
+                                          handleClick(item.slug);
+                                        }}
                                       >
                                         {item.name}
                                       </a>
@@ -137,9 +142,12 @@ function Menubar() {
                                 <div className="row g-5 ads-block justify-content-center">
                                   {item.trending !== undefined &&
                                   Array.isArray(item.trending)
-                                    ? item.trending.map((item,index) => (
+                                    ? item.trending.map((item, index) => (
                                         <>
-                                          <div className="col-md-6 col-6 text-center" key={index}>
+                                          <div
+                                            className="col-md-6 col-6 text-center"
+                                            key={index}
+                                          >
                                             <div className="thumbnails">
                                               <img
                                                 src={
