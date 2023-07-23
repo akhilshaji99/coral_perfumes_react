@@ -1,11 +1,9 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 
 function ProductBanner({ componentDatas }) {
-  console.log("productBanner", componentDatas);
   return (
     <>
       <div className="card mb-4 bg-light border-0">
-        {/* card body */}
         <img
           src={deviceImageRender(
             componentDatas?.banner_image_url,

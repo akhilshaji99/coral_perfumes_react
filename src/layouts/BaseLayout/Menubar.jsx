@@ -1,6 +1,7 @@
 import request from "../../utils/request";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import deviceImageRender from "../../utils/deviceImageRender";
 
 function Menubar() {
   const navigate = useNavigate();
@@ -150,11 +151,9 @@ function Menubar() {
                                           >
                                             <div className="thumbnails">
                                               <img
-                                                src={
-                                                  process.env
-                                                    .REACT_APP_BASE_URL +
+                                                src={deviceImageRender(
                                                   item.trending_image
-                                                }
+                                                )}
                                                 alt="eCommerce HTML Template"
                                                 className="img-fluid"
                                               />
@@ -182,10 +181,7 @@ function Menubar() {
                                         key={index}
                                       >
                                         <img
-                                          src={
-                                            process.env.REACT_APP_BASE_URL +
-                                            item.image
-                                          }
+                                          src={deviceImageRender(item.image)}
                                           alt={item.image_alt}
                                           className="img-fluid megamenu-ads"
                                         />

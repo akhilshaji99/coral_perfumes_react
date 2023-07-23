@@ -30,7 +30,6 @@ function ProductMain() {
     try {
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
-      console.log("category", category);
       if (category) {
         const response = await request.get("productsbycategory/" + category);
         if (response.data) {
@@ -51,7 +50,7 @@ function ProductMain() {
         <div className="row">
           {productList.map((product, index) => {
             return (
-              <div className="col-md-3">
+              <div className="col-md-3" key={index}>
                 <div className="product-grid">
                   <div className="card card-product product-box">
                     <div className="card-body">
