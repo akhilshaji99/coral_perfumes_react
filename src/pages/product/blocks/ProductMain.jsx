@@ -1,17 +1,39 @@
-import Sample from "../../../assets/img/sample-product.png";
+
 import ProductBanner from "./ProductBanner";
 import request from "../../../utils/request";
-import { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
 function ProductMain() {
   const [productList, setProductList] = useState([]);
   const [productBanner, setProductBanner] = useState(null);
+  const [page, setPage] = useState(1);
+  const loader = useRef(null);
+
+  const handleObserver = useCallback((entries) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      setPage((prev) => prev + 1);
+      const queryParameters = new URLSearchParams(window.location.search);
+    const category = queryParameters.get("category");
+    getProductList(category);
+    }
+  }, []);
+
+  useEffect(() => {
+    const option = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 0
+    };
+    const observer = new IntersectionObserver(handleObserver, option);
+    if (loader.current) observer.observe(loader.current);
+  }, [handleObserver]);
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
     const category = queryParameters.get("category");
-    getProductList(category);
+    // getProductList(category);
     getProductBanner(category);
   }, []);
   const getProductBanner = async (category) => {
@@ -33,7 +55,10 @@ function ProductMain() {
       if (category) {
         const response = await request.get("productsbycategory/" + category);
         if (response.data) {
-          setProductList(response.data.data);
+          // setProductList(response.data.data);
+          await setProductList((prev) => [
+            ...new Set([...prev, ...response.data.data])
+          ]);
         }
       }
     } catch (error) {
@@ -119,6 +144,8 @@ function ProductMain() {
             );
           })}
         </div>
+        <div ref={loader} />
+
       </section>
     </>
   );
