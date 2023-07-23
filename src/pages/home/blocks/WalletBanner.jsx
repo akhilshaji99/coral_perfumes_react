@@ -89,8 +89,8 @@ function WalletBanner({ componentDatas }) {
                       <>
                         {walletData?.name &&
                         walletData?.name.split(" ").length === 3 ? (
-                          <div className="wallet-card">
-                            <div className="" key={index}>
+                          <div className="wallet-card" key={index}>
+                            <div className="" >
                               <h3>{walletData?.name.split(" ")[0]}</h3>
                               <h2>{walletData?.name.split(" ")[1]}</h2>
                               <h3>{walletData?.name.split(" ")[2]}</h3>

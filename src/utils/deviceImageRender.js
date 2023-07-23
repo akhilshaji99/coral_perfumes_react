@@ -7,7 +7,7 @@ const deviceImageRender = (desktop_image=null, mobile_image=null) => {
   } else {
     screen_type = "Desktop";
   }
-  console.log(screen_type);
+  // console.log(screen_type);
   //#End
   //Return image based on screen size
   if (screen_type === "Desktop") {

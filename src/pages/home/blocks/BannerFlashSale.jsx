@@ -24,10 +24,10 @@ function BannerFlashSale({ componentDatas }) {
   startDate.setDate(startDate.getDate() - 1);
   const endDate = new Date(timeEnd);
   endDate.setDate(endDate.getDate() - 1);
-  console.log('timeEnd',endDate)
+  // console.log('timeEnd',endDate)
   const timer = async () => {
     var msDiff = endDate - new Date();
-    console.log('msDiff',msDiff)
+    // console.log('msDiff',msDiff)
     const seconds = Math.floor((msDiff / 1000) % 60);
 
     const minutes = Math.floor((msDiff / 1000 / 60) % 60);

@@ -1,7 +1,7 @@
-import Sample from "../../../assets/img/sample-product1.png";
+import Sample from "../../assets/img/sample-product1.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import Arrow from "../../../assets/img/icons/arrow.svg.svg";
+import Arrow from "../../assets/img/icons/arrow.svg.svg";
 
 import "slick-carousel/slick/slick-theme.css";
 function SampleNextArrow(props) {
