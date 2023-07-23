@@ -1,11 +1,10 @@
 import ProductBanner from "./ProductBanner";
 import request from "../../../utils/request";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
 function ProductMain() {
   const [productList, setProductList] = useState([]);
-  const [productBanner, setProductBanner] = useState(null);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
   const [count, setCount] = useState(null);
@@ -13,16 +12,12 @@ function ProductMain() {
   const handleObserver = useCallback((entries) => {
     const target = entries[0];
     if (target.isIntersecting) {
-      console.log('totalCount',count);
-      console.log('productList.length',productList);
-      if(count == null || count > productList.length){
-      setPage((prev) => prev + 1);
-      const queryParameters = new URLSearchParams(window.location.search);
-      const category = queryParameters.get("category");
-      getProductList(category);
+      console.log("totalCount", count);
+      console.log("productList.length", productList);
+      if (count == null || count > productList.length) {
+        setPage((prev) => prev + 1);
+        getProductList();
       }
-    
-
     }
   }, []);
 
@@ -34,39 +29,24 @@ function ProductMain() {
     };
     const observer = new IntersectionObserver(handleObserver, option);
     if (loader.current) observer.observe(loader.current);
-  }, [handleObserver]);
+  }, [handleObserver, window.location.href]);
 
   useEffect(() => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const category = queryParameters.get("category");
-    // getProductList(category);
-    getProductBanner(category);
-  }, []);
-  const getProductBanner = async (category) => {
-    try {
-      if (category) {
-        const response = await request.get("category-banners/" + category);
-        if (response.data) {
-          setProductBanner(response.data.data);
-        }
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+    setProductList([]);
+    getProductList();
+  }, [window.location.href]);
+
   const getProductList = async () => {
     try {
-
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
       if (category) {
         const response = await request.get("productsbycategory/" + category);
         if (response.data) {
-          // setProductList(response.data.data);
           await setProductList((prev) => [
             ...new Set([...prev, ...response.data.data]),
           ]);
-          setCount(response.data.count)
+          setCount(response.data.count);
         }
       }
     } catch (error) {
@@ -76,9 +56,7 @@ function ProductMain() {
   return (
     <>
       <section className="col-lg-9 col-md-12">
-        {productBanner ? (
-          <ProductBanner componentDatas={productBanner} />
-        ) : null}
+        <ProductBanner />
 
         <div className="row">
           {productList.map((product, index) => {

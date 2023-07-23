@@ -6,7 +6,12 @@ import Menubar from "./Menubar";
 import Footer from "./Footer";
 import CartDrawer from "./CartDrawer";
 import OTPModal from "./OTPModal";
-const BaseLayout = ({ children }) => {
+import { useEffect } from "react";
+
+const BaseLayout = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [window.location.href]);
   return (
     <>
       <div className="border-bottom ">
