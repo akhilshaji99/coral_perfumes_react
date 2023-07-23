@@ -37,35 +37,68 @@ function Index() {
     autoplay: false,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    className: "desktop-thumbs",
+  };
+  const settings2 = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    className: "mob-thumbs",
   };
   return (
     <>
-      <div className="conatiner px-5
-      
-      
-      ">
+      <div className="conatiner px-5">
         <div className="row mb-5 ">
           <div className="col-md-2">
-            <Slider {...settings}>
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>{" "}
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>{" "}
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>{" "}
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>{" "}
-              <div className="thumbnail-slide">
-                <img src={Sample} alt="Coral Perfumes" />
-              </div>
-            </Slider>
+            <div className="mob-thumbs">
+              <Slider {...settings2}>
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>
+              </Slider>
+            </div>
+            <div className="desktop-thumbs">
+              <Slider  {...settings}>
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>{" "}
+                <div className="thumbnail-slide">
+                  <img src={Sample} alt="Coral Perfumes" />
+                </div>
+              </Slider>
+            </div>
           </div>
           <div className="col-md-6">
             <div className="product-showcase">
