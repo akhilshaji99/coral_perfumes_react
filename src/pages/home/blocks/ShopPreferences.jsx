@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { NavLink } from "react-router-dom";
 
 function ShopPreferences({ componentDatas }) {
   const preferences = componentDatas?.datas;
@@ -9,7 +10,7 @@ function ShopPreferences({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-fluid my-5" >
+      <div className="container-fluid my-5">
         <div className="card shop-preferences mb-5" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
@@ -66,24 +67,27 @@ function ShopPreferences({ componentDatas }) {
             slidesToSlide={2}
             swipeable
           >
-              {preferences.map((preference, index) => {
+            {preferences.map((preference, index) => {
               return (
-            <div key={index}>
-              <div className="thumbnails">
-                <img src={deviceImageRender(
-                      preference.desktop_image,
-                      preference.mobile_image
-                    )} 
-                    alt={preference.image_alt}
-                    />
-                <div className="black"></div>
-                <div className="title">
-                  <h3 className="text-white">{preference.title}</h3>
+                <div key={index}>
+                  <NavLink to={`/product?category=${preference?.link}`}>
+                    <div className="thumbnails">
+                      <img
+                        src={deviceImageRender(
+                          preference.desktop_image,
+                          preference.mobile_image
+                        )}
+                        alt={preference.image_alt}
+                      />
+                      <div className="black"></div>
+                      <div className="title">
+                        <h3 className="text-white">{preference.title}</h3>
+                      </div>
+                    </div>
+                  </NavLink>
                 </div>
-              </div>
-            </div>
-              )
-           })}
+              );
+            })}
           </Carousel>
         </div>
       </div>

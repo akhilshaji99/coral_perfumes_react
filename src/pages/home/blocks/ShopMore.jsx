@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { NavLink } from "react-router-dom";
 
 function ShopMore({ componentDatas }) {
   const shopMoreItems = componentDatas?.datas;
@@ -69,20 +70,21 @@ function ShopMore({ componentDatas }) {
             {shopMoreItems.map((item, index) => {
               return (
                 <div className="" key={index}>
-                  {" "}
-                  <div className="thumbnails">
-                    <img
-                      src={deviceImageRender(
-                        item.desktop_image,
-                        item.mobile_image
-                      )}
-                      alt={item.image_alt}
-                    />
-                    <div className="black"></div>
-                    <div className="title">
-                      <h3 className="text-white">{item.title}</h3>
+                  <NavLink to={`/product?category=${item?.link}`}>
+                    <div className="thumbnails">
+                      <img
+                        src={deviceImageRender(
+                          item.desktop_image,
+                          item.mobile_image
+                        )}
+                        alt={item.image_alt}
+                      />
+                      <div className="black"></div>
+                      <div className="title">
+                        <h3 className="text-white">{item.title}</h3>
+                      </div>
                     </div>
-                  </div>
+                  </NavLink>
                 </div>
               );
             })}

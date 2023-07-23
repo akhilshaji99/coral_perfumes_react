@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { NavLink } from "react-router-dom";
 
 function CategoryTop({ componentDatas }) {
   const dynamicBackground = {
@@ -68,14 +69,16 @@ function CategoryTop({ componentDatas }) {
             {componentDatas.datas?.map((category, index) => {
               return (
                 <div className="category-top-img" key={index}>
-                  <img
-                    src={deviceImageRender(
-                      category?.desktop_image,
-                      category?.mobile_image
-                    )}
-                    alt={category?.image_alt}
-                  />
-                  <h3 className="text-dark py-3">{category?.title}</h3>
+                  <NavLink to={`/product?category=${category?.link}`}>
+                    <img
+                      src={deviceImageRender(
+                        category?.desktop_image,
+                        category?.mobile_image
+                      )}
+                      alt={category?.image_alt}
+                    />
+                    <h3 className="text-dark py-3">{category?.title}</h3>
+                  </NavLink>
                 </div>
               );
             })}

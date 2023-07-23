@@ -1,4 +1,5 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { NavLink } from "react-router-dom";
 
 function TopCategories({ componentDatas }) {
   const dynamicBackground = {
@@ -15,14 +16,16 @@ function TopCategories({ componentDatas }) {
             {products.map((product, index) => {
               return (
                 <div key={index} className="col-md-2 col-6 text-center">
-                  <img
-                    src={deviceImageRender(
-                      product.desktop_image,
-                      product.mobile_image
-                    )}
-                    alt={product.image_alt}
-                  />
-                  <h3>{product.title}</h3>
+                  <NavLink to={`/product?category=${product?.link}`}>
+                    <img
+                      src={deviceImageRender(
+                        product.desktop_image,
+                        product.mobile_image
+                      )}
+                      alt={product.image_alt}
+                    />
+                    <h3>{product.title}</h3>
+                  </NavLink>
                 </div>
               );
             })}
