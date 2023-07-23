@@ -6,7 +6,7 @@ function BannerFlashSale({ componentDatas }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
+  const [hideBanner, setHideBanner] = useState(false);
 
   const backgroundImage = {
     backgroundImage:
@@ -17,39 +17,57 @@ function BannerFlashSale({ componentDatas }) {
       ) +
       `")`,
   };
-  const timeStart = componentDatas?.datas?.[0]?.start_time;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
-  // const timeEnd = '2023-07-23T23:59:00Z';
-  const startDate = new Date(timeStart);
-  startDate.setDate(startDate.getDate() - 1);
-  const endDate = new Date(timeEnd);
-  endDate.setDate(endDate.getDate() - 1);
-  // console.log('timeEnd',endDate)
+  const inputDate = new Date(timeEnd);
+  const customTimeZoneOffset = -5.5; // -5 hours and -30 minutes
+  const customTimeZoneOffsetMilliseconds =
+    customTimeZoneOffset * 60 * 60 * 1000;
+  const adjustedDate = new Date(
+    inputDate.getTime() + customTimeZoneOffsetMilliseconds
+  );
+  const formattedDateTime = adjustedDate.toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZoneName: "short",
+  });
+  const endDate = new Date(formattedDateTime);
+
   const timer = async () => {
-    var msDiff = endDate - new Date();
-    // console.log('msDiff',msDiff)
-    const seconds = Math.floor((msDiff / 1000) % 60);
-
-    const minutes = Math.floor((msDiff / 1000 / 60) % 60);
-
-    const hour = Math.floor((msDiff / 1000 / 60 / 60) % 24);
+    const currentDate = new Date();
+    const timeDifferenceInMilliseconds =
+      endDate.getTime() - currentDate.getTime();
+    const hour = Math.floor(timeDifferenceInMilliseconds / (1000 * 60 * 60));
+    const minutes = Math.floor(
+      (timeDifferenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor(
+      (timeDifferenceInMilliseconds % (1000 * 60)) / 1000
+    );
+    if (hour <= 0 && minutes <= 0 && seconds <= 0) {
+      setHideBanner(true);
+    }
     setHours(hour);
     setMinutes(minutes);
-    setSeconds(seconds)
+    setSeconds(seconds);
   };
   useEffect(() => {
-    var myVar = setInterval(timer, 1000);
-   
+    setInterval(timer, 1000);
   }, []);
   return (
     <>
-      <section className="banner-flashsale" style={backgroundImage}>
-        <div className="container my-5">
-          <div className="row align-items-center d-end">
-            <div className="col-md-8">
-              <div className="row align-items-center ">
-                <div className="col-md-4 text-center">
-                  {/* <h2>flash</h2>
+      {!hideBanner ? (
+        <section className="banner-flashsale" style={backgroundImage}>
+          <div className="container my-5">
+            <div className="row align-items-center d-end">
+              <div className="col-md-8">
+                <div className="row align-items-center ">
+                  <div className="col-md-4 text-center">
+                    {/* <h2>flash</h2>
                   <p>
                     <svg
                       width="38"
@@ -72,28 +90,29 @@ function BannerFlashSale({ componentDatas }) {
                     </svg>
                   </p>
                   <button className="btn  btn-outline-light">Shop Now</button> */}
-                </div>
-                <div className="col-md-2">
-                  <div className="timer-card">
-                    <h1>{hours}</h1>
                   </div>
-                </div>
-                <div className="col-md-2">
-                  <div className="timer-card">
-                    <h1>{minutes}</h1>
+                  <div className="col-md-2">
+                    <div className="timer-card">
+                      <h1>{hours}</h1>
+                    </div>
                   </div>
-                </div>
-                <div className="col-md-2" >
-                  <div className="timer-card" style={{height:93}}>
-                    <h1>{seconds}</h1>
+                  <div className="col-md-2">
+                    <div className="timer-card">
+                      <h1>{minutes}</h1>
+                    </div>
                   </div>
+                  <div className="col-md-2">
+                    <div className="timer-card" style={{ height: 93 }}>
+                      <h1>{seconds}</h1>
+                    </div>
+                  </div>
+                  <h5 className="text-center">*valid on selected Items</h5>
                 </div>
-                <h5 className="text-center">*valid on selected Items</h5>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </>
   );
 }

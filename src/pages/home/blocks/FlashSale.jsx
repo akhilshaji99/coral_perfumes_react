@@ -8,6 +8,7 @@ function FlashSale({ componentDatas }) {
   const dynamicBackground = {
     backgroundColor: componentDatas?.bg_color,
   };
+  //Code for timer
   const [falseSaleEnd, setFlashSaleEnd] = useState(false);
   const products = componentDatas?.datas?.[0]?.products;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
@@ -33,7 +34,7 @@ function FlashSale({ componentDatas }) {
 
   var msDiff = new Date(formattedDateTime) - new Date(); //Future date - current date
   counterValue = Math.floor(msDiff / 1000);
-
+  //#End
   return (
     <>
       {!falseSaleEnd ? (
