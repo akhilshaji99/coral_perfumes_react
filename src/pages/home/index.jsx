@@ -39,65 +39,70 @@ function Index() {
           return (
             <>
               {/* <section className="home-banner"> */}
-              {component.includes("main_banner") && homeContent[component] ? (
-                <MainBanner />
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
+                <>
+                  <MainBanner />
+                </>
               ) : null}
-
-              {component.includes("multiple_round_listing") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP3" ? (
                 <CategoryTop componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("timer_banner") && homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP5" ? (
                 <BannerFlashSale componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("product_carousel_timer") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP6" ? (
                 <FlashSale componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("product_carousel") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP9" ? (
                 <ProductCarousel componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("small_square_carousel") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP7" ? (
                 <WalletBanner componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("banner_230") && homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP8" ? (
                 <Deals componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("12_block_listing") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP11" ? (
                 <TopCategories componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("banner_538") && homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP12" ? (
                 <AdsBanner componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("5_round_listing") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP13" ? (
                 <ShopPreferences componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("6_square_listing") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP14" ? (
                 <Brands componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("4_round_listing") &&
-              homeContent[component] ? (
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP15" ? (
                 <ShopMore componentDatas={homeContent[component][0]} />
               ) : null}
 
-              {component.includes("4_block_banner") &&
-              homeContent[component] ? (
-                <AdsBlock componentDatas={homeContent[component][0]}/>
+              {homeContent[component] &&
+              homeContent[component]?.[0]?.component_identifier === "COMP10" ? (
+                <AdsBlock componentDatas={homeContent[component][0]} />
               ) : null}
             </>
           );

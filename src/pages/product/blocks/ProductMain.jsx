@@ -7,19 +7,23 @@ function ProductMain() {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(0);
 
-  const handleObserver = useCallback((entries) => {
-    const target = entries[0];
-    if (target.isIntersecting) {
-      console.log("totalCount", count);
-      console.log("productList.length", productList);
-      if (count == null || count > productList.length) {
-        setPage((prev) => prev + 1);
-        getProductList();
+  const handleObserver = useCallback(
+    (entries) => {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        console.log("totalCount", count);
+        console.log("productList.length", productList);
+        if (count != 0 || count > productList.length) {
+          console.log(page);
+          setPage((page) => page + 1);
+          getProductList();
+        }
       }
-    }
-  }, []);
+    },
+    [count]
+  );
 
   useEffect(() => {
     const option = {
@@ -33,6 +37,8 @@ function ProductMain() {
 
   useEffect(() => {
     setProductList([]);
+    setCount(0);
+    setPage(1);
     getProductList();
   }, [window.location.href]);
 
@@ -41,12 +47,14 @@ function ProductMain() {
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
       if (category) {
-        const response = await request.get("productsbycategory/" + category);
+        const response = await request.post("productsbycategory/" + category, {
+          page,
+        });
         if (response.data) {
+          setCount(response.data.total_count);
           await setProductList((prev) => [
             ...new Set([...prev, ...response.data.data]),
           ]);
-          setCount(response.data.count);
         }
       }
     } catch (error) {
