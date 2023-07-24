@@ -1,7 +1,3 @@
-import Banner1 from "../../../assets/img/banners/banner-1.png";
-import Banner2 from "../../../assets/img/banners/banner-2.png";
-import Banner3 from "../../../assets/img/banners/banner-3.png";
-import Banner4 from "../../../assets/img/banners/banner-4.png";
 import deviceImageRender from "../../../utils/deviceImageRender";
 function AdsBlock({ componentDatas }) {
   return (

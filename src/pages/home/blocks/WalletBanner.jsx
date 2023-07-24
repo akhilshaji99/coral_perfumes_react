@@ -12,7 +12,7 @@ function WalletBanner({ componentDatas }) {
           <div className="row align-items-center px-5">
             <div className="col-md-3">
               <h1>{componentDatas?.title}</h1>
-              <h5></h5>
+              {/* <h5></h5> */}
               <svg
                 width="172"
                 height="5"

@@ -1,4 +1,35 @@
-function FilterSidebar() {
+import request from "../../../utils/request";
+import { useEffect, useState } from "react";
+
+function FilterSidebar({checkCategoryFilter}) {
+  const [productFilters, setProductFilters] = useState([]);
+  const [categorySearchValue, setCategorySearchValue] = useState(null);
+  const [categorySearchKey, setCategorySearchKey] = useState(null);
+
+  useEffect(() => {
+    getProductFilters();
+  }, [window.location.href, categorySearchValue]);
+
+  const getProductFilters = async () => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const category = queryParameters.get("category");
+    try {
+      if (category) {
+        const response = await request.get(
+          "filterable-attributes/" + category,
+          {
+            categorySearchValue,
+            categorySearchValue,
+          }
+        );
+        if (response.data) {
+          setProductFilters(response.data.data);
+        }
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
       <aside className="col-lg-3 col-md-4 mb-6 mb-md-0">
@@ -22,94 +53,93 @@ function FilterSidebar() {
           <div className="offcanvas-body ps-lg-2 pt-lg-0">
             <div className="mb-8">
               <ul className="nav nav-category" id="categoryCollapseMenu">
-                <li className="nav-item border-bottom w-100 ">
-                  <a
-                    href="#"
-                    className="nav-link collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#categoryFlushOne"
-                    aria-expanded="false"
-                    aria-controls="categoryFlushOne"
-                  >
-                   Brands
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M19.9201 8.95L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95"
-                        stroke="black"
-                        strokeWidth="1.5"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                  {/* accordion collapse */}
-                  <div
-                    id="categoryFlushOne"
-                    className="accordion-collapse collapse"
-                    data-bs-parent="#categoryCollapseMenu"
-                  >
-                    <input
-                      type="search"
-                      className="form-control accordion-search"
-                      placeholder="Search by store"
-                    />
-                    <div>
-                      <ul className="nav flex-column ms-3">
-                        <li className="nav-item">
-                          <div className="form-check mb-5">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              defaultValue
-                              id="eGrocery"
-                              defaultChecked
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="eGrocery"
-                            >
-                              Calvin Klien <span>(121)</span>
-                            </label>
-                          </div>
-                        </li>
-                        <li className="nav-item">
-                          <div className="form-check mb-5">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              defaultValue
-                              id="eGrocery"
-                              defaultChecked
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="eGrocery"
-                            >
-                            Davidoff <span>(70)</span>
-                            </label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
+                {productFilters?.map((productFilter, index) => {
+                  return (
+                    <li className="nav-item border-bottom w-100" key={index}>
+                      <a
+                        href="#"
+                        className="nav-link collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#categoryFlushOne_${index}`}
+                        aria-expanded="false"
+                        aria-controls={`categoryFlushOne_${index}`}
+                      >
+                        {productFilter?.name}
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M19.9201 8.95L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95"
+                            stroke="black"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                      {/* accordion collapse */}
+                      <div
+                        id={`categoryFlushOne_${index}`}
+                        className="accordion-collapse collapse"
+                        data-bs-parent="#categoryCollapseMenu"
+                      >
+                        <input
+                          type="search"
+                          className="form-control accordion-search"
+                          placeholder="Search"
+                          onChange={(event) => {
+                            setCategorySearchValue(event.target.value);
+                            setCategorySearchKey(productFilter?.name);
+                          }}
+                        />
+                        <div>
+                          <ul className="nav flex-column ms-3">
+                            {productFilter?.values?.map((filterData, index) => {
+                              return (
+                                <li className="nav-item" key={index}>
+                                  <div className="form-check mb-5">
+                                    <input
+                                      className="form-check-input"
+                                      type="checkbox"
+                                      id="eGrocery"
+                                      value={filterData?.slug}
+                                      onChange={(event) =>
+                                        checkCategoryFilter(
+                                          event.target.value,
+                                          productFilter?.name
+                                        )
+                                      }
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      htmlFor="eGrocery"
+                                    >
+                                      {filterData?.name}{" "}
+                                      <span>({filterData?.count})</span>
+                                    </label>
+                                  </div>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
-          
+
             {/* rating */}
-            <div className="mb-8 d-none">
+            {/* <div className="mb-8 d-none">
               <h5 className="mb-3">Rating</h5>
               <div>
-                {/* form check */}
                 <div className="form-check mb-2">
-                  {/* input */}
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -124,9 +154,7 @@ function FilterSidebar() {
                     <i className="bi bi-star-fill text-warning " />
                   </label>
                 </div>
-                {/* form check */}
                 <div className="form-check mb-2">
-                  {/* input */}
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -142,9 +170,7 @@ function FilterSidebar() {
                     <i className="bi bi-star text-warning" />
                   </label>
                 </div>
-                {/* form check */}
                 <div className="form-check mb-2">
-                  {/* input */}
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -159,9 +185,7 @@ function FilterSidebar() {
                     <i className="bi bi-star text-warning" />
                   </label>
                 </div>
-                {/* form check */}
                 <div className="form-check mb-2">
-                  {/* input */}
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -176,9 +200,7 @@ function FilterSidebar() {
                     <i className="bi bi-star text-warning" />
                   </label>
                 </div>
-                {/* form check */}
                 <div className="form-check mb-2">
-                  {/* input */}
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -194,10 +216,8 @@ function FilterSidebar() {
                   </label>
                 </div>
               </div>
-            </div>
-            <div className="mb-8 position-relative d-none">
-              {/* Banner Design */}
-              {/* Banner Content */}
+            </div> */}
+            {/* <div className="mb-8 position-relative d-none">
               <div className="position-absolute p-5 py-8">
                 <h3 className="mb-0">Fresh Fruits </h3>
                 <p>Get Upto 25% Off</p>
@@ -206,16 +226,12 @@ function FilterSidebar() {
                   <i className="feather-icon icon-arrow-right ms-1" />
                 </a>
               </div>
-              {/* Banner Content */}
-              {/* Banner Image */}
-              {/* img */}
               <img
                 src="../assets/images/banner/assortment-citrus-fruits.png"
                 alt=""
                 className="img-fluid rounded "
               />
-              {/* Banner Image */}
-            </div>
+            </div> */}
           </div>
         </div>
       </aside>

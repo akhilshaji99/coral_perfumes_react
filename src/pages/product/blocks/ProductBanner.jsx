@@ -33,7 +33,7 @@ function ProductBanner() {
               productBanner?.banner_image_url
             )}
             className="img-fluid"
-            alt="Coral Perfumes"
+            alt={productBanner?.image_alt}
           />
         </div>
       ) : null}

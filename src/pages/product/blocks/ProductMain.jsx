@@ -3,27 +3,24 @@ import request from "../../../utils/request";
 import { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
-function ProductMain() {
+function ProductMain({filterArray}) {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
   const [count, setCount] = useState(0);
 
-  const handleObserver = useCallback(
-    (entries) => {
-      const target = entries[0];
-      if (target.isIntersecting) {
-        console.log("totalCount", count);
-        console.log("productList.length", productList);
-        if (count != 0 || count > productList.length) {
-          console.log(page);
-          setPage((page) => page + 1);
-          getProductList();
-        }
+  const handleObserver = useCallback((entries) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      console.log("totalCount", count);
+      console.log("productList.length", productList);
+      if (count !== 0 || count > productList.length) {
+        console.log(page);
+        setPage((page) => page + 1);
+        getProductList();
       }
-    },
-    [count]
-  );
+    }
+  });
 
   useEffect(() => {
     const option = {
@@ -33,7 +30,7 @@ function ProductMain() {
     };
     const observer = new IntersectionObserver(handleObserver, option);
     if (loader.current) observer.observe(loader.current);
-  }, [handleObserver, window.location.href]);
+  }, [handleObserver]);
 
   useEffect(() => {
     setProductList([]);

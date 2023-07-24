@@ -57,7 +57,7 @@ function BannerFlashSale({ componentDatas }) {
   };
   useEffect(() => {
     setInterval(timer, 1000);
-  }, []);
+  });
   return (
     <>
       {!hideBanner ? (
