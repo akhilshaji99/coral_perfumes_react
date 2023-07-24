@@ -7,19 +7,22 @@ function Index() {
   const [filterArray, setFilterArray] = useState([]);
   //Creating filter array
   const checkCategoryFilter = (checkedValue, attribute) => {
-    if (!Object.keys(filterArray).includes(attribute)) {
-      filterArray[attribute] = [];
+    // Create a copy of the current filterArray state
+    const updatedFilterArray = { ...filterArray };
+    if (!updatedFilterArray[attribute]) {
+      updatedFilterArray[attribute] = [];
     }
-    if (filterArray[attribute].includes(checkedValue)) {
-      const indexToRemove = filterArray[attribute].indexOf(checkedValue);
-      filterArray[attribute].splice(indexToRemove, 1);
-      if (filterArray[attribute].length <= 0) {
-        delete filterArray[attribute];
+    if (updatedFilterArray[attribute].includes(checkedValue)) {
+      const indexToRemove = updatedFilterArray[attribute].indexOf(checkedValue);
+      updatedFilterArray[attribute].splice(indexToRemove, 1);
+      if (updatedFilterArray[attribute].length <= 0) {
+        delete updatedFilterArray[attribute];
       }
     } else {
-      filterArray[attribute].push(checkedValue);
+      updatedFilterArray[attribute].push(checkedValue);
     }
-    setFilterArray(filterArray);
+    // Update the state with the new filterArray
+    setFilterArray(updatedFilterArray);
   };
   //#End of filter array
   return (

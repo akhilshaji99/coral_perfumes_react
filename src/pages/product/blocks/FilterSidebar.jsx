@@ -1,7 +1,7 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
 
-function FilterSidebar({checkCategoryFilter}) {
+function FilterSidebar({ checkCategoryFilter }) {
   const [productFilters, setProductFilters] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState(null);
   const [categorySearchKey, setCategorySearchKey] = useState(null);
@@ -19,7 +19,7 @@ function FilterSidebar({checkCategoryFilter}) {
           "filterable-attributes/" + category,
           {
             categorySearchValue,
-            categorySearchValue,
+            categorySearchKey,
           }
         );
         if (response.data) {

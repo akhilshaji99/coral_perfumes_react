@@ -3,7 +3,7 @@ import request from "../../../utils/request";
 import { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
-function ProductMain({filterArray}) {
+function ProductMain({ filterArray }) {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
@@ -37,7 +37,7 @@ function ProductMain({filterArray}) {
     setCount(0);
     setPage(1);
     getProductList();
-  }, [window.location.href]);
+  }, [window.location.href, filterArray]);
 
   const getProductList = async () => {
     try {
@@ -46,6 +46,9 @@ function ProductMain({filterArray}) {
       if (category) {
         const response = await request.post("productsbycategory/" + category, {
           page,
+          filterArray,
+          priceRange: { min: 10, max: 1000 },
+          sortRelevance: "low_to_hight",
         });
         if (response.data) {
           setCount(response.data.total_count);
