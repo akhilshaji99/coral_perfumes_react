@@ -4676,7 +4676,7 @@ fieldset:disabled .btn {
   border-right: 0.3em solid transparent;
   border-top: 0.3em solid;
   content: "";
-  display: inline-block;
+  display: none;
 }
 .dropdown-toggle:empty:after {
   margin-left: 0;
@@ -5356,7 +5356,6 @@ fieldset:disabled .btn {
     visibility: visible !important;
     width: auto !important;
     z-index: auto;
-    
   }
   .navbar-expand-sm .offcanvas .offcanvas-header {
     display: none;
@@ -8323,8 +8322,8 @@ fieldset:disabled .btn {
   width: var(--fc-offcanvas-width);
   height: 60vh;
   border-radius: 9px 0px 0px 9px;
-background: #FFF;
-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
 }
 .offcanvas.offcanvas-top {
   border-bottom: var(--fc-offcanvas-border-width) solid
@@ -8374,8 +8373,8 @@ box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
   padding: var(--fc-offcanvas-padding-y) var(--fc-offcanvas-padding-x);
   border-radius: 9px 0px 0px 0px;
-background: #000;
-color: var(--fc-white);
+  background: #000;
+  color: var(--fc-white);
 }
 .offcanvas-header .btn-close {
   margin-bottom: calc(var(--fc-offcanvas-padding-y) * -0.5);
@@ -26686,26 +26685,58 @@ span.flatpickr-weekday {
 .mob-thumbs {
   display: none;
 }
-.desktop-thumbs{
+.desktop-thumbs {
   display: block;
 }
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .mob-thumbs {
     display: block;
   }
-  .desktop-thumbs{
+  .desktop-thumbs {
     display: none;
   }
 }
-.product-desc-section h1{
+.product-desc-section h1 {
   color: #000;
   font-size: 20px;
-text-transform: capitalize; 
-font-weight: 600;
+  text-transform: capitalize;
+  font-weight: 600;
 }
-.product-desc-section h2{
+.product-desc-section h2 {
   color: #000;
   font-size: 20px;
-text-transform: capitalize; 
-font-weight: var(--fc-font-thin);
+  text-transform: capitalize;
+  font-weight: var(--fc-font-thin);
+}
+.langRow{
+  position: relative;
+top: -20px;
+}
+.langName{
+  color: #000;
+font-size: 12px;
+font-style: normal;
+font-weight: 390;
+line-height: normal;
+text-transform: uppercase
+}
+.lang-dropdown-menu{
+  border-radius: 9px !important;
+background: #FFF;
+box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+}
+.lang-dropdown-menu .dropdown-item:hover{
+  background-color: none !important;
+}
+.lang-dropdown-menu .dropdown-item{
+  margin-bottom: 12px;
+}
+.lang-dropdown-menu span{
+  padding-left: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
+font-style: normal;
+font-weight: 390;
+line-height: normal;
+text-transform: uppercase; 
 }

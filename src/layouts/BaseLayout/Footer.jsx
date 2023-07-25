@@ -11,7 +11,7 @@ import TamaraIcon from "../../assets/img/icons/payment/tamara.svg";
 import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
-import FlagUae from "../../assets/img/icons/flags/uae.svg";
+import FlagUae from "../../assets/img/icons/lang/arab.png";
 import ScrollToTop from "react-scroll-to-top";
 const schema = yup.object().shape({
   email: yup.string().email().required(),

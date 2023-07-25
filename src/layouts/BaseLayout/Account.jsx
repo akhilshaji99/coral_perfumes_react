@@ -1,5 +1,7 @@
 import Logo from "../../assets/img/logo_coral.png";
 import { NavLink } from "react-router-dom";
+import ArabLang from "../../assets/img/icons/lang/arab.png";
+import EngLang from "../../assets/img/icons/lang/english.png";
 
 function Account() {
   return (
@@ -429,45 +431,57 @@ function Account() {
                   </a>
                 </div>
                 <div className="list-inline-item me-5">
-                  <a
-                    href="#"
-                    id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    className="text-center"
-                  >
-                    <svg
-                      width="24"
-                      height="29"
-                      viewBox="0 0 24 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                  <div class="dropdown">
+                    <a
+                      class=" dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
                     >
-                      <rect
-                        x="0.699951"
-                        y="1"
-                        width="22"
-                        height="27"
-                        rx="3.5"
-                        stroke="black"
-                      />
-                      <line
-                        x1="23.2"
-                        y1="9"
-                        x2="1.19995"
-                        y2="9"
-                        stroke="black"
-                      />
-                      <rect
-                        x="9.69995"
-                        y="21"
-                        width="4"
-                        height="7"
-                        stroke="black"
-                      />
-                    </svg>
-                    <span className="">My Bag</span>
-                  </a>
+                      <div className="langRow">
+                        <div className="row align-items-center ">
+                          <div className="col-md-3">
+                            <img
+                              className="langIcon"
+                              src={ArabLang}
+                              alt="Coral perfumes"
+                            />
+                          </div>
+                          <div className="col-md-2 langName">UAE</div>
+                          <div className="col-md-1">
+                            <svg
+                              width={8}
+                              height={4}
+                              viewBox="0 0 8 4"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7.3002 0.521362L4.58353 3.23803C4.2627 3.55886 3.7377 3.55886 3.41686 3.23803L0.700195 0.521362"
+                                stroke="black"
+                                strokeMiterlimit={10}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <div
+                      class="dropdown-menu lang-dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a class="dropdown-item" href="#">
+                        <img src={ArabLang} alt="Coral Perfumes" /><span>UAE</span> 
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <img src={EngLang} alt="Coral Perfumes" /> <span>eng</span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
