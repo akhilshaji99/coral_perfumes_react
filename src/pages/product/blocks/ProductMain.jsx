@@ -8,51 +8,71 @@ function ProductMain({ filterArray }) {
   const [page, setPage] = useState(1);
   const loader = useRef(null);
   const [count, setCount] = useState(0);
+  const [scrollStatus, setScrollStatus] = useState(false);
+  const [productLayout, setProductLayout] = useState("col-md-4");
 
-  const handleObserver = useCallback((entries) => {
-    const target = entries[0];
-    if (target.isIntersecting) {
-      console.log("totalCount", count);
-      console.log("productList.length", productList);
-      if (count !== 0 || count > productList.length) {
-        console.log(page);
-        setPage((page) => page + 1);
-        getProductList();
-      }
-    }
-  });
+  const targetElementRef = useRef(null);
 
   useEffect(() => {
-    const option = {
+    if (count !== 0 && count !== productList.length) {
+      setPage((page) => page + 1);
+    }
+  }, [scrollStatus]);
+
+  useEffect(() => {
+    if (count !== 0 && count !== productList.length) {
+      getProductList(page);
+    }
+  }, [page]);
+
+  useEffect(() => {
+    const targetElement = targetElementRef.current;
+    // Create the Intersection Observer
+    const options = {
       root: null,
-      rootMargin: "20px",
-      threshold: 0,
+      rootMargin: "0px",
+      threshold: 0.1,
     };
-    const observer = new IntersectionObserver(handleObserver, option);
-    if (loader.current) observer.observe(loader.current);
-  }, [handleObserver]);
+    const observer = new IntersectionObserver((entries) => {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        setScrollStatus((scrollStatus) => !scrollStatus);
+      }
+    }, options);
+
+    // Attach the observer to the target element
+    if (targetElement) {
+      observer.observe(targetElement);
+    }
+    // Cleanup observer on component unmount
+    return () => {
+      if (targetElement) {
+        observer.unobserve(targetElement);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     setProductList([]);
     setCount(0);
     setPage(1);
-    getProductList();
+    getProductList(1);
   }, [window.location.href, filterArray]);
 
-  const getProductList = async () => {
+  const getProductList = async (page_number) => {
     try {
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
       if (category) {
         const response = await request.post("productsbycategory/" + category, {
-          page,
+          page: page_number,
           filterArray,
           priceRange: { min: 10, max: 1000 },
           sortRelevance: "low_to_hight",
         });
         if (response.data) {
           setCount(response.data.total_count);
-          await setProductList((prev) => [
+          setProductList((prev) => [
             ...new Set([...prev, ...response.data.data]),
           ]);
         }
@@ -65,11 +85,24 @@ function ProductMain({ filterArray }) {
     <>
       <section className="col-lg-9 col-md-12">
         <ProductBanner />
-
+        <input
+          type="button"
+          value={3}
+          onClick={() => {
+            setProductLayout("col-md-4");
+          }}
+        />
+        <input
+          type="button"
+          value={4}
+          onClick={() => {
+            setProductLayout("col-md-3");
+          }}
+        />
         <div className="row">
           {productList.map((product, index) => {
             return (
-              <div className="col-md-3" key={index}>
+              <div className={productLayout} key={index}>
                 <div className="product-grid">
                   <div className="card card-product product-box">
                     <div className="card-body">
@@ -141,8 +174,8 @@ function ProductMain({ filterArray }) {
               </div>
             );
           })}
+          <div ref={targetElementRef}></div>
         </div>
-        <div ref={loader} />
       </section>
     </>
   );

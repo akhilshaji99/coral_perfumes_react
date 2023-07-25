@@ -18,6 +18,7 @@ function TopCategories({ componentDatas }) {
                 <div key={index} className="col-md-2 col-6 text-center">
                   <NavLink to={`/product?category=${product?.link}`}>
                     <img
+                      loading="lazy"
                       src={deviceImageRender(
                         product.desktop_image,
                         product.mobile_image

@@ -431,9 +431,9 @@ function Account() {
                   </a>
                 </div>
                 <div className="list-inline-item me-5">
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <a
-                      class=" dropdown-toggle"
+                      className=" dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -471,13 +471,13 @@ function Account() {
                       </div>
                     </a>
                     <div
-                      class="dropdown-menu lang-dropdown-menu"
+                      className="dropdown-menu lang-dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         <img src={ArabLang} alt="Coral Perfumes" /><span>UAE</span> 
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         <img src={EngLang} alt="Coral Perfumes" /> <span>eng</span>
                       </a>
                     </div>
