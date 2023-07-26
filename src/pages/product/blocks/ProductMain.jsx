@@ -1,4 +1,5 @@
 import ProductBanner from "./ProductBanner";
+import SortHeader from "./SortHeader";
 import request from "../../../utils/request";
 import { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
@@ -85,6 +86,7 @@ function ProductMain({ filterArray }) {
     <>
       <section className="col-lg-9 col-md-12">
         <ProductBanner />
+        <SortHeader />
         <input
           type="button"
           value={3}
@@ -152,7 +154,7 @@ function ProductMain({ filterArray }) {
                       </button>
                     </div>
                   </div>
-                  <h4>{product.name}</h4>
+                  <h4 className="ellipsis-text">{product.name}</h4>
                   <div className="row custom-row1">
                     <div className="col-md-4 px-0">
                       <h5 className="selling-price">

@@ -26,13 +26,13 @@ function ProductBanner() {
   return (
     <>
       {productBanner ? (
-        <div className="card mb-4 bg-light border-0">
+        <div className="card mb-4  border-0">
           <img
             src={deviceImageRender(
               productBanner?.banner_image_url,
               productBanner?.banner_image_url
             )}
-            className="img-fluid"
+            className="img-fluid product-main-banner"
             alt={productBanner?.image_alt}
           />
         </div>
