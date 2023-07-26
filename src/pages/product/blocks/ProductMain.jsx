@@ -1,8 +1,12 @@
 import ProductBanner from "./ProductBanner";
-import SortHeader from "./SortHeader";
 import request from "../../../utils/request";
 import { useState, useRef, useEffect, useCallback } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import ThreeCol from "../../../assets/img/icons/3-item.svg";
+import ThreeColActive from "../../../assets/img/icons/3-item-active.svg";
+import FourCol from "../../../assets/img/icons/4-item.svg";
+import FourColActive from "../../../assets/img/icons/4-item-active.svg";
+import CustomDropdown from "./CustomDropdown";
 
 function ProductMain({ filterArray }) {
   const [productList, setProductList] = useState([]);
@@ -86,21 +90,51 @@ function ProductMain({ filterArray }) {
     <>
       <section className="col-lg-9 col-md-12">
         <ProductBanner />
-        <SortHeader />
-        <input
-          type="button"
-          value={3}
-          onClick={() => {
-            setProductLayout("col-md-4");
-          }}
-        />
-        <input
-          type="button"
-          value={4}
-          onClick={() => {
-            setProductLayout("col-md-3");
-          }}
-        />
+        <div className="mt-4">
+          <div className="container-fluid">
+            <div className="row sortHeader">
+              <div className="col-md-6">
+                <h5>Brands</h5>
+              </div>
+              <div className="col-md-6 text-end">
+                <div className="row align-items-center d-space-around">
+                  <div className="col-md-1">
+                    {productLayout === "col-md-4" ? (
+                      <img src={ThreeColActive} alt="Coral" />
+                    ) : (
+                      <img
+                        src={ThreeCol}
+                        alt="Coral"
+                        onClick={() => {
+                          setProductLayout("col-md-4");
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="col-md-1">
+                    {productLayout === "col-md-3" ? (
+                      <img src={FourColActive} alt="Coral" />
+                    ) : (
+                      <img
+                        src={FourCol}
+                        alt="Coral"
+                        onClick={() => {
+                          setProductLayout("col-md-3");
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="col-md-3">
+                    <CustomDropdown />
+                  </div>
+                  <div className="col-md-3">
+                    <h6>{count} Items</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row">
           {productList.map((product, index) => {
             return (
