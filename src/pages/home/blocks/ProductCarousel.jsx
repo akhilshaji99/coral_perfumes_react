@@ -80,7 +80,7 @@ function ProductCarousel({ componentDatas }) {
             {componentDatas?.datas?.[0]?.products?.map((product, index) => {
               return (
                 <div className="product-grid" key={index}>
-                  <div className="card card-product product-box">
+                  <div className="card card-product product-box carousel-product-margin">
                     <div className="card-body">
                       {product?.discount_percentage ? (
                         <span className="badge custom-badge">
@@ -130,7 +130,7 @@ function ProductCarousel({ componentDatas }) {
                       </button>
                     </div>
                   </div>
-                  <h4>{product?.name}</h4>
+                  <h4 className="ellipsis-text">{product?.name}</h4>
                   <div className="row custom-row1">
                     <div className="col-md-4 px-0">
                       <h5 className="selling-price">

@@ -50,7 +50,7 @@ function FilterSidebar({ checkCategoryFilter }) {
               aria-label="Close"
             />
           </div>
-          <div className="offcanvas-body ps-lg-2 pt-lg-0">
+          <div className="offcanvas-body scroll-container ps-lg-2 pt-lg-0">
             <div className="mb-8">
               <ul className="nav nav-category" id="categoryCollapseMenu">
                 {productFilters?.map((productFilter, index) => {
@@ -133,6 +133,7 @@ function FilterSidebar({ checkCategoryFilter }) {
                   );
                 })}
               </ul>
+              <input type="range" className="form-range" id="customRange1" />
             </div>
 
             {/* rating */}

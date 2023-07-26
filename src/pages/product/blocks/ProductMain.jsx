@@ -91,14 +91,14 @@ function ProductMain({ filterArray }) {
       <section className="col-lg-9 col-md-12">
         <ProductBanner />
         <div className="mt-4">
-          <div className="container-fluid">
+          <div className="container-fluid px-0 mb-5">
             <div className="row sortHeader">
               <div className="col-md-6">
                 <h5>Brands</h5>
               </div>
               <div className="col-md-6 text-end">
                 <div className="row align-items-center d-space-around">
-                  <div className="col-md-1">
+                  <div className="col-md-1 sort-icon">
                     {productLayout === "col-md-4" ? (
                       <img src={ThreeColActive} alt="Coral" />
                     ) : (
@@ -111,7 +111,7 @@ function ProductMain({ filterArray }) {
                       />
                     )}
                   </div>
-                  <div className="col-md-1">
+                  <div className="col-md-1 sort-icon">
                     {productLayout === "col-md-3" ? (
                       <img src={FourColActive} alt="Coral" />
                     ) : (
@@ -189,7 +189,7 @@ function ProductMain({ filterArray }) {
                     </div>
                   </div>
                   <h4 className="ellipsis-text">{product.name}</h4>
-                  <div className="row custom-row1">
+                  <div className="row custom-row1 mb-5">
                     <div className="col-md-4 px-0">
                       <h5 className="selling-price">
                         AED {product.price_amount}
