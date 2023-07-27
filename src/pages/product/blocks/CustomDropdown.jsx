@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CustomDropdown = () => {
+const CustomDropdown = ({applyRelevanceFilter}) => {
   // Create a state variable to manage the visibility of the dropdown content
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -9,9 +9,20 @@ const CustomDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
+  const filterDatas = [
+    { label: "Relevance", value: "Relevance" },
+    { label: "Price-Low To High", value: "Price-Low To High" },
+    { label: "Price-High to Low", value: "Price-High to Low" },
+    { label: "New", value: "New" },
+  ];
+
   return (
     <div className="dropdown product-custom-dropdown">
-      <a className=" dropdown-toggle sort-dropdown" type="button" onClick={toggleDropdown}>
+      <a
+        className=" dropdown-toggle sort-dropdown"
+        type="button"
+        onClick={toggleDropdown}
+      >
         Sort By Relevance{" "}
         <svg
           width={24}
@@ -34,18 +45,21 @@ const CustomDropdown = () => {
       {isDropdownOpen && (
         <div className="dropdown-menu" style={{ display: "block" }}>
           {/* Add your dropdown items here */}
-          <a className="dropdown-item dropdown-item-custom" href="#">
-            Relevance
-          </a>
-          <a className="dropdown-item dropdown-item-custom" href="#">
-            Price-Low To High
-          </a>
-          <a className="dropdown-item dropdown-item-custom" href="#">
-            Price-High to Low
-          </a>
-          <a className="dropdown-item dropdown-item-custom" href="#">
-            New
-          </a>
+          {filterDatas.map((filterData, index) => {
+            return (
+              <label
+                key={index}
+                className="dropdown-item dropdown-item-custom"
+                onClick={() => {
+                  console.log(filterData.value);
+                  applyRelevanceFilter(filterData.value);
+                  setDropdownOpen(!isDropdownOpen);
+                }}
+              >
+                {filterData.label}
+              </label>
+            );
+          })}
         </div>
       )}
     </div>

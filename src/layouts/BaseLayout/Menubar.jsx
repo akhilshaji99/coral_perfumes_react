@@ -97,7 +97,7 @@ function Menubar() {
                         >
                           {item.name}
                         </NavLink>
-                        <div className=" dropdown-menu pb-0">
+                        <div className="dropdown-menu pb-0">
                           <div className="row p-2 p-lg-4">
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                               <h6 className=" ps-3">SHOP BY PRODUCTS</h6>

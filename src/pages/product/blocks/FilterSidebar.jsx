@@ -1,10 +1,19 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
+import Slider, { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
 
-function FilterSidebar({ checkCategoryFilter }) {
+function FilterSidebar({
+  checkCategoryFilter,
+  minPrice,
+  maxPrice,
+  passingDateRangeToParent,
+}) {
   const [productFilters, setProductFilters] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState(null);
   const [categorySearchKey, setCategorySearchKey] = useState(null);
+  const [defaultMin, setDefaultMin] = useState(minPrice);
+  const [defaultMax, setDefaultMax] = useState(maxPrice);
 
   useEffect(() => {
     getProductFilters();
@@ -29,6 +38,12 @@ function FilterSidebar({ checkCategoryFilter }) {
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  const getSliderValue = (value) => {
+    setDefaultMin(value[0]);
+    setDefaultMax(value[1]);
+    passingDateRangeToParent({ min: value[0], max: value[1] });
   };
   return (
     <>
@@ -132,8 +147,67 @@ function FilterSidebar({ checkCategoryFilter }) {
                     </li>
                   );
                 })}
+                <li className="nav-item border-bottom w-100">
+                  <a
+                    href="#"
+                    className="nav-link collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#categoryFlushOne_price`}
+                    aria-expanded="false"
+                    aria-controls={`categoryFlushOne_price`}
+                  >
+                    Price
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M19.9201 8.95L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95"
+                        stroke="black"
+                        strokeWidth="1.5"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <div
+                    id={`categoryFlushOne_price`}
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#categoryCollapseMenu"
+                  >
+                    <div>
+                      <ul className="nav flex-column ms-3">
+                        <li className="nav-item">
+                          <div className="form-check mb-5">
+                            <Slider
+                              range
+                              allowCross={false}
+                              min={minPrice}
+                              max={maxPrice}
+                              defaultValue={[
+                                defaultMin || minPrice,
+                                defaultMax || maxPrice,
+                              ]}
+                              onChange={getSliderValue}
+                            />
+
+                            <label className="form-check-label">
+                              Min: {defaultMin || minPrice}
+                            </label>
+                            <label className="form-check-label">
+                              Max: {defaultMax || maxPrice}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
               </ul>
-              <input type="range" className="form-range" id="customRange1" />
             </div>
 
             {/* rating */}

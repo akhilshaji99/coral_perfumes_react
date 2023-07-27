@@ -1,6 +1,6 @@
 import ProductBanner from "./ProductBanner";
 import request from "../../../utils/request";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import ThreeCol from "../../../assets/img/icons/3-item.svg";
 import ThreeColActive from "../../../assets/img/icons/3-item-active.svg";
@@ -8,13 +8,13 @@ import FourCol from "../../../assets/img/icons/4-item.svg";
 import FourColActive from "../../../assets/img/icons/4-item-active.svg";
 import CustomDropdown from "./CustomDropdown";
 
-function ProductMain({ filterArray }) {
+function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
-  const loader = useRef(null);
   const [count, setCount] = useState(0);
   const [scrollStatus, setScrollStatus] = useState(false);
   const [productLayout, setProductLayout] = useState("col-md-4");
+  const [relevanceFilter, setRelevanceFilter] = useState("");
 
   const targetElementRef = useRef(null);
 
@@ -62,7 +62,7 @@ function ProductMain({ filterArray }) {
     setCount(0);
     setPage(1);
     getProductList(1);
-  }, [window.location.href, filterArray]);
+  }, [window.location.href, filterArray, priceRangeFilter, relevanceFilter]);
 
   const getProductList = async (page_number) => {
     try {
@@ -72,11 +72,15 @@ function ProductMain({ filterArray }) {
         const response = await request.post("productsbycategory/" + category, {
           page: page_number,
           filterArray,
-          priceRange: { min: 10, max: 1000 },
-          sortRelevance: "low_to_hight",
+          priceRange: priceRangeFilter,
+          sortRelevance: relevanceFilter,
         });
         if (response.data) {
           setCount(response.data.total_count);
+          passingDataToParent(
+            response.data.minimum_price,
+            response.data.maximum_price
+          );
           setProductList((prev) => [
             ...new Set([...prev, ...response.data.data]),
           ]);
@@ -125,7 +129,7 @@ function ProductMain({ filterArray }) {
                     )}
                   </div>
                   <div className="col-md-3">
-                    <CustomDropdown />
+                    <CustomDropdown applyRelevanceFilter={setRelevanceFilter} />
                   </div>
                   <div className="col-md-3">
                     <h6>{count} Items</h6>
