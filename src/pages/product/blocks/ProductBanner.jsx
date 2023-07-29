@@ -23,6 +23,7 @@ function ProductBanner() {
       console.log("error", error);
     }
   };
+
   return (
     <>
       {productBanner ? (

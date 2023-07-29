@@ -2,8 +2,15 @@ import ProductCarousel from "./blocks/ProductCarousel";
 import Sample from "../../assets/img/sample-product1.png";
 import { useEffect } from "react";
 import request from "../../utils/request";
+import { useState } from "react";
+import CreateProductVariants from "./js/CreateProductVariants";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
 
 function Index() {
+  const [currentVariant, setCurrentVariant] = useState(null);
+  const [productVariants, setproductVariants] = useState(null);
+
   useEffect(() => {
     getProductDetails();
   }, [window.location.href]);
@@ -16,14 +23,30 @@ function Index() {
         const response = await request.get(
           "get_product_variants/" + product_slug + "/"
         );
-        if (response.data) {
-          //   setProductFilters(response.data.data);
+
+        if (response?.data?.current_variant) {
+          setCurrentVariant(response.data.current_variant);
+        }
+
+        if (response.data.current_variant && response.data.other_variants) {
+          CreateProductVariants(
+            response.data.current_variant,
+            response.data.other_variants
+          ).then((data) => {
+            setproductVariants(data);
+          });
         }
       }
     } catch (error) {
       console.log("error", error);
     }
   };
+
+  const notify = (status = null) =>
+    toast((t) => (
+      <AlerMessage t={t} toast={toast} status={status} message="" />
+    ));
+
   return (
     <>
       <div className="conatiner px-5">
@@ -91,7 +114,10 @@ function Index() {
               </div>
               <div className="row py-5">
                 <div className="col-md-6">
-                  <button className="btn btn-dark btn-checkout">
+                  <button
+                    className="btn btn-dark btn-checkout"
+                    onClick={() => notify("success")}
+                  >
                     add to bag{" "}
                     <svg
                       width={17}

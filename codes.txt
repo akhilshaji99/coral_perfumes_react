@@ -1,0 +1,57 @@
+//variant array making 
+if (response.data.current_variant && response.data.other_variants) {
+          let variantArray = [];
+          //Looping current variant
+          await response.data?.current_variant?.assigned_variant_attributes?.forEach(
+            (currentVariant) => {
+              //Creating array with attribute name
+              variantArray[currentVariant.attribute_name] = [];
+              //Assign attribute name
+              variantArray[currentVariant.attribute_name]["attribute_name"] =
+                currentVariant.attribute_name;
+              //Assign layout name to each attribute name
+              variantArray[currentVariant.attribute_name]["layout"] =
+                currentVariant?.layout_type;
+              //Initialize array for variants
+              variantArray[currentVariant.attribute_name]["variants"] = [];
+              //Looping variants array
+              currentVariant?.attribute_values?.forEach((attribute_value) => {
+                //Pushing variant to variants array
+                variantArray[currentVariant.attribute_name]["variants"].push({
+                  value: attribute_value.value,
+                  flag: true,
+                });
+              });
+              //#End for loop
+            }
+          );
+          //#Current variant end
+
+          await response.data?.other_variants?.forEach((other_variant) => {
+            other_variant?.assigned_variant_attributes?.forEach(
+              (variant_attribute) => {
+                variant_attribute?.attribute_values?.forEach(
+                  (attribute_values) => {
+                    if (
+                      // !variantArray[variant_attribute.attribute_name][
+                      //   "variants"
+                      // ].includes(attribute_values.value)
+
+                      !variantArray[variant_attribute.attribute_name][
+                        "variants"
+                      ].some((item) => item.value === attribute_values.value)
+                    ) {
+                      variantArray[variant_attribute.attribute_name][
+                        "variants"
+                      ].push({ value: attribute_values.value, flag: true });
+                    }
+                  }
+                );
+              }
+            );
+          });
+          setproductVariants(variantArray);
+          console.log(variantArray);
+          // console.log("here");
+        }
+//#End of variant array making

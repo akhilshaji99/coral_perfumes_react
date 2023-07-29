@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import CartDrawer from "./CartDrawer";
 import OTPModal from "./OTPModal";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 const BaseLayout = () => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const BaseLayout = () => {
   }, [window.location.href]);
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="border-bottom ">
         <TopHeader />
         <Account />
@@ -21,6 +23,7 @@ const BaseLayout = () => {
         <CartDrawer />
         <OTPModal />
       </div>
+
       <Outlet />
       <Footer />
     </>
