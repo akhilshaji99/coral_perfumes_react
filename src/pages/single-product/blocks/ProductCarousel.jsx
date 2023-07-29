@@ -68,7 +68,7 @@ function ProductCarousel() {
           </Slider>
         </div>
       </div>
-      <div className="col-md-6">
+      <div className="col-md-5">
         <div className="product-showcase">
           <InnerImageZoom src={Sample} />
 
