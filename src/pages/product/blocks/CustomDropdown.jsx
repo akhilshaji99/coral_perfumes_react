@@ -10,10 +10,10 @@ const CustomDropdown = ({applyRelevanceFilter}) => {
   };
 
   const filterDatas = [
-    { label: "Relevance", value: "Relevance" },
-    { label: "Price-Low To High", value: "Price-Low To High" },
-    { label: "Price-High to Low", value: "Price-High to Low" },
-    { label: "New", value: "New" },
+    { label: "Relevance", value: "" },
+    { label: "Price-Low To High", value: "low_to_high" },
+    { label: "Price-High to Low", value: "high_to_low" },
+    { label: "New", value: "new" },
   ];
 
   return (
