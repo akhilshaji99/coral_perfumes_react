@@ -1,23 +1,12 @@
-import Sample from "../../../../src/assets/img/sample-product1.png";
 import Slider from "react-slick";
+import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import Arrow from "../../../../src/assets/img/icons/arrow.svg.svg";
 import "slick-carousel/slick/slick-theme.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
-
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  vertical: true,
-  autoplay: false,
-  nextArrow: <SampleNextArrow />,
-  prevArrow: <SamplePrevArrow />,
-  className: "desktop-thumbs",
-};
+import deviceImgeRender from "../../../utils/deviceImageRender";
+import { useState } from "react";
 
 function SampleNextArrow(props) {
   const { className, onClick } = props;
@@ -41,37 +30,48 @@ function SamplePrevArrow(props) {
   );
 }
 
-function ProductCarousel() {
+function ProductCarousel({ sliderImages }) {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: sliderImages?.length || 0,
+    slidesToScroll: 1,
+    vertical: true,
+    autoplay: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    className: "desktop-thumbs",
+  };
+
+  const [activeImage, setActiveImage] = useState(null);
+
+  useEffect(() => {
+    setActiveImage(sliderImages?.[0]);
+  }, [sliderImages?.length || 0]);
   return (
     <>
       <div className="col-md-2">
         <div className="desktop-thumbs">
           <Slider {...settings}>
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>{" "}
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>{" "}
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>{" "}
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>{" "}
-            <div className="thumbnail-slide">
-              <img src={Sample} alt="Coral Perfumes" />
-            </div>
+            {sliderImages?.map((sliderImage, index) => {
+              return (
+                <div className="thumbnail-slide" key={index}>
+                  <img
+                    src={deviceImgeRender(sliderImage)}
+                    alt="Coral Perfumes"
+                  />
+                </div>
+              );
+            })}
           </Slider>
         </div>
       </div>
       <div className="col-md-5">
         <div className="product-showcase">
-          <InnerImageZoom src={Sample} />
-
+          {activeImage ? (
+            <InnerImageZoom src={deviceImgeRender(activeImage)} />
+          ) : null}
           {/* <img src={Sample} alt="Coral Perfumes" /> */}
         </div>
       </div>

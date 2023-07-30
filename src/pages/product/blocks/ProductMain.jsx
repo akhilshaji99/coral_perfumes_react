@@ -74,7 +74,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
           page: page_number,
           filterArray,
           priceRange: priceRangeFilter,
-          sort: relevanceFilter,
+          sortRelevance: relevanceFilter,
         });
         if (response.data) {
           setCount(response.data.total_count);
