@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import AddToBag from "../../common/AddToBag";
 import CountdownTimer from "react-component-countdown-timer";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { useState } from "react";
@@ -232,9 +233,7 @@ function FlashSale({ componentDatas }) {
                             />
                           </a>
                         </div>
-                        <button className="btn btn-dark w-100 mt-2">
-                          add to bag
-                        </button>
+                        <AddToBag />
                       </div>
                     </div>
                     <h4 className="ellipsis-text">{product.name}</h4>

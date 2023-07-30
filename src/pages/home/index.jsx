@@ -7,7 +7,7 @@ const TopCategories = lazy(() => import("./blocks/TopCategories"));
 const ShopMore = lazy(() => import("./blocks/ShopMore"));
 const AdsBlock = lazy(() => import("./blocks/AdsBlock"));
 const ShopPreferences = lazy(() => import("./blocks/ShopPreferences"));
-const FlashSale = lazy(() => import("./blocks/ShopPreferences"));
+const FlashSale = lazy(() => import("./blocks/FlashSale"));
 const WalletBanner = lazy(() => import("./blocks/WalletBanner"));
 const Brands = lazy(() => import("./blocks/Brands"));
 const AdsBanner = lazy(() => import("./blocks/AdsBanner"));
