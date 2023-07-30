@@ -27046,3 +27046,139 @@ color:#000;
   height: 50px;
 
 }
+.custom-badge2{
+  background: #80BA27;
+  padding: 3px 12px;
+  left: 0;
+  position:absolute;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  letter-spacing: 1.08px;
+  text-transform: capitalize; 
+  border-radius: 0;
+
+}
+.alert-btn{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 5%;
+}
+.alert-container h3{
+  color: #E90F1F;
+text-align: center;
+font-size: 16px;
+font-family: var(--fc-font-regular);
+line-height: normal;
+text-transform: uppercase;
+}
+.alert-container h6{
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  line-height: normal;
+  font-family: var(--fc-font-thin);
+  text-transform: uppercase;
+}
+/* .alert-block{
+box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+padding: 24px 39px !important; 
+border-radius: none !important;
+} */
+.Toastify__toast {
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+padding: 24px 39px !important; 
+border-radius: none !important;
+}
+.Size-card{
+  border-radius: 9px;
+border: 1px solid #000;
+padding:8px;
+text-align: center;
+font-size: 12px;
+text-transform: uppercase;
+color: #000;
+}
+.Discount-Prize{
+  color: #A7A9A2; 
+  font-family: var(--fc-font-light);
+  text-decoration: line-through;
+  text-transform: uppercase;
+}
+.Size-card:hover{
+  border-radius: 9px;
+border: 1px solid #000;
+background: #000;
+cursor: pointer;
+color: #fff;
+}
+.Size-card:hover > .Discount-Prize{
+  color: #fff;
+}
+.info-box{
+  background: #EBECE9;
+  padding: 7px 15px;
+}
+.info-box span{
+  padding-right: 17px;
+}
+.info-box h2{
+  color: #000;
+font-size: 16px;
+font-family: var(--fc-font-light);
+line-height: normal;
+text-transform: capitalize; 
+}
+.payment-tabby{
+  color: #000;
+font-size: 14px;
+text-transform: capitalize;
+font-family: var(--fc-font-light);
+}
+.delivery-update{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.flash-sale-box{
+  border-radius: 9px;
+background: #000;
+padding: 9px 19px;
+}
+.flash-sale-box h2{
+  color: #FFF;
+font-size: 14px;
+text-transform: uppercase;
+font-family: var(--fc-font-bold);
+}
+.flash-sale-box p{
+  color: #FFF;
+font-family:var(--fc-font-light);
+font-size: 9px;
+text-transform: capitalize;
+}
+.ends-in{
+  color: #FFF;
+  font-family:var(--fc-font-bold) !important;
+  font-size: 9px;
+  text-transform: capitalize;
+}
+.timer-box{
+  border-radius: 9px;
+background: #C8DDD9;
+padding: 12px;
+font-size: 16px;
+color: #000;
+font-family: var(--fc-font-bold);
+text-align: center;
+}
+.timer-field span{
+  color: #FFF;
+  font-family: var(--fc-font-light);
+font-size: 12px;
+text-transform: capitalize; 
+text-align: center;
+}

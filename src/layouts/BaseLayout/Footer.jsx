@@ -7,7 +7,7 @@ import FacebookIcon from "../../assets/img/icons/social/facebook.svg";
 import LinkedinIcon from "../../assets/img/icons/social/linkedin.svg";
 import InstagramIcon from "../../assets/img/icons/social/instagram.svg";
 import WhatsappIcon from "../../assets/img/icons/social/whatsapp.png";
-import TamaraIcon from "../../assets/img/icons/payment/tamara.svg";
+import TamaraIcon from "../../assets/img/icons/payment/tamara.png";
 import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";

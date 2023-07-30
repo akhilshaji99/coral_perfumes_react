@@ -85,20 +85,10 @@ function ProductCarousel({ componentDatas }) {
                     <div className="card card-product product-box carousel-product-margin">
                       <div className="card-body">
                         {product?.discount_percentage ? (
-                          <span className="badge custom-badge">
-                            <svg
-                              width="29"
-                              height="25"
-                              viewBox="0 0 29 25"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M2.35118 15.597L11.6544 12.9424V22.8972C11.6544 25.22 13.2179 25.6901 15.1251 23.948L28.1316 12.0576C29.7295 10.6058 29.0595 9.40295 26.6368 9.40295L17.3336 12.0576V2.10278C17.3336 -0.220009 15.7701 -0.690096 13.8629 1.05199L0.856373 12.9424C-0.724342 14.408 -0.0542555 15.597 2.35118 15.597Z"
-                                fill="white"
-                              />
-                            </svg>{" "}
-                            {product?.discount_percentage}%
+                          <span className="badge custom-badge2">
+                           
+                            {/* {product?.discount_percentage}% */}
+                            new arrival
                           </span>
                         ) : null}
                         <span className="wishlist-button">
