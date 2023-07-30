@@ -13,6 +13,8 @@ import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
 import ScrollToTop from "react-scroll-to-top";
+import toast from "react-hot-toast";
+import AlerMessage from "../../../src/pages/common/AlerMessage";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
@@ -34,7 +36,14 @@ function Footer() {
       bodyFormData.append('email', values.email);
       const response = await request.post("subscribe-newsletter/",bodyFormData);
       
-      console.log("response", response);
+      console.log("response", response.data.message);
+      let status = "succsss";
+      if(!response.data.status){
+        status = "error";
+      }
+      toast((t) => (
+        <AlerMessage t={t} toast={toast} status={status} message={response.data.message} />
+      ));
 
     } catch (error) {
       console.log("error", error);
@@ -227,7 +236,7 @@ function Footer() {
                 </div>
                 <div className="col-md-4">
                   {/* <NavLink to="/login"> */}
-                    <button type="submit" disabled={!formik.isValid} className="btn btn-light w-100">
+                    <button type="submit" disabled={!(formik.isValid && formik.dirty)} className="btn btn-light w-100">
                       Sign Up
                     </button>
                   {/* </NavLink> */}

@@ -1,18 +1,19 @@
 import request from "../../utils/request";
-import { useEffect, useState } from "react";
-import MainBanner from "./blocks/MainBanner";
-import Deals from "./blocks/Deals";
-import TopCategories from "./blocks/TopCategories";
-import ShopMore from "./blocks/ShopMore";
-import AdsBlock from "./blocks/AdsBlock";
-import ShopPreferences from "./blocks/ShopPreferences";
-import FlashSale from "./blocks/FlashSale";
-import WalletBanner from "./blocks/WalletBanner";
-import Brands from "./blocks/Brands";
-import AdsBanner from "./blocks/AdsBanner";
-import CategoryTop from "./blocks/CategoryTop";
-import BannerFlashSale from "./blocks/BannerFlashSale";
-import ProductCarousel from "./blocks/ProductCarousel";
+import { useEffect, useState, Suspense, lazy } from "react";
+import Placeholder from "../common/PlaceHolder";
+const MainBanner = lazy(() => import("./blocks/MainBanner"));
+const Deals = lazy(() => import("./blocks/Deals"));
+const TopCategories = lazy(() => import("./blocks/TopCategories"));
+const ShopMore = lazy(() => import("./blocks/ShopMore"));
+const AdsBlock = lazy(() => import("./blocks/AdsBlock"));
+const ShopPreferences = lazy(() => import("./blocks/ShopPreferences"));
+const FlashSale = lazy(() => import("./blocks/ShopPreferences"));
+const WalletBanner = lazy(() => import("./blocks/WalletBanner"));
+const Brands = lazy(() => import("./blocks/Brands"));
+const AdsBanner = lazy(() => import("./blocks/AdsBanner"));
+const CategoryTop = lazy(() => import("./blocks/CategoryTop"));
+const BannerFlashSale = lazy(() => import("./blocks/BannerFlashSale"));
+const ProductCarousel = lazy(() => import("./blocks/ProductCarousel"));
 
 function Index() {
   const [homeContent, setHomeContent] = useState([]);
@@ -35,78 +36,125 @@ function Index() {
   return (
     <>
       <main>
-        {homeComponents?.map((component, index) => {
-          return (
-            <>
-              {/* <section className="home-banner"> */}
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
-                <>
-                  <MainBanner />
-                </>
-              ) : null}
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP3" ? (
-                <CategoryTop componentDatas={homeContent[component][0]} />
-              ) : null}
+        <div style={{ minHeight: "600px" }}>
+          {homeComponents?.map((component, index) => {
+            return (
+              <>
+                {/* <section className="home-banner"> */}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP2" ? (
+                  <>
+                    <Suspense fallback={<Placeholder/>}>
+                      <MainBanner />
+                    </Suspense>
+                  </>
+                ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP3" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <CategoryTop componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP5" ? (
-                <BannerFlashSale componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP5" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <BannerFlashSale
+                      componentDatas={homeContent[component][0]}
+                    />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP6" ? (
-                <FlashSale componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP6" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <FlashSale componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP9" ? (
-                <ProductCarousel componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP9" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <ProductCarousel
+                      componentDatas={homeContent[component][0]}
+                    />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP7" ? (
-                <WalletBanner componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP7" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <WalletBanner componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP8" ? (
-                <Deals componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP8" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <Deals componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP11" ? (
-                <TopCategories componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP11" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <TopCategories componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP12" ? (
-                <AdsBanner componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP12" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <AdsBanner componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP13" ? (
-                <ShopPreferences componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP13" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <ShopPreferences
+                      componentDatas={homeContent[component][0]}
+                    />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP14" ? (
-                <Brands componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP14" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <Brands componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP15" ? (
-                <ShopMore componentDatas={homeContent[component][0]} />
-              ) : null}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP15" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <ShopMore componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
 
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP10" ? (
-                <AdsBlock componentDatas={homeContent[component][0]} />
-              ) : null}
-            </>
-          );
-        })}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP10" ? (
+                  <Suspense fallback={<Placeholder/>}>
+                    <AdsBlock componentDatas={homeContent[component][0]} />
+                  </Suspense>
+                ) : null}
+              </>
+            );
+          })}
+        </div>
       </main>
     </>
   );
