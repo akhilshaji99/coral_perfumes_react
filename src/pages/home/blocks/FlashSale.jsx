@@ -224,13 +224,15 @@ function FlashSale({ componentDatas }) {
                         <div className="text-center position-relative ">
                           <a href="#!">
                             {" "}
-                            <img
-                              src={deviceImageRender(
-                                product?.product_listing_image
-                              )}
-                              alt="Coral Perfumes"
-                              className="mb-3 img-fluid product-img"
-                            />
+                            <div className="product-img">
+                              <img
+                                src={deviceImageRender(
+                                  product?.product_listing_image
+                                )}
+                                alt="Coral Perfumes"
+                                className="mb-3 img-fluid "
+                              />
+                            </div>
                           </a>
                         </div>
                         <AddToBag />

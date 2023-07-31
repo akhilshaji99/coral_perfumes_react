@@ -9,7 +9,7 @@ function CategoryTop({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-fluid my-5">
+      <div className="container-fluid my-5 ">
         <div className="card category-top mb-5" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel

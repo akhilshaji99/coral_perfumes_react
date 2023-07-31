@@ -8,6 +8,7 @@ import AlerMessage from "../common/AlerMessage";
 import Timer from "./blocks/Timer";
 import RecommendedProducts from "./blocks/RecommenedProducts";
 import ProductData from "./blocks/ProductData";
+import ProductSpec from "./blocks/ProductSpec";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
@@ -304,6 +305,7 @@ function Index() {
                   </>
                 );
               })}
+              
               {/* <div className="row py-5">
                 <span className="select-size pb-5">Color</span>
                 <div className="col-md-2">
@@ -327,6 +329,7 @@ function Index() {
             </div>
           </div>
         </div>
+        <ProductSpec />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />
         ) : null}
