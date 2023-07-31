@@ -6,13 +6,14 @@ import CreateProductVariants from "./js/CreateProductVariants";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import Timer from "./blocks/Timer";
-
+import RecommendedProducts from "./blocks/RecommenedProducts";
 import ProductData from "./blocks/ProductData";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
+  const [recProducts, setRecProducts] = useState(null);
 
   useEffect(() => {
     getProductDetails();
@@ -41,6 +42,9 @@ function Index() {
           ).then((data) => {
             setproductVariants(data);
           });
+        }
+        if (response?.data?.product_data.recommended_products) {
+          setRecProducts(response?.data?.product_data.recommended_products);
         }
       }
     } catch (error) {
@@ -323,6 +327,9 @@ function Index() {
             </div>
           </div>
         </div>
+        {recProducts != null ? (
+          <RecommendedProducts componentDatas={recProducts} />
+        ) : null}
       </div>
     </>
   );
