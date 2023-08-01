@@ -42,7 +42,7 @@ function Footer() {
         status = "error";
       }
       toast((t) => (
-        <AlerMessage t={t} toast={toast} status={status} message={response.data.message} />
+        <AlerMessage t={t} toast={toast} status={status} title={"WARNING"} message={response.data.message} />
       ));
 
     } catch (error) {

@@ -55,7 +55,7 @@ function Index() {
 
   const notify = (status = null) =>
     toast((t) => (
-      <AlerMessage t={t} toast={toast} status={status} message="" />
+      <AlerMessage t={t} toast={toast} status={status} title={"Product"} message="Out of stock" />
     ));
 
   return (
