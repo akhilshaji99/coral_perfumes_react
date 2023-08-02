@@ -3,18 +3,19 @@ import { useEffect } from "react";
 import request from "../../utils/request";
 import { useState } from "react";
 import CreateProductVariants from "./js/CreateProductVariants";
-import toast from "react-hot-toast";
-import AlerMessage from "../common/AlerMessage";
 import Timer from "./blocks/Timer";
 import RecommendedProducts from "./blocks/RecommenedProducts";
 import ProductData from "./blocks/ProductData";
 import ProductSpec from "./blocks/ProductSpec";
+import addToCart from "../cart/js/addToCart";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
   const [recProducts, setRecProducts] = useState(null);
+  const [aciveVariant, setActiveVariant] = useState([]);
+  const [addToCartQuantity, setAddToCartQuantity] = useState(1);
 
   useEffect(() => {
     getProductDetails();
@@ -42,6 +43,13 @@ function Index() {
             response.data.other_variants
           ).then((data) => {
             setproductVariants(data);
+            let activeVariantArray = [];
+            response?.data?.current_variant?.assigned_variant_attributes?.forEach(
+              (variants) => {
+                activeVariantArray.push(variants?.attribute_values?.[0]?.value);
+              }
+            );
+            setActiveVariant(activeVariantArray);
           });
         }
         if (response?.data?.product_data.recommended_products) {
@@ -53,10 +61,16 @@ function Index() {
     }
   };
 
-  const notify = (status = null) =>
-    toast((t) => (
-      <AlerMessage t={t} toast={toast} status={status} title={"Product"} message="Out of stock" />
-    ));
+  // const notify = (status = null) =>
+  //   toast((t) => (
+  //     <AlerMessage
+  //       t={t}
+  //       toast={toast}
+  //       status={status}
+  //       title={"Product"}
+  //       message="Out of stock"
+  //     />
+  //   ));
 
   return (
     <>
@@ -133,7 +147,9 @@ function Index() {
                 <div className="col-md-6">
                   <button
                     className="btn btn-dark btn-checkout"
-                    onClick={() => notify("success")}
+                    onClick={() =>
+                      addToCart(currentVariant?.id, addToCartQuantity)
+                    }
                   >
                     add to bag{" "}
                     <svg
@@ -167,15 +183,21 @@ function Index() {
                       defaultValue="-"
                       className="button-minus  btn  btn-sm "
                       data-field="quantity"
+                      disabled={addToCartQuantity <= 1}
+                      onClick={() => {
+                        setAddToCartQuantity(addToCartQuantity - 1);
+                      }}
                     />
                     <input
-                      step={1}
-                      max={10}
-                      name="quantity"
-                      className="quantity-field form-control-sm form-input   "
-                    ></input>
+                      value={addToCartQuantity}
+                      type="button"
+                      className="quantity-field form-control-sm form-input"
+                    />
                     <input
                       type="button"
+                      onClick={() => {
+                        setAddToCartQuantity(addToCartQuantity + 1);
+                      }}
                       defaultValue="+"
                       className="button-plus btn btn-sm "
                       data-field="quantity"
@@ -200,7 +222,11 @@ function Index() {
                                   <button
                                     key={index_inner}
                                     type="button"
-                                    className="btn btn-outline-secondary btn-variant"
+                                    className={`btn btn-outline-secondary btn-variant ${
+                                      aciveVariant.includes(variant?.value)
+                                        ? `variant-active`
+                                        : null
+                                    }`}
                                   >
                                     {variant?.value}
                                   </button>
@@ -291,7 +317,11 @@ function Index() {
                                   <button
                                     key={index_inner}
                                     type="button"
-                                    className="btn btn-outline-secondary btn-variant"
+                                    className={`btn btn-outline-secondary btn-variant ${
+                                      aciveVariant.includes(variant?.value)
+                                        ? `variant-active`
+                                        : null
+                                    }`}
                                   >
                                     {variant?.value}
                                   </button>
@@ -305,7 +335,7 @@ function Index() {
                   </>
                 );
               })}
-              
+
               {/* <div className="row py-5">
                 <span className="select-size pb-5">Color</span>
                 <div className="col-md-2">

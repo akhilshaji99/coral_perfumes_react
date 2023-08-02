@@ -27079,13 +27079,22 @@ color:#000;
   right: 0;
   top: 5%;
 }
-.alert-container h3{
+
+.success-alert{
+  color: #1a8754;
+  text-align: center;
+  font-size: 16px;
+  font-family: var(--fc-font-regular);
+  line-height: normal;
+  text-transform: uppercase;
+}
+.error-alert{
   color: #E90F1F;
-text-align: center;
-font-size: 16px;
-font-family: var(--fc-font-regular);
-line-height: normal;
-text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  font-family: var(--fc-font-regular);
+  line-height: normal;
+  text-transform: uppercase;
 }
 .alert-container h6{
   color: #000;
@@ -27247,4 +27256,9 @@ font-weight: 500;
   font-family: var(--fc-font-light);
   line-height: 2;
 
+}
+.variant-active{
+  background-color: #000;
+  border: 1px solid #000;
+  color: var(--fc-btn-hover-color);
 }

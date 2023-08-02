@@ -1,4 +1,4 @@
-function AlerMessage({ t, toast, status,title, message }) {
+function AlerMessage({ t, toast, status, title, message }) {
   return (
     <>
       <div className="alert-block">
@@ -20,7 +20,9 @@ function AlerMessage({ t, toast, status,title, message }) {
             </svg>
           </button>
           <div className="alert-container">
-            <h3>{title}</h3>
+            <h3 className={status ? "success-alert" : "error-alert"}>
+              {title}
+            </h3>
             <h6>{message}</h6>
           </div>
         </span>

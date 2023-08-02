@@ -81,21 +81,20 @@ function ProductCarousel({ componentDatas }) {
             {componentDatas?.datas?.[0]?.products?.map((product, index) => {
               return (
                 <div className="product-grid" key={index}>
-                  <NavLink to={`/product-details/?slug=${product?.slug}`}>
-                    <div className="product-grid carousel-product-margin">
-                      <ProductDetails
-                        product={{
-                          discount_percentage: product?.discount_percentage,
-                          name: product?.name,
-                          original_amount: product?.original_amount,
-                          price_amount: product?.price_amount,
-                          listing_image: product?.product_listing_image,
-                          slug: product?.slug,
-                          product_tag: product?.product_tag,
-                        }}
-                      />
-                    </div>
-                  </NavLink>
+                  <div className="product-grid carousel-product-margin">
+                    <ProductDetails
+                      product={{
+                        id:product?.id,
+                        discount_percentage: product?.discount_percentage,
+                        name: product?.name,
+                        original_amount: product?.original_amount,
+                        price_amount: product?.price_amount,
+                        listing_image: product?.product_listing_image,
+                        slug: product?.slug,
+                        product_tag: product?.product_tag,
+                      }}
+                    />
+                  </div>
                 </div>
               );
             })}

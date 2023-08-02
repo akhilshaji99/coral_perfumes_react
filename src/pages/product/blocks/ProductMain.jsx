@@ -6,7 +6,6 @@ import ThreeColActive from "../../../assets/img/icons/3-item-active.svg";
 import FourCol from "../../../assets/img/icons/4-item.svg";
 import FourColActive from "../../../assets/img/icons/4-item-active.svg";
 import CustomDropdown from "./CustomDropdown";
-import { NavLink } from "react-router-dom";
 import ProductDetails from "../../common/ProductDetails";
 
 function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
@@ -142,11 +141,9 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
           {productList.map((product, index) => {
             return (
               <div className={productLayout} key={index}>
-                <NavLink to={`/product-details/?slug=${product?.slug}`}>
-                  <div className="product-grid">
-                    <ProductDetails product={product} />
-                  </div>
-                </NavLink>
+                <div className="product-grid">
+                  <ProductDetails product={product} />
+                </div>
               </div>
             );
           })}
