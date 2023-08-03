@@ -4,7 +4,19 @@ import {
   LoginSocialFacebook,
   // LoginSocialApple,
 } from "reactjs-social-login";
-
+import toast from "react-hot-toast";
+import AlerMessage from "../../../src/pages/common/AlerMessage";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import request from "../../utils/request";
+import LoginOTPModal from "./LoginOTPModal";
+import $ from 'jquery'; 
+import 'bootstrap';
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  phone_number: yup.string().matches(phoneRegExp, 'Phone number is not valid')
+});
 function Login() {
   // const [provider, setProvider] = useState("");
   // const [profile, setProfile] = useState(null);
@@ -19,6 +31,65 @@ function Login() {
     // setProvider("");
     alert("logout success");
   }, []);
+  const handleOnSubmit = (values) => {
+    // subscribeNewsLetter(values);
+    login(values);
+    console.log(values);
+  };
+
+  const login = async (values) => {
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append('email', values.email);
+      bodyFormData.append('phone_number', values.phone_number);
+      const response = await request.post("login/",bodyFormData);
+      
+      console.log("response", response);
+      let status = "succsss";
+      let title = "SUCCESS";
+      if(!response.data.status){
+        status = "error";
+        title = "ERROR";
+      }else{
+        console.log('otp verification')
+       
+        // $('#userModal').modal('show');
+        $('document').ready(function() {
+          // $('#btnTest').click(function() {
+            // $('#userModal').modal('show');
+            $("#otpModal").toggle();
+            $("#otpModal").toggleClass('modal fade modal');
+            // $('#userModal').show();
+          // });
+        });
+       
+      }
+      toast((t) => (
+        <AlerMessage t={t} toast={toast} status={status} title={title} message={response.data.message} />
+      ));
+
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      phone_number:"",
+    },
+    
+    validationSchema: schema,
+    onSubmit: handleOnSubmit,
+  });
+  const setInputValue = useCallback(
+    (key, value) =>
+      formik.setValues({
+        ...formik.values,
+        [key]: value,
+      }),
+    [formik]
+  );
   return (
     <>
       <div className="row justify-content-center align-items-center vh-100">
@@ -119,8 +190,9 @@ function Login() {
               <h2>OR</h2>
               <div className="line"></div>
             </div>
+            <LoginOTPModal componentDatas={formik.values}/>
             <p>LOGIN/SIGN UP</p>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
               <div className="row g-3">
                 {/* col */}
 
@@ -128,20 +200,28 @@ function Login() {
                   {/* input */}
                   <input
                     type="email"
-                    className="form-control"
+                    className={`form-control ${formik.errors.email ? "border-danger" : ""}`}
                     id="inputEmail4"
                     placeholder="E-mail*"
                     required
+                    value={formik.values.email}
+                    onChange={(e) => setInputValue("email", e.target.value)}
                   />
                 </div>
                 <div className="col-12 mb-5">
                   <div className="password-field position-relative">
                     <input
                       type="text"
-                      id="fakePassword"
+                      id="phone_number"
                       placeholder="8547533484"
-                      className="form-control"
+                      className={`form-control ${formik.errors.phone_number ? "border-danger" : ""}`}
                       required
+                      value={formik.values.phone_number}
+                      onChange={(e) => setInputValue("phone_number", e.target.value)}
+                      error={
+                        formik.touched.type && Boolean(formik.errors.type)
+                      }
+                      
                     />
                     <span>
                       <i id="passwordToggler" className="bi bi-eye-slash" />

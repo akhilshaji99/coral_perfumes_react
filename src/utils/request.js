@@ -29,7 +29,9 @@ service.interceptors.request.use(
     },
     (error) => {
       if (error?.response?.status === 401) {
-        window.location.href = `/session-expired`;
+        window.location.href = `/login`;
+      }else{
+        return error?.response
       }
     //   const formattedError = formatAxiosError(error.response.data);
       return Promise.reject(error);
