@@ -146,6 +146,7 @@ function Index() {
               <div className="row py-5">
                 <div className="col-md-6">
                   <button
+                    disabled={currentVariant === null}
                     className="btn btn-dark btn-checkout"
                     onClick={() =>
                       addToCart(currentVariant?.id, addToCartQuantity)
