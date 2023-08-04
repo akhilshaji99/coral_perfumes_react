@@ -1,22 +1,12 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, useEffect, createRef } from "react";
 
 import $ from "jquery";
 import "bootstrap";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
-import { useFormik } from "formik";
-import * as yup from "yup";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
-const schema = yup.object().shape({
-  input1: yup.number().required(),
-  input2: yup.number().required(),
-  input3: yup.number().required(),
-  input4: yup.number().required(),
-  input5: yup.number().required(),
-  input6: yup.number().required(),
-});
 function LoginOTPModal({ componentDatas }) {
   const navigate = useNavigate();
   const handleModalClose = () => {
@@ -24,25 +14,42 @@ function LoginOTPModal({ componentDatas }) {
     $("#otpModal").toggleClass("modal modal fade");
     $("#otpModal").hide();
   };
-  const handleOnSubmit = (values) => {
-    verify_otp(values);
-    console.log(values);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [inputRefsArray] = useState(() =>
+    Array.from({ length: 6 }, () => createRef())
+  );
+  const [letters, setLetters] = useState(() =>
+    Array.from({ length: 6 }, () => "")
+  );
+  const handleKeyPress = () => {
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = prevIndex < 6 - 1 ? prevIndex + 1 : 0;
+      const nextInput = inputRefsArray?.[nextIndex]?.current;
+      nextInput.focus();
+      nextInput.select();
+      return nextIndex;
+    });
+  };
+
+  useEffect(() => {
+    if (inputRefsArray?.[0]?.current) {
+      inputRefsArray?.[0]?.current?.focus();
+    }
+
+    window.addEventListener("keyup", handleKeyPress, false);
+    return () => {
+      window.removeEventListener("keyup", handleKeyPress);
+    };
+  }, []);
+  const handleOnSubmit = () => {
+    verify_otp(letters);
+    console.log(letters);
   };
   const verify_otp = async (values) => {
     try {
       var bodyFormData = new FormData();
-      const otp =
-        values.input1 +
-        "" +
-        values.input2 +
-        "" +
-        values.input3 +
-        "" +
-        values.input4 +
-        "" +
-        values.input5 +
-        "" +
-        values.input6;
+      let otpString = letters.toString();
+      var otp = otpString.split(',').join("");
       bodyFormData.append("otp", otp);
       bodyFormData.append("phone_or_email", componentDatas.phone_number);
       const response = await request.post("verify_otp/", bodyFormData);
@@ -65,7 +72,7 @@ function LoginOTPModal({ componentDatas }) {
         <AlerMessage
           t={t}
           toast={toast}
-          status={status}
+          status={response.data.status}
           title={title}
           message={response.data.message}
         />
@@ -74,27 +81,6 @@ function LoginOTPModal({ componentDatas }) {
       console.log("error", error);
     }
   };
-  const formik = useFormik({
-    initialValues: {
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
-      input6: "",
-    },
-
-    validationSchema: schema,
-    onSubmit: handleOnSubmit,
-  });
-  const setInputValue = useCallback(
-    (key, value) =>
-      formik.setValues({
-        ...formik.values,
-        [key]: value,
-      }),
-    [formik]
-  );
 
   return (
     <div
@@ -126,84 +112,38 @@ function LoginOTPModal({ componentDatas }) {
                     Enter the OTP sent to {componentDatas.phone_number} /
                     {componentDatas.email}
                   </h6>
-                  <form onSubmit={formik.handleSubmit}>
+                  <form onSubmit={handleOnSubmit}>
                     <div
                       id="otp"
                       class="inputs d-flex flex-row justify-content-center mt-2"
                     >
                       {" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input1 ? "border-danger" : ""
-                        }`}
-                        type="text"
-                        id="first"
-                        maxlength="1"
-                        value={formik.values.input1}
-                        onChange={(e) =>
-                          setInputValue("input1", e.target.value)
-                        }
-                      />{" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input2 ? "border-danger" : ""
-                        }`}
-                        type="text"
-                        id="second"
-                        maxlength="1"
-                        value={formik.values.input2}
-                        onChange={(e) =>
-                          setInputValue("input2", e.target.value)
-                        }
-                      />{" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input3 ? "border-danger" : ""
-                        }`}
-                        type="number"
-                        id="third"
-                        maxlength="1"
-                        value={formik.values.input3}
-                        onChange={(e) =>
-                          setInputValue("input3", e.target.value)
-                        }
-                      />{" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input4 ? "border-danger" : ""
-                        }`}
-                        type="text"
-                        id="fourth"
-                        maxlength="1"
-                        value={formik.values.input4}
-                        onChange={(e) =>
-                          setInputValue("input4", e.target.value)
-                        }
-                      />{" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input5 ? "border-danger" : ""
-                        }`}
-                        type="text"
-                        id="fourth"
-                        maxlength="1"
-                        value={formik.values.input5}
-                        onChange={(e) =>
-                          setInputValue("input5", e.target.value)
-                        }
-                      />{" "}
-                      <input
-                        className={`m-2 text-center form-control rounded ${
-                          formik.errors.input6 ? "border-danger" : ""
-                        }`}
-                        type="text"
-                        id="fourth"
-                        maxlength="1"
-                        value={formik.values.input6}
-                        onChange={(e) =>
-                          setInputValue("input6", e.target.value)
-                        }
-                      />{" "}
+                      {inputRefsArray.map((ref, index) => {
+                        return (
+                          <input
+                            ref={ref}
+                            className={`m-2 text-center form-control rounded`}
+                            type="text"
+                            id={`input${index}-1`}
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target;
+                              setLetters((letters) =>
+                                letters.map((letter, letterIndex) =>
+                                  letterIndex === index ? value : letter
+                                )
+                              );
+                            }}
+                            onClick={(e) => {
+                              setCurrentIndex(index);
+                              e.target.select();
+                            }}
+                            value={letters[index]}
+                            max={"1"}
+                          />
+                        );
+                      })}
+                      {" "}
                     </div>
                     <div class="mt-4">
                       {" "}

@@ -2,8 +2,23 @@ import Logo from "../../assets/img/logo_coral.png";
 import { NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
-
+import { useEffect, useState } from "react";
 function Account() {
+  const [username, setUsername] = useState(() => {
+    // const saved = localStorage.getItem("userDatas");
+    const userDatas = JSON.parse(localStorage.getItem("userDatas"));
+    const userInfo = userDatas?.userInfo;
+    return userInfo?.username || "";
+  });
+  useEffect(() => {
+    const userDatas = JSON.parse(localStorage.getItem("userDatas"));
+    const userInfo = userDatas?.userInfo;
+    setUsername(userInfo?.username || "")
+  }, [window.location.href]);
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  };
   return (
     <>
       <div className="py-5">
@@ -163,7 +178,9 @@ function Account() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span className="dropdown-text">Sign In</span>
+                      <span className="dropdown-text">
+                        {username !== "" ? username : "Sign In"}
+                      </span>
                     </a>
 
                     <ul
@@ -171,11 +188,15 @@ function Account() {
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li>
-                        <NavLink to="/login">
-                          <a className="btn btn-dark btn-custom">
-                            Sign In / Create Account
-                          </a>
-                        </NavLink>
+                        {username === "" ? (
+                          <NavLink to="/login">
+                            <a className="btn btn-dark btn-custom">
+                              Sign In / Create Account
+                            </a>
+                          </NavLink>
+                        ) : (
+                          <a onClick={logout} className="btn btn-dark btn-custom">Sign Out</a>
+                        )}
                       </li>
                       <li>
                         <a className="dropdown-item menu-drop-link">
@@ -475,10 +496,12 @@ function Account() {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <a className="dropdown-item" href="#">
-                        <img src={ArabLang} alt="Coral Perfumes" /><span>UAE</span> 
+                        <img src={ArabLang} alt="Coral Perfumes" />
+                        <span>UAE</span>
                       </a>
                       <a className="dropdown-item" href="#">
-                        <img src={EngLang} alt="Coral Perfumes" /> <span>eng</span>
+                        <img src={EngLang} alt="Coral Perfumes" />{" "}
+                        <span>eng</span>
                       </a>
                     </div>
                   </div>
