@@ -196,6 +196,7 @@ function Index() {
                     />
                     <input
                       type="button"
+                      disabled={addToCartQuantity >= currentVariant?.stock_value}
                       onClick={() => {
                         setAddToCartQuantity(addToCartQuantity + 1);
                       }}
@@ -360,7 +361,7 @@ function Index() {
             </div>
           </div>
         </div>
-        <ProductSpec />
+        <ProductSpec productDatas={productDatas}/>
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />
         ) : null}

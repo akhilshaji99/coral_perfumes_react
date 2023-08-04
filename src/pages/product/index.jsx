@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BreadCrumps from "./blocks/BreadCrumps";
+import BreadCrumps from "../common/BreadCrumps";
 import FilterSidebar from "./blocks/FilterSidebar";
 import ProductMain from "./blocks/ProductMain";
 

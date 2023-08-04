@@ -1,4 +1,4 @@
-function ProductSpec() {
+function ProductSpec({ productDatas }) {
   return (
     <>
       <div className="container-fluid">
@@ -51,19 +51,12 @@ function ProductSpec() {
                 <div className="my-8">
                   <div className="mb-5">
                     {/* text */}
-                    <p className="mb-0 p-d-c">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                      magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                      quis nostrud exerci tation ullamcorper suscipit lobortis
-                      nisl ut aliquip ex ea commodo consequat. Duis autem vel
-                      eum iriure dolor in hendrerit in vulputate velit esse
-                      molestie consequat, vel illum dolore eu feugiat nulla
-                      facilisis at vero eros et accumsan et iusto odio dignissim
-                      qui blandit praesent luptatum zzril delenit augue duis
-                      dolore te feugait nulla facilisi. Lorem ipsum dolor sit
-                      amet, cons ectetuer adipiscing elit,
-                    </p>
+                    <p
+                      className="mb-0 p-d-c"
+                      dangerouslySetInnerHTML={{
+                        __html: productDatas?.description,
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -76,28 +69,9 @@ function ProductSpec() {
                 tabIndex={0}
               >
                 <div className="my-8">
-                  <ul className="p-ul">
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh ?
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh ?
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh ?
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh ?
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh ?
-                    </li>
-                  </ul>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: productDatas?.faq }}
+                  />
                 </div>
               </div>
             </div>
@@ -105,27 +79,28 @@ function ProductSpec() {
           <div className="col-md-4">
             <h2 className="p-d">Product Detail</h2>
             <div className="row p-ul">
-              <div className="col-md-6 ">
-                <li>SKU:1L019Z100MC2151-B101</li>
-              </div>
-              <div className="col-md-6">
+              {productDatas?.descriptive_attributes?.map(
+                (descriptive_attribute, index) => {
+                  return (
+                    <div className="col-md-6" key={index}>
+                      <li>
+                        {Object.keys(descriptive_attribute)} :{" "}
+                        {
+                          descriptive_attribute?.[
+                            Object.keys(descriptive_attribute)
+                          ]
+                        }
+                      </li>
+                    </div>
+                  );
+                }
+              )}
+              {/* <div className="col-md-6">
                 <li>Colour:Black</li>
               </div>
               <div className="col-md-6">
                 <li>Made in Italy</li>
-              </div>
-              <div className="col-md-6">
-                <li>Designer:Casadei</li>
-              </div>
-              <div className="col-md-6">
-                <li>Fragrance Type</li>
-              </div>
-              <div className="col-md-6">
-                <li>Bottle Size: 11cm</li>
-              </div>
-              <div className="col-md-6">
-                <li>Quantity 100ml-200ml</li>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
