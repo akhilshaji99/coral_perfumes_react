@@ -1,8 +1,9 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   LoginSocialGoogle,
   LoginSocialFacebook,
   // LoginSocialApple,
+  IResolveParams,
 } from "reactjs-social-login";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
@@ -10,18 +11,20 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
 import LoginOTPModal from "./LoginOTPModal";
-import $ from 'jquery'; 
-import 'bootstrap';
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+import $ from "jquery";
+import "bootstrap";
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  phone_number: yup.string().matches(phoneRegExp, 'Phone number is not valid')
+  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
 });
+const REDIRECT_URI =
+  'https://plenty-planets-beam-42-118-51-2.loca.lt/account/login';
 function Login() {
   // const [provider, setProvider] = useState("");
-  // const [profile, setProfile] = useState(null);
   const facebookRef = useRef();
-
+  const [profile, setProfile] = useState(null);
   const onLoginStart = useCallback(() => {
     alert("login start");
   }, []);
@@ -40,34 +43,38 @@ function Login() {
   const login = async (values) => {
     try {
       var bodyFormData = new FormData();
-      bodyFormData.append('email', values.email);
-      bodyFormData.append('phone_number', values.phone_number);
-      const response = await request.post("login/",bodyFormData);
-      
+      bodyFormData.append("email", values.email);
+      bodyFormData.append("phone_number", values.phone_number);
+      const response = await request.post("login/", bodyFormData);
+
       console.log("response", response);
       let status = "succsss";
       let title = "SUCCESS";
-      if(!response.data.status){
+      if (!response.data.status) {
         status = "error";
         title = "ERROR";
-      }else{
-        console.log('otp verification')
-       
+      } else {
+        console.log("otp verification");
+
         // $('#userModal').modal('show');
-        $('document').ready(function() {
+        $("document").ready(function () {
           // $('#btnTest').click(function() {
-            // $('#userModal').modal('show');
-            $("#otpModal").toggle();
-            $("#otpModal").toggleClass('modal fade modal');
-            // $('#userModal').show();
+          // $('#userModal').modal('show');
+          $("#otpModal").toggle();
+          $("#otpModal").toggleClass("modal fade modal");
+          // $('#userModal').show();
           // });
         });
-       
       }
       toast((t) => (
-        <AlerMessage t={t} toast={toast} status={status} title={title} message={response.data.message} />
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={status}
+          title={title}
+          message={response.data.message}
+        />
       ));
-
     } catch (error) {
       console.log("error", error);
     }
@@ -76,9 +83,9 @@ function Login() {
   const formik = useFormik({
     initialValues: {
       email: "",
-      phone_number:"",
+      phone_number: "",
     },
-    
+
     validationSchema: schema,
     onSubmit: handleOnSubmit,
   });
@@ -98,12 +105,16 @@ function Login() {
             <div className="row justify-content-center social-head">
               <div className="col-md-2">
                 <LoginSocialGoogle
-                  isOnlyGetToken
                   client_id={process.env.REACT_APP_GG_APP_ID || ""}
                   onLoginStart={onLoginStart}
-                  onResolve={({ provider, data }) => {
+                  // redirect_uri={REDIRECT_URI}
+                  scope="openid profile email"
+                  discoveryDocs="claims_supported"
+                  access_type="offline"
+                  onResolve={({ provider, data }: IResolveParams) => {
                     // setProvider(provider);
-                    // setProfile(data);
+                    setProfile(data);
+                    console.log("profileData", data);
                   }}
                   onReject={(err) => {
                     console.log(err);
@@ -125,16 +136,20 @@ function Login() {
               </div>
               <div className="col-md-2">
                 {" "}
+                
                 <LoginSocialFacebook
                   ref={facebookRef}
                   appId={process.env.REACT_APP_FB_APP_ID || ""}
+                  fieldsProfile={
+                    'id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender'
+                  }
                   onLoginStart={onLoginStart}
+                  redirect_uri={REDIRECT_URI}
                   onLogoutSuccess={onLogoutSuccess}
-                  onResolve={({ provider, data }) => {
+                  onResolve={({ provider, data }: IResolveParams) => {
                     // setProvider(provider);
-                    // setProfile(data);
-                    console.log(data, "data");
-                    console.log(provider, "provider");
+                    setProfile(data);
+                    console.log(data)
                   }}
                   onReject={(err) => {
                     console.log(err);
@@ -190,7 +205,7 @@ function Login() {
               <h2>OR</h2>
               <div className="line"></div>
             </div>
-            <LoginOTPModal componentDatas={formik.values}/>
+            <LoginOTPModal componentDatas={formik.values} />
             <p>LOGIN/SIGN UP</p>
             <form onSubmit={formik.handleSubmit}>
               <div className="row g-3">
@@ -200,7 +215,9 @@ function Login() {
                   {/* input */}
                   <input
                     type="email"
-                    className={`form-control ${formik.errors.email ? "border-danger" : ""}`}
+                    className={`form-control ${
+                      formik.errors.email ? "border-danger" : ""
+                    }`}
                     id="inputEmail4"
                     placeholder="E-mail*"
                     required
@@ -214,14 +231,15 @@ function Login() {
                       type="text"
                       id="phone_number"
                       placeholder="8547533484"
-                      className={`form-control ${formik.errors.phone_number ? "border-danger" : ""}`}
+                      className={`form-control ${
+                        formik.errors.phone_number ? "border-danger" : ""
+                      }`}
                       required
                       value={formik.values.phone_number}
-                      onChange={(e) => setInputValue("phone_number", e.target.value)}
-                      error={
-                        formik.touched.type && Boolean(formik.errors.type)
+                      onChange={(e) =>
+                        setInputValue("phone_number", e.target.value)
                       }
-                      
+                      error={formik.touched.type && Boolean(formik.errors.type)}
                     />
                     <span>
                       <i id="passwordToggler" className="bi bi-eye-slash" />

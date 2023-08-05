@@ -8,12 +8,12 @@ const service = axios.create({
 /// request interceptor do something before request is sent
 service.interceptors.request.use(
     (config) => {
-      const userData = JSON.parse(localStorage.getItem('userDatas'));
+      const userData = JSON.parse(localStorage.getItem("userDatas"));
       config.headers = {
         // 'content-type': 'application/json',
         // 'Access-Control-Allow-Origin': "*",
         // Accept: 'application/json',
-        Authorization: userData ? 'Bearer ' + userData?.token : null
+        Authorization: userData ? 'Token ' + userData?.token : null
       };
       return config;
     },
@@ -29,7 +29,7 @@ service.interceptors.request.use(
     },
     (error) => {
       if (error?.response?.status === 401) {
-        window.location.href = `/login`;
+        // window.location.href = `/login`;
       }else{
         return error?.response
       }

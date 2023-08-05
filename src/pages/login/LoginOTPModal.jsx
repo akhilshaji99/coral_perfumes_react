@@ -41,17 +41,56 @@ function LoginOTPModal({ componentDatas }) {
       window.removeEventListener("keyup", handleKeyPress);
     };
   }, []);
-  const handleOnSubmit = () => {
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
     verify_otp(letters);
     console.log(letters);
   };
+  const resendOtp= async (e)=> {
+    try {
+      var bodyFormData = new FormData();
+      // let otpString = letters.toString();
+      // var otp = otpString.split(',').join("");
+      bodyFormData.append("phone_or_email", componentDatas.phone_number);
+      // bodyFormData.append("otp", otp);
+
+      const response = await request.post("resend_otp/", bodyFormData);
+
+      console.log("response", response);
+      let status = "succsss";
+      let title = "SUCCESS";
+      if (!response.data.status) {
+        status = "error";
+        title = "ERROR";
+      } else {
+        const userData = {
+          token: response.data.token,
+          userInfo: response.data.user,
+        };
+        localStorage.setItem("userDatas", JSON.stringify(userData));
+        navigate("/");
+      }
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={response.data.status}
+          title={title}
+          message={response.data.message}
+        />
+      ));
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
   const verify_otp = async (values) => {
     try {
       var bodyFormData = new FormData();
       let otpString = letters.toString();
       var otp = otpString.split(',').join("");
-      bodyFormData.append("otp", otp);
       bodyFormData.append("phone_or_email", componentDatas.phone_number);
+      bodyFormData.append("otp", otp);
+
       const response = await request.post("verify_otp/", bodyFormData);
 
       console.log("response", response);
@@ -145,6 +184,11 @@ function LoginOTPModal({ componentDatas }) {
                       })}
                       {" "}
                     </div>
+                     <div className="modal-footer border-0 justify-content-center">
+              Didn't received the OTP? click <a  href="#" onClick={(e) => {
+                              resendOtp();
+                            }}>Resend</a>
+            </div>
                     <div class="mt-4">
                       {" "}
                       <button type="submit" class="btn btn-dark px-4 validate">
