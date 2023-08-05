@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import {
   LoginSocialGoogle,
   LoginSocialFacebook,
-  // LoginSocialApple,
+  LoginSocialApple,
   IResolveParams,
 } from "reactjs-social-login";
 import toast from "react-hot-toast";
@@ -182,7 +182,20 @@ function Login() {
                 </LoginSocialFacebook>
               </div>
               <div className="col-md-2">
-                <svg
+              <LoginSocialApple
+          client_id={process.env.REACT_APP_APPLE_ID || ''}
+          scope={'name email'}
+          redirect_uri={REDIRECT_URI}
+          onLoginStart={onLoginStart}
+          onResolve={({ provider, data }: IResolveParams) => {
+            // setProvider(provider);
+            setProfile(data);
+          }}
+          onReject={err => {
+            console.log(err);
+          }}
+        >
+           <svg
                   width="42"
                   height="48"
                   viewBox="0 0 42 48"
@@ -198,6 +211,8 @@ function Login() {
                     fill="black"
                   />
                 </svg>
+        </LoginSocialApple>
+               
               </div>
             </div>
             <div className="separator">
