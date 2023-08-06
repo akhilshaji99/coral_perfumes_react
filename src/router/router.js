@@ -5,6 +5,7 @@ import ProductPage from "../pages/product/index";
 import SingleProduct from "../pages/single-product/Index";
 import Cart from "../pages/cart/index";
 import BaseLayout from "../layouts/BaseLayout/Index";
+import CheckOut from "../pages/checkout/index"
 const Router = () => {
   const routes = [
     {
@@ -16,6 +17,8 @@ const Router = () => {
         { path: "product/*", element: <ProductPage /> },
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
+        { path: "checkout", element: <CheckOut /> },
+
         // { path: "about", element: <About /> }
       ],
     },
