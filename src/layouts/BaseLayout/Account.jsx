@@ -343,13 +343,7 @@ function Account() {
                   </div>
                 </div>
                 <div className="list-inline-item me-5">
-                  <a
-                    href="#"
-                    id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    className="text-center"
-                  >
+                  <NavLink className="text-center" to="/wishlist">
                     <svg
                       width="32"
                       height="28"
@@ -365,7 +359,7 @@ function Account() {
                       />
                     </svg>
                     <span className="dropdown-text">Wishlist</span>
-                  </a>
+                  </NavLink>
                 </div>
                 <div className="list-inline-item">
                   <a

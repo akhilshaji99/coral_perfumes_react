@@ -5,7 +5,10 @@ import ProductPage from "../pages/product/index";
 import SingleProduct from "../pages/single-product/Index";
 import Cart from "../pages/cart/index";
 import BaseLayout from "../layouts/BaseLayout/Index";
-import CheckOut from "../pages/checkout/index"
+import CheckOut from "../pages/checkout/index";
+import Wishlist from "../pages/wishlist/index";
+import PersonalInfo from "../pages/personal_info/index";
+
 const Router = () => {
   const routes = [
     {
@@ -18,6 +21,8 @@ const Router = () => {
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
         { path: "checkout", element: <CheckOut /> },
+        { path: "wishlist", element: <Wishlist /> },
+        { path: "personal-info", element: <PersonalInfo /> },
 
         // { path: "about", element: <About /> }
       ],

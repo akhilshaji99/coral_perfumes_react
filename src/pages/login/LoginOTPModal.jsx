@@ -46,7 +46,7 @@ function LoginOTPModal({ componentDatas }) {
     verify_otp(letters);
     console.log(letters);
   };
-  const resendOtp= async (e)=> {
+  const resendOtp = async (e) => {
     try {
       var bodyFormData = new FormData();
       // let otpString = letters.toString();
@@ -82,12 +82,12 @@ function LoginOTPModal({ componentDatas }) {
     } catch (error) {
       console.log("error", error);
     }
-  }
+  };
   const verify_otp = async (values) => {
     try {
       var bodyFormData = new FormData();
       let otpString = letters.toString();
-      var otp = otpString.split(',').join("");
+      var otp = otpString.split(",").join("");
       bodyFormData.append("phone_or_email", componentDatas.phone_number);
       bodyFormData.append("otp", otp);
 
@@ -100,6 +100,7 @@ function LoginOTPModal({ componentDatas }) {
         status = "error";
         title = "ERROR";
       } else {
+        localStorage.clear();
         const userData = {
           token: response.data.token,
           userInfo: response.data.user,
@@ -181,14 +182,19 @@ function LoginOTPModal({ componentDatas }) {
                             max={"1"}
                           />
                         );
-                      })}
-                      {" "}
+                      })}{" "}
                     </div>
-                     <div className="modal-footer border-0 justify-content-center">
-              Didn't received the OTP? click <a  href="#" onClick={(e) => {
-                              resendOtp();
-                            }}>Resend</a>
-            </div>
+                    <div className="modal-footer border-0 justify-content-center">
+                      Didn't received the OTP? click{" "}
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          resendOtp();
+                        }}
+                      >
+                        Resend
+                      </a>
+                    </div>
                     <div class="mt-4">
                       {" "}
                       <button type="submit" class="btn btn-dark px-4 validate">
