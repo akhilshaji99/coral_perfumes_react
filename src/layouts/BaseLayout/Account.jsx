@@ -4,6 +4,8 @@ import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
 import { useEffect, useState } from "react";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
+import $ from "jquery";
+
 function Account() {
   const [username, setUsername] = useState(() => {
     // const saved = localStorage.getItem("userDatas");
@@ -20,6 +22,7 @@ function Account() {
     localStorage.clear();
     window.location.href = "/";
   };
+
   return (
     <>
       <div className="py-5">
@@ -259,7 +262,10 @@ function Account() {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item menu-drop-link">
+                        <NavLink
+                          className="dropdown-item menu-drop-link"
+                          to="/wishlist"
+                        >
                           <span>
                             <svg
                               width="19"
@@ -277,10 +283,13 @@ function Account() {
                             </svg>
                           </span>{" "}
                           Wishlist
-                        </a>
+                        </NavLink>
                       </li>
                       <li>
-                        <a className="dropdown-item menu-drop-link">
+                        <NavLink
+                          className="dropdown-item menu-drop-link"
+                          to="/address-book"
+                        >
                           <span>
                             <svg
                               width="21"
@@ -310,10 +319,13 @@ function Account() {
                             </svg>
                           </span>{" "}
                           Shipping Address
-                        </a>
+                        </NavLink>
                       </li>
                       <li>
-                        <a className="dropdown-item menu-drop-link">
+                        <NavLink
+                          className="dropdown-item menu-drop-link"
+                          to="/personal-info"
+                        >
                           <span>
                             <svg
                               width="21"
@@ -337,7 +349,7 @@ function Account() {
                             </svg>
                           </span>{" "}
                           Password & Personal Info
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                   </div>
