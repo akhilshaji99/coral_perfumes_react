@@ -270,9 +270,9 @@ function CartDrawer() {
           </li>
         </ul>
         <div className="">
-          <NavLink className="btn btn-dark w-100 col-md-10" to={"/cart"}>
+          <button className="btn btn-dark w-100 col-md-10">
             Continue Shopping
-          </NavLink>
+          </button>
         </div>
         {/* btn */}
       </div>

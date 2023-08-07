@@ -2,9 +2,13 @@ import BreadCrumps from "../common/BreadCrumps";
 import { useEffect } from "react";
 import request from "../../utils/request";
 import { useState } from "react";
+import deviceImageRender from "../../utils/deviceImageRender";
+import CartSummary from "./blocks/CartSummary";
 
 function Index() {
   const [cartDatas, setcartDatas] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
   useEffect(() => {
     getCartDatas();
   }, []);
@@ -17,7 +21,8 @@ function Index() {
       });
 
       if (response?.data?.status) {
-        setcartDatas(response?.data?.data?.shopping_cart_items);
+        setcartDatas(response?.data?.data);
+        setCartItems(response?.data?.data?.shopping_cart_items);
       }
     } catch (error) {
       console.log("error", error);
@@ -47,7 +52,7 @@ function Index() {
                   {/* list group */}
 
                   {/* list group */}
-                  {cartDatas?.map((cartData, index) => {
+                  {cartItems?.map((cartData, index) => {
                     return (
                       <li
                         className="list-group-item py-3 py-lg-0 px-0"
@@ -56,9 +61,10 @@ function Index() {
                         {/* row */}
                         <div className="row align-items-center">
                           <div className="col-3 col-md-2">
-                            {/* img */}{" "}
                             <img
-                              src="../assets/images/products/product-img-3.jpg"
+                              src={deviceImageRender(
+                                cartData?.product_variant?.product_listing_image
+                              )}
                               alt="Ecommerce"
                               className="img-fluid"
                             />
@@ -66,41 +72,46 @@ function Index() {
                           <div className="col-4 col-md-5">
                             {/* title */}
                             <a href="shop-single.html" className="text-inherit">
-                              <h6 className="mb-0">Cadbury 5 Star Chocolate</h6>
+                              <h6 className="mb-0">
+                                {cartData?.product_variant?.name}
+                              </h6>
                             </a>
                             <span>
-                              <small className="text-muted">1 kg</small>
+                              <small className="text-muted">
+                                {cartData?.product_variant?.name}
+                              </small>
                             </span>
-                            {/* text */}
-                            <div className="mt-2 small lh-1">
-                              {" "}
-                              <a
-                                href="#!"
-                                className="text-decoration-none text-inherit"
-                              >
-                                {" "}
-                                <span className="me-1 align-text-bottom">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={14}
-                                    height={14}
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="feather feather-trash-2 text-success"
-                                  >
-                                    <polyline points="3 6 5 6 21 6" />
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                    <line x1={10} y1={11} x2={10} y2={17} />
-                                    <line x1={14} y1={11} x2={14} y2={17} />
-                                  </svg>
-                                </span>
-                                <span className="text-muted">Remove</span>
-                              </a>
+                            {/* <div className="col-2 text-lg-end text-start text-md-end col-md-2">
+                              <span className="fw-bold">
+                                AED {cartData?.product_variant?.price_amount}
+                              </span>
+                              <div className="text-decoration-line-through text-muted small">
+                                AED {cartData?.product_variant?.original_amount}
+                              </div>
+                            </div> */}
+                            <div className="row custom-row1 mb-5">
+                              <div className="col-md-4 px-0">
+                                <h5 className="selling-price">
+                                  AED {cartData?.product_variant?.price_amount}
+                                </h5>
+                              </div>
+                              <div className="col-md-4 px-0">
+                                <h5 className="discounted-price">
+                                  AED{" "}
+                                  {cartData?.product_variant?.original_amount}
+                                </h5>
+                              </div>
+                              <div className="col-md-4 px-0">
+                                <h5 className="discount-percentage">
+                                  {
+                                    cartData?.product_variant
+                                      ?.discount_percentage
+                                  }
+                                  % Off
+                                </h5>
+                              </div>
                             </div>
+                            {/* text */}
                           </div>
                           {/* input group */}
                           <div className="col-3 col-md-3 col-lg-2">
@@ -113,11 +124,8 @@ function Index() {
                                 data-field="quantity"
                               />
                               <input
-                                type="number"
-                                step={1}
-                                max={10}
-                                defaultValue={1}
-                                name="quantity"
+                                type="button"
+                                value={cartData?.quantity}
                                 className="quantity-field form-control-sm form-input   "
                               />
                               <input
@@ -127,12 +135,8 @@ function Index() {
                                 data-field="quantity"
                               />
                             </div>
-                          </div>
-                          {/* price */}
-                          <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                            <span className="fw-bold">$15.00</span>
-                            <div className="text-decoration-line-through text-muted small">
-                              $20.00
+                            <div className="mt-2 small lh-1">
+                              <span className="text-muted">Remove</span>
                             </div>
                           </div>
                         </div>
@@ -143,93 +147,7 @@ function Index() {
                 </ul>
               </div>
             </div>
-            {/* sidebar */}
-            <div className="col-12 col-lg-4 col-md-5">
-              {/* card */}
-              <div className="mb-5 card mt-6">
-                <div className="card-body p-6">
-                  {/* heading */}
-                  <h2 className="h5 mb-4">Summary</h2>
-                  <div className="card mb-2">
-                    {/* list group */}
-                    <ul className="list-group list-group-flush">
-                      {/* list group item */}
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
-                        <div className="me-auto">
-                          <div>Item Subtotal</div>
-                        </div>
-                        <span>$70.00</span>
-                      </li>
-                      {/* list group item */}
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
-                        <div className="me-auto">
-                          <div>Service Fee</div>
-                        </div>
-                        <span>$3.00</span>
-                      </li>
-                      {/* list group item */}
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
-                        <div className="me-auto">
-                          <div className="fw-bold">Subtotal</div>
-                        </div>
-                        <span className="fw-bold">$67.00</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="d-grid mb-1 mt-4">
-                    {/* btn */}
-                    <button
-                      className="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
-                      type="submit"
-                    >
-                      Go to Checkout <span className="fw-bold">$67.00</span>
-                    </button>
-                  </div>
-                  {/* text */}
-                  <p>
-                    <small>
-                      By placing your order, you agree to be bound by the
-                      Freshcart <a href="#!">Terms of Service</a>
-                      and <a href="#!">Privacy Policy.</a>{" "}
-                    </small>
-                  </p>
-                  {/* heading */}
-                  <div className="mt-8">
-                    <h2 className="h5 mb-3">Add Promo or Gift Card</h2>
-                    <form>
-                      <div className="mb-2">
-                        {/* input */}
-                        <label
-                          htmlFor="giftcard"
-                          className="form-label sr-only"
-                        >
-                          Email address
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="giftcard"
-                          placeholder="Promo or Gift Card"
-                        />
-                      </div>
-                      {/* btn */}
-                      <div className="d-grid">
-                        <button
-                          type="submit"
-                          className="btn btn-outline-dark mb-1"
-                        >
-                          Redeem
-                        </button>
-                      </div>
-                      <p className="text-muted mb-0">
-                        {" "}
-                        <small>Terms &amp; Conditions apply</small>
-                      </p>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CartSummary cartDatas={cartDatas} />
           </div>
         </div>
       </section>

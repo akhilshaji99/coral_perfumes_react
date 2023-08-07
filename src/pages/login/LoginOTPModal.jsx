@@ -1,7 +1,6 @@
 import React, { useCallback, useState, useEffect, createRef } from "react";
 
 import $ from "jquery";
-import "bootstrap";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
