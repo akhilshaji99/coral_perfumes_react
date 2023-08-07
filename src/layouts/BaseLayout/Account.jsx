@@ -8,21 +8,22 @@ import $ from "jquery";
 
 function Account() {
   const [username, setUsername] = useState(() => {
-    // const saved = localStorage.getItem("userDatas");
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
     return userInfo?.username || "";
   });
+  const [cartDrawerFlag, setCartDrawerFlag] = useState(false);
+
   useEffect(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
     setUsername(userInfo?.username || "");
   }, [window.location.href]);
+
   const logout = () => {
     localStorage.clear();
     window.location.href = "/";
   };
-
   return (
     <>
       <div className="py-5">
@@ -324,7 +325,7 @@ function Account() {
                       <li>
                         <NavLink
                           className="dropdown-item menu-drop-link"
-                          to="/personal-info"
+                          to="/address-book"
                         >
                           <span>
                             <svg
@@ -375,11 +376,10 @@ function Account() {
                 </div>
                 <div className="list-inline-item">
                   <a
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    href="#offcanvasExample"
-                    role="button"
-                    aria-controls="offcanvasRight"
+                    onClick={() => {
+                      $("#cartDrawer").toggleClass("show");
+                      setCartDrawerFlag(!cartDrawerFlag);
+                    }}
                     className="text-center"
                   >
                     <svg
@@ -522,7 +522,7 @@ function Account() {
             </div>
           </div>
           {/* Drawer */}
-          <CartDrawer />
+          <CartDrawer cartDrawerFlag={cartDrawerFlag} />
           {/* Drawer */}
         </div>
       </div>

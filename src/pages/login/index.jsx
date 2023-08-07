@@ -12,7 +12,7 @@ import * as yup from "yup";
 import request from "../../utils/request";
 import LoginOTPModal from "./LoginOTPModal";
 import $ from "jquery";
-import "bootstrap";
+
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
   phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
 });
 const REDIRECT_URI =
-  'https://plenty-planets-beam-42-118-51-2.loca.lt/account/login';
+  "https://plenty-planets-beam-42-118-51-2.loca.lt/account/login";
 function Login() {
   // const [provider, setProvider] = useState("");
   const facebookRef = useRef();
@@ -136,12 +136,11 @@ function Login() {
               </div>
               <div className="col-md-2">
                 {" "}
-                
                 <LoginSocialFacebook
                   ref={facebookRef}
                   appId={process.env.REACT_APP_FB_APP_ID || ""}
                   fieldsProfile={
-                    'id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender'
+                    "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender"
                   }
                   onLoginStart={onLoginStart}
                   redirect_uri={REDIRECT_URI}
@@ -149,7 +148,7 @@ function Login() {
                   onResolve={({ provider, data }: IResolveParams) => {
                     // setProvider(provider);
                     setProfile(data);
-                    console.log(data)
+                    console.log(data);
                   }}
                   onReject={(err) => {
                     console.log(err);
@@ -182,37 +181,36 @@ function Login() {
                 </LoginSocialFacebook>
               </div>
               <div className="col-md-2">
-              <LoginSocialApple
-          client_id={process.env.REACT_APP_APPLE_ID || ''}
-          scope={'name email'}
-          redirect_uri={REDIRECT_URI}
-          onLoginStart={onLoginStart}
-          onResolve={({ provider, data }: IResolveParams) => {
-            // setProvider(provider);
-            setProfile(data);
-          }}
-          onReject={err => {
-            console.log(err);
-          }}
-        >
-           <svg
-                  width="42"
-                  height="48"
-                  viewBox="0 0 42 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <LoginSocialApple
+                  client_id={process.env.REACT_APP_APPLE_ID || ""}
+                  scope={"name email"}
+                  redirect_uri={REDIRECT_URI}
+                  onLoginStart={onLoginStart}
+                  onResolve={({ provider, data }: IResolveParams) => {
+                    // setProvider(provider);
+                    setProfile(data);
+                  }}
+                  onReject={(err) => {
+                    console.log(err);
+                  }}
                 >
-                  <path
-                    d="M34.6847 25.3302C34.7089 23.5044 35.2143 21.7142 36.1541 20.126C37.0938 18.5379 38.4373 17.2034 40.0596 16.2468C39.0279 14.8376 37.6679 13.6781 36.0874 12.8605C34.5069 12.0428 32.7495 11.5894 30.9544 11.5362C27.121 11.1516 23.4078 13.7336 21.4567 13.7336C19.5056 13.7336 16.46 11.5746 13.2225 11.6378C11.1294 11.7023 9.08948 12.2852 7.3011 13.3297C5.51272 14.3742 4.03684 15.8447 3.01708 17.5982C-1.39227 24.9209 1.89683 35.6853 6.12282 41.6045C8.23724 44.5051 10.7069 47.7407 13.9445 47.6281C17.0961 47.5045 18.2908 45.7054 22.1099 45.7054C25.9291 45.7054 27.0035 47.6281 30.3041 47.5649C33.6992 47.5127 35.8394 44.6534 37.8822 41.7281C39.4014 39.6625 40.5695 37.3791 41.3432 34.963C39.3685 34.1626 37.6837 32.822 36.4994 31.1088C35.3152 29.3955 34.684 27.3855 34.6847 25.3302Z"
-                    fill="black"
-                  />
-                  <path
-                    d="M28.4506 7.63588C30.3059 5.50608 31.2226 2.76707 31.0062 0C28.1729 0.283094 25.5549 1.57967 23.6745 3.63116C21.8226 5.65487 20.8839 8.30033 21.0644 10.9869C22.4797 10.9998 23.8796 10.705 25.159 10.1246C26.4383 9.54421 27.5637 8.69331 28.4506 7.63588Z"
-                    fill="black"
-                  />
-                </svg>
-        </LoginSocialApple>
-               
+                  <svg
+                    width="42"
+                    height="48"
+                    viewBox="0 0 42 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M34.6847 25.3302C34.7089 23.5044 35.2143 21.7142 36.1541 20.126C37.0938 18.5379 38.4373 17.2034 40.0596 16.2468C39.0279 14.8376 37.6679 13.6781 36.0874 12.8605C34.5069 12.0428 32.7495 11.5894 30.9544 11.5362C27.121 11.1516 23.4078 13.7336 21.4567 13.7336C19.5056 13.7336 16.46 11.5746 13.2225 11.6378C11.1294 11.7023 9.08948 12.2852 7.3011 13.3297C5.51272 14.3742 4.03684 15.8447 3.01708 17.5982C-1.39227 24.9209 1.89683 35.6853 6.12282 41.6045C8.23724 44.5051 10.7069 47.7407 13.9445 47.6281C17.0961 47.5045 18.2908 45.7054 22.1099 45.7054C25.9291 45.7054 27.0035 47.6281 30.3041 47.5649C33.6992 47.5127 35.8394 44.6534 37.8822 41.7281C39.4014 39.6625 40.5695 37.3791 41.3432 34.963C39.3685 34.1626 37.6837 32.822 36.4994 31.1088C35.3152 29.3955 34.684 27.3855 34.6847 25.3302Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M28.4506 7.63588C30.3059 5.50608 31.2226 2.76707 31.0062 0C28.1729 0.283094 25.5549 1.57967 23.6745 3.63116C21.8226 5.65487 20.8839 8.30033 21.0644 10.9869C22.4797 10.9998 23.8796 10.705 25.159 10.1246C26.4383 9.54421 27.5637 8.69331 28.4506 7.63588Z"
+                      fill="black"
+                    />
+                  </svg>
+                </LoginSocialApple>
               </div>
             </div>
             <div className="separator">
