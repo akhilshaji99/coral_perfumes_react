@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Sample1 from "../../assets/img/sample-product1.png";
 
 function CartDrawer() {
   return (
@@ -8,7 +9,7 @@ function CartDrawer() {
       id="offcanvasRight"
       aria-labelledby="offcanvasRightLabel"
     >
-      <div className="offcanvas-header border-bottom">
+      <div className="offcanvas-header ">
         <div className="text-start ">
           <h5 id="offcanvasRightLabel" className="mb-0 fs-4 text-white">
             <svg
@@ -41,105 +42,239 @@ function CartDrawer() {
                 aria-label="Close"
               /> */}
       </div>
-      <div className="offcanvas-body">
-        <div className="">
-          <ul className="list-group list-group-flush">
-            {/* list group */}
-            <li className="list-group-item py-3 ps-0 border-top">
-              {/* row */}
-              <div className="row align-items-center">
-                <div className="col-6 col-md-6 col-lg-7">
-                  <div className="d-flex">
-                    <img
-                      src="../assets/images/products/product-img-1.jpg"
-                      alt="Ecommerce"
-                      className="icon-shape icon-xxl"
-                    />
-                    <div className="ms-3">
-                      {/* title */}
-                      <a href="shop-single.html" className="text-inherit">
-                        <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                      </a>
-                      <span>
-                        <small className="text-muted">.98 / lb</small>
-                      </span>
-                      {/* text */}
-                      <div className="mt-2 small lh-1">
-                        {" "}
-                        <a
-                          href="#!"
-                          className="text-decoration-none text-inherit"
-                        >
-                          {" "}
-                          <span className="me-1 align-text-bottom">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={14}
-                              height={14}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="feather feather-trash-2 text-success"
-                            >
-                              <polyline points="3 6 5 6 21 6" />
-                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                              <line x1={10} y1={11} x2={10} y2={17} />
-                              <line x1={14} y1={11} x2={14} y2={17} />
-                            </svg>
-                          </span>
-                          <span className="text-muted">Remove</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* input group */}
-                <div className="col-4 col-md-3 col-lg-3">
-                  {/* input */}
-                  {/* input */}
-                  <div className="input-group input-spinner  ">
-                    <input
-                      type="button"
-                      defaultValue="-"
-                      className="button-minus  btn  btn-sm "
-                      data-field="quantity"
-                    />
-                    <input
-                      type="number"
-                      step={1}
-                      max={10}
-                      defaultValue={1}
-                      name="quantity"
-                      className="quantity-field form-control-sm form-input   "
-                    />
-                    <input
-                      type="button"
-                      defaultValue="+"
-                      className="button-plus btn btn-sm "
-                      data-field="quantity"
-                    />
-                  </div>
-                </div>
-                {/* price */}
-                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                  <span className="fw-bold">$5.00</span>
+      <div className="offcanvas-body scroll-container">
+        <ul className="list-group list-group-flush">
+          {/* list group */}
+          <li className="list-group-item py-3 ps-0 ">
+            {/* row */}
+            <div className="row align-items-center py-2 border-bottom">
+              <div className="col-5 col-md-5 col-lg-5">
+                <div className="d-flex mini-cart-img">
+                  <img
+                    src={Sample1}
+                    alt="Ecommerce"
+                    className="icon-shape icon-xxl"
+                  />
                 </div>
               </div>
-            </li>
-          </ul>
-          {/* btn */}
-          <div className="d-flex justify-content-between mt-4">
-            <NavLink className="btn btn-primary" to={"/cart"}>
-              Continue Shopping
-            </NavLink>
-            <a href="#!" className="btn btn-dark">
-              Update Cart
-            </a>
-          </div>
+              {/* input group */}
+              <div className="col-7 col-md-7 col-lg-7">
+                <h6 className="product-name-cart mb-3">
+                  Bvlgari Jasmin Noir Splendida Eau De Parfum 100 Ml
+                </h6>
+                <div className="row mb-3">
+                  <div className="col-md-5 price-minicart">aed 200</div>
+                  <div className="col-md-5 price-minicart-discount">
+                    aed 400
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-7">
+                    <div className="input-group-custom input-spinner  ">
+                      <input
+                        type="button"
+                        defaultValue="-"
+                        className="button-minus1  btn  btn-sm "
+                        data-field="quantity"
+                      />
+                      <input
+                        type="number"
+                        step={1}
+                        max={10}
+                        defaultValue={1}
+                        name="quantity"
+                        className="quantity-field1 form-control-sm form-input1"
+                      />
+                      <input
+                        type="button"
+                        defaultValue="+"
+                        className="button-plus1 btn btn-sm "
+                        data-field="quantity"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-5 text-end">
+                    <svg
+                      width={13}
+                      height={13}
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.5 1.98607C0.5 0.611455 1.094 0.5 1.832 0.5H11.168C11.906 0.5 12.5 0.611455 12.5 1.98607C12.5 3.58359 11.906 3.47214 11.168 3.47214H1.832C1.094 3.47214 0.5 3.58359 0.5 1.98607Z"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                      />
+                      <path
+                        d="M5.15639 6.55576V9.19353M7.91639 6.55576V9.19353M1.40039 3.58362L2.24639 10.0034C2.43839 11.4449 2.90039 12.5 4.61639 12.5H8.23439C10.1004 12.5 10.3764 11.4895 10.5924 10.0926L11.6004 3.58362"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              {/* price */}
+            </div>
+            <div className="row align-items-center py-2 border-bottom">
+              <div className="col-5 col-md-5 col-lg-5">
+                <div className="d-flex mini-cart-img">
+                  <img
+                    src={Sample1}
+                    alt="Ecommerce"
+                    className="icon-shape icon-xxl"
+                  />
+                </div>
+              </div>
+              {/* input group */}
+              <div className="col-7 col-md-7 col-lg-7">
+                <h6 className="product-name-cart mb-3">
+                  Bvlgari Jasmin Noir Splendida Eau De Parfum 100 Ml
+                </h6>
+                <div className="row mb-3">
+                  <div className="col-md-5 price-minicart">aed 200</div>
+                  <div className="col-md-5 price-minicart-discount">
+                    aed 400
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-7">
+                    <div className="input-group-custom input-spinner  ">
+                      <input
+                        type="button"
+                        defaultValue="-"
+                        className="button-minus1  btn  btn-sm "
+                        data-field="quantity"
+                      />
+                      <input
+                        type="number"
+                        step={1}
+                        max={10}
+                        defaultValue={1}
+                        name="quantity"
+                        className="quantity-field1 form-control-sm form-input1"
+                      />
+                      <input
+                        type="button"
+                        defaultValue="+"
+                        className="button-plus1 btn btn-sm "
+                        data-field="quantity"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-5 text-end">
+                    <svg
+                      width={13}
+                      height={13}
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.5 1.98607C0.5 0.611455 1.094 0.5 1.832 0.5H11.168C11.906 0.5 12.5 0.611455 12.5 1.98607C12.5 3.58359 11.906 3.47214 11.168 3.47214H1.832C1.094 3.47214 0.5 3.58359 0.5 1.98607Z"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                      />
+                      <path
+                        d="M5.15639 6.55576V9.19353M7.91639 6.55576V9.19353M1.40039 3.58362L2.24639 10.0034C2.43839 11.4449 2.90039 12.5 4.61639 12.5H8.23439C10.1004 12.5 10.3764 11.4895 10.5924 10.0926L11.6004 3.58362"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              {/* price */}
+            </div>
+            <div className="row align-items-center py-2 border-bottom">
+              <div className="col-5 col-md-5 col-lg-5">
+                <div className="d-flex mini-cart-img">
+                  <img
+                    src={Sample1}
+                    alt="Ecommerce"
+                    className="icon-shape icon-xxl"
+                  />
+                </div>
+              </div>
+              {/* input group */}
+              <div className="col-7 col-md-7 col-lg-7">
+                <h6 className="product-name-cart mb-3">
+                  Bvlgari Jasmin Noir Splendida Eau De Parfum 100 Ml
+                </h6>
+                <div className="row mb-3">
+                  <div className="col-md-5 price-minicart">aed 200</div>
+                  <div className="col-md-5 price-minicart-discount">
+                    aed 400
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-7">
+                    <div className="input-group-custom input-spinner  ">
+                      <input
+                        type="button"
+                        defaultValue="-"
+                        className="button-minus1  btn  btn-sm "
+                        data-field="quantity"
+                      />
+                      <input
+                        type="number"
+                        step={1}
+                        max={10}
+                        defaultValue={1}
+                        name="quantity"
+                        className="quantity-field1 form-control-sm form-input1"
+                      />
+                      <input
+                        type="button"
+                        defaultValue="+"
+                        className="button-plus1 btn btn-sm "
+                        data-field="quantity"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-5 text-end">
+                    <svg
+                      width={13}
+                      height={13}
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.5 1.98607C0.5 0.611455 1.094 0.5 1.832 0.5H11.168C11.906 0.5 12.5 0.611455 12.5 1.98607C12.5 3.58359 11.906 3.47214 11.168 3.47214H1.832C1.094 3.47214 0.5 3.58359 0.5 1.98607Z"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                      />
+                      <path
+                        d="M5.15639 6.55576V9.19353M7.91639 6.55576V9.19353M1.40039 3.58362L2.24639 10.0034C2.43839 11.4449 2.90039 12.5 4.61639 12.5H8.23439C10.1004 12.5 10.3764 11.4895 10.5924 10.0926L11.6004 3.58362"
+                        stroke="black"
+                        strokeOpacity="0.27"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              {/* price */}
+            </div>
+            <div className="row py-3 align-items-center">
+              <div className="col-md-6">
+                <h5>Total Amount</h5>
+                <span>VAT Included</span>
+              </div>
+              <div className="col-md-6 mini-cart-final-price">aed 600</div>
+            </div>
+          </li>
+        </ul>
+        <div className="">
+          <NavLink className="btn btn-dark w-100 col-md-10" to={"/cart"}>
+            Continue Shopping
+          </NavLink>
         </div>
+        {/* btn */}
       </div>
     </div>
   );
