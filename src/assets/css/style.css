@@ -2761,7 +2761,7 @@ progress {
   padding-top: calc(0.25rem + 1px);
 }
 .form-text {
-  color: #889397;
+  color: #000;
   font-size: 0.875em;
   margin-top: 0.25rem;
 }
@@ -2771,16 +2771,18 @@ progress {
   appearance: none;
   background-clip: padding-box;
   background-color: #fff;
-  border: 1px solid #dfe2e1;
-  border-radius: 0.5rem;
-  color: #21313c;
+  border-radius: 9px;
+  border: 1px solid #000; 
+  color: #000 !important; 
+  font-size: 12px !important;
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.6;
-  padding: 0.55rem 1rem;
+  padding: 18px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
+  /* margin-bottom: 30px; */
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
@@ -2795,8 +2797,8 @@ progress {
 }
 .form-control:focus {
   background-color: #fff;
-  border-color: #85d685;
-  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25);
+  border-color: #000;
+  box-shadow: none;
   color: #21313c;
   outline: 0;
 }
@@ -2810,11 +2812,11 @@ progress {
   padding: 0;
 }
 .form-control::-moz-placeholder {
-  color: #889397;
+  color: #000;
   opacity: 1;
 }
 .form-control::placeholder {
-  color: #889397;
+  color: #000;
   opacity: 1;
 }
 .form-control:disabled {
@@ -6912,7 +6914,7 @@ fieldset:disabled .btn {
 .btn-close {
   --fc-btn-close-color: #000;
   --fc-btn-close-bg: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E");
-  --fc-btn-close-opacity: 0.5;
+  --fc-btn-close-opacity: 1;
   --fc-btn-close-hover-opacity: 0.75;
   --fc-btn-close-focus-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25);
   --fc-btn-close-focus-opacity: 1;
@@ -21756,20 +21758,31 @@ h3 {
 }
 .nav-pills-dark .nav-item .nav-link {
   background-color: transparent;
-  border-radius: 0.5rem;
-  color: var(--fc-gray-800);
+  border-radius: 0;
   font-weight: 500;
   margin-bottom: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  padding: 1.5rem 0.75rem;
+  border-bottom: 1px solid #BDBEBB;
+  color: #000;
+font-size: 16px;
+line-height: normal;
+text-transform: uppercase;
+font-family:var(--fc-font-bold)
 }
-.nav-pills-dark .nav-item .nav-link:hover {
+.nav-pills-dark svg{
+  float: right;
+}
+.nav-pills-dark img{
+  padding-right: 10px;
+}
+/* .nav-pills-dark .nav-item .nav-link:hover {
   background-color: var(--fc-light);
   color: #001e2b;
-}
-.nav-pills-dark .nav-item .nav-link.active {
+} */
+/* .nav-pills-dark .nav-item .nav-link.active {
   background-color: #001e2b;
   color: var(--fc-white);
-}
+} */
 @media (max-width: 576px) {
   .nav-pills-light {
     flex-wrap: nowrap;
@@ -27261,4 +27274,57 @@ font-weight: 500;
   background-color: #000;
   border: 1px solid #000;
   color: var(--fc-btn-hover-color);
+}
+.my-profile-heading{
+  text-transform: uppercase;
+  padding-bottom: .5rem;
+  font-family: var(--fc-font-bold)
+}
+.change-btn{
+  color: #000;
+  cursor: pointer;
+}
+.change-btn:hover{
+  color: #000;
+}
+.mb-30{
+  margin-bottom: 30px;
+}
+.change-modal{
+  border-radius: 9px !important;
+background: #FFF !important;
+box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+}
+.btn-custom-close{
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  color: #000 !important;
+  transform: scale(0.85);
+}
+.address-card{
+  border-radius: 9px !important;
+background: #FFF !important;
+box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+border: none;
+padding: 16px;
+color: #000;
+font-size: 14px;
+font-family: var(--fc-font-light);
+margin-bottom: 30px;
+}
+.btn-link{
+  color: #000;
+  font-size: 16px;
+  font-family: var(--fc-font-light);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-link:hover{
+  font-family: var(--fc-font-regular);
+  color: #000;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
 }

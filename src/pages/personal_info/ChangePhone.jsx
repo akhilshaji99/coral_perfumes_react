@@ -11,21 +11,19 @@ function ChangePhone() {
         <div className="modal-content">
           {/* modal body */}
           <div className="modal-body p-6">
-            <div className="d-flex justify-content-between mb-5">
               <div>
                 {/* heading */}
-                <h5 className="mb-1">CHANGE MOBILE NUMBER</h5>
+                <h5 className="mb-5 text-center">CHANGE MOBILE NUMBER</h5>
               </div>
               <div>
                 {/* button */}
                 <button
                   type="button"
-                  className="btn-close"
+                  className="btn-close btn-custom-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 />
               </div>
-            </div>
             {/* row */}
             <div className="row g-3">
               {/* col */}
@@ -48,9 +46,9 @@ function ChangePhone() {
                   placeholder="Email*"
                 />
               </div>
-              <div className="col-12 text-end">
+              <div className="col-12 text-center">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-dark w-100 my-5"
                   data-bs-dismiss="modal"
                   type="button"
                 >
