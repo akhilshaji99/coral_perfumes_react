@@ -3002,7 +3002,7 @@ textarea.form-control-lg {
   margin-right: -1.5em;
 }
 .form-check-input {
-  --fc-form-check-bg: #ebece9;
+  --fc-form-check-bg:transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -3011,14 +3011,14 @@ textarea.form-control-lg {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid rgba(0, 0, 0, 0.25); */
+  border: 1px solid #000;
   border-radius: none;
-  height: 1.5em;
+  height: 16px;
   margin-top: 0.3em;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
   vertical-align: top;
-  width: 1.5em;
+  width: 16px;
 }
 .form-check-input[type="checkbox"] {
   border-radius: none;
@@ -3030,8 +3030,8 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #85d685;
-  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25);
+  /* border-color: #85d685;
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25); */
   outline: 0;
 }
 .form-check-input:checked {
@@ -21498,7 +21498,7 @@ fieldset:disabled .btn {
   max-width: 1320px;
   padding: 1rem 0;
   right: 0;
-  top: 32px;
+  /* top: 32px; */
 }
 /* .navbar .dropdown .dropdown-toggle:after {
   background-repeat: no-repeat;
@@ -21512,9 +21512,8 @@ fieldset:disabled .btn {
   margin-left: 0.375rem;
 } */
 .navbar .dropdown-menu {
-  border-radius: 0.5rem;
-  box-shadow: 0 0 2px rgba(145, 158, 171, 0.2),
-    0 12px 24px -4px rgba(145, 158, 171, 0.12);
+  border-radius: 0 !important;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25); 
   color: var(--fc-gray-600);
   line-height: 1.2rem;
   min-width: 12rem;
@@ -22385,7 +22384,7 @@ input::-webkit-outer-spin-button {
   display: flex;
 }
 .form-switch .form-check-input {
-  border-color: var(--fc-gray-200);
+  border: 0.5px solid #000;
   height: 1.6em;
   margin-right: 0.5rem;
   width: 3em;
@@ -27327,4 +27326,21 @@ margin-bottom: 30px;
   -moz-transition: all .5s;
   -o-transition: all .5s;
   transition: all .5s;
+}
+.dashboard-row h6{
+  text-transform: uppercase;
+  padding: 20px 0 5px 0;
+  font-family: var(--fc-font-bold);
+  color: #000;
+
+}
+.dashboard-row p{
+  text-transform: capitalize;
+  color: #000;
+}
+.dashboard-heading{
+  text-transform: uppercase;
+  font-family: var(--fc-font-bold);
+  text-align: center;
+  padding-bottom: 2rem;
 }

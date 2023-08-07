@@ -9,6 +9,7 @@ import CheckOut from "../pages/checkout/index";
 import Wishlist from "../pages/wishlist/index";
 import PersonalInfo from "../pages/personal_info/index";
 import AddressBook from "../pages/address_book/index";
+import DashBoard from "../pages/dashboard/index";
 
 const Router = () => {
   const routes = [
@@ -25,6 +26,7 @@ const Router = () => {
         { path: "wishlist", element: <Wishlist /> },
         { path: "personal-info", element: <PersonalInfo /> },
         { path: "address-book", element: <AddressBook /> },
+        { path: "dashboard", element: <DashBoard /> },
 
         // { path: "about", element: <About /> }
       ],

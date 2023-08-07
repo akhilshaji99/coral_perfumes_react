@@ -8,13 +8,13 @@ function index() {
       <BreadCrumps />
 
       <section>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <MyAccountSidebar />
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
-                <h2 className="mb-6">My Wishlist</h2>
+                <h2 className="mb-6 text-center my-profile-heading">My Wishlist</h2>
                 <div className="row">
                   {/* {productList.map((product, index) => { */}
                   {/* return ( */}
