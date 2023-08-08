@@ -2,7 +2,7 @@ import Logo from "../../assets/img/logo_coral.png";
 import { NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import OutsideAlerter from "./OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import $ from "jquery";
@@ -21,24 +21,21 @@ function Account() {
     setUsername(userInfo?.username || "");
   }, [window.location.href]);
 
-
-  // window.onclick = function(e) {
-  
-  //   if ((e.target.id != "cartDrawer") && $('#cartDrawer:visible').length == 1){
-  //  console.log($('#cartDrawer:visible').length)
-  // //  $('#cartDrawer').modal('hide');
-
-  //     $("#cartDrawer").toggle();
-  //     // $("#cartDrawer").toggleClass("modal fade modal");
-  //   }
-
-  // };
   const logout = () => {
     localStorage.clear();
     window.location.href = "/";
   };
+
+  // const changeCartDrawervalue = () => {
+  //   console.log("hii");
+  // };
+
+  const handleCartVisibility = () => {
+    // setCartVisible(visible);
+    setCartDrawerFlag(false);
+    // console.log(visible);
+  };
   return (
-    
     <>
       <div className="py-5">
         <div className="container-fluid">
@@ -391,12 +388,8 @@ function Account() {
                 <div className="list-inline-item">
                   <a
                     onClick={() => {
-                      console.log("g")
-                      // $("#cartDrawer").toggle();
+                      setCartDrawerFlag(true);
                       $("#cartDrawer").toggleClass("show");
-                   
-                  
-                      setCartDrawerFlag(!cartDrawerFlag);
                     }}
                     className="text-center"
                   >
@@ -540,8 +533,8 @@ function Account() {
             </div>
           </div>
           {/* Drawer */}
-          <OutsideAlerter>
-          <CartDrawer cartDrawerFlag={cartDrawerFlag} />
+          <OutsideAlerter changeDrawerValue={handleCartVisibility}>
+            <CartDrawer cartDrawerFlag={cartDrawerFlag} />
           </OutsideAlerter>
           {/* Drawer */}
         </div>

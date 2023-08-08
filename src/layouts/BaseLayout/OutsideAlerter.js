@@ -5,20 +5,17 @@ import $ from "jquery";
 /**
  * Hook that alerts clicks outside of the passed ref
  */
-function useOutsideAlerter(ref) {
+function useOutsideAlerter(ref, onOutsideClick) {
   useEffect(() => {
     /**
      * Alert if clicked on outside of element
      */
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        // alert("You clicked outside of me!");
-        console.log('h')
+        // Call the provided callback function to change the drawer value
+        onOutsideClick(false);
         $("#cartDrawer").toggleClass("hide");
         $("#cartDrawer").removeClass("show");
-        // $("#cartDrawer").toggle();
-        // $("#cartDrawer").toggleClass("modal fade modal");
-
       }
     }
     // Bind the event listener
@@ -27,7 +24,7 @@ function useOutsideAlerter(ref) {
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, onOutsideClick]);
 }
 
 /**
@@ -35,13 +32,21 @@ function useOutsideAlerter(ref) {
  */
 function OutsideAlerter(props) {
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+
+  // Callback to change drawer value
+  const changeDrawerValue = (value) => {
+    // Call the parent component's function
+    props.changeDrawerValue(value);
+  };
+  // Attach the outside click handler
+  useOutsideAlerter(wrapperRef, changeDrawerValue);
 
   return <div ref={wrapperRef}>{props.children}</div>;
 }
 
 OutsideAlerter.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  changeDrawerValue: PropTypes.func.isRequired, // The callback function
 };
 
 export default OutsideAlerter;

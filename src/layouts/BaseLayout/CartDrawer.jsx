@@ -4,8 +4,11 @@ import cartRemove from "../../pages/cart/js/cartRemove";
 import deviceImageRender from "../../utils/deviceImageRender";
 import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
+import { useNavigate } from "react-router-dom";
+import $ from "jquery";
 
 function CartDrawer({ cartDrawerFlag }) {
+  const navigate = useNavigate();
   const [cartDatas, setcartDatas] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
@@ -23,17 +26,14 @@ function CartDrawer({ cartDrawerFlag }) {
       }
     });
   };
-  // const wrapperRef = useRef(null);
-  // useOutsideAlerter(wrapperRef);
 
   return (
     <div
       className="offcanvas offcanvas-end"
-      // tabIndex={-1}
       id="cartDrawer"
       // aria-hidden="true"
       // ref={wrapperRef}
-      style={{  "z-index": 1}}
+      style={{ "z-index": 1 }}
     >
       <div className="offcanvas-header ">
         <div className="text-start ">
@@ -190,7 +190,15 @@ function CartDrawer({ cartDrawerFlag }) {
         </ul>
         {cartItems.length > 0 ? (
           <div className="">
-            <button className="btn btn-dark w-100 col-md-10">CHECK OUT</button>
+            <button
+              className="btn btn-dark w-100 col-md-10"
+              // onClick={() => {
+              //   $("#cartDrawer").toggleClass("hide");
+              //   navigate("/cart");
+              // }}
+            >
+              CHECK OUT
+            </button>
           </div>
         ) : null}
         {/* btn */}
