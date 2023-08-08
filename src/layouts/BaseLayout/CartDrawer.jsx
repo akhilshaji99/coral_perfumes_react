@@ -1,10 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef} from "react";
 import getCartDatas from "../../pages/cart/js/cartFetch";
 import cartRemove from "../../pages/cart/js/cartRemove";
 import deviceImageRender from "../../utils/deviceImageRender";
 import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
+import $ from "jquery";
 
+
+// function useOutsideAlerter(ref) {
+//   useEffect(() => {
+//     function handleClickOutside(event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         alert("You clicked outside of me!");
+//         console.log("You clicked outside of me!")
+//         console.log($('#cartDrawer:visible').length)
+//           // $("#cartDrawer").toggle();
+//           if($('#cartDrawer:visible').length == 1){
+//             console.log('toggle',ref)
+            
+//             $("#cartDrawer").hide();
+//           }
+//       }else{
+       
+//         console.log("You clicked inside of me!")
+       
+//       }
+//     }
+//     // Bind the event listener
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       // Unbind the event listener on clean up
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [ref]);
+// }
 function CartDrawer({ cartDrawerFlag }) {
   const [cartDatas, setcartDatas] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -23,13 +52,17 @@ function CartDrawer({ cartDrawerFlag }) {
       }
     });
   };
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
 
   return (
     <div
       className="offcanvas offcanvas-end"
-      tabIndex={-1}
+      // tabIndex={-1}
       id="cartDrawer"
-      aria-hidden="true"
+      // aria-hidden="true"
+      // ref={wrapperRef}
+      style={{  "z-index": 1}}
     >
       <div className="offcanvas-header ">
         <div className="text-start ">
