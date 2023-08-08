@@ -192,10 +192,11 @@ function CartDrawer({ cartDrawerFlag }) {
           <div className="">
             <button
               className="btn btn-dark w-100 col-md-10"
-              // onClick={() => {
-              //   $("#cartDrawer").toggleClass("hide");
-              //   navigate("/cart");
-              // }}
+              onClick={() => {
+                $("#cartDrawer").toggleClass("hide");
+                $("#cartDrawer").removeClass("show");
+                navigate("/cart");
+              }}
             >
               CHECK OUT
             </button>

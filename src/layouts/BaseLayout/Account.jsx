@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
 import { useEffect, useState } from "react";
-import OutsideAlerter from "./OutsideAlerter";
+import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import $ from "jquery";
 
