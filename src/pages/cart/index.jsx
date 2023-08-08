@@ -4,29 +4,26 @@ import request from "../../utils/request";
 import { useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CartSummary from "./blocks/CartSummary";
+import getCartDatas from "../../pages/cart/js/cartFetch";
+import cartIncrement from "../../pages/cart/js/cartIncrement";
+import cartDecrement from "../../pages/cart/js/cartDecrement";
+import cartRemove from "../../pages/cart/js/cartRemove";
 
 function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    getCartDatas();
+    cartFetchFunctionCall();
   }, []);
 
-  const getCartDatas = async () => {
-    const guestToken = localStorage.getItem("guestToken");
-    try {
-      const response = await request.post("api/cart/items/", {
-        token: guestToken,
-      });
-
-      if (response?.data?.status) {
-        setcartDatas(response?.data?.data);
-        setCartItems(response?.data?.data?.shopping_cart_items);
+  const cartFetchFunctionCall = () => {
+    getCartDatas().then((response) => {
+      if (response?.data) {
+        setCartItems(response?.data?.shopping_cart_items);
+        setcartDatas(response?.data);
       }
-    } catch (error) {
-      console.log("error", error);
-    }
+    });
   };
   return (
     <>
@@ -116,27 +113,47 @@ function Index() {
                           {/* input group */}
                           <div className="col-3 col-md-3 col-lg-2">
                             {/* input */}
-                            <div className="input-group input-spinner  ">
-                              <input
-                                type="button"
-                                defaultValue="-"
-                                className="button-minus  btn  btn-sm "
-                                data-field="quantity"
-                              />
-                              <input
-                                type="button"
-                                value={cartData?.quantity}
-                                className="quantity-field form-control-sm form-input   "
-                              />
-                              <input
-                                type="button"
-                                defaultValue="+"
-                                className="button-plus btn btn-sm "
-                                data-field="quantity"
-                              />
-                            </div>
+                            <div className="input-group-custom input-spinner  ">
+                          <input
+                            type="button"
+                            defaultValue="-"
+                            className="button-minus1  btn  btn-sm "
+                            disabled={cartData?.quantity <= 1}
+                            onClick={() => {
+                              cartDecrement(cartData?.id).then((response) => {
+                                if (response) {
+                                  cartFetchFunctionCall();
+                                }
+                              });
+                            }}
+                          />
+                          <input
+                            type="button"
+                            className="quantity-field1 form-control-sm form-input1"
+                            value={cartData?.quantity}
+                          />
+                          <input
+                            type="button"
+                            defaultValue="+"
+                            className="button-plus1 btn btn-sm "
+                            data-field="quantity"
+                            onClick={() => {
+                              cartIncrement(cartData?.id).then((response) => {
+                                if (response) {
+                                  cartFetchFunctionCall();
+                                }
+                              });
+                            }}
+                          />
+                        </div>
                             <div className="mt-2 small lh-1">
-                              <span className="text-muted">Remove</span>
+                              <span className="text-muted" onClick={() => {
+                          cartRemove(cartData?.id).then((response) => {
+                            if (response) {
+                              cartFetchFunctionCall();
+                            }
+                          });
+                        }}>Remove</span>
                             </div>
                           </div>
                         </div>
