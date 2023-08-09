@@ -9,7 +9,7 @@ function TopCategories({ componentDatas }) {
 
   return (
     <>
-      <div className="container-fluid my-5">
+      <div className="container-lg-fluid my-5">
         <div className="card top-categories" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <div className="row">

@@ -39,19 +39,298 @@ function Footer() {
     {
       title: "Home",
       onClick: ({ id }) => alert("menu clicked " + id),
-      // icon: <HomeIcon />, 
-      // activeIcon: <HomeIcon color="#fff" />,
+      icon: (
+        <svg
+          width={25}
+          height={26}
+          viewBox="0 0 25 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.502 20.3409V16.6724M10.1864 1.77805L1.87163 8.56487C0.935768 9.32304 0.335858 10.925 0.539828 12.1234L2.13559 21.8573C2.42354 23.5937 4.0553 25 5.78304 25H19.221C20.9367 25 22.5805 23.5815 22.8685 21.8573L24.4642 12.1234C24.6562 10.925 24.0563 9.32304 23.1324 8.56487L14.8177 1.79027C13.5339 0.738622 11.4582 0.738622 10.1864 1.77805Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+      activeIcon: (
+        <svg
+          width={25}
+          height={26}
+          viewBox="0 0 25 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.502 20.3409V16.6724M10.1864 1.77805L1.87163 8.56487C0.935768 9.32304 0.335858 10.925 0.539828 12.1234L2.13559 21.8573C2.42354 23.5937 4.0553 25 5.78304 25H19.221C20.9367 25 22.5805 23.5815 22.8685 21.8573L24.4642 12.1234C24.6562 10.925 24.0563 9.32304 23.1324 8.56487L14.8177 1.79027C13.5339 0.738622 11.4582 0.738622 10.1864 1.77805Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
     },
 
     // items can have either title, icon or both or neither!
-    {},
     {
-      title: "Search",
+      title: "Categories",
+
+      icon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24.75 9.30375V4.75875C24.75 2.97 24.03 2.25 22.2413 2.25H17.6962C15.9075 2.25 15.1875 2.97 15.1875 4.75875V9.30375C15.1875 11.0925 15.9075 11.8125 17.6962 11.8125H22.2413C24.03 11.8125 24.75 11.0925 24.75 9.30375Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M11.8125 9.585V4.4775C11.8125 2.89125 11.0925 2.25 9.30375 2.25H4.75875C2.97 2.25 2.25 2.89125 2.25 4.4775V9.57375C2.25 11.1713 2.97 11.8012 4.75875 11.8012H9.30375C11.0925 11.8125 11.8125 11.1713 11.8125 9.585Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M11.8125 22.2413V17.6962C11.8125 15.9075 11.0925 15.1875 9.30375 15.1875H4.75875C2.97 15.1875 2.25 15.9075 2.25 17.6962V22.2413C2.25 24.03 2.97 24.75 4.75875 24.75H9.30375C11.0925 24.75 11.8125 24.03 11.8125 22.2413Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.875 17.4375H23.625"
+            stroke="#584F4F"
+            strokeLinecap="round"
+          />
+          <path
+            d="M16.875 21.9375H23.625"
+            stroke="#584F4F"
+            strokeLinecap="round"
+          />
+        </svg>
+      ),
+      activeIcon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24.75 9.30375V4.75875C24.75 2.97 24.03 2.25 22.2413 2.25H17.6962C15.9075 2.25 15.1875 2.97 15.1875 4.75875V9.30375C15.1875 11.0925 15.9075 11.8125 17.6962 11.8125H22.2413C24.03 11.8125 24.75 11.0925 24.75 9.30375Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M11.8125 9.585V4.4775C11.8125 2.89125 11.0925 2.25 9.30375 2.25H4.75875C2.97 2.25 2.25 2.89125 2.25 4.4775V9.57375C2.25 11.1713 2.97 11.8012 4.75875 11.8012H9.30375C11.0925 11.8125 11.8125 11.1713 11.8125 9.585Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M11.8125 22.2413V17.6962C11.8125 15.9075 11.0925 15.1875 9.30375 15.1875H4.75875C2.97 15.1875 2.25 15.9075 2.25 17.6962V22.2413C2.25 24.03 2.97 24.75 4.75875 24.75H9.30375C11.0925 24.75 11.8125 24.03 11.8125 22.2413Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.875 17.4375H23.625"
+            stroke="#80BA27"
+            strokeLinecap="round"
+          />
+          <path
+            d="M16.875 21.9375H23.625"
+            stroke="#80BA27"
+            strokeLinecap="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Wishlist",
+      icon: (
+        <svg
+          width={26}
+          height={22}
+          viewBox="0 0 26 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25 7.10002C25 15.3588 17.2274 20.2294 13.745 21.3941C13.3321 21.5353 12.6679 21.5353 12.255 21.3941C10.7651 20.9 8.48542 19.7177 6.38519 17.9C3.54899 15.4471 1 11.8294 1 7.10002C1 3.44709 3.97981 0.500031 7.65969 0.500031C9.84966 0.500031 11.7883 1.54121 13.009 3.12944C13.9092 1.94581 15.1899 1.09602 16.6432 0.718014C18.0965 0.340008 19.6371 0.455975 21.015 1.04709C23.3665 2.07062 25 4.38238 25 7.10002Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+      activeIcon: (
+        <svg
+          width={26}
+          height={22}
+          viewBox="0 0 26 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25 7.10002C25 15.3588 17.2274 20.2294 13.745 21.3941C13.3321 21.5353 12.6679 21.5353 12.255 21.3941C10.7651 20.9 8.48542 19.7177 6.38519 17.9C3.54899 15.4471 1 11.8294 1 7.10002C1 3.44709 3.97981 0.500031 7.65969 0.500031C9.84966 0.500031 11.7883 1.54121 13.009 3.12944C13.9092 1.94581 15.1899 1.09602 16.6432 0.718014C18.0965 0.340008 19.6371 0.455975 21.015 1.04709C23.3665 2.07062 25 4.38238 25 7.10002Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Store",
+      icon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.0626 24.7501H4.59006C3.28506 24.7501 2.21631 23.7039 2.21631 22.4214V5.7264C2.21631 2.7789 4.41006 1.44015 7.09881 2.7564L12.0938 5.2089C13.1738 5.73765 14.0626 7.1439 14.0626 8.3364V24.7501Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M24.7162 16.9427V21.1952C24.7162 23.6252 23.5912 24.7502 21.1612 24.7502H14.0625V11.7227L14.5913 11.8352L19.6537 12.9714L21.9375 13.4777C23.4225 13.8039 24.6375 14.5689 24.705 16.7289C24.7162 16.7964 24.7162 16.8639 24.7162 16.9427Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.1875 10.1251H10.0913"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.1875 14.6251H10.0913"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M19.6538 12.9713V16.5938C19.6538 17.9888 18.5176 19.1251 17.1226 19.1251C15.7276 19.1251 14.5913 17.9888 14.5913 16.5938V11.8351L19.6538 12.9713Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M24.7051 16.7288C24.6376 18.0563 23.5351 19.1251 22.1851 19.1251C20.7901 19.1251 19.6538 17.9888 19.6538 16.5938V12.9713L21.9376 13.4776C23.4226 13.8038 24.6376 14.5688 24.7051 16.7288Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+      activeIcon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.0626 24.7501H4.59006C3.28506 24.7501 2.21631 23.7039 2.21631 22.4214V5.7264C2.21631 2.7789 4.41006 1.44015 7.09881 2.7564L12.0938 5.2089C13.1738 5.73765 14.0626 7.1439 14.0626 8.3364V24.7501Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M24.7162 16.9427V21.1952C24.7162 23.6252 23.5912 24.7502 21.1612 24.7502H14.0625V11.7227L14.5913 11.8352L19.6537 12.9714L21.9375 13.4777C23.4225 13.8039 24.6375 14.5689 24.705 16.7289C24.7162 16.7964 24.7162 16.8639 24.7162 16.9427Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.1875 10.1251H10.0913"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.1875 14.6251H10.0913"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M19.6538 12.9713V16.5938C19.6538 17.9888 18.5176 19.1251 17.1226 19.1251C15.7276 19.1251 14.5913 17.9888 14.5913 16.5938V11.8351L19.6538 12.9713Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M24.7051 16.7288C24.6376 18.0563 23.5351 19.1251 22.1851 19.1251C20.7901 19.1251 19.6538 17.9888 19.6538 16.5938V12.9713L21.9376 13.4776C23.4226 13.8038 24.6376 14.5688 24.7051 16.7288Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
     },
     // the render method enables custom item content
     {
-      render: ({ isActive, id }) =>
-        isActive ? <strong>{id}</strong> : <span>{id}</span>,
+      title: "Profile",
+      icon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.6801 12.2287C13.5676 12.2175 13.4326 12.2175 13.3089 12.2287C10.6314 12.1387 8.50513 9.945 8.50513 7.245C8.50513 4.48875 10.7326 2.25 13.5001 2.25C16.2564 2.25 18.4951 4.48875 18.4951 7.245C18.4839 9.945 16.3576 12.1387 13.6801 12.2287Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8.05506 16.38C5.33256 18.2025 5.33256 21.1725 8.05506 22.9837C11.1488 25.0537 16.2226 25.0537 19.3163 22.9837C22.0388 21.1612 22.0388 18.1913 19.3163 16.38C16.2338 14.3213 11.1601 14.3213 8.05506 16.38Z"
+            stroke="#584F4F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+      activeIcon: (
+        <svg
+          width={27}
+          height={27}
+          viewBox="0 0 27 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.6801 12.2287C13.5676 12.2175 13.4326 12.2175 13.3089 12.2287C10.6314 12.1387 8.50513 9.945 8.50513 7.245C8.50513 4.48875 10.7326 2.25 13.5001 2.25C16.2564 2.25 18.4951 4.48875 18.4951 7.245C18.4839 9.945 16.3576 12.1387 13.6801 12.2287Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8.05506 16.38C5.33256 18.2025 5.33256 21.1725 8.05506 22.9837C11.1488 25.0537 16.2226 25.0537 19.3163 22.9837C22.0388 21.1612 22.0388 18.1913 19.3163 16.38C16.2338 14.3213 11.1601 14.3213 8.05506 16.38Z"
+            stroke="#80BA27"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
     },
   ];
   const subscribeNewsLetter = async (values) => {
@@ -97,8 +376,8 @@ function Footer() {
           items={bottomNavItems}
           selected={0}
           onItemClick={(item) => console.log(item)}
-          activeBgColor="slateBlue"
-          activeTextColor="white"
+          activeBgColor="#fff"
+          activeTextColor="#80BA27"
         />
       </div>
       <div className="container px-4">
