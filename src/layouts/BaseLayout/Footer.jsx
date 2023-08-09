@@ -1,4 +1,4 @@
-import {useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
@@ -12,6 +12,7 @@ import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
+import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 import ScrollToTop from "react-scroll-to-top";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
@@ -29,22 +30,34 @@ function Footer() {
     validationSchema: schema,
     onSubmit: handleOnSubmit,
   });
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   const subscribeNewsLetter = async (values) => {
     try {
       var bodyFormData = new FormData();
-      bodyFormData.append('email', values.email);
-      const response = await request.post("subscribe-newsletter/",bodyFormData);
-      
+      bodyFormData.append("email", values.email);
+      const response = await request.post(
+        "subscribe-newsletter/",
+        bodyFormData
+      );
+
       console.log("response", response.data.message);
       let status = "succsss";
-      if(!response.data.status){
+      if (!response.data.status) {
         status = "error";
       }
       toast((t) => (
-        <AlerMessage t={t} toast={toast} status={status} title={"WARNING"} message={response.data.message} />
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={status}
+          title={"WARNING"}
+          message={response.data.message}
+        />
       ));
-
     } catch (error) {
       console.log("error", error);
     }
@@ -57,43 +70,42 @@ function Footer() {
       }),
     [formik]
   );
- 
 
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="container px-4">
         <div className="row footer-row">
           <div className="col-md-3">
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 col-2">
                 <img src={FacebookIcon} alt="facebook" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-2">
                 <img src={LinkedinIcon} alt="LinkedIn" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-2">
                 <img src={InstagramIcon} alt="Instagram" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-2">
                 <img src={WhatsappIcon} alt="Whatsapp" />
               </div>
             </div>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5 py-5">
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 col-3">
                 {" "}
                 <img src={TamaraIcon} alt="Tamara" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-3">
                 {" "}
                 <img src={MastercardIcon} alt="Mastercard" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-3">
                 {" "}
                 <img src={TabbyIcon} alt="Tabby" />
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-3">
                 {" "}
                 <img src={VisaIcon} alt="Visa" />
               </div>
@@ -115,18 +127,21 @@ function Footer() {
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      our brands
+                      our brands{" "}
+                      <span className="footer-link-seperator">&nbsp; |</span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      our stores
+                      our stores{" "}
+                      <span className="footer-link-seperator">&nbsp; |</span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      our services
+                      our services{" "}
+                      <span className="footer-link-seperator">&nbsp; |</span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
@@ -141,24 +156,36 @@ function Footer() {
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      perfumes
+                      perfumes{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      Baggage
+                      Baggage{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      sunglass
+                      sunglass{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      jewllerry
+                      jewllerry{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
@@ -173,24 +200,36 @@ function Footer() {
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      contact us
+                      contact us{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      order status
+                      order status{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
-                      return policies
+                      return policies{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      product recall
+                      product recall{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
@@ -224,7 +263,7 @@ function Footer() {
           <div className="col-md-5">
             <form onSubmit={formik.handleSubmit}>
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-8 col-6 align-items-center">
                   <input
                     type="email"
                     className="form-control"
@@ -234,19 +273,23 @@ function Footer() {
                     placeholder="Email"
                   />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 col-6">
                   {/* <NavLink to="/login"> */}
-                    <button type="submit" disabled={!(formik.isValid && formik.dirty)} className="btn btn-light w-100">
-                      Sign Up
-                    </button>
+                  <button
+                    type="submit"
+                    disabled={!(formik.isValid && formik.dirty)}
+                    className="btn btn-light w-100"
+                  >
+                    Sign Up
+                  </button>
                   {/* </NavLink> */}
                 </div>
               </div>
             </form>
             <div className="row mt-5 footer-row">
-              <div className="col-md-8">
+              <div className="col-md-8 col-8">
                 <div className="row">
-                  <div className="col-md-2">
+                  <div className="col-md-2 col-2">
                     <svg
                       width="20"
                       height="25"
@@ -264,7 +307,7 @@ function Footer() {
                       />
                     </svg>
                   </div>
-                  <div className="col-md-2">
+                  <div className="col-md-2 col-2">
                     <svg
                       width="22"
                       height="24"
@@ -313,7 +356,7 @@ function Footer() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-4">
                 <img src={FlagUae} alt="UAE" />
                 <span className="flag-span">&nbsp;&nbsp;UAE</span>
               </div>
@@ -322,12 +365,12 @@ function Footer() {
         </div>
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
-            <div className="col-md-4">2023 All Rights Reserved</div>
-            <div className="col-md-4 text-center">
+            <div className="col-md-4 col-12">2023 All Rights Reserved</div>
+            <div className="col-md-4 text-center col-6">
               <a href="">Privacy & Cookies </a> / <a href="">Ts & Cs</a> /{" "}
               <a href="">Shipping</a>{" "}
             </div>
-            <div className="col-md-4 text-end">
+            <div className="col-md-4 text-end col-6">
               Engineerd By{" "}
               <a href="https://cloud6.co.in/" target="_blank">
                 Cloud 6
@@ -336,58 +379,131 @@ function Footer() {
           </div>
         </div>
         <div className="border-top py-4 footer-bottom">
-          <p className="mb-5">BEST PERFUME ECOMMERCE IN DUBAI</p>
-          <p className="mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            facilisi. Sed eu neque ut mi sagittis sodales. Phasellus auctor
-            magna ac neque condimentum, et tincidunt ligula viverra. Donec sed
-            massa eget lectus dapibus iaculis. Integer scelerisque, elit
-            eusagittis efficitur, nisi libero viverra dolor, ac laoreet enim
-            velit id velit. Suspendisse ac metus eu lorem egestas efficitur. In
-            hac habitasse platea dictumst. Pellentesque eu m
-          </p>
-          <ol>
-            <li className="mb-4">
-              BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-              sagittis sodales. Phasellus auctor magna ac neque condimentum, et
-              tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-              iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-              libero viverra dolor, ac laoreet enim velit id velit. Suspendisse
-              ac metus eu lorem egestas efficitur. In hac habitasse platea
-              dictumst. Pellentesque eu m
-            </li>
-            <li className="mb-4">
-              BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-              sagittis sodales. Phasellus auctor magna ac neque condimentum, et
-              tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-              iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-              libero viverra dolor, ac laoreet enim velit id velit. Suspendisse
-              ac metus eu lorem egestas efficitur. In hac habitasse platea
-              dictumst. Pellentesque eu m
-            </li>
-            <li className="mb-4">
-              BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-              sagittis sodales. Phasellus auctor magna ac neque condimentum, et
-              tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-              iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-              libero viverra dolor, ac laoreet enim velit id velit. Suspendisse
-              ac metus eu lorem egestas efficitur. In hac habitasse platea
-              dictumst. Pellentesque eu m
-            </li>
-            <li className="mb-4">
-              BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-              sagittis sodales. Phasellus auctor magna ac neque condimentum, et
-              tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-              iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-              libero viverra dolor, ac laoreet enim velit id velit. Suspendisse
-              ac metus eu lorem egestas efficitur. In hac habitasse platea
-              dictumst. Pellentesque eu m
-            </li>
-          </ol>
+          <div className="d-block d-sm-none">
+            <div className="row text-end">
+              <div className="col-md-2">
+                <a className="footer-expand" onClick={toggleCollapse}>
+                  <img src={FooterExpand} alt="Coral Perfume" />
+                </a>
+              </div>
+            </div>
+
+            {!isCollapsed && (
+              <div>
+                <p className="mb-5">BEST PERFUME ECOMMERCE IN DUBAI</p>
+                <p className="mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                  facilisi. Sed eu neque ut mi sagittis sodales. Phasellus
+                  auctor magna ac neque condimentum, et tincidunt ligula
+                  viverra. Donec sed massa eget lectus dapibus iaculis. Integer
+                  scelerisque, elit eusagittis efficitur, nisi libero viverra
+                  dolor, ac laoreet enim velit id velit. Suspendisse ac metus eu
+                  lorem egestas efficitur. In hac habitasse platea dictumst.
+                  Pellentesque eu m
+                </p>
+                <ol>
+                  <li className="mb-4">
+                    BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut
+                    mi sagittis sodales. Phasellus auctor magna ac neque
+                    condimentum, et tincidunt ligula viverra. Donec sed massa
+                    eget lectus dapibus iaculis. Integer scelerisque, elit
+                    eusagittis efficitur, nisi libero viverra dolor, ac laoreet
+                    enim velit id velit. Suspendisse ac metus eu lorem egestas
+                    efficitur. In hac habitasse platea dictumst. Pellentesque eu
+                    m
+                  </li>
+                  <li className="mb-4">
+                    BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut
+                    mi sagittis sodales. Phasellus auctor magna ac neque
+                    condimentum, et tincidunt ligula viverra. Donec sed massa
+                    eget lectus dapibus iaculis. Integer scelerisque, elit
+                    eusagittis efficitur, nisi libero viverra dolor, ac laoreet
+                    enim velit id velit. Suspendisse ac metus eu lorem egestas
+                    efficitur. In hac habitasse platea dictumst. Pellentesque eu
+                    m
+                  </li>
+                  <li className="mb-4">
+                    BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut
+                    mi sagittis sodales. Phasellus auctor magna ac neque
+                    condimentum, et tincidunt ligula viverra. Donec sed massa
+                    eget lectus dapibus iaculis. Integer scelerisque, elit
+                    eusagittis efficitur, nisi libero viverra dolor, ac laoreet
+                    enim velit id velit. Suspendisse ac metus eu lorem egestas
+                    efficitur. In hac habitasse platea dictumst. Pellentesque eu
+                    m
+                  </li>
+                  <li className="mb-4">
+                    BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut
+                    mi sagittis sodales. Phasellus auctor magna ac neque
+                    condimentum, et tincidunt ligula viverra. Donec sed massa
+                    eget lectus dapibus iaculis. Integer scelerisque, elit
+                    eusagittis efficitur, nisi libero viverra dolor, ac laoreet
+                    enim velit id velit. Suspendisse ac metus eu lorem egestas
+                    efficitur. In hac habitasse platea dictumst. Pellentesque eu
+                    m
+                  </li>
+                </ol>
+              </div>
+            )}
+          </div>
+          <div className="d-none d-sm-block">
+            <p className="mb-5">BEST PERFUME ECOMMERCE IN DUBAI</p>
+            <p className="mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              facilisi. Sed eu neque ut mi sagittis sodales. Phasellus auctor
+              magna ac neque condimentum, et tincidunt ligula viverra. Donec sed
+              massa eget lectus dapibus iaculis. Integer scelerisque, elit
+              eusagittis efficitur, nisi libero viverra dolor, ac laoreet enim
+              velit id velit. Suspendisse ac metus eu lorem egestas efficitur.
+              In hac habitasse platea dictumst. Pellentesque eu m
+            </p>
+            <ol>
+              <li className="mb-4">
+                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
+                sagittis sodales. Phasellus auctor magna ac neque condimentum,
+                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
+                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
+                libero viverra dolor, ac laoreet enim velit id velit.
+                Suspendisse ac metus eu lorem egestas efficitur. In hac
+                habitasse platea dictumst. Pellentesque eu m
+              </li>
+              <li className="mb-4">
+                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
+                sagittis sodales. Phasellus auctor magna ac neque condimentum,
+                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
+                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
+                libero viverra dolor, ac laoreet enim velit id velit.
+                Suspendisse ac metus eu lorem egestas efficitur. In hac
+                habitasse platea dictumst. Pellentesque eu m
+              </li>
+              <li className="mb-4">
+                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
+                sagittis sodales. Phasellus auctor magna ac neque condimentum,
+                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
+                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
+                libero viverra dolor, ac laoreet enim velit id velit.
+                Suspendisse ac metus eu lorem egestas efficitur. In hac
+                habitasse platea dictumst. Pellentesque eu m
+              </li>
+              <li className="mb-4">
+                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
+                sagittis sodales. Phasellus auctor magna ac neque condimentum,
+                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
+                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
+                libero viverra dolor, ac laoreet enim velit id velit.
+                Suspendisse ac metus eu lorem egestas efficitur. In hac
+                habitasse platea dictumst. Pellentesque eu m
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
       <ScrollToTop smooth />

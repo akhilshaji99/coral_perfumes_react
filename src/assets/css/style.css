@@ -26101,10 +26101,14 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-more {
-    padding: 13px 29px;
+    padding: 13px 15px;
   }
   .top-categories h3 {
     font-size: 12px !important;
+  }
+  .shop-more h3{
+    font-size: 12px;
+    text-align: center;
   }
 }
 .shop-more h1 {
@@ -26190,9 +26194,12 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-preferences {
-    padding: 13px 29px;
+    padding: 13px 15px;
   }
   .top-categories h3 {
+    font-size: 12px !important;
+  }
+  .shop-preferences h3{
     font-size: 12px !important;
   }
 }
@@ -26316,7 +26323,42 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flash-sale-container {
-    padding: 13px 29px;
+    padding: 13px 12px;
+  }
+  .carousel-product-margin{
+    margin: 0 7.5px;
+  }
+  .product-img {
+    height: 100px !important;
+    height: 100px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-img img {
+    height: 90px !important;
+    height: 90px !important;
+    object-fit: cover;
+  }
+  .btn-dark{
+    font-size: .5rem !important;
+  }
+  .product-grid h4 {
+    color: #000;
+    font-family: Arial;
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: left !important;
+    padding-top: 16px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow:unset !important;
+  }
+  .product-grid .selling-price,.discounted-price,.discount-percentage{
+    font-size: 12px !important;
+    text-align: left;
   }
 }
 .custom-badge {
@@ -26345,6 +26387,9 @@ span.flatpickr-weekday {
   text-transform: capitalize;
   text-align: center;
   padding-top: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .selling-price {
   color: #000;
@@ -26459,7 +26504,7 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .brands-card {
-    padding: 13px 29px;
+    padding: 13px 15px;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -26620,10 +26665,28 @@ span.flatpickr-weekday {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    padding: 20px;
+    padding: 60px;
     /* min-height: 588px; */
     height: 100%;
   }
+  .container-lg-fluid {
+    --fc-gutter-x: 4rem;
+    --fc-gutter-y: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100%;
+  }
+}
+.container-lg-fluid {
+  --fc-gutter-x: 4rem;
+  --fc-gutter-y: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(var(--fc-gutter-x) * 0.5);
+  padding-right: calc(var(--fc-gutter-x) * 0.5);
+  width: 100%;
 }
 .custom-mega-menu h6 {
   color: #000 !important;
@@ -27415,4 +27478,20 @@ height: 25px;
   font-family: var(--fc-font-bold);
   text-transform: uppercase;
   text-align: end;
+}
+.footer-expand img{
+  transform: scale(2);
+  cursor: pointer;
+}
+@media only screen and (min-width: 321px) and (max-width: 769px) {
+  .flex-column {
+    flex-direction: row !important;
+    justify-content:space-between;
+  }
+  .footer-link-seperator{
+    visibility: visible !important;
+  }
+}
+.footer-link-seperator{
+  visibility: hidden;
 }

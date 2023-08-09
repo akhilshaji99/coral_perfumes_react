@@ -15,7 +15,7 @@ function TopCategories({ componentDatas }) {
           <div className="row">
             {products.map((product, index) => {
               return (
-                <div key={index} className="col-md-2 col-6 text-center">
+                <div key={index} className="col-md-2 col-4 text-center">
                   <NavLink to={`/product?category=${product?.link}`}>
                     <img
                       loading="lazy"
