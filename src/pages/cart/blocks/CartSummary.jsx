@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 function CartSummary({ cartDatas }) {
   return (
     <div className="col-12 col-lg-4 col-md-5">
@@ -70,12 +71,14 @@ function CartSummary({ cartDatas }) {
             </ul>
           </div>
           <div className="d-grid mb-1 mt-4">
-            <button
-              className="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
-              type="submit"
-            >
-              PROCEED
-            </button>
+            <NavLink to={"/checkout"}>
+              <button
+                className="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
+                type="submit"
+              >
+                PROCEED
+              </button>
+            </NavLink>
           </div>
           <p>
             <small>{cartDatas?.free_delivery_message}</small>

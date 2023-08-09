@@ -1,30 +1,10 @@
 import BreadCrumps from "../common/BreadCrumps";
-import { useEffect } from "react";
-import request from "../../utils/request";
-import { useState } from "react";
 import TamaraIcon from "../../assets/img/icons/payment/tamara.png";
 import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
+import CartDetails from "./blocks/CartDetails";
+
 function Index() {
-  const [cartDatas, setcartDatas] = useState([]);
-  useEffect(() => {
-    //   getCartDatas();
-  }, []);
-
-  const getCartDatas = async () => {
-    const guestToken = localStorage.getItem("guestToken");
-    try {
-      const response = await request.post("api/cart/items/", {
-        token: guestToken,
-      });
-
-      if (response?.data?.status) {
-        setcartDatas(response?.data?.data?.shopping_cart_items);
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   return (
     <>
       <BreadCrumps />
@@ -607,121 +587,7 @@ function Index() {
                   </div>
                 </div>
               </div>
-
-              <div className="card col-12 col-md-12 offset-lg-1 col-lg-4">
-                <div className="mb-5 mt-6">
-                  <div className="">
-                    <h5 className="px-6 py-4 bg-transparent mb-0">2 ITEMS</h5>
-                    <ul className="list-group list-group-flush">
-                      {/* list group item */}
-                      <li className="list-group-item py-3 ps-0 border-top">
-                        <div className="row align-items-center">
-                          <div className="col-2 col-md-3">
-                            <img
-                              src="https://coral-ecom.cloud6.co.in/media/product_listing/Rectangle_54.jpg"
-                              alt="Ecommerce"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div className="col-5 col-md-5">
-                            <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                            <span>
-                              <small className="text-muted">.98 / lb</small>
-                            </span>
-                            <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li className="list-group-item py-3 ps-0 border-top">
-                        <div className="row align-items-center">
-                          <div className="col-2 col-md-3">
-                            <img
-                              src="https://coral-ecom.cloud6.co.in/media/product_listing/Rectangle_54.jpg"
-                              alt="Ecommerce"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div className="col-5 col-md-5">
-                            <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                            <span>
-                              <small className="text-muted">.98 / lb</small>
-                            </span>
-                            <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                          </div>
-                        </div>
-                      </li>
-
-                      {/* list group item */}
-                    </ul>
-                    <div className="mb-5 card mt-6">
-                      <div className="card-body p-6">
-                        {/* heading */}
-                        <h2 className="h5 mb-4">Summary</h2>
-                        <div className="mb-2">
-                          {/* list group */}
-                          <ul className="list-group list-group-flush">
-                            {/* list group item */}
-                            <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
-                              <div className="me-auto">
-                                <div>Subtotal</div>
-                              </div>
-                              <span>$70.00</span>
-                            </li>
-                            {/* list group item */}
-                            <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
-                              <div className="me-auto">
-                                <div>Shipping</div>
-                              </div>
-                              <span>$3.00</span>
-                            </li>
-                            {/* list group item */}
-                            <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
-                              <div className="me-auto">
-                                <div className="fw-bold">Discount</div>
-                              </div>
-                              <span className="fw-bold">$67.00</span>
-                            </li>
-                            <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
-                              <div className="me-auto">
-                                <div className="fw-bold">
-                                  <p className="text mb-0">
-                                    Total <small> VAT Included</small>
-                                  </p>{" "}
-                                </div>
-                              </div>
-                              <span className="fw-bold">$67.00</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* heading */}
-                        <div className="mt-8">
-                          <form>
-                            {/* btn */}
-                            <div className="d-grid">
-                              <button
-                                type="submit"
-                                className="btn btn-dark mb-1"
-                              >
-                                SECURE CHECKOUT
-                              </button>
-                            </div>
-                            <p className="text-muted mb-0">
-                              {" "}
-                              <small>
-                                {" "}
-                                Congragulations your are elgible for a free
-                                delievry
-                              </small>
-                            </p>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CartDetails />
             </div>
           </div>
         </div>

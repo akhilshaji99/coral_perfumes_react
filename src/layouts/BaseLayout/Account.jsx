@@ -26,14 +26,8 @@ function Account() {
     window.location.href = "/";
   };
 
-  // const changeCartDrawervalue = () => {
-  //   console.log("hii");
-  // };
-
   const handleCartVisibility = () => {
-    // setCartVisible(visible);
     setCartDrawerFlag(false);
-    // console.log(visible);
   };
   return (
     <>
@@ -434,13 +428,7 @@ function Account() {
                   </svg>
                 </div>
                 <div className="list-inline-item me-5">
-                  <a
-                    href="#"
-                    id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    className="text-center"
-                  >
+                  <NavLink className="text-center" to="/stores">
                     <svg
                       width="24"
                       height="29"
@@ -472,7 +460,7 @@ function Account() {
                       />
                     </svg>
                     <span className="dropdown-text">Find Store</span>
-                  </a>
+                  </NavLink>
                 </div>
                 <div className="list-inline-item me-5">
                   <div className="dropdown">

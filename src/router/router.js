@@ -10,6 +10,7 @@ import Wishlist from "../pages/wishlist/index";
 import PersonalInfo from "../pages/personal_info/index";
 import AddressBook from "../pages/address_book/index";
 import DashBoard from "../pages/dashboard/index";
+import Stores from "../pages/stores/index";
 
 const Router = () => {
   const routes = [
@@ -27,7 +28,7 @@ const Router = () => {
         { path: "personal-info", element: <PersonalInfo /> },
         { path: "address-book", element: <AddressBook /> },
         { path: "dashboard", element: <DashBoard /> },
-
+        { path: "stores", element: <Stores /> },
         // { path: "about", element: <About /> }
       ],
     },

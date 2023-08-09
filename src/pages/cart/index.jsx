@@ -1,6 +1,5 @@
 import BreadCrumps from "../common/BreadCrumps";
 import { useEffect } from "react";
-import request from "../../utils/request";
 import { useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CartSummary from "./blocks/CartSummary";
@@ -75,7 +74,7 @@ function Index() {
                             </a>
                             <span>
                               <small className="text-muted">
-                                {cartData?.product_variant?.name}
+                                {cartData?.product_variant?.brand_name}
                               </small>
                             </span>
                             {/* <div className="col-2 text-lg-end text-start text-md-end col-md-2">
