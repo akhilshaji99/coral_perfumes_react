@@ -13,6 +13,11 @@ const BaseLayout = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [window.location.href]);
+
+  //Change language direction using js
+  document.getElementsByTagName("html")[0].dir =
+    localStorage.getItem("languageDirection");
+  //#End
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />

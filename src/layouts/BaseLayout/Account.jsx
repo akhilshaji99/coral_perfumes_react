@@ -15,6 +15,8 @@ function Account() {
   });
   const [cartDrawerFlag, setCartDrawerFlag] = useState(false);
 
+  const languageDirection = localStorage.getItem("languageDirection");
+
   useEffect(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
@@ -29,6 +31,7 @@ function Account() {
   const handleCartVisibility = () => {
     setCartDrawerFlag(false);
   };
+
   return (
     <>
       <div className="py-5">
@@ -477,11 +480,21 @@ function Account() {
                           <div className="col-md-3">
                             <img
                               className="langIcon"
-                              src={ArabLang}
+                              src={
+                                languageDirection === null ||
+                                languageDirection === "ltr"
+                                  ? EngLang
+                                  : ArabLang
+                              }
                               alt="Coral perfumes"
                             />
                           </div>
-                          <div className="col-md-2 langName">UAE</div>
+                          <div className="col-md-2 langName">
+                            {languageDirection === null ||
+                            languageDirection === "ltr"
+                              ? "ENG"
+                              : "UAE"}
+                          </div>
                           <div className="col-md-1">
                             <svg
                               width={8}
@@ -506,14 +519,26 @@ function Account() {
                       className="dropdown-menu lang-dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a className="dropdown-item" href="#">
+                      <span
+                        className="dropdown-item"
+                        onClick={() => {
+                          localStorage.setItem("languageDirection", "rtl");
+                          window.location.reload();
+                        }}
+                      >
                         <img src={ArabLang} alt="Coral Perfumes" />
                         <span>UAE</span>
-                      </a>
-                      <a className="dropdown-item" href="#">
-                        <img src={EngLang} alt="Coral Perfumes" />{" "}
-                        <span>eng</span>
-                      </a>
+                      </span>
+                      <span
+                        className="dropdown-item"
+                        onClick={() => {
+                          localStorage.setItem("languageDirection", "ltr");
+                          window.location.reload();
+                        }}
+                      >
+                        <img src={EngLang} alt="Coral Perfumes" />
+                        <span>ENG</span>
+                      </span>
                     </div>
                   </div>
                 </div>
