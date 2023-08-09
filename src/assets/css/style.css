@@ -26378,6 +26378,9 @@ span.flatpickr-weekday {
 .wishlist-button svg:hover {
   fill: rgba(128, 186, 39, 1);
 }
+.wishlist-active svg{
+  fill: rgba(128, 186, 39, 1);
+}
 .product-grid h4 {
   color: #000;
   font-family: Arial;

@@ -2,24 +2,21 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 
-const addToWishlist = async (product_variant_id) => {
+const addToWishlist = async (variant_slug) => {
   try {
-    const guestToken = localStorage.getItem("guestToken");
-    const response = await request.post("add_to_wishlist/", {
-      product_variant_id,
-      token: guestToken,
+    const userData = JSON.parse(localStorage.getItem("userDatas"));
+    const response = await request.post("add-to-wishlist", {
+      variant_slug,
+      token: userData ? userData?.token : null,
     });
     if (response.data.status) {
-      if (guestToken === null) {
-        localStorage.setItem("guestToken", response?.data?.data?.token);
-      }
       toast((t) => (
         <AlerMessage
           t={t}
           toast={toast}
           status={response.data.status}
           title={"Add To Wishlist"}
-          message="Product Added To Wishlist."
+          message={response?.data?.message}
         />
       ));
     } else {

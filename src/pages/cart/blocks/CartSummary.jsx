@@ -1,4 +1,4 @@
-function CartSummary({cartDatas}) {
+function CartSummary({ cartDatas }) {
   return (
     <div className="col-12 col-lg-4 col-md-5">
       {/* card */}
@@ -38,22 +38,22 @@ function CartSummary({cartDatas}) {
               {/* list group item */}
               <li className="list-group-item d-flex justify-content-between align-items-start">
                 <div className="me-auto">
-                  <div>Subtotal</div>
+                  <div>{cartDatas?.sub_total_title}</div>
                 </div>
-                <span>$70.00</span>
+                <span>{cartDatas?.sub_total_display}</span>
               </li>
               {/* list group item */}
               <li className="list-group-item d-flex justify-content-between align-items-start">
                 <div className="me-auto">
-                  <div>Shipping</div>
+                  <div>{cartDatas?.shipping_title}</div>
                 </div>
-                <span>$3.00</span>
+                <span>{cartDatas?.shipping_display}</span>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-start">
                 <div className="me-auto">
-                  <div>Discount</div>
+                  <div>{cartDatas?.discount_title}</div>
                 </div>
-                <span>$3.00</span>
+                <span>{cartDatas?.discount_display}</span>
               </li>
               {/* list group item */}
               <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -70,7 +70,6 @@ function CartSummary({cartDatas}) {
             </ul>
           </div>
           <div className="d-grid mb-1 mt-4">
-            {/* btn */}
             <button
               className="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
               type="submit"
@@ -78,9 +77,8 @@ function CartSummary({cartDatas}) {
               PROCEED
             </button>
           </div>
-          {/* text */}
           <p>
-            <small>Congratulations you are elgible or a free delivery.</small>
+            <small>{cartDatas?.free_delivery_message}</small>
           </p>
           {/* heading */}
         </div>

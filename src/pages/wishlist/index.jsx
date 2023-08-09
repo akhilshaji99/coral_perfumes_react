@@ -1,7 +1,24 @@
 import BreadCrumps from "../common/BreadCrumps";
 import ProductDetails from "../common/ProductDetails";
 import MyAccountSidebar from "../common/MyAccountSidebar";
+// import { useEffect, useState } from "react";
+// import request from "../../utils/request";
+
 function index() {
+  // useEffect(() => {
+  //   getWishlistDatas();
+  // }, []);
+
+  // const getWishlistDatas = async () => {
+  //   try {
+  //     const response = await request.get("get_product_variants/");
+  //     if(response?.data){
+
+  //     }
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
   return (
     <main>
       {/* section */}
@@ -14,7 +31,9 @@ function index() {
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
-                <h2 className="mb-6 text-center my-profile-heading">My Wishlist</h2>
+                <h2 className="mb-6 text-center my-profile-heading">
+                  My Wishlist
+                </h2>
                 <div className="row">
                   {/* {productList.map((product, index) => { */}
                   {/* return ( */}

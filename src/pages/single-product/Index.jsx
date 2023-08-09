@@ -8,6 +8,7 @@ import RecommendedProducts from "./blocks/RecommenedProducts";
 import ProductData from "./blocks/ProductData";
 import ProductSpec from "./blocks/ProductSpec";
 import addToCart from "../cart/js/addToCart";
+import WishlistIcon from "../wishlist/blocks/WishlistIcon";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
@@ -125,20 +126,7 @@ function Index() {
                       </svg>
                     </div>
                     <div className="col-md-3">
-                      <svg
-                        width={23}
-                        height={23}
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M22.3912 8.01921C22.3912 15.9508 15.4634 20.6285 12.3596 21.747C11.9916 21.8826 11.3996 21.8826 11.0316 21.747C9.70366 21.2725 7.67174 20.137 5.79982 18.3913C3.27191 16.0356 1 12.5612 1 8.01921C1 4.51099 3.6559 1.68069 6.93577 1.68069C8.8877 1.68069 10.6156 2.68062 11.7036 4.20593C12.5059 3.06919 13.6474 2.25307 14.9428 1.89004C16.2381 1.52701 17.6113 1.63838 18.8393 2.20608C20.9352 3.18906 22.3912 5.40923 22.3912 8.01921Z"
-                          stroke="black"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <WishlistIcon product_slug={currentVariant?.slug} />
                     </div>
                   </div>
                 </div>
@@ -196,7 +184,9 @@ function Index() {
                     />
                     <input
                       type="button"
-                      disabled={addToCartQuantity >= currentVariant?.stock_value}
+                      disabled={
+                        addToCartQuantity >= currentVariant?.stock_value
+                      }
                       onClick={() => {
                         setAddToCartQuantity(addToCartQuantity + 1);
                       }}
@@ -361,7 +351,7 @@ function Index() {
             </div>
           </div>
         </div>
-        <ProductSpec productDatas={productDatas}/>
+        <ProductSpec productDatas={productDatas} />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />
         ) : null}
