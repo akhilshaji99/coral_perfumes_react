@@ -16,6 +16,7 @@ import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 import ScrollToTop from "react-scroll-to-top";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
+import { BottomNavigation } from "reactjs-bottom-navigation";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
@@ -34,7 +35,25 @@ function Footer() {
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+  const bottomNavItems = [
+    {
+      title: "Home",
+      onClick: ({ id }) => alert("menu clicked " + id),
+      // icon: <HomeIcon />, 
+      // activeIcon: <HomeIcon color="#fff" />,
+    },
 
+    // items can have either title, icon or both or neither!
+    {},
+    {
+      title: "Search",
+    },
+    // the render method enables custom item content
+    {
+      render: ({ isActive, id }) =>
+        isActive ? <strong>{id}</strong> : <span>{id}</span>,
+    },
+  ];
   const subscribeNewsLetter = async (values) => {
     try {
       var bodyFormData = new FormData();
@@ -73,6 +92,15 @@ function Footer() {
 
   return (
     <footer className="footer">
+      <div className="d-block d-sm-none">
+        <BottomNavigation
+          items={bottomNavItems}
+          selected={0}
+          onItemClick={(item) => console.log(item)}
+          activeBgColor="slateBlue"
+          activeTextColor="white"
+        />
+      </div>
       <div className="container px-4">
         <div className="row footer-row">
           <div className="col-md-3">
