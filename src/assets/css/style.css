@@ -26102,6 +26102,9 @@ span.flatpickr-weekday {
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-more {
     padding: 13px 15px;
+    box-shadow: none;
+    border-radius: unset;
+    border: none;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -26109,6 +26112,9 @@ span.flatpickr-weekday {
   .shop-more h3 {
     font-size: 12px;
     text-align: center;
+  }
+  .top-categories{
+    border-radius: unset;
   }
 }
 .shop-more h1 {
@@ -26195,6 +26201,9 @@ span.flatpickr-weekday {
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-preferences {
     padding: 13px 15px;
+    border-radius: unset;
+    box-shadow: none;
+    border: none;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -26324,6 +26333,8 @@ span.flatpickr-weekday {
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flash-sale-container {
     padding: 13px 12px;
+    box-shadow: none;
+    border: none;
   }
   .carousel-product-margin {
     margin: 0 7.5px;
@@ -26510,6 +26521,9 @@ span.flatpickr-weekday {
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .brands-card {
     padding: 13px 15px;
+    box-shadow: none;
+    border-radius: unset;
+    border: none;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -26557,6 +26571,8 @@ span.flatpickr-weekday {
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .category-top {
     padding: 13px 15px;
+    box-shadow: none;
+    border: none;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -27528,9 +27544,9 @@ border-radius: none !important;
     display: none !important;
   }
   .wallet-banner {
-    border-radius: 9px;
+    border-radius: unset;
     background: #a37073;
-    box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: none;
     padding: 15px 12px;
   }
   .wallet-banner h1 {
@@ -27670,6 +27686,27 @@ border-radius: none !important;
     font-style: normal;
     font-weight: 390;
     line-height: normal;
+  }
+  .digital-text {
+    color: #000;
+    text-align: center;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.48);
+    font-family: "DS-Digital Bold";
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 9px;
+    border: 1px solid #000;
+    background: rgba(255, 255, 255, 0.23);
+    padding: 10px;
+  }
+  .timer-text{
+    font-size: 12px;
+  }
+  .flash-sale{
+    font-size: 14px;
   }
 }
 .footer-link-seperator {

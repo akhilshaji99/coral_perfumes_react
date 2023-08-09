@@ -8,7 +8,7 @@ import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 function MainBanner() {
   return (
     <>
-      <div className="container-fluid px-0 main-carousel d-block d-sm-block">
+      <div className="container-fluid px-0 main-carousel d-block d-sm-none">
         <Carousel
           additionalTransfrom={0}
           arrows

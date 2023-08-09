@@ -47,10 +47,10 @@ function FlashSale({ componentDatas }) {
             style={dynamicBackground}
           >
             <div className="row d-end">
-              <div className="col-md-8 ">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h1 className="mb-5 flash-sale">
+              <div className="col-md-8 col-12">
+                <div className="row align-items-center mb-4">
+                  <div className="col-md-6 col-6">
+                    <h1 className=" flash-sale">
                       {" "}
                       <span>
                         <svg
@@ -109,16 +109,16 @@ function FlashSale({ componentDatas }) {
                       </span>
                     </h1>
                   </div>
-                  <div className="col-md-6 ">
+                  <div className="col-md-6 col-6">
                     <div className="row align-items-center d-end">
-                      <div className="col-md-5 pr-0 text-end">
+                      <div className="col-md-4 col-4 pr-0 text-end">
                         <span className="timer-text">Ends In</span>{" "}
                       </div>
-                      <div className="col-md-5">
+                      <div className="col-md-8 col-8">
                         <CountdownTimer
                           className="digital-text"
                           responsive={true}
-                          size={25}
+                          // size={25}
                           count={counterValue}
                           onEnd={() => {
                             setFlashSaleEnd(true);
