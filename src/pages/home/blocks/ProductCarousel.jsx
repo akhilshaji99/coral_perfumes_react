@@ -1,6 +1,5 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { NavLink } from "react-router-dom";
 import ProductDetails from "../../common/ProductDetails";
 
 function ProductCarousel({ componentDatas }) {
