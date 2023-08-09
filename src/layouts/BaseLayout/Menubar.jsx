@@ -36,7 +36,7 @@ function Menubar() {
             <a href="index-2.html">
               <img
                 src="assets/images/logo/freshcart-logo.svg"
-                alt="eCommerce HTML Template"
+                alt=""
               />
             </a>
             <button
@@ -154,7 +154,7 @@ function Menubar() {
                                                 src={deviceImageRender(
                                                   item.trending_image
                                                 )}
-                                                alt="eCommerce HTML Template"
+                                                alt=""
                                                 className="img-fluid"
                                               />
                                             </div>

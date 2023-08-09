@@ -6,7 +6,7 @@ function AdsBlock({ componentDatas }) {
         <div className="row g-5 ads-block justify-content-center">
           {componentDatas?.datas?.map((adBlock, index) => {
             return (
-              <div className="col-md-5 col-6" key={index}>
+              <div className="col-md-5 col-12" key={index}>
                 <img
                   src={deviceImageRender(
                     adBlock?.desktop_image,

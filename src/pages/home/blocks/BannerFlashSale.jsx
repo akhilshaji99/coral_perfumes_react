@@ -61,7 +61,7 @@ function BannerFlashSale({ componentDatas }) {
   return (
     <>
       {!hideBanner ? (
-        <section className="banner-flashsale" style={backgroundImage}>
+        <section className="banner-flashsale container-lg-fluid" style={backgroundImage}>
           <div className="container my-5">
             <div className="row align-items-center d-end">
               <div className="col-md-8">
@@ -91,18 +91,18 @@ function BannerFlashSale({ componentDatas }) {
                   </p>
                   <button className="btn  btn-outline-light">Shop Now</button> */}
                   </div>
-                  <div className="col-md-2">
+                  <div className="col-md-2 col-4">
                     <div className="timer-card">
                       <h1>{hours}</h1>
                     </div>
                   </div>
-                  <div className="col-md-2">
+                  <div className="col-md-2 col-4">
                     <div className="timer-card">
                       <h1>{minutes}</h1>
                     </div>
                   </div>
-                  <div className="col-md-2">
-                    <div className="timer-card" style={{ height: 93 }}>
+                  <div className="col-md-2 col-4">
+                    <div className="timer-card" >
                       <h1>{seconds}</h1>
                     </div>
                   </div>

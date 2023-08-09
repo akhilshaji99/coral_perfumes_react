@@ -41,7 +41,7 @@ function FlashSale({ componentDatas }) {
   return (
     <>
       {!falseSaleEnd ? (
-        <div className="container-fluid my-5">
+        <div className="container-lg-fluid my-5">
           <div
             className="card flash-sale-container mb-5"
             style={dynamicBackground}
@@ -164,8 +164,8 @@ function FlashSale({ componentDatas }) {
                     max: 464,
                     min: 0,
                   },
-                  items: 1,
-                  partialVisibilityGutter: 30,
+                  items: 2,
+                  partialVisibilityGutter: 20,
                 },
                 tablet: {
                   breakpoint: {

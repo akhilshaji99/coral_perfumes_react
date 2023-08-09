@@ -15,8 +15,6 @@ function Account() {
   });
   const [cartDrawerFlag, setCartDrawerFlag] = useState(false);
 
-  const languageDirection = localStorage.getItem("languageDirection");
-
   useEffect(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
@@ -31,106 +29,73 @@ function Account() {
   const handleCartVisibility = () => {
     setCartDrawerFlag(false);
   };
-
   return (
     <>
       <div className="py-5">
         <div className="container-fluid">
+          <div className="row align-items-center d-lg-none">
+            <div className="col-md-4 col-4">
+              <button
+                className="navbar-toggler collapsed"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#navbar-default"
+                aria-controls="navbar-default"
+                aria-label="Toggle navigation"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={32}
+                  height={32}
+                  fill="currentColor"
+                  className="bi bi-text-indent-left text-primary"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                </svg>
+              </button>
+            </div>
+            <div className="col-md-4 col-4">
+              <NavLink className="navbar-brand" to="/">
+                <img src={Logo} alt="Coral Perfumes" width={55} height={33} />
+              </NavLink>
+            </div>
+            <div className="col-md-4 col-4 text-end">
+              <a
+                className="text-muted position-relative "
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                href="#offcanvasExample"
+                role="button"
+                aria-controls="offcanvasRight"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={20}
+                  height={20}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-shopping-bag"
+                >
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                  <line x1={3} y1={6} x2={21} y2={6} />
+                  <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                  1<span className="visually-hidden">unread messages</span>
+                </span>
+              </a>
+            </div>
+          </div>
           <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
             <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
               <NavLink className="navbar-brand d-none d-lg-block" to="/">
                 <img src={Logo} alt="Coral Perfumes" />
               </NavLink>
-
-              <div className="d-flex justify-content-between w-100 d-lg-none">
-                <a className="navbar-brand" href="index-2.html">
-                  <img
-                    src="assets/images/logo/freshcart-logo.svg"
-                    alt="eCommerce HTML Template"
-                  />
-                </a>
-                <div className="d-flex align-items-center lh-1">
-                  <div className="list-inline me-4">
-                    <div className="list-inline-item">
-                      <a
-                        href="#!"
-                        className="text-muted"
-                        data-bs-toggle="modal"
-                        data-bs-target="#userModal"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={20}
-                          height={20}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-user"
-                        >
-                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                          <circle cx={12} cy={7} r={4} />
-                        </svg>
-                      </a>
-                    </div>
-                    <div className="list-inline-item">
-                      <a
-                        className="text-muted position-relative "
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        href="#offcanvasExample"
-                        role="button"
-                        aria-controls="offcanvasRight"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={20}
-                          height={20}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-shopping-bag"
-                        >
-                          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                          <line x1={3} y1={6} x2={21} y2={6} />
-                          <path d="M16 10a4 4 0 0 1-8 0" />
-                        </svg>
-                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                          1
-                          <span className="visually-hidden">
-                            unread messages
-                          </span>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                  {/* Button */}
-                  <button
-                    className="navbar-toggler collapsed"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#navbar-default"
-                    aria-controls="navbar-default"
-                    aria-label="Toggle navigation"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={32}
-                      height={32}
-                      fill="currentColor"
-                      className="bi bi-text-indent-left text-primary"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
             </div>
 
             <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
@@ -480,21 +445,11 @@ function Account() {
                           <div className="col-md-3">
                             <img
                               className="langIcon"
-                              src={
-                                languageDirection === null ||
-                                languageDirection === "ltr"
-                                  ? EngLang
-                                  : ArabLang
-                              }
+                              src={ArabLang}
                               alt="Coral perfumes"
                             />
                           </div>
-                          <div className="col-md-2 langName">
-                            {languageDirection === null ||
-                            languageDirection === "ltr"
-                              ? "ENG"
-                              : "UAE"}
-                          </div>
+                          <div className="col-md-2 langName">UAE</div>
                           <div className="col-md-1">
                             <svg
                               width={8}
@@ -519,26 +474,14 @@ function Account() {
                       className="dropdown-menu lang-dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <span
-                        className="dropdown-item"
-                        onClick={() => {
-                          localStorage.setItem("languageDirection", "rtl");
-                          window.location.reload();
-                        }}
-                      >
+                      <a className="dropdown-item" href="#">
                         <img src={ArabLang} alt="Coral Perfumes" />
                         <span>UAE</span>
-                      </span>
-                      <span
-                        className="dropdown-item"
-                        onClick={() => {
-                          localStorage.setItem("languageDirection", "ltr");
-                          window.location.reload();
-                        }}
-                      >
-                        <img src={EngLang} alt="Coral Perfumes" />
-                        <span>ENG</span>
-                      </span>
+                      </a>
+                      <a className="dropdown-item" href="#">
+                        <img src={EngLang} alt="Coral Perfumes" />{" "}
+                        <span>eng</span>
+                      </a>
                     </div>
                   </div>
                 </div>

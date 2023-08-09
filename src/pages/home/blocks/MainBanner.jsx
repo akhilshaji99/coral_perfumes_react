@@ -1,5 +1,6 @@
 import Banner1 from "../../../assets/img/slider/banner1.png";
 import Banner2 from "../../../assets/img/slider/banner2.png";
+import MobBanner from "../../../assets/img/slider/mob-banner.png";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ModalBtn from "../../../assets/img/pop-up-btn.svg";
@@ -7,7 +8,77 @@ import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 function MainBanner() {
   return (
     <>
-      <div className="container-fluid px-0 main-carousel" >
+      <div className="container-fluid px-0 main-carousel d-block d-sm-block">
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlay={false}
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          partialVisible={false}
+          itemClass=""
+          pauseOnHover={false}
+          keyBoardControl
+          minimumTouchDrag={80}
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 1,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 1,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 1,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
+        >
+          <img
+            src={MobBanner}
+            alt=""
+            style={{
+              display: "block",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+          <img
+            src={MobBanner}
+            alt=""
+            style={{
+              display: "block",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+        </Carousel>
+      </div>
+      <div className="container-fluid px-0 main-carousel d-none d-lg-block">
         <Carousel
           additionalTransfrom={0}
           arrows

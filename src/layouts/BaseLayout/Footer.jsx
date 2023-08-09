@@ -383,7 +383,7 @@ function Footer() {
       <div className="container px-4">
         <div className="row footer-row">
           <div className="col-md-3">
-            <div className="row">
+            <div className="row social-mdedia-icons">
               <div className="col-md-3 col-2">
                 <img src={FacebookIcon} alt="facebook" />
               </div>
@@ -424,31 +424,40 @@ function Footer() {
           <div className="col-md-5">
             <div className="row ">
               <div className="col-md-3">
-                <h6 className="mb-4">info</h6>
-                <ul className="nav flex-column">
+                <h6 className="mb-5">info</h6>
+                <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
-                      about us
+                      about us{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
                       our brands{" "}
-                      <span className="footer-link-seperator">&nbsp; |</span>
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
                       our stores{" "}
-                      <span className="footer-link-seperator">&nbsp; |</span>
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       our services{" "}
-                      <span className="footer-link-seperator">&nbsp; |</span>
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span>
                     </a>
                   </li>
                   <li className="nav-item mb-2">
@@ -459,8 +468,8 @@ function Footer() {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-4">shopping</h6>
-                <ul className="nav flex-column">
+                <h6 className="mb-5">shopping</h6>
+                <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       perfumes{" "}
@@ -503,8 +512,8 @@ function Footer() {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-4">help</h6>
-                <ul className="nav flex-column">
+                <h6 className="mb-5">help</h6>
+                <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       contact us{" "}
@@ -547,7 +556,7 @@ function Footer() {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-4">support</h6>
+                <h6 className="mb-5">support</h6>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2">
                     <a href="tel:+97123345346767" className="nav-link">
@@ -570,7 +579,7 @@ function Footer() {
           <div className="col-md-5">
             <form onSubmit={formik.handleSubmit}>
               <div className="row">
-                <div className="col-md-8 col-6 align-items-center">
+                <div className="col-md-8 col-8 align-items-center">
                   <input
                     type="email"
                     className="form-control"
@@ -580,7 +589,7 @@ function Footer() {
                     placeholder="Email"
                   />
                 </div>
-                <div className="col-md-4 col-6">
+                <div className="col-md-4 col-4">
                   {/* <NavLink to="/login"> */}
                   <button
                     type="submit"
@@ -673,11 +682,11 @@ function Footer() {
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">2023 All Rights Reserved</div>
-            <div className="col-md-4 text-center col-6">
+            <div className="col-md-4 text-start col-8">
               <a href="">Privacy & Cookies </a> / <a href="">Ts & Cs</a> /{" "}
               <a href="">Shipping</a>{" "}
             </div>
-            <div className="col-md-4 text-end col-6">
+            <div className="col-md-4 text-end col-4 company-name">
               Engineerd By{" "}
               <a href="https://cloud6.co.in/" target="_blank">
                 Cloud 6

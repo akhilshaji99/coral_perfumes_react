@@ -22293,6 +22293,7 @@ h3 {
   border-radius: 9px;
   border: 1px solid #fff;
   color: #fff;
+  padding: 10px;
 }
 .footer-credits {
   color: var(--fc-white) !important;
@@ -26555,10 +26556,26 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .category-top {
-    padding: 13px 29px;
+    padding: 13px 15px;
   }
   .top-categories h3 {
     font-size: 12px !important;
+  }
+  .category-top-img img {
+    border-radius: 50%;
+    padding: 8px;
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        #00bb61 0deg,
+        #97d25c 174.38deg,
+        #f6e059 360deg
+      ),
+      linear-gradient(0deg, #d9d9d9, #d9d9d9);
+    max-width: 85px;
+    max-height: 85px;
+  }
+  .category-top-img h3{
+    font-size: 14px;
   }
 }
 .category-top h1 {
@@ -27492,6 +27509,168 @@ border-radius: none !important;
     padding-left: calc(var(--fc-gutter-x) * 0.15);
     padding-right: calc(var(--fc-gutter-x) * 0.15);
   }
+  .footer-credits a {
+    color: var(--fc-white) !important;
+    padding: 0 5px;
+    font-size: 10px;
+    text-align: start !important;
+  }
+  .company-name{
+    color: var(--fc-white) !important;
+    padding: 0 5px;
+    font-size: 10px;
+    text-align: start !important;
+  }
+  .flash-sale-container .react-multiple-carousel__arrow{
+    display: none !important;
+  }
+.wallet-banner .react-multiple-carousel__arrow{
+    display: none !important;
+  }
+  .wallet-banner {
+    border-radius: 9px;
+    background: #a37073;
+    box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+    padding: 15px 12px;
+  }
+  .wallet-banner h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.58px;
+    text-transform: uppercase;
+    text-align: start !important;
+  }
+  .wallet-banner h5 {
+    color: #fff;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 131%; /* 26.855px */
+    letter-spacing: 1.025px;
+    text-transform: uppercase;
+  }
+  .wallet-card {
+    border-radius: 26px;
+    border: 4px solid #fff;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* padding: 25px; */
+    overflow: hidden;
+    margin: 0 8px;
+  }
+  .wallet-card > div {
+    background: #fff;
+    box-shadow: 7px 10px 18px 0px rgba(22, 21, 22, 0.56),
+      -12px -9px 35px 0px rgba(255, 255, 255, 0.39),
+      -5px 10px 16px 0px rgba(55, 10, 53, 0.27) inset;
+    width: 100%;
+    padding: 10px;
+  }
+  .wallet-card h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .wallet-card h2 {
+    color: #000;
+    text-align: center;
+    font-family: Arial Black;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  .category-top-div4{
+    top: unset;
+    margin-bottom: unset;
+  }
+  .category-top-div3{
+    top: unset;
+  }
+  .category-top-div2{
+    top: unset;
+  }
+  .category-top-div{
+    top: unset;
+  }
+  .main-carousel .react-multiple-carousel__arrow--left {
+    top: unset;
+    background-color: #fff;
+  }
+  .main-carousel .react-multiple-carousel__arrow--right {
+    top: unset;
+    background-color: #fff;
+  }
+  .ModalBtn {
+    position: absolute;
+    top: 0;
+    transform: scale(0.45);
+    right: -22px;
+    z-index: 999;
+  }
+  .banner-flashsale {
+    /* background-image: url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX43871794.jpg"); */
+    background-repeat: none;
+    background-size: cover;
+    padding: 22px 25px;
+  }
+  .timer-card {
+    border-radius: 9px;
+    background: #FEFAEC;
+    box-shadow: -4px 4px 3px 0px #000; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    justify-content: center;
+    height: 65px;
+    width: 65px;
+  }
+  .timer-card h1 {
+    color: #000;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+  }
+  .banner-flashsale h2 {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103.5%; /* 44.505px */
+    text-transform: uppercase;
+  }
+  .banner-flashsale p {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 103.5%; /* 15.525px */
+    letter-spacing: 1.05px;
+    text-transform: uppercase;
+  }
+  .banner-flashsale h5 {
+    color: #fff;
+    font-family: var(--fc-font-regular);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 390;
+    line-height: normal;
+  }
 }
 .footer-link-seperator {
   visibility: hidden;
@@ -27502,4 +27681,28 @@ border-radius: none !important;
 .bottom-nav {
   border-top-right-radius: 9px;
   border-top-left-radius: 9px;
+}
+.social-mdedia-icons img{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1); 
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1); 
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+
+}
+.social-mdedia-icons img:hover{
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.1);   
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.1);
+  transition: all 200ms ease-in;
+  transform: scale(1.1);
 }
