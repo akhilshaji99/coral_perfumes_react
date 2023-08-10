@@ -7,6 +7,7 @@ import FourCol from "../../../assets/img/icons/4-item.svg";
 import FourColActive from "../../../assets/img/icons/4-item-active.svg";
 import CustomDropdown from "./CustomDropdown";
 import ProductDetails from "../../common/ProductDetails";
+import FilterMob from "../../../assets/img/icons/filter-mob.svg";
 
 function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const [productList, setProductList] = useState([]);
@@ -92,7 +93,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   };
   return (
     <>
-      <section className="col-lg-9 col-md-12">
+      <section className="">
         <ProductBanner />
         <div className="mt-4">
           <div className="container-fluid px-0 mb-5">
@@ -100,7 +101,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
               <div className="col-md-6"></div>
               <div className="col-md-6 text-end">
                 <div className="row align-items-center d-space-around">
-                  <div className="col-md-1 sort-icon">
+                  <div className="col-md-1 d-none d-sm-block sort-icon">
                     {productLayout === "col-md-4" ? (
                       <img src={ThreeColActive} alt="Coral" />
                     ) : (
@@ -108,28 +109,46 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
                         src={ThreeCol}
                         alt="Coral"
                         onClick={() => {
-                          setProductLayout("col-md-4");
+                          setProductLayout("col-md-4 col-6");
                         }}
                       />
                     )}
                   </div>
-                  <div className="col-md-1 sort-icon">
-                    {productLayout === "col-md-3" ? (
+                  <div className="col-md-1 d-none d-sm-block sort-icon">
+                    {productLayout === "col-md-6" ? (
                       <img src={FourColActive} alt="Coral" />
                     ) : (
                       <img
                         src={FourCol}
                         alt="Coral"
                         onClick={() => {
-                          setProductLayout("col-md-3");
+                          setProductLayout("col-md-3 col-6");
                         }}
                       />
                     )}
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-6 d-lg-none">
+                    <div class="ms-2 ">
+                      <a
+                        class="btn btn-filter w-100"
+                        data-bs-toggle="offcanvas"
+                        href="#offcanvasCategory"
+                        role="button"
+                        aria-controls="offcanvasCategory"
+                      >
+                        Filters{" "}
+                        <span>
+                          {" "}
+                          <img src={FilterMob} alt="" />
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="col-md-3 col-6">
                     <CustomDropdown applyRelevanceFilter={setRelevanceFilter} />
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-3 col-12">
                     <h6>{count} Items</h6>
                   </div>
                 </div>
