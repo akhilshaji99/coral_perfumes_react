@@ -19,6 +19,26 @@ function Index() {
   };
   return (
     <section className="mt-8 mb-lg-14 mb-8">
+      <div className="row">
+        {/* col */}
+        <div className="col-12">
+          <div>
+            <div className="mb-8 text-center">
+              {/* text */}
+              <h1
+                className="fw-bold mb-0"
+                style={{
+                  font: "Brandon Text",
+                  fontWeight: "450",
+                  fontSize: "21px",
+                }}
+              >
+                VISIT US
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <div class="row">
           {stores?.map((brand, index) => {
@@ -45,19 +65,22 @@ function Index() {
                           />
                         </div>
                         <div
-                          class="col-sm bg-dark d-flex" 
+                          class="col-sm bg-dark d-flex"
                           style={{ "min-height": "250px" }}
                         >
                           <div>
-                            <h5 style={{"color":"white"}}>{brand.store_name}</h5>
-                            <h5 style={{"color":"white"}}>{brand.emirate_name}</h5>
-                            <h5 style={{"color":"white"}}>{brand.store_address}</h5>
+                            <h5 style={{ color: "white" }}>
+                              {brand.store_name}
+                            </h5>
+                            <h5 style={{ color: "white" }}>
+                              {brand.emirate_name}
+                            </h5>
+                            <h5 style={{ color: "white" }}>
+                              {brand.store_address}
+                            </h5>
 
-                          <button  class="btn btn-white ">
-                            visit us{" "}
-                          </button>
+                            <button class="btn btn-white ">visit us </button>
                           </div>
-                          
                         </div>
                       </div>
                     </div>
