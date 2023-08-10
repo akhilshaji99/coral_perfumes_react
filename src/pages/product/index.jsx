@@ -42,19 +42,26 @@ function Index() {
     <>
       <main>
         <div className="container-fluid">
-          <BreadCrumps />
+          <div className="d-none d-sm-block">
+            <BreadCrumps />
+          </div>
           <div className="row gx-10">
-            <FilterSidebar
-              checkCategoryFilter={checkCategoryFilter}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              passingDateRangeToParent={passingDateRangeToParent}
-            />
-            <ProductMain
-              filterArray={filterArray}
-              passingDataToParent={passingDataToParent}
-              priceRangeFilter={priceRangeFilter}
-            />
+            <div className="col-lg-3 col-md-4">
+            
+              <FilterSidebar
+                checkCategoryFilter={checkCategoryFilter}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                passingDateRangeToParent={passingDateRangeToParent}
+              />
+            </div>
+            <div className="col-lg-9 col-md-12">
+              <ProductMain
+                filterArray={filterArray}
+                passingDataToParent={passingDataToParent}
+                priceRangeFilter={priceRangeFilter}
+              />
+            </div>
           </div>
         </div>
       </main>
