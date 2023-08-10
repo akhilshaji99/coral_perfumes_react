@@ -26647,8 +26647,8 @@ padding: 5px;
 text-align: start;
 font-weight: 400;
   }
-  .btn-filter svg{
-    float: right;
+  .btn-filter span{
+    float: right !important;
   }
   .btn-filter:hover{
     background-color: #fff !important;
