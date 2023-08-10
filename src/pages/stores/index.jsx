@@ -1,93 +1,74 @@
-function index() {
+import request from "../../utils/request";
+import { useEffect, useState } from "react";
+import deviceImageRender from "../../utils/deviceImageRender";
+
+function Index() {
+  const [stores, setStores] = useState([]);
+  useEffect(() => {
+    getStores();
+  }, []);
+  const getStores = async () => {
+    try {
+      const response = await request.get("get_store_details/");
+      if (response.data) {
+        setStores(response.data.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <section className="mt-8 mb-lg-14 mb-8">
       <div className="container">
-        {/* row */}
-        <div className="row">
-          <h2 class="mb-6 text-center my-profile-heading">Visit US</h2>
-        </div>
-        <div className="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-4 g-lg-4">
-          {/* col */}
-          <div className="col">
-            {/* card */}
-            <div className="card p-6 card-product">
-              <div>
-                {" "}
-                {/* img */}
-                <img
-                  src="../assets/images/stores-logo/stores-logo-1.svg"
-                  alt=""
-                  className="rounded-circle icon-shape icon-xl"
-                />
-              </div>
-              <div className="mt-4">
-                {/* content */}
-                <h2 className="mb-1 h5">
-                  <a href="#!" className="text-inherit">
-                    E-Grocery Super Market
-                  </a>
-                </h2>
-                <div className="small text-muted">
-                  <span className="me-2">Organic </span>
-                  <span className="me-2">Groceries</span>
-                  <span>Butcher Shop</span>
-                </div>
-                <div className="py-3">
-                  <ul className="list-unstyled mb-0 small">
-                    <li>Delivery</li>
-                    <li>Pickup available</li>
-                  </ul>
-                </div>
-                <div>
-                  {/* badge */}{" "}
-                  <div className="badge text-bg-light border">7.5 mi away</div>
-                  {/* badge */}{" "}
-                  <div className="badge text-bg-light border">
-                    In-store prices{" "}
+        <div class="row">
+          {stores?.map((brand, index) => {
+            return (
+              <>
+                <div class="col-6 ps-0" key={index}>
+                  <div class="card mt-5">
+                    <div class="flex-fill">
+                      <div class="d-flex align-items-center">
+                        <div
+                          class="col-sm "
+                          style={{
+                            backgroundImage:
+                              `url("` +
+                              deviceImageRender(brand.store_listing_image) +
+                              `")`,
+                            "min-height": "250px",
+                          }}
+                        >
+                          <img
+                            src={deviceImageRender(brand.store_listing_image)}
+
+                            // alt={brand.image_alt}
+                          />
+                        </div>
+                        <div
+                          class="col-sm bg-dark d-flex" 
+                          style={{ "min-height": "250px" }}
+                        >
+                          <div>
+                            <h5 style={{"color":"white"}}>{brand.store_name}</h5>
+                            <h5 style={{"color":"white"}}>{brand.emirate_name}</h5>
+                            <h5 style={{"color":"white"}}>{brand.store_address}</h5>
+
+                          <button  class="btn btn-white ">
+                            visit us{" "}
+                          </button>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            {/* card */}
-            <div className="card p-6 card-product">
-              <div>
-                {" "}
-                {/* img */}
-                <img
-                  src="../assets/images/stores-logo/stores-logo-2.svg"
-                  alt=""
-                  className="rounded-circle icon-shape icon-xl"
-                />
-              </div>
-              <div className="mt-4">
-                {/* content */}
-                <h2 className="mb-1 h5">
-                  <a href="#!" className="text-inherit">
-                    DealShare Mart
-                  </a>
-                </h2>
-                <div className="small text-muted">
-                  <span className="me-2">Alcohol</span>
-                  <span className="me-2">Groceries</span>
-                </div>
-                <div className="py-3">
-                  <ul className="list-unstyled mb-0 small">
-                    <li>Delivery</li>
-                    <li>Pickup available</li>
-                  </ul>
-                </div>
-                <div>
-                  {/* badge */}{" "}
-                  <div className="badge text-bg-light border">7.2 mi away</div>
-                </div>
-              </div>
-            </div>
-          </div>
+              </>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-export default index;
+export default Index;
