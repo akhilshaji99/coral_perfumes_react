@@ -22,7 +22,7 @@ function Menubar() {
   };
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
+      className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
       <div className="container mob-c-view">

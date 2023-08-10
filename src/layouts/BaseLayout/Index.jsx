@@ -22,14 +22,17 @@ const BaseLayout = () => {
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <div className="border-bottom ">
-        <TopHeader />
-        <Account />
-        <Menubar />
+        <nav className="fixed-top bg-white ">
+          <TopHeader />
+          <Account />
+          <Menubar />
+        </nav>
         <CartDrawer />
         <OTPModal />
       </div>
-
-      <Outlet />
+      <div className="fixed-top-margin">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

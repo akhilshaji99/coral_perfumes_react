@@ -37,7 +37,7 @@ function index() {
                 <div className="row">
                   {/* {productList.map((product, index) => { */}
                   {/* return ( */}
-                  <div className="col-md-4" key={1}>
+                  <div className="col-md-4 col-6" key={1}>
                     <div className="product-grid">
                       <ProductDetails
                         product={{
