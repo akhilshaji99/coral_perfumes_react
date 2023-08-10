@@ -7,6 +7,10 @@ import Returns from "../../assets/img/icons/my-account/returns.svg";
 import Logout from "../../assets/img/icons/my-account/logout.svg";
 
 function MyAccountSidebar() {
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <>
       <div className="col-12">
@@ -187,44 +191,52 @@ function MyAccountSidebar() {
         <div className="offcanvas-body">
           <ul className="nav flex-column nav-pills nav-pills-dark">
             <li className="nav-item">
+            <NavLink to="/personal-info">
+
               <a
                 className="nav-link active"
                 aria-current="page"
-                href="account-orders.html"
+              
               >
                 <i className="feather-icon icon-shopping-bag me-2" />
                 MY PERSONAL INFO
               </a>
+              </NavLink>
             </li>
             <li className="nav-item">
+            <NavLink to="/address-book">
+
               <a
                 className="nav-link"
                 aria-current="page"
-                href="account-orders.html"
+              
               >
                 <i className="feather-icon icon-shopping-bag me-2" />
                 ADDRESS BOOK
               </a>
+              </NavLink>
             </li>
             <li className="nav-item">
+            <NavLink to="/">
               <a
                 className="nav-link "
                 aria-current="page"
-                href="account-orders.html"
               >
                 <i className="feather-icon icon-shopping-bag me-2" />
                 MY ORDERS
               </a>
+              </NavLink>
             </li>
             <li className="nav-item">
+            <NavLink to="/wishlist">
               <a
                 className="nav-link "
                 aria-current="page"
-                href="account-orders.html"
               >
                 <i className="feather-icon icon-shopping-bag me-2" />
                 MY WISHLIST
               </a>
+              </NavLink>
             </li>
             <li className="nav-item">
               <a
@@ -240,7 +252,7 @@ function MyAccountSidebar() {
               <a
                 className="nav-link "
                 aria-current="page"
-                href="account-orders.html"
+                onClick={logout}
               >
                 <i className="feather-icon icon-shopping-bag me-2" />
                 LOGOUT

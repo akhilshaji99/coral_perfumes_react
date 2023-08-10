@@ -17,10 +17,14 @@ import ScrollToTop from "react-scroll-to-top";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
 import { BottomNavigation } from "reactjs-bottom-navigation";
+import { useNavigate } from "react-router-dom";
+
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
 function Footer() {
+  const navigate = useNavigate();
+
   const handleOnSubmit = (values) => {
     subscribeNewsLetter(values);
   };
@@ -38,7 +42,7 @@ function Footer() {
   const bottomNavItems = [
     {
       title: "Home",
-      onClick: ({ id }) => alert("menu clicked " + id),
+      onClick: ({ id }) =>  navigate("/"),
       icon: (
         <svg
           width={25}
@@ -76,7 +80,7 @@ function Footer() {
     // items can have either title, icon or both or neither!
     {
       title: "Categories",
-
+      onClick: ({ id }) =>  navigate("/"),
       icon: (
         <svg
           width={27}
@@ -156,6 +160,7 @@ function Footer() {
     },
     {
       title: "Wishlist",
+      onClick: ({ id }) =>  navigate("/wishlist"),
       icon: (
         <svg
           width={26}
@@ -191,6 +196,7 @@ function Footer() {
     },
     {
       title: "Store",
+      onClick: ({ id }) =>  navigate("/stores"),
       icon: (
         <svg
           width={27}
@@ -287,6 +293,7 @@ function Footer() {
     // the render method enables custom item content
     {
       title: "Profile",
+      onClick: ({ id }) =>  navigate("/personal-info"),
       icon: (
         <svg
           width={27}
