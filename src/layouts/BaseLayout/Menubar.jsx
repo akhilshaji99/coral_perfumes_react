@@ -25,14 +25,14 @@ function Menubar() {
       className="navbar navbar-expand-lg navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
-      <div className="container">
+      <div className="container mob-c-view">
         <div
           className="offcanvas offcanvas-start"
           tabIndex={-1}
           id="navbar-default"
           aria-labelledby="navbar-defaultLabel"
         >
-          <div className="offcanvas-header pb-1">
+          {/* <div className="offcanvas-header pb-1">
             <a href="index-2.html">
               <img src="assets/images/logo/freshcart-logo.svg" alt="" />
             </a>
@@ -42,7 +42,7 @@ function Menubar() {
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             />
-          </div>
+          </div> */}
           <div className="offcanvas-body">
             <div className="custom-mega-menu">
               <ul className="navbar-nav align-items-center ">

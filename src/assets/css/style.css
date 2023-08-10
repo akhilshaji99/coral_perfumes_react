@@ -21489,6 +21489,14 @@ fieldset:disabled .btn {
     border-bottom: 0.5px solid #BDBEBB;
     font-family: var(--fc-font-bold);
     text-transform: uppercase;
+    color: #000 !important;
+    padding: 18px 20px;
+  }
+  .mob-c-view .offcanvas.offcanvas-start{
+    top: 18%;
+  }
+  .mob-c-view .offcanvas-backdrop.show {
+    opacity: 0 !important;
   }
 }
 .navbar .dropdown-fullwidth {
@@ -26922,6 +26930,10 @@ font-weight: 400;
   .desktop-thumbs {
     display: none;
   }
+  .mob-arrow{
+    float: right;
+    padding-top: 7.5px;
+  }
 }
 .product-desc-section h1 {
   color: #000;
@@ -27688,8 +27700,8 @@ border-radius: none !important;
   }
   .ModalBtn {
     position: absolute;
-    top: 0;
-    transform: scale(0.45);
+    top: 7%;
+    transform: scale(0.40);
     right: -22px;
     z-index: 999;
   }
