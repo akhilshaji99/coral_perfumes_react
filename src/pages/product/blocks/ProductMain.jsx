@@ -14,7 +14,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
   const [scrollStatus, setScrollStatus] = useState(false);
-  const [productLayout, setProductLayout] = useState("col-md-4");
+  const [productLayout, setProductLayout] = useState("col-md-4 col-6");
   const [relevanceFilter, setRelevanceFilter] = useState("");
 
   const targetElementRef = useRef(null);
@@ -102,7 +102,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
               <div className="col-md-6 text-end">
                 <div className="row align-items-center d-space-around">
                   <div className="col-md-1 d-none d-sm-block sort-icon">
-                    {productLayout === "col-md-4" ? (
+                    {productLayout === "col-md-4 col-6" ? (
                       <img src={ThreeColActive} alt="Coral" />
                     ) : (
                       <img
@@ -115,7 +115,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
                     )}
                   </div>
                   <div className="col-md-1 d-none d-sm-block sort-icon">
-                    {productLayout === "col-md-6" ? (
+                    {productLayout === "col-md-6 col-6" ? (
                       <img src={FourColActive} alt="Coral" />
                     ) : (
                       <img

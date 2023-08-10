@@ -47,7 +47,7 @@ function FilterSidebar({
   };
   return (
     <>
-      <aside className="mb-6 mb-md-0">
+      <aside className="mb-6 mb-md-0 filter-side">
         <div
           className="offcanvas offcanvas-start offcanvas-collapse w-md-50 "
           tabIndex={-1}
@@ -58,12 +58,27 @@ function FilterSidebar({
             <h5 className="offcanvas-title" id="offcanvasCategoryLabel">
               Filter
             </h5>
-            <button
+            <a
               type="button"
               className="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            />
+            >
+              <svg
+                width={6}
+                height={7}
+                viewBox="0 0 6 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.711605 0.794684L5.40265 5.78737M0.711605 5.78737L5.40265 0.794684"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
           </div>
           <div className="offcanvas-body scroll-container ps-lg-2 pt-lg-0">
             <div className="mb-8">

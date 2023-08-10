@@ -121,8 +121,26 @@ function Menubar() {
                                           handleClick(item.slug);
                                         }}
                                       >
-                                        {item.name}
+                                        {item.name}{" "}
+                                        <svg
+                                          width={5}
+                                          height={10}
+                                          viewBox="0 0 5 10"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M0.977539 1L3.77482 4.29293C4.10517 4.68182 4.10517 5.31818 3.77482 5.70707L0.977539 9"
+                                            stroke="black"
+                                            strokeMiterlimit={10}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          />
+                                        </svg>{" "}
                                       </a>
+                                      <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                        {" "}
+                                      </span>
                                     </>
                                   ))
                                 : null}
@@ -138,7 +156,25 @@ function Menubar() {
                                         className="dropdown-item"
                                         href="pages/shop-grid.html"
                                       >
-                                        {item.name}
+                                        {item.name}{" "}
+                                        <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                          {" "}
+                                          <svg
+                                            width={5}
+                                            height={10}
+                                            viewBox="0 0 5 10"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              d="M0.977539 1L3.77482 4.29293C4.10517 4.68182 4.10517 5.31818 3.77482 5.70707L0.977539 9"
+                                              stroke="black"
+                                              strokeMiterlimit={10}
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                            />
+                                          </svg>
+                                        </span>
                                       </a>
                                     </>
                                   ))
@@ -155,7 +191,7 @@ function Menubar() {
                                     ? item.trending.map((item, index) => (
                                         <>
                                           <div
-                                            className="col-md-6 col-6 text-center"
+                                            className="col-md-6 col-12  inline-thumb"
                                             key={index}
                                           >
                                             <div className="thumbnails">
@@ -204,6 +240,7 @@ function Menubar() {
                       </li>
                     ))
                   : null}
+
                 {/* <li className="nav-item dropdown w-100 w-lg-auto">
                   <a
                     className="nav-link dropdown-toggle"
