@@ -8323,10 +8323,11 @@ fieldset:disabled .btn {
   top: 150px;
   transform: translateX(100%);
   width: var(--fc-offcanvas-width);
-  height: 60vh;
+  height: 560px;
   border-radius: 9px 0px 0px 9px;
   background: #fff;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+  overflow-y: hidden !important;
 }
 .offcanvas.offcanvas-top {
   border-bottom: var(--fc-offcanvas-border-width) solid
@@ -8391,11 +8392,11 @@ fieldset:disabled .btn {
   margin-bottom: 0;
   color: #fff;
 }
-.btn-close svg{
+.btn-close svg {
   transform: scale(2);
 }
 .filter-side .offcanvas-header {
-  border-radius:0 !important;
+  border-radius: 0 !important;
 }
 .offcanvas-body {
   flex-grow: 1;
@@ -21731,7 +21732,44 @@ h3 {
 .scroll-container::-moz-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
 }
+/* mini cart */
+.scroll-container2 {
+  height: 300px;
+  overflow: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin;
+}
 
+/* Track - The scrollbar itself */
+.scroll-container2::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle - The draggable part of the scrollbar */
+.scroll-container2::-webkit-scrollbar-thumb {
+  border-radius: 37px;
+  background: rgba(0, 0, 0, 0.2);
+  width: 8px;
+}
+
+/* On hover, make the scrollbar handle darker */
+.scroll-container2::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.scroll-container2::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.scroll-container2::-moz-scrollbar-thumb {
+  border-radius: 37px;
+  background: rgba(0, 0, 0, 0.2);
+  width: 8px;
+}
+
+.scroll-container2::-moz-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
 /* .nav-category .nav-item .nav-link:hover {
   color: var(--fc-primary);
 } */
@@ -27820,33 +27858,34 @@ border-radius: none !important;
     width: 80px;
     height: 80px;
   }
-  .custom-mega-menu .dropdown-item a span{
+  .custom-mega-menu .dropdown-item a span {
     display: flex;
   }
-  .card-product .card-body{
+  .card-product .card-body {
     padding: 2.5px;
   }
-  .nav-item{
+  .nav-item {
     width: 100%;
   }
-  .product-custom-dropdown .dropdown-item{
+  .product-custom-dropdown .dropdown-item {
     padding: none !important;
   }
-  .card2{
+  .card2 {
     border-radius: 0px !important;
     height: 180px !important;
     background-color: #000;
     color: #fff;
     margin-bottom: 30px !important;
   }
-  .card2 img{
+  .card2 img {
     border-radius: 0px !important;
     height: 180px !important;
     object-fit: cover;
   }
-  .fixed-top-margin{
+  .fixed-top-margin {
     margin-top: 150px;
   }
+
 }
 .footer-link-seperator {
   visibility: hidden;
@@ -27914,10 +27953,10 @@ border-radius: none !important;
   display: inline-block;
   padding-right: 10px;
 }
-.store-image-frame img{
+.store-image-frame img {
   height: 250px;
 }
-.card2{
+.card2 {
   border-radius: 0px !important;
   height: 320px;
   background-color: #000;
@@ -27925,21 +27964,118 @@ border-radius: none !important;
   border: none !important;
   margin-bottom: 30px !important;
 }
-.card2 img{
+.card2 img {
   border-radius: 0px !important;
   height: 320px;
   object-fit: cover;
 }
-.card2 .btn{
+.card2 .btn {
   font-family: var(--fc-font-light) !important;
   text-transform: uppercase;
   font-size: 12px;
 }
-.stores-heading{
+.stores-heading {
   font-family: var(--fc-font-bold);
   text-transform: uppercase;
   font-size: 21px;
 }
-.fixed-top-margin{
+.fixed-top-margin {
   margin-top: 200px;
+}
+.my-bag-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 21px;
+  font-family: var(--fc-font-bold);
+}
+.my-bag-card {
+  border-radius: 9px !important;
+  background: #fff;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+  margin: 25px 0 25px 0;
+  padding: 33px;
+}
+.my-bag-img {
+  background-color: rgba(235, 236, 233, 1);
+  width: 124px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-bag-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transform: scale(1.55);
+}
+.my-bag-remove-btn {
+  top: 10%;
+  cursor: pointer;
+  position: absolute;
+}
+.my-bag-text h6 {
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 12px;
+  text-transform: capitalize;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+.my-bag-text p {
+  color: #000;
+  font-family: var(--fc-font-light);
+  font-size: 12px;
+  text-transform: capitalize;
+  padding-left: 15px;
+}
+.price-area-bag {
+  transform: scale(0.25);
+}
+#price-my-bag li {
+  display: inline-block;
+  padding: 0 10px;
+}
+#price-my-bag {
+  padding-left: 0px !important;
+  text-align: left;
+  position: relative;
+  left: 0;
+  margin-bottom: 15px;
+}
+
+#price-my-bag h5{
+  font-size: 16px;
+}
+.my-bag-spinner{
+  transform: scale(0.65);
+  position: relative;
+  left: -12%;
+}
+.my-bag-spinner .input-spinner.form-input1{
+  width: 0% !important;
+}
+.delivery-info{
+  text-align: center;
+  color: #000;
+  padding-top: 20px;
+}
+.delivery-info span{
+  padding-right: 8px;
+}
+.my-bag-card .form-control{
+  padding: 9.5px !important;
+}
+.promo-code-label{
+  color: #000;
+  font-family: var(--fc-font-regular);
+}
+.my-bag-card .list-group:last-child {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-width: 0;
+}
+.my-bag-summary-border{
+border-bottom: 1px solid #BDBEBB  !important;
+padding: 20px 0 !important;
 }

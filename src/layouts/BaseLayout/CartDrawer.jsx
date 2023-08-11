@@ -68,8 +68,8 @@ function CartDrawer({ cartDrawerFlag }) {
                 aria-label="Close"
               /> */}
       </div>
-      <div className="offcanvas-body scroll-container">
-        <ul className="list-group list-group-flush">
+      <div className="offcanvas-body ">
+        <ul className="list-group list-group-flush scroll-container2">
           {/* list group */}
           <li className="list-group-item py-3 ps-0 ">
             {/* row */}
@@ -175,6 +175,10 @@ function CartDrawer({ cartDrawerFlag }) {
                 </div>
               );
             })}
+          </li>
+        </ul>
+        {cartItems.length > 0 ? (
+          <div className="card-footer">
             {cartItems.length > 0 ? (
               <div className="row py-3 align-items-center">
                 <div className="col-md-6">
@@ -186,10 +190,6 @@ function CartDrawer({ cartDrawerFlag }) {
                 </div>
               </div>
             ) : null}
-          </li>
-        </ul>
-        {cartItems.length > 0 ? (
-          <div className="">
             <button
               className="btn btn-dark w-100 col-md-10"
               onClick={() => {
@@ -200,6 +200,35 @@ function CartDrawer({ cartDrawerFlag }) {
             >
               CHECK OUT
             </button>
+            <p className="text-center pt-3 text-black">
+              <svg
+                width={22}
+                height={22}
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.8743 1.41669V11C13.8743 12.0542 13.0118 12.9167 11.9577 12.9167H1.41602V5.25002C1.41602 3.1321 3.13143 1.41669 5.24935 1.41669H13.8743Z"
+                  stroke="black"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M20.5827 12.9167V15.7917C20.5827 17.3825 19.2985 18.6667 17.7077 18.6667H16.7493C16.7493 17.6125 15.8868 16.75 14.8327 16.75C13.7785 16.75 12.916 17.6125 12.916 18.6667H9.08268C9.08268 17.6125 8.22018 16.75 7.16602 16.75C6.11185 16.75 5.24935 17.6125 5.24935 18.6667H4.29102C2.70018 18.6667 1.41602 17.3825 1.41602 15.7917V12.9167H11.9577C13.0118 12.9167 13.8743 12.0542 13.8743 11V4.29169H15.6377C16.3277 4.29169 16.9602 4.66544 17.3052 5.2596L18.9439 8.12502H17.7077C17.1806 8.12502 16.7493 8.55627 16.7493 9.08335V11.9584C16.7493 12.4854 17.1806 12.9167 17.7077 12.9167H20.5827Z"
+                  stroke="black"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M7.16667 20.5833C7.675 20.5833 8.16251 20.3814 8.52195 20.022C8.8814 19.6625 9.08333 19.175 9.08333 18.6667C9.08333 18.1583 8.8814 17.6708 8.52195 17.3114C8.16251 16.9519 7.675 16.75 7.16667 16.75C6.65834 16.75 6.17082 16.9519 5.81138 17.3114C5.45193 17.6708 5.25 18.1583 5.25 18.6667C5.25 19.175 5.45193 19.6625 5.81138 20.022C6.17082 20.3814 6.65834 20.5833 7.16667 20.5833ZM14.8333 20.5833C15.3417 20.5833 15.8292 20.3814 16.1886 20.022C16.5481 19.6625 16.75 19.175 16.75 18.6667C16.75 18.1583 16.5481 17.6708 16.1886 17.3114C15.8292 16.9519 15.3417 16.75 14.8333 16.75C14.325 16.75 13.8375 16.9519 13.478 17.3114C13.1186 17.6708 12.9167 18.1583 12.9167 18.6667C12.9167 19.175 13.1186 19.6625 13.478 20.022C13.8375 20.3814 14.325 20.5833 14.8333 20.5833ZM20.5833 11V12.9167H17.7083C17.1812 12.9167 16.75 12.4854 16.75 11.9583V9.08333C16.75 8.55625 17.1812 8.125 17.7083 8.125H18.9446L20.5833 11Z"
+                  stroke="black"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>{" "}
+              &nbsp; Add AED 20 more for free delivery
+            </p>
           </div>
         ) : null}
         {/* btn */}

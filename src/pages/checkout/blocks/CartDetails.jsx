@@ -14,7 +14,7 @@ function CartDetails() {
   }, []);
 
   return (
-    <div className="card col-12 col-md-12 offset-lg-1 col-lg-4">
+    <div className="card  col-12 col-md-12 offset-lg-1 col-lg-4">
       <div className="mb-5 mt-6">
         <div className="">
           <h5 className="px-6 py-4 bg-transparent mb-0">
