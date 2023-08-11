@@ -27,8 +27,11 @@ function Index() {
     const product_slug = queryParameters.get("slug");
     try {
       if (product_slug) {
-        const response = await request.get(
-          "get_product_variants/" + product_slug + "/"
+        const guestToken = localStorage.getItem("guestToken");
+        const response = await request.post(
+          "get_product_variants/" + product_slug + "/",{
+            token: guestToken,
+          }
         );
 
         if (response?.data?.product_data) {

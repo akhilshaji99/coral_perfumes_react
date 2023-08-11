@@ -23,7 +23,11 @@ function Index() {
   }, []);
   const getHomeContent = async () => {
     try {
-      const response = await request.get("get_home_content/");
+    const guestToken = localStorage.getItem("guestToken");
+      const response = await request.post("get_home_content/",
+      {
+        token: guestToken,
+      });
       if (response.data) {
         const mainKeys = Object.entries(response.data).map(([key]) => key);
         setHomeComponents(mainKeys);
