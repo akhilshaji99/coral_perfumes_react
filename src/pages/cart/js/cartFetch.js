@@ -7,7 +7,7 @@ const getCartDatas = async () => {
   try {
     const response = await request.post("api/cart/items/", {
       // token: guestToken,
-      token: userData ? "Token " + userData?.token : guestToken,
+      token: userData ? userData?.token : guestToken,
     });
 
     if (response?.data?.status) {

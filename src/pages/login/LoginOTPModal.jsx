@@ -87,8 +87,10 @@ function LoginOTPModal({ componentDatas }) {
       var bodyFormData = new FormData();
       let otpString = letters.toString();
       var otp = otpString.split(",").join("");
+      const guestToken = localStorage.getItem("guestToken");
       bodyFormData.append("phone_or_email", componentDatas.phone_number);
       bodyFormData.append("otp", otp);
+      bodyFormData.append("token", guestToken);
 
       const response = await request.post("verify_otp/", bodyFormData);
 
