@@ -129,6 +129,15 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
       ));
     } catch (error) {
       console.log("error", error);
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={error.data.status}
+          title={"ERROR"}
+          message={error.data.message}
+        />
+      ));
     }
   };
 
