@@ -1,5 +1,5 @@
 import BreadCrumps from "../common/BreadCrumps";
-import { useEffect } from "react";
+import { useEffect, useCallback  } from "react";
 import { useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CartSummary from "./blocks/CartSummary";
@@ -8,11 +8,84 @@ import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
 import cartRemove from "../../pages/cart/js/cartRemove";
 import RemoveBtn from "../../assets/img/icons/close.svg";
-
+import GuestLoginModal from "./blocks/GuestLoginModal";
+import LoginOTPModal from "../login/LoginOTPModal";
+import $ from "jquery";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
+import request from "../../utils/request";
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+});
 function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
+  const handleOnSubmit = (values) => {
+    // subscribeNewsLetter(values);
+    login(values);
+    console.log(values);
+  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      phone_number: "",
+    },
+
+    validationSchema: schema,
+    onSubmit: handleOnSubmit,
+  });
+
+  const login = async (values) => {
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append("email", values.email);
+      bodyFormData.append("phone_number", values.phone_number);
+      const response = await request.post("login/", bodyFormData);
+      console.log("response", response);
+      let status = "succsss";
+      let title = "SUCCESS";
+      if (!response.data.status) {
+        status = "error";
+        title = "ERROR";
+      } else {
+        console.log("otp verification");
+        // $('#userModal').modal('show');
+        $("document").ready(function () {
+          $("#guestLoginModal").toggleClass("modal modal fade");
+          $("#guestLoginModal").hide();
+          $("#otpModal").toggle();
+          $("#otpModal").toggleClass("modal fade modal");
+          // $('#userModal').show();
+          // });
+        });
+      }
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={status}
+          title={title}
+          message={response.data.message}
+        />
+      ));
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  const setInputValue = useCallback(
+    (key, value) =>
+      formik.setValues({
+        ...formik.values,
+        [key]: value,
+      }),
+    [formik]
+  );
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -41,6 +114,9 @@ function Index() {
               </div>
             </div>
           </div>
+          <GuestLoginModal formik={formik} setInputValue={setInputValue}/>
+          <LoginOTPModal componentDatas={formik.values} redirectTo={"checkout"} />
+
           {/* row */}
           <div className="row">
             <div className="col-lg-8 col-md-7">

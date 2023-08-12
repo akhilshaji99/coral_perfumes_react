@@ -3,7 +3,7 @@ import {
   LoginSocialGoogle,
   LoginSocialFacebook,
   LoginSocialApple,
-  IResolveParams,
+  // IResolveParams,
 } from "reactjs-social-login";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
@@ -111,7 +111,7 @@ function Login() {
                   scope="openid profile email"
                   discoveryDocs="claims_supported"
                   access_type="offline"
-                  onResolve={({ provider, data }: IResolveParams) => {
+                  onResolve={({ provider, data }) => {
                     // setProvider(provider);
                     setProfile(data);
                     console.log("profileData", data);
@@ -145,7 +145,7 @@ function Login() {
                   onLoginStart={onLoginStart}
                   redirect_uri={REDIRECT_URI}
                   onLogoutSuccess={onLogoutSuccess}
-                  onResolve={({ provider, data }: IResolveParams) => {
+                  onResolve={({ provider, data }) => {
                     // setProvider(provider);
                     setProfile(data);
                     console.log(data);
@@ -186,7 +186,7 @@ function Login() {
                   scope={"name email"}
                   redirect_uri={REDIRECT_URI}
                   onLoginStart={onLoginStart}
-                  onResolve={({ provider, data }: IResolveParams) => {
+                  onResolve={({ provider, data }) => {
                     // setProvider(provider);
                     setProfile(data);
                   }}

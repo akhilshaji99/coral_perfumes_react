@@ -6,7 +6,7 @@ import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
-function LoginOTPModal({ componentDatas }) {
+function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   const navigate = useNavigate();
   const handleModalClose = () => {
     $("#otpModal").toggle();
@@ -83,6 +83,10 @@ function LoginOTPModal({ componentDatas }) {
     }
   };
   const verify_otp = async (values) => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    if(queryParameters == "checkout="){
+      redirectTo = "checkout";
+    }
     try {
       var bodyFormData = new FormData();
       let otpString = letters.toString();
@@ -107,7 +111,12 @@ function LoginOTPModal({ componentDatas }) {
           userInfo: response.data.user,
         };
         localStorage.setItem("userDatas", JSON.stringify(userData));
+        if(redirectTo != null ){
+          navigate("/"+redirectTo);
+        }else{
         navigate("/");
+
+        }
       }
       toast((t) => (
         <AlerMessage

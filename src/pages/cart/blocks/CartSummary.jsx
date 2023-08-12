@@ -1,5 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate} from "react-router-dom";
+import $ from "jquery";
+
 function CartSummary({ cartDatas }) {
+  const navigate = useNavigate();
+
+  const handleOnProceed = (values) => {
+    // subscribeNewsLetter(values);
+  const userData = JSON.parse(localStorage.getItem("userDatas"));
+   if(!userData){
+    $("document").ready(function () {
+      
+      $("#guestLoginModal").toggle();
+      $("#guestLoginModal").toggleClass("modal fade modal");
+    
+    });
+   }else{
+    navigate("/checkout");
+   }
+    
+  };
   return (
     <div className="col-12 col-lg-4 col-md-5">
       {/* card */}
@@ -77,11 +96,11 @@ function CartSummary({ cartDatas }) {
             </ul>
           </div>
           <div className="d-grid mb-1 mt-4">
-            <NavLink to={"/checkout"}>
-              <button className="btn btn-dark w-100 btn-lg " type="submit">
+            {/* <NavLink to={"/checkout"}> */}
+              <button onClick={handleOnProceed} className="btn btn-dark w-100 btn-lg " type="submit">
                 PROCEED
               </button>
-            </NavLink>
+            {/* </NavLink> */}
           </div>
           <p className="delivery-info">
             <span>
