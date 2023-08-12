@@ -1,10 +1,12 @@
-import React, { useCallback, useState, useEffect, createRef } from "react";
+import React, { useCallback, useState, useEffect, createRef,useRef } from "react";
 
 import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
+
+
 
 function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   const navigate = useNavigate();
@@ -17,33 +19,12 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   const [inputRefsArray] = useState(() =>
     Array.from({ length: 6 }, () => createRef())
   );
-  const [letters, setLetters] = useState(() =>
-    Array.from({ length: 6 }, () => "")
-  );
-  const handleKeyPress = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = prevIndex < 6 - 1 ? prevIndex + 1 : 0;
-      const nextInput = inputRefsArray?.[nextIndex]?.current;
-      nextInput.focus();
-      nextInput.select();
-      return nextIndex;
-    });
-  };
-
-  useEffect(() => {
-    if (inputRefsArray?.[0]?.current) {
-      inputRefsArray?.[0]?.current?.focus();
-    }
-
-    window.addEventListener("keyup", handleKeyPress, false);
-    return () => {
-      window.removeEventListener("keyup", handleKeyPress);
-    };
-  }, []);
+ 
+ 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    verify_otp(letters);
-    console.log(letters);
+    verify_otp();
+    
   };
   const resendOtp = async (e) => {
     try {
@@ -82,20 +63,18 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
       console.log("error", error);
     }
   };
-  const verify_otp = async (values) => {
+  const verify_otp = async () => {
+  
     const queryParameters = new URLSearchParams(window.location.search);
     if(queryParameters == "checkout="){
       redirectTo = "checkout";
     }
     try {
       var bodyFormData = new FormData();
-      let otpString = letters.toString();
-      var otp = otpString.split(",").join("");
       const guestToken = localStorage.getItem("guestToken");
       bodyFormData.append("phone_or_email", componentDatas.phone_number);
-      bodyFormData.append("otp", otp);
+      bodyFormData.append("otp", otpVal.join(""));
       bodyFormData.append("token", guestToken);
-
       const response = await request.post("verify_otp/", bodyFormData);
 
       console.log("response", response);
@@ -129,15 +108,33 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
       ));
     } catch (error) {
       console.log("error", error);
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={error.data.status}
-          title={"ERROR"}
-          message={error.data.message}
-        />
-      ));
+    }
+  };
+  const [otpVal, setOtpVal] = useState([]);
+  const textBase = useRef(null);
+ 
+  useEffect(() => {
+    
+    if (otpVal.join("").length === textBase.current.childElementCount) {
+    
+      textBase.current.classList.add("otp-error");
+
+    }
+  }, [otpVal]);
+
+  const focusNext = (e) => {
+    const childCount = textBase.current.childElementCount;
+    const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
+    if (currentIndex !== childCount - 1 && e.target.value != "") {
+      e.target.nextSibling.focus();
+    } else {
+      const values = [];
+      textBase.current.childNodes.forEach((child) => {
+        values.push(child.value);
+      });
+      if (values.length !== 0) {
+        setOtpVal(values);
+      }
     }
   };
 
@@ -175,30 +172,27 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
                     <div
                       id="otp"
                       class="inputs d-flex flex-row justify-content-center mt-2"
+                      ref={textBase}
                     >
                       {" "}
                       {inputRefsArray.map((ref, index) => {
                         return (
                           <input
                             ref={ref}
-                            className={`m-2 text-center form-control rounded`}
+                            className={`m-2 text-center`}
+                            style={{ width: '2.5ch' ,
+                            'border':'0px solid transparent',
+                            'border-bottom': '3px solid rgba(0,0,0,0.5)','font-size': '2rem'
+                          }}
                             type="text"
                             id={`input${index}-1`}
                             required
                             onChange={(e) => {
-                              const { value } = e.target;
-                              setLetters((letters) =>
-                                letters.map((letter, letterIndex) =>
-                                  letterIndex === index ? value : letter
-                                )
-                              );
+                           
+                              focusNext(e)
                             }}
-                            onClick={(e) => {
-                              setCurrentIndex(index);
-                              e.target.select();
-                            }}
-                            value={letters[index]}
-                            max={"1"}
+                         
+                            maxLength={"1"}
                           />
                         );
                       })}{" "}

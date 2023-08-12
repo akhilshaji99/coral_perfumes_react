@@ -70,7 +70,7 @@ function Login() {
         <AlerMessage
           t={t}
           toast={toast}
-          status={status}
+          status={response.data.status}
           title={title}
           message={response.data.message}
         />
