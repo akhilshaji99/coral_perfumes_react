@@ -18,6 +18,7 @@ function Index() {
   const [recProducts, setRecProducts] = useState(null);
   const [aciveVariant, setActiveVariant] = useState([]);
   const [addToCartQuantity, setAddToCartQuantity] = useState(1);
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     getProductDetails();
@@ -130,7 +131,15 @@ function Index() {
                       </svg>
                     </div>
                     <div className="col-md-3">
-                      <WishlistIcon product_slug={currentVariant?.slug} is_in_wishlist={currentVariant?.is_in_wishlist}/>
+                      <WishlistIcon
+                        product_slug={currentVariant?.slug}
+                        is_in_wishlist={currentVariant?.is_in_wishlist}
+                        changeWishlistStatus={() => {
+                          currentVariant.is_in_wishlist =
+                            !currentVariant?.is_in_wishlist;
+                          setStatus(!status);
+                        }}
+                      />
                     </div>
                   </div>
                 </div>

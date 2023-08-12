@@ -19,6 +19,7 @@ const addToWishlist = async (variant_slug) => {
           message={response?.data?.message}
         />
       ));
+      return { status: true, variant_slug: variant_slug };
     } else {
       toast((t) => (
         <AlerMessage
@@ -29,6 +30,7 @@ const addToWishlist = async (variant_slug) => {
           message={response?.data?.message}
         />
       ));
+      return { status: false, variant_slug: null };
     }
   } catch (error) {
     toast((t) => (
@@ -44,6 +46,7 @@ const addToWishlist = async (variant_slug) => {
       />
     ));
     console.log("error", error);
+    return { status: false, variant_slug: null };
   }
 };
 export default addToWishlist;

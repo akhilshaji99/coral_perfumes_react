@@ -130,9 +130,9 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
                     )}
                   </div>
                   <div className="col-6 d-lg-none">
-                    <div class="ms-2 ">
+                    <div className="ms-2 ">
                       <a
-                        class="btn btn-filter w-100"
+                        className="btn btn-filter w-100"
                         data-bs-toggle="offcanvas"
                         href="#offcanvasCategory"
                         role="button"

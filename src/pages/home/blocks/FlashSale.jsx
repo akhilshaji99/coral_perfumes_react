@@ -13,6 +13,8 @@ function FlashSale({ componentDatas }) {
   };
   //Code for timer
   const [falseSaleEnd, setFlashSaleEnd] = useState(false);
+  const [status, setStatus] = useState(false);
+
   const products = componentDatas?.datas?.[0]?.products;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
   let counterValue = 0;
@@ -190,29 +192,38 @@ function FlashSale({ componentDatas }) {
                   <div className="product-grid" key={index}>
                     <div className="card card-product product-box carousel-product-margin">
                       <div className="card-body">
-                        <NavLink to={`/product-details/?slug=${product?.slug}`}>
-                          {product.discount_percentage ? (
-                            <span className="badge custom-badge">
-                              <svg
-                                width="29"
-                                height="25"
-                                viewBox="0 0 29 25"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                        {product.discount_percentage ? (
+                          <span className="badge custom-badge">
+                            <svg
+                              width="29"
+                              height="25"
+                              viewBox="0 0 29 25"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M2.35118 15.597L11.6544 12.9424V22.8972C11.6544 25.22 13.2179 25.6901 15.1251 23.948L28.1316 12.0576C29.7295 10.6058 29.0595 9.40295 26.6368 9.40295L17.3336 12.0576V2.10278C17.3336 -0.220009 15.7701 -0.690096 13.8629 1.05199L0.856373 12.9424C-0.724342 14.408 -0.0542555 15.597 2.35118 15.597Z"
+                                fill="white"
+                              />
+                            </svg>{" "}
+                            {product.discount_percentage}%
+                          </span>
+                        ) : null}
+                        <WishlistIcon
+                          product_slug={product?.slug}
+                          is_in_wishlist={product?.is_in_wishlist}
+                          changeWishlistStatus={() => {
+                            product.is_in_wishlist = !product?.is_in_wishlist;
+                            setStatus(!status);
+                          }}
+                        />
+                        <div className="text-center position-relative ">
+                          <a href="#!">
+                            {" "}
+                            <div className="product-img">
+                              <NavLink
+                                to={`/product-details/?slug=${product?.slug}`}
                               >
-                                <path
-                                  d="M2.35118 15.597L11.6544 12.9424V22.8972C11.6544 25.22 13.2179 25.6901 15.1251 23.948L28.1316 12.0576C29.7295 10.6058 29.0595 9.40295 26.6368 9.40295L17.3336 12.0576V2.10278C17.3336 -0.220009 15.7701 -0.690096 13.8629 1.05199L0.856373 12.9424C-0.724342 14.408 -0.0542555 15.597 2.35118 15.597Z"
-                                  fill="white"
-                                />
-                              </svg>{" "}
-                              {product.discount_percentage}%
-                            </span>
-                          ) : null}
-                          <WishlistIcon product_slug={product?.slug} />
-                          <div className="text-center position-relative ">
-                            <a href="#!">
-                              {" "}
-                              <div className="product-img">
                                 <img
                                   src={deviceImageRender(
                                     product?.product_listing_image
@@ -220,10 +231,10 @@ function FlashSale({ componentDatas }) {
                                   alt="Coral Perfumes"
                                   className="mb-3 img-fluid "
                                 />
-                              </div>
-                            </a>
-                          </div>
-                        </NavLink>
+                              </NavLink>
+                            </div>
+                          </a>
+                        </div>
                         <AddToBag variant_id={product?.id} />
                       </div>
                     </div>

@@ -2,8 +2,11 @@ import deviceImageRender from "../../utils/deviceImageRender";
 import AddToBag from "./AddToBag";
 import WishlistIcon from "../wishlist/blocks/WishlistIcon";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function ProductDetails({ product }) {
+  const [status, setStatus] = useState(false);
+
   return (
     <>
       <div className="card card-product product-box ">
@@ -14,7 +17,14 @@ function ProductDetails({ product }) {
               {product?.product_tag}
             </span>
           ) : null}
-          <WishlistIcon product_slug={product?.slug} is_in_wishlist={product?.is_in_wishlist}/>
+          <WishlistIcon
+            product_slug={product?.slug}
+            is_in_wishlist={product?.is_in_wishlist}
+            changeWishlistStatus={() => {
+              product.is_in_wishlist = !product?.is_in_wishlist;
+              setStatus(!status);
+            }}
+          />
           <div className="text-center position-relative ">
             <NavLink to={`/product-details/?slug=${product?.slug}`}>
               <div className="product-img">
