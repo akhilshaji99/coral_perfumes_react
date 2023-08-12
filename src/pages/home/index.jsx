@@ -25,9 +25,9 @@ function Index() {
   }, []);
   const getHomeContent = async () => {
     try {
-      const response = await request.post("get_home_content/", {
-        token: getUserToken(),
-      });
+      var bodyFormData = new FormData();
+      bodyFormData.append("token", getUserToken());
+      const response = await request.post("get_home_content/", bodyFormData);
       if (response.data) {
         const mainKeys = Object.entries(response.data).map(([key]) => key);
         setHomeComponents(mainKeys);

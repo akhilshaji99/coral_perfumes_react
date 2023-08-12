@@ -28,11 +28,11 @@ function Index() {
     const product_slug = queryParameters.get("slug");
     try {
       if (product_slug) {
+        var bodyFormData = new FormData();
+        bodyFormData.append("token", getUserToken());
         const response = await request.post(
           "get_product_variants/" + product_slug + "/",
-          {
-            token: getUserToken(),
-          }
+          bodyFormData
         );
 
         if (response?.data?.product_data) {
@@ -130,7 +130,7 @@ function Index() {
                       </svg>
                     </div>
                     <div className="col-md-3">
-                      <WishlistIcon product_slug={currentVariant?.slug} />
+                      <WishlistIcon product_slug={currentVariant?.slug} is_in_wishlist={currentVariant?.is_in_wishlist}/>
                     </div>
                   </div>
                 </div>

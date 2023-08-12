@@ -117,7 +117,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
                     )}
                   </div>
                   <div className="col-md-1 d-none d-sm-block sort-icon">
-                    {productLayout === "col-md-6 col-6" ? (
+                    {productLayout === "col-md-3 col-6" ? (
                       <img src={FourColActive} alt="Coral" />
                     ) : (
                       <img
