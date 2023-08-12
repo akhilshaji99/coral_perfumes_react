@@ -1,13 +1,13 @@
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
+import getUserToken from "../../../utils/userToken.js";
 
 const addToWishlist = async (variant_slug) => {
   try {
-    const userData = JSON.parse(localStorage.getItem("userDatas"));
     const response = await request.post("add-to-wishlist", {
       variant_slug,
-      token: userData ? userData?.token : null,
+      token: getUserToken(),
     });
     if (response.data.status) {
       toast((t) => (

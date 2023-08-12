@@ -8,6 +8,7 @@ import FourColActive from "../../../assets/img/icons/4-item-active.svg";
 import CustomDropdown from "./CustomDropdown";
 import ProductDetails from "../../common/ProductDetails";
 import FilterMob from "../../../assets/img/icons/filter-mob.svg";
+import getUserToken from "../../../utils/userToken";
 
 function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const [productList, setProductList] = useState([]);
@@ -75,6 +76,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
           filterArray,
           priceRange: priceRangeFilter,
           sortRelevance: relevanceFilter,
+          token: getUserToken(),
         });
         if (response.data) {
           setCount(response.data.total_count);

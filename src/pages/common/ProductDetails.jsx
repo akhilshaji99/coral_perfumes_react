@@ -14,7 +14,7 @@ function ProductDetails({ product }) {
               {product?.product_tag}
             </span>
           ) : null}
-          <WishlistIcon product_slug={product?.slug} />
+          <WishlistIcon product_slug={product?.slug} is_in_wishlist={product?.is_in_wishlist}/>
           <div className="text-center position-relative ">
             <NavLink to={`/product-details/?slug=${product?.slug}`}>
               <div className="product-img">

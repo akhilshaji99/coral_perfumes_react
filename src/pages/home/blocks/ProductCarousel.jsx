@@ -56,7 +56,7 @@ function ProductCarousel({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                
+
                 items: 2,
                 partialVisibilityGutter: 30,
               },
@@ -84,7 +84,7 @@ function ProductCarousel({ componentDatas }) {
                   <div className="product-grid carousel-product-margin">
                     <ProductDetails
                       product={{
-                        id:product?.id,
+                        id: product?.id,
                         discount_percentage: product?.discount_percentage,
                         name: product?.name,
                         original_amount: product?.original_amount,
@@ -92,6 +92,7 @@ function ProductCarousel({ componentDatas }) {
                         listing_image: product?.product_listing_image,
                         slug: product?.slug,
                         product_tag: product?.product_tag,
+                        is_in_wishlist: product?.is_in_wishlist,
                       }}
                     />
                   </div>

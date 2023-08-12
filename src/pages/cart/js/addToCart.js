@@ -1,16 +1,17 @@
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
+import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const addToCart = async (product_variant_id, quantity) => {
   try {
-    const guestToken = localStorage.getItem("guestToken");
     const response = await request.post("add_to_cart/", {
       product_variant_id,
       quantity,
-      token: guestToken,
+      token: getUserOrGuestToken(),
     });
     if (response.data.status) {
+      const guestToken = localStorage.getItem("guestToken");
       if (guestToken === null) {
         localStorage.setItem("guestToken", response?.data?.data?.token);
       }

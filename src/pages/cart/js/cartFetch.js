@@ -1,13 +1,10 @@
 import request from "../../../utils/request";
+import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const getCartDatas = async () => {
-  const guestToken = localStorage.getItem("guestToken");
-  const userData = JSON.parse(localStorage.getItem("userDatas"));
-
   try {
     const response = await request.post("api/cart/items/", {
-      // token: guestToken,
-      token: userData ? userData?.token : guestToken,
+      token: getUserOrGuestToken(),
     });
 
     if (response?.data?.status) {

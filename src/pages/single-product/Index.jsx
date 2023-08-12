@@ -9,6 +9,7 @@ import ProductData from "./blocks/ProductData";
 import ProductSpec from "./blocks/ProductSpec";
 import addToCart from "../cart/js/addToCart";
 import WishlistIcon from "../wishlist/blocks/WishlistIcon";
+import getUserToken from "../../utils/userToken";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
@@ -27,10 +28,10 @@ function Index() {
     const product_slug = queryParameters.get("slug");
     try {
       if (product_slug) {
-        const guestToken = localStorage.getItem("guestToken");
         const response = await request.post(
-          "get_product_variants/" + product_slug + "/",{
-            token: guestToken,
+          "get_product_variants/" + product_slug + "/",
+          {
+            token: getUserToken(),
           }
         );
 

@@ -87,6 +87,7 @@ function RecommendedProducts({ componentDatas }) {
                         listing_image: product?.listing_image,
                         slug: product?.slug,
                         product_tag: product?.product_tag,
+                        is_in_wishlist: product?.is_in_wishlist,
                       }}
                     />
                   </div>

@@ -1,8 +1,10 @@
 import addToWishlist from "../js/addToWishlist";
-function WishlistIcon({ product_slug }) {
+function WishlistIcon({ product_slug, is_in_wishlist }) {
   return (
     <span
-      className="wishlist-button wishlist-active"
+      className={
+        is_in_wishlist ? "wishlist-button wishlist-active" : "wishlist-button"
+      }
       onClick={() => {
         addToWishlist(product_slug);
       }}
