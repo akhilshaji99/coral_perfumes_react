@@ -126,11 +126,15 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
     
       if(e.target.value != ''){
-      e.target.nextSibling.focus();
+        
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
       });
+      if (currentIndex !== childCount - 1 ) {
+        e.target.nextSibling.focus();
+
+      }
       if (values.length !== 0) {
         setOtpVal(values);
       }
