@@ -64,7 +64,6 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
     }
   };
   const verify_otp = async () => {
-  
     const queryParameters = new URLSearchParams(window.location.search);
     if(queryParameters == "checkout="){
       redirectTo = "checkout";
@@ -125,9 +124,9 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   const focusNext = (e) => {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
-    if (currentIndex !== childCount - 1 && e.target.value != "") {
+    
+      if(e.target.value != ''){
       e.target.nextSibling.focus();
-    } else {
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
@@ -136,6 +135,8 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
         setOtpVal(values);
       }
     }
+   
+    
   };
 
   return (
