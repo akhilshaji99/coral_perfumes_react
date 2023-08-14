@@ -8,7 +8,7 @@ import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 function MainBanner() {
   return (
     <>
-      <div className="container-fluid px-0 main-carousel d-block d-sm-none">
+      <div className="container-fluid px-0 main-carousel d-xl-none ipad">
         <Carousel
           additionalTransfrom={0}
           arrows
@@ -78,7 +78,7 @@ function MainBanner() {
           />
         </Carousel>
       </div>
-      <div className="container-fluid px-0 main-carousel d-none d-lg-block">
+      <div className="container-fluid px-0 main-carousel d-none d-xl-block">
         <Carousel
           additionalTransfrom={0}
           arrows

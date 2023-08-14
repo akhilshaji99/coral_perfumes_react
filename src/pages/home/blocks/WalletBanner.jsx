@@ -70,7 +70,7 @@ function WalletBanner({ componentDatas }) {
                       max: 1024,
                       min: 464,
                     },
-                    items: 2,
+                    items: 4,
                     partialVisibilityGutter: 30,
                   },
                 }}

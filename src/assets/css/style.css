@@ -27674,7 +27674,7 @@ border-radius: none !important;
   .wallet-banner h1 {
     color: #000;
     font-family: Poppins;
-    font-size: 58px;
+    font-size: 38px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.58px;
@@ -27719,7 +27719,7 @@ border-radius: none !important;
     color: #000;
     text-align: center;
     font-family: Arial Black;
-    font-size: 25px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
@@ -27864,9 +27864,9 @@ border-radius: none !important;
   .card-product .card-body {
     padding: 2.5px;
   }
-  .nav-item {
+  /* .nav-item {
     width: 100%;
-  }
+  } */
   .product-custom-dropdown .dropdown-item {
     padding: none !important;
   }
@@ -27885,7 +27885,6 @@ border-radius: none !important;
   .fixed-top-margin {
     margin-top: 150px;
   }
-
 }
 .footer-link-seperator {
   visibility: hidden;
@@ -27980,7 +27979,7 @@ border-radius: none !important;
   font-size: 21px;
 }
 .fixed-top-margin {
-  margin-top: 200px;
+  margin-top: 180px;
 }
 .my-bag-title {
   text-align: center;
@@ -28044,29 +28043,29 @@ border-radius: none !important;
   margin-bottom: 15px;
 }
 
-#price-my-bag h5{
+#price-my-bag h5 {
   font-size: 16px;
 }
-.my-bag-spinner{
+.my-bag-spinner {
   transform: scale(0.65);
   position: relative;
   left: -12%;
 }
-.my-bag-spinner .input-spinner.form-input1{
+.my-bag-spinner .input-spinner.form-input1 {
   width: 0% !important;
 }
-.delivery-info{
+.delivery-info {
   text-align: center;
   color: #000;
   padding-top: 20px;
 }
-.delivery-info span{
+.delivery-info span {
   padding-right: 8px;
 }
-.my-bag-card .form-control{
+.my-bag-card .form-control {
   padding: 9.5px !important;
 }
-.promo-code-label{
+.promo-code-label {
   color: #000;
   font-family: var(--fc-font-regular);
 }
@@ -28075,7 +28074,228 @@ border-radius: none !important;
   border-bottom-right-radius: 0px !important;
   border-bottom-width: 0;
 }
-.my-bag-summary-border{
-border-bottom: 1px solid #BDBEBB  !important;
-padding: 20px 0 !important;
+.my-bag-summary-border {
+  border-bottom: 1px solid #bdbebb !important;
+  padding: 20px 0 !important;
+}
+/* @media screen and (min-width: 1400px) {
+  .container-lg-fluid {
+    width: 1370px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .container-lg-fluid {
+    width: 1570px;
+  }
+} */
+@media screen and (min-width: 1900px) {
+  .container-lg-fluid {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 1920px) and (min-width: 1570px) {
+  .product-img img {
+    object-fit: contain;
+    width: 100%;
+    transform: scale(0.75);
+  }
+  .category-top-div {
+    top: -2050px;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: -2000px;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: -1950px;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: -2000px;
+    position: relative;
+    margin-bottom: -2050px;
+  }
+}
+@media only screen and (max-width: 3200px) and (min-width: 1921px) {
+  .product-img img {
+    object-fit: contain;
+    width: 100%;
+    transform: scale(0.75);
+  }
+  .category-top-div {
+    top: -2850px;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: -2800px;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: -2750px;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: -2800px;
+    position: relative;
+    margin-bottom: -2850px;
+  }
+}
+/* Macbook Pro */
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .category-top-div {
+    top: -1400px;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: -1380px;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: -1350px;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: -1400px;
+    position: relative;
+    margin-bottom: -1450px;
+  }
+  .me-5 {
+    margin-right: 0.25rem !important;
+  }
+}
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .category-top-div {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: 0px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+  .wallet-banner h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.58px;
+    text-transform: uppercase;
+    text-align: start !important;
+  }
+  .category-top-div {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: 0px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+}
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation: landscape) {
+  .category-top-div {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: 0px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+  .wallet-banner h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 28px !important;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.58px;
+    text-transform: uppercase;
+    text-align: start !important;
+  }
+}
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .category-top-div {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: 0px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+  .wallet-banner h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.58px;
+    text-transform: uppercase;
+    text-align: start !important;
+  }
+}
+
+/* Portrait*/
+@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .category-top-div {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: 0;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: 0px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+  .wallet-banner h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.58px;
+    text-transform: uppercase;
+    text-align: start !important;
+  }
 }
