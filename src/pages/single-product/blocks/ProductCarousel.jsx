@@ -58,8 +58,12 @@ function ProductCarousel({ sliderImages }) {
               return (
                 <div className="thumbnail-slide" key={index}>
                   <img
+                    style={{ cursor: "pointer" }}
                     src={deviceImgeRender(sliderImage)}
                     alt="Coral Perfumes"
+                    onClick={() => {
+                      setActiveImage(sliderImage);
+                    }}
                   />
                 </div>
               );

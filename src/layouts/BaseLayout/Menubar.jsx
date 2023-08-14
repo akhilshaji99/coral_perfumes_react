@@ -123,7 +123,10 @@ function Menubar() {
                                         }}
                                       >
                                         {item.name}{" "}
-                                        <svg
+                                       
+                                      </a>
+                                      <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                      <svg
                                           width={5}
                                           height={10}
                                           viewBox="0 0 5 10"
@@ -138,9 +141,6 @@ function Menubar() {
                                             strokeLinejoin="round"
                                           />
                                         </svg>{" "}
-                                      </a>
-                                      <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
-                                        {" "}
                                       </span>
                                     </>
                                   ))

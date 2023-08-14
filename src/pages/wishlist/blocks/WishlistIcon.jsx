@@ -1,8 +1,5 @@
-// import { useState } from "react";
 import addToWishlist from "../js/addToWishlist";
 function WishlistIcon({ product_slug, is_in_wishlist, changeWishlistStatus }) {
-  // const [tempWishlistItems, setTempWishlistItems] = useState([]);
-
   return (
     <span
       className={
@@ -13,18 +10,6 @@ function WishlistIcon({ product_slug, is_in_wishlist, changeWishlistStatus }) {
           if (response?.status) {
             changeWishlistStatus();
           }
-          // const updatedWishlistArray = [...tempWishlistItems];
-          // if (response?.status) {
-          //   if (updatedWishlistArray.includes(response?.variant_slug)) {
-          //     const removeIndex = updatedWishlistArray.indexOf(
-          //       response?.variant_slug
-          //     );
-          //     updatedWishlistArray.splice(removeIndex, 1);
-          //   } else {
-          //     updatedWishlistArray.push(response?.variant_slug);
-          //   }
-          //   setTempWishlistItems(updatedWishlistArray);
-          // }
         });
       }}
     >

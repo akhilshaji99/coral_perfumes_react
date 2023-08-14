@@ -48,7 +48,9 @@ function Index() {
             response.data.current_variant,
             response.data.other_variants
           ).then((data) => {
+            // console.log(data);
             setproductVariants(data);
+            //Set active variant datas
             let activeVariantArray = [];
             response?.data?.current_variant?.assigned_variant_attributes?.forEach(
               (variants) => {
@@ -56,6 +58,7 @@ function Index() {
               }
             );
             setActiveVariant(activeVariantArray);
+            //#End
           });
         }
         if (response?.data?.product_data.recommended_products) {
@@ -240,74 +243,6 @@ function Index() {
                             )}
                           </div>
                         </div>
-                        {/* <div className="col-md-5">
-                              <div className="dropdown">
-                                <a
-                                  className="btn btn-outline-secondary dropdown-toggle language-drop"
-                                  href="#"
-                                  role="button"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                                >
-                                  EU &nbsp;{" "}
-                                  <svg
-                                    width={11}
-                                    height={6}
-                                    viewBox="0 0 11 6"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      d="M0.626953 0.999999L4.3315 4.67453C4.769 5.10849 5.48491 5.10849 5.92241 4.67453L9.62695 1"
-                                      stroke="black"
-                                      strokeMiterlimit={10}
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </svg>
-                                </a>
-                                <ul className="dropdown-menu">
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      <i className="bi bi-facebook me-2" />
-                                      UK
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      <i className="bi bi-twitter me-2" />
-                                      US
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      <i className="bi bi-instagram me-2" />
-                                      IN
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div> 
-                            <div className="row">
-                              <div className="col-md-3">
-                                <div className="Size-card">
-                                  <div>100 ml</div>
-                                  <div>aed 900</div>
-                                  <div className="Discount-Prize">
-                                    aed <span>1000</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-3">
-                                <div className="Size-card">
-                                  <div>100 ml</div>
-                                  <div>aed 900</div>
-                                  <div className="Discount-Prize">
-                                    aed <span>1000</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div> */}
                       </div>
                     ) : productVariant?.layout === "layout_2" ? (
                       <div className="row" key={index}>

@@ -3,9 +3,9 @@ import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const getCartDatas = async () => {
   try {
-    const response = await request.post("api/cart/items/", {
-      token: getUserOrGuestToken(),
-    });
+    var bodyFormData = new FormData();
+    bodyFormData.append("token", getUserOrGuestToken());
+    const response = await request.post("api/cart/items/", bodyFormData);
 
     if (response?.data?.status) {
       return response.data;
