@@ -3,10 +3,10 @@ function AdsBlock({ componentDatas }) {
   return (
     <>
       <div className="container-fluid my-5">
-        <div className="row g-5 ads-block justify-content-center">
+        <div className="row ads-block justify-content-center">
           {componentDatas?.datas?.map((adBlock, index) => {
             return (
-              <div className="col-md-5 col-12" key={index}>
+              <div className="col-md-6 col-12" key={index}>
                 <img
                   src={deviceImageRender(
                     adBlock?.desktop_image,
