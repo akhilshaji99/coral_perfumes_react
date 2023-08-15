@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import TopHeader from "./TopHeader";
 import Account from "./Account";
@@ -18,14 +18,22 @@ const BaseLayout = () => {
   document.getElementsByTagName("html")[0].dir =
     localStorage.getItem("languageDirection");
   //#End
+  const [mobileMenuStatus, setMobileMenuStatus] = useState(false);
+
+  const changeMobileMenuStatus = () => {
+    setMobileMenuStatus(true);
+  };
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <div className="border-bottom ">
         <nav className="fixed-top bg-white ">
           <TopHeader />
-          <Account />
-          <Menubar />
+          <Account changeMobileMenuStatus={changeMobileMenuStatus} />
+          <Menubar
+            mobileMenuStatus={mobileMenuStatus}
+            setMobileMenuStatus={setMobileMenuStatus}
+          />
         </nav>
         <CartDrawer />
         <OTPModal />

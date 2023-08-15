@@ -1,6 +1,6 @@
 import Logo from "../../assets/img/logo_coral.png";
 import HamburgerMenu from "../../assets/img/icons/hamburger.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import $ from "jquery";
 
-function Account() {
+function Account({ changeMobileMenuStatus }) {
   const [username, setUsername] = useState(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
@@ -33,18 +33,35 @@ function Account() {
 
   const languageDirection = localStorage.getItem("languageDirection");
 
+  const [openAccountMenus, setOpenAccountMenus] = useState(false);
+
+  const handleSubmenuToggle = () => {
+    setOpenAccountMenus(!openAccountMenus);
+  };
+
+  const handleMouseEnter = () => {
+    setOpenAccountMenus(true);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenAccountMenus(false);
+  };
+
   return (
     <>
       <div className="py-2">
         <div className="container-fluid">
           <div className="row align-items-center d-lg-none">
-            <div className="col-md-4 col-4">
+            <div
+              className="col-md-4 col-4"
+              onClick={() => changeMobileMenuStatus()}
+            >
               <button
                 className="navbar-toggler collapsed"
                 type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#navbar-default"
-                aria-controls="navbar-default"
+                // data-bs-toggle="offcanvas"
+                // data-bs-target="#navbar-default"
+                // aria-controls="navbar-default"
                 aria-label="Toggle navigation"
               >
                 <img src={HamburgerMenu} alt="Coral Perfumes" />
@@ -56,14 +73,15 @@ function Account() {
               </NavLink>
             </div>
             <div className="col-md-4 col-4 text-end">
-              <a
+              {/* <a
                 className="text-muted position-relative "
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 href="#offcanvasExample"
                 role="button"
                 aria-controls="offcanvasRight"
-              >
+              > */}
+              <Link to={"/cart"} className="text-muted position-relative ">
                 <svg
                   width={14}
                   height={17}
@@ -86,11 +104,7 @@ function Account() {
                     mask="url(#path-2-inside-1_1991_17572)"
                   />
                 </svg>
-
-                {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                  1<span className="visually-hidden">unread messages</span>
-                </span> */}
-              </a>
+              </Link>
             </div>
           </div>
           <div className="row mob-view ">
@@ -137,8 +151,13 @@ function Account() {
 
             <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
               <div className="icon-input">
-                <input className="icon-input__text-field" placeholder="Search for product or brand" type="text" />
-                <svg className="icon-input__icon"
+                <input
+                  className="icon-input__text-field"
+                  placeholder="Search for product or brand"
+                  type="text"
+                />
+                <svg
+                  className="icon-input__icon"
                   width={25}
                   height={24}
                   viewBox="0 0 25 24"
@@ -162,7 +181,12 @@ function Account() {
             <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
               <div className="list-inline custom-dropdown text-center">
                 <div className="list-inline-item me-5">
-                  <div className="dropdown ">
+                  <div
+                    className="dropdown"
+                    onMouseEnter={() => handleMouseEnter()}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={() => handleSubmenuToggle()}
+                  >
                     <a
                       href="#"
                       id="dropdownMenuLink"
@@ -190,7 +214,11 @@ function Account() {
                     </a>
 
                     <ul
-                      className="dropdown-menu dropdown-menu-custom"
+                      className={`dropdown-menu ${
+                        openAccountMenus
+                          ? "show dropdown-menu-custom"
+                          : " hide dropdown-menu-custom"
+                      }`}
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li>

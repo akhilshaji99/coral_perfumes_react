@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
 
-function Menubar() {
+function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
   const navigate = useNavigate();
   const [menuItems, setMenuItems] = useState([]);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  // const [showMobileMenu, setShowMobileMenu] = useState(true);
 
   useEffect(() => {
     getMenuList();
   }, []);
+
   const getMenuList = async () => {
     try {
       const response = await request.get("get_menus/");
@@ -20,6 +22,7 @@ function Menubar() {
     }
   };
   const handleClick = (slug) => {
+    setMobileMenuStatus(false);
     navigate("/product?category=" + slug);
   };
 
@@ -35,6 +38,10 @@ function Menubar() {
     setOpenSubmenu(null);
   };
 
+  useEffect(() => {
+    console.log(mobileMenuStatus);
+  }, [mobileMenuStatus]);
+
   return (
     <nav
       className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
@@ -42,7 +49,9 @@ function Menubar() {
     >
       <div className="container mob-c-view">
         <div
-          className="offcanvas offcanvas-start"
+          className={`offcanvas offcanvas-start  ${
+            mobileMenuStatus ? "show" : ""
+          }`}
           tabIndex={-1}
           id="navbar-default"
           aria-labelledby="navbar-defaultLabel"
