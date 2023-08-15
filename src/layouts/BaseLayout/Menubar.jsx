@@ -155,7 +155,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                       >
                                         {item.name}{" "}
                                       </a>
-                                      <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                      {/* <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
                                         <svg
                                           width={5}
                                           height={10}
@@ -171,7 +171,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                             strokeLinejoin="round"
                                           />
                                         </svg>{" "}
-                                      </span>
+                                      </span> */}
                                     </>
                                   ))
                                 : null}
@@ -188,7 +188,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                         href="pages/shop-grid.html"
                                       >
                                         {item.name}{" "}
-                                        <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                        {/* <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
                                           {" "}
                                           <svg
                                             width={5}
@@ -205,7 +205,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                               strokeLinejoin="round"
                                             />
                                           </svg>
-                                        </span>
+                                        </span> */}
                                       </a>
                                     </>
                                   ))

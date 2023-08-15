@@ -7,6 +7,8 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function SampleNextArrow(props) {
   const { className, onClick } = props;
@@ -72,11 +74,72 @@ function ProductCarousel({ sliderImages }) {
         </div>
       </div>
       <div className="col-md-5">
-        <div className="product-showcase">
+        <div className="product-showcase d-none d-sm-block">
           {activeImage ? (
             <InnerImageZoom src={deviceImgeRender(activeImage)} />
           ) : null}
           {/* <img src={Sample} alt="Coral Perfumes" /> */}
+        </div>
+        <div className="d-blcok d-sm-none">
+          <Carousel
+            additionalTransfrom={0}
+            arrows={false}
+            autoPlaySpeed={3000}
+            centerMode={false}
+            className=""
+            containerClass="container"
+            dotListClass=""
+            draggable
+            focusOnSelect={false}
+            infinite
+            itemClass=""
+            keyBoardControl
+            minimumTouchDrag={80}
+            pauseOnHover
+            renderArrowsWhenDisabled={false}
+            renderButtonGroupOutside={false}
+            renderDotsOutside={false}
+            responsive={{
+              desktop: {
+                breakpoint: {
+                  max: 3000,
+                  min: 1024,
+                },
+                items: 1,
+              },
+              mobile: {
+                breakpoint: {
+                  max: 464,
+                  min: 0,
+                },
+                items: 1,
+              },
+              tablet: {
+                breakpoint: {
+                  max: 1024,
+                  min: 464,
+                },
+                items: 1,
+              },
+            }}
+            rewind={false}
+            rewindWithAnimation={false}
+            rtl={false}
+            shouldResetAutoplay
+            showDots
+            sliderClass=""
+            slidesToSlide={1}
+            swipeable
+          >
+            <div className="product-showcase ">
+              {activeImage ? (
+                <InnerImageZoom
+                  src={deviceImgeRender(activeImage)}
+                />
+              ) : null}
+              {/* <img src={Sample} alt="Coral Perfumes" /> */}
+            </div>
+          </Carousel>
         </div>
       </div>
     </>

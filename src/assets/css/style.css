@@ -21490,7 +21490,7 @@ fieldset:disabled .btn {
   transform: rotate(0);
 }
 .navbar .navbar-nav .nav-item .nav-link {
-  line-height: 1.8;
+  line-height: 1.75;
 }
 @media (max-width: 992px) {
   .navbar .navbar-nav .nav-item .nav-link {
@@ -26442,8 +26442,15 @@ span.flatpickr-weekday {
   .discounted-price,
   .discount-percentage {
     font-size: 12px !important;
-    text-align: left;
+    /* text-align: left; */
   }
+  .discount-percentage {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.add-to-bag-btn svg{
+  margin-left: 26px;
 }
 .custom-badge {
   border-radius: 9px;
@@ -26874,6 +26881,7 @@ span.flatpickr-weekday {
   letter-spacing: 1.68px;
   text-transform: capitalize;
   margin: 13px 0;
+  cursor: pointer;
 }
 .custom-mega-menu .dropdown-item:hover {
   cursor: pointer;
@@ -27078,8 +27086,8 @@ span.flatpickr-weekday {
   font-weight: 600;
   text-transform: uppercase;
   line-height: 40px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #fff;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff; */
 }
 .discount-modal h1 {
   color: #000;
@@ -27089,8 +27097,8 @@ span.flatpickr-weekday {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -10px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #fff;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff; */
 }
 .discount-modal h1 span {
   color: #000;
@@ -27769,7 +27777,7 @@ border-radius: none !important;
     background-color: #fff;
   }
   .ModalBtn {
-    position: absolute;
+    position: fixed;
     top: 7%;
     transform: scale(0.4);
     right: -22px;
@@ -27907,7 +27915,24 @@ border-radius: none !important;
   .fixed-top-margin {
     margin-top: 150px;
   }
+  .flex-custom-column{
+    flex-direction: column !important;
+  }
+  .product-showcase {
+    background: rgba(235, 236, 233, 1);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    max-height: 380px;
+    padding: 30px 30px;
+  }
+  .product-showcase img{
+    transform: scale(0.75);
+  }
 }
+/* mobile view common styles ends here */
 .footer-link-seperator {
   visibility: hidden;
 }
@@ -28001,7 +28026,7 @@ border-radius: none !important;
   font-size: 21px;
 }
 .fixed-top-margin {
-  margin-top: 160px;
+  margin-top: 150px;
 }
 .my-bag-title {
   text-align: center;
@@ -28332,7 +28357,7 @@ border-radius: none !important;
 }
 .icon-input__text-field {
   width: 100%;
-  padding: 14px 20px;
+  padding: 10px 20px;
   border-radius: 76px;
   border: 1px solid #000;
 }

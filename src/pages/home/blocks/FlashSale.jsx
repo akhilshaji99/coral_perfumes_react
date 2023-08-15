@@ -51,7 +51,7 @@ function FlashSale({ componentDatas }) {
             <div className="row d-end">
               <div className="col-md-8 col-12">
                 <div className="row align-items-center mb-4">
-                  <div className="col-md-6 col-6">
+                  <div className="col-md-6">
                     <h1 className=" flash-sale">
                       {" "}
                       <span>
@@ -113,14 +113,14 @@ function FlashSale({ componentDatas }) {
                   </div>
                   <div className="col-md-6 col-6">
                     <div className="row align-items-center d-end">
-                      <div className="col-md-4 col-4 pr-0 text-end">
+                      <div className="col-md-5  pr-0 text-end">
                         <span className="timer-text">Ends In</span>{" "}
                       </div>
-                      <div className="col-md-8 col-8">
+                      <div className="col-md-7">
                         <CountdownTimer
                           className="digital-text"
                           responsive={true}
-                          // size={25}
+                          size={25}
                           count={counterValue}
                           onEnd={() => {
                             setFlashSaleEnd(true);
@@ -240,20 +240,20 @@ function FlashSale({ componentDatas }) {
                     </div>
                     <h4 className="ellipsis-text">{product.name}</h4>
                     <div className="row custom-row1">
-                      <div className="col-md-4 px-0">
+                      <div className="col-md-4 col-6 px-0">
                         <h5 className="selling-price">
                           AED {product.price_amount}
                         </h5>
                       </div>
                       {product.original_amount ? (
-                        <div className="col-md-4 px-0">
+                        <div className="col-md-4 col-6 px-0">
                           <h5 className="discounted-price">
                             AED {product.original_amount}
                           </h5>
                         </div>
                       ) : null}
                       {product.discount_percentage ? (
-                        <div className="col-md-4 px-0">
+                        <div className="col-md-4">
                           <h5 className="discount-percentage">
                             {product.discount_percentage}% off
                           </h5>

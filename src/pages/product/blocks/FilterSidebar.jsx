@@ -128,7 +128,7 @@ function FilterSidebar({
                           }}
                         />
                         <div>
-                          <ul className="nav flex-column ms-3">
+                          <ul className="nav flex-custom-column ms-3">
                             {productFilter?.values?.map((filterData, index) => {
                               return (
                                 <li className="nav-item" key={index}>
