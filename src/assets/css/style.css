@@ -10320,7 +10320,7 @@ fieldset:disabled .btn {
   margin-right: 1rem !important;
 }
 .me-5 {
-  margin-right: .25rem !important;
+  margin-right: 0.25rem !important;
 }
 .me-6 {
   margin-right: 1.5rem !important;
@@ -26386,7 +26386,6 @@ span.flatpickr-weekday {
   object-fit: contain;
   width: 100%;
   height: 220px;
-
 }
 .flash-sale-container {
   border-radius: 9px;
@@ -26401,7 +26400,6 @@ span.flatpickr-weekday {
   text-align: center;
   font-family: var(--fc-font-bold);
   font-size: 25px;
-
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flash-sale-container {
@@ -26496,7 +26494,7 @@ span.flatpickr-weekday {
 .discount-percentage {
   color: #80ba27;
   font-size: 14px;
-font-family: var(--fc-font-bold);
+  font-family: var(--fc-font-bold);
   text-transform: uppercase;
 }
 @media (min-width: 768px) {
@@ -28323,10 +28321,11 @@ border-radius: none !important;
     text-align: start !important;
   }
 }
-@media only screen and (min-width: 1440px) and (orientation: landscape)
-{ .me-5{
-  margin-right: 0.2rem !important;
-} }
+@media only screen and (min-width: 1440px) and (orientation: landscape) {
+  .me-5 {
+    margin-right: 0.2rem !important;
+  }
+}
 .icon-input {
   position: relative;
   max-width: 100%;
@@ -28335,7 +28334,7 @@ border-radius: none !important;
   width: 100%;
   padding: 14px 20px;
   border-radius: 76px;
-border: 1px solid #000; 
+  border: 1px solid #000;
 }
 .icon-input__icon {
   color: rgba(0, 0, 0, 1);
@@ -28347,14 +28346,13 @@ border: 1px solid #000;
 .icon-input__text-field:focus + .icon-input__icon {
   color: #ff8400;
 }
-.flash-sale-container .react-multi-carousel-list{
+.flash-sale-container .react-multi-carousel-list {
   position: unset !important;
 }
-.flash-sale-container .react-multiple-carousel__arrow{
-  background-color: #EBECE9 !important;
-  
+.flash-sale-container .react-multiple-carousel__arrow {
+  background-color: #ebece9 !important;
 }
-.flash-sale-container .react-multiple-carousel__arrow::before{
+.flash-sale-container .react-multiple-carousel__arrow::before {
   color: #000 !important;
 }
 .flash-sale-container .react-multiple-carousel__arrow--left {
@@ -28363,7 +28361,7 @@ border: 1px solid #000;
 .flash-sale-container .react-multiple-carousel__arrow--right {
   right: calc(3% + -10px);
 }
-.wallet-banner  .react-multi-carousel-list{
+.wallet-banner .react-multi-carousel-list {
   position: unset !important;
 }
 .wallet-banner .react-multiple-carousel__arrow--left {
@@ -28372,10 +28370,17 @@ border: 1px solid #000;
 .wallet-banner .react-multiple-carousel__arrow--right {
   right: calc(2% + -10px);
 }
-.wallet-banner .react-multiple-carousel__arrow{
-  background-color: #EBECE9 !important;
-  
+.wallet-banner .react-multiple-carousel__arrow {
+  background-color: #ebece9 !important;
 }
-.wallet-banner, .react-multiple-carousel__arrow::before{
+.wallet-banner,
+.react-multiple-carousel__arrow::before {
   color: #000 !important;
+}
+
+.dropdown-menu.hide {
+  display: none !important;
+}
+.dropdown-menu.show {
+  display: block !important;
 }

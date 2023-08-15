@@ -6,6 +6,8 @@ import deviceImageRender from "../../utils/deviceImageRender";
 function Menubar() {
   const navigate = useNavigate();
   const [menuItems, setMenuItems] = useState([]);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
+
   useEffect(() => {
     getMenuList();
   }, []);
@@ -20,6 +22,19 @@ function Menubar() {
   const handleClick = (slug) => {
     navigate("/product?category=" + slug);
   };
+
+  const handleSubmenuToggle = (index) => {
+    setOpenSubmenu(openSubmenu === index ? null : index);
+  };
+
+  const handleMouseEnter = (index) => {
+    setOpenSubmenu(index);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenSubmenu(null);
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
@@ -51,6 +66,9 @@ function Menubar() {
                       <li
                         className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth"
                         key={index}
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={() => handleSubmenuToggle(index)}
                       >
                         <NavLink
                           className="nav-link dropdown-toggle"
@@ -107,7 +125,11 @@ function Menubar() {
                             </svg>
                           </span>
                         </NavLink>
-                        <div className="dropdown-menu pb-0">
+                        <div
+                          className={`dropdown-menu ${
+                            openSubmenu === index ? "show pb-0" : " hide pb-0"
+                          }`}
+                        >
                           <div className="row p-2 p-lg-4">
                             <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                               <h6 className=" ps-3">SHOP BY PRODUCTS</h6>
@@ -123,10 +145,9 @@ function Menubar() {
                                         }}
                                       >
                                         {item.name}{" "}
-                                       
                                       </a>
                                       <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
-                                      <svg
+                                        <svg
                                           width={5}
                                           height={10}
                                           viewBox="0 0 5 10"
