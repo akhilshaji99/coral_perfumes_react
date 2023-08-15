@@ -26385,6 +26385,8 @@ span.flatpickr-weekday {
 .product-img img {
   object-fit: contain;
   width: 100%;
+  height: 220px;
+
 }
 .flash-sale-container {
   border-radius: 9px;
