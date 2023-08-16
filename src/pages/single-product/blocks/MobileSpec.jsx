@@ -1,4 +1,4 @@
-function MobileSpec() {
+function MobileSpec({ productDatas }) {
   return (
     <div className="accordion d-block d-sm-none" id="accordionExample">
       <div className="accordion-item">
@@ -11,7 +11,7 @@ function MobileSpec() {
             aria-expanded="true"
             aria-controls="collapseOne"
           >
-            Accordion Item #1
+            Product Description
           </button>
         </h2>
         <div
@@ -21,14 +21,12 @@ function MobileSpec() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is
-            shown by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            <p
+              className="mb-0 p-d-c"
+              dangerouslySetInnerHTML={{
+                __html: productDatas?.description,
+              }}
+            />
           </div>
         </div>
       </div>
@@ -42,7 +40,7 @@ function MobileSpec() {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            Accordion Item #2
+            FAQS
           </button>
         </h2>
         <div
@@ -52,14 +50,7 @@ function MobileSpec() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            <div dangerouslySetInnerHTML={{ __html: productDatas?.faq }} />
           </div>
         </div>
       </div>
