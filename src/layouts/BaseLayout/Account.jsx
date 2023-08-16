@@ -1,4 +1,3 @@
-import Logo from "../../assets/img/logo_coral.png";
 import HamburgerMenu from "../../assets/img/icons/hamburger.svg";
 import { Link, NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
@@ -7,6 +6,7 @@ import { useEffect, useState } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import $ from "jquery";
+import Logo from "../../pages/common/Logo";
 
 function Account({ changeMobileMenuStatus }) {
   const [username, setUsername] = useState(() => {
@@ -69,7 +69,8 @@ function Account({ changeMobileMenuStatus }) {
             </div>
             <div className="col-md-4 col-4">
               <NavLink className="navbar-brand" to="/">
-                <img src={Logo} alt="Coral Perfumes" width={55} height={33} />
+                {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
+                <Logo/>
               </NavLink>
             </div>
             <div className="col-md-4 col-4 text-end">
@@ -145,7 +146,7 @@ function Account({ changeMobileMenuStatus }) {
           <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
             <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
               <NavLink className="navbar-brand d-none d-lg-block" to="/">
-                <img src={Logo} alt="Coral Perfumes" />
+                <Logo />
               </NavLink>
             </div>
 

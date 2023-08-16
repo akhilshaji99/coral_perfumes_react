@@ -26989,7 +26989,7 @@ span.flatpickr-weekday {
   justify-content: center;
   align-items: center;
   height: auto;
-  min-height: 520px;
+  min-height: auto;
   padding: 30px 30px;
 }
 .slick-slide div {

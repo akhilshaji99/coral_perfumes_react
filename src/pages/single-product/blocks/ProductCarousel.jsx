@@ -80,7 +80,7 @@ function ProductCarousel({ sliderImages }) {
           ) : null}
           {/* <img src={Sample} alt="Coral Perfumes" /> */}
         </div>
-        <div className="">
+        <div className="d-block d-sm-none">
           <Carousel
             additionalTransfrom={0}
             arrows={true}
