@@ -7,8 +7,6 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import { useState } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 function SampleNextArrow(props) {
   const { className, onClick } = props;
@@ -45,6 +43,16 @@ function ProductCarousel({ sliderImages }) {
     prevArrow: <SamplePrevArrow />,
     className: "desktop-thumbs",
   };
+  const settings1 = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    className: "product-showcase-mobile",
+  };
 
   const [activeImage, setActiveImage] = useState(null);
 
@@ -78,83 +86,19 @@ function ProductCarousel({ sliderImages }) {
           {activeImage ? (
             <InnerImageZoom src={deviceImgeRender(activeImage)} />
           ) : null}
-          {/* <img src={Sample} alt="Coral Perfumes" /> */}
         </div>
         <div className="d-block d-sm-none">
-          <Carousel
-            additionalTransfrom={0}
-            arrows={true}
-            autoPlaySpeed={3000}
-            centerMode={false}
-            className="product-showcase"
-            containerClass="container"
-            dotListClass=""
-            draggable
-            focusOnSelect={false}
-            infinite
-            itemClass=""
-            keyBoardControl
-            minimumTouchDrag={80}
-            pauseOnHover
-            renderArrowsWhenDisabled={false}
-            renderButtonGroupOutside={false}
-            renderDotsOutside={false}
-            responsive={{
-              mobile: {
-                breakpoint: {
-                  max: 464,
-                  min: 0,
-                },
-                items: 1,
-              },
-              tablet: {
-                breakpoint: {
-                  max: 1024,
-                  min: 464,
-                },
-                items: 1,
-              },
-            }}
-            rewind={false}
-            rewindWithAnimation={false}
-            rtl={false}
-            shouldResetAutoplay
-            showDots
-            sliderClass=""
-            slidesToSlide={1}
-            swipeable
-          >
-            <div className="">
-              {/* {activeImage ? (
+          <Slider {...settings1}>
+            {sliderImages?.map((sliderImage, index) => {
+              return (
                 <img
-                  src={deviceImgeRender(activeImage)}
+                  key={index}
+                  src={deviceImgeRender(sliderImage)}
                   alt="Coral Perfumes"
-                  style={{
-                    display: "block",
-                    height: "100%",
-                    margin: "auto",
-                    width: "100%",
-                  }}
                 />
-              ) : null} */}
-              {sliderImages?.map((sliderImage, index) => {
-                return (
-                  <div key={index}>
-                    <img
-                      src={deviceImgeRender(sliderImage)}
-                      alt="Coral Perfumes"
-                      style={{
-                        display: "block",
-                        height: "100%",
-                        margin: "auto",
-                        width: "100%",
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </Carousel>
+              );
+            })}
+          </Slider>
         </div>
       </div>
     </>

@@ -26449,7 +26449,7 @@ span.flatpickr-weekday {
     justify-content: space-between;
   }
 }
-.add-to-bag-btn svg{
+.add-to-bag-btn svg {
   margin-left: 26px;
 }
 .custom-badge {
@@ -27012,6 +27012,70 @@ span.flatpickr-weekday {
   .mob-arrow {
     float: right;
     padding-top: 7.5px;
+  }
+  .product-showcase-mobile {
+    background: rgba(235, 236, 233, 1);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 480px;
+    min-height: auto;
+    padding: 30px 30px;
+    margin-bottom: 20px;
+  }
+  .product-showcase-mobile .slick-dots {
+    position: absolute;
+    bottom: 5%;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    right: 2%;
+  }
+  .product-showcase-mobile .slick-dots li{
+    width: 5% !important;
+  }
+  .product-showcase-mobile img {
+    display: flex !important;
+    justify-content: center;
+  }
+  .product-showcase-mobile .slick-dots li.slick-active button::before {
+    opacity: 1 !important;
+    color: #000 !important;
+    background-color: #000 !important;
+    border: none !important;
+  }
+  .product-showcase-mobile .slick-dots li button::before {
+    font-family: 'slick';
+    font-size: 10px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    background-color: #fff !important;
+    color: #fff !important;
+    border: 0.5px solid #000 !important;
+    border-radius: 50%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .product-showcase-mobile .slick-dots li button{
+    background-color: #fff !important;
+    color: #fff !important;
+    border: 0.5px solid #000 !important;
+    border-radius: 50% !important;
+    transform: scale(0.7);
+  }
+ .slick-initialized .slick-slide {
+    margin: 0 auto !important;
   }
 }
 .product-desc-section h1 {
@@ -27918,7 +27982,7 @@ border-radius: none !important;
   .fixed-top-margin {
     margin-top: 150px;
   }
-  .flex-custom-column{
+  .flex-custom-column {
     flex-direction: column !important;
   }
   .product-showcase {
@@ -27931,7 +27995,7 @@ border-radius: none !important;
     padding: 30px 30px;
     min-height: 400px;
   }
-  .product-showcase img{
+  .product-showcase img {
     max-height: 340px;
     object-fit: contain;
   }
@@ -28426,7 +28490,6 @@ border-radius: none !important;
 .dropdown-menu.show {
   display: block !important;
 }
-.account_show{
+.account_show {
   display: none !important;
 }
-
