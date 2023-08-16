@@ -80,13 +80,13 @@ function ProductCarousel({ sliderImages }) {
           ) : null}
           {/* <img src={Sample} alt="Coral Perfumes" /> */}
         </div>
-        <div className="d-blcok d-sm-none">
+        <div className="">
           <Carousel
             additionalTransfrom={0}
-            arrows={false}
+            arrows={true}
             autoPlaySpeed={3000}
             centerMode={false}
-            className=""
+            className="product-showcase"
             containerClass="container"
             dotListClass=""
             draggable
@@ -100,13 +100,6 @@ function ProductCarousel({ sliderImages }) {
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
             responsive={{
-              desktop: {
-                breakpoint: {
-                  max: 3000,
-                  min: 1024,
-                },
-                items: 1,
-              },
               mobile: {
                 breakpoint: {
                   max: 464,
@@ -131,13 +124,19 @@ function ProductCarousel({ sliderImages }) {
             slidesToSlide={1}
             swipeable
           >
-            <div className="product-showcase ">
+            <div className="">
               {activeImage ? (
-                <InnerImageZoom
+                <img
                   src={deviceImgeRender(activeImage)}
+                  alt="Coral Perfumes"
+                  style={{
+                    display: "block",
+                    height: "100%",
+                    margin: "auto",
+                    width: "100%",
+                  }}
                 />
               ) : null}
-              {/* <img src={Sample} alt="Coral Perfumes" /> */}
             </div>
           </Carousel>
         </div>

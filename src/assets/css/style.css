@@ -26726,6 +26726,9 @@ span.flatpickr-weekday {
     border-color: #000 !important;
     color: #000 !important;
   }
+  .px-5 {
+    padding: 1rem !important;
+  }
 }
 .category-top h1 {
   line-height: normal;
@@ -27925,11 +27928,25 @@ border-radius: none !important;
     justify-content: center;
     align-items: center;
     height: auto;
-    max-height: 380px;
     padding: 30px 30px;
+    min-height: 400px;
   }
   .product-showcase img{
-    transform: scale(0.75);
+    max-height: 340px;
+    object-fit: contain;
+  }
+  .react-multi-carousel-dot-list {
+    position: absolute;
+    bottom: 4% !important;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
   }
 }
 /* mobile view common styles ends here */
