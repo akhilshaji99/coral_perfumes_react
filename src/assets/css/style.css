@@ -27041,6 +27041,8 @@ span.flatpickr-weekday {
   .product-showcase-mobile img {
     display: flex !important;
     justify-content: center;
+    height: 400px;
+    object-fit: contain;
   }
   .product-showcase-mobile .slick-dots li.slick-active button::before {
     opacity: 1 !important;
