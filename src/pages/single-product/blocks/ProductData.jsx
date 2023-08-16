@@ -54,18 +54,18 @@ function productData({ productDatas }) {
       </div>
       {productDatas?.tamara_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-md-2">
+          <div className="col-md-2 col-3">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-md-9">{productDatas?.tamara_text}</div>
+          <div className="col-md-9 col-9">{productDatas?.tamara_text}</div>
         </div>
       ) : null}
       {productDatas?.tabby_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-md-2">
+          <div className="col-md-2 col-3">
             <img src={Tamara} alt="Coral Perfumes" />
           </div>
-          <div className="col-md-9">{productDatas?.tabby_text}</div>
+          <div className="col-md-9 col-9">{productDatas?.tabby_text}</div>
         </div>
       ) : null}
       <div className="row py-5">

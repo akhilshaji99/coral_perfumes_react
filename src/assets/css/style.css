@@ -26859,6 +26859,31 @@ span.flatpickr-weekday {
     min-height: 100%;
     height: 100%;
   }
+  .icon-section svg{
+    transform: scale(0.75);
+  }
+  .product-desc-section .btn-checkout{
+    font-size: 12px !important;
+    padding: 12px 20px;
+  }
+  .timer-box {
+    border-radius: 9px;
+    background: #c8ddd9;
+    padding: 12px;
+    font-size: 16px;
+    color: #000;
+    font-family: var(--fc-font-bold);
+    text-align: center;
+    width: 55px;
+    height: 49px;
+  }
+  .timer-field span {
+    color: #fff;
+    font-family: var(--fc-font-light);
+    font-size: 10px !important;
+    text-transform: capitalize;
+    text-align: center;
+  }
 }
 .container-lg-fluid {
   --fc-gutter-x: 4rem;
@@ -27035,7 +27060,7 @@ span.flatpickr-weekday {
     text-align: center;
     right: 2%;
   }
-  .product-showcase-mobile .slick-dots li{
+  .product-showcase-mobile .slick-dots li {
     width: 5% !important;
   }
   .product-showcase-mobile img {
@@ -27051,7 +27076,7 @@ span.flatpickr-weekday {
     border: none !important;
   }
   .product-showcase-mobile .slick-dots li button::before {
-    font-family: 'slick';
+    font-family: "slick";
     font-size: 10px;
     line-height: 20px;
     position: absolute;
@@ -27059,9 +27084,9 @@ span.flatpickr-weekday {
     left: 0;
     width: 20px;
     height: 20px;
-    content: '•';
+    content: "•";
     text-align: center;
-    opacity: .25;
+    opacity: 0.25;
     background-color: #fff !important;
     color: #fff !important;
     border: 0.5px solid #000 !important;
@@ -27069,15 +27094,26 @@ span.flatpickr-weekday {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .product-showcase-mobile .slick-dots li button{
+  .product-showcase-mobile .slick-dots li button {
     background-color: #fff !important;
     color: #fff !important;
     border: 0.5px solid #000 !important;
     border-radius: 50% !important;
     transform: scale(0.7);
   }
- .slick-initialized .slick-slide {
+  .slick-initialized .slick-slide {
     margin: 0 auto !important;
+  }
+  .product-desc-section h1 {
+    font-size: 14px !important;
+  }
+  .product-desc-section h2 {
+    font-size: 12px !important;
+  }
+  .product-single-price,
+  .product-single-discounted-price,
+  .product-single-discounted {
+    font-size: 14px !important;
   }
 }
 .product-desc-section h1 {
