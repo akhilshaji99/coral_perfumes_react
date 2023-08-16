@@ -1,7 +1,9 @@
+import Sample from "../../../assets/img/sample-banner.png";
+
 function DesktopSpec({ productDatas }) {
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid d-none d-sm-block">
         <div className="row align-items-center">
           <div className="col-md-8">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
@@ -102,6 +104,97 @@ function DesktopSpec({ productDatas }) {
                 <li>Made in Italy</li>
               </div> */}
             </div>
+          </div>
+        </div>
+        <hr
+          style={{
+            borderColor: "#000",
+          }}
+        />
+        <div className="row py-2 align-items-center">
+          <div className="col-md-8 ">
+            <img src={Sample} alt="" />
+          </div>
+          <div className="col-md-4 return-policy-div">
+            <h1>Return policy</h1>
+            <p>
+              We are happy to offer you a refund or an exchange within 15 days.
+            </p>
+            <h6>
+              We are happy to offer you a refund or an exchange within 15 days.
+            </h6>
+            <a href="#">know more</a>
+          </div>
+        </div>
+        <hr
+          style={{
+            borderColor: "#000",
+          }}
+        />
+        <div className="row align-items-center">
+          <div className="col-md-8">
+            <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
+              {/* nav item */}
+              <li className="nav-item" role="presentation">
+                {/* btn */}{" "}
+                <button
+                  className="nav-link active"
+                  id="rating-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#rating-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="rating-tab-pane"
+                  aria-selected="true"
+                >
+                  Product Rating
+                </button>
+              </li>
+              {/* nav item */}
+              <li className="nav-item" role="presentation">
+                {/* btn */}{" "}
+                <button
+                  className="nav-link"
+                  id="reviews-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#reviews-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="reviews-tab-pane"
+                  aria-selected="false"
+                >
+                  BRAND REVIEWS
+                </button>
+              </li>
+            </ul>
+            {/* tab content */}
+            <div className="tab-content" id="myTabContent">
+              {/* tab pane */}
+              <div
+                className="tab-pane fade show active"
+                id="rating-tab-pane"
+                role="tabpanel"
+                aria-labelledby="rating-tab"
+                tabIndex={0}
+              >
+                <div className="my-8">
+                  <div className="mb-5">Ratings</div>
+                </div>
+              </div>
+              {/* tab pane */}
+              <div
+                className="tab-pane fade"
+                id="reviews-tab-pane"
+                role="tabpanel"
+                aria-labelledby="reviews-tab"
+                tabIndex={0}
+              >
+                <div className="my-8">Reviews</div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <h2 className="p-d">bought together</h2>
           </div>
         </div>
       </div>

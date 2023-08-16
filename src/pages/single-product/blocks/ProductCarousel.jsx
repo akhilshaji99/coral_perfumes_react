@@ -61,7 +61,7 @@ function ProductCarousel({ sliderImages }) {
   }, [sliderImages?.length || 0]);
   return (
     <>
-      <div className="col-md-2">
+      <div className="col-md-2 single-product-row">
         <div className="desktop-thumbs">
           <Slider {...settings}>
             {sliderImages?.map((sliderImage, index) => {
@@ -81,7 +81,7 @@ function ProductCarousel({ sliderImages }) {
           </Slider>
         </div>
       </div>
-      <div className="col-md-5">
+      <div className="col-md-5 ">
         <div className="product-showcase d-none d-sm-block">
           {activeImage ? (
             <InnerImageZoom src={deviceImgeRender(activeImage)} />

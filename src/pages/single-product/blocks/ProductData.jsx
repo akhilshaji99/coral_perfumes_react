@@ -1,5 +1,5 @@
 import Tabby from "../../../assets/img/icons/payment/tabby-1.png";
-import Tamara from "../../../assets/img/icons/payment/tamara-1.png";
+// import Tamara from "../../../assets/img/icons/payment/tamara-1.png";
 function productData({ productDatas, currentVariant }) {
   return (
     <>
@@ -63,14 +63,15 @@ function productData({ productDatas, currentVariant }) {
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (
         <div className="row py-2 align-items-center payment-tabby">
           <div className="col-md-2 col-3">
-            <img src={Tamara} alt="Coral Perfumes" />
-          </div>
-          <div className="col-md-9 col-9">
             <tamara-widget
               type="tamara-summary"
               amount={currentVariant?.price_amount}
-              inline-type="5"
-            ></tamara-widget>
+              inline-type="4"
+            ></tamara-widget>{" "}
+          </div>
+
+          <div className="col-md-10 col-9">
+            <span>4 interest-free payments AED 40 </span>
           </div>
         </div>
       ) : null}
