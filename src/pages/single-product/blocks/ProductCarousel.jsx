@@ -125,7 +125,7 @@ function ProductCarousel({ sliderImages }) {
             swipeable
           >
             <div className="">
-              {activeImage ? (
+              {/* {activeImage ? (
                 <img
                   src={deviceImgeRender(activeImage)}
                   alt="Coral Perfumes"
@@ -136,7 +136,23 @@ function ProductCarousel({ sliderImages }) {
                     width: "100%",
                   }}
                 />
-              ) : null}
+              ) : null} */}
+              {sliderImages?.map((sliderImage, index) => {
+                return (
+                  <div key={index}>
+                    <img
+                      src={deviceImgeRender(sliderImage)}
+                      alt="Coral Perfumes"
+                      style={{
+                        display: "block",
+                        height: "100%",
+                        margin: "auto",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </Carousel>
         </div>
