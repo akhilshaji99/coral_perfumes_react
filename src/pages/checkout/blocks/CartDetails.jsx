@@ -1,18 +1,6 @@
-import { useEffect, useState } from "react";
-import getCartDatas from "../../cart/js/cartFetch";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
-function CartDetails() {
-  const [cartDatas, setcartDatas] = useState([]);
-
-  useEffect(() => {
-    getCartDatas().then((response) => {
-      if (response?.data) {
-        setcartDatas(response?.data);
-      }
-    });
-  }, []);
-
+function CartDetails({ cartDatas }) {
   return (
     <div className="card  col-12 col-md-12 offset-lg-1 col-lg-4">
       <div className="mb-5 mt-6">

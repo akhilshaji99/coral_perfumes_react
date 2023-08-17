@@ -1,14 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
 import BreadCrumps from "../common/BreadCrumps";
-import TamaraIcon from "../../assets/img/icons/payment/tamara.png";
-import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
-import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import CartDetails from "./blocks/CartDetails";
 import getCheckOutDetails from "./js/checkOutFetch";
 import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import UpdateCheckoutDetails from "./js/updateCheckoutDetails";
 import AddNewAddressModal from "./blocks/AddNewAddressModal";
+import DeliveryTypes from "./blocks/DeliveryTypes";
+import PaymentTypes from "./blocks/PaymentTypes";
+import GiftWrapping from "./blocks/GiftWrapping";
 import $ from "jquery";
 
 const phoneRegExp =
@@ -24,7 +24,6 @@ const newAddressFormSchema = yup.object().shape({
   last_name: yup.string().required(),
   phone_number: yup.string().required(),
   email: yup.string().required(),
-
 });
 function getStyles(errors, fieldName) {
   if (getIn(errors, fieldName)) {
@@ -36,14 +35,40 @@ function getStyles(errors, fieldName) {
 function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
+  const [cartItems, setCartItems] = useState(null);
+  const [paymentTypes, setPaymentTypes] = useState([]);
+  const [defaultPaymentTypeFlag, setDefaultPaymentTypeFlag] = useState(false);
+  //State for checkout fetch api parameters
+  const [checkoutFetchParams, setCheckoutFetchParams] = useState({
+    delivery_type: "1",
+    shipping_zone_type: null,
+    payment_type: null,
+  });
+  //#End
 
   useEffect(() => {
-    getCheckOutDetails().then((response) => {
+    fetchCheckoutApi();
+  }, []);
+
+  const fetchCheckoutApi = () => {
+    getCheckOutDetails(checkoutFetchParams).then((response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
+        setCartItems(response?.data?.cart_items);
+        setPaymentTypes(response?.data?.payment_types);
+        //Updating payment type in fetch payload :: Based on flag - Update only on first page load
+        if (!defaultPaymentTypeFlag) {
+          checkoutFetchParams.payment_type =
+            response?.data?.payment_types.length > 0
+              ? response?.data?.payment_types?.[0]?.id
+              : null;
+          setCheckoutFetchParams(checkoutFetchParams);
+          setDefaultPaymentTypeFlag(true);
+        }
+        //#End
       }
     });
-  }, []);
+  };
   const handleOnSubmit = (values) => {
     UpdateCheckoutDetails(values).then((response) => {
       if (response?.data) {
@@ -59,11 +84,10 @@ function Index() {
       street_address: checkOutDetails?.default_address?.street_address,
       building_address: checkOutDetails?.default_address?.building_address,
       delivery_type: "1",
-      first_name : checkOutDetails?.user_data?.first_name,
-      last_name : checkOutDetails?.user_data?.last_name,
-      phone_number : checkOutDetails?.user_data?.phone_number,
-      email : checkOutDetails?.user_data?.email,
-
+      first_name: checkOutDetails?.user_data?.first_name,
+      last_name: checkOutDetails?.user_data?.last_name,
+      phone_number: checkOutDetails?.user_data?.phone_number,
+      email: checkOutDetails?.user_data?.email,
     },
     enableReinitialize: true,
     validationSchema: newAddressFormSchema,
@@ -79,6 +103,20 @@ function Index() {
       }),
     [addressForm]
   );
+
+  //update shipping_zone_type and refetch api :: Delivery type change
+  const fetchCheckoutDetailsByDeliveryType = (delivery_type_id) => {
+    checkoutFetchParams.shipping_zone_type = delivery_type_id;
+    setCheckoutFetchParams(checkoutFetchParams);
+    fetchCheckoutApi(); //Api refetch
+  };
+  //#End
+  //update payment type and refetch api :: Delivery type change
+  const fetchCheckoutDetailsForPaymentType = (payment_type_id) => {
+    checkoutFetchParams.payment_type = parseInt(payment_type_id);
+    setCheckoutFetchParams(checkoutFetchParams);
+    fetchCheckoutApi();
+  };
   return (
     <>
       <BreadCrumps />
@@ -105,7 +143,11 @@ function Index() {
               </div>
             </div>
           </div>
-          <AddNewAddressModal componentDatas={addressForm.values} setAddAddressListFlag={setAddAddressListFlag} addAddressListFlag={addAddressListFlag}/>
+          <AddNewAddressModal
+            componentDatas={addressForm.values}
+            setAddAddressListFlag={setAddAddressListFlag}
+            addAddressListFlag={addAddressListFlag}
+          />
 
           <div>
             {/* row */}
@@ -187,165 +229,151 @@ function Index() {
                     </div>
                   </div>
                   <form onSubmit={addressForm.handleSubmit}>
+                    <div className="accordion-item card card-bordered shadow mb-2 ">
+                      <div className="d-flex justify-content-between align-items-center h">
+                        {/* heading one */}
+                        <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
+                        <a
+                          href="#"
+                          className="fs-5 text-inherit collapsed h4"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseTwo"
+                          aria-expanded="true"
+                          aria-controls="flush-collapseTwo"
+                        >
+                          <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-menu-down">^</span>
+                          </button>
+                        </a>
+                        {/* btn */}
 
-                  <div className="accordion-item card card-bordered shadow mb-2 ">
-                    <div className="d-flex justify-content-between align-items-center h">
-                      {/* heading one */}
-
-                      <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
-
-                      <a
-                        href="#"
-                        className="fs-5 text-inherit collapsed h4"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo"
-                        aria-expanded="true"
-                        aria-controls="flush-collapseTwo"
+                        {/* collapse */}
+                      </div>
+                      <div
+                        id="flush-collapseTwo"
+                        className="accordion-collapse collapse show "
+                        data-bs-parent="#accordionFlushExample"
                       >
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-menu-down">^</span>
-                        </button>
-                      </a>
-                      {/* btn */}
-
-                      {/* collapse */}
-                    </div>
-                    <div
-                      id="flush-collapseTwo"
-                      className="accordion-collapse collapse show "
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div className="mb-1">
-                        {/* card body */}
-                        <div className="card-body p-1">
-                          <div className="row g-2 m-2">
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="First Name"
-                                  value={addressForm.values.first_name}
-                                  onChange={(e) =>
-                                    setAddressFormInputValue(
-                                      "first_name",
-                                      e.target.value
-                                    )
-                                  }
-                                  style={getStyles(
-                                    addressForm.errors,
-                                    "first_name"
-                                  )}
-                                />
+                        <div className="mb-1">
+                          {/* card body */}
+                          <div className="card-body p-1">
+                            <div className="row g-2 m-2">
+                              <div className="col-md-6 col-12">
+                                {/* input */}
+                                <div className="mb-3 mb-lg-0">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="First Name"
+                                    value={addressForm.values.first_name}
+                                    onChange={(e) =>
+                                      setAddressFormInputValue(
+                                        "first_name",
+                                        e.target.value
+                                      )
+                                    }
+                                    style={getStyles(
+                                      addressForm.errors,
+                                      "first_name"
+                                    )}
+                                  />
+                                </div>
+                              </div>
+                              <div className="col-md-6 col-12">
+                                {/* input */}
+                                <div className="mb-3 mb-lg-0">
+                                  <input
+                                    type="text"
+                                    value={addressForm.values.last_name}
+                                    onChange={(e) =>
+                                      setAddressFormInputValue(
+                                        "last_name",
+                                        e.target.value
+                                      )
+                                    }
+                                    style={getStyles(
+                                      addressForm.errors,
+                                      "last_name"
+                                    )}
+                                    className="form-control"
+                                    placeholder="Last Name"
+                                  />
+                                </div>
                               </div>
                             </div>
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <input
-                                  type="text"
-                                  value={addressForm.values.last_name}
-                                  onChange={(e) =>
-                                    setAddressFormInputValue(
-                                      "last_name",
-                                      e.target.value
-                                    )
-                                  }
-                                  style={getStyles(
-                                    addressForm.errors,
-                                    "last_name"
-                                  )}
-                                  className="form-control"
-                                  placeholder="Last Name"
-                                />
+                            <div className="row g-2 m-2">
+                              <div className="col-md-6 col-12">
+                                {/* input */}
+                                <div className="mb-3 mb-lg-0">
+                                  <input
+                                    type="text"
+                                    value={addressForm.values.phone_number}
+                                    onChange={(e) =>
+                                      setAddressFormInputValue(
+                                        "phone_number",
+                                        e.target.value
+                                      )
+                                    }
+                                    style={getStyles(
+                                      addressForm.errors,
+                                      "phone_number"
+                                    )}
+                                    className="form-control"
+                                    placeholder="055 922 8088"
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                          <div className="row g-2 m-2">
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <input
-                                  type="text"
-                                  value={addressForm.values.phone_number}
-                                  onChange={(e) =>
-                                    setAddressFormInputValue(
-                                      "phone_number",
-                                      e.target.value
-                                    )
-                                  }
-                                  style={getStyles(
-                                    addressForm.errors,
-                                    "phone_number"
-                                  )}
-                                  className="form-control"
-                                  placeholder="055 922 8088"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <input
-                                  type="text"
-                                  value={addressForm.values.email}
-                                  onChange={(e) =>
-                                    setAddressFormInputValue(
-                                      "email",
-                                      e.target.value
-                                    )
-                                  }
-                                  style={getStyles(
-                                    addressForm.errors,
-                                    "email"
-                                  )}
-                                  className="form-control"
-                                  placeholder="Email"
-                                />
+                              <div className="col-md-6 col-12">
+                                {/* input */}
+                                <div className="mb-3 mb-lg-0">
+                                  <input
+                                    type="text"
+                                    value={addressForm.values.email}
+                                    onChange={(e) =>
+                                      setAddressFormInputValue(
+                                        "email",
+                                        e.target.value
+                                      )
+                                    }
+                                    style={getStyles(
+                                      addressForm.errors,
+                                      "email"
+                                    )}
+                                    className="form-control"
+                                    placeholder="Email"
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="accordion-item card card-bordered shadow mb-2 ">
-                    <div className="d-flex justify-content-between align-items-center h">
-                      {/* heading one */}
-
-                      <h4 className="pt-3 ps-3 "> DELIVERY ADDRESS</h4>
-
-                      <a
-                        href="#"
-                        className="fs-5 text-inherit collapsed h4"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseThree"
-                        aria-expanded="true"
-                        aria-controls="flush-collapseThree"
+                    <div className="accordion-item card card-bordered shadow mb-2 ">
+                      <div className="d-flex justify-content-between align-items-center h">
+                        <h4 className="pt-3 ps-3 "> DELIVERY ADDRESS</h4>
+                        <a
+                          href="#"
+                          className="fs-5 text-inherit collapsed h4"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseThree"
+                          aria-expanded="true"
+                          aria-controls="flush-collapseThree"
+                        >
+                          <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-menu-down">^</span>
+                          </button>
+                        </a>
+                      </div>
+                      <div
+                        id="flush-collapseThree"
+                        className="accordion-collapse collapse show "
+                        data-bs-parent="#accordionFlushExample"
                       >
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-menu-down">^</span>
-                        </button>
-                      </a>
-                      {/* btn */}
-
-                      {/* collapse */}
-                    </div>
-                    <div
-                      id="flush-collapseThree"
-                      className="accordion-collapse collapse show "
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div className="mb-1">
-                        {/* card body */}
-
-                        <div className="card-body p-1">
-                          {/* <form onSubmit={addressForm.handleSubmit}> */}
+                        <div className="mb-1">
+                          <div className="card-body p-1">
                             <div className="row g-2 m-2">
                               <div className="col-md-6 col-12">
-                                {/* input */}
                                 <div className="mb-3 mb-lg-0">
                                   <input
                                     type="text"
@@ -470,7 +498,6 @@ function Index() {
                                   />
                                 </div>
                               </div>
-                           
                             </div>
                             <div>
                               <div className="row g-2 m-2">
@@ -487,334 +514,42 @@ function Index() {
                                 </div>
 
                                 <div className="col-md-6 col-12">
-                                  <a onClick={(e) => {
-                                    setAddAddressListFlag(true);
-                                   $("#addressModal").toggle()
-                                   $("#addressModal").toggleClass("modal fade modal")
-                                  }
-                                  }>
+                                  <a
+                                    onClick={(e) => {
+                                      setAddAddressListFlag(true);
+                                      $("#addressModal").toggle();
+                                      $("#addressModal").toggleClass(
+                                        "modal fade modal"
+                                      );
+                                    }}
+                                  >
                                     Change Address
                                   </a>
                                 </div>
                               </div>
                             </div>
-
-                          <div className="card-body p-6">
-                            {/* check input */}
-                            <div className="d-flex">
-                              <div className="form-check">
-                                <input
-                                  className="form-check-input"
-                                  type="radio"
-                                  checked
-                                  name="flexRadioDefault"
-                                  id="payoneer"
-                                />
-                              </div>
-                              <div>
-                                {/* title */}
-                                <h5 className=" pt-1 ps-5 h6">
-                                  {" "}
-                                  Add Gift Wrapping (AED 5 Charge Apply)
-                                </h5>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="ps-3">
-                            <div className="col-md-8 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Your Message"
-                                />
-                              </div>
-                            </div>
+                            <GiftWrapping />
                           </div>
                         </div>
-                        
                       </div>
                     </div>
-                  </div>
                   </form>
 
-
-                  <div className="accordion-item card card-bordered shadow mb-2 ">
-                    <div className="d-flex justify-content-between align-items-center h">
-                      {/* heading one */}
-
-                      <h4 className="pt-3 ps-3 "> DELIVERY TYPE</h4>
-
-                      <a
-                        href="#"
-                        className="fs-5 text-inherit collapsed h4"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseFour"
-                        aria-expanded="true"
-                        aria-controls="flush-collapseFour"
-                      >
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-menu-down">^</span>
-                        </button>
-                      </a>
-                      {/* btn */}
-
-                      {/* collapse */}
-                    </div>
-                    <div
-                      id="flush-collapseFour"
-                      className="accordion-collapse collapse show "
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div className="mb-1">
-                        {/* card body */}
-                        <div className="card-body p-1">
-                          <div className="row">
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body p-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        checked
-                                        name="flexRadioDefault"
-                                        id="payoneer"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-5 h6">
-                                        {" "}
-                                        Standard Delivery
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="card-body pt-3">
-                                <h5 className=" pt-1  h6"> AED 0</h5>
-                              </div>
-                            </div>
-                            <h5 className=" ps-12  h6">
-                              Delivered on or before Thursday, 20 july, 2023
-                            </h5>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body ps-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        name="flexRadioDefault"
-                                        id="payoneer"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-6 h6">
-                                        {" "}
-                                        Express Delivery
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="card-body pt-3">
-                                <h5 className=" pt-1  h6"> AED 15</h5>
-                              </div>
-                            </div>
-                            <h5 className=" ps-12  h6">
-                              Order before 5Pm and get Same day delivery (Dubai
-                              & Sharjah)
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="accordion-item card card-bordered shadow mb-2 ">
-                    <div className="d-flex justify-content-between align-items-center h">
-                      {/* heading one */}
-
-                      <h4 className="pt-3 ps-3 "> PAYMENT TYPE</h4>
-
-                      <a
-                        href="#"
-                        className="fs-5 text-inherit collapsed h4"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseFive"
-                        aria-expanded="true"
-                        aria-controls="flush-collapseFive"
-                      >
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-menu-down">^</span>
-                        </button>
-                      </a>
-                      {/* btn */}
-
-                      {/* collapse */}
-                    </div>
-                    <div
-                      id="flush-collapseFive"
-                      className="accordion-collapse collapse show "
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div className="mb-1">
-                        {/* card body */}
-                        <div className="card-body p-1">
-                          <div className="row">
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body p-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        checked
-                                        name="typeRadioDefault"
-                                        id="debCredCard"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-5 h6">
-                                        {" "}
-                                        Debit/Credit Card
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="card-body pt-3">
-                                <img src={MastercardIcon} alt="Mastercard" />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body ps-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        name="typeRadioDefault"
-                                        id="tabby"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-6 h6">
-                                        {" "}
-                                        Tabby:Split into 4,Intrest free
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="card-body pt-3">
-                                <img src={TabbyIcon} alt="Mastercard" />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body ps-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        name="typeRadioDefault"
-                                        id="tamara"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-6 h6">
-                                        {" "}
-                                        Tamara : Split into 3,Intrest free
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-12">
-                              {/* input */}
-                              <div className="card-body pt-3">
-                                <img src={TamaraIcon} alt="Mastercard" />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-6 col-12">
-                              {/* input */}
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body ps-3">
-                                  {/* check input */}
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        name="typeRadioDefault"
-                                        id="cod"
-                                      />
-                                    </div>
-                                    <div>
-                                      {/* title */}
-                                      <h5 className=" pt-1 ps-6 h6">
-                                        {" "}
-                                        Cash On Delivery (AED 10 Extra for COD)
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <DeliveryTypes
+                    fetchCheckoutDetailsByDeliveryType={
+                      fetchCheckoutDetailsByDeliveryType
+                    }
+                  />
+                  <PaymentTypes
+                    paymentTypes={paymentTypes}
+                    activePaymentType={checkoutFetchParams?.payment_type}
+                    fetchCheckoutDetailsForPaymentType={
+                      fetchCheckoutDetailsForPaymentType
+                    }
+                  />
                 </div>
               </div>
-              <CartDetails />
+              <CartDetails cartDatas={cartItems} />
             </div>
           </div>
         </div>

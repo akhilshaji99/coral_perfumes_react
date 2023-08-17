@@ -1,5 +1,5 @@
 import $ from "jquery";
-import React, { useCallback,useEffect,useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import addNewAddress from "../../checkout/js/addUserAddress";
@@ -23,7 +23,11 @@ function getStyles(errors, fieldName) {
     };
   }
 }
-function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) {
+function AddAddress({
+  addAddressFlag,
+  setAddAddressFlag,
+  setAddAddressListFlag,
+}) {
   const [emirates, setEmirates] = useState([]);
   useEffect(() => {
     getEmirates().then((response) => {
@@ -41,7 +45,6 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
         setAddAddressListFlag(true);
         $("#addressModal").toggle();
         $("#addressModal").toggleClass("modal fade modal");
-      
       }
       console.log(response);
     });
@@ -54,7 +57,7 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
       emirate: "",
       street_address: "",
       building_address: "",
-      phone_number : "",
+      phone_number: "",
     },
     enableReinitialize: true,
     validationSchema: newAddressFormSchema,
@@ -70,9 +73,8 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
       }),
     [addressForm]
   );
- 
+
   return (
-    
     <div
       className="modal fade"
       id="AddAddress"
@@ -82,24 +84,22 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
       <div className="modal-dialog modal-dialog-centered modal-lg">
         <div className="modal-content p-5">
           <div className="row">
-            <div className="col-md-10">
-              
-            </div>
+            <div className="col-md-10"></div>
           </div>
           <div className="modal-body p-5">
-              <div>
-                {/* heading */}
-                <h5 className="mb-5 text-center">ADD NEW ADDRESS</h5>
-              </div>
-              <div>
-                {/* button */}
-                <button
-                  type="button"
-                  className="btn-close btn-custom-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                />
-              </div>
+            <div>
+              {/* heading */}
+              <h5 className="mb-5 text-center">ADD NEW ADDRESS</h5>
+            </div>
+            <div>
+              {/* button */}
+              <button
+                type="button"
+                className="btn-close btn-custom-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
             <div>
               <form onSubmit={addressForm.handleSubmit} className="row mb-4">
                 <div className="mb-3 col-md-6 col-12">
@@ -110,15 +110,9 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
                     required=""
                     value={addressForm.values.flat_name}
                     onChange={(e) =>
-                      setAddressFormInputValue(
-                        "flat_name",
-                        e.target.value
-                      )
+                      setAddressFormInputValue("flat_name", e.target.value)
                     }
-                    style={getStyles(
-                      addressForm.errors,
-                      "flat_name"
-                    )}
+                    style={getStyles(addressForm.errors, "flat_name")}
                   />
                 </div>
                 {/* CVV */}
@@ -135,10 +129,7 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
                           e.target.value
                         )
                       }
-                      style={getStyles(
-                        addressForm.errors,
-                        "building_address"
-                      )}
+                      style={getStyles(addressForm.errors, "building_address")}
                     />
                   </div>
                 </div>
@@ -156,34 +147,24 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
                           e.target.value
                         )
                       }
-                      style={getStyles(
-                        addressForm.errors,
-                        "street_address"
-                      )}
+                      style={getStyles(addressForm.errors, "street_address")}
                     />
                   </div>
                 </div>
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3">
-                  <select
-                                    className="form-control"
-                                    onChange={(e) => {
-                                      setAddressFormInputValue(
-                                        "emirate",
-                                        e.target.value
-                                      );
-                                    }}
-                                  >
-                                    {emirates.map(
-                                      (emirate, index) => {
-                                        return (
-                                          <option value={emirate.id}>
-                                            {emirate.name}
-                                          </option>
-                                        );
-                                      }
-                                    )}
-                                  </select>
+                    <select
+                      className="form-control"
+                      onChange={(e) => {
+                        setAddressFormInputValue("emirate", e.target.value);
+                      }}
+                    >
+                      {emirates.map((emirate, index) => {
+                        return (
+                          <option value={emirate.id}>{emirate.name}</option>
+                        );
+                      })}
+                    </select>
                   </div>
                 </div>
                 <div className="mb-3 col-md-6 col-12">
@@ -194,15 +175,9 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
                       placeholder="PIN"
                       value={addressForm.values.pin}
                       onChange={(e) =>
-                        setAddressFormInputValue(
-                          "pin",
-                          e.target.value
-                        )
+                        setAddressFormInputValue("pin", e.target.value)
                       }
-                      style={getStyles(
-                        addressForm.errors,
-                        "pin"
-                      )}
+                      style={getStyles(addressForm.errors, "pin")}
                     />
                   </div>
                 </div>
@@ -214,15 +189,9 @@ function AddAddress({ addAddressFlag,setAddAddressFlag,setAddAddressListFlag }) 
                       placeholder="09999999"
                       value={addressForm.values.phone_number}
                       onChange={(e) =>
-                        setAddressFormInputValue(
-                          "phone_number",
-                          e.target.value
-                        )
+                        setAddressFormInputValue("phone_number", e.target.value)
                       }
-                      style={getStyles(
-                        addressForm.errors,
-                        "phone_number"
-                      )}
+                      style={getStyles(addressForm.errors, "phone_number")}
                     />
                   </div>
                 </div>
