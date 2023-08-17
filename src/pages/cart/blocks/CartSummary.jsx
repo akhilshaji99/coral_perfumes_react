@@ -1,4 +1,4 @@
-import { NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import $ from "jquery";
 
 function CartSummary({ cartDatas }) {
@@ -6,18 +6,15 @@ function CartSummary({ cartDatas }) {
 
   const handleOnProceed = (values) => {
     // subscribeNewsLetter(values);
-  const userData = JSON.parse(localStorage.getItem("userDatas"));
-   if(!userData){
-    $("document").ready(function () {
-      
-      $("#guestLoginModal").toggle();
-      $("#guestLoginModal").toggleClass("modal fade modal");
-    
-    });
-   }else{
-    navigate("/checkout");
-   }
-    
+    const userData = JSON.parse(localStorage.getItem("userDatas"));
+    if (!userData) {
+      $("document").ready(function () {
+        $("#guestLoginModal").toggle();
+        $("#guestLoginModal").toggleClass("modal fade modal");
+      });
+    } else {
+      navigate("/checkout");
+    }
   };
   return (
     <div className="col-12 col-lg-4 col-md-5">
@@ -30,8 +27,8 @@ function CartSummary({ cartDatas }) {
               Add Promo Code
             </label>
             <form>
-              <div className="row align-items-center">
-                <div className="col-md-6">
+              <div className="row align-items-center d-flex">
+                <div className="col-md-6 col-6">
                   <div className="mb-2">
                     <input
                       type="text"
@@ -40,7 +37,7 @@ function CartSummary({ cartDatas }) {
                     />
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 col-6">
                   <div className="d-grid">
                     <button type="submit" className="btn btn-dark mb-1">
                       Apply
@@ -75,31 +72,33 @@ function CartSummary({ cartDatas }) {
                 </div>
                 <span>{cartDatas?.shipping_display}</span>
               </li>
-              <li className="list-group-item d-flex justify-content-between align-items-start my-bag-summary-border">
-                <div className="me-auto ">
+              <li className="list-group-item d-flex justify-content-between align-items-start border-0">
+                <div className="me-auto">
                   <div>{cartDatas?.discount_title}</div>
                 </div>
                 <span>{cartDatas?.discount_display}</span>
               </li>
-              {/* list group item */}
+              <hr />
               <li className="list-group-item d-flex justify-content-between align-items-start my-bag-summary-border">
                 <div className="me-auto">
-                  <div className="fw-bold">
+                  <div className="my-bag-total">
                     {cartDatas?.total_amount_title_1}{" "}
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                 </div>
-                <span className="fw-bold">
-                  {cartDatas?.total_amount_display}
-                </span>
+             &nbsp;   <span>{cartDatas?.total_amount_display}</span>
               </li>
             </ul>
           </div>
           <div className="d-grid mb-1 mt-4">
             {/* <NavLink to={"/checkout"}> */}
-              <button onClick={handleOnProceed} className="btn btn-dark w-100 btn-lg " type="submit">
-                PROCEED
-              </button>
+            <button
+              onClick={handleOnProceed}
+              className="btn btn-dark w-100 btn-lg "
+              type="submit"
+            >
+              PROCEED
+            </button>
             {/* </NavLink> */}
           </div>
           <p className="delivery-info">

@@ -17,7 +17,7 @@ function index() {
         <div className="container ">
           <h2 className="dashboard-heading">my dashboard</h2>
           <div className="row d-flex justify-content-center dashboard-row">
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 col-6 text-center">
               <NavLink to={"/personal-info"}>
                 <img
                   src={personalInfo}
@@ -28,39 +28,39 @@ function index() {
                 <p>edit details</p>
               </NavLink>
             </div>
-            <div className="col-md-3 text-center">
-            <NavLink to={"/address-book"}> 
-              <img
-                src={addressBook}
-                alt="Coral Perfumes"
-                className="img-fluid"
-              />
-              <h6>address book</h6>
-              <p>edit details</p>
+            <div className="col-md-3 col-6 text-center">
+              <NavLink to={"/address-book"}>
+                <img
+                  src={addressBook}
+                  alt="Coral Perfumes"
+                  className="img-fluid"
+                />
+                <h6>address book</h6>
+                <p>edit details</p>
               </NavLink>
             </div>{" "}
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 col-6 text-center">
               <img src={myOrders} alt="Coral Perfumes" className="img-fluid" />
               <h6>my orders</h6>
               <p>edit details</p>
             </div>{" "}
-            <div className="col-md-3 text-center">
-            <NavLink to={"/wishlist"}>
-              <img
-                src={myWishlist}
-                alt="Coral Perfumes"
-                className="img-fluid"
-              />
-              <h6>my wishlist</h6>
-              <p>edit details</p>
+            <div className="col-md-3 col-6 text-center">
+              <NavLink to={"/wishlist"}>
+                <img
+                  src={myWishlist}
+                  alt="Coral Perfumes"
+                  className="img-fluid"
+                />
+                <h6>my wishlist</h6>
+                <p>edit details</p>
               </NavLink>
             </div>{" "}
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 col-6 text-center">
               <img src={Returns} alt="Coral Perfumes" className="img-fluid" />
               <h6>returns</h6>
               <p>edit details</p>
             </div>{" "}
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 col-6 text-center">
               <img src={Logout} alt="Coral Perfumes" className="img-fluid" />
               <h6>logout</h6>
               <p>edit details</p>

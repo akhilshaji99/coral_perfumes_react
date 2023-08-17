@@ -70,7 +70,7 @@ function Account({ changeMobileMenuStatus }) {
             <div className="col-md-4 col-4">
               <NavLink className="navbar-brand" to="/">
                 {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
-                <Logo/>
+                <Logo />
               </NavLink>
             </div>
             <div className="col-md-4 col-4 text-end">
@@ -410,7 +410,7 @@ function Account({ changeMobileMenuStatus }) {
                       setCartDrawerFlag(true);
                       $("#cartDrawer").toggleClass("show");
                     }}
-                    className="text-center"
+                    className="text-center cursor"
                   >
                     <svg
                       width="24"

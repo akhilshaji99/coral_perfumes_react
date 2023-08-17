@@ -1,5 +1,5 @@
 import BreadCrumps from "../common/BreadCrumps";
-import { useEffect, useCallback  } from "react";
+import { useEffect, useCallback } from "react";
 import { useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CartSummary from "./blocks/CartSummary";
@@ -101,7 +101,7 @@ function Index() {
   return (
     <>
       <BreadCrumps />
-      <section className="mb-lg-14 mb-8 mt-8">
+      <section className="mb-lg-14 mb-8 mt-8 my-bag">
         <div className="container-fluid">
           {/* row */}
           <div className="row">
@@ -114,8 +114,11 @@ function Index() {
               </div>
             </div>
           </div>
-          <GuestLoginModal formik={formik} setInputValue={setInputValue}/>
-          <LoginOTPModal componentDatas={formik.values} redirectTo={"checkout"} />
+          <GuestLoginModal formik={formik} setInputValue={setInputValue} />
+          <LoginOTPModal
+            componentDatas={formik.values}
+            redirectTo={"checkout"}
+          />
 
           {/* row */}
           <div className="row">
@@ -126,7 +129,7 @@ function Index() {
                     <li className="list-group-item  my-bag-card" key={index}>
                       {/* row */}
                       <div className="row align-items-center px-0">
-                        <div className="col-md-2 col-2">
+                        <div className="col-md-2 col-4">
                           <div className="my-bag-img">
                             <img
                               src={deviceImageRender(
@@ -137,11 +140,13 @@ function Index() {
                             />
                           </div>
                         </div>
-                        <div className="col-md-9 col-9  my-bag-text">
+                        <div className="col-md-9 col-8  my-bag-text">
                           <h6 className="mb-0">
                             {cartData?.product_variant?.name}
                           </h6>
-                          <p>{cartData?.product_variant?.brand_name}</p>
+                          <p className="mb-0">
+                            {cartData?.product_variant?.brand_name}
+                          </p>
                           <ul id="price-my-bag">
                             <li>
                               <h5 className="selling-price">
@@ -215,10 +220,23 @@ function Index() {
                           {/* text */}
                         </div>
                         {/* input group */}
-                        <div className="col-md-1 col-1">
+                        <div className="col-md-1 col-1 ">
                           {/* input */}
 
                           <div className="mt-2 my-bag-remove-btn">
+                            <a
+                              onClick={() => {
+                                cartRemove(cartData?.id).then((response) => {
+                                  if (response) {
+                                    cartFetchFunctionCall();
+                                  }
+                                });
+                              }}
+                            >
+                              <img src={RemoveBtn} alt="Coral Perfumes" />
+                            </a>
+                          </div>
+                          <div className="mt-2 my-bag-remove-btn mob-remove  ">
                             <a
                               onClick={() => {
                                 cartRemove(cartData?.id).then((response) => {

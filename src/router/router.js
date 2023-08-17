@@ -11,6 +11,7 @@ import PersonalInfo from "../pages/personal_info/index";
 import AddressBook from "../pages/address_book/index";
 import DashBoard from "../pages/dashboard/index";
 import Stores from "../pages/stores/index";
+import AlertPages from "../pages/alert_pages/index";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -31,6 +32,7 @@ const Router = () => {
         { path: "address-book", element: userDatas?  <AddressBook />: <Navigate to="/"/> },
         { path: "dashboard", element: <DashBoard /> },
         { path: "stores", element: <Stores /> },
+        { path: "alert", element: <AlertPages /> },
         // { path: "about", element: <About /> }
         { path: '*', element: <Navigate to="/404" replace /> }
       ],
