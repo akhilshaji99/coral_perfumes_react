@@ -5,7 +5,7 @@ import ProductDetails from "../../common/ProductDetails";
 function RecommendedProducts({ componentDatas }) {
   return (
     <>
-      <div className="container-fluid my-5">
+      <div className="container-lg-fluid my-5">
         <div
           className="card flash-sale-container mb-5"
           //   style={dynamicBackground}
@@ -52,7 +52,7 @@ function RecommendedProducts({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 1,
+                items: 2,
                 partialVisibilityGutter: 30,
               },
               tablet: {

@@ -26434,21 +26434,23 @@ span.flatpickr-weekday {
     font-style: normal;
     font-weight: 700;
     text-transform: capitalize;
-    text-align: left !important;
+    text-align: center !important;
     padding-top: 16px !important;
-    white-space: normal !important;
+    /* white-space: normal !important;
     overflow: visible !important;
-    text-overflow: unset !important;
+    text-overflow: unset !important; */
   }
   .product-grid .selling-price,
   .discounted-price,
   .discount-percentage {
     font-size: 12px !important;
+    padding-left: 5px;
     /* text-align: left; */
   }
   .discount-percentage {
     display: flex;
     justify-content: space-between;
+    margin-left: 4px;
   }
 }
 .add-to-bag-btn svg {

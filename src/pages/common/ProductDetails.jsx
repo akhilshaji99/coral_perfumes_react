@@ -45,14 +45,14 @@ function ProductDetails({ product }) {
       >
         {product.name}
       </h4>
-      <div className="row custom-row1 mb-5">
-        <div className="col-md-4 col-6 px-0">
+      <div className="row custom-row1 mb-5 ">
+        <div className="col-md-4 col-6 px-lg-0">
           <h5 className="selling-price">AED {product.price_amount}</h5>
         </div>
         <div className="col-md-4 col-6 px-0">
           <h5 className="discounted-price">AED {product.original_amount}</h5>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 px-lg-0">
           <h5 className="discount-percentage">
             {product.discount_percentage}% off
           </h5>
