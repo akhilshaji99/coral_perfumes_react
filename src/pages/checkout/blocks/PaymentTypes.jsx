@@ -1,8 +1,4 @@
-import TamaraIcon from "../../../assets/img/icons/payment/tamara.png";
 import MastercardIcon from "../../../assets/img/icons/payment/mastercard.svg";
-import TabbyIcon from "../../../assets/img/icons/payment/tabby.svg";
-import { useState } from "react";
-import { useEffect } from "react";
 
 function PaymentTypes({
   paymentTypes,

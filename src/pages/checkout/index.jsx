@@ -43,6 +43,8 @@ function Index() {
     delivery_type: "1",
     shipping_zone_type: null,
     payment_type: null,
+    gift_wrap: 0,
+    gift_message: null,
   });
   //#End
 
@@ -51,7 +53,7 @@ function Index() {
   }, []);
 
   const fetchCheckoutApi = () => {
-    getCheckOutDetails(checkoutFetchParams).then((response) => {
+    getCheckOutDetails().then((response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
         setCartItems(response?.data?.cart_items);
@@ -108,15 +110,34 @@ function Index() {
   const fetchCheckoutDetailsByDeliveryType = (delivery_type_id) => {
     checkoutFetchParams.shipping_zone_type = delivery_type_id;
     setCheckoutFetchParams(checkoutFetchParams);
-    fetchCheckoutApi(); //Api refetch
+    console.log(addressForm);
+    // fetchCheckoutApi(); //Api refetch
   };
   //#End
   //update payment type and refetch api :: Delivery type change
   const fetchCheckoutDetailsForPaymentType = (payment_type_id) => {
     checkoutFetchParams.payment_type = parseInt(payment_type_id);
     setCheckoutFetchParams(checkoutFetchParams);
-    fetchCheckoutApi();
+    // fetchCheckoutApi();
   };
+  //#End
+  //Update gift wrap status and refetch api
+  const fetchCheckoutDetailsForGiftStatus = (status) => {
+    checkoutFetchParams.gift_wrap = status;
+    if (status === 0) {
+      checkoutFetchParams.gift_message = null;
+    }
+    setCheckoutFetchParams(checkoutFetchParams);
+    // fetchCheckoutApi();
+  };
+  //#End
+  //Update gift wrap message and refetch api
+  const fetchCheckoutDetailsForMessage = (message) => {
+    checkoutFetchParams.gift_message = message;
+    setCheckoutFetchParams(checkoutFetchParams);
+    // fetchCheckoutApi();
+  };
+  //#End
   return (
     <>
       <BreadCrumps />
@@ -528,7 +549,14 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <GiftWrapping />
+                            <GiftWrapping
+                              fetchCheckoutDetailsForGiftStatus={
+                                fetchCheckoutDetailsForGiftStatus
+                              }
+                              fetchCheckoutDetailsForMessage={
+                                fetchCheckoutDetailsForMessage
+                              }
+                            />
                           </div>
                         </div>
                       </div>
