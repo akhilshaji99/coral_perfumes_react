@@ -35,6 +35,8 @@ function getStyles(errors, fieldName) {
 }
 function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
+  const [addAddressListFlag, setAddAddressListFlag] = useState(false);
+
   useEffect(() => {
     getCheckOutDetails().then((response) => {
       if (response?.data) {
@@ -103,7 +105,7 @@ function Index() {
               </div>
             </div>
           </div>
-          <AddNewAddressModal componentDatas={addressForm.values} />
+          <AddNewAddressModal componentDatas={addressForm.values} setAddAddressListFlag={setAddAddressListFlag} addAddressListFlag={addAddressListFlag}/>
 
           <div>
             {/* row */}
@@ -486,6 +488,7 @@ function Index() {
 
                                 <div className="col-md-6 col-12">
                                   <a onClick={(e) => {
+                                    setAddAddressListFlag(true);
                                    $("#addressModal").toggle()
                                    $("#addressModal").toggleClass("modal fade modal")
                                   }

@@ -5,6 +5,7 @@ import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const addNewAddress = async (formValues) => {
   try {
+  const userData = JSON.parse(localStorage.getItem("userDatas"));
    
     const response = await request.post("add_user_address/", {
       flat_name:formValues.flat_name,
@@ -14,6 +15,9 @@ const addNewAddress = async (formValues) => {
       phone_number:formValues.phone_number,
       emirate:formValues.emirate,
       token: getUserOrGuestToken(),
+      first_name:userData ? userData?.userInfo?.username:"",
+      last_name:"",
+      email:userData ? userData?.userInfo?.email:"",
     });
     if (response.data.status) {
       toast((t) => (
@@ -36,6 +40,7 @@ const addNewAddress = async (formValues) => {
         />
       ));
     }
+    return response;
   } catch (error) {
     toast((t) => (
       <AlerMessage

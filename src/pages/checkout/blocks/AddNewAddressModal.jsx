@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import getAddressList from "../js/getAddressList";
 import AddressListComponent from "./AddressListComponent";
 import MakeDefaultAddress from "../js/makeDefaultAddress";
-function AddNewAddressModal({ componentDatas }) {
+import AddAddress from "../../address_book/blocks/AddAddress";
+function AddNewAddressModal({ componentDatas,setAddAddressListFlag,addAddressListFlag }) {
   const [addressList, setAddressList] = useState([]);
   const [defaultAddress, setDefaultAddress] = useState()
+  const [addAddressFlag, setAddAddressFlag] = useState(false);
 
   useEffect(() => {
     getAddressList().then((response) => {
@@ -13,21 +15,26 @@ function AddNewAddressModal({ componentDatas }) {
         setAddressList(response?.data);
       }
     });
-  }, []);
+  }, [addAddressListFlag]);
   const handleModalClose = () => {
+    setAddAddressListFlag(false);
+
     $("#addressModal").toggle();
     $("#addressModal").toggleClass("modal modal fade");
     $("#addressModal").hide();
   };
   const markDefaultAddress = () => {
     MakeDefaultAddress(defaultAddress).then((response) => {
-      if (response) {
-        console.log(response?.data?.message)
-      }
+     
+        $("#addressModal").toggle();
+        $("#addressModal").toggleClass("modal fade modal");
+      
     });
   }
   
   return (
+    <>
+    <AddAddress addAddressFlag={addAddressFlag} setAddAddressFlag={setAddAddressFlag} setAddAddressListFlag={setAddAddressListFlag}/>
     <div
       className="modal fade bd-example-modal-lg"
       id="addressModal"
@@ -58,8 +65,12 @@ function AddNewAddressModal({ componentDatas }) {
             <div className="col-md-6 col-12">
               <a
                 onClick={(e) => {
+                  setAddAddressListFlag(false);
                   $("#addressModal").toggle();
                   $("#addressModal").toggleClass("modal fade modal");
+                  setAddAddressFlag(true);
+                  $("#AddAddress").toggle();
+                  $("#AddAddress").toggleClass("modal fade modal");
                 }}
               >
                 + Add new address
@@ -77,6 +88,8 @@ function AddNewAddressModal({ componentDatas }) {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 export default AddNewAddressModal;
