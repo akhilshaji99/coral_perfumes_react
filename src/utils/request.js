@@ -1,5 +1,7 @@
 import axios from "axios";
+import getUserToken from "./userToken";
 // import { formatAxiosError } from './error-handler';
+
 const service = axios.create({
     baseURL: process.env.REACT_APP_API_URL // url = base url + request url
     // timeout: 5000 // request timeout
@@ -8,12 +10,11 @@ const service = axios.create({
 /// request interceptor do something before request is sent
 service.interceptors.request.use(
     (config) => {
-      const userData = JSON.parse(localStorage.getItem("userDatas"));
+      // const userData = JSON.parse(localStorage.getItem("userDatas"));
       config.headers = {
         // 'content-type': 'application/json',
         // 'Access-Control-Allow-Origin': "*",
-        // Accept: 'application/json',
-        Authorization: userData ? 'Token ' + userData?.token : null
+        Authorization: 'Token ' + getUserToken() 
       };
       return config;
     },
