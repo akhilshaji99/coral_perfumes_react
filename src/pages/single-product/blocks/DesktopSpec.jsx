@@ -112,10 +112,10 @@ function DesktopSpec({ productDatas }) {
           }}
         />
         <div className="row py-2 align-items-center">
-          <div className="col-md-8 ">
-            <img src={Sample} alt="" />
+          <div className=" col-xl-8 col-12">
+            <img className="img-fluid" src={Sample} alt="" />
           </div>
-          <div className="col-md-4 return-policy-div">
+          <div className="col-xl-4 col-12 return-policy-div mt-4">
             <h1>Return policy</h1>
             <p>
               We are happy to offer you a refund or an exchange within 15 days.

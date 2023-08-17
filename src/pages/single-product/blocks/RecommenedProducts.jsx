@@ -49,7 +49,7 @@ function RecommendedProducts({ componentDatas }) {
               },
               mobile: {
                 breakpoint: {
-                  max: 464,
+                  max: 1024,
                   min: 0,
                 },
                 items: 2,
@@ -57,10 +57,10 @@ function RecommendedProducts({ componentDatas }) {
               },
               tablet: {
                 breakpoint: {
-                  max: 1024,
+                  max: 1025,
                   min: 464,
                 },
-                items: 2,
+                items: 3,
                 partialVisibilityGutter: 30,
               },
             }}

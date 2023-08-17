@@ -4,7 +4,7 @@ function productData({ productDatas, currentVariant }) {
   return (
     <>
       <div className="row py-5">
-        <div className="col-md-10">
+        <div className="col-xl-10 col-sm-12">
           <div className="info-box">
             {productDatas?.message_1 ? (
               <h2 className="pb-3">
@@ -54,15 +54,15 @@ function productData({ productDatas, currentVariant }) {
       </div>
       {productDatas?.tabby_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-md-2 col-3">
+          <div className="col-xl-2 col-sm-2 col-2">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-md-9 col-9">{productDatas?.tabby_text}</div>
+          <div className="col-xl-9 col-sm-10 col-10 text-sm-end text-lg-start">{productDatas?.tabby_text}</div>
         </div>
       ) : null}
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-md-2 col-3">
+          <div className="col-xl-2 col-sm-2 col-2">
             <tamara-widget
               type="tamara-summary"
               amount={currentVariant?.price_amount}
@@ -70,13 +70,13 @@ function productData({ productDatas, currentVariant }) {
             ></tamara-widget>{" "}
           </div>
 
-          <div className="col-md-10 col-9">
+          <div className="col-xl-10 col-sm-10 col-10 text-sm-end text-lg-start">
             <span>4 interest-free payments AED 40 </span>
           </div>
         </div>
       ) : null}
       <div className="row py-5">
-        <div className="col-md-10">
+        <div className="col-xl-10 col-sm-12">
           <div className="info-box">
             {productDatas?.order_delivery_message ? (
               <h2 className="pb-3">

@@ -164,10 +164,10 @@ function Index() {
               </div>
               <div className="row py-5">
                 {/* large screen button */}
-                <div className="col-md-6 d-none d-sm-block">
+                <div className="col-xl-6 col-12 mb-3 d-none d-sm-block">
                   <button
                     disabled={currentVariant === null}
-                    className="btn btn-dark btn-checkout"
+                    className="btn btn-dark btn-checkout w-100"
                     onClick={() =>
                       addToCart(currentVariant?.id, addToCartQuantity)
                     }
@@ -196,7 +196,7 @@ function Index() {
                   </button>
                 </div>
                 {/*  */}
-                <div className="col-md-6">
+                <div className="col-xl-6 col-12">
                   <div className="input-group input-spinner  ">
                     <input
                       type="button"

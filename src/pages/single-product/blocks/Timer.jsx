@@ -1,10 +1,10 @@
 function Timer() {
   return (
     <div className="row py-5 align-items-center">
-      <div className="col-md-10">
+      <div className="col-xl-10 col-sm-12">
         <div className="flash-sale-box">
           <div className="row align-items-center">
-            <div className="col-md-6 col-5">
+            <div className="col-xl-6 col-sm-4 col-5">
               <h2>
                 flash sale &nbsp;&nbsp;
                 <span>
@@ -38,7 +38,7 @@ function Timer() {
               <p>limited time offer</p>
               <p className="ends-in">ends in</p>
             </div>
-            <div className="col-md-6 timer-field col-7">
+            <div className="col-xl-6 col-sm-8 col-7 timer-field col-7">
               <div className="row">
                 <div className="col-md-4 col-4 text-center">
                   <div className="timer-box">08</div>

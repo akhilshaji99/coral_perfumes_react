@@ -26880,6 +26880,7 @@ span.flatpickr-weekday {
     text-align: center;
     width: 55px;
     height: 49px;
+    
   }
   .timer-field span {
     color: #fff;
@@ -27562,6 +27563,8 @@ border-radius: none !important;
   color: #000;
   font-family: var(--fc-font-bold);
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .timer-field span {
   color: #fff;
@@ -28224,6 +28227,7 @@ border-radius: none !important;
   font-family: var(--fc-font-bold);
   text-transform: uppercase;
   font-size: 21px;
+  margin-top: 2.5rem;
 }
 .fixed-top-margin {
   margin-top: 150px;
@@ -28793,4 +28797,54 @@ background-clip: text;
   color: #000;
   font-size: 12px;
   line-height: 23px;
+}
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .desktop-thumbs {
+      display: block;
+    }
+}
+@media only screen and (min-width: 669px) and (max-width: 1366px) {
+  .mob-thumbs {
+    display: block;
+  }
+  .thumbnail-slide{
+    transform: scale(0.65);
+    margin-bottom: 2px;
+  }
+}
+/* ipad pro 9.7 inch */
+@media only screen and (min-width: 567px) and (max-width: 1024px) { 
+  .desktop-thumbs{
+    display: block !important;
+  }
+  .thumbnail-slide{
+    transform: scale(0.65);
+    margin-bottom: 2px;
+  }
+ }
+/*  */
+@media (min-device-width:769px) and (max-device-width:1195px){
+  .category-top-div {
+    top: -200px;
+    position: relative;
+  }
+  .category-top-div2 {
+    top: -380px;
+    position: relative;
+  }
+  .category-top-div3 {
+    top: -350px;
+    position: relative;
+  }
+  .category-top-div4 {
+    top: -400px;
+    position: relative;
+    margin-bottom: -1450px;
+  }
+  .me-5 {
+    margin-right: 0.15rem !important;
+  }
 }
