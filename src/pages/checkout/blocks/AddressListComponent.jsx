@@ -1,7 +1,7 @@
 
 import React, {  useEffect,useState } from "react";
 import getAddressList from "../js/getAddressList";
-function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress}) {
+function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress,editAddress}) {
   const onOptionChange = e => {
     setDefaultAddress(e.target.value)
 
@@ -58,7 +58,9 @@ function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress
               <div className="col-md-3 text-center">
                 <div className="row">
                   <div className="col-md-12">
-                    <a href="#" >
+                    <a   onClick={(e) => {
+                     editAddress(componentDatas)
+                     }} >
                       <svg
                         width={11}
                         height={11}

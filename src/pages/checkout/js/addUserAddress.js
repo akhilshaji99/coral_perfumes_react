@@ -15,9 +15,13 @@ const addNewAddress = async (formValues) => {
       phone_number:formValues.phone_number,
       emirate:formValues.emirate,
       token: getUserOrGuestToken(),
-      first_name:userData ? userData?.userInfo?.username:"",
-      last_name:"",
-      email:userData ? userData?.userInfo?.email:"",
+      first_name:formValues.first_name,
+      last_name:formValues.last_name,
+      email:formValues.email,
+      address_id: formValues.address_id,
+      city: formValues.city,
+      floor_number: formValues.floor_number
+
     });
     if (response.data.status) {
       toast((t) => (
