@@ -1,23 +1,20 @@
-import request from "../../utils/request";
 import { useEffect, useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CustomDropdown from "./blocks/CustomDropdown";
+import getStores from "./js/getStores";
 
 function Index() {
   const [stores, setStores] = useState([]);
+
+  
   useEffect(() => {
-    getStores();
-  }, []);
-  const getStores = async () => {
-    try {
-      const response = await request.get("get_store_details/");
+    getStores().then((response) => {
       if (response.data) {
         setStores(response.data.data);
       }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+    });
+  }, []);
+
   return (
     <section className="mt-8 mb-lg-14 mb-8">
       <div className="container-lg-fluid mt-5">
@@ -27,12 +24,7 @@ function Index() {
             <div>
               <div className="mb-8 text-center">
                 {/* text */}
-                <h1
-                  className="stores-heading mb-0"
-                 
-                >
-                  VISIT US
-                </h1>
+                <h1 className="stores-heading mb-0">VISIT US</h1>
               </div>
             </div>
           </div>

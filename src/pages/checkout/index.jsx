@@ -9,11 +9,12 @@ import AddNewAddressModal from "./blocks/AddNewAddressModal";
 import DeliveryTypes from "./blocks/DeliveryTypes";
 import PaymentTypes from "./blocks/PaymentTypes";
 import GiftWrapping from "./blocks/GiftWrapping";
+import getStores from "../stores/js/getStores";
+
 import $ from "jquery";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
 
 function getStyles(errors, fieldName) {
   if (getIn(errors, fieldName)) {
@@ -29,8 +30,11 @@ function Index() {
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
   const [defaultPaymentTypeFlag, setDefaultPaymentTypeFlag] = useState(false);
+  const [storeDatas, setStoredatas] = useState([]);
+  const [storeEmirates, setStoreEmirates] = useState([]);
+  const [avaibleStores, setAvailableStores] = useState([]);
   //State for checkout fetch api parameters
-  const [checkoutFetchParams, setCheckoutFetchParams] = useState({
+  const [checkoutUpdateParams, setCheckoutUpdateParams] = useState({
     delivery_type: "1",
     shipping_zone_type: null,
     payment_type: null,
@@ -38,24 +42,50 @@ function Index() {
     gift_message: null,
   });
   //#End
-  let validationShape = {
-    address_type:yup.string().required(),
-    phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
-    emirate: yup.string().required(),
-    first_name: yup.string().required(),
-    last_name: yup.string().required(),
-    email: yup.string().required(),
-  }
-  if(addressType == 1){
-    validationShape = {
-      ...validationShape,
-      flat_name: yup.string().required(),
-      building_number: yup.string().required(),
-      street_address: yup.string().required(),
-      pin: yup.string().required(),
-    }
-  }
-  const newAddressFormSchema = yup.object().shape(validationShape);
+  // let validationShape = {
+  //   address_type:yup.string().required(),
+  //   phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  //   emirate: yup.string().required(),
+  //   first_name: yup.string().required(),
+  //   last_name: yup.string().required(),
+  //   email: yup.string().required(),
+  // }
+  // if(addressType == 1){
+  //   validationShape = {
+  //     ...validationShape,
+  //     flat_name: yup.string().required(),
+  //     building_number: yup.string().required(),
+  //     street_address: yup.string().required(),
+  //     pin: yup.string().required(),
+  //   }
+  // }
+  // const newAddressFormSchema = yup.object().shape(validationShape);
+
+  //Fetch stores
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getStores();
+        if (response?.data?.status) {
+          setStoredatas(response?.data?.data);
+
+          const uniqueStores = [
+            ...new Map(
+              response?.data?.data?.map((m) => [m.emirate, m])
+            ).values(),
+          ];
+          setStoreEmirates(uniqueStores);
+          await filterStoresByEmirates(uniqueStores[0]?.emirate);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  //#End
+
   useEffect(() => {
     fetchCheckoutApi();
   }, []);
@@ -66,28 +96,47 @@ function Index() {
         setCheckOutDetails(response?.data);
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
+        addressForm.setFieldValue(
+          "address_id",
+          response?.data?.default_address?.account_address?.id || null
+        );
         //Updating payment type in fetch payload :: Based on flag - Update only on first page load
         if (!defaultPaymentTypeFlag) {
-          checkoutFetchParams.payment_type =
+          checkoutUpdateParams.payment_type =
             response?.data?.payment_types.length > 0
               ? response?.data?.payment_types?.[0]?.id
               : null;
-          setCheckoutFetchParams(checkoutFetchParams);
+          setCheckoutUpdateParams(checkoutUpdateParams);
           setDefaultPaymentTypeFlag(true);
         }
         //#End
       }
     });
   };
-  const handleOnSubmit = (values) => {
-    UpdateCheckoutDetails(values).then((response) => {
-      if (response?.data) {
+
+  const handleOnSubmit = () => {
+    var combinedPayload = Object.assign(
+      {},
+      checkoutUpdateParams,
+      addressForm.values
+    );
+    UpdateCheckoutDetails(combinedPayload).then((response) => {
+      if (response?.data?.status) {
+        console.log(response?.data?.data?.address_id);
+
+        setCartItems(response?.data?.data?.cart_items);
+        addressForm.setFieldValue(
+          "address_id",
+          response?.data?.data?.address_id
+        );
       }
     });
   };
+
   const addressForm = useFormik({
     initialValues: {
-      pin: checkOutDetails?.default_address?.account_address?.postal_code,
+      postal_code:
+        checkOutDetails?.default_address?.account_address?.postal_code,
       phone_number:
         checkOutDetails?.default_address?.account_address?.phone_number,
       flat_name: checkOutDetails?.default_address?.account_address?.flat_name,
@@ -96,7 +145,6 @@ function Index() {
         checkOutDetails?.default_address?.account_address?.street_address,
       building_number:
         checkOutDetails?.default_address?.account_address?.building_number,
-      delivery_type: "1",
       first_name: checkOutDetails?.default_address?.account_address?.first_name,
       last_name: checkOutDetails?.default_address?.account_address?.last_name,
       phone_number:
@@ -105,63 +153,75 @@ function Index() {
       floor_number:
         checkOutDetails?.default_address?.account_address?.floor_number,
       city: checkOutDetails?.default_address?.account_address?.city,
-      address_type: checkOutDetails?checkOutDetails?.default_address?.address_type: "1",
-      address_id: null
+      address_type: checkOutDetails
+        ? checkOutDetails?.default_address?.address_type
+        : "1",
+      address_id: checkOutDetails?.default_address?.account_address?.id,
     },
     enableReinitialize: true,
-    validationSchema: newAddressFormSchema,
+    // validationSchema: newAddressFormSchema,4
     onSubmit: handleOnSubmit,
   });
-  
-  const changeDeliveryType = (type)=>{
-  
-    addressForm.values.address_type= type;
-    addressForm.initialValues.address_type= type;
 
-    setAddressType(type);
-  }
+  const changeDeliveryType = (type) => {
+    addressForm.setFieldValue("address_type", type);
+    // setAddressType(type);
+  };
 
-  const setAddressFormInputValue = useCallback(
-    (key, value) =>
-      addressForm.setValues({
-        ...addressForm.values,
-        [key]: value,
-      }),
-    [addressForm]
-  );
+  // const setAddressFormInputValue = useCallback(
+  //   (key, value) =>
+  //     addressForm.setValues({
+  //       ...addressForm.values,
+  //       [key]: value,
+  //     }),
+  //   [addressForm]
+  // );
 
   //update shipping_zone_type and refetch api :: Delivery type change
   const fetchCheckoutDetailsByDeliveryType = (delivery_type_id) => {
-    checkoutFetchParams.shipping_zone_type = delivery_type_id;
-    setCheckoutFetchParams(checkoutFetchParams);
-    console.log(addressForm);
-    // fetchCheckoutApi(); //Api refetch
+    checkoutUpdateParams.shipping_zone_type = delivery_type_id;
+    setCheckoutUpdateParams(checkoutUpdateParams);
+    handleOnSubmit(); //Calling Update api
   };
   //#End
   //update payment type and refetch api :: Delivery type change
   const fetchCheckoutDetailsForPaymentType = (payment_type_id) => {
-    checkoutFetchParams.payment_type = parseInt(payment_type_id);
-    setCheckoutFetchParams(checkoutFetchParams);
-    // fetchCheckoutApi();
+    console.log(payment_type_id);
+    checkoutUpdateParams.payment_type = parseInt(payment_type_id);
+    setCheckoutUpdateParams(checkoutUpdateParams);
+    handleOnSubmit(); //Calling Update api
   };
   //#End
   //Update gift wrap status and refetch api
   const fetchCheckoutDetailsForGiftStatus = (status) => {
-    checkoutFetchParams.gift_wrap = status;
+    checkoutUpdateParams.gift_wrap = status;
     if (status === 0) {
-      checkoutFetchParams.gift_message = null;
+      checkoutUpdateParams.gift_message = null;
     }
-    setCheckoutFetchParams(checkoutFetchParams);
-    // fetchCheckoutApi();
+    setCheckoutUpdateParams(checkoutUpdateParams);
+    handleOnSubmit(); //Calling Update api
   };
   //#End
   //Update gift wrap message and refetch api
   const fetchCheckoutDetailsForMessage = (message) => {
-    checkoutFetchParams.gift_message = message;
-    setCheckoutFetchParams(checkoutFetchParams);
-    // fetchCheckoutApi();
+    checkoutUpdateParams.gift_message = message;
+    setCheckoutUpdateParams(checkoutUpdateParams);
+    handleOnSubmit(); //Calling Update api
   };
   //#End
+
+  const filterStoresByEmirates = async (emirate_id) => {
+    console.log("storeDatas", storeDatas);
+    let emirateStores = [];
+    await storeDatas.forEach((store) => {
+      if (parseInt(store.emirate) === parseInt(emirate_id)) {
+        console.log("herree");
+        emirateStores.push(store);
+      }
+    });
+    console.log("emirateStores", emirateStores);
+    setAvailableStores(emirateStores);
+  };
   return (
     <>
       <BreadCrumps />
@@ -189,7 +249,7 @@ function Index() {
             </div>
           </div>
           <AddNewAddressModal
-            componentDatas={addressForm.values}
+            // componentDatas={addressForm.values}
             setAddAddressListFlag={setAddAddressListFlag}
             addAddressListFlag={addAddressListFlag}
             fetchCheckoutApi={fetchCheckoutApi}
@@ -277,7 +337,6 @@ function Index() {
                   <form onSubmit={addressForm.handleSubmit}>
                     <div className="accordion-item card card-bordered shadow mb-2 ">
                       <div className="d-flex justify-content-between align-items-center h">
-                        {/* heading one */}
                         <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
                         <a
                           href="#"
@@ -291,9 +350,6 @@ function Index() {
                             <span class="glyphicon glyphicon-menu-down">^</span>
                           </button>
                         </a>
-                        {/* btn */}
-
-                        {/* collapse */}
                       </div>
                       <div
                         id="flush-collapseTwo"
@@ -301,11 +357,9 @@ function Index() {
                         data-bs-parent="#accordionFlushExample"
                       >
                         <div className="mb-1">
-                          {/* card body */}
                           <div className="card-body p-1">
                             <div className="row g-2 m-2">
                               <div className="col-md-6 col-12">
-                                {/* input */}
                                 <div className="mb-3 mb-lg-0">
                                   <input
                                     type="text"
@@ -322,14 +376,12 @@ function Index() {
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">
-                                {/* input */}
                                 <div className="mb-3 mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.last_name}
                                     name="last_name"
                                     onChange={addressForm.handleChange}
-
                                     style={getStyles(
                                       addressForm.errors,
                                       "last_name"
@@ -342,14 +394,12 @@ function Index() {
                             </div>
                             <div className="row g-2 m-2">
                               <div className="col-md-6 col-12">
-                                {/* input */}
                                 <div className="mb-3 mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.phone_number}
                                     name="phone_number"
                                     onChange={addressForm.handleChange}
-                                   
                                     style={getStyles(
                                       addressForm.errors,
                                       "phone_number"
@@ -360,14 +410,12 @@ function Index() {
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">
-                                {/* input */}
                                 <div className="mb-3 mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.email}
                                     name="email"
                                     onChange={addressForm.handleChange}
-
                                     style={getStyles(
                                       addressForm.errors,
                                       "email"
@@ -384,15 +432,12 @@ function Index() {
                     </div>
                     <div className="accordion-item card card-bordered shadow mb-2 ">
                       <div className="d-flex justify-content-between align-items-center h">
-                        {/* <h4 className="pt-3 ps-3 "> DELIVERY ADDRESS</h4> */}
                         <ul
                           className="nav nav-pills nav-lb-tab"
                           id="myTab"
                           role="tablist"
                         >
-                          {/* nav item */}
                           <li className="nav-item" role="presentation">
-                            {/* btn */}{" "}
                             <button
                               className="nav-link active"
                               id="rating-tab"
@@ -402,17 +447,15 @@ function Index() {
                               role="tab"
                               aria-controls="rating-tab-pane"
                               aria-selected="true"
-                              onClick={(e)=>{
+                              onClick={(e) => {
                                 e.preventDefault();
-                                changeDeliveryType(1)}
-                              }
+                                changeDeliveryType(1);
+                              }}
                             >
                               DELIVERY ADDRESS
                             </button>
                           </li>
-                          {/* nav item */}
                           <li className="nav-item" role="presentation">
-                            {/* btn */}{" "}
                             <button
                               className="nav-link"
                               id="reviews-tab"
@@ -422,11 +465,10 @@ function Index() {
                               role="tab"
                               aria-controls="reviews-tab-pane"
                               aria-selected="false"
-                              onClick={(e)=>{
+                              onClick={(e) => {
                                 e.preventDefault();
-                                changeDeliveryType(2)}
-                              }
-
+                                changeDeliveryType(2);
+                              }}
                             >
                               STORE PICK UP
                             </button>
@@ -468,8 +510,7 @@ function Index() {
                                       placeholder="Flat Name"
                                       value={addressForm.values.flat_name}
                                       name="flat_name"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
                                         "flat_name"
@@ -478,7 +519,6 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 mb-lg-0">
                                     <input
                                       type="text"
@@ -486,8 +526,7 @@ function Index() {
                                       placeholder="Building Address"
                                       value={addressForm.values.building_number}
                                       name="building_number"
-                                    onChange={addressForm.handleChange}
-                                      
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
                                         "building_address"
@@ -498,7 +537,6 @@ function Index() {
                               </div>
                               <div className="row g-2 m-2">
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 mb-lg-0">
                                     <input
                                       type="text"
@@ -506,8 +544,7 @@ function Index() {
                                       placeholder="Street Address"
                                       value={addressForm.values.street_address}
                                       name="street_address"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
                                         "street_address"
@@ -516,14 +553,12 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 b-lg-0">
-                                   
                                     <select
                                       className="form-control"
                                       name="emirate"
-                                    onChange={addressForm.handleChange}
-                                      
+                                      value={addressForm.values.emirate}
+                                      onChange={addressForm.handleChange}
                                     >
                                       {checkOutDetails?.emirates?.map(
                                         (emirate, index) => {
@@ -547,8 +582,7 @@ function Index() {
                                       placeholder="Floor number"
                                       value={addressForm.values.floor_number}
                                       name="floor_number"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
                                         "floor_number"
@@ -557,7 +591,6 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 mb-lg-0">
                                     <input
                                       type="text"
@@ -565,8 +598,7 @@ function Index() {
                                       placeholder="City"
                                       value={addressForm.values.city}
                                       name="city"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
                                         "city"
@@ -577,19 +609,17 @@ function Index() {
                               </div>
                               <div className="row g-2 m-2">
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
-                                      placeholder="Pin"
-                                      value={addressForm.values.pin}
-                                      name="pin"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      placeholder="Postal Code"
+                                      value={addressForm.values.postal_code}
+                                      name="postal_code"
+                                      onChange={addressForm.handleChange}
                                       style={getStyles(
                                         addressForm.errors,
-                                        "pin"
+                                        "postal_code"
                                       )}
                                     />
                                   </div>
@@ -607,46 +637,51 @@ function Index() {
                             <div className="card-body p-1">
                               <div className="row g-2 m-2">
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 b-lg-0">
                                     <select
                                       className="form-control"
                                       name="emirate"
-                                    onChange={addressForm.handleChange}
-                                     
+                                      onChange={(event) => {
+                                        filterStoresByEmirates(
+                                          event.target.value
+                                        );
+                                      }}
                                     >
-                                      {checkOutDetails?.emirates?.map(
-                                        (emirate, index) => {
-                                          return (
-                                            <option value={emirate.id}>
-                                              {emirate.name}
-                                            </option>
-                                          );
-                                        }
-                                      )}
+                                      {storeEmirates?.map((emirate, index) => {
+                                        return (
+                                          <option
+                                            value={emirate.emirate}
+                                            key={index}
+                                          >
+                                            {emirate.emirate_name}
+                                          </option>
+                                        );
+                                      })}
                                     </select>
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  {/* input */}
                                   <div className="mb-3 mb-lg-0">
-                                    <input
-                                      type="text"
+                                    <select
                                       className="form-control"
-                                      placeholder="Street Address"
-                                      value={addressForm.values.street_address}
-                                      name="street_address"
-                                    onChange={addressForm.handleChange}
-                                     
-                                      style={getStyles(
-                                        addressForm.errors,
-                                        "street_address"
-                                      )}
-                                    />
+                                      name="store"
+                                      // onChange={(event) => {
+                                      //   filterStoresByEmirates(
+                                      //     event.target.value
+                                      //   );
+                                      // }}
+                                    >
+                                      {avaibleStores?.map((store, index) => {
+                                        return (
+                                          <option value={store.id} key={index}>
+                                            {store.store_name}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
                                   </div>
                                 </div>
                               </div>
-                             
                             </div>
                           </div>
                           <div>
@@ -662,20 +697,21 @@ function Index() {
                                   </button>
                                 </div>
                               </div>
-
-                              <div className="col-md-6 col-12">
-                                <a
-                                  onClick={(e) => {
-                                    setAddAddressListFlag(true);
-                                    $("#addressModal").toggle();
-                                    $("#addressModal").toggleClass(
-                                      "modal fade modal"
-                                    );
-                                  }}
-                                >
-                                  Change Address
-                                </a>
-                              </div>
+                              {addressForm.values.address_type === "1" ? (
+                                <div className="col-md-6 col-12">
+                                  <a
+                                    onClick={(e) => {
+                                      setAddAddressListFlag(true);
+                                      $("#addressModal").toggle();
+                                      $("#addressModal").toggleClass(
+                                        "modal fade modal"
+                                      );
+                                    }}
+                                  >
+                                    Change Address
+                                  </a>
+                                </div>
+                              ) : null}
                             </div>
                           </div>
                           <GiftWrapping
@@ -698,7 +734,7 @@ function Index() {
                   />
                   <PaymentTypes
                     paymentTypes={paymentTypes}
-                    activePaymentType={checkoutFetchParams?.payment_type}
+                    activePaymentType={checkoutUpdateParams?.payment_type}
                     fetchCheckoutDetailsForPaymentType={
                       fetchCheckoutDetailsForPaymentType
                     }

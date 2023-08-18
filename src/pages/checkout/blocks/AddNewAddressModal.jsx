@@ -8,7 +8,7 @@ function AddNewAddressModal({
   componentDatas,
   setAddAddressListFlag,
   addAddressListFlag,
-  fetchCheckoutApi
+  fetchCheckoutApi,
 }) {
   const [addressList, setAddressList] = useState([]);
   const [defaultAddress, setDefaultAddress] = useState();
@@ -33,9 +33,7 @@ function AddNewAddressModal({
     $("#addressModal").hide();
   };
 
-  const deleteAddress = (id)=>{
-
-  }
+  const deleteAddress = (id) => {};
   const editAddress = (info) => {
     setEditAddressInfo(info);
     setEditAddressFlag(true);
@@ -45,13 +43,13 @@ function AddNewAddressModal({
     setAddAddressFlag(true);
     $("#AddAddress").toggle();
     $("#AddAddress").toggleClass("modal fade modal");
-  }
+  };
   const markDefaultAddress = () => {
     MakeDefaultAddress(defaultAddress).then((response) => {
+      fetchCheckoutApi();
       $("#addressModal").toggle();
       $("#addressModal").toggleClass("modal fade modal");
     });
-    fetchCheckoutApi();
   };
 
   return (
@@ -60,10 +58,10 @@ function AddNewAddressModal({
         addAddressFlag={addAddressFlag}
         setAddAddressFlag={setAddAddressFlag}
         setAddAddressListFlag={setAddAddressListFlag}
-        editAddressFlag= {editAddressFlag}
+        editAddressFlag={editAddressFlag}
         editAddressInfo={editAddressInfo}
         setEditAddressFlag={setEditAddressFlag}
-        setEditAddressInfo= {setEditAddressInfo}
+        setEditAddressInfo={setEditAddressInfo}
       />
       <div
         className="modal fade bd-example-modal-lg"
@@ -94,8 +92,7 @@ function AddNewAddressModal({
                     defaultAddress={defaultAddress}
                     setDefaultAddress={setDefaultAddress}
                     editAddress={editAddress}
-        deleteAddress={deleteAddress}
-
+                    deleteAddress={deleteAddress}
                   />
                 );
               })}
