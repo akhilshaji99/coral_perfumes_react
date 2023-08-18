@@ -8,6 +8,7 @@ function AddNewAddressModal({
   componentDatas,
   setAddAddressListFlag,
   addAddressListFlag,
+  fetchCheckoutApi
 }) {
   const [addressList, setAddressList] = useState([]);
   const [defaultAddress, setDefaultAddress] = useState();
@@ -31,6 +32,10 @@ function AddNewAddressModal({
     $("#addressModal").toggleClass("modal modal fade");
     $("#addressModal").hide();
   };
+
+  const deleteAddress = (id)=>{
+
+  }
   const editAddress = (info) => {
     setEditAddressInfo(info);
     setEditAddressFlag(true);
@@ -46,6 +51,7 @@ function AddNewAddressModal({
       $("#addressModal").toggle();
       $("#addressModal").toggleClass("modal fade modal");
     });
+    fetchCheckoutApi();
   };
 
   return (
@@ -88,6 +94,8 @@ function AddNewAddressModal({
                     defaultAddress={defaultAddress}
                     setDefaultAddress={setDefaultAddress}
                     editAddress={editAddress}
+        deleteAddress={deleteAddress}
+
                   />
                 );
               })}

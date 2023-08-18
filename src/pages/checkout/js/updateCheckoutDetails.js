@@ -18,9 +18,8 @@ const UpdateCheckoutDetails = async (formValues) => {
       first_name:formValues.first_name,
       last_name:formValues.last_name,
       delivery_type:formValues.delivery_type,
-      address_id:null,
-
-
+      address_id:formValues.address_id,
+      address_type:formValues.address_type,
       token: getUserOrGuestToken(),
     });
     if (response.data.status) {

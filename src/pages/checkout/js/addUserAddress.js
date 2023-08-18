@@ -11,7 +11,7 @@ const addNewAddress = async (formValues) => {
       flat_name:formValues.flat_name,
       street_address:formValues.street_address,
       building_number:formValues.building_number,
-      postal_code:formValues.pin,
+      postal_code:formValues.postal_code,
       phone_number:formValues.phone_number,
       emirate:formValues.emirate,
       token: getUserOrGuestToken(),

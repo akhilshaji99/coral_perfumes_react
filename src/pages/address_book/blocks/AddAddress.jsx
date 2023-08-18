@@ -7,16 +7,15 @@ import getEmirates from "../../checkout/js/getEmiratesList";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const newAddressFormSchema = yup.object().shape({
-  pin: yup.string().required(),
+  postal_code: yup.string().required(),
   phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
   flat_name: yup.string().required(),
-  building_address: yup.string().required(),
+  building_number: yup.string().required(),
   street_address: yup.string().required(),
   emirate: yup.string().required(),
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().required(),
-
 });
 
 function getStyles(errors, fieldName) {
@@ -33,7 +32,7 @@ function AddAddress({
   editAddressInfo,
   editAddressFlag,
   setEditAddressFlag,
-  setEditAddressInfo
+  setEditAddressInfo,
 }) {
   const [emirates, setEmirates] = useState([]);
   useEffect(() => {
@@ -45,7 +44,12 @@ function AddAddress({
       });
     }
   }, [addAddressFlag]);
-  const handleOnSubmit = (values,{resetForm}) => {
+  useEffect(() => {
+    if (!editAddressFlag) {
+      addressForm.initialValues.emirate = emirates?.[1]?.id;
+    }
+  }, [emirates]);
+  const handleOnSubmit = (values) => {
     addNewAddress(values).then((response) => {
       if (response?.data.status) {
         $("#AddAddress").toggle();
@@ -55,30 +59,44 @@ function AddAddress({
         $("#addressModal").toggle();
         $("#addressModal").toggleClass("modal fade modal");
       }
-     
     });
+    resetForm();
   };
   const addressForm = useFormik({
     initialValues: {
-      pin:  editAddressFlag? editAddressInfo?.pin:"",
-      phone_number: editAddressFlag? editAddressInfo?.phone_number:"",
-      flat_name: editAddressFlag? editAddressInfo?.first_name:"",
-      // emirate: editAddressFlag? editAddressInfo?.emirate:"",
-      street_address: editAddressFlag? editAddressInfo?.street_address:"",
-      building_address: editAddressFlag? editAddressInfo?.building_address:"",
-      first_name: editAddressFlag? editAddressInfo?.first_name:"",
-      last_name: editAddressFlag? editAddressInfo?.last_name:"",
-      email: editAddressFlag? editAddressInfo?.email:"",
-      address_id:editAddressFlag? editAddressInfo?.id:"",
-      city:editAddressFlag? editAddressInfo?.city:"",
-      floor_number:editAddressFlag? editAddressInfo?.floor_number:"",
-
+      postal_code: editAddressFlag ? editAddressInfo?.postal_code : "",
+      phone_number: editAddressFlag ? editAddressInfo?.phone_number : "",
+      flat_name: editAddressFlag ? editAddressInfo?.first_name : "",
+      emirate: editAddressFlag ? editAddressInfo?.emirate : "",
+      street_address: editAddressFlag ? editAddressInfo?.street_address : "",
+      building_number: editAddressFlag ? editAddressInfo?.building_number : "",
+      first_name: editAddressFlag ? editAddressInfo?.first_name : "",
+      last_name: editAddressFlag ? editAddressInfo?.last_name : "",
+      email: editAddressFlag ? editAddressInfo?.email : "",
+      address_id: editAddressFlag ? editAddressInfo?.id : "",
+      city: editAddressFlag ? editAddressInfo?.city : "",
+      floor_number: editAddressFlag ? editAddressInfo?.floor_number : "",
     },
     enableReinitialize: true,
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
   });
-
+  const resetForm = () => {
+    addressForm.setValues({
+      postal_code: "",
+      phone_number: "",
+      flat_name: "",
+      emirate: "",
+      street_address: "",
+      building_number: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      address_id: "",
+      city: "",
+      floor_number: "",
+    });
+  };
   const setAddressFormInputValue = useCallback(
     (key, value) =>
       addressForm.setValues({
@@ -119,6 +137,7 @@ function AddAddress({
                   setAddAddressListFlag(true);
                   $("#addressModal").toggle();
                   $("#addressModal").toggleClass("modal fade modal");
+                  resetForm();
                 }}
               />
             </div>
@@ -175,9 +194,9 @@ function AddAddress({
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Building Name"
-                      value={addressForm.values.building_address}
-                      name="building_address"
+                      placeholder="Building Number"
+                      value={addressForm.values.building_number}
+                      name="building_number"
                       // onChange={(e) =>
                       //   setAddressFormInputValue(
                       //     "building_address",
@@ -185,7 +204,7 @@ function AddAddress({
                       //   )
                       // }
                       onChange={addressForm.handleChange}
-                      style={getStyles(addressForm.errors, "building_address")}
+                      style={getStyles(addressForm.errors, "building_number")}
                     />
                   </div>
                 </div>
@@ -217,6 +236,8 @@ function AddAddress({
                       //   setAddressFormInputValue("emirate", e.target.value);
                       // }}
                       name="emirate"
+                      // value={addressForm.values.emirate.id}
+
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "emirate")}
                     >
@@ -237,12 +258,6 @@ function AddAddress({
                       required=""
                       value={addressForm.values.city}
                       name="city"
-                      // onChange={(e) =>
-                      //   setAddressFormInputValue(
-                      //     "street_address",
-                      //     e.target.value
-                      //   )
-                      // }
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "city")}
                     />
@@ -256,13 +271,7 @@ function AddAddress({
                       placeholder="Floor Number"
                       required=""
                       value={addressForm.values.floor_number}
-                      name="street_address"
-                      // onChange={(e) =>
-                      //   setAddressFormInputValue(
-                      //     "street_address",
-                      //     e.target.value
-                      //   )
-                      // }
+                      name="floor_number"
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "floor_number")}
                     />
@@ -274,13 +283,13 @@ function AddAddress({
                       type="text"
                       className="form-control"
                       placeholder="PIN"
-                      name="pin"
-                      value={addressForm.values.pin}
+                      name="postal_code"
+                      value={addressForm.values.postal_code}
                       // onChange={(e) =>
                       //   setAddressFormInputValue("pin", e.target.value)
                       // }
                       onChange={addressForm.handleChange}
-                      style={getStyles(addressForm.errors, "pin")}
+                      style={getStyles(addressForm.errors, "postal_code")}
                     />
                   </div>
                 </div>

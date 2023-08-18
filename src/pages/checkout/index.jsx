@@ -13,18 +13,8 @@ import $ from "jquery";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const newAddressFormSchema = yup.object().shape({
-  pin: yup.string().required(),
-  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
-  flat_name: yup.string().required(),
-  building_address: yup.string().required(),
-  street_address: yup.string().required(),
-  emirate: yup.string().required(),
-  first_name: yup.string().required(),
-  last_name: yup.string().required(),
-  phone_number: yup.string().required(),
-  email: yup.string().required(),
-});
+
+
 function getStyles(errors, fieldName) {
   if (getIn(errors, fieldName)) {
     return {
@@ -36,6 +26,7 @@ function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [cartItems, setCartItems] = useState(null);
+  const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
   const [defaultPaymentTypeFlag, setDefaultPaymentTypeFlag] = useState(false);
   //State for checkout fetch api parameters
@@ -47,7 +38,24 @@ function Index() {
     gift_message: null,
   });
   //#End
-
+  let validationShape = {
+    address_type:yup.string().required(),
+    phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+    emirate: yup.string().required(),
+    first_name: yup.string().required(),
+    last_name: yup.string().required(),
+    email: yup.string().required(),
+  }
+  if(addressType == 1){
+    validationShape = {
+      ...validationShape,
+      flat_name: yup.string().required(),
+      building_number: yup.string().required(),
+      street_address: yup.string().required(),
+      pin: yup.string().required(),
+    }
+  }
+  const newAddressFormSchema = yup.object().shape(validationShape);
   useEffect(() => {
     fetchCheckoutApi();
   }, []);
@@ -79,23 +87,39 @@ function Index() {
   };
   const addressForm = useFormik({
     initialValues: {
-      pin: checkOutDetails?.default_address?.pin,
-      phone_number: checkOutDetails?.default_address?.phone_number,
-      flat_name: checkOutDetails?.default_address?.flat_name,
-      emirate: checkOutDetails?.default_address?.emirate,
-      street_address: checkOutDetails?.default_address?.street_address,
-      building_address: checkOutDetails?.default_address?.building_address,
+      pin: checkOutDetails?.default_address?.account_address?.postal_code,
+      phone_number:
+        checkOutDetails?.default_address?.account_address?.phone_number,
+      flat_name: checkOutDetails?.default_address?.account_address?.flat_name,
+      emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
+      street_address:
+        checkOutDetails?.default_address?.account_address?.street_address,
+      building_number:
+        checkOutDetails?.default_address?.account_address?.building_number,
       delivery_type: "1",
-      first_name: checkOutDetails?.user_data?.first_name,
-      last_name: checkOutDetails?.user_data?.last_name,
-      phone_number: checkOutDetails?.user_data?.phone_number,
-      email: checkOutDetails?.user_data?.email,
+      first_name: checkOutDetails?.default_address?.account_address?.first_name,
+      last_name: checkOutDetails?.default_address?.account_address?.last_name,
+      phone_number:
+        checkOutDetails?.default_address?.account_address?.phone_number,
+      email: checkOutDetails?.default_address?.account_address?.email,
+      floor_number:
+        checkOutDetails?.default_address?.account_address?.floor_number,
+      city: checkOutDetails?.default_address?.account_address?.city,
+      address_type: checkOutDetails?checkOutDetails?.default_address?.address_type: "1",
+      address_id: null
     },
     enableReinitialize: true,
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
   });
-  console.log(addressForm.errors);
+  
+  const changeDeliveryType = (type)=>{
+  
+    addressForm.values.address_type= type;
+    addressForm.initialValues.address_type= type;
+
+    setAddressType(type);
+  }
 
   const setAddressFormInputValue = useCallback(
     (key, value) =>
@@ -168,6 +192,7 @@ function Index() {
             componentDatas={addressForm.values}
             setAddAddressListFlag={setAddAddressListFlag}
             addAddressListFlag={addAddressListFlag}
+            fetchCheckoutApi={fetchCheckoutApi}
           />
 
           <div>
@@ -286,13 +311,9 @@ function Index() {
                                     type="text"
                                     className="form-control"
                                     placeholder="First Name"
+                                    name="first_name"
                                     value={addressForm.values.first_name}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "first_name",
-                                        e.target.value
-                                      )
-                                    }
+                                    onChange={addressForm.handleChange}
                                     style={getStyles(
                                       addressForm.errors,
                                       "first_name"
@@ -306,12 +327,9 @@ function Index() {
                                   <input
                                     type="text"
                                     value={addressForm.values.last_name}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "last_name",
-                                        e.target.value
-                                      )
-                                    }
+                                    name="last_name"
+                                    onChange={addressForm.handleChange}
+
                                     style={getStyles(
                                       addressForm.errors,
                                       "last_name"
@@ -329,12 +347,9 @@ function Index() {
                                   <input
                                     type="text"
                                     value={addressForm.values.phone_number}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "phone_number",
-                                        e.target.value
-                                      )
-                                    }
+                                    name="phone_number"
+                                    onChange={addressForm.handleChange}
+                                   
                                     style={getStyles(
                                       addressForm.errors,
                                       "phone_number"
@@ -350,12 +365,9 @@ function Index() {
                                   <input
                                     type="text"
                                     value={addressForm.values.email}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "email",
-                                        e.target.value
-                                      )
-                                    }
+                                    name="email"
+                                    onChange={addressForm.handleChange}
+
                                     style={getStyles(
                                       addressForm.errors,
                                       "email"
@@ -372,7 +384,54 @@ function Index() {
                     </div>
                     <div className="accordion-item card card-bordered shadow mb-2 ">
                       <div className="d-flex justify-content-between align-items-center h">
-                        <h4 className="pt-3 ps-3 "> DELIVERY ADDRESS</h4>
+                        {/* <h4 className="pt-3 ps-3 "> DELIVERY ADDRESS</h4> */}
+                        <ul
+                          className="nav nav-pills nav-lb-tab"
+                          id="myTab"
+                          role="tablist"
+                        >
+                          {/* nav item */}
+                          <li className="nav-item" role="presentation">
+                            {/* btn */}{" "}
+                            <button
+                              className="nav-link active"
+                              id="rating-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#rating-tab-pane"
+                              type="button"
+                              role="tab"
+                              aria-controls="rating-tab-pane"
+                              aria-selected="true"
+                              onClick={(e)=>{
+                                e.preventDefault();
+                                changeDeliveryType(1)}
+                              }
+                            >
+                              DELIVERY ADDRESS
+                            </button>
+                          </li>
+                          {/* nav item */}
+                          <li className="nav-item" role="presentation">
+                            {/* btn */}{" "}
+                            <button
+                              className="nav-link"
+                              id="reviews-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#reviews-tab-pane"
+                              type="button"
+                              role="tab"
+                              aria-controls="reviews-tab-pane"
+                              aria-selected="false"
+                              onClick={(e)=>{
+                                e.preventDefault();
+                                changeDeliveryType(2)}
+                              }
+
+                            >
+                              STORE PICK UP
+                            </button>
+                          </li>
+                        </ul>
                         <a
                           href="#"
                           className="fs-5 text-inherit collapsed h4"
@@ -391,173 +450,242 @@ function Index() {
                         className="accordion-collapse collapse show "
                         data-bs-parent="#accordionFlushExample"
                       >
-                        <div className="mb-1">
-                          <div className="card-body p-1">
-                            <div className="row g-2 m-2">
-                              <div className="col-md-6 col-12">
-                                <div className="mb-3 mb-lg-0">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Flat Name"
-                                    value={addressForm.values.flat_name}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "flat_name",
-                                        e.target.value
-                                      )
-                                    }
-                                    style={getStyles(
-                                      addressForm.errors,
-                                      "flat_name"
-                                    )}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-md-6 col-12">
-                                {/* input */}
-                                <div className="mb-3 mb-lg-0">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Building Address"
-                                    value={addressForm.values.building_address}
-                                    onChange={(e) => {
-                                      e.preventDefault();
-                                      setAddressFormInputValue(
-                                        "building_address",
-                                        e.target.value
-                                      );
-                                    }}
-                                    style={getStyles(
-                                      addressForm.errors,
-                                      "building_address"
-                                    )}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="row g-2 m-2">
-                              <div className="col-md-6 col-12">
-                                {/* input */}
-                                <div className="mb-3 mb-lg-0">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Street Address"
-                                    value={addressForm.values.street_address}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "street_address",
-                                        e.target.value
-                                      )
-                                    }
-                                    style={getStyles(
-                                      addressForm.errors,
-                                      "street_address"
-                                    )}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-md-6 col-12">
-                                {/* input */}
-                                <div className="mb-3 b-lg-0">
-                                  {/* <input
-                                    type="text"
-                                    
-                                    className="form-control"
-                                    placeholder="Duabi"
-                                    value={addressForm.values.emirate}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "emirate",
-                                        e.target.value
-                                      )
-                                    }
-                                    style={getStyles(addressForm.errors, 'emirate')}
-
-                                  /> */}
-                                  <select
-                                    className="form-control"
-                                    onChange={(e) => {
-                                      setAddressFormInputValue(
-                                        "emirate",
-                                        e.target.value
-                                      );
-                                    }}
-                                  >
-                                    {checkOutDetails?.emirates?.map(
-                                      (emirate, index) => {
-                                        return (
-                                          <option value={emirate.id}>
-                                            {emirate.name}
-                                          </option>
-                                        );
-                                      }
-                                    )}
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="row g-2 m-2">
-                              <div className="col-md-6 col-12">
-                                {/* input */}
-                                <div className="mb-3 mb-lg-0">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Pin"
-                                    value={addressForm.values.pin}
-                                    onChange={(e) =>
-                                      setAddressFormInputValue(
-                                        "pin",
-                                        e.target.value
-                                      )
-                                    }
-                                    style={getStyles(addressForm.errors, "pin")}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div>
+                        <div className="tab-content" id="myTabContent">
+                          <div
+                            className="tab-pane fade show active"
+                            id="rating-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="rating-tab"
+                            tabIndex={0}
+                          >
+                            <div className="card-body p-1">
                               <div className="row g-2 m-2">
                                 <div className="col-md-6 col-12">
-                                  <div className="pt-2 m-2">
-                                    {" "}
-                                    <button
-                                      type="submit"
-                                      class="btn btn-dark p-32px validate"
-                                    >
-                                      CONFIRM
-                                    </button>
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Flat Name"
+                                      value={addressForm.values.flat_name}
+                                      name="flat_name"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "flat_name"
+                                      )}
+                                    />
                                   </div>
                                 </div>
-
                                 <div className="col-md-6 col-12">
-                                  <a
-                                    onClick={(e) => {
-                                      setAddAddressListFlag(true);
-                                      $("#addressModal").toggle();
-                                      $("#addressModal").toggleClass(
-                                        "modal fade modal"
-                                      );
-                                    }}
-                                  >
-                                    Change Address
-                                  </a>
+                                  {/* input */}
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Building Address"
+                                      value={addressForm.values.building_number}
+                                      name="building_number"
+                                    onChange={addressForm.handleChange}
+                                      
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "building_address"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row g-2 m-2">
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Street Address"
+                                      value={addressForm.values.street_address}
+                                      name="street_address"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "street_address"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 b-lg-0">
+                                   
+                                    <select
+                                      className="form-control"
+                                      name="emirate"
+                                    onChange={addressForm.handleChange}
+                                      
+                                    >
+                                      {checkOutDetails?.emirates?.map(
+                                        (emirate, index) => {
+                                          return (
+                                            <option value={emirate.id}>
+                                              {emirate.name}
+                                            </option>
+                                          );
+                                        }
+                                      )}
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row g-2 m-2">
+                                <div className="col-md-6 col-12">
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Floor number"
+                                      value={addressForm.values.floor_number}
+                                      name="floor_number"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "floor_number"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="City"
+                                      value={addressForm.values.city}
+                                      name="city"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "city"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row g-2 m-2">
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Pin"
+                                      value={addressForm.values.pin}
+                                      name="pin"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "pin"
+                                      )}
+                                    />
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <GiftWrapping
-                              fetchCheckoutDetailsForGiftStatus={
-                                fetchCheckoutDetailsForGiftStatus
-                              }
-                              fetchCheckoutDetailsForMessage={
-                                fetchCheckoutDetailsForMessage
-                              }
-                            />
                           </div>
+                          <div
+                            className="tab-pane fade"
+                            id="reviews-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="reviews-tab"
+                            tabIndex={0}
+                          >
+                            <div className="card-body p-1">
+                              <div className="row g-2 m-2">
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 b-lg-0">
+                                    <select
+                                      className="form-control"
+                                      name="emirate"
+                                    onChange={addressForm.handleChange}
+                                     
+                                    >
+                                      {checkOutDetails?.emirates?.map(
+                                        (emirate, index) => {
+                                          return (
+                                            <option value={emirate.id}>
+                                              {emirate.name}
+                                            </option>
+                                          );
+                                        }
+                                      )}
+                                    </select>
+                                  </div>
+                                </div>
+                                <div className="col-md-6 col-12">
+                                  {/* input */}
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Street Address"
+                                      value={addressForm.values.street_address}
+                                      name="street_address"
+                                    onChange={addressForm.handleChange}
+                                     
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "street_address"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                             
+                            </div>
+                          </div>
+                          <div>
+                            <div className="row g-2 m-2">
+                              <div className="col-md-6 col-12">
+                                <div className="pt-2 m-2">
+                                  {" "}
+                                  <button
+                                    type="submit"
+                                    class="btn btn-dark p-32px validate"
+                                  >
+                                    CONFIRM
+                                  </button>
+                                </div>
+                              </div>
+
+                              <div className="col-md-6 col-12">
+                                <a
+                                  onClick={(e) => {
+                                    setAddAddressListFlag(true);
+                                    $("#addressModal").toggle();
+                                    $("#addressModal").toggleClass(
+                                      "modal fade modal"
+                                    );
+                                  }}
+                                >
+                                  Change Address
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <GiftWrapping
+                            fetchCheckoutDetailsForGiftStatus={
+                              fetchCheckoutDetailsForGiftStatus
+                            }
+                            fetchCheckoutDetailsForMessage={
+                              fetchCheckoutDetailsForMessage
+                            }
+                          />
                         </div>
                       </div>
                     </div>

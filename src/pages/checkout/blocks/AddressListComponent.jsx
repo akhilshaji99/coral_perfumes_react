@@ -1,7 +1,8 @@
 
 import React, {  useEffect,useState } from "react";
 import getAddressList from "../js/getAddressList";
-function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress,editAddress}) {
+import deleteUserAddress from "../js/deleteUserAddress";
+function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress,editAddress,deleteAddress}) {
   const onOptionChange = e => {
     setDefaultAddress(e.target.value)
 
@@ -80,10 +81,12 @@ function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress
                   </div>
                   <div className="col-md-12">
                     <a
-                      href="#"
+                       onClick={(e) => {
+                        deleteUserAddress(componentDatas.id)
+                        }} 
                       className="text-danger "
-                      data-bs-toggle="modal"
-                      data-bs-target="#deleteModal"
+                      // data-bs-toggle="modal"
+                      // data-bs-target="#deleteModal"
                       style={{marginLeft:'10px'}}
                     >
                       <svg
