@@ -691,6 +691,7 @@ function Index() {
                                       name="store"
                                       value={addressForm.values.store_id}
                                       onChange={(event) => {
+                                        console.log(event.target.value);
                                         addressForm.values.store_id =
                                           event.target.value;
                                       }}
@@ -751,13 +752,15 @@ function Index() {
                       </div>
                     </div>
                   </form>
+                  {parseInt(addressForm.values.delivery_type) === 1 ? (
+                    <DeliveryTypes
+                      fetchCheckoutDetailsByDeliveryType={
+                        fetchCheckoutDetailsByDeliveryType
+                      }
+                      checkedValue={checkoutUpdateParams?.shipping_zone_type}
+                    />
+                  ) : null}
 
-                  <DeliveryTypes
-                    fetchCheckoutDetailsByDeliveryType={
-                      fetchCheckoutDetailsByDeliveryType
-                    }
-                    checkedValue={checkoutUpdateParams?.shipping_zone_type}
-                  />
                   <PaymentTypes
                     paymentTypes={paymentTypes}
                     activePaymentType={checkoutUpdateParams?.payment_type}

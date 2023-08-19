@@ -1,7 +1,6 @@
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
   try {

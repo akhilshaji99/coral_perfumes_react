@@ -1,7 +1,7 @@
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-import getUserOrGuestToken from "../../../utils/userOrGuestToken";
+import getUserToken from "../../../utils/userToken";
 
 const addNewAddress = async (formValues) => {
   try {
@@ -14,7 +14,7 @@ const addNewAddress = async (formValues) => {
       postal_code:formValues.postal_code,
       phone_number:formValues.phone_number,
       emirate:formValues.emirate,
-      token: getUserOrGuestToken(),
+      token: getUserToken(),
       first_name:formValues.first_name,
       last_name:formValues.last_name,
       email:formValues.email,

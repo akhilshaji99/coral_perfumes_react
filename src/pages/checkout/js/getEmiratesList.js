@@ -1,5 +1,4 @@
 import request from "../../../utils/request";
-import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 
 const getEmirates = async () => {
   try {

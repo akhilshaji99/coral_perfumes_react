@@ -1,10 +1,9 @@
 import request from "../../../utils/request";
-import getUserOrGuestToken from "../../../utils/userOrGuestToken";
-
+import getUserToken from "../../../utils/userToken";
 const getCheckOutDetails = async () => {
   try {
     var bodyFormData = new FormData();
-    bodyFormData.append("token", getUserOrGuestToken());
+    bodyFormData.append("token", getUserToken());
     const response = await request.post("get_checkout_details/", bodyFormData);
 
     if (response?.data?.status) {

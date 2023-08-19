@@ -1,11 +1,11 @@
 import request from "../../../utils/request";
-import getUserOrGuestToken from "../../../utils/userOrGuestToken";
 import toast from "react-hot-toast";
+import getUserToken from "../../../utils/userToken";
 import AlerMessage from "../../common/AlerMessage";
 const MakeDefaultAddress = async (defaultAddress) => {
   try {
     var bodyFormData = new FormData();
-    bodyFormData.append("token", getUserOrGuestToken());
+    bodyFormData.append("token", getUserToken());
     bodyFormData.append("address_id",defaultAddress);
     
     const response = await request.post("update_default_address/", bodyFormData);

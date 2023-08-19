@@ -1,5 +1,5 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
-
+import confirmCheckout from "../js/confirmCheckout";
 function CartDetails({ cartDatas }) {
   return (
     <div className="card  col-12 col-md-12 offset-lg-1 col-lg-4">
@@ -91,18 +91,20 @@ function CartDetails({ cartDatas }) {
 
               {/* heading */}
               <div className="mt-8">
-                <form>
-                  {/* btn */}
-                  <div className="d-grid">
-                    <button type="submit" className="btn btn-dark mb-1">
-                      SECURE CHECKOUT
-                    </button>
-                  </div>
-                  <p className="text-muted mb-0">
-                    {" "}
-                    <small>{cartDatas?.free_delivery_message}</small>
-                  </p>
-                </form>
+                <div className="d-grid">
+                  <button
+                    type="button"
+                    className="btn btn-dark mb-1"
+                    onClick={() => {
+                      confirmCheckout();
+                    }}
+                  >
+                    SECURE CHECKOUT
+                  </button>
+                </div>
+                <p className="text-muted mb-0">
+                  <small>{cartDatas?.free_delivery_message}</small>
+                </p>
               </div>
             </div>
           </div>
