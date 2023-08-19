@@ -14,6 +14,7 @@ import Stores from "../pages/stores/index";
 import AlertPages from "../pages/alert_pages/index";
 import PaymentSuccess from "../pages/alert_pages/PaymentSuccess";
 import PaymentFailed from "../pages/alert_pages/PaymentFailed";
+import PaymentWaiting from "../pages/alert_pages/PaymentWaiting";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -60,6 +61,10 @@ const Router = () => {
         {
           path: "error",
           element: userDatas ? <PaymentFailed /> : <Navigate to="/" />,
+        },
+        {
+          path: "waiting",
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
         },
         { path: "*", element: <Navigate to="/404" replace /> },
       ],
