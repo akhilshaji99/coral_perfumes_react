@@ -5,23 +5,20 @@ import getUserToken from "../../../utils/userToken";
 
 const addNewAddress = async (formValues) => {
   try {
-  const userData = JSON.parse(localStorage.getItem("userDatas"));
-   
     const response = await request.post("add_user_address/", {
-      flat_name:formValues.flat_name,
-      street_address:formValues.street_address,
-      building_number:formValues.building_number,
-      postal_code:formValues.postal_code,
-      phone_number:formValues.phone_number,
-      emirate:formValues.emirate,
+      flat_name: formValues.flat_name,
+      street_address: formValues.street_address,
+      building_number: formValues.building_number,
+      postal_code: formValues.postal_code,
+      phone_number: formValues.phone_number,
+      emirate: formValues.emirate,
       token: getUserToken(),
-      first_name:formValues.first_name,
-      last_name:formValues.last_name,
-      email:formValues.email,
+      first_name: formValues.first_name,
+      last_name: formValues.last_name,
+      email: formValues.email,
       address_id: formValues.address_id,
       city: formValues.city,
-      floor_number: formValues.floor_number
-
+      floor_number: formValues.floor_number,
     });
     if (response.data.status) {
       toast((t) => (

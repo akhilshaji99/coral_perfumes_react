@@ -1,17 +1,17 @@
 import React from "react";
 // import BagEmpty from "./blocks/BagEmpty";
-import WishlistEmpty from "./blocks/WishlistEmpty";
-// import PaymentSuccess from "./blocks/PaymentSuccess";
+// import WishlistEmpty from "./blocks/WishlistEmpty";
+import PaymentSuccess from "./PaymentSuccess";
 // import PaymentFailed from "./blocks/PaymentFailed";
 
 function index() {
   return (
     <div>
       <div className="container-lg-fluid alert-padding">
-        {/* <PaymentSuccess /> */}
+        <PaymentSuccess />
         {/* <PaymentFailed/> */}
         {/* <BagEmpty/> */}
-        <WishlistEmpty/>
+        {/* <WishlistEmpty/> */}
       </div>
     </div>
   );

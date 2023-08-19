@@ -1,4 +1,4 @@
-import { useRoutes,Navigate } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import HomePage from "../pages/home/index";
 import LoginPage from "../pages/login/index";
 import ProductPage from "../pages/product/index";
@@ -12,6 +12,8 @@ import AddressBook from "../pages/address_book/index";
 import DashBoard from "../pages/dashboard/index";
 import Stores from "../pages/stores/index";
 import AlertPages from "../pages/alert_pages/index";
+import PaymentSuccess from "../pages/alert_pages/PaymentSuccess";
+import PaymentFailed from "../pages/alert_pages/PaymentFailed";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -22,19 +24,44 @@ const Router = () => {
       element: <BaseLayout />,
       children: [
         { path: "/", element: <HomePage /> },
-        { path: "login/*", element: userDatas? <Navigate to="/"/>:  <LoginPage /> },
+        {
+          path: "login/*",
+          element: userDatas ? <Navigate to="/" /> : <LoginPage />,
+        },
         { path: "product/*", element: <ProductPage /> },
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
-        { path: "checkout", element: userDatas?<CheckOut />: <Navigate to="/"/> },
+        {
+          path: "checkout",
+          element: userDatas ? <CheckOut /> : <Navigate to="/" />,
+        },
         { path: "wishlist", element: <Wishlist /> },
-        { path: "personal-info", element: userDatas?<PersonalInfo /> : <Navigate to="/"/> },
-        { path: "address-book", element: userDatas?  <AddressBook />: <Navigate to="/"/> },
-        { path: "dashboard", element: <DashBoard /> },
+        {
+          path: "personal-info",
+          element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
+        },
+        {
+          path: "address-book",
+          element: userDatas ? <AddressBook /> : <Navigate to="/" />,
+        },
+        {
+          path: "dashboard",
+          element: userDatas ? <DashBoard /> : <Navigate to="/" />,
+        },
         { path: "stores", element: <Stores /> },
-        { path: "alert", element: <AlertPages /> },
-        // { path: "about", element: <About /> }
-        { path: '*', element: <Navigate to="/404" replace /> }
+        {
+          path: "alert",
+          element: <AlertPages />,
+        },
+        {
+          path: "success",
+          element: userDatas ? <PaymentSuccess /> : <Navigate to="/" />,
+        },
+        {
+          path: "error",
+          element: userDatas ? <PaymentFailed /> : <Navigate to="/" />,
+        },
+        { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
   ];

@@ -1,5 +1,5 @@
 import React from "react";
-import WishlistEmptyImg from "../img/wishlist-empty.svg";
+import WishlistEmptyImg from "./img/wishlist-empty.svg";
 
 function WishlistEmpty() {
   return (

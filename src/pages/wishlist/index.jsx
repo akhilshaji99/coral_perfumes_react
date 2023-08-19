@@ -1,6 +1,7 @@
 import BreadCrumps from "../common/BreadCrumps";
-import ProductDetails from "../common/ProductDetails";
+// import ProductDetails from "../common/ProductDetails";
 import MyAccountSidebar from "../common/MyAccountSidebar";
+import WishlistEmpty from "../alert_pages/WishlistEmpty";
 // import { useEffect, useState } from "react";
 // import request from "../../utils/request";
 
@@ -35,6 +36,7 @@ function index() {
                   My Wishlist
                 </h2>
                 <div className="row">
+                  <WishlistEmpty />
                   {/* {productList.map((product, index) => { */}
                   {/* return ( */}
                   {/* <div className="col-md-4 col-6" key={1}>
