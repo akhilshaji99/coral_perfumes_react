@@ -100,8 +100,12 @@ function Index() {
           "address_id",
           response?.data?.default_address?.account_address?.id || null
         );
+        checkoutUpdateParams.shipping_zone_type = response?.data?.shipping_type;
+        checkoutUpdateParams.payment_type = response?.data?.payment_type;
+        checkoutUpdateParams.gift_wrap = response?.data?.is_gift_wrap;
+        checkoutUpdateParams.gift_message = response?.data?.gift_wrap_message;
         //Updating payment type in fetch payload :: Based on flag - Update only on first page load
-        if (!defaultPaymentTypeFlag) {
+        if (!defaultPaymentTypeFlag && response?.data?.payment_type === null) {
           checkoutUpdateParams.payment_type =
             response?.data?.payment_types.length > 0
               ? response?.data?.payment_types?.[0]?.id
@@ -115,11 +119,13 @@ function Index() {
   };
 
   const handleOnSubmit = () => {
+    console.log(addressForm.values);
     var combinedPayload = Object.assign(
       {},
       checkoutUpdateParams,
       addressForm.values
     );
+    console.log(combinedPayload);
     UpdateCheckoutDetails(combinedPayload).then((response) => {
       if (response?.data?.status) {
         console.log(response?.data?.data?.address_id);
@@ -153,9 +159,7 @@ function Index() {
       floor_number:
         checkOutDetails?.default_address?.account_address?.floor_number,
       city: checkOutDetails?.default_address?.account_address?.city,
-      address_type: checkOutDetails
-        ? checkOutDetails?.default_address?.address_type
-        : "1",
+      address_type: checkOutDetails?.default_address?.address_type || "1",
       address_id: checkOutDetails?.default_address?.account_address?.id,
     },
     enableReinitialize: true,
@@ -186,7 +190,6 @@ function Index() {
   //#End
   //update payment type and refetch api :: Delivery type change
   const fetchCheckoutDetailsForPaymentType = (payment_type_id) => {
-    console.log(payment_type_id);
     checkoutUpdateParams.payment_type = parseInt(payment_type_id);
     setCheckoutUpdateParams(checkoutUpdateParams);
     handleOnSubmit(); //Calling Update api
@@ -721,6 +724,7 @@ function Index() {
                             fetchCheckoutDetailsForMessage={
                               fetchCheckoutDetailsForMessage
                             }
+                            checkoutUpdateParams={checkoutUpdateParams}
                           />
                         </div>
                       </div>
@@ -731,6 +735,7 @@ function Index() {
                     fetchCheckoutDetailsByDeliveryType={
                       fetchCheckoutDetailsByDeliveryType
                     }
+                    checkedValue={checkoutUpdateParams?.shipping_zone_type}
                   />
                   <PaymentTypes
                     paymentTypes={paymentTypes}

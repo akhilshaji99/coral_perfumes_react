@@ -1,11 +1,20 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import UpdateCheckoutDetails from "../js/updateCheckoutDetails";
 
 function GiftWrapping({
   fetchCheckoutDetailsForGiftStatus,
   fetchCheckoutDetailsForMessage,
+  checkoutUpdateParams,
 }) {
   const [giftWrappingStatus, setGiftWrappingStatus] = useState(0);
   const [messageLength, setMessageLength] = useState(0);
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    setGiftWrappingStatus(checkoutUpdateParams?.gift_wrap);
+    setMessage(checkoutUpdateParams?.gift_message);
+    setMessageLength(checkoutUpdateParams?.gift_message?.length || 0);
+  }, [checkoutUpdateParams?.gift_wrap]);
 
   const delaySaveToDb = useCallback(
     debounce((val) => {
@@ -16,6 +25,7 @@ function GiftWrapping({
 
   const handleChange = (e) => {
     setMessageLength(e.target.value.length);
+    setMessage(e.target.value);
     delaySaveToDb(e.target.value);
   };
 
@@ -74,13 +84,14 @@ function GiftWrapping({
                 type="text"
                 maxLength={200}
                 className="form-control"
-                onChange={handleChange}
-                // onChange={(event) => {
-                //   setMessageLength(event.target.value.length);
-                // }}
-                // onIn={() => {
-                //   console.log("leave");
-                // }}
+                onChange={(event) => {
+                  setMessage(event.target.value);
+                  setMessageLength(event.target.value.length);
+                }}
+                onBlur={(event) => {
+                  fetchCheckoutDetailsForMessage(event.target.value);
+                }}
+                value={message}
                 placeholder="Your Message"
               />
               <span>{messageLength}/200</span>

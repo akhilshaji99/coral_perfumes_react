@@ -1,12 +1,18 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
-function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType }) {
+function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
   const [checkedDeliveryType, setCheckedDeliveryType] = useState(null);
 
   useEffect(() => {
     getDeliveryTypes();
   }, []);
+
+  useEffect(() => {
+    if (checkedValue) {
+      setCheckedDeliveryType(checkedValue);
+    }
+  }, [checkedValue]);
 
   const getDeliveryTypes = async () => {
     try {
