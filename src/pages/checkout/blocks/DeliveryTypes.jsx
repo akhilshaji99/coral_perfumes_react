@@ -2,7 +2,7 @@ import request from "../../../utils/request";
 import { useEffect, useState } from "react";
 function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
-  const [checkedDeliveryType, setCheckedDeliveryType] = useState(null);
+  const [checkedShippingType, setCheckedShippingType] = useState(null);
 
   useEffect(() => {
     getDeliveryTypes();
@@ -10,7 +10,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
 
   useEffect(() => {
     if (checkedValue) {
-      setCheckedDeliveryType(checkedValue);
+      setCheckedShippingType(checkedValue);
     }
   }, [checkedValue]);
 
@@ -22,7 +22,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
       if (response.data) {
         setDeliveryTypes(response?.data?.data);
         if (response?.data?.data.length > 0) {
-          setCheckedDeliveryType(response?.data?.data[0]?.id);
+          setCheckedShippingType(response?.data?.data[0]?.id);
         }
       }
     } catch (error) {
@@ -69,9 +69,9 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
                               type="radio"
                               value={deliveryType?.id}
                               name="del_type"
-                              checked={checkedDeliveryType === deliveryType?.id}
+                              checked={checkedShippingType === deliveryType?.id}
                               onChange={(event) => {
-                                setCheckedDeliveryType(
+                                setCheckedShippingType(
                                   parseInt(event.target.value)
                                 );
                                 fetchCheckoutDetailsByDeliveryType(

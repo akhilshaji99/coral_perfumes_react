@@ -35,7 +35,6 @@ function Index() {
   const [avaibleStores, setAvailableStores] = useState([]);
   //State for checkout fetch api parameters
   const [checkoutUpdateParams, setCheckoutUpdateParams] = useState({
-    delivery_type: "1",
     shipping_zone_type: null,
     payment_type: null,
     gift_wrap: 0,
@@ -75,7 +74,10 @@ function Index() {
             ).values(),
           ];
           setStoreEmirates(uniqueStores);
-          await filterStoresByEmirates(uniqueStores[0]?.emirate);
+          await filterStoresByEmirates(
+            uniqueStores[0]?.emirate,
+            response?.data?.data
+          );
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -153,14 +155,13 @@ function Index() {
         checkOutDetails?.default_address?.account_address?.building_number,
       first_name: checkOutDetails?.default_address?.account_address?.first_name,
       last_name: checkOutDetails?.default_address?.account_address?.last_name,
-      phone_number:
-        checkOutDetails?.default_address?.account_address?.phone_number,
       email: checkOutDetails?.default_address?.account_address?.email,
       floor_number:
         checkOutDetails?.default_address?.account_address?.floor_number,
       city: checkOutDetails?.default_address?.account_address?.city,
-      address_type: checkOutDetails?.default_address?.address_type || "1",
+      delivery_type: checkOutDetails?.delivery_type,
       address_id: checkOutDetails?.default_address?.account_address?.id,
+      store_id: checkOutDetails?.store_id,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
@@ -168,7 +169,7 @@ function Index() {
   });
 
   const changeDeliveryType = (type) => {
-    addressForm.setFieldValue("address_type", type);
+    addressForm.setFieldValue("delivery_type", type);
     // setAddressType(type);
   };
 
@@ -182,8 +183,8 @@ function Index() {
   // );
 
   //update shipping_zone_type and refetch api :: Delivery type change
-  const fetchCheckoutDetailsByDeliveryType = (delivery_type_id) => {
-    checkoutUpdateParams.shipping_zone_type = delivery_type_id;
+  const fetchCheckoutDetailsByDeliveryType = (shipping_type) => {
+    checkoutUpdateParams.shipping_zone_type = shipping_type;
     setCheckoutUpdateParams(checkoutUpdateParams);
     handleOnSubmit(); //Calling Update api
   };
@@ -213,16 +214,20 @@ function Index() {
   };
   //#End
 
-  const filterStoresByEmirates = async (emirate_id) => {
-    console.log("storeDatas", storeDatas);
+  const filterStoresByEmirates = async (emirate_id, availableStores = []) => {
     let emirateStores = [];
-    await storeDatas.forEach((store) => {
+    let stores = [];
+    if (availableStores.length === 0) {
+      stores = storeDatas;
+    } else {
+      stores = availableStores;
+    }
+    await stores.forEach((store) => {
       if (parseInt(store.emirate) === parseInt(emirate_id)) {
-        console.log("herree");
         emirateStores.push(store);
       }
     });
-    console.log("emirateStores", emirateStores);
+    addressForm.setFieldValue("store_id", emirateStores?.[0]?.id);
     setAvailableStores(emirateStores);
   };
   return (
@@ -442,7 +447,11 @@ function Index() {
                         >
                           <li className="nav-item" role="presentation">
                             <button
-                              className="nav-link active"
+                              className={
+                                parseInt(addressForm.values.delivery_type) === 1
+                                  ? "nav-link active"
+                                  : "nav-link"
+                              }
                               id="rating-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#rating-tab-pane"
@@ -460,7 +469,11 @@ function Index() {
                           </li>
                           <li className="nav-item" role="presentation">
                             <button
-                              className="nav-link"
+                              className={
+                                parseInt(addressForm.values.delivery_type) === 2
+                                  ? "nav-link active"
+                                  : "nav-link"
+                              }
                               id="reviews-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#reviews-tab-pane"
@@ -497,7 +510,11 @@ function Index() {
                       >
                         <div className="tab-content" id="myTabContent">
                           <div
-                            className="tab-pane fade show active"
+                            className={
+                              parseInt(addressForm.values.delivery_type) === 1
+                                ? "tab-pane show active"
+                                : "tab-pane fade"
+                            }
                             id="rating-tab-pane"
                             role="tabpanel"
                             aria-labelledby="rating-tab"
@@ -631,7 +648,11 @@ function Index() {
                             </div>
                           </div>
                           <div
-                            className="tab-pane fade"
+                            className={
+                              parseInt(addressForm.values.delivery_type) === 2
+                                ? "tab-pane show active"
+                                : "tab-pane fade"
+                            }
                             id="reviews-tab-pane"
                             role="tabpanel"
                             aria-labelledby="reviews-tab"
@@ -668,11 +689,11 @@ function Index() {
                                     <select
                                       className="form-control"
                                       name="store"
-                                      // onChange={(event) => {
-                                      //   filterStoresByEmirates(
-                                      //     event.target.value
-                                      //   );
-                                      // }}
+                                      value={addressForm.values.store_id}
+                                      onChange={(event) => {
+                                        addressForm.values.store_id =
+                                          event.target.value;
+                                      }}
                                     >
                                       {avaibleStores?.map((store, index) => {
                                         return (
@@ -700,7 +721,7 @@ function Index() {
                                   </button>
                                 </div>
                               </div>
-                              {addressForm.values.address_type === "1" ? (
+                              {addressForm.values.delivery_type === "1" ? (
                                 <div className="col-md-6 col-12">
                                   <a
                                     onClick={(e) => {

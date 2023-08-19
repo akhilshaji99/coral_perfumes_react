@@ -117,7 +117,7 @@ function AddNewAddressModal({
                   {" "}
                   <button
                     onClick={markDefaultAddress}
-                    class="btn btn-dark p-32px validate"
+                    className="btn btn-dark p-32px validate"
                   >
                     CONFIRM
                   </button>
