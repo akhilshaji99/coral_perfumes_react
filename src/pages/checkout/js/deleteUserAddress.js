@@ -5,13 +5,9 @@ import AlerMessage from "../../common/AlerMessage";
 
 const deleteUserAddress = async (id) => {
   try {
-
-    const response = await request.get("delete_user_address/"+id, {
-     
-      address_id: id,
-     
-
-    });
+    var bodyFormData = new FormData();
+    bodyFormData.append("address_id", id);
+    const response = await request.get("delete_user_address/",bodyFormData);
     if (response.data.status) {
       toast((t) => (
         <AlerMessage

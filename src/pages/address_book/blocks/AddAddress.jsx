@@ -56,31 +56,53 @@ function AddAddress({
         $("#AddAddress").toggleClass("modal fade modal");
         setAddAddressFlag(false);
         setAddAddressListFlag(true);
+        setEditAddressFlag(false);
         $("#addressModal").toggle();
         $("#addressModal").toggleClass("modal fade modal");
       }
-    });
     resetForm();
+
+    });
   };
   const addressForm = useFormik({
     initialValues: {
-      postal_code: editAddressFlag ? editAddressInfo?.postal_code : "",
-      phone_number: editAddressFlag ? editAddressInfo?.phone_number : "",
-      flat_name: editAddressFlag ? editAddressInfo?.first_name : "",
-      emirate: editAddressFlag ? editAddressInfo?.emirate : "",
-      street_address: editAddressFlag ? editAddressInfo?.street_address : "",
-      building_number: editAddressFlag ? editAddressInfo?.building_number : "",
-      first_name: editAddressFlag ? editAddressInfo?.first_name : "",
-      last_name: editAddressFlag ? editAddressInfo?.last_name : "",
-      email: editAddressFlag ? editAddressInfo?.email : "",
-      address_id: editAddressFlag ? editAddressInfo?.id : "",
-      city: editAddressFlag ? editAddressInfo?.city : "",
-      floor_number: editAddressFlag ? editAddressInfo?.floor_number : "",
+      postal_code: "",
+      phone_number: "",
+      flat_name: "",
+      emirate: "",
+      street_address: "",
+      building_number: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      address_id: "",
+      city: "",
+      floor_number: "",
     },
     enableReinitialize: true,
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
   });
+  useEffect(() => {
+    if (editAddressFlag) {
+      addressForm.setValues({
+        postal_code: editAddressFlag ? editAddressInfo?.postal_code : "",
+        phone_number: editAddressFlag ? editAddressInfo?.phone_number : "",
+        flat_name: editAddressFlag ? editAddressInfo?.first_name : "",
+        emirate: editAddressFlag ? editAddressInfo?.emirate_id : "",
+        street_address: editAddressFlag ? editAddressInfo?.street_address : "",
+        building_number: editAddressFlag
+          ? editAddressInfo?.building_number
+          : "",
+        first_name: editAddressFlag ? editAddressInfo?.first_name : "",
+        last_name: editAddressFlag ? editAddressInfo?.last_name : "",
+        email: editAddressFlag ? editAddressInfo?.email : "",
+        address_id: editAddressFlag ? editAddressInfo?.id : "",
+        city: editAddressFlag ? editAddressInfo?.city : "",
+        floor_number: editAddressFlag ? editAddressInfo?.floor_number : "",
+      });
+    }
+  }, [editAddressFlag]);
   const resetForm = () => {
     addressForm.setValues({
       postal_code: "",
@@ -132,6 +154,7 @@ function AddAddress({
                 aria-label="Close"
                 onClick={(e) => {
                   setAddAddressFlag(false);
+                  setEditAddressFlag(false);
                   $("#AddAddress").toggle();
                   $("#AddAddress").toggleClass("modal fade modal");
                   setAddAddressListFlag(true);
@@ -237,6 +260,7 @@ function AddAddress({
                       // }}
                       name="emirate"
                       // value={addressForm.values.emirate.id}
+                      value={addressForm.values.emirate}
 
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "emirate")}

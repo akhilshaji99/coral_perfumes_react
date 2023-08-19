@@ -47,8 +47,9 @@ function AddressListComponent({ componentDatas ,defaultAddress,setDefaultAddress
                       <p className="mb-6 pl-5">
                         {componentDatas.first_name} {componentDatas.last_name}
                         <br />
-                        {componentDatas.emirate}, <br />
-                        {componentDatas.street_address},
+                        {componentDatas.flat_name} , {componentDatas.building_number}
+                        <br />
+                        {componentDatas.street_address}, {componentDatas.emirate},
                         <br />
                         {componentDatas.phone_number}
                       </p>
