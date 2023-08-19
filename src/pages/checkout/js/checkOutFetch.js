@@ -1,11 +1,15 @@
 import request from "../../../utils/request";
 import getUserToken from "../../../utils/userToken";
+
 const getCheckOutDetails = async () => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
     const response = await request.post("get_checkout_details/", bodyFormData);
 
+    if (response?.data?.status_code === "404") {
+      window.location.href = "/";
+    }
     if (response?.data?.status) {
       return response.data;
     }

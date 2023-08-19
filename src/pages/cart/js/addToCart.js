@@ -31,7 +31,9 @@ const addToCart = async (product_variant_id, quantity) => {
           toast={toast}
           status={response.data.status}
           title={"Add To Cart"}
-          message={response?.data?.message}
+          message={
+            response?.data?.message || "Something went wrong.Please try again."
+          }
         />
       ));
     }

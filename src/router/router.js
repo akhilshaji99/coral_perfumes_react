@@ -63,10 +63,10 @@ const Router = () => {
           element: userDatas ? <PaymentFailed /> : <Navigate to="/" />,
         },
         {
-          path: "waiting",
+          path: "tamara/payment-response",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
         },
-        { path: "*", element: <Navigate to="/404" replace /> },
+        // { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
   ];

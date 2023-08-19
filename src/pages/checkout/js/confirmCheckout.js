@@ -9,26 +9,17 @@ const confirmCheckout = async () => {
     bodyFormData.append("token", getUserToken());
     const response = await request.post("confirm_checkout/", bodyFormData);
     if (response.data.status) {
-      //   toast((t) => (
-      //     <AlerMessage
-      //       t={t}
-      //       toast={toast}
-      //       status={response.data.status}
-      //       title={"Add Address"}
-      //       message="Address Added."
-      //     />
-      //   ));
-      //   return response;
+      window.location.href = response?.data?.data;
     } else {
-      //   toast((t) => (
-      //     <AlerMessage
-      //       t={t}
-      //       toast={toast}
-      //       status={response.data.status}
-      //       title={"Add Address"}
-      //       message={response?.data?.message}
-      //     />
-      //   ));
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={response.data.status}
+          title={"Error"}
+          message={response?.data?.message}
+        />
+      ));
       //   return response;
     }
   } catch (error) {

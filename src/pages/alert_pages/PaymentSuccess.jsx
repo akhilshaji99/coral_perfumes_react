@@ -1,7 +1,8 @@
 import React from "react";
 import PaymentSuccessImg from "./img/payment-success.png";
+import { Link } from "react-router-dom";
 
-function PaymentSuccess() {
+function PaymentSuccess({ responseMessage }) {
   return (
     <div>
       <div className="container-lg-fluid alert-padding">
@@ -30,11 +31,11 @@ function PaymentSuccess() {
                   />
                 </svg>
               </span>
-              Payment done successfully
+              {responseMessage?.message_2}
             </h1>
             <p>
-              Your Order Number 34566LA0024 <br />
-              Thank you for shopping
+              {responseMessage?.message_3} <br />
+              {responseMessage?.message_4}
             </p>
             <h5>
               <span>
@@ -72,7 +73,7 @@ function PaymentSuccess() {
                   </defs>
                 </svg>
               </span>
-              Continue Shopping
+              <Link to={"/"}>{responseMessage?.message_5}</Link>
             </h5>
           </div>
         </div>

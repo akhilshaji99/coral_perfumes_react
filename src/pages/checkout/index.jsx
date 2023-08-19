@@ -61,31 +61,29 @@ function Index() {
   // const newAddressFormSchema = yup.object().shape(validationShape);
 
   //Fetch stores
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getStores();
-        if (response?.data?.status) {
-          setStoredatas(response?.data?.data);
+  // useEffect(() => {
+  const fetchStoreApi = async () => {
+    try {
+      const response = await getStores();
+      if (response?.data?.status) {
+        setStoredatas(response?.data?.data);
 
-          const uniqueStores = [
-            ...new Map(
-              response?.data?.data?.map((m) => [m.emirate, m])
-            ).values(),
-          ];
-          setStoreEmirates(uniqueStores);
-          await filterStoresByEmirates(
-            uniqueStores[0]?.emirate,
-            response?.data?.data
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        const uniqueStores = [
+          ...new Map(response?.data?.data?.map((m) => [m.emirate, m])).values(),
+        ];
+        setStoreEmirates(uniqueStores);
+        await filterStoresByEmirates(
+          checkOutDetails?.store_emirate_id || uniqueStores[0]?.emirate,
+          response?.data?.data
+        );
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  //
+  // }, []);
   //#End
 
   useEffect(() => {
@@ -96,6 +94,7 @@ function Index() {
     getCheckOutDetails().then((response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
+        fetchStoreApi(); //Fetch store api
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
         addressForm.setFieldValue(
@@ -688,13 +687,9 @@ function Index() {
                                   <div className="mb-3 mb-lg-0">
                                     <select
                                       className="form-control"
-                                      name="store"
+                                      name="store_id"
                                       value={addressForm.values.store_id}
-                                      onChange={(event) => {
-                                        console.log(event.target.value);
-                                        addressForm.values.store_id =
-                                          event.target.value;
-                                      }}
+                                      onChange={addressForm.handleChange}
                                     >
                                       {avaibleStores?.map((store, index) => {
                                         return (
