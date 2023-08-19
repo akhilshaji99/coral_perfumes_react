@@ -1,120 +1,88 @@
+import React, { useEffect, useState } from "react";
 import MyAccountSidebar from "../common/MyAccountSidebar";
 import BreadCrumps from "../common/BreadCrumps";
 import AddAddress from "./blocks/AddAddress";
+import AddressListComponent from "../checkout/blocks/AddressListComponent";
+import MakeDefaultAddress from "../checkout/js/makeDefaultAddress";
 // import ChangeEmail from "./ChangeEmail";
 // import ChangePhone from "./ChangePhone";
-function index() {
+import getAddressList from "../checkout/js/getAddressList";
+import $ from "jquery";
+
+function Index() {
+  const [addressList, setAddressList] = useState([]);
+  const [defaultAddress, setDefaultAddress] = useState();
+  const [editAddressFlag, setEditAddressFlag] = useState(false);
+  const [editAddressInfo, setEditAddressInfo] = useState(null);
+  const [addAddressFlag, setAddAddressFlag] = useState(false);
+  const [addAddressListFlag, setAddAddressListFlag] = useState(true);
+
+  useEffect(() => {
+    if (addAddressListFlag) {
+      getAddressList().then((response) => {
+        if (response?.data) {
+          setAddressList(response?.data);
+        }
+      });
+    }
+  }, [addAddressListFlag]);
+  const editAddress = (info) => {
+    setEditAddressInfo(info);
+    setEditAddressFlag(true);
+    setAddAddressListFlag(false);
+    $("#addressModal").toggle();
+    $("#addressModal").toggleClass("modal fade modal");
+    setAddAddressFlag(true);
+    $("#AddAddress").toggle();
+    $("#AddAddress").toggleClass("modal fade modal");
+  };
   return (
     <main>
       {/* section */}
-      <BreadCrumps />
-
+      {/* <BreadCrumps /> */}
+      <br />
       <section>
         <div className="container-fluid">
           <div className="row">
             <MyAccountSidebar />
-            <AddAddress />
+            <AddAddress
+              addAddressFlag={addAddressFlag}
+              setAddAddressFlag={setAddAddressFlag}
+              setAddAddressListFlag={setAddAddressListFlag}
+              editAddressFlag={editAddressFlag}
+              editAddressInfo={editAddressInfo}
+              setEditAddressFlag={setEditAddressFlag}
+              setEditAddressInfo={setEditAddressInfo}
+            />
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
                 <h2 className="mb-6 text-center my-profile-heading">
                   Address Book
                 </h2>
-                <div className="row">
-                  {/* col */}
-                  <div className="col-lg-12 col-xxl-12 col-12 mb-4">
-                    {/* form */}
-                    <div className="card address-card">
-                      <div className="row align-items-center">
-                        <div className="col-md-9">
-                          <div className="card-body">
-                            <div className="row">
-                              <div className="col-md-1 justify-content-end">
-                                <div className="form-check">
-                                  <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="flexRadioDefault"
-                                    id="homeRadio"
-                                    defaultChecked=""
-                                  />
-                                  {/* <label
-                                className="form-check-label text-dark fw-semi-bold"
-                                htmlFor="homeRadio"
-                              >
-                                Home
-                              </label> */}
-                                </div>
-                              </div>
-                              <div className="col-md-11 px-0">
-                                {/* address */}
-                                <p className="mb-6 pl-5">
-                                  Jitu Chauhan
-                                  <br />
-                                  4450 North Avenue Oakland, <br />
-                                  Nebraska, United States,
-                                  <br />
-                                  402-776-1106
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-3 text-center">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <a href="#" >
-                                <svg
-                                  width={11}
-                                  height={11}
-                                  viewBox="0 0 11 11"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M8.88188 3.63875L7.31621 2.07307M1.30925 9.6457C1.74242 10.0789 2.44175 10.0789 2.87492 9.6457L9.6595 2.86113C10.0927 2.42796 10.0927 1.72863 9.6595 1.29546C9.22633 0.862289 8.527 0.862289 8.09383 1.29546L1.30925 8.08003C0.876083 8.5132 0.876083 9.21253 1.30925 9.6457Z"
-                                    stroke="black"
-                                    strokeWidth="0.8"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              </a>
-                            </div>
-                            <div className="col-md-12">
-                              <a
-                                href="#"
-                                className="text-danger "
-                                data-bs-toggle="modal"
-                                data-bs-target="#deleteModal"
-                                style={{marginLeft:'10px'}}
-                              >
-                                <svg
-                                  width={21}
-                                  height={29}
-                                  viewBox="0 0 21 29"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M1.24173 19.2132L9.72702 27.6985M1.24173 27.6985L9.72702 19.2132"
-                                    stroke="black"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {addressList?.map((component, index) => {
+                  return (
+                    <AddressListComponent
+                      componentDatas={component}
+                      defaultAddress={defaultAddress}
+                      setDefaultAddress={setDefaultAddress}
+                      editAddress={editAddress}
+              setAddAddressListFlag={setAddAddressListFlag}
+
+                    />
+                  );
+                })}
                 <label
-                  data-bs-toggle="modal"
+                  // data-bs-toggle="modal"
                   className="btn-link"
-                  data-bs-target="#AddAddress"
+                  // data-bs-target="#AddAddress"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    $("#AddAddress").toggle();
+                    $("#AddAddress").toggleClass("modal fade modal");
+                    setAddAddressListFlag(false);
+                    setAddAddressFlag(true)
+                  }}
                 >
                   + Add New Address
                 </label>
@@ -131,4 +99,4 @@ function index() {
     </main>
   );
 }
-export default index;
+export default Index;

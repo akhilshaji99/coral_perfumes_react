@@ -59,8 +59,10 @@ function AddAddress({
         setEditAddressFlag(false);
         $("#addressModal").toggle();
         $("#addressModal").toggleClass("modal fade modal");
-      }
+        $("#AddAddress").removeClass("modal-open");
     resetForm();
+
+      }
 
     });
   };

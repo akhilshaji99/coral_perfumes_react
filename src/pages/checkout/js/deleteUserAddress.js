@@ -7,15 +7,15 @@ const deleteUserAddress = async (id) => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("address_id", id);
-    const response = await request.get("delete_user_address/",bodyFormData);
+    const response = await request.post("delete_user_address/",bodyFormData);
     if (response.data.status) {
       toast((t) => (
         <AlerMessage
           t={t}
           toast={toast}
           status={response.data.status}
-          title={"Delete Address"}
-          message={response?.data?.message}
+          title={response?.data?.message_2}
+          message={response?.data?.message_2}
         />
       ));
     } else {
@@ -24,8 +24,8 @@ const deleteUserAddress = async (id) => {
           t={t}
           toast={toast}
           status={response.data.status}
-          title={"Delete Address"}
-          message={response?.data?.message}
+          title={response?.data?.message_2}
+          message={response?.data?.message_2}
         />
       ));
     }
