@@ -26,6 +26,11 @@ function Index() {
       });
     }
   }, [addAddressListFlag]);
+  const markDefaultAddress = () => {
+    MakeDefaultAddress(defaultAddress).then((response) => {
+     
+    });
+  };
   const editAddress = (info) => {
     setEditAddressInfo(info);
     setEditAddressFlag(true);
@@ -87,7 +92,7 @@ function Index() {
                   + Add New Address
                 </label>
                 <div class="col-12 text-start">
-                  <button class="btn btn-dark col-md-2 mt-4" type="button">
+                  <button class="btn btn-dark col-md-2 mt-4" type="button"  onClick={markDefaultAddress}>
                     Save
                   </button>
                 </div>

@@ -16,8 +16,8 @@ const MakeDefaultAddress = async (defaultAddress) => {
           t={t}
           toast={toast}
           status={response.data.status}
-          title={"Add Address"}
-          message="Address Added."
+          title={"Success"}
+          message={response.data.message}
         />
       ));
     } else {
@@ -26,7 +26,7 @@ const MakeDefaultAddress = async (defaultAddress) => {
           t={t}
           toast={toast}
           status={response.data.status}
-          title={"Add Address"}
+          title={"Error"}
           message={response?.data?.message}
         />
       ));
