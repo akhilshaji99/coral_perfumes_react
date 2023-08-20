@@ -35,20 +35,6 @@ function AddAddress({
   setEditAddressInfo,
 }) {
   const [emirates, setEmirates] = useState([]);
-  useEffect(() => {
-    if (addAddressFlag) {
-      getEmirates().then((response) => {
-        if (response?.data) {
-          setEmirates(response?.data);
-        }
-      });
-    }
-  }, [addAddressFlag]);
-  useEffect(() => {
-    if (!editAddressFlag) {
-      addressForm.initialValues.emirate = emirates?.[1]?.id;
-    }
-  }, [emirates]);
   const handleOnSubmit = (values) => {
     addNewAddress(values).then((response) => {
       if (response?.data.status) {
@@ -85,6 +71,31 @@ function AddAddress({
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
   });
+  useEffect(() => {
+    if (addAddressFlag) {
+      getEmirates().then((response) => {
+        if (response?.data) {
+          setEmirates(response?.data);
+          addressForm.setValues({
+           emirate: response?.data?[0]?.id : "",
+
+          });
+          
+        }
+      });
+    }
+  }, [addAddressFlag]);
+  useEffect(() => {
+    if (!editAddressFlag) {
+      // addressForm.initialValues.emirate = emirates?.[0]?.id;
+      addressForm.setValues({
+        emirate: emirates?.[0]?.id
+
+       });
+    }
+  }, [emirates]);
+ 
+ 
   useEffect(() => {
     if (editAddressFlag) {
       addressForm.setValues({

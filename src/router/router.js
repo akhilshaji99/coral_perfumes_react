@@ -66,7 +66,7 @@ const Router = () => {
           path: "tamara/payment-response",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
         },
-        // { path: "*", element: <Navigate to="/404" replace /> },
+        { path: "*", element:userDatas ? <PersonalInfo /> : <Navigate to="/" />},
       ],
     },
   ];

@@ -6,9 +6,12 @@ import { useEffect, useState } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../pages/common/Logo";
 
 function Account({ changeMobileMenuStatus }) {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
@@ -36,6 +39,7 @@ function Account({ changeMobileMenuStatus }) {
   const [openAccountMenus, setOpenAccountMenus] = useState(false);
 
   const handleSubmenuToggle = () => {
+    // navigate("/dashboard");
     setOpenAccountMenus(!openAccountMenus);
   };
 
@@ -194,6 +198,10 @@ function Account({ changeMobileMenuStatus }) {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                       className="text-center"
+                      onClick={(e)=>{
+                        e.preventDefault();
+                        navigate("/dashboard")}
+                      }
                     >
                       <svg
                         width="25"
@@ -209,7 +217,7 @@ function Account({ changeMobileMenuStatus }) {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span className="dropdown-text">
+                      <span className="dropdown-text" >
                         {username !== "" ? username : "Sign In"}
                       </span>
                     </a>
