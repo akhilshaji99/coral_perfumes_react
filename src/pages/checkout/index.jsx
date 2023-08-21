@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import CartDetails from "./blocks/CartDetails";
 import getCheckOutDetails from "./js/checkOutFetch";
@@ -10,7 +10,7 @@ import DeliveryTypes from "./blocks/DeliveryTypes";
 import PaymentTypes from "./blocks/PaymentTypes";
 import GiftWrapping from "./blocks/GiftWrapping";
 import getStores from "../stores/js/getStores";
-
+import PromoCodeModal from "./blocks/PromoCodeModal";
 import $ from "jquery";
 
 
@@ -27,6 +27,7 @@ function getStyles(errors, fieldName) {
 function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
+  const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
@@ -248,6 +249,10 @@ function Index() {
               </div>
             </div>
           </div>
+          <PromoCodeModal 
+           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+           showPrmoCodeFlag={showPrmoCodeFlag}
+          />
           <AddNewAddressModal
             // componentDatas={addressForm.values}
             setAddAddressListFlag={setAddAddressListFlag}
@@ -343,7 +348,13 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <h5 className="mb-1 h6 pt-2">
+                            <h5 className="mb-1 h6 pt-2" onClick={(e) => {
+                                      setShowPrmoCodeFlag(true);
+                                      $("#promocodeModal").toggle();
+                                      $("#promocodeModal").toggleClass(
+                                        "modal fade modal"
+                                      );
+                                    }}>
                               View Available Promo Codes
                             </h5>
                           </div>
