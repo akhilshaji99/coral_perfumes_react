@@ -78,7 +78,7 @@ function GiftWrapping({
       </div>
       {giftWrappingStatus ? (
         <div className="ps-3">
-          <div className="col-md-8 col-12">
+          <div className="col-md-10 col-12">
             <div className="mb-3 mb-lg-0">
               <input
                 type="text"
@@ -94,7 +94,10 @@ function GiftWrapping({
                 value={message}
                 placeholder="Your Message"
               />
-              <span>{messageLength}/200</span>
+              <div className="d-flex justify-content-end pt-2 text-black">
+                {" "}
+                <span>{messageLength}/200</span>
+              </div>
             </div>
           </div>
         </div>

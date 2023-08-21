@@ -27797,7 +27797,7 @@ border-radius: none !important;
     border-radius: 9px !important;
     background: #fff;
     box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-    margin: 25px 0 25px 0;
+    /* margin: 25px 0 25px 0; */
     padding: 8px !important;
   }
   .my-bag-text h6 {
@@ -28847,4 +28847,31 @@ background-clip: text;
   .me-5 {
     margin-right: 0.15rem !important;
   }
+}
+.checkout-accordion{
+  border-radius: 9px !important;
+background: #FFF;
+box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.24);
+margin-bottom: 20px;
+padding: 18px !important;
+}
+.accordion-arrow svg{
+  transform: rotate(180deg);
+}
+.checkout-accordion h4{
+  color: var(--fc-black);
+  font-family: var(--fc-font-regular);
+  font-size: 16px;
+}
+                   
+.sub-heading{
+  font-size: 21px;
+  color: #000;
+  font-family: var(--fc-font-bold);
+}
+.checkout-left-card {
+  border-radius: 9px !important;
+  background: #fff;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+  padding: 33px;
 }

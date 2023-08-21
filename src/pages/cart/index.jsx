@@ -100,9 +100,9 @@ function Index() {
   };
   return (
     <>
-      <BreadCrumps />
       <section className="mb-lg-14 mb-8 mt-8 my-bag">
         <div className="container-fluid">
+          <BreadCrumps />
           {/* row */}
           <div className="row">
             <div className="col-12">

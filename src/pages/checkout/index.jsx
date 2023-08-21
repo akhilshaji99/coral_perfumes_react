@@ -231,23 +231,14 @@ function Index() {
   };
   return (
     <>
-      <BreadCrumps />
       <section className="mb-lg-14 mb-8 mt-8">
-        <div className="container">
-          {/* row */}
+        <div className="container-fluid">
+          <BreadCrumps />
           <div className="row">
-            {/* col */}
             <div className="col-12">
               <div>
-                <div className="mb-8 text-center">
-                  {/* text */}
-                  <h1
-                    className="fw-bold mb-0"
-                    style={{
-                      font: "Brandon Text",
-                      fontWeight: "450",
-                      fontSize: "21px",
-                    }}
+                <div className="mb-8 text-center ">
+                  <h1 className="sub-heading"
                   >
                     CHECK OUT
                   </h1>
@@ -268,11 +259,11 @@ function Index() {
               <div className="col-lg-7 col-md-12">
                 {/* accordion */}
                 <div
-                  className="accordion accordion-flush"
+                  className="accordion accordion-flush "
                   id="accordionFlushExample"
                 >
                   {/* accordion item */}
-                  <div className="accordion-item card card-bordered shadow mb-2 ">
+                  <div className="accordion-item checkout-accordion ">
                     <div className="d-flex justify-content-between align-items-center h">
                       {/* heading one */}
 
@@ -287,7 +278,24 @@ function Index() {
                         aria-controls="flush-collapseOne"
                       >
                         <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-menu-down">^</span>
+                          <span class="accordion-arrow">
+                            <svg
+                              width={18}
+                              height={9}
+                              viewBox="0 0 18 9"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
+                                stroke="black"
+                                strokeWidth="1.5"
+                                strokeMiterlimit={10}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
                         </button>
                       </a>
                       {/* btn */}
@@ -305,7 +313,7 @@ function Index() {
                           <div className="d-flex mb-4">
                             <div>
                               {/* <h5 className="mb-1 h6"> PROMO CODE</h5> */}
-                              <h4 className="mb-1 h6 "> Add Promo Code</h4>
+                              <h5 className="mb-1 h6 "> Add Promo Code</h5>
                             </div>
                           </div>
                           <div className="row g-2">
@@ -326,7 +334,7 @@ function Index() {
                                   {" "}
                                   <button
                                     type="submit"
-                                    class="btn btn-dark px-4 validate"
+                                    class="btn btn-dark px-4 validate w-100"
                                   >
                                     APPLY
                                   </button>
@@ -342,7 +350,7 @@ function Index() {
                     </div>
                   </div>
                   <form onSubmit={addressForm.handleSubmit}>
-                    <div className="accordion-item card card-bordered shadow mb-2 ">
+                    <div className="accordion-item checkout-accordion">
                       <div className="d-flex justify-content-between align-items-center h">
                         <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
                         <a
@@ -354,7 +362,24 @@ function Index() {
                           aria-controls="flush-collapseTwo"
                         >
                           <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-menu-down">^</span>
+                            <span class="accordion-arrow">
+                              <svg
+                                width={18}
+                                height={9}
+                                viewBox="0 0 18 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
+                                  stroke="black"
+                                  strokeWidth="1.5"
+                                  strokeMiterlimit={10}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </span>
                           </button>
                         </a>
                       </div>
@@ -437,7 +462,7 @@ function Index() {
                         </div>
                       </div>
                     </div>
-                    <div className="accordion-item card card-bordered shadow mb-2 ">
+                    <div className="accordion-item checkout-accordion ">
                       <div className="d-flex justify-content-between align-items-center h">
                         <ul
                           className="nav nav-pills nav-lb-tab"
@@ -498,7 +523,24 @@ function Index() {
                           aria-controls="flush-collapseThree"
                         >
                           <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-menu-down">^</span>
+                            <span class="accordion-arrow">
+                              <svg
+                                width={18}
+                                height={9}
+                                viewBox="0 0 18 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
+                                  stroke="black"
+                                  strokeWidth="1.5"
+                                  strokeMiterlimit={10}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </span>
                           </button>
                         </a>
                       </div>
@@ -765,7 +807,9 @@ function Index() {
                   />
                 </div>
               </div>
-              <CartDetails cartDatas={cartItems} />
+              <div className="col-lg-5 col-md-12">
+                <CartDetails cartDatas={cartItems} />
+              </div>
             </div>
           </div>
         </div>
