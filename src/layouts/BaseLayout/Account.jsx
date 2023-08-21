@@ -247,7 +247,7 @@ function Account({ changeMobileMenuStatus }) {
                         )}
                       </li>
                       <li>
-                        <a className="dropdown-item menu-drop-link">
+                        <NavLink to="/orders" className="dropdown-item menu-drop-link">
                           <span>
                             <svg
                               width="21"
@@ -277,10 +277,10 @@ function Account({ changeMobileMenuStatus }) {
                             </svg>
                           </span>{" "}
                           Orders
-                        </a>
+                        </NavLink>
                       </li>
                       <li>
-                        <a className="dropdown-item menu-drop-link">
+                        <NavLink to="/returns" className="dropdown-item menu-drop-link">
                           <span>
                             <svg
                               width="21"
@@ -298,7 +298,7 @@ function Account({ changeMobileMenuStatus }) {
                             </svg>
                           </span>{" "}
                           Returns
-                        </a>
+                        </NavLink>
                       </li>
                       <li>
                         <NavLink

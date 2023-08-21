@@ -1,12 +1,11 @@
 import React from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import MyAccountSidebar from "../common/MyAccountSidebar";
-import OrdertopRow from "./blocks/OrdertopRow";
-import OrdermiddleRow from "./blocks/OrdermiddleRow";
-import OrderbottomRow from "./blocks/OrderbottomRow";
-import OrderDetails from "./blocks/OrderDetails";
+import ReturntopRow from "./blocks/ReturntopRow";
+import ReturnmiddleRow from "./blocks/ReturnmiddleRow";
+import ReturnbottomRow from "./blocks/ReturnbottomRow";
 
-function Index() {
+function index() {
   return (
     <section>
       <div className="container-fluid">
@@ -15,13 +14,14 @@ function Index() {
           <MyAccountSidebar />
           <div className="col-lg-9 col-md-9 col-12">
             <div className="py-6 p-md-6 p-lg-10">
-              <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
+              <h2 className="mb-6 text-center my-profile-heading">
+                My Returns
+              </h2>
               {/* Order Card */}
-              <OrderDetails />
               <div className="orders-card">
-                <OrdertopRow />
-                <OrdermiddleRow />
-                <OrderbottomRow />
+                <ReturntopRow />
+                <ReturnmiddleRow />
+                <ReturnbottomRow />
               </div>
             </div>
           </div>
@@ -31,4 +31,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default index;
