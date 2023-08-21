@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
   const [checkedShippingType, setCheckedShippingType] = useState(null);
+ 
 
   useEffect(() => {
     getDeliveryTypes();
@@ -30,7 +31,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
     }
   };
   return (
-    <div className="accordion-item card card-bordered shadow mb-2 ">
+    <div className="accordion-item checkout-accordion ">
       <div className="d-flex justify-content-between align-items-center h">
         <h4 className="pt-3 ps-3 "> DELIVERY TYPE</h4>
         <a
@@ -41,8 +42,28 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
           aria-expanded="true"
           aria-controls="flush-collapseFour"
         >
-          <button type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-menu-down">^</span>
+          <button  type="button" class="btn btn-default">
+            <span
+              class="accordion-arrow"
+              
+            >
+              <svg
+                width={18}
+                height={9}
+                viewBox="0 0 18 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
+                  stroke="black"
+                  strokeWidth="1.5"
+                  strokeMiterlimit={10}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
           </button>
         </a>
       </div>

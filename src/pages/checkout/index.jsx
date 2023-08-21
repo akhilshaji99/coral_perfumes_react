@@ -13,6 +13,7 @@ import getStores from "../stores/js/getStores";
 
 import $ from "jquery";
 
+
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -40,6 +41,7 @@ function Index() {
     gift_wrap: 0,
     gift_message: null,
   });
+  
   //#End
   // let validationShape = {
   //   address_type:yup.string().required(),
