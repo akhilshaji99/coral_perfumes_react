@@ -11,7 +11,11 @@ import PaymentTypes from "./blocks/PaymentTypes";
 import GiftWrapping from "./blocks/GiftWrapping";
 import getStores from "../stores/js/getStores";
 import PromoCodeModal from "./blocks/PromoCodeModal";
+import UsePromoCode from "./js/usePromoCode";
 import $ from "jquery";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
+
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -27,6 +31,7 @@ function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
+  const [promoCode , setPromoCode ] = useState("");
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
@@ -41,7 +46,7 @@ function Index() {
     gift_wrap: 0,
     gift_message: null,
   });
-
+  
   //#End
   // let validationShape = {
   //   address_type:yup.string().required(),
@@ -64,7 +69,23 @@ function Index() {
 
   //Fetch stores
   // useEffect(() => {
-  const fetchStoreApi = async (store_emirate_id = null, store_id = null) => {
+    const applyPrmocode = ()=>{
+      if(promoCode == ""){
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={false}
+            title={"Error"}
+            message={"Please enter a valid promo code."}
+          />
+        ));
+      }else{
+        UsePromoCode(promoCode)
+      }
+    }
+
+  const fetchStoreApi = async () => {
     try {
       const response = await getStores();
       if (response?.data?.status) {
@@ -75,9 +96,8 @@ function Index() {
         ];
         setStoreEmirates(uniqueStores);
         await filterStoresByEmirates(
-          store_emirate_id || uniqueStores[0]?.emirate,
-          response?.data?.data,
-          store_id
+          checkOutDetails?.store_emirate_id || uniqueStores[0]?.emirate,
+          response?.data?.data
         );
       }
     } catch (error) {
@@ -97,10 +117,7 @@ function Index() {
     getCheckOutDetails().then((response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
-        fetchStoreApi(
-          response?.data?.store_emirate_id,
-          response?.data?.store_id
-        ); //Fetch store api
+        fetchStoreApi(); //Fetch store api
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
         addressForm.setFieldValue(
@@ -167,7 +184,6 @@ function Index() {
       delivery_type: checkOutDetails?.delivery_type,
       address_id: checkOutDetails?.default_address?.account_address?.id,
       store_id: checkOutDetails?.store_id,
-      emirate_id: null,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
@@ -220,11 +236,7 @@ function Index() {
   };
   //#End
 
-  const filterStoresByEmirates = async (
-    emirate_id,
-    availableStores = [],
-    store_id = null
-  ) => {
+  const filterStoresByEmirates = async (emirate_id, availableStores = []) => {
     let emirateStores = [];
     let stores = [];
     if (availableStores.length === 0) {
@@ -237,11 +249,7 @@ function Index() {
         emirateStores.push(store);
       }
     });
-    addressForm.setFieldValue("emirate_id", emirate_id);
-    addressForm.setFieldValue(
-      "store_id",
-      store_id ? store_id : emirateStores?.[0]?.id
-    );
+    addressForm.setFieldValue("store_id", emirateStores?.[0]?.id);
     setAvailableStores(emirateStores);
   };
   return (
@@ -253,14 +261,18 @@ function Index() {
             <div className="col-12">
               <div>
                 <div className="mb-8 text-center ">
-                  <h1 className="sub-heading">CHECK OUT</h1>
+                  <h1 className="sub-heading"
+                  >
+                    CHECK OUT
+                  </h1>
                 </div>
               </div>
             </div>
           </div>
-          <PromoCodeModal
-            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-            showPrmoCodeFlag={showPrmoCodeFlag}
+          <PromoCodeModal 
+           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+           showPrmoCodeFlag={showPrmoCodeFlag}
+           setPromoCode={setPromoCode}
           />
           <AddNewAddressModal
             // componentDatas={addressForm.values}
@@ -340,6 +352,8 @@ function Index() {
                                   type="text"
                                   className="form-control"
                                   placeholder="Coupon Code"
+                                  value={promoCode}
+                                  onChange={e => setPromoCode(e.target.value)}
                                 />
                               </div>
                             </div>
@@ -351,22 +365,21 @@ function Index() {
                                   <button
                                     type="submit"
                                     class="btn btn-dark px-4 validate w-100"
+                                  
+                                    onClick={applyPrmocode}
                                   >
                                     APPLY
                                   </button>
                                 </div>
                               </div>
                             </div>
-                            <h5
-                              className="mb-1 h6 pt-2 promo-code-label"
-                              onClick={(e) => {
-                                setShowPrmoCodeFlag(true);
-                                $("#promocodeModal").toggle();
-                                $("#promocodeModal").toggleClass(
-                                  "modal fade modal"
-                                );
-                              }}
-                            >
+                            <h5 className="mb-1 h6 pt-2" onClick={(e) => {
+                                      setShowPrmoCodeFlag(true);
+                                      $("#promocodeModal").toggle();
+                                      $("#promocodeModal").toggleClass(
+                                        "modal fade modal"
+                                      );
+                                    }}>
                               View Available Promo Codes
                             </h5>
                           </div>
@@ -731,7 +744,6 @@ function Index() {
                                     <select
                                       className="form-control"
                                       name="emirate"
-                                      value={addressForm.values.emirate_id}
                                       onChange={(event) => {
                                         filterStoresByEmirates(
                                           event.target.value
@@ -785,8 +797,7 @@ function Index() {
                                   </button>
                                 </div>
                               </div>
-                              {parseInt(addressForm.values.delivery_type) ===
-                              1 ? (
+                              {addressForm.values.delivery_type === "1" ? (
                                 <div className="col-md-6 col-12">
                                   <a
                                     onClick={(e) => {

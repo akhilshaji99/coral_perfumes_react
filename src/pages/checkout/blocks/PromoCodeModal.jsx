@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import getPromoCodes from "../js/getPromoCodes";
 import UsePromoCode from "../js/usePromoCode";
 import { Alert } from "bootstrap";
-function PromoCodeModal({ showPrmoCodeFlag, setShowPrmoCodeFlag }) {
+function PromoCodeModal({ showPrmoCodeFlag, setShowPrmoCodeFlag , setPromoCode }) {
   const [promoCodes, setPromoCodes] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,8 @@ function PromoCodeModal({ showPrmoCodeFlag, setShowPrmoCodeFlag }) {
     }
   }, [showPrmoCodeFlag]);
 
-  const applyPromoCode = (promo_id) => {
+  const applyPromoCode = (promo_id,code) => {
+    setPromoCode(code);
     UsePromoCode(promo_id).then((response) => {
       setShowPrmoCodeFlag(false);
       $("#promocodeModal").toggle();
@@ -72,7 +73,7 @@ function PromoCodeModal({ showPrmoCodeFlag, setShowPrmoCodeFlag }) {
                                   class="btn btn-dark  validate w-100"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    applyPromoCode(code.id);
+                                    applyPromoCode(code.id,code.code);
                                   }}
                                 >
                                   Apply

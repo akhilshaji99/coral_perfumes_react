@@ -1,8 +1,28 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import $ from "jquery";
 
-function CartSummary({ cartDatas, setShowPrmoCodeFlag }) {
+import toast from "react-hot-toast";
+import AlerMessage from "../../common/AlerMessage";
+import UsePromoCode from "../../checkout/js/usePromoCode";
+function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode}) {
   const navigate = useNavigate();
+
+  const applyPrmocode = ()=>{
+    if(promoCode == ""){
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={false}
+          title={"Error"}
+          message={"Please enter a valid promo code."}
+        />
+      ));
+    }else{
+      UsePromoCode(promoCode)
+    }
+  }
 
   const handleOnProceed = (values) => {
     // subscribeNewsLetter(values);
@@ -34,12 +54,18 @@ function CartSummary({ cartDatas, setShowPrmoCodeFlag }) {
                       type="text"
                       className="form-control"
                       placeholder="Coupon Code"
+                      value={promoCode}
+                      onChange={e => setPromoCode(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="col-md-6 col-6">
                   <div className="d-grid">
-                    <button type="submit" className="btn btn-dark mb-1">
+                    <button    onClick={(e) => { 
+                      e.preventDefault();
+                      applyPrmocode()
+                       }
+                      } className="btn btn-dark mb-1">
                       Apply
                     </button>
                   </div>

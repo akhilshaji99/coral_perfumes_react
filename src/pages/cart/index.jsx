@@ -27,6 +27,8 @@ function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
+  const [promoCode , setPromoCode ] = useState("");
+
 
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
@@ -124,6 +126,7 @@ function Index() {
          <PromoCodeModal 
            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
            showPrmoCodeFlag={showPrmoCodeFlag}
+           setPromoCode={setPromoCode}
           />
           {/* row */}
           <div className="row">
@@ -262,7 +265,7 @@ function Index() {
                 {/* list group */}
               </ul>
             </div>
-            <CartSummary cartDatas={cartDatas} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />
+            <CartSummary cartDatas={cartDatas} promoCode={promoCode} setPromoCode={setPromoCode} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />
           </div>
         </div>
       </section>
