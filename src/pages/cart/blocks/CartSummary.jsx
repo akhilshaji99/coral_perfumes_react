@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import $ from "jquery";
 
-function CartSummary({ cartDatas }) {
+function CartSummary({ cartDatas, setShowPrmoCodeFlag }) {
   const navigate = useNavigate();
 
   const handleOnProceed = (values) => {
@@ -48,7 +48,15 @@ function CartSummary({ cartDatas }) {
             </form>
             <p className="promo-code-label mb-0">
               {" "}
-              <small>View Available Promo Codes</small>
+              <small
+                onClick={(e) => {
+                  setShowPrmoCodeFlag(true);
+                  $("#promocodeModal").toggle();
+                  $("#promocodeModal").toggleClass("modal fade modal");
+                }}
+              >
+                View Available Promo Codes
+              </small>
             </p>
           </div>
           {/* heading */}
@@ -86,7 +94,7 @@ function CartSummary({ cartDatas }) {
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                 </div>
-             &nbsp;   <span>{cartDatas?.total_amount_display}</span>
+                &nbsp; <span>{cartDatas?.total_amount_display}</span>
               </li>
             </ul>
           </div>

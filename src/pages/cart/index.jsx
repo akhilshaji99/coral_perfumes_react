@@ -16,6 +16,7 @@ import * as yup from "yup";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import request from "../../utils/request";
+import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
@@ -25,6 +26,7 @@ const schema = yup.object().shape({
 function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
 
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
@@ -119,7 +121,10 @@ function Index() {
             componentDatas={formik.values}
             redirectTo={"checkout"}
           />
-
+         <PromoCodeModal 
+           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+           showPrmoCodeFlag={showPrmoCodeFlag}
+          />
           {/* row */}
           <div className="row">
             <div className="col-lg-8 col-md-7">
@@ -257,7 +262,7 @@ function Index() {
                 {/* list group */}
               </ul>
             </div>
-            <CartSummary cartDatas={cartDatas} />
+            <CartSummary cartDatas={cartDatas} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />
           </div>
         </div>
       </section>
