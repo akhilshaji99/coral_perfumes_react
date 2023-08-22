@@ -1,4 +1,10 @@
-import React, { useCallback, useState, useEffect, createRef,useRef } from "react";
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  createRef,
+  useRef,
+} from "react";
 
 import $ from "jquery";
 import toast from "react-hot-toast";
@@ -6,9 +12,7 @@ import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
-
-
-function LoginOTPModal({ componentDatas ,redirectTo=null}) {
+function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const navigate = useNavigate();
   const handleModalClose = () => {
     $("#otpModal").toggle();
@@ -19,12 +23,10 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   const [inputRefsArray] = useState(() =>
     Array.from({ length: 6 }, () => createRef())
   );
- 
- 
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     verify_otp();
-    
   };
   const resendOtp = async (e) => {
     try {
@@ -65,7 +67,7 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   };
   const verify_otp = async () => {
     const queryParameters = new URLSearchParams(window.location.search);
-    if(queryParameters == "checkout="){
+    if (queryParameters == "checkout=") {
       redirectTo = "checkout";
     }
     try {
@@ -89,11 +91,10 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
           userInfo: response.data.user,
         };
         localStorage.setItem("userDatas", JSON.stringify(userData));
-        if(redirectTo != null ){
-          navigate("/"+redirectTo);
-        }else{
-        navigate("/");
-
+        if (redirectTo != null) {
+          navigate("/" + redirectTo);
+        } else {
+          navigate("/");
         }
       }
       toast((t) => (
@@ -111,36 +112,29 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
   };
   const [otpVal, setOtpVal] = useState([]);
   const textBase = useRef(null);
- 
-  useEffect(() => {
-    
-    if (otpVal.join("").length === textBase.current.childElementCount) {
-    
-      textBase.current.classList.add("otp-error");
 
+  useEffect(() => {
+    if (otpVal.join("").length === textBase.current.childElementCount) {
+      textBase.current.classList.add("otp-error");
     }
   }, [otpVal]);
 
   const focusNext = (e) => {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
-    
-      if(e.target.value != ''){
-        
+
+    if (e.target.value != "") {
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
       });
-      if (currentIndex !== childCount - 1 ) {
+      if (currentIndex !== childCount - 1) {
         e.target.nextSibling.focus();
-
       }
       if (values.length !== 0) {
         setOtpVal(values);
       }
     }
-   
-    
   };
 
   return (
@@ -152,76 +146,74 @@ function LoginOTPModal({ componentDatas ,redirectTo=null}) {
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content p-4">
-          <div className="modal-header border-0">
-            <h5 className="modal-title fs-3 fw-bold " id="userModalLabel">
-              OTP Verification
-            </h5>
-            <button
-              type="button"
-              className="btn-close"
-              // data-bs-dismiss="modal"
-              // aria-label="Close"
-              onClick={handleModalClose}
-            />
-          </div>
-          <div className="modal-body">
+        <div className="modal-content otp-modal ">
+          <h5 className="modal-title text-center " id="userModalLabel">
+            OTP Verification
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
+            // data-bs-dismiss="modal"
+            // aria-label="Close"
+            onClick={handleModalClose}
+          />
+          <div className="modal-body ">
             <div>
-              <div class="position-relative">
-                <div class="card p-2 text-center">
-                  <h6>
-                    Enter the OTP sent to {componentDatas.phone_number} /
-                    {componentDatas.email}
-                  </h6>
-                  <form onSubmit={handleOnSubmit}>
-                    <div
-                      id="otp"
-                      class="inputs d-flex flex-row justify-content-center mt-2"
-                      ref={textBase}
-                    >
-                      {" "}
-                      {inputRefsArray.map((ref, index) => {
-                        return (
-                          <input
-                            ref={ref}
-                            className={`m-2 text-center`}
-                            style={{ width: '2.5ch' ,
-                            'border':'0px solid transparent',
-                            'border-bottom': '3px solid rgba(0,0,0,0.5)','font-size': '2rem'
-                          }}
-                            type="text"
-                            id={`input${index}-1`}
-                            required
-                            onChange={(e) => {
-                           
-                              focusNext(e)
-                            }}
-                         
-                            maxLength={"1"}
-                          />
-                        );
-                      })}{" "}
-                    </div>
-                    <div className="modal-footer border-0 justify-content-center">
-                      Didn't received the OTP? click{" "}
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          resendOtp();
+              <h6 className="text-center">
+                Enter the <span>OTP</span> sent to{" "}
+                <span className="text-underline">
+                  {componentDatas.phone_number}
+                </span>{" "}
+                /<br></br>
+                <span className="text-underline">{componentDatas.email}</span>
+              </h6>
+              <form onSubmit={handleOnSubmit}>
+                <div
+                  id="otp"
+                  class="inputs d-flex flex-row justify-content-center mt-2"
+                  ref={textBase}
+                >
+                  {" "}
+                  {inputRefsArray.map((ref, index) => {
+                    return (
+                      <input
+                        ref={ref}
+                        className={`m-2 text-center`}
+                        style={{
+                          width: "2.5ch",
+                          border: "0px solid transparent",
+                          "border-bottom": "1px solid rgba(0,0,0,0.30)",
+                          "font-size": "1.45rem",
                         }}
-                      >
-                        Resend
-                      </a>
-                    </div>
-                    <div class="mt-4">
-                      {" "}
-                      <button type="submit" class="btn btn-dark px-4 validate">
-                        VERIFY
-                      </button>{" "}
-                    </div>
-                  </form>
+                        type="text"
+                        id={`input${index}-1`}
+                        required
+                        onChange={(e) => {
+                          focusNext(e);
+                        }}
+                        maxLength={"1"}
+                      />
+                    );
+                  })}{" "}
                 </div>
-              </div>
+                <div className="modal-footer border-0 justify-content-center">
+                  Didn't received the <span>OTP?</span> click{" "}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      resendOtp();
+                    }}
+                  >
+                    Resend
+                  </a>
+                </div>
+                <div class="mt-4">
+                  {" "}
+                  <button type="submit" class="btn btn-dark px-4 validate w-100">
+                    VERIFY
+                  </button>{" "}
+                </div>
+              </form>
             </div>
           </div>
           {/* <div className="modal-footer border-0 justify-content-center">

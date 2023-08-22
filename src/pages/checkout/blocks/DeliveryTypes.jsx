@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
   const [checkedShippingType, setCheckedShippingType] = useState(null);
- 
 
   useEffect(() => {
     getDeliveryTypes();
@@ -31,7 +30,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
     }
   };
   return (
-    <div className="accordion-item checkout-accordion ">
+    <div className="accordion-item checkout-accordion delivery-type">
       <div className="d-flex justify-content-between align-items-center h">
         <h4 className="pt-3 ps-3 "> DELIVERY TYPE</h4>
         <a
@@ -42,11 +41,8 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
           aria-expanded="true"
           aria-controls="flush-collapseFour"
         >
-          <button  type="button" class="btn btn-default">
-            <span
-              class="accordion-arrow"
-              
-            >
+          <button type="button" class="btn btn-default">
+            <span class="accordion-arrow">
               <svg
                 width={18}
                 height={9}
@@ -117,10 +113,15 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
                       <h5 className=" pt-1  h6"> AED {deliveryType?.amount}</h5>
                     </div>
                   </div>
-                  <h5 className=" ps-12  h6">{deliveryType?.message}</h5>
+                  <h6 className=" ps-12  h6">{deliveryType?.message}</h6>
                 </div>
               );
             })}
+          </div>
+          <div className="row mt-3">
+            <div className="col-md-3">
+              <button className="btn btn-dark w-100">CONFIRM</button>
+            </div>
           </div>
         </div>
       </div>

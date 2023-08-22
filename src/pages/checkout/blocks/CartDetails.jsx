@@ -8,68 +8,69 @@ function CartDetails({ cartDatas }) {
           <h5 className="px-6 py-4 bg-transparent mb-0">
             {cartDatas?.total_items_count} ITEMS
           </h5>
-          <ul className="list-group list-group-flush">
+          <ul className="list-group list-group-flush px-6">
             {cartDatas?.checkout_checkoutline?.map((cartData, index) => {
               return (
-                <li
-                  className="list-group-item py-3 ps-0 border-top"
-                  key={index}
-                >
-                  <div className="row align-items-center">
-                    <div className="col-2 col-md-3">
+                <li className="list-group-item py-3 ps-0" key={index}>
+                  <div className="row align-items-center d-flex justify-content-space-between">
+                    <div className="col-3 col-md-3 cart-details-img">
                       <img
                         src={deviceImageRender(
                           cartData?.variant?.product_listing_image
                         )}
                         alt="Ecommerce"
-                        className="img-fluid"
                       />
                     </div>
-                    <div className="col-5 col-md-5">
-                      <h6 className="mb-0">
-                        {cartData?.variant?.name}
-                      </h6>
+                    <div className="col-9 col-md-8 ">
+                      <h4 className="mb-0">{cartData?.variant?.name}</h4>
                       <h6 className="mb-0">
                         AED {cartData?.variant?.price_amount}
+                        {cartData?.variant?.original_amount ? (
+                          <span>AED {cartData?.variant?.original_amount}</span>
+                        ) : null}
                       </h6>
-                      {cartData?.variant?.original_amount ? (
-                        <h5 class="discounted-price">
-                          AED {cartData?.variant?.original_amount}
-                        </h5>
-                      ) : null}
                     </div>
                   </div>
                 </li>
               );
             })}
           </ul>
-          <div className="mb-5 card mt-6">
-            <div className="card-body p-6">
+          <hr />
+          <div className="mb-5 card mt-6 border-0">
+            <div className="card-body ">
               {/* heading */}
-              <h2 className="h5 mb-4">Summary</h2>
+              <h5 className="h5 mb-4">Summary</h5>
               <div className="mb-2">
                 {/* list group */}
                 <ul className="list-group list-group-flush">
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
-                      <div>{cartDatas?.sub_total_title}</div>
+                      <div className="left-sec-text">
+                        {cartDatas?.sub_total_title}
+                      </div>
                     </div>
-                    <span>{cartDatas?.sub_total_display}</span>
+                    <span>
+                      <h5>{cartDatas?.sub_total_display}</h5>
+                    </span>
                   </li>
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
-                      <div>{cartDatas?.shipping_title}</div>
+                      <div className="left-sec-text">
+                        {cartDatas?.shipping_title}
+                      </div>
                     </div>
                     <span>{cartDatas?.shipping_display}</span>
                   </li>
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
-                      <div className="fw-bold">{cartDatas?.discount_title}</div>
+                      <div className="left-sec-text">
+                        {cartDatas?.discount_title}
+                      </div>
                     </div>
-                    <span className="fw-bold">
+                    <span className="left-sec-text">
                       {cartDatas?.discount_display}
                     </span>
                   </li>
@@ -78,13 +79,15 @@ function CartDetails({ cartDatas }) {
                       <div className="fw-bold">
                         <p className="text mb-0">
                           {cartDatas?.total_amount_title_1}{" "}
-                          <small> {cartDatas?.total_amount_title_2}</small>
+                          <span className="left-sec-text">
+                            {" "}
+                            &nbsp;
+                            {cartDatas?.total_amount_title_2}
+                          </span>
                         </p>{" "}
                       </div>
                     </div>
-                    <span className="fw-bold">
-                      {cartDatas?.total_amount_display}
-                    </span>
+                    <h5>{cartDatas?.total_amount_display}</h5>
                   </li>
                 </ul>
               </div>

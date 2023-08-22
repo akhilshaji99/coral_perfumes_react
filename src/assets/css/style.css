@@ -29179,3 +29179,108 @@ border-top: 1px solid var(--fc-accordion-border-color) !important;
   display: flex;
   flex-wrap: wrap;
 }
+.otp-modal{
+  padding: 33px 77px 56px 77px !important;
+}
+.otp-modal h5{
+  color: #000;
+  font-family: var(--fc-font-bold);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.otp-modal .btn-close{
+  position:absolute;
+  right: 10%;
+}
+.otp-modal h6{
+  font-size: 12px;
+  font-family: var(--fc-font-regular);
+  line-height: 17.5px;
+}
+.otp-modal span{
+  font-family: var(--fc-font-bold);
+}
+.text-underline{
+  text-decoration: underline;
+}
+.otp-modal .modal-footer{
+  font-size: 12px;
+  font-weight: var(--fc-font-regular);
+  color: #000;
+}
+.otp-modal .modal-footer span{
+  font-weight: var(--fc-font-bold);
+}
+.otp-modal .modal-footer a{
+  font-weight: var(--fc-font-regular);
+  color: #F92F00;
+  text-decoration: underline;
+}
+.delivery-type h5{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.delivery-type h6{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.payment-type h5{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.payment-type h5 span{
+  color: #000;
+  font-family: var(--fc-font-light);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.checkout-left-card h5{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.cart-details-img{
+  width: 120px;
+  height: 80px;
+  background-color: rgba(235, 236, 233, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-details-img img{
+  width: 90px;
+  height: 60px;
+ object-fit: contain;
+}
+.checkout-left-card h4{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.checkout-left-card h6{
+  color: #000;
+  font-family: var(--fc-font-regular);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.checkout-left-card h6 span{
+  color: #000;
+  font-family: var(--fc-font-light);
+  font-size: 12px;
+  text-transform: capitalize;
+  text-decoration: line-through;
+  padding-left: 12px;
+}
+.left-sec-text{
+  font-size: 12px;
+  text-transform: capitalize;
+  font-family: var(--fc-font-light);
+}

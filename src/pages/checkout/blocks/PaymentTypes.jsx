@@ -56,7 +56,7 @@ function PaymentTypes({
             {paymentTypes?.map((paymentType, index) => {
               return (
                 <div className="row" key={index}>
-                  <div className="col-md-4 col-12">
+                  <div className="col-md-6 col-12 payment-type">
                     {/* input */}
                     <div className="mb-3 mb-lg-0">
                       <div className="card-body p-3">
@@ -78,12 +78,13 @@ function PaymentTypes({
                           </div>
                           <div>
                             {/* title */}
-                            <h5 className=" pt-1 ps-5 h6">
+                            <h5 className=" pt-1 ps-5">
                               {paymentType?.name}
+
+                              {paymentType?.display_title ? (
+                                <span>: {paymentType?.display_title}</span>
+                              ) : null}
                             </h5>
-                            {paymentType?.display_title ? (
-                              <span>: {paymentType?.display_title}</span>
-                            ) : null}
                           </div>
                         </div>
                       </div>
@@ -98,6 +99,11 @@ function PaymentTypes({
                 </div>
               );
             })}
+            <div className="row mt-3">
+              <div className="col-md-3">
+                <button className="btn btn-dark w-100">CONFIRM</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
