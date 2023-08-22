@@ -1,9 +1,14 @@
 import React, { useCallback } from "react";
+import $ from "jquery";
 
 import { NavLink} from "react-router-dom";
 
 function GuestLoginModal({ formik ,setInputValue}) {
-  
+  const handleModalClose = () => {
+    $("#guestLoginModal").toggle();
+    $("#guestLoginModal").toggleClass("modal modal fade");
+    $("#guestLoginModal").hide();
+  };
   return (
     <div
       className="modal fade"
@@ -21,8 +26,9 @@ function GuestLoginModal({ formik ,setInputValue}) {
             <button
               type="button"
               className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              // data-bs-dismiss="modal"
+              // aria-label="Close"
+              onClick={handleModalClose}
             />
           </div>
           <div className="modal-body">
