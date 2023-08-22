@@ -16,7 +16,6 @@ import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 
-
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -31,7 +30,7 @@ function Index() {
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
-  const [promoCode , setPromoCode ] = useState("");
+  const [promoCode, setPromoCode] = useState("");
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
@@ -46,7 +45,7 @@ function Index() {
     gift_wrap: 0,
     gift_message: null,
   });
-  
+
   //#End
   // let validationShape = {
   //   address_type:yup.string().required(),
@@ -69,21 +68,21 @@ function Index() {
 
   //Fetch stores
   // useEffect(() => {
-    const applyPrmocode = ()=>{
-      if(promoCode == ""){
-        toast((t) => (
-          <AlerMessage
-            t={t}
-            toast={toast}
-            status={false}
-            title={"Error"}
-            message={"Please enter a valid promo code."}
-          />
-        ));
-      }else{
-        UsePromoCode(promoCode)
-      }
+  const applyPrmocode = () => {
+    if (promoCode == "") {
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={false}
+          title={"Error"}
+          message={"Please enter a valid promo code."}
+        />
+      ));
+    } else {
+      UsePromoCode(promoCode);
     }
+  };
 
   const fetchStoreApi = async () => {
     try {
@@ -261,18 +260,15 @@ function Index() {
             <div className="col-12">
               <div>
                 <div className="mb-8 text-center ">
-                  <h1 className="sub-heading"
-                  >
-                    CHECK OUT
-                  </h1>
+                  <h1 className="sub-heading">CHECK OUT</h1>
                 </div>
               </div>
             </div>
           </div>
-          <PromoCodeModal 
-           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-           showPrmoCodeFlag={showPrmoCodeFlag}
-           setPromoCode={setPromoCode}
+          <PromoCodeModal
+            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+            showPrmoCodeFlag={showPrmoCodeFlag}
+            setPromoCode={setPromoCode}
           />
           <AddNewAddressModal
             // componentDatas={addressForm.values}
@@ -353,7 +349,7 @@ function Index() {
                                   className="form-control"
                                   placeholder="Coupon Code"
                                   value={promoCode}
-                                  onChange={e => setPromoCode(e.target.value)}
+                                  onChange={(e) => setPromoCode(e.target.value)}
                                 />
                               </div>
                             </div>
@@ -365,7 +361,6 @@ function Index() {
                                   <button
                                     type="submit"
                                     class="btn btn-dark px-4 validate w-100"
-                                  
                                     onClick={applyPrmocode}
                                   >
                                     APPLY
@@ -373,13 +368,16 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <h5 className="mb-1 h6 pt-2" onClick={(e) => {
-                                      setShowPrmoCodeFlag(true);
-                                      $("#promocodeModal").toggle();
-                                      $("#promocodeModal").toggleClass(
-                                        "modal fade modal"
-                                      );
-                                    }}>
+                            <h5
+                              className="mb-1 h6 pt-2 promo-code-label"
+                              onClick={(e) => {
+                                setShowPrmoCodeFlag(true);
+                                $("#promocodeModal").toggle();
+                                $("#promocodeModal").toggleClass(
+                                  "modal fade modal"
+                                );
+                              }}
+                            >
                               View Available Promo Codes
                             </h5>
                           </div>

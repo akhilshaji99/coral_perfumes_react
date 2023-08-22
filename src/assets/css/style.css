@@ -28120,7 +28120,7 @@ border-radius: none !important;
 
 .my-bag-card .btn-dark {
   border-radius: 7px !important;
-  padding: 16px 32px !important;
+  padding: 9px 20px !important;
   font-size: 0.85rem !important;
 }
 .my-bag-card .form-label {
@@ -29133,3 +29133,49 @@ border-top: 1px solid var(--fc-accordion-border-color) !important;
   border-color:  rgba(189, 190, 187, 1) !important;
   }
   
+  .faq-accordion .accordion {
+    --fc-accordion-color: var(--fc-gray-600);
+    --fc-accordion-bg: #fff;
+    --fc-accordion-transition: color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+    --fc-accordion-border-color: var(--fc-border-color);
+    --fc-accordion-border-width: 1px;
+    --fc-accordion-border-radius: 0rem;
+    --fc-accordion-inner-border-radius: calc(0.5rem - 1px);
+    --fc-accordion-btn-padding-x: 1.25rem;
+    --fc-accordion-btn-padding-y: 30px;
+    --fc-accordion-btn-color: var(--fc-gray-600);
+    --fc-accordion-btn-bg: var(--fc-accordion-bg);
+    --fc-accordion-btn-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0ZM18 13H13V18H11V13H6V11H11V6H13V11H18V13Z' fill='%23BDBEBB'/%3E%3C/svg%3E");
+    --fc-accordion-btn-icon-width: 1.25rem;
+    --fc-accordion-btn-icon-transform: rotate(-180deg);
+    --fc-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+    --fc-accordion-btn-active-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1_5)'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0ZM18 13H6V11H18V13Z' fill='%23BDBEBB'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1_5'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    --fc-accordion-btn-focus-border-color: #85d685;
+    --fc-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25);
+    --fc-accordion-body-padding-x: 1.25rem;
+    --fc-accordion-body-padding-y: 1rem;
+    --fc-accordion-active-color: #099c09;
+    --fc-accordion-active-bg: #e7f7e7;
+  }
+.cart-summary-label{
+    color: #000;
+    font-family: var(--fc-font-light);
+    font-size: 12px;
+    text-align: left;
+}
+.summary-sub-total{
+  color: #000;
+  font-family: var(--fc-font-bold);
+  font-size: 16px;
+}
+.summary-shipping{
+  color: #000;
+  font-family: var(--fc-font-bold);
+  font-size: 12px;
+}
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}

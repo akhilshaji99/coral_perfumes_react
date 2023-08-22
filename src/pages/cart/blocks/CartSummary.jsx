@@ -5,11 +5,16 @@ import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import UsePromoCode from "../../checkout/js/usePromoCode";
-function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode}) {
+function CartSummary({
+  cartDatas,
+  setShowPrmoCodeFlag,
+  promoCode,
+  setPromoCode,
+}) {
   const navigate = useNavigate();
 
-  const applyPrmocode = ()=>{
-    if(promoCode == ""){
+  const applyPrmocode = () => {
+    if (promoCode == "") {
       toast((t) => (
         <AlerMessage
           t={t}
@@ -19,10 +24,10 @@ function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode})
           message={"Please enter a valid promo code."}
         />
       ));
-    }else{
-      UsePromoCode(promoCode)
+    } else {
+      UsePromoCode(promoCode);
     }
-  }
+  };
 
   const handleOnProceed = (values) => {
     // subscribeNewsLetter(values);
@@ -47,7 +52,7 @@ function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode})
               Add Promo Code
             </label>
             <form>
-              <div className="row align-items-center d-flex">
+              <div className="row align-items-center row-flex">
                 <div className="col-md-6 col-6">
                   <div className="mb-2">
                     <input
@@ -55,17 +60,19 @@ function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode})
                       className="form-control"
                       placeholder="Coupon Code"
                       value={promoCode}
-                      onChange={e => setPromoCode(e.target.value)}
+                      onChange={(e) => setPromoCode(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="col-md-6 col-6">
                   <div className="d-grid">
-                    <button    onClick={(e) => { 
-                      e.preventDefault();
-                      applyPrmocode()
-                       }
-                      } className="btn btn-dark mb-1">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        applyPrmocode();
+                      }}
+                      className="btn btn-dark mb-1"
+                    >
                       Apply
                     </button>
                   </div>
@@ -89,34 +96,54 @@ function CartSummary({ cartDatas, setShowPrmoCodeFlag ,promoCode, setPromoCode})
           <h2 className="h5 mb-4 mt-5 my-bag-summary-border">
             {cartDatas?.total_items_count} Items
           </h2>
-          <div className="card mb-2 border-0">
+          <div className=" mb-2 border-0">
+            <div className="row mb-4">
+              <div className="col-md-6">
+                {" "}
+                <div className=" cart-summary-label">
+                  {cartDatas?.sub_total_title}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text-end summary-sub-total">
+                  {cartDatas?.sub_total_display}
+                </div>
+              </div>
+            </div>
+            <div className="row mb-4">
+              <div className="col-md-6">
+                {" "}
+                <div className="cart-summary-label">
+                  {cartDatas?.shipping_title}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text-end summary-shipping">
+                  {cartDatas?.shipping_display}
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                {" "}
+                <div className="cart-summary-label">
+                  {cartDatas?.discount_title}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text-lg-end cart-summary-label">
+                  {cartDatas?.discount_display}
+                </div>
+              </div>
+            </div>
+            <div className="row"></div>
             {/* list group */}
             <ul className="list-group list-group-flush ">
-              {/* list group item */}
-              <li className="list-group-item d-flex justify-content-between align-items-start border-0">
-                <div className="me-auto">
-                  <div>{cartDatas?.sub_total_title}</div>
-                </div>
-                <span>{cartDatas?.sub_total_display}</span>
-              </li>
-              {/* list group item */}
-              <li className="list-group-item d-flex justify-content-between align-items-start border-0">
-                <div className="me-auto">
-                  <div>{cartDatas?.shipping_title}</div>
-                </div>
-                <span>{cartDatas?.shipping_display}</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between align-items-start border-0">
-                <div className="me-auto">
-                  <div>{cartDatas?.discount_title}</div>
-                </div>
-                <span>{cartDatas?.discount_display}</span>
-              </li>
               <hr />
               <li className="list-group-item d-flex justify-content-between align-items-start my-bag-summary-border">
                 <div className="me-auto">
                   <div className="my-bag-total">
-                    {cartDatas?.total_amount_title_1}{" "}
+                    {cartDatas?.total_amount_title_1} &nbsp;{" "}
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                 </div>

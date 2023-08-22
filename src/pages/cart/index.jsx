@@ -27,8 +27,7 @@ function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
-  const [promoCode , setPromoCode ] = useState("");
-
+  const [promoCode, setPromoCode] = useState("");
 
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
@@ -123,10 +122,10 @@ function Index() {
             componentDatas={formik.values}
             redirectTo={"checkout"}
           />
-         <PromoCodeModal 
-           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-           showPrmoCodeFlag={showPrmoCodeFlag}
-           setPromoCode={setPromoCode}
+          <PromoCodeModal
+            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+            showPrmoCodeFlag={showPrmoCodeFlag}
+            setPromoCode={setPromoCode}
           />
           {/* row */}
           <div className="row">
@@ -137,7 +136,7 @@ function Index() {
                     <li className="list-group-item  my-bag-card" key={index}>
                       {/* row */}
                       <div className="row align-items-center px-0">
-                        <div className="col-md-2 col-4">
+                        <div className="col-md-2 col-3">
                           <div className="my-bag-img">
                             <img
                               src={deviceImageRender(
@@ -148,7 +147,8 @@ function Index() {
                             />
                           </div>
                         </div>
-                        <div className="col-md-9 col-8  my-bag-text">
+                        <div className="col-xl-1 col-1"></div>
+                        <div className="col-md-8 col-8  my-bag-text">
                           <h6 className="mb-0">
                             {cartData?.product_variant?.name}
                           </h6>
@@ -265,7 +265,12 @@ function Index() {
                 {/* list group */}
               </ul>
             </div>
-            <CartSummary cartDatas={cartDatas} promoCode={promoCode} setPromoCode={setPromoCode} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />
+            <CartSummary
+              cartDatas={cartDatas}
+              promoCode={promoCode}
+              setPromoCode={setPromoCode}
+              setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+            />
           </div>
         </div>
       </section>
