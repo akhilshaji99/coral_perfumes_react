@@ -13,7 +13,6 @@ import getStores from "../stores/js/getStores";
 import PromoCodeModal from "./blocks/PromoCodeModal";
 import $ from "jquery";
 
-
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -42,7 +41,7 @@ function Index() {
     gift_wrap: 0,
     gift_message: null,
   });
-  
+
   //#End
   // let validationShape = {
   //   address_type:yup.string().required(),
@@ -241,17 +240,14 @@ function Index() {
             <div className="col-12">
               <div>
                 <div className="mb-8 text-center ">
-                  <h1 className="sub-heading"
-                  >
-                    CHECK OUT
-                  </h1>
+                  <h1 className="sub-heading">CHECK OUT</h1>
                 </div>
               </div>
             </div>
           </div>
-          <PromoCodeModal 
-           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-           showPrmoCodeFlag={showPrmoCodeFlag}
+          <PromoCodeModal
+            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+            showPrmoCodeFlag={showPrmoCodeFlag}
           />
           <AddNewAddressModal
             // componentDatas={addressForm.values}
@@ -348,13 +344,16 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <h5 className="mb-1 h6 pt-2" onClick={(e) => {
-                                      setShowPrmoCodeFlag(true);
-                                      $("#promocodeModal").toggle();
-                                      $("#promocodeModal").toggleClass(
-                                        "modal fade modal"
-                                      );
-                                    }}>
+                            <h5
+                              className="mb-1 h6 pt-2 promo-code-label"
+                              onClick={(e) => {
+                                setShowPrmoCodeFlag(true);
+                                $("#promocodeModal").toggle();
+                                $("#promocodeModal").toggleClass(
+                                  "modal fade modal"
+                                );
+                              }}
+                            >
                               View Available Promo Codes
                             </h5>
                           </div>
