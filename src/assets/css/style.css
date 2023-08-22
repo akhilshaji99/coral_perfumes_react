@@ -29121,3 +29121,15 @@ padding: 15px;
   padding: 15px;
   }
 }
+.faq-accordion .accordion-button:not(.collapsed) {
+  background-color: #fff !important;
+  box-shadow: unset !important;
+  color: #000 !important;
+}
+.faq-accordion .accordion-body {
+border-top: 1px solid var(--fc-accordion-border-color) !important;
+}
+.faq-accordion .accordion {
+  border-color:  rgba(189, 190, 187, 1) !important;
+  }
+  
