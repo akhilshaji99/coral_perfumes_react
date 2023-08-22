@@ -795,7 +795,8 @@ function Index() {
                                   </button>
                                 </div>
                               </div>
-                              {addressForm.values.delivery_type === "1" ? (
+                              {parseInt(addressForm.values.delivery_type) ===
+                              1 ? (
                                 <div className="col-md-6 col-12">
                                   <a
                                     onClick={(e) => {
