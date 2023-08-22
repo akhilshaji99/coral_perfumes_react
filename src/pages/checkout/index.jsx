@@ -64,7 +64,7 @@ function Index() {
 
   //Fetch stores
   // useEffect(() => {
-  const fetchStoreApi = async () => {
+  const fetchStoreApi = async (store_emirate_id = null, store_id = null) => {
     try {
       const response = await getStores();
       if (response?.data?.status) {
@@ -75,8 +75,9 @@ function Index() {
         ];
         setStoreEmirates(uniqueStores);
         await filterStoresByEmirates(
-          checkOutDetails?.store_emirate_id || uniqueStores[0]?.emirate,
-          response?.data?.data
+          store_emirate_id || uniqueStores[0]?.emirate,
+          response?.data?.data,
+          store_id
         );
       }
     } catch (error) {
@@ -96,7 +97,10 @@ function Index() {
     getCheckOutDetails().then((response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
-        fetchStoreApi(); //Fetch store api
+        fetchStoreApi(
+          response?.data?.store_emirate_id,
+          response?.data?.store_id
+        ); //Fetch store api
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
         addressForm.setFieldValue(
@@ -163,6 +167,7 @@ function Index() {
       delivery_type: checkOutDetails?.delivery_type,
       address_id: checkOutDetails?.default_address?.account_address?.id,
       store_id: checkOutDetails?.store_id,
+      emirate_id: null,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
@@ -215,7 +220,11 @@ function Index() {
   };
   //#End
 
-  const filterStoresByEmirates = async (emirate_id, availableStores = []) => {
+  const filterStoresByEmirates = async (
+    emirate_id,
+    availableStores = [],
+    store_id = null
+  ) => {
     let emirateStores = [];
     let stores = [];
     if (availableStores.length === 0) {
@@ -228,7 +237,11 @@ function Index() {
         emirateStores.push(store);
       }
     });
-    addressForm.setFieldValue("store_id", emirateStores?.[0]?.id);
+    addressForm.setFieldValue("emirate_id", emirate_id);
+    addressForm.setFieldValue(
+      "store_id",
+      store_id ? store_id : emirateStores?.[0]?.id
+    );
     setAvailableStores(emirateStores);
   };
   return (
@@ -718,6 +731,7 @@ function Index() {
                                     <select
                                       className="form-control"
                                       name="emirate"
+                                      value={addressForm.values.emirate_id}
                                       onChange={(event) => {
                                         filterStoresByEmirates(
                                           event.target.value
@@ -771,7 +785,8 @@ function Index() {
                                   </button>
                                 </div>
                               </div>
-                              {addressForm.values.delivery_type === "1" ? (
+                              {parseInt(addressForm.values.delivery_type) ===
+                              1 ? (
                                 <div className="col-md-6 col-12">
                                   <a
                                     onClick={(e) => {

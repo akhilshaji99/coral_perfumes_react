@@ -9,7 +9,7 @@ function CartDetails({ cartDatas }) {
             {cartDatas?.total_items_count} ITEMS
           </h5>
           <ul className="list-group list-group-flush">
-            {cartDatas?.shopping_cart_items?.map((cartData, index) => {
+            {cartDatas?.checkout_checkoutline?.map((cartData, index) => {
               return (
                 <li
                   className="list-group-item py-3 ps-0 border-top"
@@ -19,7 +19,7 @@ function CartDetails({ cartDatas }) {
                     <div className="col-2 col-md-3">
                       <img
                         src={deviceImageRender(
-                          cartData?.product_variant?.product_listing_image
+                          cartData?.variant?.product_listing_image
                         )}
                         alt="Ecommerce"
                         className="img-fluid"
@@ -27,14 +27,14 @@ function CartDetails({ cartDatas }) {
                     </div>
                     <div className="col-5 col-md-5">
                       <h6 className="mb-0">
-                        {cartData?.product_variant?.name}
+                        {cartData?.variant?.name}
                       </h6>
                       <h6 className="mb-0">
-                        AED {cartData?.product_variant?.price_amount}
+                        AED {cartData?.variant?.price_amount}
                       </h6>
-                      {cartData?.product_variant?.original_amount ? (
+                      {cartData?.variant?.original_amount ? (
                         <h5 class="discounted-price">
-                          AED {cartData?.product_variant?.original_amount}
+                          AED {cartData?.variant?.original_amount}
                         </h5>
                       ) : null}
                     </div>
