@@ -9,7 +9,7 @@ const confirmCheckout = async () => {
     bodyFormData.append("token", getUserToken());
     const response = await request.post("confirm_checkout/", bodyFormData);
     if (response.data.status) {
-      window.location.href = response?.data?.data;
+      // window.location.href = response?.data?.data;
     } else {
       toast((t) => (
         <AlerMessage

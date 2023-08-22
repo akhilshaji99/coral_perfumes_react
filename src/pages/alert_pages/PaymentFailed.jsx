@@ -1,8 +1,9 @@
 import React from "react";
 import PaymentFailedImg from "./img/payment-failed.png";
 import failedIcon from "./img/close-icon.svg";
+import { Link } from "react-router-dom";
 
-function PaymentFailed() {
+function PaymentFailed({ responseMessage }) {
   return (
     <div>
       <div className="container-lg-fluid alert-padding">
@@ -17,7 +18,7 @@ function PaymentFailed() {
               <span>
                 <img src={failedIcon} alt="" />
               </span>
-              Something went wrong
+              {responseMessage?.message_2}
             </h1>
             <h5>
               <span>
@@ -52,7 +53,7 @@ function PaymentFailed() {
                   </defs>
                 </svg>
               </span>
-              Continue Shopping
+              <Link to={"/checkout"}>{responseMessage?.message_3}</Link>
             </h5>
           </div>
         </div>

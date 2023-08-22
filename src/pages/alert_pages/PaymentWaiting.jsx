@@ -25,10 +25,10 @@ function PaymentWaiting() {
           setLoading(false);
           if (response?.data?.status) {
             setPaymentStatus(response?.data?.status);
-            setResponseMessage(response?.data?.data);
           } else {
             setPaymentStatus(response?.data?.status);
           }
+          setResponseMessage(response?.data?.data);
         });
     } catch (error) {
       setLoading(false);
@@ -40,14 +40,17 @@ function PaymentWaiting() {
     <>
       {loading ? (
         <div className="row align-items-center justify-content-center ">
-          <img src="https://cdn.pixabay.com/animation/2023/03/20/02/45/02-45-27-186_512.gif" style={{width:'400px'}}/>
+          <img
+            src="https://cdn.pixabay.com/animation/2023/03/20/02/45/02-45-27-186_512.gif"
+            style={{ width: "400px" }}
+          />
         </div>
       ) : paymentStatus ? (
         <PaymentSuccess responseMessage={responseMessage} />
       ) : !paymentStatus ? (
-        <PaymentFailed />
+        <PaymentFailed responseMessage={responseMessage} />
       ) : (
-        <PaymentFailed />
+        <PaymentFailed responseMessage={responseMessage} />
       )}
     </>
   );
