@@ -84,6 +84,9 @@ function Index() {
     }
   };
 
+const removePrmocode = (id) => {
+  alert(id)
+}
   const fetchStoreApi = async () => {
     try {
       const response = await getStores();
@@ -136,6 +139,7 @@ function Index() {
           setCheckoutUpdateParams(checkoutUpdateParams);
           setDefaultPaymentTypeFlag(true);
         }
+        setPromoCode(response?.data?.cart_items?.voucher_code);
         //#End
       }
     });
@@ -349,6 +353,7 @@ function Index() {
                                   className="form-control"
                                   placeholder="Coupon Code"
                                   value={promoCode}
+                                  disabled={checkOutDetails?.cart_items?.voucher_id  != "" ? true : false}
                                   onChange={(e) => setPromoCode(e.target.value)}
                                 />
                               </div>
@@ -358,13 +363,21 @@ function Index() {
                               <div className="mb-3  mb-lg-0 position-relative">
                                 <div class="">
                                   {" "}
+                                  {checkOutDetails?.cart_items?.voucher_id == "" ? (
+                                  
                                   <button
-                                    type="submit"
+                                    // type="submit"
                                     class="btn btn-dark px-4 validate w-100"
                                     onClick={applyPrmocode}
                                   >
                                     APPLY
                                   </button>
+                                  ) : (
+                                    <><a onClick={(e)=>{
+                                      e.preventDefault();
+                                      removePrmocode(checkOutDetails?.cart_items?.voucher_id)
+                                    }} class="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
+                    )}
                                 </div>
                               </div>
                             </div>

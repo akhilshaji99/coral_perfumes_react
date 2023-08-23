@@ -12,8 +12,10 @@ function CartSummary({
   setPromoCode,
 }) {
   const navigate = useNavigate();
-
-  const applyPrmocode = () => {
+  const removePromocode = (id) => {
+    alert(id)
+  }
+  const applyPromocode = () => {
     if (promoCode == "") {
       toast((t) => (
         <AlerMessage
@@ -60,21 +62,31 @@ function CartSummary({
                       className="form-control"
                       placeholder="Coupon Code"
                       value={promoCode}
+                      disabled={cartDatas?.voucher_id  != null ? true : false}
                       onChange={(e) => setPromoCode(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="col-md-6 col-6">
                   <div className="d-grid">
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        applyPrmocode();
-                      }}
-                      className="btn btn-dark mb-1"
-                    >
-                      Apply
-                    </button>
+                  {cartDatas?.voucher_id == null ? (
+                                  
+                                  <button
+                                    // type="submit"
+                                    class="btn btn-dark px-4 validate w-100"
+                                    onClick={(e)=>{
+                                      e.preventDefault();
+                                      applyPromocode()
+                                    }}
+                                  >
+                                    APPLY
+                                  </button>
+                                  ) : (
+                                    <><a onClick={(e)=>{
+                                      e.preventDefault();
+                                      removePromocode(cartDatas?.voucher_id)
+                                    }} class="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
+                    )}
                   </div>
                 </div>
               </div>
