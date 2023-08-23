@@ -22,7 +22,7 @@ function PromoCodeModal({
 
   const applyPromoCode = (promo_id, code) => {
     setPromoCode(code);
-    UsePromoCode(promo_id).then((response) => {
+    UsePromoCode(promo_id,null).then((response) => {
       setShowPrmoCodeFlag(false);
       $("#promocodeModal").toggle();
       $("#promocodeModal").toggleClass("modal modal fade");

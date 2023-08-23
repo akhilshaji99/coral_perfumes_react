@@ -80,7 +80,7 @@ function Index() {
         />
       ));
     } else {
-      UsePromoCode(promoCode);
+      UsePromoCode(null,promoCode);
     }
   };
 

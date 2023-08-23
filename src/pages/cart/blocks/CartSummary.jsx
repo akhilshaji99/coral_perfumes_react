@@ -25,7 +25,7 @@ function CartSummary({
         />
       ));
     } else {
-      UsePromoCode(promoCode);
+      UsePromoCode(null,promoCode);
     }
   };
 

@@ -2,11 +2,17 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import getUserToken from "../../../utils/userToken";
 import AlerMessage from "../../common/AlerMessage";
-const UsePromoCode = async (voucher_id) => {
+const UsePromoCode = async (voucher_id=null,voucher_code=null) => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
+    if(voucher_id){
     bodyFormData.append("voucher_id",voucher_id);
+    }
+    if(voucher_code){
+    bodyFormData.append("voucher_code",voucher_code);
+
+    }
     
     const response = await request.post("use-discount-voucher/", bodyFormData);
 
