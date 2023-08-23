@@ -2,6 +2,7 @@ import request from "../../utils/request";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
+import flashGif from "../../assets/img/flash/flash-gif.gif";
 
 function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
   const navigate = useNavigate();
@@ -88,31 +89,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                         >
                           {index === 0 ? (
                             <span className="flash-icon">
-                              <svg
-                                width={18}
-                                height={15}
-                                viewBox="0 0 18 15"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M2.35582 9.35823L7.80944 7.76546V13.7383C7.80944 15.132 8.72599 15.4141 9.84398 14.3688L17.4685 7.23454C18.4052 6.3635 18.0124 5.64177 16.5922 5.64177L11.1386 7.23454V1.26167C11.1386 -0.132005 10.2221 -0.414058 9.10407 0.631195L1.47955 7.76546C0.552925 8.6448 0.945734 9.35823 2.35582 9.35823Z"
-                                  fill="url(#paint0_linear_2042_14049)"
-                                />
-                                <defs>
-                                  <linearGradient
-                                    id="paint0_linear_2042_14049"
-                                    x1="6.47453"
-                                    y1="4.73454"
-                                    x2="15.698"
-                                    y2="14.8181"
-                                    gradientUnits="userSpaceOnUse"
-                                  >
-                                    <stop stopColor="#FAFF00" />
-                                    <stop offset={1} stopColor="#FF9900" />
-                                  </linearGradient>
-                                </defs>
-                              </svg>
+                              <img src={flashGif} alt="Coral Perfumes" />
                             </span>
                           ) : null}
                           {item.name}
