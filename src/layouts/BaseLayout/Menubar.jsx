@@ -2,7 +2,7 @@ import request from "../../utils/request";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
-import flashGif from "../../assets/img/flash/flash-gif.gif";
+import flashGif from "../../assets/img/flash/gif-menu.gif";
 
 function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
   const navigate = useNavigate();
