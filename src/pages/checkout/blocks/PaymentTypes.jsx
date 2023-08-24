@@ -99,11 +99,11 @@ function PaymentTypes({
                 </div>
               );
             })}
-            <div className="row mt-3">
+            {/* <div className="row mt-3">
               <div className="col-md-3">
                 <button className="btn btn-dark w-100">CONFIRM</button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
