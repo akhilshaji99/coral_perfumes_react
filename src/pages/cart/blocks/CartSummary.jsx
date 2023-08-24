@@ -5,15 +5,19 @@ import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import UsePromoCode from "../../checkout/js/usePromoCode";
+import RemovePromoCode from "../../checkout/js/removePromoCode";
 function CartSummary({
   cartDatas,
   setShowPrmoCodeFlag,
   promoCode,
   setPromoCode,
+  cartFetchFunctionCall
 }) {
   const navigate = useNavigate();
   const removePromocode = (id) => {
-    alert(id)
+    RemovePromoCode(id,null).then((response) => {
+      cartFetchFunctionCall()
+    })
   }
   const applyPromocode = () => {
     if (promoCode == "") {
@@ -27,7 +31,9 @@ function CartSummary({
         />
       ));
     } else {
-      UsePromoCode(null,promoCode);
+      UsePromoCode(null,promoCode).then((response) => {
+        cartFetchFunctionCall()
+      })
     }
   };
 

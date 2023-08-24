@@ -93,11 +93,18 @@ function Index() {
     cartFetchFunctionCall();
   }, []);
 
+  useEffect(() => {
+    if(!showPrmoCodeFlag){
+    cartFetchFunctionCall();
+    }
+  }, [showPrmoCodeFlag]);
+
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
       if (response?.data) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
+        setPromoCode(response?.data?.voucher_code)
       }
     });
   };
@@ -270,6 +277,7 @@ function Index() {
               promoCode={promoCode}
               setPromoCode={setPromoCode}
               setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+              cartFetchFunctionCall={cartFetchFunctionCall}
             />
           </div>
         </div>

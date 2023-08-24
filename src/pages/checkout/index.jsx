@@ -15,6 +15,7 @@ import UsePromoCode from "./js/usePromoCode";
 import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
+import RemovePromoCode from "./js/removePromoCode";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -31,6 +32,7 @@ function Index() {
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  const [promoCodeId, setPromoCodeId] = useState("");
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
@@ -80,12 +82,16 @@ function Index() {
         />
       ));
     } else {
-      UsePromoCode(null,promoCode);
+      UsePromoCode(null,promoCode).then((response) => {
+        fetchCheckoutApi()
+      })
     }
   };
 
 const removePrmocode = (id) => {
-  alert(id)
+  RemovePromoCode(id,null).then((response) => {
+    fetchCheckoutApi()
+  })
 }
   const fetchStoreApi = async () => {
     try {
@@ -114,6 +120,11 @@ const removePrmocode = (id) => {
   useEffect(() => {
     fetchCheckoutApi();
   }, []);
+  useEffect(() => {
+    if(!showPrmoCodeFlag){
+    fetchCheckoutApi();
+    }
+  }, [showPrmoCodeFlag]);
 
   const fetchCheckoutApi = () => {
     getCheckOutDetails().then((response) => {
@@ -140,6 +151,7 @@ const removePrmocode = (id) => {
           setDefaultPaymentTypeFlag(true);
         }
         setPromoCode(response?.data?.cart_items?.voucher_code);
+        setPromoCodeId(response?.data?.cart_items?.voucher_id)
         //#End
       }
     });
@@ -353,7 +365,7 @@ const removePrmocode = (id) => {
                                   className="form-control"
                                   placeholder="Coupon Code"
                                   value={promoCode}
-                                  disabled={checkOutDetails?.cart_items?.voucher_id  != "" ? true : false}
+                                  disabled={promoCodeId  != null ? true : false}
                                   onChange={(e) => setPromoCode(e.target.value)}
                                 />
                               </div>
@@ -363,7 +375,7 @@ const removePrmocode = (id) => {
                               <div className="mb-3  mb-lg-0 position-relative">
                                 <div class="">
                                   {" "}
-                                  {checkOutDetails?.cart_items?.voucher_id == "" ? (
+                                  {promoCodeId == null ? (
                                   
                                   <button
                                     // type="submit"
@@ -375,7 +387,7 @@ const removePrmocode = (id) => {
                                   ) : (
                                     <><a onClick={(e)=>{
                                       e.preventDefault();
-                                      removePrmocode(checkOutDetails?.cart_items?.voucher_id)
+                                      removePrmocode(promoCodeId)
                                     }} class="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
                     )}
                                 </div>
