@@ -4,7 +4,7 @@ import WishlistIcon from "../wishlist/blocks/WishlistIcon";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-function ProductDetails({ product }) {
+function ProductDetails({ product ,setReFetchApi = null}) {
   const [status, setStatus] = useState(false);
 
   return (
@@ -23,6 +23,9 @@ function ProductDetails({ product }) {
             changeWishlistStatus={() => {
               product.is_in_wishlist = !product?.is_in_wishlist;
               setStatus(!status);
+              if(status == false && setReFetchApi!= null){
+                setReFetchApi(true)
+              }
             }}
           />
           <div className="text-center position-relative ">

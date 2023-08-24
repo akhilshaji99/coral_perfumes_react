@@ -1,25 +1,37 @@
 import BreadCrumps from "../common/BreadCrumps";
-// import ProductDetails from "../common/ProductDetails";
+import ProductDetails from "../common/ProductDetails";
 import MyAccountSidebar from "../common/MyAccountSidebar";
 import WishlistEmpty from "../alert_pages/WishlistEmpty";
-// import { useEffect, useState } from "react";
-// import request from "../../utils/request";
+import { useEffect, useState } from "react";
+import request from "../../utils/request";
 
-function index() {
-  // useEffect(() => {
-  //   getWishlistDatas();
-  // }, []);
+function Index() {
+  const [wishList, setWishList] = useState([]);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [reFetchApi, setReFetchApi] = useState(false);
 
-  // const getWishlistDatas = async () => {
-  //   try {
-  //     const response = await request.get("get_product_variants/");
-  //     if(response?.data){
+  useEffect(() => {
+    getWishlistDatas();
+  }, []);
 
-  //     }
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
+  useEffect(() => {
+    if(reFetchApi){
+    getWishlistDatas();
+    }
+  }, [reFetchApi]);
+
+  const getWishlistDatas = async () => {
+    try {
+      const response = await request.post("get_user_wishlists/");
+      setPageLoaded(true);
+      setReFetchApi(false);
+      if (response?.data) {
+        setWishList(response?.data?.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <main>
       {/* section */}
@@ -36,28 +48,38 @@ function index() {
                   My Wishlist
                 </h2>
                 <div className="row">
-                  <WishlistEmpty />
-                  {/* {productList.map((product, index) => { */}
-                  {/* return ( */}
-                  {/* <div className="col-md-4 col-6" key={1}>
-                    <div className="product-grid">
-                      <ProductDetails
-                        product={{
-                          id: 1,
-                          discount_percentage: "10% Off",
-                          name: "xxxxxxx",
-                          original_amount: 250,
-                          price_amount: 200,
-                          listing_image:
-                            "/media/product_listing/Rectangle_12.png",
-                          slug: "xxxx",
-                          product_tag: "New Arrival",
-                        }}
-                      />
-                    </div>
-                  </div> */}
-                  {/* );
-                  })} */}
+                  {wishList.length <= 0 && pageLoaded ? (
+                    <WishlistEmpty />
+                  ) : (
+                    wishList.map((product, index) => {
+                      return (
+                        <div className="col-md-4 col-6" key={index}>
+                          <div className="product-grid">
+                            <ProductDetails
+                              product={{
+                                id: product?.product_variant?.id,
+                                discount_percentage:
+                                  product?.product_variant?.discount_percentage,
+                                name: product?.product_variant?.name,
+                                original_amount:
+                                  product?.product_variant?.original_amount,
+                                price_amount:
+                                  product?.product_variant?.price_amount,
+                                listing_image:
+                                  product?.product_variant
+                                    ?.product_listing_image,
+                                slug: product?.product_variant?.slug,
+                                product_tag:
+                                  product?.product_variant?.product_tag,
+                                is_in_wishlist:true
+                              }}
+                              setReFetchApi={setReFetchApi}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
                 </div>
               </div>
             </div>
@@ -67,4 +89,4 @@ function index() {
     </main>
   );
 }
-export default index;
+export default Index;
