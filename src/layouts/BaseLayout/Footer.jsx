@@ -388,9 +388,9 @@ function Footer() {
         />
       </div>
       <div className="container px-4">
-        <div className="row footer-row">
+        <div className="row footer-row align-items-center">
           <div className="col-md-3">
-            <div className="row social-mdedia-icons">
+            <div className="row  social-mdedia-icons">
               <div className="col-md-3 col-2">
                 <img src={FacebookIcon} alt="facebook" />
               </div>

@@ -12,7 +12,9 @@ function AdsBanner({ componentDatas }) {
   };
   return (
     <>
-      <section className="ads-banner" style={backgroundImage} />
+      <div className="conatiner-lg-fluid">
+        <div className="ads-banner" style={backgroundImage} />
+      </div>
     </>
   );
 }

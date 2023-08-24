@@ -116,10 +116,11 @@ function FlashSale({ componentDatas }) {
                       <div className="col-md-5  pr-0 text-end">
                         <span className="timer-text">Ends In</span>{" "}
                       </div>
-                      <div className="col-md-7">
+                      <div className="col-md-5">
                         <CountdownTimer
                           className="digital-text"
                           responsive={true}
+                          hideDay={true}
                           size={25}
                           count={counterValue}
                           onEnd={() => {

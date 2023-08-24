@@ -65,7 +65,7 @@ function ProductCarousel({ componentDatas }) {
                   min: 0,
                 },
 
-                items: 2,
+                items: 2.5,
                 partialVisibilityGutter: 30,
               },
               tablet: {
