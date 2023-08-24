@@ -2,7 +2,11 @@ import MyAccountSidebar from "../common/MyAccountSidebar";
 import BreadCrumps from "../common/BreadCrumps";
 import ChangeEmail from "./ChangeEmail";
 import ChangePhone from "./ChangePhone";
-function index() {
+import { useEffect, useState } from "react";
+import request from "../../utils/request";
+function Index() {
+  const [profile, setProfile] = useState(null);
+
   return (
     <main>
       {/* section */}
@@ -97,4 +101,4 @@ function index() {
     </main>
   );
 }
-export default index;
+export default Index;

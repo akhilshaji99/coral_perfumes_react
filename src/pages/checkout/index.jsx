@@ -32,7 +32,7 @@ function Index() {
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
-  const [promoCodeId, setPromoCodeId] = useState("");
+  const [promoCodeId, setPromoCodeId] = useState(null);
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);

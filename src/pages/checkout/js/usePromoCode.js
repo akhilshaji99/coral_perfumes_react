@@ -23,7 +23,7 @@ const UsePromoCode = async (voucher_id=null,voucher_code=null) => {
           toast={toast}
           status={response.data.status}
           title={"Success"}
-          message={response.data.message}
+          message={response.data.message_1}
         />
       ));
     } else {
@@ -33,7 +33,7 @@ const UsePromoCode = async (voucher_id=null,voucher_code=null) => {
           toast={toast}
           status={response.data.status}
           title={"Error"}
-          message={response?.data?.message}
+          message={response?.data?.message_1}
         />
       ));
     }
@@ -45,7 +45,7 @@ const UsePromoCode = async (voucher_id=null,voucher_code=null) => {
         status={false}
         title={"Add Address"}
         message={
-          error?.response?.["data"]?.message ||
+          error?.response?.["data"]?.message_1 ||
           "Something went wrong.Please try again."
         }
       />

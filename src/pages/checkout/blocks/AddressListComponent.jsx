@@ -66,7 +66,7 @@ function AddressListComponent({
                 <div className="col-md-12">
                   <a
                     onClick={(e) => {
-                      editAddress(componentDatas);
+                       editAddress(componentDatas);
                     }}
                   >
                     <svg
@@ -86,6 +86,7 @@ function AddressListComponent({
                     </svg>
                   </a>
                 </div>
+                {!componentDatas.default_address ? (
                 <div className="col-md-12">
                   <a
                     onClick={(e) => {
@@ -116,6 +117,9 @@ function AddressListComponent({
                     </svg>
                   </a>
                 </div>
+                 ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

@@ -93,6 +93,7 @@ function AddNewAddressModal({
                     setDefaultAddress={setDefaultAddress}
                     editAddress={editAddress}
                     deleteAddress={deleteAddress}
+                    setAddAddressListFlag={setAddAddressListFlag}
                   />
                 );
               })}
