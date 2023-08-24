@@ -48,28 +48,6 @@ function Index() {
     gift_message: null,
   });
 
-  //#End
-  // let validationShape = {
-  //   address_type:yup.string().required(),
-  //   phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
-  //   emirate: yup.string().required(),
-  //   first_name: yup.string().required(),
-  //   last_name: yup.string().required(),
-  //   email: yup.string().required(),
-  // }
-  // if(addressType == 1){
-  //   validationShape = {
-  //     ...validationShape,
-  //     flat_name: yup.string().required(),
-  //     building_number: yup.string().required(),
-  //     street_address: yup.string().required(),
-  //     pin: yup.string().required(),
-  //   }
-  // }
-  // const newAddressFormSchema = yup.object().shape(validationShape);
-
-  //Fetch stores
-  // useEffect(() => {
   const applyPrmocode = () => {
     if (promoCode == "") {
       toast((t) => (
@@ -120,11 +98,11 @@ const removePrmocode = (id) => {
   useEffect(() => {
     fetchCheckoutApi();
   }, []);
-  useEffect(() => {
-    if(!showPrmoCodeFlag){
-    fetchCheckoutApi();
-    }
-  }, [showPrmoCodeFlag]);
+  // useEffect(() => {
+  //   if(!showPrmoCodeFlag && checkOutDetails.length > 0){
+  //   fetchCheckoutApi();
+  //   }
+  // }, [showPrmoCodeFlag]);
 
   const fetchCheckoutApi = () => {
     getCheckOutDetails().then((response) => {
@@ -285,6 +263,7 @@ const removePrmocode = (id) => {
             setShowPrmoCodeFlag={setShowPrmoCodeFlag}
             showPrmoCodeFlag={showPrmoCodeFlag}
             setPromoCode={setPromoCode}
+            fetchCheckoutApi= {fetchCheckoutApi}
           />
           <AddNewAddressModal
             // componentDatas={addressForm.values}

@@ -7,6 +7,7 @@ function PromoCodeModal({
   showPrmoCodeFlag,
   setShowPrmoCodeFlag,
   setPromoCode,
+  fetchCheckoutApi = null
 }) {
   const [promoCodes, setPromoCodes] = useState([]);
 
@@ -24,6 +25,9 @@ function PromoCodeModal({
     setPromoCode(code);
     UsePromoCode(promo_id,null).then((response) => {
       setShowPrmoCodeFlag(false);
+      if(fetchCheckoutApi != null){
+      fetchCheckoutApi()
+      }
       $("#promocodeModal").toggle();
       $("#promocodeModal").toggleClass("modal modal fade");
       $("#promocodeModal").hide();
