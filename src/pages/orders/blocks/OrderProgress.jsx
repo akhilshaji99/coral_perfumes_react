@@ -1,6 +1,4 @@
-import React from "react";
-
-function OrdertopRow() {
+function OrderProgress() {
   return (
     <div className="row order-top-row">
       <div className="col-md-2">
@@ -121,5 +119,4 @@ function OrdertopRow() {
     </div>
   );
 }
-
-export default OrdertopRow;
+export default OrderProgress;

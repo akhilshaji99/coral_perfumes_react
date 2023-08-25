@@ -18,6 +18,7 @@ import AlertPages from "../pages/alert_pages/index";
 // import PaymentFailed from "../pages/alert_pages/PaymentFailed";
 import PaymentWaiting from "../pages/alert_pages/PaymentWaiting";
 import Faq from "../pages/faq/index";
+import SingleOrder from "../pages/orders/SingleOrder";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -51,6 +52,10 @@ const Router = () => {
         {
           path: "orders",
           element: userDatas ? <Orders /> : <Navigate to="/" />,
+        },
+        {
+          path: "order-details/*",
+          element: userDatas ? <SingleOrder /> : <Navigate to="/" />,
         },
         {
           path: "returns",

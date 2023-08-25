@@ -11,7 +11,7 @@ function MainBanner() {
       <div className="container-fluid px-0 main-carousel d-xl-none ipad">
         <Carousel
           additionalTransfrom={0}
-          arrows
+          arrows={false}
           autoPlay={false}
           autoPlaySpeed={3000}
           centerMode={false}
