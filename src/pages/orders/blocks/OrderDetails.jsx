@@ -81,7 +81,7 @@ function OrderDetails({ orderDetails }) {
       {orderDetails?.orderline?.map((orderItem) => {
         return (
           <div className="orders-card">
-            <OrderProgress />
+            <OrderProgress order_current_status={orderItem?.order_status} />
             <OrderHeader ongoingOrder={orderDetails} />
             <div className="row order-bottom-row">
               <div className="col-md-12">

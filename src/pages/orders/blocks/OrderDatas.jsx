@@ -7,7 +7,7 @@ function OrderDatas({ ongoingOrder }) {
   return (
     <>
       <div className="orders-card">
-        <OrderProgress />
+        <OrderProgress order_current_status={ongoingOrder?.order_status} />
         <OrderHeader ongoingOrder={ongoingOrder} />
         <div className="row order-bottom-row">
           <div className="col-md-12">
@@ -64,9 +64,11 @@ function OrderDatas({ ongoingOrder }) {
               slidesToSlide={1}
               swipeable
             >
-              {ongoingOrder?.orderline?.map((orderItem) => {
+              {ongoingOrder?.orderline?.map((orderItem, index) => {
                 return (
-                  <ProductInfo orderItem={orderItem}/>
+                  <div key={index}>
+                    <ProductInfo orderItem={orderItem} />
+                  </div>
                 );
               })}
             </Carousel>

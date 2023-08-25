@@ -29354,3 +29354,7 @@ body {
     transform: scale(0.85);
   }
 }
+
+.order_status_disable{
+  color: #A7A9A2;
+}

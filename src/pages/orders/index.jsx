@@ -18,7 +18,7 @@ function Index() {
     try {
       var bodyFormData = new FormData();
       bodyFormData.append("token", getUserToken());
-      const response = await request.post("get_user_orders/");
+      const response = await request.post("get_user_orders/", bodyFormData);
       if (response?.data) {
         setOnGoingOrders(response?.data?.data?.ongoing_orders);
         setCompletedOrders(response?.data?.data?.completed_orders);
@@ -37,10 +37,12 @@ function Index() {
           <div className="col-lg-9 col-md-9 col-12">
             <div className="py-6 p-md-6 p-lg-10">
               <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
-              {/* Order Card */}
-              {/* <OrderDetails /> */}
-              {ongoingOrders?.map((ongoingOrder) => {
-                return <OrderDatas ongoingOrder={ongoingOrder} />;
+              {ongoingOrders?.map((ongoingOrder, index) => {
+                return (
+                  <div key={index}>
+                    <OrderDatas ongoingOrder={ongoingOrder} />
+                  </div>
+                );
               })}
             </div>
           </div>
