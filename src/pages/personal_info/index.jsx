@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
+import $ from "jquery";
+
 const prifileFormSchema = yup.object().shape({
   phone_number: yup.string().required(),
   first_name: yup.string().required(),
@@ -17,21 +19,26 @@ const prifileFormSchema = yup.object().shape({
 function Index() {
   const [profile, setProfile] = useState(null);
   const [genders, setGenders] = useState(null);
+  const  [refetch, setRefetch] = useState(false)
 
-  const handleOnSubmit = (values) => {
-    // addNewAddress(values).then((response) => {
-    //   if (response?.data.status) {
-    //     $("#AddAddress").toggle();
-    //     $("#AddAddress").toggleClass("modal fade modal");
-    //     setAddAddressFlag(false);
-    //     setAddAddressListFlag(true);
-    //     setEditAddressFlag(false);
-    //     $("#addressModal").toggle();
-    //     $("#addressModal").toggleClass("modal fade modal");
-    //     $("#AddAddress").removeClass("modal-open");
-    // resetForm();
-    //   }
-    // });
+  const handleOnSubmit = async (values) => {
+    try {
+      const date = new Date(values.date_of_birth);
+            const formattedDate = date.toLocaleDateString('en-GB');
+      const response = await request.post("get_user_profile/",{
+        ...values,
+        date_of_birth:formattedDate
+      });
+     
+      if (response?.data) {
+        setProfile(response?.data?.data);
+        profileForm.setFieldValue({
+          ...values
+        })
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   const profileForm = useFormik({
@@ -50,6 +57,13 @@ function Index() {
   useEffect(() => {
     getProfile();
   }, []);
+
+  useEffect(() => {
+    if(refetch){
+    getProfile();
+    }
+  }, [refetch]);
+  
 
   const getProfile = async () => {
     try {
@@ -71,6 +85,8 @@ function Index() {
           gender: response?.data?.data?.gender,
           date_of_birth: response?.data?.data?.date_of_birth,
         });
+        setRefetch(false);
+
       }
     } catch (error) {
       console.log("error", error);
@@ -85,8 +101,8 @@ function Index() {
         <div className="container-fluid">
           <div className="row">
             <MyAccountSidebar />
-            <ChangeEmail />
-            <ChangePhone />
+            <ChangeEmail setRefetch={setRefetch} profileForm={profileForm}/>
+            <ChangePhone setRefetch={setRefetch} profileForm={profileForm}/>
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
@@ -100,7 +116,9 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${
+                            profileForm.errors.first_name ? "border-danger" : ""
+                          }`}
                           placeholder="First Name"
                           name="first_name"
                           value={profileForm.values.first_name}
@@ -111,7 +129,9 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${
+                            profileForm.errors.last_name ? "border-danger" : ""
+                          }`}
                           placeholder="Last Name"
                           name="last_name"
                           value={profileForm.values.last_name}
@@ -122,7 +142,9 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${
+                            profileForm.errors.email ? "border-danger" : ""
+                          }`}
                           placeholder="Email"
                           name="email"
                           value={profileForm.values.email}
@@ -131,9 +153,13 @@ function Index() {
                         />
                         <a
                           href="javascript:;"
-                          data-bs-toggle="modal"
-                          data-bs-target="#changeEmail"
+                          // data-bs-toggle="modal"
+                          // data-bs-target="#changeEmail"
                           className="change-btn"
+                          onClick={(e)=>{
+                            $("#changeEmail").toggle();
+                            $("#changeEmail").toggleClass("modal fade modal");
+                          }}
                         >
                           Change Email
                         </a>
@@ -141,7 +167,9 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${
+                            profileForm.errors.phone_number ? "border-danger" : ""
+                          }`}
                           placeholder="0559238088"
                           name="phone_number"
                           value={profileForm.values.phone_number}
@@ -150,16 +178,22 @@ function Index() {
                         />
                         <a
                           href="javascript:;"
-                          data-bs-toggle="modal"
-                          data-bs-target="#changePhone"
+                          // data-bs-toggle="modal"
+                          // data-bs-target="#changePhone"
                           className="change-btn"
+                          onClick={(e)=>{
+                            $("#changePhone").toggle();
+                            $("#changePhone").toggleClass("modal fade modal");
+                          }}
                         >
                           Change Phone
                         </a>
                       </div>
                       <div className="mb-30 col">
                         <select
-                          className="form-control"
+                           className={`form-control ${
+                            profileForm.errors.gender ? "border-danger" : ""
+                          }`}
                           name="gender"
                           value={profileForm.values.gender}
                           onChange={profileForm.handleChange}
@@ -174,19 +208,26 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="date"
-                          className="form-control"
+                          className={`form-control ${
+                            profileForm.errors.date_of_birth ? "border-danger" : ""
+                          }`}
                           placeholder="My Birthdays"
                           name="date_of_birth"
                           value={profileForm.values.date_of_birth}
                           onChange={profileForm.handleChange}
                         />
                       </div>
+                      <div className="row justify-content-center">
+                      <div className="col-md-5 text-center">
+                        <button type="submit" className="btn btn-dark w-100" >Save</button>
+                      </div>
+                    </div>
                     </form>
-                    <div className="row justify-content-center">
+                    {/* <div className="row justify-content-center">
                       <div className="col-md-3 text-center">
                         <button className="btn btn-dark w-100" >Save</button>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
