@@ -72,12 +72,12 @@ function Account({ changeMobileMenuStatus }) {
               </button>
             </div>
             <div className="col-md-4 col-4">
-              <NavLink className="navbar-brand" to="/">
+              <NavLink className="navbar-brand" to="/" onClick={() => changeMobileMenuStatus(false)}>
                 {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
                 <Logo />
               </NavLink>
             </div>
-            <div className="col-md-4 col-4 text-end">
+            <div className="col-md-4 col-4 text-end" onClick={() => changeMobileMenuStatus(false)}>
               {/* <a
                 className="text-muted position-relative "
                 data-bs-toggle="offcanvas"
