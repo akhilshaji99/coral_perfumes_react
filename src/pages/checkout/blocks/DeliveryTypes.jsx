@@ -21,7 +21,9 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
       const response = await request.post("get_delivery_types/", bodyFormData);
       if (response.data) {
         setDeliveryTypes(response?.data?.data);
-        if (response?.data?.data.length > 0) {
+        if (checkedValue) {
+          setCheckedShippingType(checkedValue);
+        } else if (response?.data?.data.length > 0) {
           setCheckedShippingType(response?.data?.data[0]?.id);
         }
       }
@@ -86,7 +88,10 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
                               type="radio"
                               value={deliveryType?.id}
                               name="del_type"
-                              checked={checkedShippingType === deliveryType?.id}
+                              checked={
+                                parseInt(checkedShippingType) ===
+                                parseInt(deliveryType?.id)
+                              }
                               onChange={(event) => {
                                 setCheckedShippingType(
                                   parseInt(event.target.value)
@@ -118,11 +123,11 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
               );
             })}
           </div>
-          <div className="row mt-3">
+          {/* <div className="row mt-3">
             <div className="col-md-3">
               <button className="btn btn-dark w-100">CONFIRM</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

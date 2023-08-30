@@ -25,15 +25,15 @@ const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
       // }
     );
     if (response.data.status) {
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={"Add Address"}
-          message="Address Added."
-        />
-      ));
+      // toast((t) => (
+      //   <AlerMessage
+      //     t={t}
+      //     toast={toast}
+      //     status={response.data.status}
+      //     title={"Add Address"}
+      //     message="Address Added."
+      //   />
+      // ));
       return response;
     } else {
       toast((t) => (
@@ -41,7 +41,7 @@ const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
           t={t}
           toast={toast}
           status={response.data.status}
-          title={"Add Address"}
+          title={"Error"}
           message={response?.data?.message}
         />
       ));
@@ -53,7 +53,7 @@ const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
         t={t}
         toast={toast}
         status={false}
-        title={"Add Address"}
+        title={"Error"}
         message={
           error?.response?.["data"]?.message ||
           "Something went wrong.Please try again."

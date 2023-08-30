@@ -57,7 +57,9 @@ function productData({ productDatas, currentVariant }) {
           <div className="col-xl-2 col-sm-2 col-2">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-xl-9 col-sm-10 col-10 text-sm-end text-lg-start">{productDatas?.tabby_text}</div>
+          <div className="col-xl-9 col-sm-10 col-10 text-sm-end text-lg-start">
+            {productDatas?.tabby_text}
+          </div>
         </div>
       ) : null}
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (
@@ -67,12 +69,11 @@ function productData({ productDatas, currentVariant }) {
               type="tamara-summary"
               amount={currentVariant?.price_amount}
               inline-type="4"
-            ></tamara-widget>{" "}
+            ></tamara-widget>
           </div>
-
-          <div className="col-xl-10 col-sm-10 col-10 text-sm-end text-lg-start">
+          {/* <div className="col-xl-10 col-sm-10 col-10 text-sm-end text-lg-start">
             <span>4 interest-free payments AED 40 </span>
-          </div>
+          </div> */}
         </div>
       ) : null}
       <div className="row py-5">

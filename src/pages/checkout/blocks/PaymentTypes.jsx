@@ -1,4 +1,4 @@
-import MastercardIcon from "../../../assets/img/icons/payment/mastercard.svg";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
 function PaymentTypes({
   paymentTypes,
@@ -93,7 +93,12 @@ function PaymentTypes({
                   <div className="col-md-4 col-12">
                     {/* input */}
                     <div className="card-body pt-3">
-                      <img src={MastercardIcon} alt="Mastercard" />
+                      {paymentType?.image ? (
+                        <img
+                          src={deviceImageRender(paymentType?.image)}
+                          alt="card-image"
+                        />
+                      ) : null}
                     </div>
                   </div>
                 </div>

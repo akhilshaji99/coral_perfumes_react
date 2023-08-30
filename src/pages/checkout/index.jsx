@@ -36,7 +36,6 @@ function Index() {
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
-  const [defaultPaymentTypeFlag, setDefaultPaymentTypeFlag] = useState(false);
   const [storeDatas, setStoredatas] = useState([]);
   const [storeEmirates, setStoreEmirates] = useState([]);
   const [avaibleStores, setAvailableStores] = useState([]);
@@ -60,17 +59,17 @@ function Index() {
         />
       ));
     } else {
-      UsePromoCode(null,promoCode).then((response) => {
-        fetchCheckoutApi()
-      })
+      UsePromoCode(null, promoCode).then((response) => {
+        fetchCheckoutApi();
+      });
     }
   };
 
-const removePrmocode = (id) => {
-  RemovePromoCode(id,null).then((response) => {
-    fetchCheckoutApi()
-  })
-}
+  const removePrmocode = (id) => {
+    RemovePromoCode(id, null).then((response) => {
+      fetchCheckoutApi();
+    });
+  };
   const fetchStoreApi = async () => {
     try {
       const response = await getStores();
@@ -119,17 +118,10 @@ const removePrmocode = (id) => {
         checkoutUpdateParams.payment_type = response?.data?.payment_type;
         checkoutUpdateParams.gift_wrap = response?.data?.is_gift_wrap;
         checkoutUpdateParams.gift_message = response?.data?.gift_wrap_message;
-        //Updating payment type in fetch payload :: Based on flag - Update only on first page load
-        if (!defaultPaymentTypeFlag && response?.data?.payment_type === null) {
-          checkoutUpdateParams.payment_type =
-            response?.data?.payment_types.length > 0
-              ? response?.data?.payment_types?.[0]?.id
-              : null;
-          setCheckoutUpdateParams(checkoutUpdateParams);
-          setDefaultPaymentTypeFlag(true);
-        }
+        checkoutUpdateParams.payment_type = response?.data?.payment_type;
+        setCheckoutUpdateParams(checkoutUpdateParams);
         setPromoCode(response?.data?.cart_items?.voucher_code);
-        setPromoCodeId(response?.data?.cart_items?.voucher_id)
+        setPromoCodeId(response?.data?.cart_items?.voucher_id);
         //#End
       }
     });
@@ -263,7 +255,7 @@ const removePrmocode = (id) => {
             setShowPrmoCodeFlag={setShowPrmoCodeFlag}
             showPrmoCodeFlag={showPrmoCodeFlag}
             setPromoCode={setPromoCode}
-            fetchCheckoutApi= {fetchCheckoutApi}
+            fetchCheckoutApi={fetchCheckoutApi}
           />
           <AddNewAddressModal
             // componentDatas={addressForm.values}
@@ -344,7 +336,7 @@ const removePrmocode = (id) => {
                                   className="form-control"
                                   placeholder="Coupon Code"
                                   value={promoCode}
-                                  disabled={promoCodeId  != null ? true : false}
+                                  disabled={promoCodeId != null ? true : false}
                                   onChange={(e) => setPromoCode(e.target.value)}
                                 />
                               </div>
@@ -355,20 +347,30 @@ const removePrmocode = (id) => {
                                 <div class="">
                                   {" "}
                                   {promoCodeId == null ? (
-                                  
-                                  <button
-                                    // type="submit"
-                                    class="btn btn-dark px-4 validate w-100"
-                                    onClick={applyPrmocode}
-                                  >
-                                    APPLY
-                                  </button>
+                                    <button
+                                      // type="submit"
+                                      class="btn btn-dark px-4 validate w-100"
+                                      onClick={applyPrmocode}
+                                    >
+                                      APPLY
+                                    </button>
                                   ) : (
-                                    <><a onClick={(e)=>{
-                                      e.preventDefault();
-                                      removePrmocode(promoCodeId)
-                                    }} class="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
-                    )}
+                                    <>
+                                      <a
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          removePrmocode(promoCodeId);
+                                        }}
+                                        class=""
+                                        style={{
+                                          color: "black",
+                                          "text-decoration": "underline",
+                                        }}
+                                      >
+                                        Remove
+                                      </a>
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
