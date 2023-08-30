@@ -21,7 +21,7 @@ const BaseLayout = () => {
   const [mobileMenuStatus, setMobileMenuStatus] = useState(false);
 
   const changeMobileMenuStatus = () => {
-    setMobileMenuStatus(true);
+    setMobileMenuStatus(!mobileMenuStatus);
   };
   return (
     <>
