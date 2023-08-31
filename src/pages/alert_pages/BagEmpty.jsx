@@ -1,6 +1,6 @@
 import React from "react";
-import BagEmptyImg from "../img/bag-empty.png";
-function BagEmpty() {
+import BagEmptyImg from "./img/bag-empty.png";
+function BagEmpty(cartEmptyMessages=[]) {
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-bag-empty">

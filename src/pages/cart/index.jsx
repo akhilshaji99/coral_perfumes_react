@@ -17,6 +17,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import request from "../../utils/request";
 import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
+import BagEmpty from "../alert_pages/BagEmpty";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
@@ -28,6 +29,8 @@ function Index() {
   const [cartItems, setCartItems] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
 
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
@@ -94,136 +97,151 @@ function Index() {
   }, []);
 
   useEffect(() => {
-    if(!showPrmoCodeFlag){
-    cartFetchFunctionCall();
+    if (!showPrmoCodeFlag) {
+      cartFetchFunctionCall();
     }
   }, [showPrmoCodeFlag]);
 
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
+      setPageLoaded(true);
       if (response?.data) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
-        setPromoCode(response?.data?.voucher_code)
+        setPromoCode(response?.data?.voucher_code);
       }
     });
   };
   return (
     <>
-      <section className="mb-lg-14 mb-8 mt-8 my-bag">
-        <div className="container-fluid">
-          <BreadCrumps />
-          {/* row */}
-          <div className="row">
-            <div className="col-12">
-              {/* card */}
-              <div className="card py-1 border-0 mb-3">
-                <div>
-                  <h1 className="my-bag-title">My Bag</h1>
+      {cartItems.length <= 0 && pageLoaded ? (
+        <section className="mb-lg-14 mb-8 mt-8 my-bag">
+          <div className="container-fluid" style={{marginTop:"15%"}}>
+            <div className="row mt-8">
+              <BagEmpty cartEmptyMessages={cartEmptyMessages} />
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="mb-lg-14 mb-8 mt-8 my-bag">
+          <div className="container-fluid">
+            <BreadCrumps />
+            {/* row */}
+            <div className="row">
+              <div className="col-12">
+                {/* card */}
+                <div className="card py-1 border-0 mb-3">
+                  <div>
+                    <h1 className="my-bag-title">My Bag</h1>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <GuestLoginModal formik={formik} setInputValue={setInputValue} />
-          <LoginOTPModal
-            componentDatas={formik.values}
-            redirectTo={"checkout"}
-          />
-          <PromoCodeModal
-            setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-            showPrmoCodeFlag={showPrmoCodeFlag}
-            setPromoCode={setPromoCode}
-          />
-          {/* row */}
-          <div className="row">
-            <div className="col-lg-8 col-md-7">
-              <ul className="list-group list-group-flush">
-                {cartItems?.map((cartData, index) => {
-                  return (
-                    <li className="list-group-item  my-bag-card" key={index}>
-                      {/* row */}
-                      <div className="row align-items-center px-0">
-                        <div className="col-md-2 col-3">
-                          <div className="my-bag-img">
-                            <img
-                              src={deviceImageRender(
-                                cartData?.product_variant?.product_listing_image
-                              )}
-                              alt="Ecommerce"
-                              className="img-fluid"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-xl-1 col-1"></div>
-                        <div className="col-md-8 col-8  my-bag-text">
-                          <h6 className="mb-0">
-                            {cartData?.product_variant?.name}
-                          </h6>
-                          <p className="mb-0">
-                            {cartData?.product_variant?.brand_name}
-                          </p>
-                          <ul id="price-my-bag">
-                            <li>
-                              <h5 className="selling-price">
-                                AED {cartData?.product_variant?.price_amount}
-                              </h5>
-                            </li>
-                            <li>
-                              <h5 className="discounted-price">
-                                AED {cartData?.product_variant?.original_amount}
-                              </h5>
-                            </li>
-                            <li>
-                              {" "}
-                              <h5 className="discount-percentage">
-                                {cartData?.product_variant?.discount_percentage}
-                                % Off
-                              </h5>
-                            </li>
-                          </ul>
-
-                          <div className="row ">
-                            <div className="col-md-3">
-                              <div className="input-group-custom input-spinner  my-bag-spinner">
-                                <input
-                                  type="button"
-                                  defaultValue="-"
-                                  className="button-minus1  btn  btn-sm "
-                                  disabled={cartData?.quantity <= 1}
-                                  onClick={() => {
-                                    cartDecrement(cartData?.id).then(
-                                      (response) => {
-                                        if (response) {
-                                          cartFetchFunctionCall();
-                                        }
-                                      }
-                                    );
-                                  }}
-                                />
-                                <input
-                                  type="button"
-                                  className="quantity-field1 form-control-sm form-input1"
-                                  value={cartData?.quantity}
-                                />
-                                <input
-                                  type="button"
-                                  defaultValue="+"
-                                  className="button-plus1 btn btn-sm "
-                                  data-field="quantity"
-                                  onClick={() => {
-                                    cartIncrement(cartData?.id).then(
-                                      (response) => {
-                                        if (response) {
-                                          cartFetchFunctionCall();
-                                        }
-                                      }
-                                    );
-                                  }}
-                                />
-                              </div>
+            <GuestLoginModal formik={formik} setInputValue={setInputValue} />
+            <LoginOTPModal
+              componentDatas={formik.values}
+              redirectTo={"checkout"}
+            />
+            <PromoCodeModal
+              setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+              showPrmoCodeFlag={showPrmoCodeFlag}
+              setPromoCode={setPromoCode}
+            />
+            {/* row */}
+            <div className="row">
+              <div className="col-lg-8 col-md-7">
+                <ul className="list-group list-group-flush">
+                  {cartItems?.map((cartData, index) => {
+                    return (
+                      <li className="list-group-item  my-bag-card" key={index}>
+                        {/* row */}
+                        <div className="row align-items-center px-0">
+                          <div className="col-md-2 col-3">
+                            <div className="my-bag-img">
+                              <img
+                                src={deviceImageRender(
+                                  cartData?.product_variant
+                                    ?.product_listing_image
+                                )}
+                                alt="Ecommerce"
+                                className="img-fluid"
+                              />
                             </div>
                           </div>
-                          {/* <div className="col-2 text-lg-end text-start text-md-end col-md-2">
+                          <div className="col-xl-1 col-1"></div>
+                          <div className="col-md-8 col-8  my-bag-text">
+                            <h6 className="mb-0">
+                              {cartData?.product_variant?.name}
+                            </h6>
+                            <p className="mb-0">
+                              {cartData?.product_variant?.brand_name}
+                            </p>
+                            <ul id="price-my-bag">
+                              <li>
+                                <h5 className="selling-price">
+                                  AED {cartData?.product_variant?.price_amount}
+                                </h5>
+                              </li>
+                              <li>
+                                <h5 className="discounted-price">
+                                  AED{" "}
+                                  {cartData?.product_variant?.original_amount}
+                                </h5>
+                              </li>
+                              <li>
+                                {" "}
+                                <h5 className="discount-percentage">
+                                  {
+                                    cartData?.product_variant
+                                      ?.discount_percentage
+                                  }
+                                  % Off
+                                </h5>
+                              </li>
+                            </ul>
+
+                            <div className="row ">
+                              <div className="col-md-3">
+                                <div className="input-group-custom input-spinner  my-bag-spinner">
+                                  <input
+                                    type="button"
+                                    defaultValue="-"
+                                    className="button-minus1  btn  btn-sm "
+                                    disabled={cartData?.quantity <= 1}
+                                    onClick={() => {
+                                      cartDecrement(cartData?.id).then(
+                                        (response) => {
+                                          if (response) {
+                                            cartFetchFunctionCall();
+                                          }
+                                        }
+                                      );
+                                    }}
+                                  />
+                                  <input
+                                    type="button"
+                                    className="quantity-field1 form-control-sm form-input1"
+                                    value={cartData?.quantity}
+                                  />
+                                  <input
+                                    type="button"
+                                    defaultValue="+"
+                                    className="button-plus1 btn btn-sm "
+                                    data-field="quantity"
+                                    onClick={() => {
+                                      cartIncrement(cartData?.id).then(
+                                        (response) => {
+                                          if (response) {
+                                            cartFetchFunctionCall();
+                                          }
+                                        }
+                                      );
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            {/* <div className="col-2 text-lg-end text-start text-md-end col-md-2">
                               <span className="fw-bold">
                                 AED {cartData?.product_variant?.price_amount}
                               </span>
@@ -232,56 +250,57 @@ function Index() {
                               </div>
                             </div> */}
 
-                          {/* text */}
-                        </div>
-                        {/* input group */}
-                        <div className="col-md-1 col-1 ">
-                          {/* input */}
+                            {/* text */}
+                          </div>
+                          {/* input group */}
+                          <div className="col-md-1 col-1 ">
+                            {/* input */}
 
-                          <div className="mt-2 my-bag-remove-btn">
-                            <a
-                              onClick={() => {
-                                cartRemove(cartData?.id).then((response) => {
-                                  if (response) {
-                                    cartFetchFunctionCall();
-                                  }
-                                });
-                              }}
-                            >
-                              <img src={RemoveBtn} alt="Coral Perfumes" />
-                            </a>
-                          </div>
-                          <div className="mt-2 my-bag-remove-btn mob-remove  ">
-                            <a
-                              onClick={() => {
-                                cartRemove(cartData?.id).then((response) => {
-                                  if (response) {
-                                    cartFetchFunctionCall();
-                                  }
-                                });
-                              }}
-                            >
-                              <img src={RemoveBtn} alt="Coral Perfumes" />
-                            </a>
+                            <div className="mt-2 my-bag-remove-btn">
+                              <a
+                                onClick={() => {
+                                  cartRemove(cartData?.id).then((response) => {
+                                    if (response) {
+                                      cartFetchFunctionCall();
+                                    }
+                                  });
+                                }}
+                              >
+                                <img src={RemoveBtn} alt="Coral Perfumes" />
+                              </a>
+                            </div>
+                            <div className="mt-2 my-bag-remove-btn mob-remove  ">
+                              <a
+                                onClick={() => {
+                                  cartRemove(cartData?.id).then((response) => {
+                                    if (response) {
+                                      cartFetchFunctionCall();
+                                    }
+                                  });
+                                }}
+                              >
+                                <img src={RemoveBtn} alt="Coral Perfumes" />
+                              </a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                })}
-                {/* list group */}
-              </ul>
+                      </li>
+                    );
+                  })}
+                  {/* list group */}
+                </ul>
+              </div>
+              <CartSummary
+                cartDatas={cartDatas}
+                promoCode={promoCode}
+                setPromoCode={setPromoCode}
+                setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+                cartFetchFunctionCall={cartFetchFunctionCall}
+              />
             </div>
-            <CartSummary
-              cartDatas={cartDatas}
-              promoCode={promoCode}
-              setPromoCode={setPromoCode}
-              setShowPrmoCodeFlag={setShowPrmoCodeFlag}
-              cartFetchFunctionCall={cartFetchFunctionCall}
-            />
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }
