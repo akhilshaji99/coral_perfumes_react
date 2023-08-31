@@ -16,8 +16,8 @@ function Index() {
   }, []);
 
   useEffect(() => {
-    if(reFetchApi){
-    getWishlistDatas();
+    if (reFetchApi) {
+      getWishlistDatas();
     }
   }, [reFetchApi]);
 
@@ -28,68 +28,75 @@ function Index() {
       setReFetchApi(false);
       if (response?.data) {
         setWishList(response?.data?.data);
-        setWishListMessages(response?.data?.message)
+        setWishListMessages(response?.data?.message);
       }
-      
     } catch (error) {
       console.log("error", error);
     }
   };
   return (
-    <main>
-      {/* section */}
-      <BreadCrumps />
+    <>
+      {wishList.length <= 0 && pageLoaded ? (
+        <section className="mb-lg-14 mb-8 mt-8 my-bag">
+          <div className="container-fluid" style={{ marginTop: "15%" }}>
+            <div className="row mt-8">
+              <WishlistEmpty wishListMessages={wishListMessages} />
+            </div>
+          </div>
+        </section>
+      ) : (
+        <main>
+          <BreadCrumps />
 
-      <section>
-        <div className="container-fluid">
-          <div className="row">
-            <MyAccountSidebar />
-            <div className="col-lg-9 col-md-9 col-12">
-              <div className="py-6 p-md-6 p-lg-10">
-                {/* heading */}
-                <h2 className="mb-6 text-center my-profile-heading">
-                  My Wishlist
-                </h2>
-                <div className="row">
-                  {wishList.length <= 0 && pageLoaded ? (
-                    <WishlistEmpty  wishListMessages={wishListMessages}/>
-                  ) : (
-                    wishList.map((product, index) => {
-                      return (
-                        <div className="col-md-4 col-6" key={index}>
-                          <div className="product-grid">
-                            <ProductDetails
-                              product={{
-                                id: product?.product_variant?.id,
-                                discount_percentage:
-                                  product?.product_variant?.discount_percentage,
-                                name: product?.product_variant?.name,
-                                original_amount:
-                                  product?.product_variant?.original_amount,
-                                price_amount:
-                                  product?.product_variant?.price_amount,
-                                listing_image:
-                                  product?.product_variant
-                                    ?.product_listing_image,
-                                slug: product?.product_variant?.slug,
-                                product_tag:
-                                  product?.product_variant?.product_tag,
-                                is_in_wishlist:true
-                              }}
-                              setReFetchApi={setReFetchApi}
-                            />
+          <section>
+            <div className="container-fluid">
+              <div className="row">
+                <MyAccountSidebar />
+                <div className="col-lg-9 col-md-9 col-12">
+                  <div className="py-6 p-md-6 p-lg-10">
+                    {/* heading */}
+                    <h2 className="mb-6 text-center my-profile-heading">
+                      My Wishlist
+                    </h2>
+                    <div className="row">
+                      {wishList.map((product, index) => {
+                        return (
+                          <div className="col-md-4 col-6" key={index}>
+                            <div className="product-grid">
+                              <ProductDetails
+                                product={{
+                                  id: product?.product_variant?.id,
+                                  discount_percentage:
+                                    product?.product_variant
+                                      ?.discount_percentage,
+                                  name: product?.product_variant?.name,
+                                  original_amount:
+                                    product?.product_variant?.original_amount,
+                                  price_amount:
+                                    product?.product_variant?.price_amount,
+                                  listing_image:
+                                    product?.product_variant
+                                      ?.product_listing_image,
+                                  slug: product?.product_variant?.slug,
+                                  product_tag:
+                                    product?.product_variant?.product_tag,
+                                  is_in_wishlist: true,
+                                }}
+                                setReFetchApi={setReFetchApi}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })
-                  )}
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
+          </section>
+        </main>
+      )}
+    </>
   );
 }
 export default Index;
