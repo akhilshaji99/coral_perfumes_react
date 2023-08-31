@@ -254,7 +254,7 @@ function FlashSale({ componentDatas }) {
                         </div>
                       ) : null}
                       {product.discount_percentage ? (
-                        <div className="col-md-4">
+                        <div className="col-md-4 px-0">
                           <h5 className="discount-percentage">
                             {product.discount_percentage}% off
                           </h5>

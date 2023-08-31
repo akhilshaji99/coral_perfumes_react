@@ -118,7 +118,40 @@ function FilterSidebar({
                         className="accordion-collapse collapse"
                         data-bs-parent="#categoryCollapseMenu"
                       >
-                        <input
+                        <div className="form-group has-search ">
+                          <span className=" form-control-feedback">
+                            <svg
+                              width={25}
+                              height={24}
+                              viewBox="0 0 25 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M18.4843 17.9577L18.1652 17.4877L17.7396 17.8638C15.8035 19.5746 13.276 20.4657 10.6929 20.3479C8.10971 20.2301 5.67419 19.1127 3.90245 17.2329C2.13074 15.3531 1.16201 12.8585 1.20135 10.2781C1.24068 7.69757 2.28499 5.23361 4.11319 3.40847C5.94142 1.5833 8.40988 0.54043 10.9954 0.501151C13.581 0.461872 16.0801 1.42928 17.9632 3.19808C19.8462 4.96686 20.9651 7.39797 21.083 9.97607C21.201 12.5542 20.3088 15.0769 18.5952 17.0097L18.2825 17.3623L18.616 17.6952L18.8688 17.9476L23.9236 22.9939L23.9372 23.0075L23.9518 23.02L24.1483 23.1882L24.1493 23.189C24.1653 23.2026 24.1781 23.2195 24.1869 23.2385L24.6408 23.0287L24.1869 23.2385C24.1957 23.2575 24.2002 23.2781 24.2002 23.2989C24.2002 23.3197 24.1957 23.3403 24.1869 23.3593L24.6408 23.5691L24.1869 23.3593C24.1781 23.3782 24.1653 23.3952 24.1493 23.4088L24.1253 23.4292L24.1041 23.4524C24.0905 23.4673 24.0739 23.4793 24.0553 23.4875C24.0366 23.4957 24.0165 23.5 23.996 23.5C23.9756 23.5 23.9554 23.4957 23.9368 23.4875C23.9182 23.4793 23.9015 23.4673 23.8879 23.4524L23.8819 23.4458L23.8756 23.4394L18.6523 18.1127L18.6172 18.0769L18.5755 18.0487C18.5396 18.0244 18.5086 17.9935 18.4843 17.9577Z"
+                                stroke="black"
+                                strokeMiterlimit={10}
+                              />
+                              <path
+                                d="M10.6494 3.14178C12.4944 3.30632 14.2331 4.09401 15.5904 5.38027C16.7776 6.54131 17.5908 8.04342 17.9221 9.68724"
+                                stroke="black"
+                                strokeMiterlimit={10}
+                                strokeLinecap="round"
+                              />
+                            </svg>
+                          </span>
+                          <input
+                            type="search"
+                            className="form-control accordion-search"
+                            placeholder="Search"
+                            onChange={(event) => {
+                              setCategorySearchValue(event.target.value);
+                              setCategorySearchKey(productFilter?.name);
+                            }}
+                          />
+                        </div>
+
+                        {/* <input
                           type="search"
                           className="form-control accordion-search"
                           placeholder="Search"
@@ -126,7 +159,8 @@ function FilterSidebar({
                             setCategorySearchValue(event.target.value);
                             setCategorySearchKey(productFilter?.name);
                           }}
-                        />
+                        /> */}
+
                         <div>
                           <ul className="nav flex-custom-column ms-3">
                             {productFilter?.values?.map((filterData, index) => {

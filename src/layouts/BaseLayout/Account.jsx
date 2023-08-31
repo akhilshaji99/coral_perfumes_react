@@ -72,12 +72,19 @@ function Account({ changeMobileMenuStatus }) {
               </button>
             </div>
             <div className="col-md-4 col-4">
-              <NavLink className="navbar-brand" to="/" onClick={() => changeMobileMenuStatus(false)}>
+              <NavLink
+                className="navbar-brand"
+                to="/"
+                onClick={() => changeMobileMenuStatus(false)}
+              >
                 {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
                 <Logo />
               </NavLink>
             </div>
-            <div className="col-md-4 col-4 text-end" onClick={() => changeMobileMenuStatus(false)}>
+            <div
+              className="col-md-4 col-4 text-end"
+              onClick={() => changeMobileMenuStatus(false)}
+            >
               {/* <a
                 className="text-muted position-relative "
                 data-bs-toggle="offcanvas"
@@ -198,10 +205,10 @@ function Account({ changeMobileMenuStatus }) {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                       className="text-center"
-                      onClick={(e)=>{
+                      onClick={(e) => {
                         e.preventDefault();
-                        navigate("/dashboard")}
-                      }
+                        navigate("/dashboard");
+                      }}
                     >
                       <svg
                         width="25"
@@ -217,7 +224,7 @@ function Account({ changeMobileMenuStatus }) {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span className="dropdown-text" >
+                      <span className="dropdown-text">
                         {username !== "" ? username : "Sign In"}
                       </span>
                     </a>
@@ -247,7 +254,13 @@ function Account({ changeMobileMenuStatus }) {
                         )}
                       </li>
                       <li>
-                        <NavLink to="/orders" className="dropdown-item menu-drop-link">
+                        {" "}
+                        <h3 className="my-account-drop-h3">Your Account</h3>
+                        <li></li>
+                        <NavLink
+                          to="/orders"
+                          className="dropdown-item menu-drop-link"
+                        >
                           <span>
                             <svg
                               width="21"
@@ -280,7 +293,10 @@ function Account({ changeMobileMenuStatus }) {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to="/returns" className="dropdown-item menu-drop-link">
+                        <NavLink
+                          to="/returns"
+                          className="dropdown-item menu-drop-link"
+                        >
                           <span>
                             <svg
                               width="21"
