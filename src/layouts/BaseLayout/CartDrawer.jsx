@@ -20,9 +20,11 @@ function CartDrawer({ cartDrawerFlag }) {
 
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
-      if (response?.data) {
+      if (response?.status) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
+      }else{
+        setCartItems(response?.data);
       }
     });
   };

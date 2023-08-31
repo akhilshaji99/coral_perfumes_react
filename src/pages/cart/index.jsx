@@ -111,14 +111,14 @@ function Index() {
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
       }else{
-        setCartItems([]);
+        setCartItems(response?.data);
         setCartEmptyMessages(response?.message_data)
       }
     });
   };
   return (
     <>
-      {cartItems.length <= 0 && pageLoaded ? (
+      {cartItems?.length <= 0 && pageLoaded ? (
         <section className="mb-lg-14 mb-8 mt-8 my-bag">
           <div className="container-fluid" style={{marginTop:"15%"}}>
             <div className="row mt-8">
