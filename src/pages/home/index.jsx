@@ -39,7 +39,7 @@ function Index() {
   };
   return (
     <>
-      <main>
+      <main style={{minHeight:"500px"}}>
         {homeComponents?.map((component, index) => {
           return (
             <>

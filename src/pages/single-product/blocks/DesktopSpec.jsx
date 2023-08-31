@@ -1,4 +1,4 @@
-import Sample from "../../../assets/img/sample-banner.png";
+// import Sample from "../../../assets/img/sample-banner.png";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 function DesktopSpec({ productDatas }) {
   return (
