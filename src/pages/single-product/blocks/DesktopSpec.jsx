@@ -1,5 +1,5 @@
 import Sample from "../../../assets/img/sample-banner.png";
-
+import deviceImgeRender from "../../../utils/deviceImageRender";
 function DesktopSpec({ productDatas }) {
   return (
     <>
@@ -112,18 +112,20 @@ function DesktopSpec({ productDatas }) {
           }}
         />
         <div className="row py-2 align-items-center">
-          <div className=" col-xl-8 col-12">
-            <img className="img-fluid" src={Sample} alt="" />
+          <div className=" col-xl-8 col-12 ">
+            <img
+              className="img-fluid"
+              src={deviceImgeRender( productDatas?.type_banner_image)}
+              alt=""
+            />
           </div>
           <div className="col-xl-4 col-12 return-policy-div mt-4">
-            <h1>Return policy</h1>
-            <p>
-              We are happy to offer you a refund or an exchange within 15 days.
-            </p>
-            <h6>
-              We are happy to offer you a refund or an exchange within 15 days.
-            </h6>
-            <a href="#">know more</a>
+            <h1>{productDatas?.return_title}</h1>
+            <p>{productDatas?.return_text_1}</p>
+            <h6>{productDatas?.return_text_2}</h6>
+            <a href={productDatas?.return_button_link}>
+              {productDatas?.return_button_text}
+            </a>
           </div>
         </div>
         <hr

@@ -124,16 +124,14 @@ function MobileSpec({ productDatas }) {
           >
             <div className="accordion-body">
               <div className="col-md-4 return-policy-div">
-                <h1>Return policy</h1>
+                <h1>{productDatas?.return_title}</h1>
                 <p>
-                  We are happy to offer you a refund or an exchange within 15
-                  days.
+                {productDatas?.return_text_1}
                 </p>
                 <h6>
-                  We are happy to offer you a refund or an exchange within 15
-                  days.
+                {productDatas?.return_text_2}
                 </h6>
-                <a href="#">know more</a>
+                <a href={productDatas?.return_button_link}> {productDatas?.return_button_text}</a>
               </div>
             </div>
           </div>
