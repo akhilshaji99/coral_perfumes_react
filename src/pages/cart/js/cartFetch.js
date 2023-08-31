@@ -7,9 +7,10 @@ const getCartDatas = async () => {
     bodyFormData.append("token", getUserOrGuestToken());
     const response = await request.post("api/cart/items/", bodyFormData);
 
-    if (response?.data?.status) {
-      return response.data;
-    }
+    // if (response?.data?.status) {
+    //   return response.data;
+    // }
+    return response.data;
   } catch (error) {
     console.log("error", error);
   }

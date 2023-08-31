@@ -105,10 +105,14 @@ function Index() {
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
       setPageLoaded(true);
-      if (response?.data) {
+      console.log(response)
+      if (response?.status) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
+      }else{
+        setCartItems([]);
+        setCartEmptyMessages(response?.message_data)
       }
     });
   };

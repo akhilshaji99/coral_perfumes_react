@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 
-function MainBanner() {
+function MainBanner({ componentDatas }) {
   return (
     <>
       <div className="container-fluid px-0 main-carousel d-xl-none ipad">

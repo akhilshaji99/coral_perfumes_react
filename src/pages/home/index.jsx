@@ -48,7 +48,7 @@ function Index() {
               homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
                 <>
                   <Suspense fallback={<Placeholder />}>
-                    <MainBanner />
+                    <MainBanner  componentDatas={homeContent[component][0]} />
                   </Suspense>
                 </>
               ) : null}

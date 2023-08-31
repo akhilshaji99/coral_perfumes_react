@@ -1,12 +1,13 @@
 import React from "react";
 import BagEmptyImg from "./img/bag-empty.png";
-function BagEmpty(cartEmptyMessages=[]) {
+function BagEmpty(cartEmptyMessages=null) {
+  console.log('cartEmptyMessages',cartEmptyMessages)
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-bag-empty">
         <div className="col-md-8 text-center">
           <img src={BagEmptyImg} className="img-fluid" alt="Coral Perfumes" />
-          <h1>Your Bag is Empty</h1>
+          <h1>{cartEmptyMessages?.cartEmptyMessages?.message_1}</h1>
           <h5>
             <span>
               <svg
@@ -45,7 +46,7 @@ function BagEmpty(cartEmptyMessages=[]) {
                 </defs>
               </svg>
             </span>
-            Start exploring Now!
+            {cartEmptyMessages?.cartEmptyMessages?.message_2}
             <span>
               <svg
                 width={18}
@@ -85,8 +86,8 @@ function BagEmpty(cartEmptyMessages=[]) {
             </span>
           </h5>
           <p>
-            Browse our vast collection of products and fill it with<br/> items that
-            catch your eye
+          {cartEmptyMessages?.cartEmptyMessages?.message_3}
+
           </p>
         </div>
       </div>
