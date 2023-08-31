@@ -21711,12 +21711,27 @@ h3 {
 }
 /* Style the container with a fixed height and enable overflow */
 .scroll-container {
-  height: 550px;
+  height: 450px;
   overflow: auto;
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
   scrollbar-width: thin;
 }
-
+.unselect{
+  color: var(--fc-black);
+  font-size: 16px;
+  text-transform: capitalize;
+  font-family: var(--fc-font-regular);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.unselect:hover{
+  color: var(--fc-black);
+  font-size: 16px;
+  text-transform: capitalize;
+  font-family: var(--fc-font-regular);
+  
+  text-decoration: underline;
+}
 /* Track - The scrollbar itself */
 .scroll-container::-webkit-scrollbar {
   width: 10px;
@@ -26434,8 +26449,28 @@ span.flatpickr-weekday {
   font-family: var(--fc-font-bold);
   font-size: 25px;
 }
+.rec-products-container {
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: none !important;
+  border: unset !important;
+  padding: 43px 80px;
+}
+.rec-products-container h1 {
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--fc-black);
+  text-align: center;
+  font-family: var(--fc-font-bold);
+  font-size: 25px;
+}
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flash-sale-container {
+    padding: 13px 12px;
+    box-shadow: none;
+    border: none;
+  }
+  .rec-products-container {
     padding: 13px 12px;
     box-shadow: none;
     border: none;
@@ -26547,6 +26582,10 @@ span.flatpickr-weekday {
 }
 @media (min-width: 768px) {
   .flash-sale-container .col-md-4 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .rec-products-container .col-md-4 {
     flex: 0 0 auto;
     width: 25%;
   }
@@ -27917,6 +27956,9 @@ border-radius: none !important;
   .flash-sale-container .react-multiple-carousel__arrow {
     display: none !important;
   }
+  .rec-products-container .react-multiple-carousel__arrow {
+    display: none !important;
+  }
   .wallet-banner .react-multiple-carousel__arrow {
     display: none !important;
   }
@@ -28679,6 +28721,21 @@ border-radius: none !important;
 .flash-sale-container .react-multiple-carousel__arrow--right {
   right: calc(3% + -10px);
 }
+.rec-products-container .react-multi-carousel-list {
+  position: unset !important;
+}
+.rec-products-container .react-multiple-carousel__arrow {
+  background-color: #ebece9 !important;
+}
+.rec-products-container .react-multiple-carousel__arrow::before {
+  color: #000 !important;
+}
+.rec-products-container .react-multiple-carousel__arrow--left {
+  left: calc(3% + -10px);
+}
+.rec-products-container .react-multiple-carousel__arrow--right {
+  right: calc(3% + -10px);
+}
 .wallet-banner .react-multi-carousel-list {
   position: unset !important;
 }
@@ -29427,3 +29484,11 @@ flex-direction: column;
   top: 20%;
   transform: scale(0.85);
 }
+.flash-gif-menu{
+  width: 17px;
+  height: 15px;
+  object-fit: contain;
+}
+/* .navbar-nav li:first-child a {
+  color: #80BA27 !important;
+} */

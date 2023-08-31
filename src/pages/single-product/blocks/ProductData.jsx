@@ -4,7 +4,7 @@ function productData({ productDatas, currentVariant }) {
   return (
     <>
       <div className="row py-5">
-        <div className="col-xl-10 col-sm-12">
+        <div className="col-xl-11 col-sm-12">
           <div className="info-box">
             {productDatas?.message_1 ? (
               <h2 className="pb-3">
@@ -71,13 +71,13 @@ function productData({ productDatas, currentVariant }) {
               inline-type="4"
             ></tamara-widget>
           </div>
-          {/* <div className="col-xl-10 col-sm-10 col-10 text-sm-end text-lg-start">
+          {/* <div className="col-xl-11 col-sm-10 col-10 text-sm-end text-lg-start">
             <span>4 interest-free payments AED 40 </span>
           </div> */}
         </div>
       ) : null}
       <div className="row py-5">
-        <div className="col-xl-10 col-sm-12">
+        <div className="col-xl-11 col-sm-12">
           <div className="info-box">
             {productDatas?.order_delivery_message ? (
               <h2 className="pb-3">

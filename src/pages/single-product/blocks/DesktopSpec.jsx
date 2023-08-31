@@ -4,7 +4,7 @@ function DesktopSpec({ productDatas }) {
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col-md-8">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
               {/* nav item */}

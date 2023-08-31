@@ -100,8 +100,8 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
         <div className="mt-4">
           <div className="container-fluid px-0 mb-5">
             <div className="row sortHeader">
-              <div className="col-md-6"></div>
-              <div className="col-md-6 text-end">
+              <div className="col-md-5"><h5>Brands</h5></div>
+              <div className="col-md-7 text-end">
                 <div className="row align-items-center d-space-around">
                   <div className="col-md-1 d-none d-sm-block sort-icon">
                     {productLayout === "col-md-4 col-6" ? (

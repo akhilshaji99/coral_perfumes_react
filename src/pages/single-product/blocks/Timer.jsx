@@ -1,7 +1,7 @@
 function Timer() {
   return (
     <div className="row py-5 align-items-center">
-      <div className="col-xl-10 col-sm-12">
+      <div className="col-xl-11 col-sm-12">
         <div className="flash-sale-box">
           <div className="row align-items-center">
             <div className="col-xl-6 col-sm-4 col-5">

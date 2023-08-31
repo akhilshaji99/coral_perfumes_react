@@ -7,18 +7,13 @@ function RecommendedProducts({ componentDatas }) {
     <>
       <div className="container-lg-fluid my-5">
         <div
-          className="card flash-sale-container mb-5"
+          className="card rec-products-container mb-5"
           //   style={dynamicBackground}
         >
-          <div className="row d-end">
-            <div className="col-md-8 ">
-              <div className="row">
-                <div className="col-md-6">
-                  <h3 className="mb-5 flash-sale"> RECOMMENDED PRODUCTS </h3>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h3 className="mb-5 flash-sale text-center">
+            {" "}
+            RECOMMENDED PRODUCTS{" "}
+          </h3>
           <Carousel
             additionalTransfrom={0}
             autoPlay={false}

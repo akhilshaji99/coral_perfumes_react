@@ -150,7 +150,7 @@ function FilterSidebar({
                             }}
                           />
                         </div>
-
+                        <a className="unselect mb-4">Unselect all</a>
                         {/* <input
                           type="search"
                           className="form-control accordion-search"
@@ -162,7 +162,7 @@ function FilterSidebar({
                         /> */}
 
                         <div>
-                          <ul className="nav flex-custom-column ms-3">
+                          <ul className="nav flex-custom-column ms-3 mt-3">
                             {productFilter?.values?.map((filterData, index) => {
                               return (
                                 <li className="nav-item" key={index}>

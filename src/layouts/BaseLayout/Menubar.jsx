@@ -89,7 +89,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                         >
                           {index === 0 ? (
                             <span className="flash-icon">
-                              <img src={flashGif} alt="Coral Perfumes" />
+                              <img src={flashGif} className="flash-gif-menu" alt="Coral Perfumes" />
                             </span>
                           ) : null}
                           {item.name}
