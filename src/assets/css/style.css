@@ -13,12 +13,16 @@
   src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Thin.otf);
 }
 @font-face {
-  font-family: brandonTextRegular;
+  font-family: brandonTextMedium;
   src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Medium.otf);
 }
 @font-face {
   font-family: brandonTextRegularI;
   src: url(../fonts/HVD\ Fonts\ -\ BrandonText-RegularItalic.otf);
+}
+@font-face {
+  font-family: brandonTextRegular;
+  src: url(../fonts/HVD\ Fonts\ -\ BrandonText-Regular.otf);
 }
 @font-face {
   font-family: brandonTextBold;
@@ -29,6 +33,10 @@
   font-style: normal;
   font-weight: normal;
   src: local("DS-Digital Bold"), url("../fonts//DS-DIGIB.woff") format("woff");
+}
+@font-face {
+  font-family: NexaRegular;
+  src: url(../fonts/NexaRegular.otf) ;
 }
 .text-reset:hover {
   color: var(--fc-primary) !important;
@@ -220,8 +228,10 @@ div.zoom img {
   --fc-white-rgb: 255, 255, 255;
   --fc-black-rgb: 0, 0, 0;
   --fc-font-regular: "brandonTextRegular", sans-serif;
-  --fc-font-thin: "brandonTextThin";
-  --fc-font-light: "brandonTextLight";
+  --fc-font-medium: "brandonTextMedium", sans-serif;
+  --fc-font-bold: "brandonTextBold", sans-serif;
+  --fc-font-thin: "brandonTextThin" , sans-serif;
+  --fc-font-light: "brandonTextLight" , sans-serif;
 
   --fc-heading-font: "Poppins", sans-serif;
   --fc-font-bold: "brandonTextBold", sans-serif;
@@ -2990,6 +3000,9 @@ textarea.form-control-lg {
 .form-check .form-check-input {
   float: left;
   margin-left: -1.5em;
+  background-color: #EBECE9;
+  border: unset !important;
+  cursor: pointer;
 }
 .form-check-reverse {
   padding-left: 0;
@@ -21503,7 +21516,7 @@ fieldset:disabled .btn {
     padding: 18px 20px;
   }
   .mob-c-view .offcanvas.offcanvas-start {
-    top: 18%;
+    top: 19%;
   }
   .mob-c-view .offcanvas-backdrop.show {
     opacity: 0 !important;
@@ -21777,6 +21790,13 @@ h3 {
 } */
 .accordion-search {
   margin: 14px 0;
+  border: unset;
+  background-color: #EBECE9;
+}
+.accordion-search:focus{
+  margin: 14px 0;
+  border: unset;
+  background-color: #EBECE9;
 }
 .nav-lb-tab {
   /* border-bottom: 1px solid var(--fc-gray-300); */
@@ -21940,9 +21960,17 @@ h3 {
   background-color: transparent;
   border-radius: 0.5rem !important;
   display: flex;
-  font-weight: var(--fc-font-weight-medium);
+  font-weight: var(--fc-font-medium);
   line-height: 26px;
   padding: 0.125rem 0.75rem;
+  color: var(--fc-black);
+}
+.my-account-drop-h3{
+  font-size: 16px;
+  color: var(--fc-black);
+  font-family: var(--fc-font-regular);
+  text-transform: capitalize;
+  padding: 10px 0 10px 10px;
 }
 .dropdown-item:hover {
   color: var(--fc-gray-800) !important;
@@ -26643,7 +26671,7 @@ span.flatpickr-weekday {
 .category-top-img h3 {
   text-align: center;
   font-family: var(--fc-font-regular);
-  font-size: 1.63125rem;
+  font-size: 16px;
 }
 .category-top-img img {
   border-radius: 50%;
@@ -26762,10 +26790,12 @@ span.flatpickr-weekday {
   font-size: 25px;
 }
 .banner-flashsale {
-  /* background-image: url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX43871794.jpg"); */
   background-repeat: none;
-  background-size: cover;
-  padding: 44px 57px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, cover;
+  background-position: center center;
+  padding: 8% 0;
+  min-height: max-content;
 }
 .timer-card {
   border-radius: 9px;
@@ -26776,16 +26806,37 @@ span.flatpickr-weekday {
   text-align: center;
   padding: 20px;
   justify-content: center;
+  width: 90px;
+  height: 90px;
 }
 .timer-card h1 {
   color: #000;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: NexaRegular;
   font-size: 46px;
   font-style: normal;
   font-weight: 400;
-  line-height: 103.5%; /* 47.61px */
   text-transform: uppercase;
+  margin-top: 20px;
+}
+.time-seperator{
+  position: relative;
+  font-size: 45px;
+  color: #fff;
+}
+.cc-col-1{
+  width: 3% !important;
+}
+.blink-hard {
+  animation: blinker 1s step-end infinite;
+}
+.blink-soft {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 .banner-flashsale h2 {
   color: #fff;
@@ -26819,8 +26870,8 @@ span.flatpickr-weekday {
   border: 1px solid #fff;
 }
 .d-end {
-  display: flex;
-  justify-content: flex-end;
+  display: flex !important;
+  justify-content: flex-end !important;
 }
 .ads-banner {
   background-repeat: no-repeat;
@@ -27320,8 +27371,10 @@ span.flatpickr-weekday {
   text-overflow: ellipsis;
 }
 .product-main-banner {
-  height: 240px;
+  height: 141px;
   border-radius: 14px;
+  width: 100%;
+  object-fit: fill;
 }
 .sort-icon {
   cursor: pointer;
@@ -29350,11 +29403,27 @@ body {
     padding: 4px !important;
   }
   .add-to-bag-btn svg {
-    margin-left: 10px;
+    margin-left: 10fpx;
     transform: scale(0.85);
   }
 }
 
 .order_status_disable{
   color: #A7A9A2;
+}
+.shop-p-head{
+  margin: 0 15px;
+  text-align: center;
+}
+.flex-custom-column {
+flex-direction: column;
+}
+.form-group{
+  position: relative;
+}
+.form-control-feedback{
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  transform: scale(0.85);
 }

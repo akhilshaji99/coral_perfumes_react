@@ -81,7 +81,7 @@ function ShopPreferences({ componentDatas }) {
                       />
                       <div className="black"></div>
                       <div className="title">
-                        <h3 className="text-white">{preference.title}</h3>
+                        <h3 className="text-white shop-p-head">{preference.title}</h3>
                       </div>
                     </div>
                   </NavLink>

@@ -26,18 +26,20 @@ function ProductBanner() {
 
   return (
     <>
-      {productBanner ? (
-        <div className="card mb-4  border-0">
-          <img
-            src={deviceImageRender(
-              productBanner?.banner_image_url,
-              productBanner?.banner_image_url
-            )}
-            className="img-fluid product-main-banner"
-            alt={productBanner?.image_alt}
-          />
+      <div className="row">
+        <div className="col-md-12">
+          {productBanner ? (
+            <img
+              src={deviceImageRender(
+                productBanner?.banner_image_url,
+                productBanner?.banner_image_url
+              )}
+              className="product-main-banner"
+              alt={productBanner?.image_alt}
+            />
+          ) : null}
         </div>
-      ) : null}
+      </div>
     </>
   );
 }
