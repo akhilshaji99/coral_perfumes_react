@@ -1,11 +1,10 @@
-import Banner1 from "../../../assets/img/slider/banner1.png";
-import Banner2 from "../../../assets/img/slider/banner2.png";
-import MobBanner from "../../../assets/img/slider/mob-banner.png";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ModalBtn from "../../../assets/img/pop-up-btn.svg";
-
+import deviceImageRender from "../../../utils/deviceImageRender";
 function MainBanner({ componentDatas }) {
+  const banners = componentDatas?.datas;
+
   return (
     <>
       <div className="container-fluid px-0 main-carousel d-xl-none ipad">
@@ -58,24 +57,22 @@ function MainBanner({ componentDatas }) {
           slidesToSlide={1}
           swipeable
         >
-          <img
-            src={MobBanner}
-            alt=""
-            style={{
-              display: "block",
-              height: "100%",
-              width: "100%",
-            }}
-          />
-          <img
-            src={MobBanner}
-            alt=""
-            style={{
-              display: "block",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          {banners.map((banner, index) => {
+            return (
+              <img
+                src={deviceImageRender(
+                  banner?.desktop_image,
+                  banner?.mobile_image
+                )}
+                alt={banner.image_alt}
+                style={{
+                  display: "block",
+                  height: "100%",
+                  width: "100%",
+                }}
+              />
+            );
+          })}
         </Carousel>
       </div>
       <div className="container-fluid px-0 main-carousel d-none d-xl-block">
@@ -128,24 +125,22 @@ function MainBanner({ componentDatas }) {
           slidesToSlide={1}
           swipeable
         >
-          <img
-            src={Banner1}
-            alt=""
-            style={{
-              display: "block",
-              height: "100%",
-              width: "100%",
-            }}
-          />
-          <img
-            src={Banner2}
-            alt=""
-            style={{
-              display: "block",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          {banners.map((banner, index) => {
+            return (
+              <img
+                src={deviceImageRender(
+                  banner?.desktop_image,
+                  banner?.mobile_image
+                )}
+                alt={banner.image_alt}
+                style={{
+                  display: "block",
+                  height: "100%",
+                  width: "100%",
+                }}
+              />
+            );
+          })}
         </Carousel>
       </div>
 
