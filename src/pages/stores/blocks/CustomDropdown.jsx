@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CustomDropdown = ({applyRelevanceFilter}) => {
+const CustomDropdown = ({applyRelevanceFilter,filterDatas=[]}) => {
   // Create a state variable to manage the visibility of the dropdown content
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -9,12 +9,12 @@ const CustomDropdown = ({applyRelevanceFilter}) => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  const filterDatas = [
-    { label: "Relevance", value: "" },
-    { label: "Price-Low To High", value: "low_to_high" },
-    { label: "Price-High to Low", value: "high_to_low" },
-    { label: "New", value: "new" },
-  ];
+  // const filterDatas = [
+  //   { label: "Relevance", value: "" },
+  //   { label: "Price-Low To High", value: "low_to_high" },
+  //   { label: "Price-High to Low", value: "high_to_low" },
+  //   { label: "New", value: "new" },
+  // ];
 
   return (
     <div className="dropdown product-custom-dropdown">
@@ -51,12 +51,12 @@ const CustomDropdown = ({applyRelevanceFilter}) => {
                 key={index}
                 className="dropdown-item dropdown-item-custom"
                 onClick={() => {
-                  console.log(filterData.value);
-                  applyRelevanceFilter(filterData.value);
+                  console.log(filterData.name);
+                  applyRelevanceFilter(filterData.id);
                   setDropdownOpen(!isDropdownOpen);
                 }}
               >
-                {filterData.label}
+                {filterData.name}
               </label>
             );
           })}

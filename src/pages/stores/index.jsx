@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
 import CustomDropdown from "./blocks/CustomDropdown";
 import getStores from "./js/getStores";
+import getEmirates from "../checkout/js/getEmiratesList";
 
 function Index() {
   const [stores, setStores] = useState([]);
+  const [emirates, setEmirates] = useState([]);
+
 
   
   useEffect(() => {
@@ -13,8 +16,16 @@ function Index() {
         setStores(response.data.data);
       }
     });
+    getEmirates().then((response) => {
+      if(response.data){
+        setEmirates(response?.data)
+      }
+    })
   }, []);
-
+  const applyRelevanceFilter = (id) =>{
+    // alert(id)
+    console.log(id)
+  }
   return (
     <section className="mt-8 mb-lg-14 mb-8">
       <div className="container-lg-fluid mt-5">
@@ -31,7 +42,7 @@ function Index() {
         </div>
         <div className="row justify-content-end mx-3 mb-3">
           <div className="col-md-12 mr-5 d-flex justify-content-end ">
-            <CustomDropdown />
+            <CustomDropdown applyRelevanceFilter={applyRelevanceFilter} filterDatas={emirates}/>
           </div>
         </div>
         <div className="container-fluid">
