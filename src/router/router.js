@@ -83,6 +83,14 @@ const Router = () => {
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
         },
         {
+          path: "tap/payment-response",
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
+        },
+        {
+          path: "cod/success",
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
+        },
+        {
           path: "*",
           element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
         },

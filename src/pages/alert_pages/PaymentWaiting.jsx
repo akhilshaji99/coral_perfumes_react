@@ -11,6 +11,19 @@ function PaymentWaiting() {
 
   useEffect(() => {
     setLoading(true);
+    const payement_type = window.location.pathname.split("/")[1];
+    if (payement_type === "tamara") {
+      getTamaraResponse();
+    }
+    if (payement_type === "tap") {
+      getTapResponse();
+    }
+    if (payement_type === "cod") {
+      getCodResponse();
+    }
+  }, []);
+
+  const getTamaraResponse = () => {
     const queryParameters = new URLSearchParams(window.location.search);
     const urlPaymentStatus = queryParameters.get("paymentStatus");
     const orderId = queryParameters.get("orderId");
@@ -34,7 +47,57 @@ function PaymentWaiting() {
       setLoading(false);
       setPaymentStatus(false);
     }
-  }, []);
+  };
+
+  const getTapResponse = () => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const tap_id = queryParameters.get("tap_id");
+    const data = queryParameters.get("data");
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append("token", getUserToken());
+      bodyFormData.append("tap_id", tap_id);
+      bodyFormData.append("data", data);
+      const response = request
+        .post("tap_payment_reponse/", bodyFormData)
+        .then((response) => {
+          setLoading(false);
+          if (response?.data?.status) {
+            setPaymentStatus(response?.data?.status);
+          } else {
+            setPaymentStatus(response?.data?.status);
+          }
+          setResponseMessage(response?.data?.data);
+        });
+    } catch (error) {
+      setLoading(false);
+      setPaymentStatus(false);
+    }
+  };
+
+  const getCodResponse = () => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const order_no = queryParameters.get("order_no");
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append("token", getUserToken());
+      bodyFormData.append("order_no", order_no);
+      const response = request
+        .post("cod_payment_reponse/", bodyFormData)
+        .then((response) => {
+          setLoading(false);
+          if (response?.data?.status) {
+            setPaymentStatus(response?.data?.status);
+          } else {
+            setPaymentStatus(response?.data?.status);
+          }
+          setResponseMessage(response?.data?.data);
+        });
+    } catch (error) {
+      setLoading(false);
+      setPaymentStatus(false);
+    }
+  };
 
   return (
     <>

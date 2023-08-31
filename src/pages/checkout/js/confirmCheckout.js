@@ -8,8 +8,10 @@ const confirmCheckout = async () => {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
     const response = await request.post("confirm_checkout/", bodyFormData);
-    if (response.data.status) {
-      if (response?.data?.data?.is_cod) {
+    if (response?.data?.status) {
+      if (response?.data?.is_cod) {
+        window.location.href =
+          "/cod/success?order_no=" + response?.data?.order_no;
       } else {
         window.location.href = response?.data?.data;
       }
