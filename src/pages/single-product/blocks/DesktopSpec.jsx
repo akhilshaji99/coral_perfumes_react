@@ -111,7 +111,7 @@ function DesktopSpec({ productDatas }) {
             borderColor: "#000",
           }}
         />
-        <div className="row py-2 align-items-center">
+        <div className="row py-2 ">
           <div className=" col-xl-8 col-12 ">
             <img
               className="img-fluid"
@@ -119,7 +119,7 @@ function DesktopSpec({ productDatas }) {
               alt=""
             />
           </div>
-          <div className="col-xl-4 col-12 return-policy-div mt-4">
+          <div className="col-xl-4 col-12 return-policy-div">
             <h1>{productDatas?.return_title}</h1>
             <p>{productDatas?.return_text_1}</p>
             <h6>{productDatas?.return_text_2}</h6>
@@ -133,7 +133,7 @@ function DesktopSpec({ productDatas }) {
             borderColor: "#000",
           }}
         />
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col-md-8">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
               {/* nav item */}
