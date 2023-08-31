@@ -1,7 +1,7 @@
 import React from "react";
 import WishlistEmptyImg from "./img/wishlist-empty.svg";
 
-function WishlistEmpty() {
+function WishlistEmpty(wishListMessages) {
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-wishlist-empty">
@@ -11,7 +11,7 @@ function WishlistEmpty() {
             className="img-fluid"
             alt="Coral Perfumes"
           />
-          <h1>Whishlist is Empty</h1>
+          <h1>{wishListMessages?.wishListMessages?.message_1}</h1>
           <h5>
             <span>
               <svg
@@ -50,7 +50,7 @@ function WishlistEmpty() {
                 </defs>
               </svg>
             </span>
-            Start exploring Now!
+           {wishListMessages?.wishListMessages?.message_2}
             <span>
               <svg
                 width={18}
@@ -90,8 +90,8 @@ function WishlistEmpty() {
             </span>
           </h5>
           <p>
-            Browse our vast collection of products &<br /> fill it with items
-            that catch your eye
+          {wishListMessages?.wishListMessages?.message_3}
+
           </p>
         </div>
       </div>

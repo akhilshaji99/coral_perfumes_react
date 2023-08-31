@@ -7,6 +7,7 @@ import request from "../../utils/request";
 
 function Index() {
   const [wishList, setWishList] = useState([]);
+  const [wishListMessages, setWishListMessages] = useState(null);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [reFetchApi, setReFetchApi] = useState(false);
 
@@ -27,7 +28,9 @@ function Index() {
       setReFetchApi(false);
       if (response?.data) {
         setWishList(response?.data?.data);
+        setWishListMessages(response?.data?.message)
       }
+      
     } catch (error) {
       console.log("error", error);
     }
@@ -49,7 +52,7 @@ function Index() {
                 </h2>
                 <div className="row">
                   {wishList.length <= 0 && pageLoaded ? (
-                    <WishlistEmpty />
+                    <WishlistEmpty  wishListMessages={wishListMessages}/>
                   ) : (
                     wishList.map((product, index) => {
                       return (
