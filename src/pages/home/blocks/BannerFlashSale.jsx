@@ -7,6 +7,7 @@ function BannerFlashSale({ componentDatas }) {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [hideBanner, setHideBanner] = useState(false);
+  let counterValue = 0;
 
   const backgroundImage = {
     backgroundImage:
@@ -37,6 +38,9 @@ function BannerFlashSale({ componentDatas }) {
   });
   const endDate = new Date(formattedDateTime);
 
+  var msDiff = new Date(formattedDateTime) - new Date(); //Future date - current date
+  counterValue = Math.floor(msDiff / 1000);
+
   const timer = async () => {
     const currentDate = new Date();
     const timeDifferenceInMilliseconds =
@@ -58,6 +62,7 @@ function BannerFlashSale({ componentDatas }) {
   useEffect(() => {
     setInterval(timer, 1000);
   });
+
   return (
     <>
       {!hideBanner ? (
@@ -76,7 +81,7 @@ function BannerFlashSale({ componentDatas }) {
                   responsive={true}
                   hideDay={true}
                   size={25}
-                  count={5432}
+                  count={counterValue}
                   // onEnd={() => {
                   //   setFlashSaleEnd(true);
                   // }}
