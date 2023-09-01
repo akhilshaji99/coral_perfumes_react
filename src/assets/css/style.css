@@ -21516,7 +21516,7 @@ fieldset:disabled .btn {
     padding: 18px 20px;
   }
   .mob-c-view .offcanvas.offcanvas-start {
-    top: 21%;
+    top: 15.5%;
   }
   .mob-c-view .offcanvas-backdrop.show {
     opacity: 0 !important;
@@ -26555,7 +26555,7 @@ object-fit: cover;
   .discount-percentage {
     display: flex;
     justify-content: space-between;
-    margin-left: 4px;
+    margin-left: 15px;
   }
 }
 .add-to-bag-btn svg {
@@ -27682,7 +27682,7 @@ border-radius: none !important;
 .info-box h2 {
   color: #000;
   font-size: 16px;
-  font-family: var(--fc-font-light);
+  font-family: var(--fc-font-regular);
   line-height: normal;
   text-transform: capitalize;
 }
@@ -27736,6 +27736,7 @@ border-radius: none !important;
   font-size: 12px;
   text-transform: capitalize;
   text-align: center;
+  padding-left: 10px;
 }
 .category-top-div {
   top: -1650px;
@@ -27943,6 +27944,30 @@ border-radius: none !important;
     flex-direction: row !important;
     justify-content: space-between;
   }
+ 
+  .mob-payment-icons img{
+    display: flex;
+    justify-content: start;
+    text-align: start;
+    width: 100%;
+    height: auto;
+  }
+  .footer-expand-section{
+    margin-bottom: 60px;
+  }
+  .scroll-to-top {
+    background-color: white;
+    right: 60px !important;
+    bottom: 80px !important;
+    position: fixed;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 7px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 9px 25px 0 rgba(132, 128, 177, 0.28);
+    border: none;
+  }
   .footer-link-seperator {
     visibility: visible !important;
   }
@@ -28107,10 +28132,11 @@ border-radius: none !important;
     z-index: 999;
   }
   .banner-flashsale {
-    /* background-image: url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX43871794.jpg"); */
     background-repeat: none;
-    background-size: cover;
+    /* background-size: cover; */
     padding: 22px 25px;
+    min-height: 200px;
+
   }
   .timer-card {
     border-radius: 9px;
@@ -28215,7 +28241,7 @@ border-radius: none !important;
     display: flex;
   }
   .card-product .card-body {
-    padding: 2.5px;
+    padding: 10px 7.5px;
   }
   /* .nav-item {
     width: 100%;
@@ -29572,4 +29598,9 @@ flex-direction: column;
   color: var(--fc-white) !important;
   font-size: 12px;
   text-transform: capitalize;
+}
+.mob-count .timer-row{
+  position: absolute;
+  top: 0;
+  right: 15%;
 }

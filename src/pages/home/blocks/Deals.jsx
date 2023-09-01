@@ -7,7 +7,7 @@ function Deals({ componentDatas }) {
 
   return (
     <>
-      <div className="container-fluid cc-margin">
+      <div className="container-lg-fluid cc-margin">
         <img
         className="deals-banner"
           src={image}

@@ -4,7 +4,7 @@ function Timer() {
       <div className="col-xl-11 col-sm-12">
         <div className="flash-sale-box">
           <div className="row align-items-center">
-            <div className="col-xl-6 col-sm-4 col-5">
+            <div className="col-xl-6 col-sm-4 col-4">
               <h2>
                 flash sale &nbsp;&nbsp;
                 <span>
@@ -42,7 +42,7 @@ function Timer() {
               <div className="row">
                 <div className="col-md-4 col-4 text-center">
                   <div className="timer-box">08</div>
-                  <span>Hours</span>
+                  <span className="pl-3">Hours</span>
                 </div>
                 <div className="col-md-4 col-4 text-center">
                   <div className="timer-box">08</div>

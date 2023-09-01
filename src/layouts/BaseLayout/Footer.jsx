@@ -389,37 +389,39 @@ function Footer() {
       </div>
       <div className="container px-4">
         <div className="row footer-row align-items-center">
+        <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6>
           <div className="col-md-3">
-            <div className="row  social-mdedia-icons">
-              <div className="col-md-3 col-2">
+            <div className="row  social-mdedia-icons g-10">
+              <div className="col-md-3 col-1">
                 <img src={FacebookIcon} alt="facebook" />
               </div>
-              <div className="col-md-3 col-2">
+              <div className="col-md-3 col-1">
                 <img src={LinkedinIcon} alt="LinkedIn" />
               </div>
-              <div className="col-md-3 col-2">
+              <div className="col-md-3 col-1">
                 <img src={InstagramIcon} alt="Instagram" />
               </div>
-              <div className="col-md-3 col-2">
+              <div className="col-md-3 col-1">
                 <img src={WhatsappIcon} alt="Whatsapp" />
               </div>
             </div>
           </div>
-          <div className="col-md-5 py-5">
-            <div className="row">
+          <h6 className="mt-5 mb-5 d-block d-sm-none">Payment methods</h6>
+          <div className="col-md-4 py-lg-5 ">
+            <div className="row mob-payment-icons align-items-center">
               <div className="col-md-3 col-3">
                 {" "}
                 <img src={TamaraIcon} alt="Tamara" />
               </div>
-              <div className="col-md-3 col-3">
+              <div className="col-md-3 col-2 text-center">
                 {" "}
                 <img src={MastercardIcon} alt="Mastercard" />
               </div>
-              <div className="col-md-3 col-3">
+              <div className="col-md-3 col-2">
                 {" "}
                 <img src={TabbyIcon} alt="Tabby" />
               </div>
-              <div className="col-md-3 col-3">
+              <div className="col-md-3 col-2">
                 {" "}
                 <img src={VisaIcon} alt="Visa" />
               </div>
@@ -702,7 +704,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-top py-4 footer-bottom">
-          <div className="d-block d-sm-none">
+          <div className="d-block d-sm-none footer-expand-section">
             <div className="row text-end">
               <div className="col-md-2">
                 <a className="footer-expand" onClick={toggleCollapse}>

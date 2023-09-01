@@ -71,7 +71,7 @@ function BannerFlashSale({ componentDatas }) {
           style={backgroundImage}
         >
           <div className="container d-block d-sm-none mob-count ">
-            <div className="row align-items-center d-end px-5">
+            <div className="row align-items-center d-end px-5 timer-row">
               <div className="col-3 px-0 text-end">
                 <span className="mob-time-break">ends in</span>
               </div>
