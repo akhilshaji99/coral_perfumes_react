@@ -1,6 +1,6 @@
-import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { useEffect, useState } from "react";
+import CountdownTimer from "react-component-countdown-timer";
 
 function BannerFlashSale({ componentDatas }) {
   const [hours, setHours] = useState(0);
@@ -65,7 +65,27 @@ function BannerFlashSale({ componentDatas }) {
           className="banner-flashsale container-lg-fluid"
           style={backgroundImage}
         >
-          <div className="container my-5">
+          <div className="container d-block d-sm-none mob-count ">
+            <div className="row align-items-center d-end px-5">
+              <div className="col-3 px-0 text-end">
+                <span className="mob-time-break">ends in</span>
+              </div>
+              <div className="col-4">
+                <CountdownTimer
+                  className="digital-text"
+                  responsive={true}
+                  hideDay={true}
+                  size={25}
+                  count={5432}
+                  // onEnd={() => {
+                  //   setFlashSaleEnd(true);
+                  // }}
+                />
+              </div>
+              <div className="col-1"></div>
+            </div>
+          </div>
+          <div className="container my-5 d-none d-xl-block">
             <div className="row align-items-center d-end">
               <div className="col-md-1 col-4">
                 <div className="timer-card">

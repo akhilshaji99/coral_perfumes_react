@@ -20,7 +20,7 @@ function TopHeader() {
   if (marqueeText !== "") {
     return (
       <>
-        <div className="bg-dark py-2">
+        <div className="bg-dark py-2 d-none d-xl-block">
           <div className="container-fluid">
             <div className="row">
               <Marquee autoFill>

@@ -29548,3 +29548,28 @@ flex-direction: column;
 /* .navbar-nav li:first-child a {
   color: #80BA27 !important;
 } */
+.mob-count .digital-text {
+  color: var(--fc-white) !important;
+  text-align: center;
+  font-family: "DS-Digital Bold";
+  font-style: normal;
+  /* font-size: 35px !important; */
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  border-radius: 9px;
+  border: unset;
+  padding: 10px;
+  width: max-content;
+  background: transparent !important;
+}
+.mob-count .count {
+  background: transparent !important;
+  color: var(--fc-white) !important;
+  font-size: 35px !important;
+}
+.mob-count .mob-time-break{
+  color: var(--fc-white) !important;
+  font-size: 12px;
+  text-transform: capitalize;
+}
