@@ -45,7 +45,7 @@ function Brands({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 3,
+                items: 3.5,
                 partialVisibilityGutter: 20,
               },
               tablet: {

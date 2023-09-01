@@ -52,7 +52,7 @@ function FlashSale({ componentDatas }) {
             <div className="row d-end">
               <div className="col-md-8 col-12">
                 <div className="row align-items-center mb-4">
-                  <div className="col-md-6">
+                  <div className="col-md-6 col-6">
                     <h1 className=" flash-sale">
                       {" "}
                       <span>

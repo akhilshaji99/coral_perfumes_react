@@ -16,6 +16,8 @@ function MainBanner({ componentDatas }) {
           centerMode={false}
           className=""
           draggable
+          dotListClass=""
+          showDots
           focusOnSelect={false}
           infinite
           partialVisible={false}

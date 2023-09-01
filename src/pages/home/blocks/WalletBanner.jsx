@@ -10,7 +10,7 @@ function WalletBanner({ componentDatas }) {
       <div className="container-lg-fluid cc-margin ">
         <div className="card wallet-banner mb-5" style={dynamicBackground}>
           <div className="row align-items-center p-3">
-            <div className="col-md-3">
+            <div className="col-md-3 d-none d-xl-block">
               <h1>{componentDatas?.title}</h1>
               <h5>{componentDatas?.sub_title}</h5>
               <svg
@@ -27,6 +27,10 @@ function WalletBanner({ componentDatas }) {
                   strokeLinecap="round"
                 />
               </svg>
+            </div>
+            <div className="col-md-3 d-block d-sm-none">
+              <h1>{componentDatas?.title} {componentDatas?.sub_title}</h1>
+              <h5></h5>
             </div>
             <div className="col-md-9">
               <Carousel
@@ -62,7 +66,7 @@ function WalletBanner({ componentDatas }) {
                       max: 464,
                       min: 0,
                     },
-                    items: 4,
+                    items: 3.5,
                     partialVisibilityGutter: 20,
                   },
                   tablet: {
