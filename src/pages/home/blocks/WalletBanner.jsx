@@ -46,6 +46,7 @@ function WalletBanner({ componentDatas }) {
                 focusOnSelect={false}
                 infinite
                 itemClass=""
+                partialVisible
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -66,8 +67,8 @@ function WalletBanner({ componentDatas }) {
                       max: 464,
                       min: 0,
                     },
-                    items: 3.5,
-                    partialVisibilityGutter: 20,
+                    items: 3,
+                    partialVisibilityGutter: 15,
                   },
                   tablet: {
                     breakpoint: {

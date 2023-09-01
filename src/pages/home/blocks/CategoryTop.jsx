@@ -25,6 +25,7 @@ function CategoryTop({ componentDatas }) {
             focusOnSelect={false}
             infinite
             itemClass=""
+            partialVisible
             keyBoardControl
             minimumTouchDrag={80}
             pauseOnHover
@@ -45,7 +46,7 @@ function CategoryTop({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 3.5,
+                items: 3,
                 partialVisibilityGutter: 20,
               },
               tablet: {
@@ -53,8 +54,8 @@ function CategoryTop({ componentDatas }) {
                   max: 1024,
                   min: 464,
                 },
-                items: 4,
-                partialVisibilityGutter: 30,
+                items: 3,
+                partialVisibilityGutter: 10,
               },
             }}
             rewind={false}

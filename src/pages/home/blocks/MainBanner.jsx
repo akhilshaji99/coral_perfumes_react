@@ -53,7 +53,7 @@ function MainBanner({ componentDatas }) {
           }}
           rewind={false}
           rewindWithAnimation={false}
-          rtl={false}
+          rtl={true}
           shouldResetAutoplay
           sliderClass=""
           slidesToSlide={1}

@@ -26,6 +26,7 @@ function ShopMore({ componentDatas }) {
             focusOnSelect={false}
             infinite
             itemClass=""
+            partialVisbile
             keyBoardControl
             minimumTouchDrag={80}
             pauseOnHover
@@ -46,8 +47,8 @@ function ShopMore({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 3.5,
-                partialVisibilityGutter: 20,
+                items: 3,
+                partialVisibilityGutter: 15,
               },
               tablet: {
                 breakpoint: {

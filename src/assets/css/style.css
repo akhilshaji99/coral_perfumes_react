@@ -21516,7 +21516,7 @@ fieldset:disabled .btn {
     padding: 18px 20px;
   }
   .mob-c-view .offcanvas.offcanvas-start {
-    top: 19%;
+    top: 21%;
   }
   .mob-c-view .offcanvas-backdrop.show {
     opacity: 0 !important;
@@ -28020,6 +28020,7 @@ border-radius: none !important;
     box-shadow: none;
     padding: 15px 12px;
   }
+ 
   .wallet-banner h1 {
     color: #000;
     font-family: var(--fc-font-regular);
