@@ -7,12 +7,18 @@ import { Rating } from "react-simple-star-rating";
 function BrandRating({ currentVariant }) {
   console.log("currentVariant", currentVariant);
   const [brandReviews, setBrandReviews] = useState([]);
+  const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     if (currentVariant?.brand_id) {
       getBrandRatings();
     }
   }, [currentVariant?.brand_id]);
+  useEffect(() => {
+    if (refetch) {
+      getBrandRatings();
+    }
+  }, [refetch]);
   const getBrandRatings = async () => {
     try {
       const response = await request.get(
@@ -33,7 +39,7 @@ function BrandRating({ currentVariant }) {
       aria-labelledby="reviews-tab"
       tabIndex={0}
     >
-      <RatingModal brand_id={currentVariant?.brand_id} />
+      <RatingModal setRefetch={setRefetch} brand_id={currentVariant?.brand_id} />
       <div className="row col-md-12">
         <div className="row col-md-6">
           {brandReviews?.map((component, index) => {
@@ -81,6 +87,7 @@ function BrandRating({ currentVariant }) {
               class="btn btn-outline-dark"
               onClick={(e) => {
                 e.preventDefault();
+                setRefetch(false)
                 $("#ratingModal").toggle();
                 $("#ratingModal").toggleClass("modal fade modal");
               }}

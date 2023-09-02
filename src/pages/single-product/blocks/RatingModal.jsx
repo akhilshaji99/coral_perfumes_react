@@ -5,7 +5,7 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage
  from "../../common/AlerMessage";
-function RatingModal({ brand_id }) {
+function RatingModal({ setRefetch,brand_id }) {
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -62,6 +62,7 @@ function RatingModal({ brand_id }) {
         ));
       }
       handleModalClose();
+      setRefetch(true)
     } catch (error) {
       console.log("error", error);
     }

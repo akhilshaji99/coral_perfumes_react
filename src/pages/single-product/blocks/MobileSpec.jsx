@@ -1,4 +1,6 @@
-function MobileSpec({ productDatas }) {
+import BrandRating from "./BrandRating";
+import ProductRating from "./ProductRating";
+function MobileSpec({currentVariant, productDatas }) {
   return (
     <div className="mob-specs">
       <div className="accordion d-block d-sm-none" id="accordionExample">
@@ -155,7 +157,8 @@ function MobileSpec({ productDatas }) {
             aria-labelledby="headingFive"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">Product Ratings</div>
+                          <ProductRating currentVariant={currentVariant}/>
+
           </div>
         </div>
         <div className="accordion-item">
@@ -177,7 +180,8 @@ function MobileSpec({ productDatas }) {
             aria-labelledby="headingSix"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">Brand Review</div>
+                          <BrandRating currentVariant={currentVariant}/>
+
           </div>
         </div>
       </div>
