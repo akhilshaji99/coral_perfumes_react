@@ -350,8 +350,8 @@ function Index() {
             </div>
           </div>
         </div>
-        <DesktopSpec productDatas={productDatas} />
-        <MobileSpec productDatas={productDatas} />
+        <DesktopSpec currentVariant={currentVariant} productDatas={productDatas} />
+        <MobileSpec currentVariant={currentVariant}  productDatas={productDatas} />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />
         ) : null}

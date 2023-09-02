@@ -1,6 +1,8 @@
 // import Sample from "../../../assets/img/sample-banner.png";
 import deviceImgeRender from "../../../utils/deviceImageRender";
-function DesktopSpec({ productDatas }) {
+import BrandRating from "./BrandRating";
+import ProductRating from "./ProductRating";
+function DesktopSpec({currentVariant, productDatas }) {
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
@@ -172,27 +174,10 @@ function DesktopSpec({ productDatas }) {
             {/* tab content */}
             <div className="tab-content" id="myTabContent">
               {/* tab pane */}
-              <div
-                className="tab-pane fade show active"
-                id="rating-tab-pane"
-                role="tabpanel"
-                aria-labelledby="rating-tab"
-                tabIndex={0}
-              >
-                <div className="my-8">
-                  <div className="mb-5">Ratings</div>
-                </div>
-              </div>
+              <ProductRating currentVariant={currentVariant}/>
               {/* tab pane */}
-              <div
-                className="tab-pane fade"
-                id="reviews-tab-pane"
-                role="tabpanel"
-                aria-labelledby="reviews-tab"
-                tabIndex={0}
-              >
-                <div className="my-8">Reviews</div>
-              </div>
+              <BrandRating currentVariant={currentVariant}/>
+             
             </div>
           </div>
           <div className="col-md-4">
