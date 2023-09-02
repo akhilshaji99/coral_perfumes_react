@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
 
 function WalletBanner({ componentDatas }) {
   const dynamicBackground = {
@@ -29,7 +30,9 @@ function WalletBanner({ componentDatas }) {
               </svg>
             </div>
             <div className="col-md-3 d-block d-sm-none">
-              <h1>{componentDatas?.title} {componentDatas?.sub_title}</h1>
+              <h1>
+                {componentDatas?.title} {componentDatas?.sub_title}
+              </h1>
               <h5></h5>
             </div>
             <div className="col-md-9 px-0">
@@ -94,13 +97,15 @@ function WalletBanner({ componentDatas }) {
                       <>
                         {walletData?.name &&
                         walletData?.name.split(" ").length === 3 ? (
-                          <div className="wallet-card" key={index}>
-                            <div className="">
-                              <h3>{walletData?.name.split(" ")[0]}</h3>
-                              <h2>{walletData?.name.split(" ")[1]}</h2>
-                              <h3>{walletData?.name.split(" ")[2]}</h3>
+                          <Link to={walletData?.link}>
+                            <div className="wallet-card" key={index}>
+                              <div className="">
+                                <h3>{walletData?.name.split(" ")[0]}</h3>
+                                <h2>{walletData?.name.split(" ")[1]}</h2>
+                                <h3>{walletData?.name.split(" ")[2]}</h3>
+                              </div>
                             </div>
-                          </div>
+                          </Link>
                         ) : null}
                       </>
                     );

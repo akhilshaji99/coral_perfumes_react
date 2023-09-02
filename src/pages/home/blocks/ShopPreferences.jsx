@@ -70,7 +70,7 @@ function ShopPreferences({ componentDatas }) {
             {preferences.map((preference, index) => {
               return (
                 <div key={index}>
-                  <NavLink to={`/product?category=${preference?.link}`}>
+                  <NavLink to={preference?.link}>
                     <div className="thumbnails">
                       <img
                         src={deviceImageRender(
@@ -81,7 +81,9 @@ function ShopPreferences({ componentDatas }) {
                       />
                       <div className="black"></div>
                       <div className="title">
-                        <h3 className="text-white shop-p-head">{preference.title}</h3>
+                        <h3 className="text-white shop-p-head">
+                          {preference.title}
+                        </h3>
                       </div>
                     </div>
                   </NavLink>

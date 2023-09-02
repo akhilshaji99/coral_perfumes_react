@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { Link } from "react-router-dom";
 
 function Brands({ componentDatas }) {
   const brands = componentDatas?.datas;
@@ -70,14 +71,16 @@ function Brands({ componentDatas }) {
             {brands.map((brand, index) => {
               return (
                 <div className="brand-img" key={index}>
-                  <img
-                    src={deviceImageRender(
-                      brand.desktop_image,
-                      brand.mobile_image
-                    )}
-                    className="img-fluid"
-                    alt={brand.image_alt}
-                  />
+                  <Link to={brand?.link}>
+                    <img
+                      src={deviceImageRender(
+                        brand.desktop_image,
+                        brand.mobile_image
+                      )}
+                      className="img-fluid"
+                      alt={brand.image_alt}
+                    />
+                  </Link>
                 </div>
               );
             })}

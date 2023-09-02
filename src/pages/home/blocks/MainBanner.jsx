@@ -2,6 +2,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import { Link } from "react-router-dom";
 function MainBanner({ componentDatas }) {
   const banners = componentDatas?.datas;
 
@@ -129,18 +130,20 @@ function MainBanner({ componentDatas }) {
         >
           {banners.map((banner, index) => {
             return (
-              <img
-                src={deviceImageRender(
-                  banner?.desktop_image,
-                  banner?.mobile_image
-                )}
-                alt={banner.image_alt}
-                style={{
-                  display: "block",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
+              <Link to={banner?.link}>
+                <img
+                  src={deviceImageRender(
+                    banner?.desktop_image,
+                    banner?.mobile_image
+                  )}
+                  alt={banner.image_alt}
+                  style={{
+                    display: "block",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              </Link>
             );
           })}
         </Carousel>

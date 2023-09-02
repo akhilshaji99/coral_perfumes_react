@@ -71,7 +71,7 @@ function ShopMore({ componentDatas }) {
             {shopMoreItems.map((item, index) => {
               return (
                 <div className="" key={index}>
-                  <NavLink to={`/product?category=${item?.link}`}>
+                  <NavLink to={item?.link}>
                     <div className="thumbnails">
                       <img
                         src={deviceImageRender(

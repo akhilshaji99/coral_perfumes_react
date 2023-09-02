@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import deviceImageRender from "../../../utils/deviceImageRender";
 
 function AdsBanner({ componentDatas }) {
@@ -13,7 +14,9 @@ function AdsBanner({ componentDatas }) {
   return (
     <>
       <div className="conatiner-lg-fluid">
-        <div className="ads-banner" style={backgroundImage} />
+        <Link to={componentDatas?.datas?.[0].link}>
+          <div className="ads-banner" style={backgroundImage} />
+        </Link>
       </div>
     </>
   );

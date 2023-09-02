@@ -70,7 +70,7 @@ function CategoryTop({ componentDatas }) {
             {componentDatas.datas?.map((category, index) => {
               return (
                 <div className="category-top-img" key={index}>
-                  <NavLink to={`/product?category=${category?.link}`}>
+                  <NavLink to={category?.link}>
                     <img
                       src={deviceImageRender(
                         category?.desktop_image,

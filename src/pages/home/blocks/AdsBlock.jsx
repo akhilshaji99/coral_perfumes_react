@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import deviceImageRender from "../../../utils/deviceImageRender";
 function AdsBlock({ componentDatas }) {
   return (
@@ -7,14 +8,16 @@ function AdsBlock({ componentDatas }) {
           {componentDatas?.datas?.map((adBlock, index) => {
             return (
               <div className="col-md-6 col-12" key={index}>
-                <img
-                  src={deviceImageRender(
-                    adBlock?.desktop_image,
-                    adBlock?.mobile_image
-                  )}
-                  className="img-fluid"
-                  alt={adBlock?.image_alt}
-                />
+                <Link to={adBlock?.link}>
+                  <img
+                    src={deviceImageRender(
+                      adBlock?.desktop_image,
+                      adBlock?.mobile_image
+                    )}
+                    className="img-fluid"
+                    alt={adBlock?.image_alt}
+                  />
+                </Link>
               </div>
             );
           })}
