@@ -27471,7 +27471,7 @@ object-fit: cover;
   cursor: pointer;
 }
 .carousel-product-margin {
-  margin: 0 10px;
+  margin: 0 7.5px;
 }
 .product-author {
   color: #000;
@@ -27944,6 +27944,13 @@ border-radius: none !important;
     flex-direction: row !important;
     justify-content: space-between;
   }
+  .mob-sort-icon{
+    padding-left: 5px;
+    visibility: visible !important;
+  }
+  .regular-sort-icon{
+    visibility: hidden !important;
+  }
  
   .mob-payment-icons img{
     display: flex;
@@ -28200,10 +28207,11 @@ border-radius: none !important;
     border-radius: 9px;
     border: 1px solid #000;
     background: rgba(255, 255, 255, 0.23);
-    padding: 10px;
+    padding: 5px;
+    transform: scale(0.85);
   }
   .timer-text {
-    font-size: 12px;
+    font-size: 9px;
   }
   .flash-sale {
     font-size: 14px;
@@ -29545,6 +29553,9 @@ body {
     margin-left: 10fpx;
     transform: scale(0.85);
   }
+  .flash-sale-gif{
+    transform: scale(0.75);
+  }
 }
 
 .order_status_disable{
@@ -29603,4 +29614,11 @@ flex-direction: column;
   position: absolute;
   top: 0;
   right: 15%;
+}
+.mob-sort-icon{
+  padding-left: 5px;
+  visibility: hidden;
+}
+.regular-sort-icon{
+  visibility: visible;
 }

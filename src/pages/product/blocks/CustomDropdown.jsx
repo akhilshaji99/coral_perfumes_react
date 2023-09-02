@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import sortIcon from "../../../assets/img/icons/filter-mob-new.svg";
 
-const CustomDropdown = ({applyRelevanceFilter}) => {
+const CustomDropdown = ({ applyRelevanceFilter }) => {
   // Create a state variable to manage the visibility of the dropdown content
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -25,6 +26,7 @@ const CustomDropdown = ({applyRelevanceFilter}) => {
       >
         Sort By Relevance{" "}
         <svg
+          className="regular-sort-icon"
           width={24}
           height={24}
           viewBox="0 0 24 24"
@@ -40,6 +42,7 @@ const CustomDropdown = ({applyRelevanceFilter}) => {
             strokeLinejoin="round"
           />
         </svg>
+        <img className="mob-sort-icon" src={sortIcon} alt="Coral Perfumes" />
       </a>
       {/* Render the dropdown content based on the state */}
       {isDropdownOpen && (

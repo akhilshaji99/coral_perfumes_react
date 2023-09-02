@@ -130,7 +130,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
                     )}
                   </div>
                   <div className="col-6 d-lg-none">
-                    <div className="ms-2 ">
+                    <div>
                       <a
                         className="btn btn-filter w-100"
                         data-bs-toggle="offcanvas"

@@ -46,7 +46,6 @@ function WalletBanner({ componentDatas }) {
                 focusOnSelect={false}
                 infinite
                 itemClass=""
-                partialVisible
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover

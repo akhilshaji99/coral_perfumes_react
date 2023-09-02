@@ -49,47 +49,96 @@ function FlashSale({ componentDatas }) {
             className="card flash-sale-container mb-5"
             style={dynamicBackground}
           >
-            <div className="row d-end">
-              <div className="col-md-8 col-12">
-                <div className="row align-items-center mb-4">
-                  <div className="col-md-6 col-6">
-                    <h1 className=" flash-sale">
-                      {" "}
-                      <span>
-                        <img
-                          src={flashSale}
-                          width={25}
-                          height={25}
-                          alt="Coral Perfumes"
-                        />
-                      </span>
-                      {componentDatas.title}{" "}
-                      <span>
-                        <img
-                          src={flashSale}
-                          width={25}
-                          height={25}
-                          alt="Coral Perfumes"
-                        />
-                      </span>
-                    </h1>
+            <div className="d-block d-sm-none">
+              <div className="row align-items-center mb-5 ">
+                <div className="col-7">
+                  <h1 className=" flash-sale">
+                    {" "}
+                    <span>
+                      <img
+                        src={flashSale}
+                        width={25}
+                        height={25}
+                        alt="Coral Perfumes"
+                        className="flash-sale-gif"
+                      />
+                    </span>
+                    {componentDatas.title}{" "}
+                    <span>
+                      <img
+                        src={flashSale}
+                        width={25}
+                        height={25}
+                        alt="Coral Perfumes"
+                        className="flash-sale-gif"
+                      />
+                    </span>
+                  </h1>
+                </div>
+                <div className="col-5 px-0">
+                  <div className="row align-items-center">
+                    <div className="col-5 text-end">
+                      <span className="timer-text">Ends In</span>{" "}
+                    </div>
+                    <div className="col-6 px-0">
+                      <CountdownTimer
+                        className="digital-text"
+                        responsive={true}
+                        hideDay={true}
+                        size={25}
+                        count={counterValue}
+                        onEnd={() => {
+                          setFlashSaleEnd(true);
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="col-md-6 col-6">
-                    <div className="row align-items-center d-end">
-                      <div className="col-md-5  pr-0 text-end">
-                        <span className="timer-text">Ends In</span>{" "}
-                      </div>
-                      <div className="col-md-5">
-                        <CountdownTimer
-                          className="digital-text"
-                          responsive={true}
-                          hideDay={true}
-                          size={25}
-                          count={counterValue}
-                          onEnd={() => {
-                            setFlashSaleEnd(true);
-                          }}
-                        />
+                </div>
+              </div>
+            </div>
+            <div className="d-none d-xl-block">
+              <div className="row d-end">
+                <div className="col-md-8 col-12">
+                  <div className="row align-items-center mb-4">
+                    <div className="col-md-6 col-6">
+                      <h1 className=" flash-sale">
+                        {" "}
+                        <span>
+                          <img
+                            src={flashSale}
+                            width={25}
+                            height={25}
+                            alt="Coral Perfumes"
+                          />
+                        </span>
+                        {componentDatas.title}{" "}
+                        <span>
+                          <img
+                            src={flashSale}
+                            width={25}
+                            height={25}
+                            alt="Coral Perfumes"
+                          />
+                        </span>
+                      </h1>
+                    </div>
+                    <div className="col-md-6 col-6">
+                      <div className="row align-items-center d-end">
+                        <div className="col-md-5  pr-0 text-end">
+                          <span className="timer-text">Ends In</span>{" "}
+                        </div>
+                        <div className="col-md-5">
+                          <CountdownTimer
+                            className="digital-text"
+                            responsive={true}
+                            hideDay={true}
+                            size={25}
+                            count={counterValue}
+                            onEnd={() => {
+                              setFlashSaleEnd(true);
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
