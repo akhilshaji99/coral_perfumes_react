@@ -47,7 +47,6 @@ function Index() {
           </div>
           <div className="row gx-10">
             <div className="col-lg-3 col-md-4">
-            
               <FilterSidebar
                 checkCategoryFilter={checkCategoryFilter}
                 minPrice={minPrice}

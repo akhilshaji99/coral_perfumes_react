@@ -9,8 +9,11 @@ import CustomDropdown from "./CustomDropdown";
 import ProductDetails from "../../common/ProductDetails";
 import FilterMob from "../../../assets/img/icons/filter-mob.svg";
 import getUserToken from "../../../utils/userToken";
+import { useParams } from "react-router-dom";
 
 function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
+  const urlParams = useParams([]);
+
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
@@ -68,27 +71,31 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
 
   const getProductList = async (page_number) => {
     try {
-      const queryParameters = new URLSearchParams(window.location.search);
-      const category = queryParameters.get("category");
-      if (category) {
-        const response = await request.post("productsbycategory/category/" + category, {
-          page: page_number,
-          filterArray,
-          priceRange: priceRangeFilter,
-          sortRelevance: relevanceFilter,
-          token: getUserToken(),
-        });
+      if (urlParams?.link_type && urlParams?.link_value) {
+        const response = await request.post(
+          "productsbycategory/" +
+            urlParams?.link_type +
+            "/" +
+            urlParams?.link_value,
+          {
+            page: page_number,
+            filterArray,
+            priceRange: priceRangeFilter,
+            sortRelevance: relevanceFilter,
+            token: getUserToken(),
+          }
+        );
         if (response?.data) {
           setCount(response?.data?.total_count);
           passingDataToParent(
             response?.data?.minimum_price,
             response?.data?.maximum_price
           );
-          if(response?.data?.data){
-          setProductList((prev) => [
-            ...new Set([...prev, ...response?.data?.data]),
-          ]);
-        }
+          if (response?.data?.data) {
+            setProductList((prev) => [
+              ...new Set([...prev, ...response?.data?.data]),
+            ]);
+          }
         }
       }
     } catch (error) {
@@ -102,7 +109,9 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
         <div className="mt-4">
           <div className="container-fluid px-0 mb-5">
             <div className="row sortHeader">
-              <div className="col-md-5"><h5>Brands</h5></div>
+              <div className="col-md-5">
+                <h5>Brands</h5>
+              </div>
               <div className="col-md-7 text-end">
                 <div className="row align-items-center d-space-around">
                   <div className="col-md-1 d-none d-sm-block sort-icon">

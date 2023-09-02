@@ -1,6 +1,7 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { useEffect, useState } from "react";
 import CountdownTimer from "react-component-countdown-timer";
+import { Link } from "react-router-dom";
 
 function BannerFlashSale({ componentDatas }) {
   const [hours, setHours] = useState(0);
@@ -66,58 +67,60 @@ function BannerFlashSale({ componentDatas }) {
   return (
     <>
       {!hideBanner ? (
-        <section
-          className="banner-flashsale container-lg-fluid"
-          style={backgroundImage}
-        >
-          <div className="container d-block d-sm-none mob-count ">
-            <div className="row align-items-center d-end px-5 timer-row">
-              <div className="col-3 px-0 text-end">
-                <span className="mob-time-break">ends in</span>
-              </div>
-              <div className="col-4">
-                <CountdownTimer
-                  className="digital-text"
-                  responsive={true}
-                  hideDay={true}
-                  size={25}
-                  count={counterValue}
-                  // onEnd={() => {
-                  //   setFlashSaleEnd(true);
-                  // }}
-                />
-              </div>
-              <div className="col-1"></div>
-            </div>
-          </div>
-          <div className="container my-5 d-none d-xl-block">
-            <div className="row align-items-center d-end">
-              <div className="col-md-1 col-4">
-                <div className="timer-card">
-                  <h1>{hours}</h1>
+        <Link to={componentDatas?.datas?.[0]?.link}>
+          <section
+            className="banner-flashsale container-lg-fluid"
+            style={backgroundImage}
+          >
+            <div className="container d-block d-sm-none mob-count ">
+              <div className="row align-items-center d-end px-5 timer-row">
+                <div className="col-3 px-0 text-end">
+                  <span className="mob-time-break">ends in</span>
                 </div>
-              </div>
-              <div className="col-md-1 cc-col-1 d-none d-sm-block">
-                {" "}
-                <span className="time-seperator blink-hard">:</span>
-              </div>
-              <div className="col-md-1 col-4 ">
-                <div className="timer-card">
-                  <h1>{minutes}</h1>
+                <div className="col-4">
+                  <CountdownTimer
+                    className="digital-text"
+                    responsive={true}
+                    hideDay={true}
+                    size={25}
+                    count={counterValue}
+                    // onEnd={() => {
+                    //   setFlashSaleEnd(true);
+                    // }}
+                  />
                 </div>
-              </div>
-              <div className="col-md-1 cc-col-1 d-none d-sm-block">
-                {" "}
-                <span className="time-seperator blink-hard">:</span>
-              </div>
-              <div className="col-md-1 col-4">
-                <div className="timer-card">
-                  <h1>{seconds}</h1>
-                </div>
+                <div className="col-1"></div>
               </div>
             </div>
-          </div>
-        </section>
+            <div className="container my-5 d-none d-xl-block">
+              <div className="row align-items-center d-end">
+                <div className="col-md-1 col-4">
+                  <div className="timer-card">
+                    <h1>{hours}</h1>
+                  </div>
+                </div>
+                <div className="col-md-1 cc-col-1 d-none d-sm-block">
+                  {" "}
+                  <span className="time-seperator blink-hard">:</span>
+                </div>
+                <div className="col-md-1 col-4 ">
+                  <div className="timer-card">
+                    <h1>{minutes}</h1>
+                  </div>
+                </div>
+                <div className="col-md-1 cc-col-1 d-none d-sm-block">
+                  {" "}
+                  <span className="time-seperator blink-hard">:</span>
+                </div>
+                <div className="col-md-1 col-4">
+                  <div className="timer-card">
+                    <h1>{seconds}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Link>
       ) : null}
     </>
   );

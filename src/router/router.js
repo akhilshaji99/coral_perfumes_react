@@ -33,7 +33,7 @@ const Router = () => {
           path: "login/*",
           element: userDatas ? <Navigate to="/" /> : <LoginPage />,
         },
-        { path: "product/*", element: <ProductPage /> },
+        { path: "products/:link_type/:link_value", element: <ProductPage /> },
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
         {
@@ -90,10 +90,10 @@ const Router = () => {
           path: "cod/success",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
         },
-        {
-          path: "*",
-          element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
-        },
+        // {
+        //   path: "*",
+        //   element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
+        // },
         {
           path: "faq",
           element: userDatas ? <Faq /> : <Navigate to="/" />,
