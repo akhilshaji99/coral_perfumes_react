@@ -25,6 +25,7 @@ function Brands({ componentDatas }) {
             focusOnSelect={false}
             infinite
             itemClass=""
+            partialVisbile
             keyBoardControl
             minimumTouchDrag={80}
             pauseOnHover
@@ -45,7 +46,7 @@ function Brands({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 3.5,
+                items: 3,
                 partialVisibilityGutter: 20,
               },
               tablet: {
