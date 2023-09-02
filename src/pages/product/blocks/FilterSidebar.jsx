@@ -2,6 +2,7 @@ import request from "../../../utils/request";
 import { useEffect, useState } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import { useParams } from "react-router-dom";
 
 function FilterSidebar({
   checkCategoryFilter,
@@ -9,6 +10,8 @@ function FilterSidebar({
   maxPrice,
   passingDateRangeToParent,
 }) {
+  const urlParams = useParams([]);
+
   const [productFilters, setProductFilters] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState(null);
   const [categorySearchKey, setCategorySearchKey] = useState(null);
@@ -20,12 +23,13 @@ function FilterSidebar({
   }, [window.location.href, categorySearchValue]);
 
   const getProductFilters = async () => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const category = queryParameters.get("category");
     try {
-      if (category) {
+      if (urlParams?.link_type && urlParams?.link_value) {
         const response = await request.get(
-          "filterable-attributes/" + category,
+          "filterable-attributes/" +
+            urlParams?.link_type +
+            "/" +
+            urlParams?.link_value,
           {
             categorySearchValue,
             categorySearchKey,
