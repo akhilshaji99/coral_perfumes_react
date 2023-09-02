@@ -21516,7 +21516,7 @@ fieldset:disabled .btn {
     padding: 18px 20px;
   }
   .mob-c-view .offcanvas.offcanvas-start {
-    top: 15.5%;
+    top: 17.5%;
   }
   .mob-c-view .offcanvas-backdrop.show {
     opacity: 0 !important;
@@ -26844,7 +26844,7 @@ object-fit: cover;
     line-height: normal;
     border-radius: 3px;
     border: 0.7px solid #000;
-    padding: 5px;
+    padding: 2px;
   }
   .sortHeader .sort-dropdown svg {
     transform: scale(0.7);
@@ -27471,7 +27471,7 @@ object-fit: cover;
   cursor: pointer;
 }
 .carousel-product-margin {
-  margin: 0 7.5px;
+  margin: 10px;
 }
 .product-author {
   color: #000;
@@ -27942,7 +27942,18 @@ border-radius: none !important;
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flex-column {
     flex-direction: row !important;
-    justify-content: space-between;
+    justify-content: unset
+    ;
+  }
+  .incriment-button .d-end{
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+  .payment-tabby {
+    color: #000;
+    font-size: 12px;
+    text-transform: capitalize;
+    font-family: var(--fc-font-light);
   }
   .mob-sort-icon{
     padding-left: 5px;
@@ -29556,6 +29567,9 @@ body {
   .flash-sale-gif{
     transform: scale(0.75);
   }
+  .mob-menu-container{
+    margin-top: 55px;
+  }
 }
 
 .order_status_disable{
@@ -29621,4 +29635,11 @@ flex-direction: column;
 }
 .regular-sort-icon{
   visibility: visible;
+}
+body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }

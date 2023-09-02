@@ -196,7 +196,7 @@ function Index() {
                   </button>
                 </div>
                 {/*  */}
-                <div className="col-xl-5 col-12">
+                <div className="col-xl-5 col-12 incriment-button">
                   <div className="input-group input-spinner  d-end">
                     <input
                       type="button"

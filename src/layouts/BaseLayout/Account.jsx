@@ -50,10 +50,9 @@ function Account({ changeMobileMenuStatus }) {
   const handleMouseLeave = () => {
     setOpenAccountMenus(false);
   };
-
   return (
     <>
-      <div className="py-2">
+      <div  className="py-3 mt-5">
         <div className="container-fluid">
           <div className="row align-items-center d-lg-none">
             <div

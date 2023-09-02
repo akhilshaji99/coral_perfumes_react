@@ -49,7 +49,7 @@ function FlashSale({ componentDatas }) {
             className="card flash-sale-container mb-5"
             style={dynamicBackground}
           >
-            <div className="d-block d-sm-none">
+            <div className="d-none">
               <div className="row align-items-center mb-5 ">
                 <div className="col-7">
                   <h1 className=" flash-sale">
