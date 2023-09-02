@@ -57,7 +57,7 @@ function productData({ productDatas, currentVariant }) {
           <div className="col-xl-2 col-sm-2 col-2">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-xl-9 col-sm-10 col-9 text-end">
+          <div className="col-xl-10 col-sm-10 col-9 text-end">
             {productDatas?.tabby_text}
           </div>
         </div>
