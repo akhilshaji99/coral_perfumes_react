@@ -71,22 +71,24 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
       const queryParameters = new URLSearchParams(window.location.search);
       const category = queryParameters.get("category");
       if (category) {
-        const response = await request.post("productsbycategory/" + category, {
+        const response = await request.post("productsbycategory/category/" + category, {
           page: page_number,
           filterArray,
           priceRange: priceRangeFilter,
           sortRelevance: relevanceFilter,
           token: getUserToken(),
         });
-        if (response.data) {
-          setCount(response.data.total_count);
+        if (response?.data) {
+          setCount(response?.data?.total_count);
           passingDataToParent(
-            response.data.minimum_price,
-            response.data.maximum_price
+            response?.data?.minimum_price,
+            response?.data?.maximum_price
           );
+          if(response?.data?.data){
           setProductList((prev) => [
-            ...new Set([...prev, ...response.data.data]),
+            ...new Set([...prev, ...response?.data?.data]),
           ]);
+        }
         }
       }
     } catch (error) {
