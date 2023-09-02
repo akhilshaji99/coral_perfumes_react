@@ -26205,7 +26205,7 @@ span.flatpickr-weekday {
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-more {
-    padding: 13px 15px;
+    padding: 13px 0px;
     box-shadow: none;
     border-radius: unset;
     border: none;
@@ -26330,7 +26330,7 @@ object-fit: cover;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-preferences {
-    padding: 13px 15px;
+    padding: 13px 0px;
     border-radius: unset;
     box-shadow: none;
     border: none;
@@ -26497,7 +26497,7 @@ object-fit: cover;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .flash-sale-container {
-    padding: 13px 12px;
+    padding: 13px 0px;
     box-shadow: none;
     border: none;
   }
@@ -26717,7 +26717,7 @@ object-fit: cover;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .brands-card {
-    padding: 13px 15px;
+    padding: 13px 0px;
     box-shadow: none;
     border-radius: unset;
     border: none;
@@ -26780,7 +26780,7 @@ object-fit: cover;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .category-top {
-    padding: 13px 15px;
+    padding: 13px 0px;
     box-shadow: none;
     border: none;
   }
@@ -28061,7 +28061,7 @@ border-radius: none !important;
     border-radius: unset;
     background: #a37073;
     box-shadow: none;
-    padding: 15px 12px;
+    padding: 15px 0px;
   }
  
   .wallet-banner h1 {

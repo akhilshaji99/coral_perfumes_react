@@ -32,7 +32,7 @@ function WalletBanner({ componentDatas }) {
               <h1>{componentDatas?.title} {componentDatas?.sub_title}</h1>
               <h5></h5>
             </div>
-            <div className="col-md-9">
+            <div className="col-md-9 px-0">
               <Carousel
                 additionalTransfrom={0}
                 autoPlay={true}
@@ -46,6 +46,7 @@ function WalletBanner({ componentDatas }) {
                 focusOnSelect={false}
                 infinite
                 itemClass=""
+                partialVisbile
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -59,7 +60,7 @@ function WalletBanner({ componentDatas }) {
                       min: 1024,
                     },
                     items: 4,
-                    partialVisibilityGutter: 40,
+                    partialVisibilityGutter: 0,
                   },
                   mobile: {
                     breakpoint: {
@@ -67,7 +68,7 @@ function WalletBanner({ componentDatas }) {
                       min: 0,
                     },
                     items: 3,
-                    partialVisibilityGutter: 15,
+                    partialVisibilityGutter: 20,
                   },
                   tablet: {
                     breakpoint: {
