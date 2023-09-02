@@ -50,16 +50,9 @@ function Account({ changeMobileMenuStatus }) {
   const handleMouseLeave = () => {
     setOpenAccountMenus(false);
   };
-  const [scroll, setScroll] = useState(false);
- useEffect(() => {
-   window.addEventListener("scroll", () => {
-     setScroll(window.scrollY > 50);
-   });
- }, []);
-
   return (
     <>
-      <div  className={scroll ? "mob-menu-container py-2" : "py-2"}>
+      <div  className="py-3 mt-5">
         <div className="container-fluid">
           <div className="row align-items-center d-lg-none">
             <div
