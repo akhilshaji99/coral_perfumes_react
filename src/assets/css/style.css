@@ -29636,7 +29636,18 @@ flex-direction: column;
 .regular-sort-icon{
   visibility: visible;
 }
-body {
+
+@media (max-width: 768px) {
+  /* CSS rules for mobile devices */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+.main-layout{
   overflow-x: hidden;
   width: 100%;
   -webkit-box-sizing: border-box;

@@ -38,7 +38,7 @@ const BaseLayout = () => {
         <CartDrawer />
         <OTPModal />
       </div>
-      <div className="fixed-top-margin">
+      <div className="fixed-top-margin main-layout">
         <Outlet />
       </div>
       <Footer />

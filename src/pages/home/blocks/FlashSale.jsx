@@ -49,9 +49,9 @@ function FlashSale({ componentDatas }) {
             className="card flash-sale-container mb-5"
             style={dynamicBackground}
           >
-            <div className="d-none">
+            <div className="d-block d-sm-none">
               <div className="row align-items-center mb-5 ">
-                <div className="col-7">
+                <div className="col-6">
                   <h1 className=" flash-sale">
                     {" "}
                     <span>
@@ -75,9 +75,9 @@ function FlashSale({ componentDatas }) {
                     </span>
                   </h1>
                 </div>
-                <div className="col-5 px-0">
+                <div className="col-5">
                   <div className="row align-items-center">
-                    <div className="col-5 text-end">
+                    <div className="col-5 text-end px-0">
                       <span className="timer-text">Ends In</span>{" "}
                     </div>
                     <div className="col-6 px-0">
@@ -94,6 +94,7 @@ function FlashSale({ componentDatas }) {
                     </div>
                   </div>
                 </div>
+                <div className="col"></div>
               </div>
             </div>
             <div className="d-none d-xl-block">
