@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
 import flashGif from "../../assets/img/flash/gif-menu.gif";
+import { Link } from "react-router-dom";
 
 function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
   const navigate = useNavigate();
@@ -22,9 +23,9 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
       console.log("error", error);
     }
   };
-  const handleClick = (slug) => {
+  const handleClick = (link) => {
     setMobileMenuStatus(false);
-    navigate("/product?category=" + slug);
+    navigate(link);
   };
 
   const handleSubmenuToggle = (index) => {
@@ -89,7 +90,11 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                         >
                           {index === 0 ? (
                             <span className="flash-icon">
-                              <img src={flashGif} className="flash-gif-menu" alt="Coral Perfumes" />
+                              <img
+                                src={flashGif}
+                                className="flash-gif-menu"
+                                alt="Coral Perfumes"
+                              />
                             </span>
                           ) : null}
                           {item.name}
@@ -127,7 +132,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                         key={index}
                                         className="dropdown-item"
                                         onClick={() => {
-                                          handleClick(item.slug);
+                                          handleClick(item.categ_link);
                                         }}
                                       >
                                         {item.name}{" "}
@@ -159,10 +164,10 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                               Array.isArray(item.shop_by_brand)
                                 ? item.shop_by_brand.map((item, index) => (
                                     <>
-                                      <a
+                                      <Link
                                         key={index}
                                         className="dropdown-item"
-                                        href="pages/shop-grid.html"
+                                        to={item?.brand_link}
                                       >
                                         {item.name}{" "}
                                         {/* <span className=" mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
@@ -183,7 +188,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                             />
                                           </svg>
                                         </span> */}
-                                      </a>
+                                      </Link>
                                     </>
                                   ))
                                 : null}
@@ -202,21 +207,23 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                             className="col-md-6 col-12  inline-thumb"
                                             key={index}
                                           >
-                                            <div className="thumbnails">
-                                              <img
-                                                src={deviceImageRender(
-                                                  item.trending_image
-                                                )}
-                                                alt=""
-                                                className="img-fluid"
-                                              />
-                                            </div>
-                                            <a
-                                              className="text-center  custom-a"
-                                              href="pages/shop-grid.html"
-                                            >
-                                              {item.trending_title}
-                                            </a>
+                                            <Link to={item?.trending_link}>
+                                              <div className="thumbnails">
+                                                <img
+                                                  src={deviceImageRender(
+                                                    item.trending_image
+                                                  )}
+                                                  alt=""
+                                                  className="img-fluid"
+                                                />
+                                              </div>
+                                              <a
+                                                className="text-center  custom-a"
+                                                href="#"
+                                              >
+                                                {item.trending_title}
+                                              </a>
+                                            </Link>
                                           </div>
                                         </>
                                       ))
@@ -233,11 +240,13 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                         className="card border-0"
                                         key={index}
                                       >
-                                        <img
-                                          src={deviceImageRender(item.image)}
-                                          alt={item.image_alt}
-                                          className="img-fluid megamenu-ads"
-                                        />
+                                        <Link to={item?.image_link}>
+                                          <img
+                                            src={deviceImageRender(item.image)}
+                                            alt={item.image_alt}
+                                            className="img-fluid megamenu-ads"
+                                          />
+                                        </Link>
                                       </div>
                                     </>
                                   ))
