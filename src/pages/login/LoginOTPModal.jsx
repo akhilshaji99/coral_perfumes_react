@@ -170,7 +170,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
               <form onSubmit={handleOnSubmit}>
                 <div
                   id="otp"
-                  class="inputs d-flex flex-row justify-content-center mt-2"
+                  className="inputs d-flex flex-row justify-content-center mt-2"
                   ref={textBase}
                 >
                   {" "}
@@ -207,9 +207,9 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                     Resend
                   </a>
                 </div>
-                <div class="mt-4">
+                <div className="mt-4">
                   {" "}
-                  <button type="submit" class="btn btn-dark px-4 validate w-100">
+                  <button type="submit" className="btn btn-dark px-4 validate w-100">
                     VERIFY
                   </button>{" "}
                 </div>

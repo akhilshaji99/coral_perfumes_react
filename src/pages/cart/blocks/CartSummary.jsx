@@ -79,7 +79,7 @@ function CartSummary({
                                   
                                   <button
                                     // type="submit"
-                                    class="btn btn-dark px-4 validate w-100"
+                                    className="btn btn-dark px-4 validate w-100"
                                     onClick={(e)=>{
                                       e.preventDefault();
                                       applyPromocode()
@@ -91,7 +91,7 @@ function CartSummary({
                                     <><a onClick={(e)=>{
                                       e.preventDefault();
                                       removePromocode(cartDatas?.voucher_id)
-                                    }} class="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
+                                    }} className="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
                     )}
                   </div>
                 </div>

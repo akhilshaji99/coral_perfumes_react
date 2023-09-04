@@ -43,8 +43,8 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
           aria-expanded="true"
           aria-controls="flush-collapseFour"
         >
-          <button type="button" class="btn btn-default">
-            <span class="accordion-arrow">
+          <button type="button" className="btn btn-default">
+            <span className="accordion-arrow">
               <svg
                 width={18}
                 height={9}

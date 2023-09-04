@@ -1,7 +1,7 @@
 import $ from "jquery";
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
-import RatingModal from "./RatingModal";
+
 
 function ProductRating({ refetch,setRefetch, currentVariant }) {
   console.log("currentVariant", currentVariant);
@@ -58,7 +58,7 @@ function ProductRating({ refetch,setRefetch, currentVariant }) {
           </div>
           {productReviews?.stars_array?.map((component, index) => {
             return (
-              <>
+              <div  key={index}>
                 <div className="">
                   {4 - index + 1} ★
                   <div className="progress">
@@ -76,7 +76,7 @@ function ProductRating({ refetch,setRefetch, currentVariant }) {
                 </div>
 
                 <br />
-              </>
+                </div>
             );
           })}
         </div>
@@ -85,7 +85,7 @@ function ProductRating({ refetch,setRefetch, currentVariant }) {
           <div className="ml-10">
             <button
               type="button"
-              class="btn btn-outline-dark"
+              className="btn btn-outline-dark"
               onClick={(e) => {
                 e.preventDefault();
                 setRefetch(false);

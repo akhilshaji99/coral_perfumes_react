@@ -35,7 +35,7 @@ function CartDrawer({ cartDrawerFlag }) {
       id="cartDrawer"
       // aria-hidden="true"
       // ref={wrapperRef}
-      style={{ "z-index": 1 }}
+      style={{ "zIndex": 1 }}
     >
       <div className="offcanvas-header ">
         <div className="text-start ">

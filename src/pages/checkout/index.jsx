@@ -288,8 +288,8 @@ function Index() {
                         aria-expanded="true"
                         aria-controls="flush-collapseOne"
                       >
-                        <button type="button" class="btn btn-default">
-                          <span class="accordion-arrow">
+                        <button type="button" className="btn btn-default">
+                          <span className="accordion-arrow">
                             <svg
                               width={18}
                               height={9}
@@ -344,12 +344,12 @@ function Index() {
                             <div className="col-md-3 col-12">
                               {/* input */}
                               <div className="mb-3  mb-lg-0 position-relative">
-                                <div class="">
+                                <div className="">
                                   {" "}
                                   {promoCodeId == null ? (
                                     <button
                                       // type="submit"
-                                      class="btn btn-dark px-4 validate w-100"
+                                      className="btn btn-dark px-4 validate w-100"
                                       onClick={applyPrmocode}
                                     >
                                       APPLY
@@ -361,7 +361,7 @@ function Index() {
                                           e.preventDefault();
                                           removePrmocode(promoCodeId);
                                         }}
-                                        class=""
+                                        className=""
                                         style={{
                                           color: "black",
                                           "text-decoration": "underline",
@@ -403,8 +403,8 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseTwo"
                         >
-                          <button type="button" class="btn btn-default">
-                            <span class="accordion-arrow">
+                          <button type="button" className="btn btn-default">
+                            <span className="accordion-arrow">
                               <svg
                                 width={18}
                                 height={9}
@@ -564,8 +564,8 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseThree"
                         >
-                          <button type="button" class="btn btn-default">
-                            <span class="accordion-arrow">
+                          <button type="button" className="btn btn-default">
+                            <span className="accordion-arrow">
                               <svg
                                 width={18}
                                 height={9}
@@ -795,7 +795,7 @@ function Index() {
                                   {" "}
                                   <button
                                     type="submit"
-                                    class="btn btn-dark p-32px validate"
+                                    className="btn btn-dark p-32px validate"
                                   >
                                     CONFIRM
                                   </button>

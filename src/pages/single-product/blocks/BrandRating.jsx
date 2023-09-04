@@ -44,7 +44,7 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
         <div className="row col-md-6">
           {brandReviews?.map((component, index) => {
             return (
-              <div className="card">
+              <div className="card"  key={index}>
                 <div className="row align-items-center">
                   <div className="col-md-6">
                     <div className="card-body">
@@ -84,7 +84,7 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
           <div className="ml-10">
             <button
               type="button"
-              class="btn btn-outline-dark"
+              className="btn btn-outline-dark"
               onClick={(e) => {
                 e.preventDefault();
                 setRefetch(false)

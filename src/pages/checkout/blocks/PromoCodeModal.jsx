@@ -78,7 +78,7 @@ function PromoCodeModal({
                               </div>
                               <div className="col-md-4 col-4 px-0 text-end">
                                 <button
-                                  class="btn btn-dark  validate w-100"
+                                  className="btn btn-dark  validate w-100"
                                   onClick={(e) => {
                                     e.preventDefault();
                                     applyPromoCode(code.id, code.code);

@@ -99,9 +99,9 @@ function RatingModal({ setRefetch, currentVariant, type = "brand" }) {
                 fillColor="#0f0f0f"
               />
             </div>
-            <div class="form-outline">
+            <div className="form-outline">
               <textarea
-                class="form-control"
+                className="form-control"
                 value={message}
                 onChange={(e) => onTodoChange(e.target.value)}
                 placeholder="write a review"
@@ -109,10 +109,10 @@ function RatingModal({ setRefetch, currentVariant, type = "brand" }) {
                 rows="2"
               ></textarea>
             </div>
-            <div class="form-outline mt-5">
+            <div className="form-outline mt-5">
               <button
                 // type="submit"
-                class="btn btn-dark px-4 validate w-100"
+                className="btn btn-dark px-4 validate w-100"
                 onClick={(e) => {
                   e.preventDefault();
                   handleOnSubmit();

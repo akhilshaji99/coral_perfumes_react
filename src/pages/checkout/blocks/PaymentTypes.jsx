@@ -20,8 +20,8 @@ function PaymentTypes({
           aria-expanded="true"
           aria-controls="flush-collapseFive"
         >
-          <button type="button" class="btn btn-default">
-            <span class="accordion-arrow">
+          <button type="button" className="btn btn-default">
+            <span className="accordion-arrow">
               <svg
                 width={18}
                 height={9}
