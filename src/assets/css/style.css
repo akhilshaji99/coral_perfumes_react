@@ -3248,7 +3248,7 @@ textarea.form-control-lg {
   transform-origin: 0 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
   white-space: nowrap;
-  zIndex: 2;
+  z-index: 2;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-floating > label {
@@ -3306,7 +3306,7 @@ textarea.form-control-lg {
   height: 1.5em;
   inset: 1rem 0.5rem;
   position: absolute;
-  zIndex: -1;
+  z-index: -1;
 }
 .form-floating > .form-control-plaintext ~ label:after,
 .form-floating > .form-control:focus ~ label:after,
@@ -3318,7 +3318,7 @@ textarea.form-control-lg {
   height: 1.5em;
   inset: 1rem 0.5rem;
   position: absolute;
-  zIndex: -1;
+  z-index: -1;
 }
 .form-floating > .form-control:-webkit-autofill ~ label {
   color: rgba(var(--fc-body-color-rgb), 0.65);
@@ -3351,14 +3351,14 @@ textarea.form-control-lg {
 .input-group > .form-control:focus,
 .input-group > .form-floating:focus-within,
 .input-group > .form-select:focus {
-  zIndex: 5;
+  z-index: 5;
 }
 .input-group .btn {
   position: relative;
-  zIndex: 2;
+  z-index: 2;
 }
 .input-group .btn:focus {
-  zIndex: 5;
+  z-index: 5;
 }
 .input-group-text {
   align-items: center;
@@ -3450,7 +3450,7 @@ textarea.form-control-lg {
   padding: 0.25rem 0.5rem;
   position: absolute;
   top: 100%;
-  zIndex: 5;
+  z-index: 5;
 }
 .is-valid ~ .valid-feedback,
 .is-valid ~ .valid-tooltip,
@@ -3524,7 +3524,7 @@ textarea.form-control.is-valid {
 .was-validated .input-group > .form-control:not(:focus):valid,
 .was-validated .input-group > .form-floating:not(:focus-within):valid,
 .was-validated .input-group > .form-select:not(:focus):valid {
-  zIndex: 3;
+  z-index: 3;
 }
 .invalid-feedback {
   color: var(--fc-form-invalid-color);
@@ -3544,7 +3544,7 @@ textarea.form-control.is-valid {
   padding: 0.25rem 0.5rem;
   position: absolute;
   top: 100%;
-  zIndex: 5;
+  z-index: 5;
 }
 .is-invalid ~ .invalid-feedback,
 .is-invalid ~ .invalid-tooltip,
@@ -3618,7 +3618,7 @@ textarea.form-control.is-invalid {
 .was-validated .input-group > .form-control:not(:focus):invalid,
 .was-validated .input-group > .form-floating:not(:focus-within):invalid,
 .was-validated .input-group > .form-select:not(:focus):invalid {
-  zIndex: 4;
+  z-index: 4;
 }
 .btn {
   --fc-btn-padding-x: 1rem;
@@ -4698,7 +4698,7 @@ fieldset:disabled .btn {
   margin-left: 0;
 }
 .dropdown-menu {
-  --fc-dropdown-zindex: 1000;
+  --fc-dropdown-z-index: 1000;
   --fc-dropdown-min-width: 10rem;
   --fc-dropdown-padding-x: 0.5rem;
   --fc-dropdown-padding-y: 0.5rem;
@@ -4738,7 +4738,7 @@ fieldset:disabled .btn {
   padding: var(--fc-dropdown-padding-y) var(--fc-dropdown-padding-x);
   position: absolute;
   text-align: left;
-  zIndex: var(--fc-dropdown-zindex);
+  z-index: var(--fc-dropdown-z-index);
 }
 .dropdown-menu[data-bs-popper] {
   left: 0;
@@ -4993,7 +4993,7 @@ fieldset:disabled .btn {
 .btn-group > .btn:active,
 .btn-group > .btn:focus,
 .btn-group > .btn:hover {
-  zIndex: 1;
+  z-index: 1;
 }
 .btn-toolbar {
   display: flex;
@@ -5371,7 +5371,7 @@ fieldset:disabled .btn {
     transition: none;
     visibility: visible !important;
     width: auto !important;
-    zIndex: auto;
+    z-index: auto;
   }
   .navbar-expand-sm .offcanvas .offcanvas-header {
     display: none;
@@ -5418,7 +5418,7 @@ fieldset:disabled .btn {
     transition: none;
     visibility: visible !important;
     width: auto !important;
-    zIndex: auto;
+    z-index: auto;
   }
   .navbar-expand-md .offcanvas .offcanvas-header {
     display: none;
@@ -5465,7 +5465,7 @@ fieldset:disabled .btn {
     transition: none;
     visibility: visible !important;
     width: auto !important;
-    zIndex: auto;
+    z-index: auto;
   }
   .navbar-expand-lg .offcanvas .offcanvas-header {
     display: none;
@@ -5512,7 +5512,7 @@ fieldset:disabled .btn {
     transition: none;
     visibility: visible !important;
     width: auto !important;
-    zIndex: auto;
+    z-index: auto;
   }
   .navbar-expand-xl .offcanvas .offcanvas-header {
     display: none;
@@ -5559,7 +5559,7 @@ fieldset:disabled .btn {
     transition: none;
     visibility: visible !important;
     width: auto !important;
-    zIndex: auto;
+    z-index: auto;
   }
   .navbar-expand-xxl .offcanvas .offcanvas-header {
     display: none;
@@ -5605,7 +5605,7 @@ fieldset:disabled .btn {
   transition: none;
   visibility: visible !important;
   width: auto !important;
-  zIndex: auto;
+  z-index: auto;
 }
 .navbar-expand .offcanvas .offcanvas-header {
   display: none;
@@ -5878,13 +5878,13 @@ fieldset:disabled .btn {
   }
 }
 .accordion-button:hover {
-  zIndex: 2;
+  z-index: 2;
 }
 .accordion-button:focus {
   border-color: var(--fc-accordion-btn-focus-border-color);
   box-shadow: var(--fc-accordion-btn-focus-box-shadow);
   outline: 0;
-  zIndex: 3;
+  z-index: 3;
 }
 .accordion-header {
   margin-bottom: 0;
@@ -6025,21 +6025,21 @@ fieldset:disabled .btn {
   background-color: var(--fc-pagination-hover-bg);
   border-color: var(--fc-pagination-hover-border-color);
   color: var(--fc-pagination-hover-color);
-  zIndex: 2;
+  z-index: 2;
 }
 .page-link:focus {
   background-color: var(--fc-pagination-focus-bg);
   box-shadow: var(--fc-pagination-focus-box-shadow);
   color: var(--fc-pagination-focus-color);
   outline: 0;
-  zIndex: 3;
+  z-index: 3;
 }
 .active > .page-link,
 .page-link.active {
   background-color: var(--fc-pagination-active-bg);
   border-color: var(--fc-pagination-active-border-color);
   color: var(--fc-pagination-active-color);
-  zIndex: 3;
+  z-index: 3;
 }
 .disabled > .page-link,
 .page-link.disabled {
@@ -6118,7 +6118,7 @@ fieldset:disabled .btn {
   position: absolute;
   right: 0;
   top: 0;
-  zIndex: 2;
+  z-index: 2;
 }
 .alert-primary {
   --fc-alert-color: var(--fc-primary-text-emphasis);
@@ -6395,7 +6395,7 @@ fieldset:disabled .btn {
   background-color: var(--fc-list-group-action-hover-bg);
   color: var(--fc-list-group-action-hover-color);
   text-decoration: none;
-  zIndex: 1;
+  z-index: 1;
 }
 .list-group-item-action:active {
   background-color: var(--fc-list-group-action-active-bg);
@@ -6430,7 +6430,7 @@ fieldset:disabled .btn {
   background-color: var(--fc-list-group-active-bg);
   border-color: var(--fc-list-group-active-border-color);
   color: var(--fc-list-group-active-color);
-  zIndex: 2;
+  z-index: 2;
 }
 .list-group-item + .list-group-item {
   border-top-width: 0;
@@ -6970,7 +6970,7 @@ fieldset:disabled .btn {
   filter: var(--fc-btn-close-white-filter);
 }
 .toast {
-  --fc-toast-zindex: 1090;
+  --fc-toast-z-index: 1090;
   --fc-toast-padding-x: 0.75rem;
   --fc-toast-padding-y: 0.5rem;
   --fc-toast-spacing: 2rem;
@@ -7004,13 +7004,13 @@ fieldset:disabled .btn {
   display: none;
 }
 .toast-container {
-  --fc-toast-zindex: 1090;
+  --fc-toast-z-index: 1090;
   max-width: 100%;
   pointer-events: none;
   position: absolute;
   width: -moz-max-content;
   width: max-content;
-  zIndex: var(--fc-toast-zindex);
+  z-index: var(--fc-toast-z-index);
 }
 .toast-container > :not(:last-child) {
   margin-bottom: var(--fc-toast-spacing);
@@ -7040,7 +7040,7 @@ fieldset:disabled .btn {
   padding: var(--fc-toast-padding-x);
 }
 .modal {
-  --fc-modal-zindex: 1055;
+  --fc-modal-z-index: 1055;
   --fc-modal-width: 500px;
   --fc-modal-padding: 1rem;
   --fc-modal-margin: 0.5rem;
@@ -7072,7 +7072,7 @@ fieldset:disabled .btn {
   position: fixed;
   top: 0;
   width: 100%;
-  zIndex: var(--fc-modal-zindex);
+  z-index: var(--fc-modal-z-index);
 }
 .modal-dialog {
   margin: var(--fc-modal-margin);
@@ -7124,7 +7124,7 @@ fieldset:disabled .btn {
   width: 100%;
 }
 .modal-backdrop {
-  --fc-backdrop-zindex: 1050;
+  --fc-backdrop-z-index: 1050;
   --fc-backdrop-bg: #000;
   --fc-backdrop-opacity: 0.5;
   background-color: var(--fc-backdrop-bg);
@@ -7133,7 +7133,7 @@ fieldset:disabled .btn {
   position: fixed;
   top: 0;
   width: 100vw;
-  zIndex: var(--fc-backdrop-zindex);
+  z-index: var(--fc-backdrop-z-index);
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -7330,7 +7330,7 @@ fieldset:disabled .btn {
   }
 }
 .tooltip {
-  --fc-tooltip-zindex: 1080;
+  --fc-tooltip-z-index: 1080;
   --fc-tooltip-max-width: 200px;
   --fc-tooltip-padding-x: 0.5rem;
   --fc-tooltip-padding-y: 0.25rem;
@@ -7361,7 +7361,7 @@ fieldset:disabled .btn {
   white-space: normal;
   word-break: normal;
   word-spacing: normal;
-  zIndex: var(--fc-tooltip-zindex);
+  z-index: var(--fc-tooltip-z-index);
 }
 .tooltip.show {
   opacity: var(--fc-tooltip-opacity);
@@ -7434,7 +7434,7 @@ fieldset:disabled .btn {
   text-align: center;
 }
 .popover {
-  --fc-popover-zindex: 1070;
+  --fc-popover-z-index: 1070;
   --fc-popover-max-width: 276px;
   --fc-popover-font-size: 0.875rem;
   --fc-popover-bg: #fff;
@@ -7478,7 +7478,7 @@ fieldset:disabled .btn {
   white-space: normal;
   word-break: normal;
   word-spacing: normal;
-  zIndex: var(--fc-popover-zindex);
+  z-index: var(--fc-popover-z-index);
 }
 .popover .popover-arrow {
   display: block;
@@ -7670,13 +7670,13 @@ fieldset:disabled .btn {
 .carousel-fade .carousel-item-prev.carousel-item-end,
 .carousel-fade .carousel-item.active {
   opacity: 1;
-  zIndex: 1;
+  z-index: 1;
 }
 .carousel-fade .active.carousel-item-end,
 .carousel-fade .active.carousel-item-start {
   opacity: 0;
   transition: opacity 0s 0.6s;
-  zIndex: 0;
+  z-index: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-fade .active.carousel-item-end,
@@ -7700,7 +7700,7 @@ fieldset:disabled .btn {
   top: 0;
   transition: opacity 0.15s ease;
   width: 15%;
-  zIndex: 1;
+  z-index: 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-next,
@@ -7749,7 +7749,7 @@ fieldset:disabled .btn {
   padding: 0;
   position: absolute;
   right: 0;
-  zIndex: 2;
+  z-index: 2;
 }
 .carousel-indicators [data-bs-target] {
   background-clip: padding-box;
@@ -7876,7 +7876,7 @@ fieldset:disabled .btn {
 .offcanvas-sm,
 .offcanvas-xl,
 .offcanvas-xxl {
-  --fc-offcanvas-zindex: 1045;
+  --fc-offcanvas-z-index: 1045;
   --fc-offcanvas-width: 420px;
   --fc-offcanvas-height: 30vh;
   --fc-offcanvas-padding-x: 1rem;
@@ -7904,7 +7904,7 @@ fieldset:disabled .btn {
     position: fixed;
     transition: var(--fc-offcanvas-transition);
     visibility: hidden;
-    zIndex: var(--fc-offcanvas-zindex);
+    z-index: var(--fc-offcanvas-z-index);
   }
 }
 @media (max-width: 575.98px) and (prefers-reduced-motion: reduce) {
@@ -7987,7 +7987,7 @@ fieldset:disabled .btn {
     position: fixed;
     transition: var(--fc-offcanvas-transition);
     visibility: hidden;
-    zIndex: var(--fc-offcanvas-zindex);
+    z-index: var(--fc-offcanvas-z-index);
   }
 }
 @media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
@@ -8070,7 +8070,7 @@ fieldset:disabled .btn {
     position: fixed;
     transition: var(--fc-offcanvas-transition);
     visibility: hidden;
-    zIndex: var(--fc-offcanvas-zindex);
+    z-index: var(--fc-offcanvas-z-index);
   }
 }
 @media (max-width: 991.98px) and (prefers-reduced-motion: reduce) {
@@ -8153,7 +8153,7 @@ fieldset:disabled .btn {
     position: fixed;
     transition: var(--fc-offcanvas-transition);
     visibility: hidden;
-    zIndex: var(--fc-offcanvas-zindex);
+    z-index: var(--fc-offcanvas-z-index);
   }
 }
 @media (max-width: 1199.98px) and (prefers-reduced-motion: reduce) {
@@ -8236,7 +8236,7 @@ fieldset:disabled .btn {
     position: fixed;
     transition: var(--fc-offcanvas-transition);
     visibility: hidden;
-    zIndex: var(--fc-offcanvas-zindex);
+    z-index: var(--fc-offcanvas-z-index);
   }
 }
 @media (max-width: 1399.98px) and (prefers-reduced-motion: reduce) {
@@ -8318,7 +8318,7 @@ fieldset:disabled .btn {
   position: fixed;
   transition: var(--fc-offcanvas-transition);
   visibility: hidden;
-  zIndex: var(--fc-offcanvas-zindex);
+  z-index: var(--fc-offcanvas-z-index);
 }
 @media (prefers-reduced-motion: reduce) {
   .offcanvas {
@@ -8378,7 +8378,7 @@ fieldset:disabled .btn {
   position: fixed;
   top: 0;
   width: 100vw;
-  zIndex: 1040;
+  z-index: 1040;
 }
 .offcanvas-backdrop.fade {
   opacity: 0;
@@ -9082,7 +9082,7 @@ fieldset:disabled .btn {
   left: 0;
   position: fixed;
   right: 0;
-  zIndex: 1030;
+  z-index: 1030;
 }
 .fixed-bottom {
   bottom: 0;
@@ -9093,7 +9093,7 @@ fieldset:disabled .btn {
 .sticky-bottom,
 .sticky-top {
   position: sticky;
-  zIndex: 1020;
+  z-index: 1020;
 }
 .sticky-bottom {
   bottom: 0;
@@ -9102,60 +9102,60 @@ fieldset:disabled .btn {
   .sticky-sm-top {
     position: sticky;
     top: 0;
-    zIndex: 1020;
+    z-index: 1020;
   }
   .sticky-sm-bottom {
     bottom: 0;
     position: sticky;
-    zIndex: 1020;
+    z-index: 1020;
   }
 }
 @media (min-width: 768px) {
   .sticky-md-top {
     position: sticky;
     top: 0;
-    zIndex: 1020;
+    z-index: 1020;
   }
   .sticky-md-bottom {
     bottom: 0;
     position: sticky;
-    zIndex: 1020;
+    z-index: 1020;
   }
 }
 @media (min-width: 992px) {
   .sticky-lg-top {
     position: sticky;
     top: 0;
-    zIndex: 1020;
+    z-index: 1020;
   }
   .sticky-lg-bottom {
     bottom: 0;
     position: sticky;
-    zIndex: 1020;
+    z-index: 1020;
   }
 }
 @media (min-width: 1200px) {
   .sticky-xl-top {
     position: sticky;
     top: 0;
-    zIndex: 1020;
+    z-index: 1020;
   }
   .sticky-xl-bottom {
     bottom: 0;
     position: sticky;
-    zIndex: 1020;
+    z-index: 1020;
   }
 }
 @media (min-width: 1400px) {
   .sticky-xxl-top {
     position: sticky;
     top: 0;
-    zIndex: 1020;
+    z-index: 1020;
   }
   .sticky-xxl-bottom {
     bottom: 0;
     position: sticky;
-    zIndex: 1020;
+    z-index: 1020;
   }
 }
 .hstack {
@@ -9193,7 +9193,7 @@ fieldset:disabled .btn {
   position: absolute;
   right: 0;
   top: 0;
-  zIndex: 1;
+  z-index: 1;
 }
 .text-truncate {
   overflow: hidden;
@@ -12492,19 +12492,19 @@ fieldset:disabled .btn {
   visibility: hidden !important;
 }
 .z-n1 {
-  zIndex: -1 !important;
+  z-index: -1 !important;
 }
 .z-0 {
-  zIndex: 0 !important;
+  z-index: 0 !important;
 }
 .z-1 {
-  zIndex: 1 !important;
+  z-index: 1 !important;
 }
 .z-2 {
-  zIndex: 2 !important;
+  z-index: 2 !important;
 }
 .z-3 {
-  zIndex: 3 !important;
+  z-index: 3 !important;
 }
 @media (min-width: 576px) {
   .float-sm-start {
@@ -21491,7 +21491,7 @@ fieldset:disabled .btn {
   position: absolute;
   right: 0.5rem;
   top: 0.6rem;
-  zIndex: 1;
+  z-index: 1;
 }
 .navbar .navbar-toggler.collapsed .top-bar {
   background-color: var(--fc-primary);
@@ -21955,7 +21955,7 @@ h3 {
 .dropdown-menu {
   box-shadow: var(--fc-dropdown-box-shadow);
   line-height: 1.375rem;
-  zIndex: 1021;
+  z-index: 1021;
 }
 .dropdown-header {
   color: var(--fc-gray-500);
@@ -22188,7 +22188,7 @@ h3 {
   transition: all 0.15s ease-in-out;
   visibility: hidden;
   width: 100%;
-  zIndex: 1;
+  z-index: 1;
 }
 .card-product .product-action-btn {
   display: flex;
@@ -22210,7 +22210,7 @@ h3 {
   transition: all 0.3s ease 0s;
   visibility: hidden;
   width: 100%;
-  zIndex: 9;
+  z-index: 9;
 }
 .card-product:hover {
   border: 1px solid var(--fc-primary);
@@ -22253,8 +22253,8 @@ h3 {
 }
 .card-product-v2 {
   cursor: pointer;
-  transition: zIndex 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
-  zIndex: 1;
+  transition: z-index 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+  z-index: 1;
 }
 .card-product-v2 .product-content-fade {
   background-color: var(--fc-white);
@@ -22268,7 +22268,7 @@ h3 {
   top: -1px;
   transition: opacity 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
   will-change: opacity;
-  zIndex: -1;
+  z-index: -1;
 }
 .card-product-v2 .product-fade-block {
   background-color: transparent;
@@ -22334,7 +22334,7 @@ h3 {
 }
 .card-product-v2:hover.card {
   border: none;
-  zIndex: 2;
+  z-index: 2;
 }
 .card-image {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
@@ -22572,7 +22572,7 @@ input::-webkit-outer-spin-button {
     0 -0.407592px 2.21911px rgba(22, 20, 37, 0.18);
   position: fixed;
   width: 100%;
-  zIndex: 1022;
+  z-index: 1022;
 }
 @media (max-width: 576px) {
   .docs-header .navbar {
@@ -22601,7 +22601,7 @@ input::-webkit-outer-spin-button {
   position: fixed;
   top: 0;
   width: 15.625rem;
-  zIndex: 22;
+  z-index: 22;
 }
 .docs-nav-sidebar .navbar-brand {
   margin-right: 0;
@@ -22736,7 +22736,7 @@ input::-webkit-outer-spin-button {
   position: relative;
   right: auto;
   top: auto;
-  zIndex: 1;
+  z-index: 1;
 }
 .scrollspy-example {
   height: 12.5rem;
@@ -23524,7 +23524,7 @@ input::-webkit-outer-spin-button {
   position: fixed;
   top: 0;
   width: 280px;
-  zIndex: 1200;
+  z-index: 1200;
 }
 .navbar-vertical-nav .navbar-vertical .navbar-vertical-content {
   height: calc(100vh - 5.3125rem);
@@ -23836,7 +23836,7 @@ input::-webkit-outer-spin-button {
   right: 0;
   top: 0;
   width: calc(100% - 280px);
-  zIndex: 1034;
+  z-index: 1034;
 }
 @media (max-width: 1200px) {
   .navbar-glass {
@@ -24033,7 +24033,7 @@ table tr:last-child td {
 .slider-nav .slick-prev {
   left: 40px;
   top: 84%;
-  zIndex: 1;
+  z-index: 1;
 }
 .slider-nav .slick-next {
   left: auto;
@@ -24273,7 +24273,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
   max-height: 640px;
   opacity: 1;
   visibility: visible;
-  zIndex: 99999;
+  z-index: 99999;
 }
 .flatpickr-calendar.inline {
   display: block;
@@ -24292,7 +24292,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
 }
 .flatpickr-calendar.static.open {
   display: block;
-  zIndex: 999;
+  z-index: 999;
 }
 .flatpickr-calendar.multiMonth
   .flatpickr-days
@@ -24364,7 +24364,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
   position: absolute;
   text-decoration: none;
   top: 0;
-  zIndex: 3;
+  z-index: 3;
 }
 .flatpickr-months .flatpickr-prev-month i {
   position: relative;
@@ -24392,7 +24392,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
   position: absolute;
   text-decoration: none;
   top: 0;
-  zIndex: 3;
+  z-index: 3;
 }
 .flatpickr-months .flatpickr-next-month i {
   position: relative;
@@ -25754,7 +25754,7 @@ span.flatpickr-weekday {
 }
 .ql-snow .ql-picker.ql-expanded .ql-picker-label {
   color: var(--fc-gray-200);
-  zIndex: 2;
+  z-index: 2;
 }
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
   fill: var(--fc-gray-200);
@@ -25766,7 +25766,7 @@ span.flatpickr-weekday {
   display: block;
   margin-top: -1px;
   top: 100%;
-  zIndex: 1;
+  z-index: 1;
 }
 .ql-snow .ql-color-picker {
   width: 28px;
@@ -26297,7 +26297,7 @@ object-fit: cover;
   font-size: 2em;
   align-self: center;
   position: absolute;
-  zIndex: 10;
+  z-index: 10;
   text-transform: uppercase;
 }
 
@@ -26308,7 +26308,7 @@ object-fit: cover;
 .thumbnails:hover {
   cursor: pointer;
   transform: scale(1.05);
-  zIndex: 20;
+  z-index: 20;
 }
 
 .thumbnails:hover .black,
@@ -26452,7 +26452,7 @@ object-fit: cover;
 .product-box .btn-dark {
   text-transform: uppercase;
   position: relative;
-  zIndex: 10;
+  z-index: 10;
 }
 .product-img {
   height: 100%;
@@ -26577,7 +26577,7 @@ object-fit: cover;
 .wishlist-button {
   position: absolute;
   right: 10%;
-  zIndex: 999;
+  z-index: 999;
   cursor: pointer;
 }
 .wishlist-button svg:hover {
@@ -26820,7 +26820,7 @@ object-fit: cover;
   .wishlist-button {
     position: absolute;
     right: 10%;
-    zIndex: 999;
+    z-index: 999;
     cursor: pointer;
     top: 5%;
     transform: scale(0.65);
@@ -27154,7 +27154,7 @@ object-fit: cover;
   position: absolute;
   left: 65%;
   top: calc(100% + 25px);
-  zIndex: 999;
+  z-index: 999;
 }
 
 .px-5 {
@@ -27332,7 +27332,7 @@ object-fit: cover;
   top: 30%;
   transform: scale(0.65);
   right: -12px;
-  zIndex: 9999;
+  z-index: 9999;
 }
 .discount-modal {
   border-radius: 9px !important;
@@ -27978,7 +27978,7 @@ border-radius: none !important;
     right: 60px !important;
     bottom: 80px !important;
     position: fixed;
-    zIndex: 2;
+    z-index: 2;
     cursor: pointer;
     border-radius: 7px;
     width: 40px;
@@ -28147,7 +28147,7 @@ border-radius: none !important;
     top: 7%;
     transform: scale(0.4);
     right: calc(0 - 10em);;
-    zIndex: 999;
+    z-index: 999;
   }
   .banner-flashsale {
     background-repeat: none;
@@ -28364,7 +28364,7 @@ border-radius: none !important;
   border-radius: 9px 9px 0px 0px;
   background: #fff;
   box-shadow: 0px -11px 20px 0px rgba(0, 0, 0, 0.1);
-  zIndex: 1008 !important;
+  z-index: 1008 !important;
 }
 .social-mdedia-icons img {
   width: 25px;
@@ -28406,7 +28406,7 @@ border-radius: none !important;
 }
 .input-group .btn {
   position: relative;
-  zIndex: 2;
+  z-index: 2;
   padding: 18px;
   border: 1px solid #000 !important;
   border-left: none !important;
@@ -28888,7 +28888,7 @@ border-radius: none !important;
   border-color: transparent !important;
   box-shadow: unset !important;
   outline: 0;
-  zIndex: 3;
+  z-index: 3;
 }
 .tamara-summary-widget__container {
   color: #000 !important;
