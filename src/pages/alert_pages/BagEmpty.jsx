@@ -1,7 +1,8 @@
 import React from "react";
 import BagEmptyImg from "./img/bag-empty.png";
-function BagEmpty(cartEmptyMessages=null) {
-  console.log('cartEmptyMessages',cartEmptyMessages)
+import { Link } from "react-router-dom";
+function BagEmpty(cartEmptyMessages = null) {
+  console.log("cartEmptyMessages", cartEmptyMessages);
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-bag-empty">
@@ -46,7 +47,9 @@ function BagEmpty(cartEmptyMessages=null) {
                 </defs>
               </svg>
             </span>
-            {cartEmptyMessages?.cartEmptyMessages?.message_2}
+            <Link to={"/"}>
+              {cartEmptyMessages?.cartEmptyMessages?.message_2}
+            </Link>
             <span>
               <svg
                 width={18}
@@ -85,10 +88,7 @@ function BagEmpty(cartEmptyMessages=null) {
               </svg>
             </span>
           </h5>
-          <p>
-          {cartEmptyMessages?.cartEmptyMessages?.message_3}
-
-          </p>
+          <p>{cartEmptyMessages?.cartEmptyMessages?.message_3}</p>
         </div>
       </div>
     </div>

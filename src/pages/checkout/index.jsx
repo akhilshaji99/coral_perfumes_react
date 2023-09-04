@@ -39,6 +39,7 @@ function Index() {
   const [storeDatas, setStoredatas] = useState([]);
   const [storeEmirates, setStoreEmirates] = useState([]);
   const [avaibleStores, setAvailableStores] = useState([]);
+  const [status, setStatus] = useState(false);
   //State for checkout fetch api parameters
   const [checkoutUpdateParams, setCheckoutUpdateParams] = useState({
     shipping_zone_type: null,
@@ -70,7 +71,7 @@ function Index() {
       fetchCheckoutApi();
     });
   };
-  const fetchStoreApi = async () => {
+  const fetchStoreApi = async (checkoutResponseData) => {
     try {
       const response = await getStores();
       if (response?.data?.status) {
@@ -81,7 +82,8 @@ function Index() {
         ];
         setStoreEmirates(uniqueStores);
         await filterStoresByEmirates(
-          checkOutDetails?.store_emirate_id || uniqueStores[0]?.emirate,
+          checkoutResponseData?.store_emirate_id || uniqueStores[0]?.emirate,
+          checkoutResponseData?.store_id,
           response?.data?.data
         );
       }
@@ -90,8 +92,28 @@ function Index() {
     }
   };
 
-  //
-  // }, []);
+  const filterStoresByEmirates = async (
+    emirate_id,
+    store_id = null,
+    availableStores = []
+  ) => {
+    let emirateStores = [];
+    let stores = [];
+    if (availableStores.length === 0) {
+      stores = storeDatas;
+    } else {
+      stores = availableStores;
+    }
+    await stores.forEach((store) => {
+      if (parseInt(store.emirate) === parseInt(emirate_id)) {
+        emirateStores.push(store);
+      }
+    });
+    setAvailableStores(emirateStores);
+    addressForm.setFieldValue("emirate", emirate_id);
+    setStatus(!status);
+    addressForm.setFieldValue("store_id", store_id || emirateStores?.[0]?.id);
+  };
   //#End
 
   useEffect(() => {
@@ -104,10 +126,10 @@ function Index() {
   // }, [showPrmoCodeFlag]);
 
   const fetchCheckoutApi = () => {
-    getCheckOutDetails().then((response) => {
+    getCheckOutDetails().then(async (response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
-        fetchStoreApi(); //Fetch store api
+        await fetchStoreApi(response?.data); //Fetch store api
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
         addressForm.setFieldValue(
@@ -137,8 +159,6 @@ function Index() {
     console.log(combinedPayload);
     UpdateCheckoutDetails(combinedPayload).then((response) => {
       if (response?.data?.status) {
-        console.log(response?.data?.data?.address_id);
-
         setCartItems(response?.data?.data?.cart_items);
         addressForm.setFieldValue(
           "address_id",
@@ -155,7 +175,8 @@ function Index() {
       phone_number:
         checkOutDetails?.default_address?.account_address?.phone_number,
       flat_name: checkOutDetails?.default_address?.account_address?.flat_name,
-      emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
+      // emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
+      emirate: null,
       street_address:
         checkOutDetails?.default_address?.account_address?.street_address,
       building_number:
@@ -168,7 +189,8 @@ function Index() {
       city: checkOutDetails?.default_address?.account_address?.city,
       delivery_type: checkOutDetails?.delivery_type,
       address_id: checkOutDetails?.default_address?.account_address?.id,
-      store_id: checkOutDetails?.store_id,
+      // store_id: checkOutDetails?.store_id,
+      store_id: null,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
@@ -221,22 +243,6 @@ function Index() {
   };
   //#End
 
-  const filterStoresByEmirates = async (emirate_id, availableStores = []) => {
-    let emirateStores = [];
-    let stores = [];
-    if (availableStores.length === 0) {
-      stores = storeDatas;
-    } else {
-      stores = availableStores;
-    }
-    await stores.forEach((store) => {
-      if (parseInt(store.emirate) === parseInt(emirate_id)) {
-        emirateStores.push(store);
-      }
-    });
-    addressForm.setFieldValue("store_id", emirateStores?.[0]?.id);
-    setAvailableStores(emirateStores);
-  };
   return (
     <>
       <section className="mb-lg-14 mb-8 mt-8">
@@ -288,8 +294,8 @@ function Index() {
                         aria-expanded="true"
                         aria-controls="flush-collapseOne"
                       >
-                        <button type="button" className="btn btn-default">
-                          <span className="accordion-arrow">
+                        <button type="button" class="btn btn-default">
+                          <span class="accordion-arrow">
                             <svg
                               width={18}
                               height={9}
@@ -344,12 +350,12 @@ function Index() {
                             <div className="col-md-3 col-12">
                               {/* input */}
                               <div className="mb-3  mb-lg-0 position-relative">
-                                <div className="">
+                                <div class="">
                                   {" "}
                                   {promoCodeId == null ? (
                                     <button
                                       // type="submit"
-                                      className="btn btn-dark px-4 validate w-100"
+                                      class="btn btn-dark px-4 validate w-100"
                                       onClick={applyPrmocode}
                                     >
                                       APPLY
@@ -361,7 +367,7 @@ function Index() {
                                           e.preventDefault();
                                           removePrmocode(promoCodeId);
                                         }}
-                                        className=""
+                                        class=""
                                         style={{
                                           color: "black",
                                           "text-decoration": "underline",
@@ -403,8 +409,8 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseTwo"
                         >
-                          <button type="button" className="btn btn-default">
-                            <span className="accordion-arrow">
+                          <button type="button" class="btn btn-default">
+                            <span class="accordion-arrow">
                               <svg
                                 width={18}
                                 height={9}
@@ -564,8 +570,8 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseThree"
                         >
-                          <button type="button" className="btn btn-default">
-                            <span className="accordion-arrow">
+                          <button type="button" class="btn btn-default">
+                            <span class="accordion-arrow">
                               <svg
                                 width={18}
                                 height={9}
@@ -748,6 +754,7 @@ function Index() {
                                     <select
                                       className="form-control"
                                       name="emirate"
+                                      value={addressForm.values.emirate}
                                       onChange={(event) => {
                                         filterStoresByEmirates(
                                           event.target.value
@@ -795,7 +802,7 @@ function Index() {
                                   {" "}
                                   <button
                                     type="submit"
-                                    className="btn btn-dark p-32px validate"
+                                    class="btn btn-dark p-32px validate"
                                   >
                                     CONFIRM
                                   </button>

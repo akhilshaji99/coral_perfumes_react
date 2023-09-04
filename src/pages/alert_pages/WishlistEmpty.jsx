@@ -1,5 +1,6 @@
 import React from "react";
 import WishlistEmptyImg from "./img/wishlist-empty.svg";
+import { Link } from "react-router-dom";
 
 function WishlistEmpty(wishListMessages) {
   return (
@@ -50,7 +51,9 @@ function WishlistEmpty(wishListMessages) {
                 </defs>
               </svg>
             </span>
-           {wishListMessages?.wishListMessages?.message_2}
+            <Link to={"/"}>
+              {wishListMessages?.wishListMessages?.message_2}
+            </Link>
             <span>
               <svg
                 width={18}
@@ -89,10 +92,7 @@ function WishlistEmpty(wishListMessages) {
               </svg>
             </span>
           </h5>
-          <p>
-          {wishListMessages?.wishListMessages?.message_3}
-
-          </p>
+          <p>{wishListMessages?.wishListMessages?.message_3}</p>
         </div>
       </div>
     </div>
