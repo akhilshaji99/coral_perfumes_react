@@ -9,6 +9,8 @@ function FilterSidebar({
   minPrice,
   maxPrice,
   passingDateRangeToParent,
+  filterArray,
+  unselectAll,
 }) {
   const urlParams = useParams([]);
 
@@ -87,16 +89,19 @@ function FilterSidebar({
           <div className="offcanvas-body scroll-container ps-lg-2 pt-lg-0">
             <div className="mb-8">
               <ul className="nav nav-category" id="categoryCollapseMenu">
-                {productFilters?.map((productFilter, index) => {
+                {productFilters?.map((productFilter, main_index) => {
                   return (
-                    <li className="nav-item border-bottom w-100" key={index}>
+                    <li
+                      className="nav-item border-bottom w-100"
+                      key={main_index}
+                    >
                       <a
                         href="#"
                         className="nav-link collapsed"
                         data-bs-toggle="collapse"
-                        data-bs-target={`#categoryFlushOne_${index}`}
+                        data-bs-target={`#categoryFlushOne_${main_index}`}
                         aria-expanded="false"
-                        aria-controls={`categoryFlushOne_${index}`}
+                        aria-controls={`categoryFlushOne_${main_index}`}
                       >
                         {productFilter?.name}
                         <svg
@@ -118,7 +123,7 @@ function FilterSidebar({
                       </a>
                       {/* accordion collapse */}
                       <div
-                        id={`categoryFlushOne_${index}`}
+                        id={`categoryFlushOne_${main_index}`}
                         className="accordion-collapse collapse"
                         data-bs-parent="#categoryCollapseMenu"
                       >
@@ -148,13 +153,22 @@ function FilterSidebar({
                             type="search"
                             className="form-control accordion-search"
                             placeholder="Search"
-                            onChange={(event) => {
-                              setCategorySearchValue(event.target.value);
-                              setCategorySearchKey(productFilter?.name);
-                            }}
+                            // onChange={(event) => {
+                            //   setCategorySearchValue(event.target.value);
+                            //   setCategorySearchKey(productFilter?.name);
+                            // }}
                           />
                         </div>
-                        <a className="unselect mb-4">Unselect all</a>
+                        {filterArray[productFilter?.name]?.length > 0 ? (
+                          <a
+                            className="unselect mb-4"
+                            onClick={() => {
+                              unselectAll(productFilter?.name);
+                            }}
+                          >
+                            Unselect all
+                          </a>
+                        ) : null}
                         {/* <input
                           type="search"
                           className="form-control accordion-search"
@@ -175,13 +189,16 @@ function FilterSidebar({
                                       className="form-check-input"
                                       type="checkbox"
                                       id="eGrocery"
+                                      checked={filterArray[
+                                        productFilter?.name
+                                      ]?.includes(filterData?.slug)}
                                       value={filterData?.slug}
-                                      onChange={(event) =>
+                                      onChange={(event) => {
                                         checkCategoryFilter(
                                           event.target.value,
                                           productFilter?.name
-                                        )
-                                      }
+                                        );
+                                      }}
                                     />
                                     <label
                                       className="form-check-label"

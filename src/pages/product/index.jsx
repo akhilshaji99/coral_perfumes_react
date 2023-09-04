@@ -8,6 +8,7 @@ function Index() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [priceRangeFilter, setPriceRangeFilter] = useState({});
+  const [status, setStatus] = useState(false);
 
   //Creating filter array
   const checkCategoryFilter = (checkedValue, attribute) => {
@@ -38,6 +39,12 @@ function Index() {
   const passingDateRangeToParent = (priceRange) => {
     setPriceRangeFilter(priceRange);
   };
+
+  const unselectAll = (filter_name) => {
+    const updatedFilterArray = { ...filterArray };
+    delete updatedFilterArray[filter_name];
+    setFilterArray(updatedFilterArray);
+  };
   return (
     <>
       <main>
@@ -52,6 +59,8 @@ function Index() {
                 minPrice={minPrice}
                 maxPrice={maxPrice}
                 passingDateRangeToParent={passingDateRangeToParent}
+                filterArray={filterArray}
+                unselectAll={unselectAll}
               />
             </div>
             <div className="col-lg-9 col-md-12">
