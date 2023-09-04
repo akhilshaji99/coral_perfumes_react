@@ -3,9 +3,8 @@ import { Rating } from "react-simple-star-rating";
 import $ from "jquery";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
-import AlerMessage
- from "../../common/AlerMessage";
-function RatingModal({ setRefetch,brand_id }) {
+import AlerMessage from "../../common/AlerMessage";
+function RatingModal({ setRefetch, currentVariant, type = "brand" }) {
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -25,20 +24,23 @@ function RatingModal({ setRefetch,brand_id }) {
   };
 
   const handleOnSubmit = async () => {
-  
     try {
       var bodyFormData = new FormData();
-      bodyFormData.append("brand_id", brand_id);
       bodyFormData.append("stars_count", rating);
       bodyFormData.append("message", message);
-
-      const response = await request.post(
-        "/submit-brand-review/",bodyFormData
-      );
-      setRating(1)
-      setMessage("")
+      let endPoint = "";
+      if (type == "brand") {
+        endPoint = "submit-brand-review";
+        bodyFormData.append("brand_id", currentVariant?.brand_id);
+      } else {
+        endPoint = "submit-product-review";
+        bodyFormData.append("product_id", currentVariant?.product_id);
+        bodyFormData.append("variant_id", currentVariant?.id);
+      }
+      const response = await request.post(`/` + endPoint + `/`, bodyFormData);
+      setRating(1);
+      setMessage("");
       if (response.data.status) {
-       
         toast((t) => (
           <AlerMessage
             t={t}
@@ -56,13 +58,14 @@ function RatingModal({ setRefetch,brand_id }) {
             status={response.data.status}
             title={"Error"}
             message={
-              response?.data?.message_1 || "Something went wrong.Please try again."
+              response?.data?.message_1 ||
+              "Something went wrong.Please try again."
             }
           />
         ));
       }
       handleModalClose();
-      setRefetch(true)
+      setRefetch(true);
     } catch (error) {
       console.log("error", error);
     }
@@ -112,7 +115,7 @@ function RatingModal({ setRefetch,brand_id }) {
                 class="btn btn-dark px-4 validate w-100"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleOnSubmit()
+                  handleOnSubmit();
                 }}
               >
                 APPLY

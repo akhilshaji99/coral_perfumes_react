@@ -2,7 +2,13 @@
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
+import RatingModal from "./RatingModal";
+import { useState } from "react";
+
+
 function DesktopSpec({currentVariant, productDatas }) {
+  const [refetch, setRefetch] = useState(false);
+
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
@@ -174,9 +180,11 @@ function DesktopSpec({currentVariant, productDatas }) {
             {/* tab content */}
             <div className="tab-content" id="myTabContent">
               {/* tab pane */}
-              <ProductRating currentVariant={currentVariant}/>
+              <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"product"}/>
+
+              <ProductRating refetch ={ refetch} setRefetch={setRefetch}  currentVariant={currentVariant}/>
               {/* tab pane */}
-              <BrandRating currentVariant={currentVariant}/>
+              <BrandRating refetch ={ refetch}  setRefetch={setRefetch}  currentVariant={currentVariant}/>
              
             </div>
           </div>

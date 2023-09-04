@@ -157,7 +157,7 @@ function MobileSpec({currentVariant, productDatas }) {
             aria-labelledby="headingFive"
             data-bs-parent="#accordionExample"
           >
-                          <ProductRating currentVariant={currentVariant}/>
+                          <ProductRating productDatas={productDatas} currentVariant={currentVariant}/>
 
           </div>
         </div>

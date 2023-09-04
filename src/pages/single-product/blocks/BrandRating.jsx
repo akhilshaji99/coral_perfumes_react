@@ -4,10 +4,10 @@ import RatingModal from "./RatingModal";
 import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
-function BrandRating({ currentVariant }) {
+function BrandRating({ refetch,setRefetch, currentVariant }) {
   console.log("currentVariant", currentVariant);
   const [brandReviews, setBrandReviews] = useState([]);
-  const [refetch, setRefetch] = useState(false);
+  // const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     if (currentVariant?.brand_id) {
@@ -39,7 +39,7 @@ function BrandRating({ currentVariant }) {
       aria-labelledby="reviews-tab"
       tabIndex={0}
     >
-      <RatingModal setRefetch={setRefetch} brand_id={currentVariant?.brand_id} />
+      {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
       <div className="row col-md-12">
         <div className="row col-md-6">
           {brandReviews?.map((component, index) => {
@@ -88,6 +88,7 @@ function BrandRating({ currentVariant }) {
               onClick={(e) => {
                 e.preventDefault();
                 setRefetch(false)
+               
                 $("#ratingModal").toggle();
                 $("#ratingModal").toggleClass("modal fade modal");
               }}
