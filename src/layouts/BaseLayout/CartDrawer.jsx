@@ -214,7 +214,7 @@ function CartDrawer() {
               onClick={() => {
                 $("#cartDrawer").toggleClass("hide");
                 $("#cartDrawer").removeClass("show");
-                navigate("/cart");
+                navigate("/checkout");
               }}
             >
               CHECK OUT
