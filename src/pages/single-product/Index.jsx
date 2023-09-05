@@ -11,6 +11,8 @@ import MobileSpec from "./blocks/MobileSpec";
 import addToCart from "../cart/js/addToCart";
 import getUserToken from "../../utils/userToken";
 import addToWishlist from "../wishlist/js/addToWishlist";
+import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
+import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
 
 function Index() {
   const [currentVariant, setCurrentVariant] = useState(null);
@@ -198,22 +200,8 @@ function Index() {
                 {/*  */}
                 <div className="col-xl-5 col-12 incriment-button">
                   <div className="input-group input-spinner  d-end">
-                    <input
-                      type="button"
-                      defaultValue="-"
-                      className="button-minus  btn  btn-sm "
-                      data-field="quantity"
-                      disabled={addToCartQuantity <= 1}
-                      onClick={() => {
-                        setAddToCartQuantity(addToCartQuantity - 1);
-                      }}
-                    />
-                    <input
-                      value={addToCartQuantity}
-                      type="button"
-                      className="quantity-field form-control-sm form-input"
-                    />
-                    <input
+                    {/* <input /> */}
+                    <img
                       type="button"
                       disabled={
                         addToCartQuantity >= currentVariant?.stock_value
@@ -221,10 +209,30 @@ function Index() {
                       onClick={() => {
                         setAddToCartQuantity(addToCartQuantity + 1);
                       }}
-                      defaultValue="+"
-                      className="button-plus btn btn-sm "
                       data-field="quantity"
+                      className="img-fluid btn-plus"
+                      src={plusIcon}
+                      alt="Coral Perfumes"
                     />
+                    <input
+                      value={addToCartQuantity}
+                      type="button"
+                      className="quantity-field form-control-sm form-input"
+                    />
+                    <img
+                      type="button"
+                      // defaultValue="-"
+                      // className="button-minus  btn  btn-sm "
+                      data-field="quantity"
+                      disabled={addToCartQuantity <= 1}
+                      onClick={() => {
+                        setAddToCartQuantity(addToCartQuantity - 1);
+                      }}
+                      className="img-fluid btn-minus"
+                      src={minusIcon}
+                      alt=" Coral Perfumes"
+                    />
+                    {/* <input /> */}
                   </div>
                 </div>
                 {/* Mobile Button */}
@@ -350,8 +358,14 @@ function Index() {
             </div>
           </div>
         </div>
-        <DesktopSpec currentVariant={currentVariant} productDatas={productDatas} />
-        <MobileSpec currentVariant={currentVariant}  productDatas={productDatas} />
+        <DesktopSpec
+          currentVariant={currentVariant}
+          productDatas={productDatas}
+        />
+        <MobileSpec
+          currentVariant={currentVariant}
+          productDatas={productDatas}
+        />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />
         ) : null}

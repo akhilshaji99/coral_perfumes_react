@@ -6,6 +6,8 @@ import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
 import { useNavigate } from "react-router-dom";
 import $ from "jquery";
+import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
+import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
 
 function CartDrawer({ cartDrawerFlag }) {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ function CartDrawer({ cartDrawerFlag }) {
       if (response?.status) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
-      }else{
+      } else {
         setCartItems(response?.data);
       }
     });
@@ -107,30 +109,14 @@ function CartDrawer({ cartDrawerFlag }) {
                       ) : null}
                     </div>
                     <div className="row">
-                      <div className="col-md-7">
+                      <div className="col-md-7 cart-drawer">
                         <div className="input-group-custom input-spinner  ">
-                          <input
+                          {/* <input /> */}
+                          <img
                             type="button"
-                            defaultValue="-"
-                            className="button-minus1  btn  btn-sm "
-                            disabled={cartData?.quantity <= 1}
-                            onClick={() => {
-                              cartDecrement(cartData?.id).then((response) => {
-                                if (response) {
-                                  cartFetchFunctionCall();
-                                }
-                              });
-                            }}
-                          />
-                          <input
-                            type="button"
-                            className="quantity-field1 form-control-sm form-input1"
-                            value={cartData?.quantity}
-                          />
-                          <input
-                            type="button"
-                            defaultValue="+"
-                            className="button-plus1 btn btn-sm "
+                            // defaultValue="+"
+                            // className="button-plus1 btn btn-sm "
+                            className="img-fluid cart-icon-minus"
                             data-field="quantity"
                             onClick={() => {
                               cartIncrement(cartData?.id).then((response) => {
@@ -139,11 +125,36 @@ function CartDrawer({ cartDrawerFlag }) {
                                 }
                               });
                             }}
+                            src={plusIcon}
+                            alt="Coral Perfumes"
+                          />
+                          <input
+                            type="button"
+                            className="quantity-field1 form-control-sm form-input1"
+                            value={cartData?.quantity}
+                          />
+                          {/* <input /> */}
+
+                          <img
+                            type="button"
+                            defaultValue="-"
+                            // className="button-minus1  btn  btn-sm "
+                            className="img-fluid cart-icon-plus"
+                            disabled={cartData?.quantity <= 1}
+                            onClick={() => {
+                              cartDecrement(cartData?.id).then((response) => {
+                                if (response) {
+                                  cartFetchFunctionCall();
+                                }
+                              });
+                            }}
+                            src={minusIcon}
+                            alt="Coral Perfumes"
                           />
                         </div>
                       </div>
                       <div
-                        className="col-md-5 text-end"
+                        className="col-md-5 text-end "
                         onClick={() => {
                           cartRemove(cartData?.id).then((response) => {
                             if (response) {
@@ -153,6 +164,7 @@ function CartDrawer({ cartDrawerFlag }) {
                         }}
                       >
                         <svg
+                          className="remove-icon"
                           width={13}
                           height={13}
                           viewBox="0 0 13 13"
