@@ -52,9 +52,9 @@ function Account({ changeMobileMenuStatus }) {
   };
   return (
     <>
-      <div  className="py-3 mt-5">
+      <div  className="py-3">
         <div className="container-fluid">
-          <div className="row align-items-center d-lg-none">
+          <div className="row align-items-center d-lg-none mt-5">
             <div
               className="col-md-4 col-4"
               onClick={() => changeMobileMenuStatus()}

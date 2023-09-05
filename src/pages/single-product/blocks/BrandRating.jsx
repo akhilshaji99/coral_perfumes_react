@@ -40,11 +40,12 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
       tabIndex={0}
     >
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
-      <div className="row col-md-12">
-        <div className="row col-md-6">
+    <div className="container-lg-fluid">
+    <div className="row brand-rating px-5">
+        <div className="col-md-10 col-10">
           {brandReviews?.map((component, index) => {
             return (
-              <div className="card"  key={index}>
+              <div className="card rating-card"  key={index}>
                 <div className="row align-items-center">
                   <div className="col-md-6">
                     <div className="card-body">
@@ -80,7 +81,7 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
           })}
         </div>
 
-        <div className="row col-md-6">
+        <div className="row col-md-2 mt-3">
           <div className="ml-10">
             <button
               type="button"
@@ -98,6 +99,7 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

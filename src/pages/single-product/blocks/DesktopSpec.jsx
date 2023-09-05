@@ -143,7 +143,7 @@ function DesktopSpec({currentVariant, productDatas }) {
         />
         <div className="row">
           <div className="col-md-8">
-            <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
+            <ul className="nav nav-pills nav-lb-tab mb-5" id="myTab" role="tablist">
               {/* nav item */}
               <li className="nav-item" role="presentation">
                 {/* btn */}{" "}

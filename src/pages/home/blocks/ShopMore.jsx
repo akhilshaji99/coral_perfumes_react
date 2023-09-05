@@ -40,7 +40,6 @@ function ShopMore({ componentDatas }) {
                   min: 1024,
                 },
                 items: 4,
-                partialVisibilityGutter: 40,
               },
               mobile: {
                 breakpoint: {
