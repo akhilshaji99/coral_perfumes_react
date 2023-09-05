@@ -2,8 +2,11 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import getUserOrGuestToken from "../../../utils/userOrGuestToken";
+import $ from "jquery";
+// import { useSelector, useDispatch } from "react-redux";
+import { changeCartDrawerFlag } from "../../../redux/cart/cartSlice";
 
-const addToCart = async (product_variant_id, quantity) => {
+const addToCart = async (product_variant_id, quantity, dispatch) => {
   try {
     const response = await request.post("add_to_cart/", {
       product_variant_id,
@@ -11,6 +14,8 @@ const addToCart = async (product_variant_id, quantity) => {
       token: getUserOrGuestToken(),
     });
     if (response.data.status) {
+      $("#cartDrawer").toggleClass("show");
+      dispatch(changeCartDrawerFlag(true));
       const guestToken = localStorage.getItem("guestToken");
       if (guestToken === null) {
         localStorage.setItem("guestToken", response?.data?.data?.token);

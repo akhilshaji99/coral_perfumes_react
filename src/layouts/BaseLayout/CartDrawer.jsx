@@ -8,11 +8,16 @@ import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
+import { useSelector } from "react-redux";
 
-function CartDrawer({ cartDrawerFlag }) {
+function CartDrawer() {
   const navigate = useNavigate();
   const [cartDatas, setcartDatas] = useState(null);
   const [cartItems, setCartItems] = useState([]);
+
+  const cartDrawerFlag = useSelector(
+    (state) => state.cartDrawer.cartDrawerFlag
+  );
 
   useEffect(() => {
     if (cartDrawerFlag) {

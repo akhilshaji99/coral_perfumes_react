@@ -5,19 +5,19 @@ import EngLang from "../../assets/img/icons/lang/english.png";
 import { useEffect, useState } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
-import $ from "jquery";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Logo from "../../pages/common/Logo";
+import { useDispatch } from "react-redux";
+import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
 
 function Account({ changeMobileMenuStatus }) {
-  const navigate = useNavigate();
-
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [username, setUsername] = useState(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
     const userInfo = userDatas?.userInfo;
     return userInfo?.username || "";
   });
-  const [cartDrawerFlag, setCartDrawerFlag] = useState(false);
 
   useEffect(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -31,7 +31,7 @@ function Account({ changeMobileMenuStatus }) {
   };
 
   const handleCartVisibility = () => {
-    setCartDrawerFlag(false);
+    dispatch(changeCartDrawerFlag(false));
   };
 
   const languageDirection = localStorage.getItem("languageDirection");
@@ -52,7 +52,7 @@ function Account({ changeMobileMenuStatus }) {
   };
   return (
     <>
-      <div  className="py-3">
+      <div className="py-3">
         <div className="container-fluid">
           <div className="row align-items-center d-lg-none mt-5">
             <div
@@ -426,13 +426,7 @@ function Account({ changeMobileMenuStatus }) {
                   </NavLink>
                 </div>
                 <div className="list-inline-item">
-                  <a
-                    onClick={() => {
-                      setCartDrawerFlag(true);
-                      $("#cartDrawer").toggleClass("show");
-                    }}
-                    className="text-center cursor"
-                  >
+                  <Link to={"/cart"} className="text-center cursor">
                     <svg
                       width="24"
                       height="29"
@@ -456,7 +450,7 @@ function Account({ changeMobileMenuStatus }) {
                       />
                     </svg>
                     <span className="dropdown-text">My Bag</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="list-inline-item">
                   <svg
@@ -590,7 +584,7 @@ function Account({ changeMobileMenuStatus }) {
           </div>
           {/* Drawer */}
           <OutsideAlerter changeDrawerValue={handleCartVisibility}>
-            <CartDrawer cartDrawerFlag={cartDrawerFlag} />
+            <CartDrawer />
           </OutsideAlerter>
           {/* Drawer */}
         </div>

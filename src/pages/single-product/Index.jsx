@@ -13,8 +13,11 @@ import getUserToken from "../../utils/userToken";
 import addToWishlist from "../wishlist/js/addToWishlist";
 import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
+import { useDispatch } from "react-redux";
+
 
 function Index() {
+  const dispatch = useDispatch();
   const [currentVariant, setCurrentVariant] = useState(null);
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
@@ -171,7 +174,7 @@ function Index() {
                     disabled={currentVariant === null}
                     className="btn btn-dark btn-checkout w-100"
                     onClick={() =>
-                      addToCart(currentVariant?.id, addToCartQuantity)
+                      addToCart(currentVariant?.id, addToCartQuantity,dispatch)
                     }
                   >
                     add to bag{" "}

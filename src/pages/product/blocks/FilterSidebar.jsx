@@ -15,6 +15,7 @@ function FilterSidebar({
   const urlParams = useParams([]);
 
   const [productFilters, setProductFilters] = useState([]);
+  const [orgProductFilters, setOrgProductFilters] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState(null);
   const [categorySearchKey, setCategorySearchKey] = useState(null);
   const [defaultMin, setDefaultMin] = useState(minPrice);
@@ -38,7 +39,8 @@ function FilterSidebar({
           }
         );
         if (response.data) {
-          setProductFilters(response.data.data);
+          setProductFilters(response?.data?.data);
+          setOrgProductFilters(response?.data?.data);
         }
       }
     } catch (error) {
@@ -153,10 +155,30 @@ function FilterSidebar({
                             type="search"
                             className="form-control accordion-search"
                             placeholder="Search"
-                            // onChange={(event) => {
-                            //   setCategorySearchValue(event.target.value);
-                            //   setCategorySearchKey(productFilter?.name);
-                            // }}
+                            onChange={(event) => {
+                              const searchTerm =
+                                event.target.value.toLowerCase(); // Convert search term to lowercase for case-insensitive search
+                              const copyDatas = { ...orgProductFilters };
+
+                              const filtered = copyDatas[
+                                main_index
+                              ]?.values.filter((entry) =>
+                                Object.values(entry).some(
+                                  (val) =>
+                                    typeof val === "string" &&
+                                    val.toLowerCase().includes(searchTerm)
+                                )
+                              );
+                              // setProductFilters((prevState) => ({
+                              //   ...prevState,
+                              //   productFilters[main_index]["values"] : filtered,
+                              // }));
+                              // productFilters[main_index]["values"] = filtered;
+                              productFilter['values']=filtered
+                              console.log(orgProductFilters);
+
+                              console.log(productFilters);
+                            }}
                           />
                         </div>
                         {filterArray[productFilter?.name]?.length > 0 ? (
@@ -169,15 +191,6 @@ function FilterSidebar({
                             Unselect all
                           </a>
                         ) : null}
-                        {/* <input
-                          type="search"
-                          className="form-control accordion-search"
-                          placeholder="Search"
-                          onChange={(event) => {
-                            setCategorySearchValue(event.target.value);
-                            setCategorySearchKey(productFilter?.name);
-                          }}
-                        /> */}
 
                         <div>
                           <ul className="nav flex-custom-column ms-3 mt-3">
