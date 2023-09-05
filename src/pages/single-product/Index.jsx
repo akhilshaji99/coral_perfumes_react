@@ -11,8 +11,8 @@ import MobileSpec from "./blocks/MobileSpec";
 import addToCart from "../cart/js/addToCart";
 import getUserToken from "../../utils/userToken";
 import addToWishlist from "../wishlist/js/addToWishlist";
-import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
-import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
+import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
+import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useDispatch } from "react-redux";
 
 

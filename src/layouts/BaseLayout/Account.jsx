@@ -310,7 +310,9 @@ function Account({ changeMobileMenuStatus }) {
                       </li>
                       <li>
                         {" "}
-                        <h3 className="my-account-drop-h3">Your Account</h3>
+                        <NavLink to="/dashboard">
+                          <h3 className="my-account-drop-h3">Your Account</h3>
+                        </NavLink>
                         <li></li>
                         <NavLink
                           to="/orders"

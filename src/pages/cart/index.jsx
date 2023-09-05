@@ -8,6 +8,8 @@ import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
 import cartRemove from "../../pages/cart/js/cartRemove";
 import RemoveBtn from "../../assets/img/icons/close.svg";
+import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
+import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import GuestLoginModal from "./blocks/GuestLoginModal";
 import LoginOTPModal from "../login/LoginOTPModal";
 import $ from "jquery";
@@ -105,14 +107,14 @@ function Index() {
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
       setPageLoaded(true);
-      console.log(response)
+      console.log(response);
       if (response?.status) {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
-      }else{
+      } else {
         setCartItems(response?.data);
-        setCartEmptyMessages(response?.message_data)
+        setCartEmptyMessages(response?.message_data);
       }
     });
   };
@@ -120,7 +122,7 @@ function Index() {
     <>
       {cartItems?.length <= 0 && pageLoaded ? (
         <section className="mb-lg-14 mb-8 mt-8 my-bag">
-          <div className="container-fluid" style={{marginTop:"15%"}}>
+          <div className="container-fluid" style={{ marginTop: "15%" }}>
             <div className="row mt-8">
               <BagEmpty cartEmptyMessages={cartEmptyMessages} />
             </div>
@@ -207,7 +209,7 @@ function Index() {
                             <div className="row ">
                               <div className="col-md-3">
                                 <div className="input-group-custom input-spinner  my-bag-spinner">
-                                  <input
+                                  {/* <input
                                     type="button"
                                     defaultValue="-"
                                     className="button-minus1  btn  btn-sm "
@@ -221,13 +223,30 @@ function Index() {
                                         }
                                       );
                                     }}
+                                  /> */}
+                                  <img
+                                    type="button"
+                                    defaultValue="-"
+                                    className="img-fluid cart-icon-minus"
+                                    disabled={cartData?.quantity <= 1}
+                                    onClick={() => {
+                                      cartDecrement(cartData?.id).then(
+                                        (response) => {
+                                          if (response) {
+                                            cartFetchFunctionCall();
+                                          }
+                                        }
+                                      );
+                                    }}
+                                    src={minusIcon}
+                                    alt="Coral Perfumes"
                                   />
                                   <input
                                     type="button"
                                     className="quantity-field1 form-control-sm form-input1"
                                     value={cartData?.quantity}
                                   />
-                                  <input
+                                  {/* <input
                                     type="button"
                                     defaultValue="+"
                                     className="button-plus1 btn btn-sm "
@@ -241,6 +260,23 @@ function Index() {
                                         }
                                       );
                                     }}
+                                  /> */}
+                                  <img
+                                    type="button"
+                                    defaultValue="+"
+                                    className="img-fluid cart-icon-plus"
+                                    data-field="quantity"
+                                    onClick={() => {
+                                      cartIncrement(cartData?.id).then(
+                                        (response) => {
+                                          if (response) {
+                                            cartFetchFunctionCall();
+                                          }
+                                        }
+                                      );
+                                    }}
+                                    src={plusIcon}
+                                    alt="Coral Perfumes"
                                   />
                                 </div>
                               </div>

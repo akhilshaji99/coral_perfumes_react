@@ -6,8 +6,8 @@ import cartIncrement from "../../pages/cart/js/cartIncrement";
 import cartDecrement from "../../pages/cart/js/cartDecrement";
 import { useNavigate } from "react-router-dom";
 import $ from "jquery";
-import plusIcon from "../../../src/assets/img/icons/plus-circle.png";
-import minusIcon from "../../../src/assets/img/icons/minus-circle.png";
+import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
+import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useSelector } from "react-redux";
 
 function CartDrawer() {
