@@ -101,7 +101,7 @@ function ProductRating({ refetch, setRefetch, currentVariant }) {
                         {/* 25% */}
                       </div>
                     </div>
-                    <div className="col-md-1 col-1 star-rating">25</div>
+                    <div className="col-md-1 col-1 star-rating">{component}</div>
                   </div>
 
                   <br />
