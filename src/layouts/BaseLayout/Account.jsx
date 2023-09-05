@@ -9,8 +9,36 @@ import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 import Logo from "../../pages/common/Logo";
 import { useDispatch } from "react-redux";
 import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
+import SearchResult from "./SearchResult";
 
 function Account({ changeMobileMenuStatus }) {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const data = [
+    "Apple",
+    "Banana",
+    "Cherry",
+    "Date",
+    "Elderberry",
+    "Fig",
+    "Grapes",
+    "Honeydew",
+    "Kiwi",
+    "Lemon",
+  ];
+
+  const performSearch = (query) => {
+    const filteredData = data.filter((item) =>
+      item.toLowerCase().includes(query.toLowerCase())
+    );
+    setResults(filteredData);
+  };
+
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
+    setQuery(inputValue);
+    performSearch(inputValue);
+  };
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState(() => {
@@ -52,6 +80,32 @@ function Account({ changeMobileMenuStatus }) {
   };
   return (
     <>
+      {/* <div className="container mt-5">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search..."
+          value={query}
+          onChange={handleInputChange}
+        />
+
+        {results.length > 0 && (
+          <div className="list-group" style={{ display: "block" }}>
+            {results.map((result, index) => (
+              <a
+                key={index}
+                className="list-group-item list-group-item-action"
+                onClick={() => {
+                  setQuery(result);
+                  setResults([]);
+                }}
+              >
+                {result}
+              </a>
+            ))}
+          </div>
+        )}
+      </div> */}
       <div className="py-3">
         <div className="container-fluid">
           <div className="row align-items-center d-lg-none mt-5">
@@ -120,50 +174,13 @@ function Account({ changeMobileMenuStatus }) {
           </div>
           <div className="row mob-view ">
             <div className="d-block d-lg-none my-4">
-              <form action="#">
-                <div className="input-group ">
-                  <input
-                    className="form-control rounded"
-                    type="search"
-                    placeholder="Search for products"
-                  />
-                  <svg
-                    className="icon-input__icon"
-                    width={25}
-                    height={24}
-                    viewBox="0 0 25 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18.4834 17.9577L18.1643 17.4877L17.7386 17.8638C15.8025 19.5746 13.2751 20.4657 10.6919 20.3479C8.10874 20.2301 5.67322 19.1127 3.90148 17.2329C2.12976 15.3531 1.16104 12.8585 1.20037 10.2781C1.23971 7.69757 2.28401 5.23361 4.11222 3.40847C5.94045 1.5833 8.40891 0.54043 10.9945 0.501151C13.58 0.461872 16.0791 1.42928 17.9622 3.19808C19.8452 4.96686 20.9641 7.39797 21.0821 9.97607C21.2 12.5542 20.3078 15.0769 18.5942 17.0097L18.2816 17.3623L18.6151 17.6952L18.8678 17.9476L23.9226 22.9939L23.9362 23.0075L23.9508 23.02L24.1474 23.1882L24.1483 23.189C24.1643 23.2026 24.1772 23.2195 24.1859 23.2385L24.6398 23.0287L24.1859 23.2385C24.1947 23.2575 24.1992 23.2781 24.1992 23.2989C24.1992 23.3197 24.1947 23.3403 24.1859 23.3593L24.6398 23.5691L24.1859 23.3593C24.1772 23.3782 24.1644 23.3952 24.1483 23.4088L24.1244 23.4292L24.1032 23.4524C24.0895 23.4673 24.0729 23.4793 24.0543 23.4875C24.0356 23.4957 24.0155 23.5 23.9951 23.5C23.9746 23.5 23.9545 23.4957 23.9358 23.4875C23.9172 23.4793 23.9006 23.4673 23.8869 23.4524L23.8809 23.4458L23.8747 23.4394L18.6514 18.1127L18.6162 18.0769L18.5746 18.0487C18.5386 18.0244 18.5077 17.9935 18.4834 17.9577Z"
-                      stroke="black"
-                      strokeMiterlimit={10}
-                    />
-                    <path
-                      d="M10.6484 3.14178C12.4935 3.30632 14.2321 4.09401 15.5895 5.38027C16.7766 6.54131 17.5898 8.04342 17.9212 9.68724"
-                      stroke="black"
-                      strokeMiterlimit={10}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
-            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
-              <NavLink className="navbar-brand d-none d-lg-block" to="/">
-                <Logo />
-              </NavLink>
-            </div>
-
-            <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
-              <div className="icon-input">
+              <div className="input-group ">
                 <input
-                  className="icon-input__text-field"
-                  placeholder="Search for product or brand"
-                  type="text"
+                  className="form-control rounded"
+                  type="search"
+                  placeholder="Search for products"
+                  value={query}
+                  onChange={handleInputChange}
                 />
                 <svg
                   className="icon-input__icon"
@@ -185,6 +202,47 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
+                <SearchResult results={results} />
+              </div>
+            </div>
+          </div>
+          <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
+            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
+              <NavLink className="navbar-brand d-none d-lg-block" to="/">
+                <Logo />
+              </NavLink>
+            </div>
+
+            <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
+              <div className="icon-input">
+                <input
+                  className="icon-input__text-field"
+                  placeholder="Search for product or brand"
+                  type="text"
+                  value={query}
+                  onChange={handleInputChange}
+                />
+                <svg
+                  className="icon-input__icon"
+                  width={25}
+                  height={24}
+                  viewBox="0 0 25 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.4834 17.9577L18.1643 17.4877L17.7386 17.8638C15.8025 19.5746 13.2751 20.4657 10.6919 20.3479C8.10874 20.2301 5.67322 19.1127 3.90148 17.2329C2.12976 15.3531 1.16104 12.8585 1.20037 10.2781C1.23971 7.69757 2.28401 5.23361 4.11222 3.40847C5.94045 1.5833 8.40891 0.54043 10.9945 0.501151C13.58 0.461872 16.0791 1.42928 17.9622 3.19808C19.8452 4.96686 20.9641 7.39797 21.0821 9.97607C21.2 12.5542 20.3078 15.0769 18.5942 17.0097L18.2816 17.3623L18.6151 17.6952L18.8678 17.9476L23.9226 22.9939L23.9362 23.0075L23.9508 23.02L24.1474 23.1882L24.1483 23.189C24.1643 23.2026 24.1772 23.2195 24.1859 23.2385L24.6398 23.0287L24.1859 23.2385C24.1947 23.2575 24.1992 23.2781 24.1992 23.2989C24.1992 23.3197 24.1947 23.3403 24.1859 23.3593L24.6398 23.5691L24.1859 23.3593C24.1772 23.3782 24.1644 23.3952 24.1483 23.4088L24.1244 23.4292L24.1032 23.4524C24.0895 23.4673 24.0729 23.4793 24.0543 23.4875C24.0356 23.4957 24.0155 23.5 23.9951 23.5C23.9746 23.5 23.9545 23.4957 23.9358 23.4875C23.9172 23.4793 23.9006 23.4673 23.8869 23.4524L23.8809 23.4458L23.8747 23.4394L18.6514 18.1127L18.6162 18.0769L18.5746 18.0487C18.5386 18.0244 18.5077 17.9935 18.4834 17.9577Z"
+                    stroke="black"
+                    strokeMiterlimit={10}
+                  />
+                  <path
+                    d="M10.6484 3.14178C12.4935 3.30632 14.2321 4.09401 15.5895 5.38027C16.7766 6.54131 17.5898 8.04342 17.9212 9.68724"
+                    stroke="black"
+                    strokeMiterlimit={10}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <SearchResult results={results} />
               </div>
             </div>
             <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
