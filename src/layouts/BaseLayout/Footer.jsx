@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
-function Footer() {
+function Footer({ changeMobileMenuStatus }) {
   const navigate = useNavigate();
 
   const handleOnSubmit = (values) => {
@@ -80,7 +80,9 @@ function Footer() {
     // items can have either title, icon or both or neither!
     {
       title: "Categories",
-      onClick: ({ id }) =>  navigate("/"),
+      onClick: ({ id }) =>  {
+        changeMobileMenuStatus()
+      },
       icon: (
         <svg
           width={27}

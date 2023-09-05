@@ -41,7 +41,7 @@ const BaseLayout = () => {
       <div className="fixed-top-margin main-layout">
         <Outlet />
       </div>
-      <Footer />
+      <Footer changeMobileMenuStatus={changeMobileMenuStatus}/>
     </>
   );
 };

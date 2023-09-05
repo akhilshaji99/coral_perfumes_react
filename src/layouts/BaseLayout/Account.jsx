@@ -204,7 +204,7 @@ function Account({ changeMobileMenuStatus }) {
                       className="text-center"
                       onClick={(e) => {
                         e.preventDefault();
-                        navigate("/dashboard");
+                        // navigate("/dashboard");
                       }}
                     >
                       <svg
