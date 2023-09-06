@@ -35,8 +35,6 @@ const BaseLayout = () => {
             setMobileMenuStatus={setMobileMenuStatus}
           />
         </nav>
-        <CartDrawer />
-        <OTPModal />
       </div>
       <div className="fixed-top-margin main-layout">
         <Outlet />

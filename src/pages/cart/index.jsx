@@ -11,21 +11,9 @@ import RemoveBtn from "../../assets/img/icons/close.svg";
 import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import GuestLoginModal from "./blocks/GuestLoginModal";
-import LoginOTPModal from "../login/LoginOTPModal";
-import $ from "jquery";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import toast from "react-hot-toast";
-import AlerMessage from "../common/AlerMessage";
-import request from "../../utils/request";
 import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
 import BagEmpty from "../alert_pages/BagEmpty";
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
-});
+
 function Index() {
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -34,66 +22,6 @@ function Index() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
 
-  const handleOnSubmit = (values) => {
-    // subscribeNewsLetter(values);
-    login(values);
-    console.log(values);
-  };
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      phone_number: "",
-    },
-
-    validationSchema: schema,
-    onSubmit: handleOnSubmit,
-  });
-
-  const login = async (values) => {
-    try {
-      var bodyFormData = new FormData();
-      bodyFormData.append("email", values.email);
-      bodyFormData.append("phone_number", values.phone_number);
-      const response = await request.post("login/", bodyFormData);
-      console.log("response", response);
-      let status = "succsss";
-      let title = "SUCCESS";
-      if (!response.data.status) {
-        status = "error";
-        title = "ERROR";
-      } else {
-        console.log("otp verification");
-        // $('#userModal').modal('show');
-        $("document").ready(function () {
-          $("#guestLoginModal").toggleClass("modal modal fade");
-          $("#guestLoginModal").hide();
-          $("#otpModal").toggle();
-          $("#otpModal").toggleClass("modal fade modal");
-          // $('#userModal').show();
-          // });
-        });
-      }
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={status}
-          title={title}
-          message={response.data.message}
-        />
-      ));
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-  const setInputValue = useCallback(
-    (key, value) =>
-      formik.setValues({
-        ...formik.values,
-        [key]: value,
-      }),
-    [formik]
-  );
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -143,11 +71,8 @@ function Index() {
                 </div>
               </div>
             </div>
-            <GuestLoginModal formik={formik} setInputValue={setInputValue} />
-            <LoginOTPModal
-              componentDatas={formik.values}
-              redirectTo={"checkout"}
-            />
+            <GuestLoginModal />
+            
             <PromoCodeModal
               setShowPrmoCodeFlag={setShowPrmoCodeFlag}
               showPrmoCodeFlag={showPrmoCodeFlag}

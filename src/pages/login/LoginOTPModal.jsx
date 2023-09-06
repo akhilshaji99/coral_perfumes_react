@@ -49,8 +49,9 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
           token: response.data.token,
           userInfo: response.data.user,
         };
+
         localStorage.setItem("userDatas", JSON.stringify(userData));
-        navigate("/");
+        // navigate("/");
       }
       toast((t) => (
         <AlerMessage
@@ -91,6 +92,10 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
           userInfo: response.data.user,
         };
         localStorage.setItem("userDatas", JSON.stringify(userData));
+        $("#otpModal").hide();
+        // $("#otpModal").toggle();
+        // $("#otpModal").toggleClass("modal fade modal");
+        $("#cartDrawer").hide();
         if (redirectTo != null) {
           navigate("/" + redirectTo);
         } else {
@@ -209,7 +214,10 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                 </div>
                 <div className="mt-4">
                   {" "}
-                  <button type="submit" className="btn btn-dark px-4 validate w-100">
+                  <button
+                    type="submit"
+                    className="btn btn-dark px-4 validate w-100"
+                  >
                     VERIFY
                   </button>{" "}
                 </div>

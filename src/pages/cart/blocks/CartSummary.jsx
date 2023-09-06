@@ -11,14 +11,14 @@ function CartSummary({
   setShowPrmoCodeFlag,
   promoCode,
   setPromoCode,
-  cartFetchFunctionCall
+  cartFetchFunctionCall,
 }) {
   const navigate = useNavigate();
   const removePromocode = (id) => {
-    RemovePromoCode(id,null).then((response) => {
-      cartFetchFunctionCall()
-    })
-  }
+    RemovePromoCode(id, null).then((response) => {
+      cartFetchFunctionCall();
+    });
+  };
   const applyPromocode = () => {
     if (promoCode == "") {
       toast((t) => (
@@ -31,9 +31,9 @@ function CartSummary({
         />
       ));
     } else {
-      UsePromoCode(null,promoCode).then((response) => {
-        cartFetchFunctionCall()
-      })
+      UsePromoCode(null, promoCode).then((response) => {
+        cartFetchFunctionCall();
+      });
     }
   };
 
@@ -68,30 +68,40 @@ function CartSummary({
                       className="form-control"
                       placeholder="Coupon Code"
                       value={promoCode}
-                      disabled={cartDatas?.voucher_id  != null ? true : false}
+                      disabled={cartDatas?.voucher_id != null ? true : false}
                       onChange={(e) => setPromoCode(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="col-md-6 col-6">
                   <div className="d-grid">
-                  {cartDatas?.voucher_id == null ? (
-                                  
-                                  <button
-                                    // type="submit"
-                                    className="btn btn-dark px-4 validate w-100"
-                                    onClick={(e)=>{
-                                      e.preventDefault();
-                                      applyPromocode()
-                                    }}
-                                  >
-                                    APPLY
-                                  </button>
-                                  ) : (
-                                    <><a onClick={(e)=>{
-                                      e.preventDefault();
-                                      removePromocode(cartDatas?.voucher_id)
-                                    }} className="" style={ {"color":"black" , "text-decoration": "underline"} }>Remove</a></>
+                    {cartDatas?.voucher_id == null ? (
+                      <button
+                        // type="submit"
+                        className="btn btn-dark px-4 validate w-100"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          applyPromocode();
+                        }}
+                      >
+                        APPLY
+                      </button>
+                    ) : (
+                      <>
+                        <a
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removePromocode(cartDatas?.voucher_id);
+                          }}
+                          className=""
+                          style={{
+                            color: "black",
+                            "text-decoration": "underline",
+                          }}
+                        >
+                          Remove
+                        </a>
+                      </>
                     )}
                   </div>
                 </div>

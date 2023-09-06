@@ -2,7 +2,7 @@ import HamburgerMenu from "../../assets/img/icons/hamburger.svg";
 import { Link, NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
-import { useEffect, useState ,useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 // import { useNavigate } from "react-router-dom";
@@ -40,7 +40,7 @@ function Account({ changeMobileMenuStatus }) {
   const performSearch = async (query) => {
     try {
       const response = await request.get("homesearch/" + query.toLowerCase());
-      setIsComponentVisible(true)
+      setIsComponentVisible(true);
       if (response?.data) {
         setResult(response?.data);
       }
@@ -669,9 +669,11 @@ function Account({ changeMobileMenuStatus }) {
             </div>
           </div>
           {/* Drawer */}
-          <OutsideAlerter changeDrawerValue={handleCartVisibility}>
-            <CartDrawer />
-          </OutsideAlerter>
+          {!window.location.href.includes("/login") ? (
+            <OutsideAlerter changeDrawerValue={handleCartVisibility}>
+              <CartDrawer />
+            </OutsideAlerter>
+          ) : null}
           {/* Drawer */}
         </div>
       </div>
