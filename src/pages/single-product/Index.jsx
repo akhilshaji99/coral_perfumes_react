@@ -52,7 +52,7 @@ function Index() {
           setCurrentVariant(response.data.current_variant);
         }
 
-        if (response.data.current_variant && response.data.other_variants) {
+        if (response?.data?.current_variant && response?.data?.other_variants) {
           CreateProductVariants(
             response.data.current_variant,
             response.data.other_variants
