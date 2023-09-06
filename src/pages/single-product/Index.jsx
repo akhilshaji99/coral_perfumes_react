@@ -15,7 +15,6 @@ import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useDispatch } from "react-redux";
 
-
 function Index() {
   const dispatch = useDispatch();
   const [currentVariant, setCurrentVariant] = useState(null);
@@ -25,6 +24,7 @@ function Index() {
   const [aciveVariant, setActiveVariant] = useState([]);
   const [addToCartQuantity, setAddToCartQuantity] = useState(1);
   const [status, setStatus] = useState(false);
+  const [flashSale, setFlashSale] = useState(null);
 
   useEffect(() => {
     getProductDetails();
@@ -44,6 +44,9 @@ function Index() {
 
         if (response?.data?.product_data) {
           setProductDatas(response?.data?.product_data);
+        }
+        if (response?.data?.flash_sale) {
+          setFlashSale(response?.data?.flash_sale);
         }
         if (response?.data?.current_variant) {
           setCurrentVariant(response.data.current_variant);
@@ -174,7 +177,7 @@ function Index() {
                     disabled={currentVariant === null}
                     className="btn btn-dark btn-checkout w-100"
                     onClick={() =>
-                      addToCart(currentVariant?.id, addToCartQuantity,dispatch)
+                      addToCart(currentVariant?.id, addToCartQuantity, dispatch)
                     }
                   >
                     add to bag{" "}
@@ -357,7 +360,7 @@ function Index() {
                 productDatas={productDatas}
                 currentVariant={currentVariant}
               />
-              <Timer />
+              <Timer flash_sale={flashSale} />
             </div>
           </div>
         </div>
