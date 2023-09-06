@@ -10,28 +10,24 @@ import Logo from "../../pages/common/Logo";
 import { useDispatch } from "react-redux";
 import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
 import SearchResult from "./SearchResult";
+import request from "../../utils/request";
 
 function Account({ changeMobileMenuStatus }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const data = [
-    "Apple",
-    "Banana",
-    "Cherry",
-    "Date",
-    "Elderberry",
-    "Fig",
-    "Grapes",
-    "Honeydew",
-    "Kiwi",
-    "Lemon",
-  ];
+ 
 
-  const performSearch = (query) => {
-    const filteredData = data.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase())
-    );
-    setResults(filteredData);
+  const performSearch = async (query) => {
+   
+    try {
+     
+      const response = await request.get("homesearch/"+query.toLowerCase());
+      if (response?.data) {
+        setResults(response?.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   const handleInputChange = (event) => {
@@ -202,7 +198,7 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                <SearchResult results={results} />
+                <SearchResult  results={results}  />
               </div>
             </div>
           </div>
