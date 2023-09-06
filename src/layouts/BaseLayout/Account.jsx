@@ -2,7 +2,7 @@ import HamburgerMenu from "../../assets/img/icons/hamburger.svg";
 import { Link, NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/arab.png";
 import EngLang from "../../assets/img/icons/lang/english.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef} from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
 // import { useNavigate } from "react-router-dom";
@@ -11,17 +11,36 @@ import { useDispatch } from "react-redux";
 import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
 import SearchResult from "./SearchResult";
 import request from "../../utils/request";
+function useComponentVisible(initialIsVisible) {
+  const [isComponentVisible, setIsComponentVisible] =
+    useState(initialIsVisible);
+  const ref = useRef(null);
 
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setIsComponentVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    // document.addEventListener("keydown", handleHideDropdown, true);
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      // document.removeEventListener("keydown", handleHideDropdown, true);
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
+  return { ref, isComponentVisible, setIsComponentVisible };
+}
 function Account({ changeMobileMenuStatus }) {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState([]);
- 
 
   const performSearch = async (query) => {
-   
     try {
-     
-      const response = await request.get("homesearch/"+query.toLowerCase());
+      const response = await request.get("homesearch/" + query.toLowerCase());
+      setIsComponentVisible(true)
       if (response?.data) {
         setResult(response?.data);
       }
@@ -74,6 +93,9 @@ function Account({ changeMobileMenuStatus }) {
   const handleMouseLeave = () => {
     setOpenAccountMenus(false);
   };
+
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(true);
   return (
     <>
       {/* <div className="container mt-5">
@@ -198,8 +220,11 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                
-                <SearchResult setResult={setResult} result={result}  />
+                <div ref={ref}>
+                  {isComponentVisible && (
+                    <SearchResult setResult={setResult} result={result} />
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -239,8 +264,11 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                <SearchResult setResult={setResult} result={result}  />
-
+                <div ref={ref}>
+                  {isComponentVisible && (
+                    <SearchResult setResult={setResult} result={result} />
+                  )}
+                </div>
               </div>
             </div>
             <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
