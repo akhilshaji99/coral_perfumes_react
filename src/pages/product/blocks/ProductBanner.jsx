@@ -1,8 +1,11 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function ProductBanner() {
+  const urlParams = useParams([]);
+
   const [productBanner, setProductBanner] = useState(null);
 
   useEffect(() => {
@@ -13,8 +16,10 @@ function ProductBanner() {
 
   const getProductBanner = async (category) => {
     try {
-      if (category) {
-        const response = await request.get("category-banners/" + category);
+      if (urlParams?.link_type && urlParams?.link_value) {
+        const response = await request.get(
+          "category-banners/" + urlParams?.link_value
+        );
         if (response.data) {
           setProductBanner(response.data.data);
         }
