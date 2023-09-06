@@ -11,7 +11,7 @@ const confirmCheckout = async () => {
     if (response?.data?.status) {
       if (response?.data?.is_cod) {
         window.location.href =
-          "/cod/success?order_no=" + response?.data?.order_no;
+          "/cod/success?order_no=" + response?.data?.order_id;
       } else {
         window.location.href = response?.data?.data;
       }
