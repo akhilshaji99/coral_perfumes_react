@@ -1,18 +1,18 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchResult({ results }) {
+function SearchResult({ setResult,result}) {
   const navigate = useNavigate();
   const closeModal = ()=>{
     // setResults([])
+    setResult([])
   }
   return (
     <>
-      <div class="row" style={{"position":"fixed" ,"z-index":"99","width":"1000px"}}>
+      <div class="row"  style={{"position":"fixed" ,"z-index":"99","width":"1000px","z-index": 1 }}>
         <div class="col">
-          {results.data?.length > 0 && (
+          {result.data?.length > 0 && (
             <div className="list-group" style={{ display: "block" }}>
-              {results?.data?.map((result, index) => (
+              {result?.data?.map((result, index) => (
                 <a
                   key={1}
                   className="list-group-item list-group-item-action"
@@ -29,9 +29,9 @@ function SearchResult({ results }) {
           )}
         </div>
         <div class="col">
-        {results.products?.length > 0 && (
+        {result.products?.length > 0 && (
            <div className="list-group" style={{ display: "block" }}>
-           {results?.products?.map((result, index) => (
+           {result?.products?.map((result, index) => (
              <a
                key={1}
                className="list-group-item list-group-item-action"

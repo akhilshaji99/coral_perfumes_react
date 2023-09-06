@@ -14,7 +14,7 @@ import request from "../../utils/request";
 
 function Account({ changeMobileMenuStatus }) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [result, setResult] = useState([]);
  
 
   const performSearch = async (query) => {
@@ -23,7 +23,7 @@ function Account({ changeMobileMenuStatus }) {
      
       const response = await request.get("homesearch/"+query.toLowerCase());
       if (response?.data) {
-        setResults(response?.data);
+        setResult(response?.data);
       }
     } catch (error) {
       console.log("error", error);
@@ -198,7 +198,8 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                <SearchResult  results={results}  />
+                
+                <SearchResult setResult={setResult} result={result}  />
               </div>
             </div>
           </div>
@@ -238,7 +239,8 @@ function Account({ changeMobileMenuStatus }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                <SearchResult results={results} />
+                <SearchResult setResult={setResult} result={result}  />
+
               </div>
             </div>
             <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
