@@ -4,10 +4,9 @@ import TopHeader from "./TopHeader";
 import Account from "./Account";
 import Menubar from "./Menubar";
 import Footer from "./Footer";
-import CartDrawer from "./CartDrawer";
-import OTPModal from "./OTPModal";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import MobileMyAccount from "../../pages/common/MobileMyAccount";
 
 const BaseLayout = () => {
   useEffect(() => {
@@ -19,9 +18,15 @@ const BaseLayout = () => {
     localStorage.getItem("languageDirection");
   //#End
   const [mobileMenuStatus, setMobileMenuStatus] = useState(false);
+  const [myAccountStatus, setMyAccountStatus] = useState(false);
 
   const changeMobileMenuStatus = (status = null) => {
     setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
+  };
+
+  const changeMyAccountMenuStatus = (status = null) => {
+    setMobileMenuStatus(false);
+    setMyAccountStatus(status === false ? status : !myAccountStatus);
   };
   return (
     <>
@@ -29,7 +34,7 @@ const BaseLayout = () => {
       <div className="border-bottom ">
         <nav className="fixed-top bg-white ">
           <TopHeader />
-          <Account changeMobileMenuStatus={changeMobileMenuStatus} />
+          <Account changeMyAccountMenuStatus={changeMyAccountMenuStatus} />
           <Menubar
             mobileMenuStatus={mobileMenuStatus}
             setMobileMenuStatus={setMobileMenuStatus}
@@ -39,7 +44,11 @@ const BaseLayout = () => {
       <div className="fixed-top-margin main-layout">
         <Outlet />
       </div>
-      <Footer changeMobileMenuStatus={changeMobileMenuStatus}/>
+      <MobileMyAccount
+        myAccountStatus={myAccountStatus}
+        setMyAccountStatus={setMyAccountStatus}
+      />
+      <Footer changeMobileMenuStatus={changeMobileMenuStatus} />
     </>
   );
 };

@@ -40,10 +40,16 @@ function index() {
               </NavLink>
             </div>{" "}
             <div className="col-md-3 col-6 text-center">
-              <img src={myOrders} alt="Coral Perfumes" className="img-fluid" />
-              <h6>my orders</h6>
-              <p>edit details</p>
-            </div>{" "}
+              <NavLink to={"/orders"}>
+                <img
+                  src={myOrders}
+                  alt="Coral Perfumes"
+                  className="img-fluid"
+                />
+                <h6>my orders</h6>
+                <p>edit details</p>
+              </NavLink>
+            </div>
             <div className="col-md-3 col-6 text-center">
               <NavLink to={"/wishlist"}>
                 <img

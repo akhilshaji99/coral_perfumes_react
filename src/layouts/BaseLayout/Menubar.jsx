@@ -40,9 +40,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
     setOpenSubmenu(null);
   };
 
-  useEffect(() => {
-    console.log(mobileMenuStatus);
-  }, [mobileMenuStatus]);
+  useEffect(() => {}, [mobileMenuStatus]);
 
   return (
     <nav

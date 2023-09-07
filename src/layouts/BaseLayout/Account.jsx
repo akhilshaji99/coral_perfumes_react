@@ -33,7 +33,7 @@ function useComponentVisible(initialIsVisible) {
 
   return { ref, isComponentVisible, setIsComponentVisible };
 }
-function Account({ changeMobileMenuStatus }) {
+function Account({ changeMyAccountMenuStatus }) {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState([]);
 
@@ -129,7 +129,7 @@ function Account({ changeMobileMenuStatus }) {
           <div className="row align-items-center d-lg-none mt-5">
             <div
               className="col-md-4 col-4"
-              onClick={() => changeMobileMenuStatus()}
+              onClick={() => changeMyAccountMenuStatus()}
             >
               <button
                 className="navbar-toggler collapsed"
@@ -137,7 +137,10 @@ function Account({ changeMobileMenuStatus }) {
                 // data-bs-toggle="offcanvas"
                 // data-bs-target="#navbar-default"
                 // aria-controls="navbar-default"
-                aria-label="Toggle navigation"
+                // data-bs-toggle="offcanvas"
+                // data-bs-target="#offcanvasAccount"
+                // aria-controls="offcanvasAccount"
+                // aria-label="Toggle navigation"
               >
                 <img src={HamburgerMenu} alt="Coral Perfumes" />
               </button>
@@ -146,7 +149,7 @@ function Account({ changeMobileMenuStatus }) {
               <NavLink
                 className="navbar-brand"
                 to="/"
-                onClick={() => changeMobileMenuStatus(false)}
+                onClick={() => changeMyAccountMenuStatus(false)}
               >
                 {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
                 <Logo />
@@ -154,7 +157,7 @@ function Account({ changeMobileMenuStatus }) {
             </div>
             <div
               className="col-md-4 col-4 text-end"
-              onClick={() => changeMobileMenuStatus(false)}
+              onClick={() => changeMyAccountMenuStatus(false)}
             >
               {/* <a
                 className="text-muted position-relative "

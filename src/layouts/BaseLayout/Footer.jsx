@@ -295,7 +295,7 @@ function Footer({ changeMobileMenuStatus }) {
     // the render method enables custom item content
     {
       title: "Profile",
-      onClick: ({ id }) =>  navigate("/personal-info"),
+      onClick: ({ id }) =>  navigate("/dashboard"),
       icon: (
         <svg
           width={27}
