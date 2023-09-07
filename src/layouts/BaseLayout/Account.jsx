@@ -94,6 +94,12 @@ function Account({ changeMyAccountMenuStatus }) {
     setOpenAccountMenus(false);
   };
 
+  useEffect(() => {
+    if (!window.location.href.includes("product")) {
+      setQuery("");
+    }
+  }, [window.location.href]);
+
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(true);
   return (
