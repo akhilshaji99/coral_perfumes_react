@@ -222,7 +222,7 @@ function Account({ changeMobileMenuStatus }) {
                 </svg>
                 <div ref={ref}>
                   {isComponentVisible && (
-                    <SearchResult setResult={setResult} result={result} />
+                    <SearchResult setResult={setResult} result={result}  setQuery={setQuery}/>
                   )}
                 </div>
               </div>
@@ -266,7 +266,7 @@ function Account({ changeMobileMenuStatus }) {
                 </svg>
                 <div ref={ref}>
                   {isComponentVisible && (
-                    <SearchResult setResult={setResult} result={result} />
+                    <SearchResult setResult={setResult} result={result} setQuery={setQuery}/>
                   )}
                 </div>
               </div>
