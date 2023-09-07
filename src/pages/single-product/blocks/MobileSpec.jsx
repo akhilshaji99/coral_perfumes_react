@@ -1,6 +1,10 @@
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
+import RatingModal from "./RatingModal";
+import { useState } from "react";
 function MobileSpec({currentVariant, productDatas }) {
+  const [refetch, setRefetch] = useState(false);
+  const [ratingType, setRatingType] = useState("product")
   return (
     <div className="mob-specs">
       <div className="accordion d-block d-sm-none" id="accordionExample">
@@ -138,6 +142,8 @@ function MobileSpec({currentVariant, productDatas }) {
             </div>
           </div>
         </div>
+        <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} ratingType={ratingType}/>
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingFive">
             <button
@@ -157,7 +163,10 @@ function MobileSpec({currentVariant, productDatas }) {
             aria-labelledby="headingFive"
             data-bs-parent="#accordionExample"
           >
-                          <ProductRating productDatas={productDatas} currentVariant={currentVariant}/>
+                          {/* <ProductRating productDatas={productDatas} currentVariant={currentVariant}/>
+                           */}
+              <ProductRating refetch ={ refetch} setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
+
 
           </div>
         </div>
@@ -180,7 +189,9 @@ function MobileSpec({currentVariant, productDatas }) {
             aria-labelledby="headingSix"
             data-bs-parent="#accordionExample"
           >
-                          <BrandRating currentVariant={currentVariant}/>
+                          {/* <BrandRating currentVariant={currentVariant}/> */}
+              <BrandRating refetch ={ refetch}  setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
+
 
           </div>
         </div>

@@ -8,6 +8,8 @@ import { useState } from "react";
 
 function DesktopSpec({currentVariant, productDatas }) {
   const [refetch, setRefetch] = useState(false);
+  const [ratingType, setRatingType] = useState("product");
+
 
   return (
     <>
@@ -180,11 +182,11 @@ function DesktopSpec({currentVariant, productDatas }) {
             {/* tab content */}
             <div className="tab-content" id="myTabContent">
               {/* tab pane */}
-              <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"product"}/>
+              <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} ratingType={ratingType}/>
 
-              <ProductRating refetch ={ refetch} setRefetch={setRefetch}  currentVariant={currentVariant}/>
+              <ProductRating refetch ={ refetch} setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
               {/* tab pane */}
-              <BrandRating refetch ={ refetch}  setRefetch={setRefetch}  currentVariant={currentVariant}/>
+              <BrandRating refetch ={ refetch}  setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
              
             </div>
           </div>

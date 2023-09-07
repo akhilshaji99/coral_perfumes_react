@@ -2,7 +2,7 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
 
-function ProductRating({ refetch, setRefetch, currentVariant }) {
+function ProductRating({ refetch, setRefetch, currentVariant,setRatingType }) {
   console.log("currentVariant", currentVariant);
 
   const [productReviews, setProductReviews] = useState([]);
@@ -118,6 +118,8 @@ function ProductRating({ refetch, setRefetch, currentVariant }) {
                 onClick={(e) => {
                   e.preventDefault();
                   setRefetch(false);
+                setRatingType("product")
+
                   $("#ratingModal").toggle();
                   $("#ratingModal").toggleClass("modal fade modal");
                 }}

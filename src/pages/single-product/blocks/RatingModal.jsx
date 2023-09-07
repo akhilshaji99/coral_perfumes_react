@@ -4,7 +4,7 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-function RatingModal({ setRefetch, currentVariant, type = "brand" }) {
+function RatingModal({ setRefetch, currentVariant, ratingType  }) {
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -29,7 +29,7 @@ function RatingModal({ setRefetch, currentVariant, type = "brand" }) {
       bodyFormData.append("stars_count", rating);
       bodyFormData.append("message", message);
       let endPoint = "";
-      if (type == "brand") {
+      if (ratingType == "brand") {
         endPoint = "submit-brand-review";
         bodyFormData.append("brand_id", currentVariant?.brand_id);
       } else {

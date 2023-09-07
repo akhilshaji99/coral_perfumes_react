@@ -1,10 +1,9 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
-import RatingModal from "./RatingModal";
 import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
-function BrandRating({ refetch,setRefetch, currentVariant }) {
+function BrandRating({ refetch,setRefetch, currentVariant ,setRatingType}) {
   console.log("currentVariant", currentVariant);
   const [brandReviews, setBrandReviews] = useState([]);
   // const [refetch, setRefetch] = useState(false);
@@ -89,7 +88,7 @@ function BrandRating({ refetch,setRefetch, currentVariant }) {
               onClick={(e) => {
                 e.preventDefault();
                 setRefetch(false)
-               
+                setRatingType("brand")
                 $("#ratingModal").toggle();
                 $("#ratingModal").toggleClass("modal fade modal");
               }}
