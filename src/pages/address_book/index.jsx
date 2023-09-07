@@ -4,8 +4,6 @@ import BreadCrumps from "../common/BreadCrumps";
 import AddAddress from "./blocks/AddAddress";
 import AddressListComponent from "../checkout/blocks/AddressListComponent";
 import MakeDefaultAddress from "../checkout/js/makeDefaultAddress";
-// import ChangeEmail from "./ChangeEmail";
-// import ChangePhone from "./ChangePhone";
 import getAddressList from "../checkout/js/getAddressList";
 import $ from "jquery";
 
@@ -27,9 +25,7 @@ function Index() {
     }
   }, [addAddressListFlag]);
   const markDefaultAddress = () => {
-    MakeDefaultAddress(defaultAddress).then((response) => {
-     
-    });
+    MakeDefaultAddress(defaultAddress).then((response) => {});
   };
   const editAddress = (info) => {
     setEditAddressInfo(info);
@@ -48,6 +44,7 @@ function Index() {
       <br />
       <section>
         <div className="container-fluid">
+          <BreadCrumps />
           <div className="row">
             <MyAccountSidebar />
             <AddAddress
@@ -72,8 +69,7 @@ function Index() {
                       defaultAddress={defaultAddress}
                       setDefaultAddress={setDefaultAddress}
                       editAddress={editAddress}
-              setAddAddressListFlag={setAddAddressListFlag}
-
+                      setAddAddressListFlag={setAddAddressListFlag}
                     />
                   );
                 })}
@@ -86,13 +82,17 @@ function Index() {
                     $("#AddAddress").toggle();
                     $("#AddAddress").toggleClass("modal fade modal");
                     setAddAddressListFlag(false);
-                    setAddAddressFlag(true)
+                    setAddAddressFlag(true);
                   }}
                 >
                   + Add New Address
                 </label>
                 <div className="col-12 text-start">
-                  <button className="btn btn-dark col-md-2 mt-4" type="button"  onClick={markDefaultAddress}>
+                  <button
+                    className="btn btn-dark col-md-2 mt-4"
+                    type="button"
+                    onClick={markDefaultAddress}
+                  >
                     Save
                   </button>
                 </div>

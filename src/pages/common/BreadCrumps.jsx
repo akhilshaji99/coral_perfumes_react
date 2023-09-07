@@ -16,12 +16,12 @@ function BreadCrumps() {
                     <li className="breadcrumb-item">
                       <a href="#!">Perfumes</a>
                     </li>
-                    <li className="breadcrumb-item">
+                    {/* <li className="breadcrumb-item">
                       <a href="#!">Women</a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Brands
-                    </li>
+                    </li> */}
                   </ol>
                 </nav>
               </div>
