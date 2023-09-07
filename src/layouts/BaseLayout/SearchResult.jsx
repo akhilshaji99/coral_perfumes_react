@@ -8,7 +8,7 @@ function SearchResult({ setResult,result,setQuery}) {
   }
   return (
     <>
-      <div class="row bg-light"  style={{"position":"fixed" ,"z-index":"99","width":"1000px","z-index": 1 }}>
+      <div class="row"  style={{ "backgroundColor": "#FFFFFF" ,"position":"fixed" ,"z-index":"99","width":"700px","z-index": 1 }}>
         <div class="col">
           {result.data?.length > 0 && (
             <div className="" style={{ display: "block" }}>
@@ -32,9 +32,10 @@ function SearchResult({ setResult,result,setQuery}) {
         <div class="col">
         {result.products?.length > 0 && (
            <div className="" style={{ display: "block" }}>
+            <h5 className="pt-4 font-weight-bold">PRODUCTS</h5>
            {result?.products?.map((product, index) => (
                <div
-               className="row align-items-center py-2 border-bottom"
+               className="row align-items-center py-2 "
                key={index}
              >
                <div className="col-5 col-md-5 col-lg-5">
