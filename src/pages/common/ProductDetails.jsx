@@ -4,13 +4,13 @@ import WishlistIcon from "../wishlist/blocks/WishlistIcon";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-function ProductDetails({ product ,setReFetchApi = null}) {
+function ProductDetails({ product, setReFetchApi = null }) {
   const [status, setStatus] = useState(false);
 
   return (
     <>
-      <div className="card card-product product-box ">
-        <div className="card-body">
+      <div className="card border-0 card-product">
+        <div className="card-body product-box">
           {product?.product_tag ? (
             <span className="badge custom-badge2">
               {/* {product?.discount_percentage}% */}
@@ -23,8 +23,8 @@ function ProductDetails({ product ,setReFetchApi = null}) {
             changeWishlistStatus={() => {
               product.is_in_wishlist = !product?.is_in_wishlist;
               setStatus(!status);
-              if(status == false && setReFetchApi!= null){
-                setReFetchApi(true)
+              if (status == false && setReFetchApi != null) {
+                setReFetchApi(true);
               }
             }}
           />
@@ -41,24 +41,28 @@ function ProductDetails({ product ,setReFetchApi = null}) {
           </div>
           <AddToBag variant_id={product?.id} />
         </div>
-      </div>
-      <h4
-        className=".ellipsis-text {
+        <div className="card-footer border-0">
+          <h4
+            className="ellipsis-text {
 "
-      >
-        {product.name}
-      </h4>
-      <div className="row custom-row1 mb-5 ">
-        <div className="col-md-4 col-6 px-0">
-          <h5 className="selling-price">AED {product.price_amount}</h5>
-        </div>
-        <div className="col-md-4 col-6 px-0">
-          <h5 className="discounted-price">AED {product.original_amount}</h5>
-        </div>
-        <div className="col-md-4 px-0">
-          <h5 className="discount-percentage">
-            {product.discount_percentage}% off
-          </h5>
+          >
+            {product.name}
+          </h4>
+          <div className="row custom-row1 mb-5 ">
+            <div className="col-md-4 col-6 px-0">
+              <h5 className="selling-price">AED {product.price_amount}</h5>
+            </div>
+            <div className="col-md-4 col-6 px-0">
+              <h5 className="discounted-price">
+                AED {product.original_amount}
+              </h5>
+            </div>
+            <div className="col-md-4 px-0">
+              <h5 className="discount-percentage">
+                {product.discount_percentage}% off
+              </h5>
+            </div>
+          </div>
         </div>
       </div>
     </>

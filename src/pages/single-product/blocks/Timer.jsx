@@ -51,7 +51,7 @@ function Timer({ flash_sale }) {
   return (
     <>
       {!hideBanner ? (
-        <div className="row py-5 align-items-center">
+        <div className="row py-1 align-items-center">
           <div className="col-xl-11 col-sm-12">
             <div className="flash-sale-box">
               <div className="row align-items-center">
@@ -87,7 +87,7 @@ function Timer({ flash_sale }) {
                     </span>
                   </h2>
                   <p>limited time offer</p>
-                  <p className="ends-in">ends in</p>
+                  <p className="ends-in mb-0 pb-0">ends in</p>
                 </div>
                 <div className="col-xl-6 col-sm-8 col-7 timer-field col-7">
                   <div className="row">

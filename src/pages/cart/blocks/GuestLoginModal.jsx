@@ -93,17 +93,16 @@ function GuestLoginModal() {
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-4">
-            <div className="modal-header border-0 ">
-              <h5 className="modal-title fs-3 fw-bold " id="userModalLabel">
-                CONTINUE AS A GUEST
-              </h5>
-              <button
+          <button
                 type="button"
                 className="btn-close"
-                // data-bs-dismiss="modal"
-                // aria-label="Close"
                 onClick={handleModalClose}
               />
+            <div className="modal-header border-0 ">
+              <h5 className="modal-title text-center" id="userModalLabel">
+                CONTINUE AS A GUEST
+              </h5>
+             
             </div>
             <div className="modal-body">
               <form onSubmit={formik.handleSubmit}>
@@ -159,7 +158,7 @@ function GuestLoginModal() {
                 </div>
               </form>
               <div className="text-center">
-                <h5>OR</h5>
+                <h5 className="btn-seperator">OR</h5>
               </div>
               {/* <NavLink to={`/login?checkout`}> */}
               <div

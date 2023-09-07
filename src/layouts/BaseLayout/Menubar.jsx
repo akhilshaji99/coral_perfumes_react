@@ -202,11 +202,11 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                     ? item.trending.map((item, index) => (
                                         <>
                                           <div
-                                            className="col-md-6 col-12  inline-thumb"
+                                            className="col-md-5 col-12  inline-thumb"
                                             key={index}
                                           >
                                             <Link to={item?.trending_link}>
-                                              <div className="thumbnails">
+                                              <div className="menu-thumbnails">
                                                 <img
                                                   src={deviceImageRender(
                                                     item.trending_image
@@ -215,12 +215,12 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                                   className="img-fluid"
                                                 />
                                               </div>
-                                              <a
-                                                className="text-center  custom-a"
+                                              <h5
+                                                className="menu-thumbnails-link"
                                                 href="#"
                                               >
                                                 {item.trending_title}
-                                              </a>
+                                              </h5>
                                             </Link>
                                           </div>
                                         </>

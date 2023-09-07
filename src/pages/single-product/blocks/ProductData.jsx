@@ -4,7 +4,7 @@ function productData({ productDatas, currentVariant }) {
   return (
     <>
       <div className="row py-5">
-        <div className="col-xl-11 col-sm-12">
+        <div className="col-xl-9 col-sm-12">
           <div className="info-box">
             {productDatas?.message_1 ? (
               <h2 className="pb-3">
@@ -54,10 +54,10 @@ function productData({ productDatas, currentVariant }) {
       </div>
       {productDatas?.tabby_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-xl-2 col-sm-2 col-2">
+          <div className="col-xl-2 col-sm-2 col-3">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-xl-10 col-sm-10 col-9 text-end">
+          <div className="col-xl-7 col-sm-10 col-9 ">
             {productDatas?.tabby_text}
           </div>
         </div>
@@ -77,7 +77,7 @@ function productData({ productDatas, currentVariant }) {
         </div>
       ) : null}
       <div className="row py-5">
-        <div className="col-xl-11 col-sm-12">
+        <div className="col-xl-9 col-sm-12">
           <div className="info-box">
             {productDatas?.order_delivery_message ? (
               <h2 className="pb-3">

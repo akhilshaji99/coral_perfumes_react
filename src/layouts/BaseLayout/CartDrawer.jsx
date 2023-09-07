@@ -48,7 +48,10 @@ function CartDrawer() {
       >
         <div className="offcanvas-header ">
           <div className="text-start ">
-            <h5 id="offcanvasRightLabel" className="mb-0 fs-4 text-white">
+            <h5
+              id="offcanvasRightLabel"
+              className="mb-0 cart-header-title text-white"
+            >
               <svg
                 width="15"
                 height="18"
@@ -68,7 +71,8 @@ function CartDrawer() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>{" "}
+              </svg>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {cartDatas?.total_items_count} Items Added
             </h5>
           </div>

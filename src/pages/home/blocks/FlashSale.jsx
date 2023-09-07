@@ -204,8 +204,8 @@ function FlashSale({ componentDatas }) {
               {products.map((product, index) => {
                 return (
                   <div className="product-grid" key={index}>
-                    <div className="card card-product product-box carousel-product-margin">
-                      <div className="card-body">
+                    <div className="card card-product  carousel-product-margin">
+                      <div className="card-body product-box">
                         {product.discount_percentage ? (
                           <span className="badge custom-badge">
                             <svg
@@ -251,28 +251,30 @@ function FlashSale({ componentDatas }) {
                         </div>
                         <AddToBag variant_id={product?.id} />
                       </div>
-                    </div>
-                    <h4 className="ellipsis-text">{product.name}</h4>
-                    <div className="row custom-row1">
-                      <div className="col-md-4 col-6 px-0">
-                        <h5 className="selling-price">
-                          AED {product.price_amount}
-                        </h5>
+                      <div className="card-footer">
+                        <h4 className="ellipsis-text">{product.name}</h4>
+                        <div className="row custom-row1">
+                          <div className="col-md-4 col-6 px-0">
+                            <h5 className="selling-price">
+                              AED {product.price_amount}
+                            </h5>
+                          </div>
+                          {product.original_amount ? (
+                            <div className="col-md-4 col-6 px-0">
+                              <h5 className="discounted-price">
+                                AED {product.original_amount}
+                              </h5>
+                            </div>
+                          ) : null}
+                          {product.discount_percentage ? (
+                            <div className="col-md-4 px-0">
+                              <h5 className="discount-percentage">
+                                {product.discount_percentage}% off
+                              </h5>
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
-                      {product.original_amount ? (
-                        <div className="col-md-4 col-6 px-0">
-                          <h5 className="discounted-price">
-                            AED {product.original_amount}
-                          </h5>
-                        </div>
-                      ) : null}
-                      {product.discount_percentage ? (
-                        <div className="col-md-4 px-0">
-                          <h5 className="discount-percentage">
-                            {product.discount_percentage}% off
-                          </h5>
-                        </div>
-                      ) : null}
                     </div>
                   </div>
                 );
