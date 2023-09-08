@@ -55,7 +55,8 @@ function SearchResult({ setResult, result, setQuery }) {
                     />
                   </clipPath>
                 </defs>
-              </svg> &nbsp;
+              </svg>{" "}
+              &nbsp;
               {block.title}
             </div>
           ))}
