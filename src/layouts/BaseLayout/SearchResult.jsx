@@ -18,6 +18,21 @@ function SearchResult({ setResult, result, setQuery }) {
           "z-index": 1,
         }}
       >
+        <div class="row">
+          {result?.top_blocks?.map((block, index) => (
+            <div
+              className="col-auto border m-2 rounded"
+              onClick={() => {
+                closeModal();
+                navigate("/" + block.link);
+                setQuery(block.title);
+                // setQuery(result);
+              }}
+            >
+              {block.title}
+            </div>
+          ))}
+        </div>
         <div class="col-lg-6 col-12 mb-4 mb-lg-0">
           {result.data?.length > 0 && (
             <div className="col-8" style={{ display: "block" }}>
@@ -51,13 +66,16 @@ function SearchResult({ setResult, result, setQuery }) {
             <div className="" style={{ display: "block" }}>
               <h5 className="pt-4 font-weight-bold">PRODUCTS</h5>
               {result?.products?.map((product, index) => (
-                 
-                <div className="row align-items-center py-2 " key={index}  onClick={() => {
-                        closeModal();
-                        navigate(`/product-details/?slug=${product?.slug}`);
-                        setQuery(product.name);
-                        // setQuery(result);
-                      }}>
+                <div
+                  className="row align-items-center py-2 "
+                  key={index}
+                  onClick={() => {
+                    closeModal();
+                    navigate(`/product-details/?slug=${product?.slug}`);
+                    setQuery(product.name);
+                    // setQuery(result);
+                  }}
+                >
                   <div className="col-5 col-md-5 col-lg-5">
                     <div className="d-flex mini-cart-img">
                       <img
@@ -76,7 +94,6 @@ function SearchResult({ setResult, result, setQuery }) {
                     </div>
                   </div>
                 </div>
-              
               ))}
             </div>
           )}
