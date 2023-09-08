@@ -53,9 +53,9 @@ function CartSummary({
     <div className="col-12 col-lg-4 col-md-5">
       {/* card */}
       <div className="mb-5 card my-bag-card mt-6">
-        <div className="card-body">
-          <div className="mt-8">
-            <h2 className="h5 mb-3">Add Promo or Gift Card</h2>
+        <div className="card-body p-0">
+          <div className="">
+            <h2 className="h5">Promo Code</h2>
             <label htmlFor="giftcard" className="form-label sr-only">
               Add Promo Code
             </label>
@@ -126,40 +126,40 @@ function CartSummary({
           </h2>
           <div className=" mb-2 border-0">
             <div className="row mb-4">
-              <div className="col-md-6">
+              <div className="col-md-6 col-6">
                 {" "}
                 <div className=" cart-summary-label">
                   {cartDatas?.sub_total_title}
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 col-6">
                 <div className="text-end summary-sub-total">
                   {cartDatas?.sub_total_display}
                 </div>
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col-md-6">
+              <div className="col-md-6 col-6">
                 {" "}
                 <div className="cart-summary-label">
                   {cartDatas?.shipping_title}
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 col-6">
                 <div className="text-end summary-shipping">
                   {cartDatas?.shipping_display}
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row mb-4">
+              <div className="col-md-6 col-6">
                 {" "}
                 <div className="cart-summary-label">
                   {cartDatas?.discount_title}
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="text-lg-end cart-summary-label">
+              <div className="col-md-6 col-6">
+                <div className="text-end summary-shipping">
                   {cartDatas?.discount_display}
                 </div>
               </div>

@@ -370,6 +370,8 @@ body {
   margin: 0;
   text-align: var(--fc-body-text-align);
   overflow-x: hidden !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
 }
 hr {
   border: 0;
@@ -5955,7 +5957,7 @@ fieldset:disabled .btn {
 .breadcrumb {
   --fc-breadcrumb-padding-x: 0;
   --fc-breadcrumb-padding-y: 0;
-  --fc-breadcrumb-margin-bottom: 2rem;
+  --fc-breadcrumb-margin-bottom: 1.45rem;
   --fc-breadcrumb-bg: ;
   --fc-breadcrumb-border-radius: ;
   --fc-breadcrumb-divider-color: #dfe2e1;
@@ -28043,14 +28045,15 @@ border-radius: none !important;
     object-fit: contain;
   }
   .my-bag-img {
-    transform: scale(1);
+    width: 80px !important;
+    height: 80px !important;
   }
   .my-bag-card {
     border-radius: 9px !important;
     background: #fff;
     box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
     /* margin: 25px 0 25px 0; */
-    padding: 8px !important;
+    padding: 10px !important;
   }
   .my-bag-text h6 {
     color: #000;
@@ -28373,6 +28376,12 @@ border-radius: none !important;
 }
 .my-bag-card h2 {
   text-transform: uppercase;
+  font-size: 16px;
+  font-family: var(--fc-font-regular);
+  padding-bottom: 0;
+  line-height: 0.8;
+  letter-spacing: 1.44px; 
+  margin-bottom: 8px;
 }
 .guest-modal .btn-dark {
   border-radius: 7px !important;
@@ -28387,6 +28396,10 @@ border-radius: none !important;
 }
 .my-bag-card .form-label {
   color: #000;
+  font-size: 12px;
+  font-family: var(--fc-font-regular);
+  line-height: 185%; /* 22.2px */
+letter-spacing: 1.08px; 
 }
 .my-bag-total {
   font-family: var(--fc-font-bold);
@@ -28503,7 +28516,7 @@ border-radius: none !important;
   border-radius: 9px !important;
   background: #fff;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-  margin: 25px 0 25px 0;
+  margin: 28px 0 28px 0;
   padding: 33px;
 }
 .my-bag-img {
@@ -28527,10 +28540,15 @@ border-radius: none !important;
 .my-bag-text h6 {
   color: #000;
   font-family: var(--fc-font-regular);
-  font-size: 12px;
+  font-size: 13px;
   text-transform: capitalize;
   padding-bottom: 10px;
   padding-left: 15px;
+  line-height: 1%;
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent; 
 }
 .my-bag-text p {
   color: #000;
@@ -28538,6 +28556,7 @@ border-radius: none !important;
   font-size: 12px;
   text-transform: capitalize;
   padding-left: 15px;
+  padding-bottom: 1.5%;
 }
 .price-area-bag {
   transform: scale(0.25);
@@ -28588,7 +28607,7 @@ border-radius: none !important;
 }
 .my-bag-summary-border {
   border-bottom: 1px solid #bdbebb !important;
-  padding: 20px 0 !important;
+  padding: 10px 0 !important;
 }
 /* @media screen and (min-width: 1400px) {
   .container-lg-fluid {
@@ -28691,6 +28710,17 @@ border-radius: none !important;
   .wallet-card > div{
     padding: 18px;
   }
+  .my-bag-img {
+    background-color: rgba(235, 236, 233, 1);
+    width: auto !important;
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fixed-top-margin {
+    margin-top: 12%;
+  }
 }
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
   .category-top-div {
@@ -28737,6 +28767,7 @@ border-radius: none !important;
     position: relative;
     margin-bottom: 0px;
   }
+ 
 }
 @media all and (device-width: 1024px) and (device-height: 768px) and (orientation: landscape) {
   .category-top-div {
@@ -29464,7 +29495,7 @@ border-radius: none !important;
 }
 .cart-summary-label {
   color: #000;
-  font-family: var(--fc-font-light);
+  font-family: var(--fc-font-regular);
   font-size: 12px;
   text-align: left;
 }
@@ -29548,6 +29579,7 @@ border-radius: none !important;
   font-family: var(--fc-font-regular);
   font-size: 16px;
   text-transform: uppercase;
+  padding-left: 5px;
 }
 .cart-details-img {
   width: 120px;

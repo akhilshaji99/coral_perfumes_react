@@ -57,22 +57,20 @@ function Index() {
           </div>
         </section>
       ) : (
-        <section className="mb-lg-14 mb-8 mt-8 my-bag">
+        <section className="my-bag">
           <div className="container-fluid">
             <BreadCrumps />
             {/* row */}
             <div className="row">
               <div className="col-12">
                 {/* card */}
-                <div className="card py-1 border-0 mb-3">
-                  <div>
-                    <h1 className="my-bag-title">My Bag</h1>
-                  </div>
+                <div>
+                  <h1 className="my-bag-title">My Bag</h1>
                 </div>
               </div>
             </div>
             <GuestLoginModal />
-            
+
             <PromoCodeModal
               setShowPrmoCodeFlag={setShowPrmoCodeFlag}
               showPrmoCodeFlag={showPrmoCodeFlag}
@@ -99,7 +97,7 @@ function Index() {
                               />
                             </div>
                           </div>
-                          <div className="col-xl-1 col-1"></div>
+                          {/* <div className="col-xl-1 col-1"></div> */}
                           <div className="col-md-8 col-8  my-bag-text">
                             <h6 className="mb-0">
                               {cartData?.product_variant?.name}

@@ -3,9 +3,9 @@ import confirmCheckout from "../js/confirmCheckout";
 function CartDetails({ cartDatas }) {
   return (
     <div className=" card checkout-left-card">
-      <div className="mb-5 mt-6">
+      <div className="">
         <div className="">
-          <h5 className="px-6 py-4 bg-transparent mb-0">
+          <h5 className="mb-6 bg-transparent">
             {cartDatas?.total_items_count} ITEMS
           </h5>
           <ul className="list-group list-group-flush px-6">
