@@ -8421,6 +8421,9 @@ fieldset:disabled .btn {
 .btn-close svg {
   transform: scale(2);
 }
+.filter-side{
+  margin-top: -20px;
+}
 .filter-side .offcanvas-header {
   border-radius: 0 !important;
 }
@@ -21775,7 +21778,7 @@ h3 {
 }
 /* mini cart */
 .scroll-container2 {
-  max-height: 300px;
+  max-height: 220px;
   overflow: auto;
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
   scrollbar-width: thin;
@@ -28007,7 +28010,7 @@ border-radius: none !important;
  
   .mob-payment-icons img{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: start;
     width: 100%;
     height: auto;
