@@ -51,7 +51,7 @@ function FlashSale({ componentDatas }) {
           >
             <div className="d-block d-sm-none">
               <div className="row align-items-center mb-5 ">
-                <div className="col-6">
+                <div className="col-7">
                   <h1 className=" flash-sale">
                     {" "}
                     <span>
@@ -75,7 +75,7 @@ function FlashSale({ componentDatas }) {
                     </span>
                   </h1>
                 </div>
-                <div className="col-5">
+                <div className="col-4">
                   <div className="row align-items-center">
                     <div className="col-5 text-end px-0">
                       <span className="timer-text">Ends In</span>{" "}

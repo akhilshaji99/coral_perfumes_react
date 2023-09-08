@@ -26233,7 +26233,7 @@ span.flatpickr-weekday {
     text-transform: uppercase;
     color: var(--fc-black);
     text-align: center;
-    font-family: var(--fc-font-regular);
+    font-family: var(--fc-font-medium);
     font-size: 14px;
   }
   .top-categories h3 {
@@ -26257,7 +26257,7 @@ object-fit: cover !important;
     text-transform: uppercase;
     color: var(--fc-black);
     text-align: center;
-    font-family: var(--fc-font-regular) !important;
+    font-family: var(--fc-font-medium) !important;
     font-size: 14px !important;
   }
 }
@@ -26366,7 +26366,7 @@ object-fit: cover !important;
     text-transform: uppercase;
     color: var(--fc-black);
     text-align: center;
-    font-family: var(--fc-font-regular) !important;
+    font-family: var(--fc-font-medium) !important;
     font-size: 14px !important;
   }
 }
@@ -26531,7 +26531,7 @@ object-fit: cover !important;
     text-transform: uppercase;
     color: var(--fc-black);
     text-align: center;
-    font-family: var(--fc-font-regular);
+    font-family: var(--fc-font-medium);
     font-size: 14px;
   }
   .carousel-product-margin {
@@ -26625,6 +26625,7 @@ object-fit: cover !important;
 .product-grid .card-footer{
   border: none !important;
   padding: unset 0 !important;
+  margin: 0 9.5px;
 }
 .selling-price {
   color: #000;
@@ -26758,7 +26759,7 @@ object-fit: cover !important;
     text-transform: uppercase;
     color: var(--fc-black);
     text-align: center;
-    font-family: var(--fc-font-regular) !important;
+    font-family: var(--fc-font-medium) !important;
     font-size: 14px !important;
   }
 }
@@ -26811,7 +26812,7 @@ object-fit: cover !important;
   }
   .category-top h1 {
    font-size: 14px !important;
-   font-family: var(--fc-font-regular) !important;
+   font-family: var(--fc-font-medium) !important;
   }
   .top-categories h3 {
     font-size: 12px !important;
@@ -28116,7 +28117,7 @@ border-radius: none !important;
  
   .wallet-banner h1 {
     color: #000;
-    font-family: var(--fc-font-regular);
+    font-family: var(--fc-font-medium);
     font-size: 14px;
     font-style: normal;
     letter-spacing: 0.58px;
@@ -28463,6 +28464,7 @@ letter-spacing: 1.08px;
   padding: 7px 20px !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
+  /* z-index: 999 !important; */
 }
 .input-group .btn {
   position: relative;
@@ -29725,6 +29727,19 @@ flex-direction: column;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
   }
+  .search-container{
+    position: fixed;
+    width: max-content;
+    background-color: var(--fc-white);
+    width: max-content;
+    border-radius: 9px;
+    box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+    left: 0;
+    max-width: fit-content !important;
+    margin: 0 10px;
+    display: inline-block;
+    margin-top: 10%;
+  }
 }
 .main-layout{
   overflow-x: hidden;
@@ -29876,4 +29891,54 @@ margin-top: 20px;
   object-fit: contain;
   height: 40px;
   border-radius: 4px ;
+}
+.search-container{
+  position: fixed;
+  background-color: var(--fc-white);
+  max-width: 50%;
+  border-radius: 9px;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+}
+.search-tag{
+border-radius: 36px;
+border: 1px solid #000;
+margin: 10px;
+font-size: 12px;
+color: var(--fc-black);
+font-family: var(--fc-font-regular);
+text-transform: capitalize;
+padding: 4.5px 13px;
+}
+.search-tag svg{
+  transform: scale(1.35);
+  padding-bottom: 2px;
+}
+.search-container h5{
+  font-family: var(--fc-font-regular);
+  color: var(--fc-black);
+  margin-bottom: 20px;
+}
+.search-container h6{
+  color: #A7A9A2;
+  text-align: right; 
+  font-size: 12px !important;
+line-height: normal;
+text-transform: capitalize; 
+font-family: var(--fc-font-regular);
+}
+.search-container h4{
+  color: #A7A9A2;
+  text-align: left; 
+  font-size: 12px !important;
+line-height: normal;
+text-transform: capitalize; 
+font-family: var(--fc-font-medium);
+}
+.search-container .mini-cart-img {
+  background-color: #ebece9;
+  padding: 5px;
+  justify-content: center;
+  width: 92px;
+  height: 70px;
+  align-items: center;
 }
