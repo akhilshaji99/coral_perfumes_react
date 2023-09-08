@@ -29738,9 +29738,8 @@ flex-direction: column;
     padding: 10px;
     left: 0;
     max-width: fit-content !important;
-    display: inline-block;
     margin-top: 10%;
-    height: 72vh;
+    /* height: 72vh; */
     overflow-y: scroll;
   }
 }
