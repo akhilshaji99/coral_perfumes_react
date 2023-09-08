@@ -59,6 +59,9 @@ function ProductCarousel({ sliderImages }) {
   useEffect(() => {
     setActiveImage(sliderImages?.[0]);
   }, [sliderImages?.length || 0]);
+  useEffect(() => {
+    setActiveImage(sliderImages?.[0]);
+  }, [sliderImages]);
   return (
     <>
       <div className="col-md-2 single-product-row">
