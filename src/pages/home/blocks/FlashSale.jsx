@@ -243,7 +243,7 @@ function FlashSale({ componentDatas }) {
                                     product?.product_listing_image
                                   )}
                                   alt="Coral Perfumes"
-                                  className="mb-3 img-fluid "
+                                  className=" img-fluid "
                                 />
                               </NavLink>
                             </div>

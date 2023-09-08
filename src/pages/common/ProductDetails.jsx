@@ -34,7 +34,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
                 <img
                   src={deviceImageRender(product.listing_image)}
                   alt="Coral Perfumes"
-                  className="mb-3"
+                  className="img-fluid"
                 />
               </div>
             </NavLink>

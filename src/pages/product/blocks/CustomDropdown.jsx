@@ -20,7 +20,7 @@ const CustomDropdown = ({ applyRelevanceFilter }) => {
   return (
     <div className="dropdown product-custom-dropdown">
       <a
-        className=" dropdown-toggle sort-dropdown"
+        className=" dropdown-toggle text-dark btn-filter"
         type="button"
         onClick={toggleDropdown}
       >

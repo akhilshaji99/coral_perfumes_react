@@ -47,7 +47,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
       className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
-      <div className="container mob-c-view">
+      <div className="container-fluid px-4 mob-c-view">
         <div
           className={`offcanvas offcanvas-start  ${
             mobileMenuStatus ? "show" : ""
@@ -192,17 +192,74 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                 : null}
                             </div>
                             <div className="col-lg-4 col-12 mb-4 mb-lg-0">
-                              <h6 className=" ps-3 text-center">
+                              <h6 className=" ps-3 text-lg-center">
                                 TRENDING NOW
                               </h6>
-                              <div className="container-fluid my-5">
+                              {/* Mob View */}
+                              <div className="container-lg-fluid d-block d-sm-none">
+                                <div className="row  ads-block justify-content-center">
+                                  {item.trending !== undefined &&
+                                  Array.isArray(item.trending)
+                                    ? item.trending.map((item, index) => (
+                                        <>
+                                          <Link to={item?.trending_link}>
+                                            <div
+                                              className="row align-items-center img-nav-link"
+                                              key={index}
+                                            >
+                                              <div className="col-3">
+                                                <div className="menu-thumbnails">
+                                                  <img
+                                                    src={deviceImageRender(
+                                                      item.trending_image
+                                                    )}
+                                                    alt=""
+                                                    className="img-fluid"
+                                                  />
+                                                </div>
+                                              </div>
+                                              <div className="col-7">
+                                                <h5
+                                                  className="menu-thumbnails-link"
+                                                  href="#"
+                                                >
+                                                  {item.trending_title}
+                                                </h5>
+                                              </div>
+                                              <div className="col-1">
+                                                <span className="mob-img-arrow d-inline-block d-sm-none d-flex justify-content-end">
+                                                  <svg
+                                                    width={5}
+                                                    height={10}
+                                                    viewBox="0 0 5 10"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                  >
+                                                    <path
+                                                      d="M0.977539 1L3.77482 4.29293C4.10517 4.68182 4.10517 5.31818 3.77482 5.70707L0.977539 9"
+                                                      stroke="black"
+                                                      strokeMiterlimit={10}
+                                                      strokeLinecap="round"
+                                                      strokeLinejoin="round"
+                                                    />
+                                                  </svg>
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </Link>
+                                        </>
+                                      ))
+                                    : null}
+                                </div>
+                              </div>
+                              <div className="container-fluid my-5 d-none d-lg-block">
                                 <div className="row g-5 ads-block justify-content-center">
                                   {item.trending !== undefined &&
                                   Array.isArray(item.trending)
                                     ? item.trending.map((item, index) => (
                                         <>
                                           <div
-                                            className="col-md-5 col-12  inline-thumb"
+                                            className="col-md-5 col-12  inline-thumb "
                                             key={index}
                                           >
                                             <Link to={item?.trending_link}>
