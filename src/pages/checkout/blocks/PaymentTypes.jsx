@@ -97,6 +97,7 @@ function PaymentTypes({
                         <img
                           src={deviceImageRender(paymentType?.image)}
                           alt="card-image"
+                          className="payment-card-img"
                         />
                       ) : null}
                     </div>

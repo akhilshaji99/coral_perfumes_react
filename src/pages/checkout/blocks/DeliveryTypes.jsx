@@ -118,7 +118,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
                       <h5 className=" pt-1  h6"> AED {deliveryType?.amount}</h5>
                     </div>
                   </div>
-                  <h6 className=" ps-12  h6">{deliveryType?.message}</h6>
+                  <h6 className=" ps-15  h6">{deliveryType?.message}</h6>
                 </div>
               );
             })}

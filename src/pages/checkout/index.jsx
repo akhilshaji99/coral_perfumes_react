@@ -796,21 +796,20 @@ function Index() {
                             </div>
                           </div>
                           <div>
-                            <div className="row g-2 m-2">
+                            <div className="row align-items-center mt-5 ml-5">
                               <div className="col-md-6 col-12">
-                                <div className="pt-2 m-2">
-                                  {" "}
-                                  <button
-                                    type="submit"
-                                    class="btn btn-dark p-32px validate"
-                                  >
-                                    CONFIRM
-                                  </button>
-                                </div>
+                                {" "}
+                                <button
+                                  type="submit"
+                                  class="btn btn-dark validate"
+                                  style={{ marginLeft: "14px" }}
+                                >
+                                  CONFIRM
+                                </button>
                               </div>
                               {parseInt(addressForm.values.delivery_type) ===
                               1 ? (
-                                <div className="col-md-6 col-12">
+                                <div className="col-md-6 col-12 text-end">
                                   <a
                                     onClick={(e) => {
                                       setAddAddressListFlag(true);
@@ -818,6 +817,11 @@ function Index() {
                                       $("#addressModal").toggleClass(
                                         "modal fade modal"
                                       );
+                                    }}
+                                    style={{
+                                      color: "#010101",
+                                      textDecoration: "underline",
+                                      fontSize:'12px'
                                     }}
                                   >
                                     Change Address

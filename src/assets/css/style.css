@@ -22354,7 +22354,9 @@ h3 {
 }
 .card-image {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
+ 
 }
+
 .card-image:hover {
   box-shadow: 0 2px 4px -1px rgba(145, 158, 171, 0.2),
     0 4px 5px 0 rgba(145, 158, 171, 0.14),
@@ -29570,7 +29572,7 @@ letter-spacing: 1.08px;
 }
 .payment-type h5 span {
   color: #000;
-  font-family: var(--fc-font-light);
+  font-family: var(--fc-font-thin);
   font-size: 12px;
   text-transform: capitalize;
 }
@@ -29869,3 +29871,9 @@ margin-top: 20px;
     margin-bottom: 0;
     color: var(--fc-black);
   }
+.payment-card-img{
+  width: 80px;
+  object-fit: contain;
+  height: 40px;
+  border-radius: 4px ;
+}

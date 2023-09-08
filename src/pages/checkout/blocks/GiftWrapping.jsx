@@ -45,34 +45,49 @@ function GiftWrapping({
     <>
       <div className="card-body p-6">
         {/* check input */}
-        <div className="d-flex">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              checked={giftWrappingStatus}
-              name="gift_wrapping"
-              onClick={() => {
-                setGiftWrappingStatus(1);
-                fetchCheckoutDetailsForGiftStatus(1);
-              }}
-            />
-          </div>
-          <div>
-            <h5 className=" pt-1 ps-5 h6">
-              {" "}
-              Add Gift Wrapping (AED 5 Charge Apply)
-            </h5>
-            {giftWrappingStatus ? (
-              <span
-                onClick={() => {
-                  setGiftWrappingStatus(0);
-                  fetchCheckoutDetailsForGiftStatus(0);
+        <div className="d-flex row align-items-center">
+          <div className="col-md-10">
+            <div className="row align-items-center">
+              <div className="col-md-1">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    checked={giftWrappingStatus}
+                    name="gift_wrapping"
+                    onClick={() => {
+                      setGiftWrappingStatus(1);
+                      fetchCheckoutDetailsForGiftStatus(1);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-9">
+                <h5 className="h6 pt-2">
+                  {" "}
+                  Add Gift Wrapping (AED 5 Charge Apply){" "}
+                </h5>
+              </div>
+              <div
+                className="col-md-2 text-end p-0"
+                style={{
+                  textDecoration: "underline",
+                  color: "#010101",
+                  fontSize:'12px'
                 }}
               >
-                Remove
-              </span>
-            ) : null}
+                {giftWrappingStatus ? (
+                  <span
+                    onClick={() => {
+                      setGiftWrappingStatus(0);
+                      fetchCheckoutDetailsForGiftStatus(0);
+                    }}
+                  >
+                    Remove
+                  </span>
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -93,6 +108,7 @@ function GiftWrapping({
                 }}
                 value={message}
                 placeholder="Your Message"
+                style={{ width: "99.25%" }}
               />
               <div className="d-flex justify-content-end pt-2 text-black">
                 {" "}
