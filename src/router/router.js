@@ -13,6 +13,7 @@ import Returns from "../pages/returns/index";
 import AddressBook from "../pages/address_book/index";
 import DashBoard from "../pages/dashboard/index";
 import Stores from "../pages/stores/index";
+import About from "../pages/about/index";
 import AlertPages from "../pages/alert_pages/index";
 // import PaymentSuccess from "../pages/alert_pages/PaymentSuccess";
 // import PaymentFailed from "../pages/alert_pages/PaymentFailed";
@@ -66,6 +67,7 @@ const Router = () => {
           element: userDatas ? <DashBoard /> : <Navigate to="/" />,
         },
         { path: "stores", element: <Stores /> },
+        { path: "about", element: <About /> },
         {
           path: "alert",
           element: <AlertPages />,
