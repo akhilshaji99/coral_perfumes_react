@@ -130,9 +130,9 @@ function Account({ changeMyAccountMenuStatus }) {
           </div>
         )}
       </div> */}
-      <div className="py-3">
+      <div className="py-lg-3">
         <div className="container-fluid">
-          <div className="row align-items-center d-lg-none mt-5">
+          <div className="row align-items-center d-lg-none mt-2">
             <div
               className="col-md-4 col-4"
               onClick={() => changeMyAccountMenuStatus()}
@@ -200,7 +200,7 @@ function Account({ changeMyAccountMenuStatus }) {
             </div>
           </div>
           <div className="row mob-view ">
-            <div className="d-block d-lg-none my-4">
+            <div className="d-block d-lg-none my-2">
               <div className="input-group ">
                 <input
                   className="form-control rounded"

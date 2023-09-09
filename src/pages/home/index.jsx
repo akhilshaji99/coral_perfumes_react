@@ -55,7 +55,7 @@ function Index() {
             </>
           );
         })}
-        <div>
+        <div className="home-wrapper">
           {homeComponents?.map((component, index) => {
             return (
               <>

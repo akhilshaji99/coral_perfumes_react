@@ -47,7 +47,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
       className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
-      <div className="container-fluid px-4 mob-c-view">
+      <div className="container-fluid  mob-c-view">
         <div
           className={`offcanvas offcanvas-start  ${
             mobileMenuStatus ? "show" : ""
