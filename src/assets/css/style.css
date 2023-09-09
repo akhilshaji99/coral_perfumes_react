@@ -29731,10 +29731,10 @@ flex-direction: column;
             box-sizing: border-box;
   }
   .search-container{
-    position: fixed;
-    width: max-content;
+    position: relative !important;
+    width: 100% !important;
     background-color: var(--fc-white);
-    width: max-content;
+    /* width: max-content; */
     border-radius: unset !important;
     /* box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25); */
     box-shadow: unset !important;
