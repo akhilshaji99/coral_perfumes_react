@@ -29966,6 +29966,6 @@ font-family: var(--fc-font-medium);
   height: 70px;
   align-items: center;
 }
-/* .navbar-nav li:first-child  a {
+.green-text{
   color: #80BA27 !important; 
-} */
+}
