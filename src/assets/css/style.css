@@ -29773,6 +29773,9 @@ flex-direction: column;
   .mob-img-arrow {
     float: right;
   }
+  .filter-side .offcanvas-body{
+    margin-top: 10%;
+  }
 }
 .main-layout{
   overflow-x: hidden;
