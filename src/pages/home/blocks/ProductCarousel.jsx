@@ -8,9 +8,9 @@ function ProductCarousel({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-lg-fluid my-5">
+      <div className="container-lg-fluid cc-margin">
         <div
-          className="card flash-sale-container mb-5"
+          className="card flash-sale-container "
           style={dynamicBackground}
         >
           <div className="row d-end">
@@ -73,7 +73,7 @@ function ProductCarousel({ componentDatas }) {
                   max: 1024,
                   min: 464,
                 },
-                items: 3,
+                items: 2,
                 partialVisibilityGutter: 30,
               },
             }}

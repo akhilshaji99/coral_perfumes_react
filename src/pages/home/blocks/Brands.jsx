@@ -10,8 +10,8 @@ function Brands({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-lg-fluid my-5">
-        <div className="card brands-card mb-5" style={dynamicBackground}>
+      <div className="container-lg-fluid cc-margin">
+        <div className="card brands-card " style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}

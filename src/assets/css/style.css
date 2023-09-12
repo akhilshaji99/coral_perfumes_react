@@ -21846,7 +21846,7 @@ h3 {
   }
 }
 .nav-lb-tab .nav-item {
-  margin-right: 2rem;
+  margin-right: 10rem;
 }
 .nav-lb-tab .nav-item .nav-link {
   /* border-bottom: 2px solid transparent; */
@@ -26341,8 +26341,8 @@ object-fit: cover !important;
   flex-shrink: 0;
   border-radius: 8px;
   width: 100%;
-  margin-bottom: 30px;
-  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.05);
+  /* margin-bottom: 30px; */
+  filter: drop-shadow(0px 4px 17px rgba(0, 0, 0, 0.24)); 
 }
 .shop-preferences {
   border-radius: 9px;
@@ -26666,7 +26666,7 @@ object-fit: cover !important;
   text-align: center;
 }
 .cc-margin {
-  margin: 4.5rem 0;
+  margin: 3.5rem 0;
 }
 .wallet-banner {
   border-radius: 9px;
@@ -26756,7 +26756,7 @@ object-fit: cover !important;
     font-size: 12px !important;
   }
   .cc-margin {
-    margin: 0.5rem 0;
+    margin: 2rem 0;
   }
   .brands-card h1 {
     line-height: normal;
@@ -27840,9 +27840,9 @@ border-radius: none !important;
   font-weight: 500;
 }
 .p-ul li {
-  padding: 9px 0;
   color: #000;
   font-family: var(--fc-font-light);
+  margin: 0 12px;
 }
 .p-d-c {
   color: #000;
@@ -28557,7 +28557,6 @@ letter-spacing: 1.08px;
   text-transform: capitalize;
   padding-bottom: 10px;
   padding-left: 15px;
-  line-height: 1%;
   -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -28756,7 +28755,7 @@ letter-spacing: 1.08px;
   .wallet-banner h1 {
     color: #000;
     font-family: Poppins;
-    font-size: 28px;
+    font-size: 58px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.58px;
@@ -28803,7 +28802,7 @@ letter-spacing: 1.08px;
   .wallet-banner h1 {
     color: #000;
     font-family: Poppins;
-    font-size: 28px !important;
+    font-size: 38px !important;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.58px;
@@ -28832,7 +28831,7 @@ letter-spacing: 1.08px;
   .wallet-banner h1 {
     color: #000;
     font-family: Poppins;
-    font-size: 28px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.58px;
@@ -28863,7 +28862,7 @@ letter-spacing: 1.08px;
   .wallet-banner h1 {
     color: #000;
     font-family: Poppins;
-    font-size: 28px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.58px;
@@ -28931,6 +28930,7 @@ letter-spacing: 1.08px;
 }
 .wallet-banner .react-multiple-carousel__arrow--left {
   left: calc(23% + 10px);
+  display: none;
 }
 .wallet-banner .react-multiple-carousel__arrow--right {
   right: calc(2% + -10px);
@@ -29776,6 +29776,7 @@ flex-direction: column;
   .filter-side .offcanvas-body{
     margin-top: 10%;
   }
+  
 }
 .main-layout{
   overflow-x: hidden;
@@ -29985,6 +29986,30 @@ font-family: var(--fc-font-medium);
  .home-wrapper{
   position: relative;
   margin-top: -106.5%;
+  
  }
+
  
+}
+.brand-author{
+  color: var(--fc-black);
+  font-size: 14px;
+  font-family: var(--fc-font-medium);
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.react-simple-star-rating svg{
+  margin: 0 8px;
+}
+.brand-rating-date{
+  color: var(--fc-black);
+  font-size: 14px;
+  font-family: var(--fc-font-regular);
+  text-transform: capitalize;
+}
+.brand-rating-message{
+  color: var(--fc-black);
+  font-size: 12px;
+  font-family: var(--fc-font-regular);
+  text-transform: capitalize;
 }

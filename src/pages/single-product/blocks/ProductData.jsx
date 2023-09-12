@@ -7,7 +7,7 @@ function productData({ productDatas, currentVariant }) {
         <div className="col-xl-9 col-sm-12">
           <div className="info-box">
             {productDatas?.message_1 ? (
-              <h2 className="pb-3">
+              <h2>
                 <span>
                   <svg
                     width={20}
@@ -80,7 +80,7 @@ function productData({ productDatas, currentVariant }) {
         <div className="col-xl-9 col-sm-12">
           <div className="info-box">
             {productDatas?.order_delivery_message ? (
-              <h2 className="pb-3">
+              <h2>
                 <span>
                   <svg
                     width={18}

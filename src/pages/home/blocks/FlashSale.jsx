@@ -44,9 +44,9 @@ function FlashSale({ componentDatas }) {
   return (
     <>
       {!falseSaleEnd ? (
-        <div className="container-lg-fluid my-5">
+        <div className="container-lg-fluid cc-margin">
           <div
-            className="card flash-sale-container mb-5"
+            className="card flash-sale-container"
             style={dynamicBackground}
           >
             <div className="d-block d-sm-none">

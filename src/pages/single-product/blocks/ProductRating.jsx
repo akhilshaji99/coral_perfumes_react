@@ -40,10 +40,10 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       tabIndex={0}
     >
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"product"}/> */}
-      <div className="container-lg-fluid">
-        <div className="row product-rating px-5">
+      <div className="container-lg-fluid px-0">
+        <div className="row product-rating">
           <div className="col-10">
-            <div className="row align-items-center">
+            <div className="row align-items-center px-0">
               <div className="col-md-2 col-4">
                 <h1>{productReviews?.average_star_rating} </h1>
               </div>
@@ -79,55 +79,53 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               {"  "}
               97% of customers recommend this product
             </span>
-            {productReviews?.stars_array?.map((component, index) => {
-              return (
-                <div key={index}>
-                  <div className="row align-items-center">
-                    <div className="col-md-1 col-3 star-rating">
-                      {4 - index + 1} ★
-                    </div>
+            
+          </div>
+          <div className=" col-md-2 mt-3">
+              <div className="ml-10">
+                <button
+                  type="button"
+                  className="btn btn-outline-dark"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setRefetch(false);
+                    setRatingType("product");
 
-                    <div className="progress col-md-9 col-7">
-                      <div
-                        className="progress-bar"
-                        style={{ width: component }}
-                        role="progressbar"
-                        aria-valuenow="25"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      >
-                        {/* 25% */}
-                      </div>
-                    </div>
-                    <div className="col-md-1 col-1 star-rating">
-                      {component}
-                    </div>
+                    $("#ratingModal").toggle();
+                    $("#ratingModal").toggleClass("modal fade modal");
+                  }}
+                >
+                  Rate
+                </button>
+              </div>
+            </div>
+          {productReviews?.stars_array?.map((component, index) => {
+            return (
+              <div key={index}>
+                <div className="row align-items-center mt-5">
+                  <div className="col-md-1 col-3 star-rating">
+                    {4 - index + 1} ★
                   </div>
 
-                  <br />
+                  <div className="progress col-md-10 col-7">
+                    <div
+                      className="progress-bar"
+                      style={{ width: component }}
+                      role="progressbar"
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {/* 25% */}
+                    </div>
+                  </div>
+                  <div className="col-md-1 col-1 star-rating">{component}</div>
                 </div>
-              );
-            })}
-          </div>
 
-          <div className="row col-md-2 mt-3">
-            <div className="ml-10">
-              <button
-                type="button"
-                className="btn btn-outline-dark"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setRefetch(false);
-                  setRatingType("product");
-
-                  $("#ratingModal").toggle();
-                  $("#ratingModal").toggleClass("modal fade modal");
-                }}
-              >
-                Rate
-              </button>
-            </div>
-          </div>
+                <br />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

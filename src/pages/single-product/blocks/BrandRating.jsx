@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
-function BrandRating({ refetch,setRefetch, currentVariant ,setRatingType}) {
+function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
   const [brandReviews, setBrandReviews] = useState([]);
   // const [refetch, setRefetch] = useState(false);
 
@@ -38,66 +38,67 @@ function BrandRating({ refetch,setRefetch, currentVariant ,setRatingType}) {
       tabIndex={0}
     >
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
-    <div className="container-lg-fluid">
-    <div className="row brand-rating px-5">
-        <div className="col-md-10 col-10">
-          {brandReviews?.map((component, index) => {
-            return (
-              <div className="card rating-card"  key={index}>
-                <div className="row align-items-center">
-                  <div className="col-md-6">
-                    <div className="card-body">
-                      <div className="col-md-11 px-0">
+      <div className="container-lg-fluid px-0">
+        <div className="row brand-rating">
+          <div className="col-md-10 col-10">
+            {brandReviews?.map((component, index) => {
+              return (
+                <div className="mb-5" key={index}>
+                  <div className="row align-items-center">
+                    <div className="col-md-6">
+                      <div className="col-md-12">
                         {/* address */}
                         <div className="row">
-                          <p className="mb-6 pl-2">
+                          <p className="brand-author">
                             {component.submitted_by_name}
                           </p>
                         </div>
                         <div className="row">
-                          <Rating
-                            initialValue={component.stars_count}
-                            fillColor="#0f0f0f"
-                            readonly={true}
-                            size={20}
-                          />{" "}
-                          <p className="mb-6 pl-2">
-                            {component.submitted_date}
-                          </p>
+                          <div className="col-md-8">
+                            <Rating
+                              initialValue={component.stars_count}
+                              fillColor="#0f0f0f"
+                              readonly={true}
+                              size={20}
+                              className="mb-4 react-simple-star-rating"
+                            />{" "}
+                          </div>
+                          <div className="col-md-4">
+                            <p className="brand-rating-date">
+                              {component.submitted_date}
+                            </p>
+                          </div>
                         </div>
                         <div className="row">
-                        <p className="mb-6 pl-2">
-                            {component.message}
-                          </p>
+                          <p className="mb-6 brand-rating-message">{component.message}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <div className="row col-md-2 mt-3">
-          <div className="ml-10">
-            <button
-              type="button"
-              className="btn btn-outline-dark"
-              onClick={(e) => {
-                e.preventDefault();
-                setRefetch(false)
-                setRatingType("brand")
-                $("#ratingModal").toggle();
-                $("#ratingModal").toggleClass("modal fade modal");
-              }}
-            >
-              Rate
-            </button>
+          <div className="col-md-2 mt-3">
+            <div className="ml-10">
+              <button
+                type="button"
+                className="btn btn-outline-dark"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRefetch(false);
+                  setRatingType("brand");
+                  $("#ratingModal").toggle();
+                  $("#ratingModal").toggleClass("modal fade modal");
+                }}
+              >
+                Rate
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

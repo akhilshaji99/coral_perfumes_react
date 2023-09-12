@@ -3,8 +3,8 @@ import deviceImageRender from "../../../utils/deviceImageRender";
 function AdsBlock({ componentDatas }) {
   return (
     <>
-      <div className="container-fluid my-5">
-        <div className="row ads-block justify-content-center">
+      <div className="container-fluid cc-margin">
+        <div className="row g-8 ads-block justify-content-center">
           {componentDatas?.datas?.map((adBlock, index) => {
             return (
               <div className="col-md-6 col-12" key={index}>

@@ -9,8 +9,8 @@ function CategoryTop({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-lg-fluid my-5 ">
-        <div className="card category-top mb-5" style={dynamicBackground}>
+      <div className="container-lg-fluid">
+        <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
@@ -54,7 +54,7 @@ function CategoryTop({ componentDatas }) {
                   max: 1024,
                   min: 464,
                 },
-                items: 3,
+                items: 4,
                 partialVisibilityGutter: 10,
               },
             }}

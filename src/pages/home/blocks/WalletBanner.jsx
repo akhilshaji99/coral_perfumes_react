@@ -9,7 +9,7 @@ function WalletBanner({ componentDatas }) {
   return (
     <>
       <div className="container-lg-fluid cc-margin ">
-        <div className="card wallet-banner mb-5" style={dynamicBackground}>
+        <div className="card wallet-banner" style={dynamicBackground}>
           <div className="row align-items-center p-3">
             <div className="col-md-3 d-none d-xl-block">
               <h1>{componentDatas?.title}</h1>
@@ -78,7 +78,7 @@ function WalletBanner({ componentDatas }) {
                       max: 1024,
                       min: 464,
                     },
-                    items: 4,
+                    items: 3,
                     partialVisibilityGutter: 30,
                   },
                 }}

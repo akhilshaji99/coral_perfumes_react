@@ -5,17 +5,15 @@ import ProductRating from "./ProductRating";
 import RatingModal from "./RatingModal";
 import { useState } from "react";
 
-
-function DesktopSpec({currentVariant, productDatas }) {
+function DesktopSpec({ currentVariant, productDatas }) {
   const [refetch, setRefetch] = useState(false);
   const [ratingType, setRatingType] = useState("product");
-
 
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-7">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
               {/* nav item */}
               <li className="nav-item" role="presentation">
@@ -82,19 +80,20 @@ function DesktopSpec({currentVariant, productDatas }) {
               >
                 <div className="my-8">
                   <div
+                    className="p-d-c"
                     dangerouslySetInnerHTML={{ __html: productDatas?.faq }}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-5">
             <h2 className="p-d">Product Detail</h2>
             <div className="row p-ul">
               {productDatas?.descriptive_attributes?.map(
                 (descriptive_attribute, index) => {
                   return (
-                    <div className="col-md-6" key={index}>
+                    <div className="col-md-6 p" key={index}>
                       <li>
                         {Object.keys(descriptive_attribute)} :{" "}
                         {
@@ -122,14 +121,14 @@ function DesktopSpec({currentVariant, productDatas }) {
           }}
         />
         <div className="row py-2 ">
-          <div className=" col-xl-8 col-12 ">
+          <div className=" col-xl-7 col-12 ">
             <img
               className="img-fluid"
-              src={deviceImgeRender( productDatas?.type_banner_image)}
+              src={deviceImgeRender(productDatas?.type_banner_image)}
               alt=""
             />
           </div>
-          <div className="col-xl-4 col-12 return-policy-div">
+          <div className="col-xl-5 col-12 return-policy-div">
             <h1>{productDatas?.return_title}</h1>
             <p>{productDatas?.return_text_1}</p>
             <h6>{productDatas?.return_text_2}</h6>
@@ -144,8 +143,12 @@ function DesktopSpec({currentVariant, productDatas }) {
           }}
         />
         <div className="row">
-          <div className="col-md-8">
-            <ul className="nav nav-pills nav-lb-tab mb-5" id="myTab" role="tablist">
+          <div className="col-md-7">
+            <ul
+              className="nav nav-pills nav-lb-tab mb-5"
+              id="myTab"
+              role="tablist"
+            >
               {/* nav item */}
               <li className="nav-item" role="presentation">
                 {/* btn */}{" "}
@@ -182,15 +185,28 @@ function DesktopSpec({currentVariant, productDatas }) {
             {/* tab content */}
             <div className="tab-content" id="myTabContent">
               {/* tab pane */}
-              <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} ratingType={ratingType}/>
+              <RatingModal
+                setRefetch={setRefetch}
+                currentVariant={currentVariant}
+                ratingType={ratingType}
+              />
 
-              <ProductRating refetch ={ refetch} setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
+              <ProductRating
+                refetch={refetch}
+                setRefetch={setRefetch}
+                currentVariant={currentVariant}
+                setRatingType={setRatingType}
+              />
               {/* tab pane */}
-              <BrandRating refetch ={ refetch}  setRefetch={setRefetch}  currentVariant={currentVariant} setRatingType={setRatingType}/>
-             
+              <BrandRating
+                refetch={refetch}
+                setRefetch={setRefetch}
+                currentVariant={currentVariant}
+                setRatingType={setRatingType}
+              />
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-5">
             <h2 className="p-d">bought together</h2>
           </div>
         </div>
