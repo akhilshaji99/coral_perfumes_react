@@ -4,7 +4,6 @@ import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
 function BrandRating({ refetch,setRefetch, currentVariant ,setRatingType}) {
-  console.log("currentVariant", currentVariant);
   const [brandReviews, setBrandReviews] = useState([]);
   // const [refetch, setRefetch] = useState(false);
 

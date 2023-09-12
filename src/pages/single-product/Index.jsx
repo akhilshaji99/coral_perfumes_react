@@ -21,10 +21,12 @@ function Index() {
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
   const [recProducts, setRecProducts] = useState(null);
-  const [aciveVariant, setActiveVariant] = useState([]);
+  const [activeVariant, setActiveVariant] = useState({});
   const [addToCartQuantity, setAddToCartQuantity] = useState(1);
   const [status, setStatus] = useState(false);
   const [flashSale, setFlashSale] = useState(null);
+  const [otherVariants, setOtherVariants] = useState({});
+  const [variantChangeFlag, setVariantChangeFlag] = useState(false);
 
   useEffect(() => {
     getProductDetails();
@@ -51,6 +53,10 @@ function Index() {
         if (response?.data?.current_variant) {
           setCurrentVariant(response.data.current_variant);
         }
+        if (response?.data?.current_variant && response?.data?.other_variants) {
+          response?.data?.other_variants.push(response?.data?.current_variant);
+          setOtherVariants(response?.data?.other_variants);
+        }
 
         if (response?.data?.current_variant && response?.data?.other_variants) {
           CreateProductVariants(
@@ -60,10 +66,11 @@ function Index() {
             // console.log(data);
             setproductVariants(data);
             //Set active variant datas
-            let activeVariantArray = [];
+            let activeVariantArray = {};
             response?.data?.current_variant?.assigned_variant_attributes?.forEach(
               (variants) => {
-                activeVariantArray.push(variants?.attribute_values?.[0]?.value);
+                activeVariantArray[variants.attribute_name] =
+                  variants?.attribute_values?.[0]?.value;
               }
             );
             setActiveVariant(activeVariantArray);
@@ -78,6 +85,24 @@ function Index() {
       console.log("error", error);
     }
   };
+
+  const changeProductVariant = (attribute_name, variant_value) => {
+    const updatedVariant = { ...activeVariant };
+    updatedVariant[attribute_name] = variant_value;
+    setActiveVariant(updatedVariant);
+    setVariantChangeFlag(!variantChangeFlag);
+  };
+
+  useEffect(() => {
+    const result = Object.entries(activeVariant)
+      .map(
+        ([key, value]) =>
+          `${key.toLowerCase()}-${value.toLowerCase().replace(/\s/g, "-")}`
+      )
+      .join("-");
+
+    console.log(result);
+  }, [variantChangeFlag]);
 
   return (
     <>
@@ -293,10 +318,18 @@ function Index() {
                                     key={index_inner}
                                     type="button"
                                     className={`btn btn-outline-secondary btn-variant ${
-                                      aciveVariant.includes(variant?.value)
+                                      activeVariant[
+                                        productVariant?.attribute_name
+                                      ] === variant?.value
                                         ? `variant-active`
                                         : null
                                     }`}
+                                    onClick={() => {
+                                      changeProductVariant(
+                                        productVariant?.attribute_name,
+                                        variant?.value
+                                      );
+                                    }}
                                   >
                                     {variant?.value}
                                   </button>
@@ -320,10 +353,18 @@ function Index() {
                                     key={index_inner}
                                     type="button"
                                     className={`btn btn-outline-secondary btn-variant ${
-                                      aciveVariant.includes(variant?.value)
+                                      activeVariant[
+                                        productVariant?.attribute_name
+                                      ] === variant?.value
                                         ? `variant-active`
                                         : null
                                     }`}
+                                    onClick={() => {
+                                      changeProductVariant(
+                                        productVariant?.attribute_name,
+                                        variant?.value
+                                      );
+                                    }}
                                   >
                                     {variant?.value}
                                   </button>
