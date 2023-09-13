@@ -11,7 +11,7 @@ function WalletBanner({ componentDatas }) {
       <div className="container-lg-fluid cc-margin ">
         <div className="card wallet-banner" style={dynamicBackground}>
           <div className="row align-items-center p-3">
-            <div className="col-md-3 d-none d-xl-block">
+            <div className="col-md-3 d-none d-md-block">
               <h1>{componentDatas?.title}</h1>
               <h5>{componentDatas?.sub_title}</h5>
               <svg

@@ -54,10 +54,13 @@ function productData({ productDatas, currentVariant }) {
       </div>
       {productDatas?.tabby_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-xl-2 col-sm-2 col-3">
+          <div className="col-xl-2 col-sm-2 col-2">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
-          <div className="col-xl-7 col-sm-10 col-9 ">
+          <div
+            className="col-xl-7 col-sm-7 col-8 "
+            style={{ marginLeft: "3%" }}
+          >
             {productDatas?.tabby_text}
           </div>
         </div>

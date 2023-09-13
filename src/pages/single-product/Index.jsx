@@ -309,7 +309,7 @@ function Index() {
                         <span className="select-size">
                           {productVariant?.attribute_name}
                         </span>
-                        <div className="col-md-7">
+                        <div className="col-md-7 scrollable-area" >
                           <div className="mb-5 variant-box">
                             {productVariant?.variants?.map(
                               (variant, index_inner) => {

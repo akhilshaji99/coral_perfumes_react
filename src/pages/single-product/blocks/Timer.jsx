@@ -93,7 +93,7 @@ function Timer({ flash_sale }) {
                   <div className="row">
                     <div className="col-md-4 col-4 text-center">
                       <div className="timer-box">{hours || 0}</div>
-                      <span className="pl-3">Hours</span>
+                      <span className="">Hours</span>
                     </div>
                     <div className="col-md-4 col-4 text-center">
                       <div className="timer-box">{minutes || 0}</div>

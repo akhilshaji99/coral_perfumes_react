@@ -115,7 +115,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                           </span>
                         </NavLink>
                         <div
-                          className={`dropdown-menu ${
+                          className={`dropdown-menu  ${
                             openSubmenu === index ? "show pb-0" : " hide pb-0"
                           }`}
                         >
@@ -299,7 +299,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                           <img
                                             src={deviceImageRender(item.image)}
                                             alt={item.image_alt}
-                                            className="img-fluid megamenu-ads"
+                                            className=" megamenu-ads"
                                           />
                                         </Link>
                                       </div>

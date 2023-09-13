@@ -203,7 +203,7 @@ function CartDrawer() {
             </li>
           </ul>
           {cartItems.length > 0 ? (
-            <div className="card-footer">
+            <div className="card-footer price-footer">
               {cartItems.length > 0 ? (
                 <div className="row py-3 align-items-center">
                   <div className="col-md-6">
