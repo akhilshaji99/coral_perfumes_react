@@ -17,10 +17,20 @@ function ProductInfo({orderItem}) {
         ) : null}
       </div>
       <div className="col-md-4 text-lg-end">
+      { (orderItem?.order_status === "Delivery") ?  (
         <h3>Tax invoice</h3>
+        ) : 
+        null
+        }
+        { (orderItem?.order_status === "Ordered" || orderItem?.order_status === "Processing") ?  (
         <h3 style={{ position: "relative", bottom: "-66px" }}>
           Request Cancellation
         </h3>
+         ) : 
+         <h3 style={{ position: "relative", bottom: "-66px" }}>
+          Request Return
+        </h3>
+         }
       </div>
     </div>
   );
