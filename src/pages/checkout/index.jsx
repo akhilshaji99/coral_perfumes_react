@@ -212,34 +212,64 @@ function Index() {
   // );
 
   //update shipping_zone_type and refetch api :: Delivery type change
+  const basicInfoFormValidation = () => {
+    let validationStatus = true;
+    if (addressForm.values.first_name == undefined || addressForm.values.first_name == "") {
+      validationStatus = false;
+      addressForm.setErrors({ first_name: "Required" });
+    } else if (addressForm.values.last_name == undefined || addressForm.values.last_name == "") {
+      validationStatus = false;
+
+      addressForm.setErrors({ last_name: "Required" });
+    } else if (addressForm.values.phone_number == undefined || addressForm.values.phone_number == "") {
+      validationStatus = false;
+
+      addressForm.setErrors({ phone_number: "Required" });
+    } else if (addressForm.values.email == undefined || addressForm.values.email == "") {
+      validationStatus = false;
+
+      addressForm.setErrors({ email: "Required" });
+    } else {
+      validationStatus = true;
+    }
+    return validationStatus;
+  };
   const fetchCheckoutDetailsByDeliveryType = (shipping_type) => {
-    checkoutUpdateParams.shipping_zone_type = shipping_type;
-    setCheckoutUpdateParams(checkoutUpdateParams);
-    handleOnSubmit(); //Calling Update api
+    if (basicInfoFormValidation()) {
+      checkoutUpdateParams.shipping_zone_type = shipping_type;
+      setCheckoutUpdateParams(checkoutUpdateParams);
+      handleOnSubmit(); //Calling Update api
+    }
   };
   //#End
   //update payment type and refetch api :: Delivery type change
   const fetchCheckoutDetailsForPaymentType = (payment_type_id) => {
-    checkoutUpdateParams.payment_type = parseInt(payment_type_id);
-    setCheckoutUpdateParams(checkoutUpdateParams);
-    handleOnSubmit(); //Calling Update api
+    if (basicInfoFormValidation()) {
+      checkoutUpdateParams.payment_type = parseInt(payment_type_id);
+      setCheckoutUpdateParams(checkoutUpdateParams);
+      handleOnSubmit(); //Calling Update api
+    }
   };
   //#End
   //Update gift wrap status and refetch api
   const fetchCheckoutDetailsForGiftStatus = (status) => {
-    checkoutUpdateParams.gift_wrap = status;
-    if (status === 0) {
-      checkoutUpdateParams.gift_message = null;
+    if (basicInfoFormValidation()) {
+      checkoutUpdateParams.gift_wrap = status;
+      if (status === 0) {
+        checkoutUpdateParams.gift_message = null;
+      }
+      setCheckoutUpdateParams(checkoutUpdateParams);
+      handleOnSubmit(); //Calling Update api
     }
-    setCheckoutUpdateParams(checkoutUpdateParams);
-    handleOnSubmit(); //Calling Update api
   };
   //#End
   //Update gift wrap message and refetch api
   const fetchCheckoutDetailsForMessage = (message) => {
-    checkoutUpdateParams.gift_message = message;
-    setCheckoutUpdateParams(checkoutUpdateParams);
-    handleOnSubmit(); //Calling Update api
+    if (basicInfoFormValidation()) {
+      checkoutUpdateParams.gift_message = message;
+      setCheckoutUpdateParams(checkoutUpdateParams);
+      handleOnSubmit(); //Calling Update api
+    }
   };
   //#End
 
@@ -821,7 +851,7 @@ function Index() {
                                     style={{
                                       color: "#010101",
                                       textDecoration: "underline",
-                                      fontSize:'12px'
+                                      fontSize: "12px",
                                     }}
                                   >
                                     Change Address
