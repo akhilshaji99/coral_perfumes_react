@@ -213,6 +213,8 @@ function Index() {
 
   //update shipping_zone_type and refetch api :: Delivery type change
   const basicInfoFormValidation = () => {
+    var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
     let validationStatus = true;
     if (addressForm.values.first_name == undefined || addressForm.values.first_name == "") {
       validationStatus = false;
@@ -225,7 +227,7 @@ function Index() {
       validationStatus = false;
 
       addressForm.setErrors({ phone_number: "Required" });
-    } else if (addressForm.values.email == undefined || addressForm.values.email == "") {
+    } else if (addressForm.values.email == undefined || addressForm.values.email == "" || !addressForm.values.email.match(validEmailRegex)) {
       validationStatus = false;
 
       addressForm.setErrors({ email: "Required" });
