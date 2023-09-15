@@ -12,12 +12,12 @@ function Index() {
   
   useEffect(() => {
     getStores().then((response) => {
-      if (response.data) {
-        setStores(response.data.data);
+      if (response?.data) {
+        setStores(response?.data?.data);
       }
     });
     getEmirates().then((response) => {
-      if(response.data){
+      if(response?.data){
         setEmirates(response?.data)
       }
     })

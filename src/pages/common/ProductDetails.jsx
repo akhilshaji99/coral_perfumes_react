@@ -23,7 +23,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
             changeWishlistStatus={() => {
               product.is_in_wishlist = !product?.is_in_wishlist;
               setStatus(!status);
-              if (status == false && setReFetchApi != null) {
+              if (status === false && setReFetchApi != null) {
                 setReFetchApi(true);
               }
             }}

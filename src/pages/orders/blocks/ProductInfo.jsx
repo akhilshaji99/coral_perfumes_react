@@ -1,6 +1,8 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
+import $ from "jquery";
 
-function ProductInfo({orderItem}) {
+function ProductInfo({setModalData,setShowOrderCancelFlag,
+  showOrderCancelFlag, modalType,setModalType,orderItem,ongoingOrder}) {
   return (
     <div className="row">
       <div className="col-md-3">
@@ -22,9 +24,22 @@ function ProductInfo({orderItem}) {
         ) : 
         null
         }
-        { (orderItem?.order_status === "Ordered" || orderItem?.order_status === "Processing") ?  (
-        <h3 style={{ position: "relative", bottom: "-66px" }}>
-          Request Cancellation
+        { ((orderItem?.order_status === "Ordered" || orderItem?.order_status === "Processing")) ?  (
+        <h3 style={{ position: "relative", bottom: "-66px",cursor: "pointer" ,"text-decoration": (ongoingOrder?.order_cancellation_status == 2 ?"none": null)}}  onClick={()=>{
+          if(ongoingOrder?.order_cancellation_status == 1){
+          setShowOrderCancelFlag(true)
+          setModalType("cancel")
+          setModalData({
+            "ongoingOrder" :ongoingOrder,
+            "orderItem": orderItem,
+          })
+          $("#orderCancelModal").toggle();
+          $("#orderCancelModal").toggleClass(
+            "modal fade modal"
+          );
+          }
+        }}>
+          {ongoingOrder?.order_cancellation_text}
         </h3>
          ) : 
          <h3 style={{ position: "relative", bottom: "-66px" }}>

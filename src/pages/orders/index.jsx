@@ -5,15 +5,27 @@ import OrderDatas from "./blocks/OrderDatas";
 import { useEffect } from "react";
 import request from "../../utils/request";
 import getUserToken from "../../utils/userToken";
-
+import OrderCancelModal from "./blocks/OrderCancelModal";
 function Index() {
   const [ongoingOrders, setOnGoingOrders] = useState([]);
   const [completedOrders, setCompletedOrders] = useState([]);
+  const [showOrderCancelFlag, setShowOrderCancelFlag] = useState(false);
+  const [modalType, setModalType] = useState("cancel");
+  const [modalData, setModalData] = useState(null);
+  const  [refetch, setRefetch] = useState(false)
+
+  
+
+  
 
   useEffect(() => {
     getOrders();
   }, []);
-
+  useEffect(() => {
+    if(refetch){
+      getOrders();
+    }
+  }, [refetch]);
   const getOrders = async () => {
     try {
       var bodyFormData = new FormData();
@@ -32,6 +44,7 @@ function Index() {
     <section>
       <div className="container-fluid">
         <BreadCrumps />
+        <OrderCancelModal setRefetch={setRefetch} modalData={modalData} showOrderCancelFlag={showOrderCancelFlag} setShowOrderCancelFlag={setShowOrderCancelFlag} modalType={modalType} setModalType={setModalType}/>
         <div className="row">
           <MyAccountSidebar />
           <div className="col-lg-9 col-md-9 col-12">
@@ -40,7 +53,7 @@ function Index() {
               {ongoingOrders?.map((ongoingOrder, index) => {
                 return (
                   <div key={index}>
-                    <OrderDatas ongoingOrder={ongoingOrder} />
+                    <OrderDatas setModalData={setModalData} showOrderCancelFlag={showOrderCancelFlag} setShowOrderCancelFlag={setShowOrderCancelFlag} modalType={modalType} setModalType={setModalType} ongoingOrder={ongoingOrder} />
                   </div>
                 );
               })}

@@ -3,7 +3,8 @@ import "react-multi-carousel/lib/styles.css";
 import OrderProgress from "./OrderProgress";
 import OrderHeader from "./OrderHeader";
 import ProductInfo from "./ProductInfo";
-function OrderDatas({ ongoingOrder }) {
+function OrderDatas({setModalData,setShowOrderCancelFlag,
+  showOrderCancelFlag, modalType,setModalType, ongoingOrder }) {
   return (
     <>
       <div className="orders-card">
@@ -67,7 +68,7 @@ function OrderDatas({ ongoingOrder }) {
               {ongoingOrder?.orderline?.map((orderItem, index) => {
                 return (
                   <div key={index}>
-                    <ProductInfo orderItem={orderItem} />
+                    <ProductInfo  setModalData={setModalData} showOrderCancelFlag={showOrderCancelFlag} setShowOrderCancelFlag={setShowOrderCancelFlag} modalType={modalType} setModalType={setModalType} orderItem={orderItem} ongoingOrder={ongoingOrder}/>
                   </div>
                 );
               })}
