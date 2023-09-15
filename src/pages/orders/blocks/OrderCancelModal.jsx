@@ -10,6 +10,14 @@ function OrderCancelModal({
   showOrderCancelFlag,
   modalType,
 }) {
+  const screensWidth = window.innerWidth;
+  //Code for device identification
+  let isMobile = false;
+  if (screensWidth <= 760) {
+    isMobile = true;
+  } else {
+    isMobile = false;
+  }
   const [addressList, setAddressList] = useState([]);
   const [radioOptions, setRadioOptions] = useState([]);
 
@@ -154,7 +162,7 @@ function OrderCancelModal({
           <div className="modal-content p-5">
             <div className="border-0">
               <div className="row">
-                <div className="col-9 col-md-12 mb-2">
+                <div className="col-12 col-md-12 mb-2">
                   <h5
                     className="text-uppercase fs-3 fw-bold text-center"
                     id="userModalLabel"
@@ -175,7 +183,7 @@ function OrderCancelModal({
               </div>
             </div>
             <div className="modal-body">
-              <div className="container">
+              <div className="">
                 <div className="row justify-content-center">
                   <div className="col-12 col-md-12">
                     <p
@@ -216,14 +224,11 @@ function OrderCancelModal({
             </div>
             <div className="row g-2 m-2">
               <div className="col-12">
-                <div className="pt-2 text-center">
-                  <button
-                    onClick={cancelOrder}
-                    className="btn btn-dark p-3 col-md-6 validate"
-                  >
-                    SUBMIT
-                  </button>
-                </div>
+              <div className="pt-2 text-center" >
+            <button onClick={cancelOrder} className={`btn btn-dark ${isMobile ? 'w-100 col-md-12 validate' : 'p-3 col-md-6 validate'}`}>
+              SUBMIT
+            </button>
+          </div>
               </div>
             </div>
           </div>
