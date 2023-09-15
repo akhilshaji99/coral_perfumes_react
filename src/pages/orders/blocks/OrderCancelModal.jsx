@@ -156,7 +156,7 @@ function OrderCancelModal({
               <div className="row">
                 <div className="col-9 col-md-12 mb-2">
                   <h5
-                    className="modal-title fs-3 fw-bold text-center"
+                    className="text-uppercase fs-3 fw-bold text-center"
                     id="userModalLabel"
                   >
                     {/* {modalType === "cancel"
