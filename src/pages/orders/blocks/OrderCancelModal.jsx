@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
+import style from "../../../assets/css/order/style.css"
 function OrderCancelModal({
   setRefetch,
   modalData,
@@ -10,14 +11,7 @@ function OrderCancelModal({
   showOrderCancelFlag,
   modalType,
 }) {
-  const screensWidth = window.innerWidth;
-  //Code for device identification
-  let isMobile = false;
-  if (screensWidth <= 760) {
-    isMobile = true;
-  } else {
-    isMobile = false;
-  }
+  
   const [addressList, setAddressList] = useState([]);
   const [radioOptions, setRadioOptions] = useState([]);
 
@@ -148,23 +142,23 @@ function OrderCancelModal({
   return (
     <>
       <div
-        className="modal fade bd-example-modal-lg"
+        className="modal fade bd-example-modal-md"
         id="orderCancelModal"
         tabIndex={-1}
         aria-labelledby="orderCancelModalLabel"
         aria-hidden="true"
       >
         <div
-          className="modal-dialog modal-lg modal-dialog-centered"
+          className="modal-dialog modal-md modal-dialog-centered"
           role="dialog"
           aria-modal="true"
         >
           <div className="modal-content p-5">
             <div className="border-0">
               <div className="row">
-                <div className="col-12 col-md-12 mb-2">
+                <div className="col-12 col-md-12 mb-2 cancel-popup-title">
                   <h5
-                    className="text-uppercase fs-3 fw-bold text-center"
+                    className="reason-for-return text-center"
                     id="userModalLabel"
                   >
                     {/* {modalType === "cancel"
@@ -210,10 +204,11 @@ function OrderCancelModal({
                             }}
                           />
                           <label
-                            className="form-check-label"
+                            className="radio-button-label"
                             htmlFor={option.id}
                           >
-                            {option.question}
+                            <p className="options"> {option.question}</p>
+                           
                           </label>
                         </div>
                       ))}
@@ -225,7 +220,7 @@ function OrderCancelModal({
             <div className="row g-2 m-2">
               <div className="col-12">
               <div className="pt-2 text-center" >
-            <button onClick={cancelOrder} className={`btn btn-dark ${isMobile ? 'w-100 col-md-12 validate' : 'p-3 col-md-6 validate'}`}>
+            <button onClick={cancelOrder} className="btn btn-dark  col-lg-8 col-12 validate cancel-popup-button">
               SUBMIT
             </button>
           </div>

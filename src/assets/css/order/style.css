@@ -1,0 +1,42 @@
+.cancel-popup-button {
+    height: 54px;
+    font-size: 16px !important;
+    font-weight: 450;
+}
+
+.radio-button-label {
+    width: 189px;
+    height: 18px;
+    gap: 26px;
+}
+
+.radio-button-label .options {
+    color: #000000;
+    font-family: "Brandon Text-Regular", Helvetica;
+    font-size: 9px;
+    font-weight: 400;
+    height: 18px;
+    line-height: 18px;
+    position: fixed;
+    padding-top: 2px;
+    padding-left: 10px;
+    white-space: nowrap;
+    
+  }
+
+.cancel-popup-title {
+    height: 17px;
+    width: 100%;
+}
+
+.cancel-popup-title .reason-for-return {
+    color: #000000;
+    font-family: "Brandon Text-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center !important;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-align: center !important;
+}
