@@ -1,0 +1,16 @@
+.address-popup-title {
+    font-family: "Brandon Text-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 450;
+    text-align: center;
+    line-height: 29.6px;
+  }
+
+  .address-button {
+    height: 49;
+    font-size: 12px !important;
+    font-weight: 450;
+    Padding : 16px, 36px, 16px, 36px;
+    border-radius: 9px;
+    gap: 38px;
+}

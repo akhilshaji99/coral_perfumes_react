@@ -4,6 +4,7 @@ import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import addNewAddress from "../../checkout/js/addUserAddress";
 import getEmirates from "../../checkout/js/getEmiratesList";
+import  "../css/style.css"
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const newAddressFormSchema = yup.object().shape({
@@ -46,10 +47,8 @@ function AddAddress({
         $("#addressModal").toggle();
         $("#addressModal").toggleClass("modal fade modal");
         $("#AddAddress").removeClass("modal-open");
-    resetForm();
-
+        resetForm();
       }
-
     });
   };
   const addressForm = useFormik({
@@ -77,10 +76,8 @@ function AddAddress({
         if (response?.data) {
           setEmirates(response?.data);
           addressForm.setValues({
-           emirate: response?.data?[0]?.id : "",
-
+            emirate: response?.data ? [0]?.id : "",
           });
-          
         }
       });
     }
@@ -89,13 +86,11 @@ function AddAddress({
     if (!editAddressFlag) {
       // addressForm.initialValues.emirate = emirates?.[0]?.id;
       addressForm.setValues({
-        emirate: emirates?.[0]?.id
-
-       });
+        emirate: emirates?.[0]?.id,
+      });
     }
   }, [emirates]);
- 
- 
+
   useEffect(() => {
     if (editAddressFlag) {
       addressForm.setValues({
@@ -150,33 +145,34 @@ function AddAddress({
     >
       <div className="modal-dialog modal-dialog-centered modal-lg">
         <div className="modal-content p-5">
-          <div className="row">
-            <div className="col-md-10"></div>
+          <div className="border-0">
+            <div className="row">
+              <div col-12 col-md-12 mb-2>
+                {/* heading */}
+                <h5 className="mb-5 text-center address-popup-title">ADD NEW ADDRESS</h5>
+              </div>
+              <div className="col-3 col-md-2">
+                {/* button */}
+                <button
+                  type="button"
+                  className="btn-close btn-custom-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={(e) => {
+                    setAddAddressFlag(false);
+                    setEditAddressFlag(false);
+                    $("#AddAddress").toggle();
+                    $("#AddAddress").toggleClass("modal fade modal");
+                    setAddAddressListFlag(true);
+                    $("#addressModal").toggle();
+                    $("#addressModal").toggleClass("modal fade modal");
+                    resetForm();
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <div className="modal-body p-5">
-            <div>
-              {/* heading */}
-              <h5 className="mb-5 text-center">ADD NEW ADDRESS</h5>
-            </div>
-            <div>
-              {/* button */}
-              <button
-                type="button"
-                className="btn-close btn-custom-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                onClick={(e) => {
-                  setAddAddressFlag(false);
-                  setEditAddressFlag(false);
-                  $("#AddAddress").toggle();
-                  $("#AddAddress").toggleClass("modal fade modal");
-                  setAddAddressListFlag(true);
-                  $("#addressModal").toggle();
-                  $("#addressModal").toggleClass("modal fade modal");
-                  resetForm();
-                }}
-              />
-            </div>
             <div>
               <form onSubmit={addressForm.handleSubmit} className="row mb-4">
                 <div className="mb-3 col-md-6 col-12">
@@ -274,7 +270,6 @@ function AddAddress({
                       name="emirate"
                       // value={addressForm.values.emirate.id}
                       value={addressForm.values.emirate}
-
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "emirate")}
                     >
@@ -363,8 +358,8 @@ function AddAddress({
                   </div>
                 </div>
                 <div className="col-md-12 col-12 text-center">
-                  <button className="btn btn-dark col-md-4" type="submit">
-                    Save
+                  <button className="btn btn-dark col-lg-3 col-12 address-button" type="submit">
+                    SAVE
                   </button>
                 </div>
               </form>

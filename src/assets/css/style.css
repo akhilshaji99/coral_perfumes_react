@@ -27879,8 +27879,8 @@ border-radius: none !important;
 }
 .btn-custom-close {
   position: absolute;
-  right: 5%;
-  top: 5%;
+  right: 3%;
+  top: 3%;
   color: #000 !important;
   transform: scale(0.85);
 }
