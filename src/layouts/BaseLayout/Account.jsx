@@ -17,7 +17,15 @@ function useComponentVisible(initialIsVisible) {
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    const screensWidth = window.innerWidth;
+  //Code for device identification
+  let screen_type = "Desktop";
+  if (screensWidth <= 760) {
+    screen_type = "Mobile";
+  } else {
+    screen_type = "Desktop";
+  }
+    if (ref.current && !ref.current.contains(event.target) && screen_type !== "Mobile") {
       setIsComponentVisible(false);
     }
   };
