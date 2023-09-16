@@ -213,21 +213,35 @@ function Index() {
 
   //update shipping_zone_type and refetch api :: Delivery type change
   const basicInfoFormValidation = () => {
-    var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validEmailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     let validationStatus = true;
-    if (addressForm.values.first_name == undefined || addressForm.values.first_name == "") {
+    if (
+      addressForm.values.first_name == undefined ||
+      addressForm.values.first_name == ""
+    ) {
       validationStatus = false;
       addressForm.setErrors({ first_name: "Required" });
-    } else if (addressForm.values.last_name == undefined || addressForm.values.last_name == "") {
+    } else if (
+      addressForm.values.last_name == undefined ||
+      addressForm.values.last_name == ""
+    ) {
       validationStatus = false;
 
       addressForm.setErrors({ last_name: "Required" });
-    } else if (addressForm.values.phone_number == undefined || addressForm.values.phone_number == "") {
+    } else if (
+      addressForm.values.phone_number == undefined ||
+      addressForm.values.phone_number == ""
+    ) {
       validationStatus = false;
 
       addressForm.setErrors({ phone_number: "Required" });
-    } else if (addressForm.values.email == undefined || addressForm.values.email == "" || !addressForm.values.email.match(validEmailRegex)) {
+    } else if (
+      addressForm.values.email == undefined ||
+      addressForm.values.email == "" ||
+      !addressForm.values.email.match(validEmailRegex)
+    ) {
       validationStatus = false;
 
       addressForm.setErrors({ email: "Required" });
@@ -278,7 +292,7 @@ function Index() {
   return (
     <>
       <section className="mb-lg-14 mb-8 mt-8">
-        <div className="container-fluid">
+        <div className="container-md-fluid">
           <BreadCrumps />
           <div className="row">
             <div className="col-12">
@@ -305,7 +319,7 @@ function Index() {
           <div>
             {/* row */}
             <div className="row">
-              <div className="col-lg-7 col-md-12">
+              <div className="col-lg-8 col-md-8">
                 {/* accordion */}
                 <div
                   className="accordion accordion-flush "
@@ -893,7 +907,7 @@ function Index() {
                   />
                 </div>
               </div>
-              <div className="col-lg-5 col-md-12">
+              <div className="col-lg-4 col-md-8">
                 <CartDetails cartDatas={cartItems} />
               </div>
             </div>

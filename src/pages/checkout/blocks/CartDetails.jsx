@@ -13,7 +13,7 @@ function CartDetails({ cartDatas }) {
               return (
                 <li className="list-group-item py-3 ps-0" key={index}>
                   <div className="row align-items-center d-flex justify-content-space-between">
-                    <div className="col-3 col-md-3 cart-details-img">
+                    <div className="col-3 col-xs-2 col-lg-2 col-md-3 cart-details-img">
                       <img
                         src={deviceImageRender(
                           cartData?.variant?.product_listing_image
@@ -21,7 +21,7 @@ function CartDetails({ cartDatas }) {
                         alt="Ecommerce"
                       />
                     </div>
-                    <div className="col-9 col-md-8 ">
+                    <div className="col-9 col-lg-8 col-xs-8 col-md-8 ">
                       <h4 className="mb-0">{cartData?.variant?.name}</h4>
                       <h6 className="mb-0">
                         AED {cartData?.variant?.price_amount}
@@ -36,7 +36,7 @@ function CartDetails({ cartDatas }) {
             })}
           </ul>
           <hr />
-          <div className="mb-5 card mt-6 border-0">
+          <div className="card border-0">
             <div className="card-body ">
               {/* heading */}
               <h5 className="h5 mb-4">Summary</h5>
@@ -44,7 +44,7 @@ function CartDetails({ cartDatas }) {
                 {/* list group */}
                 <ul className="list-group list-group-flush">
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
                       <div className="left-sec-text">
                         {cartDatas?.sub_total_title}
@@ -55,7 +55,7 @@ function CartDetails({ cartDatas }) {
                     </span>
                   </li>
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item  ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
                       <div className="left-sec-text">
                         {cartDatas?.shipping_title}
@@ -64,7 +64,7 @@ function CartDetails({ cartDatas }) {
                     <span>{cartDatas?.shipping_display}</span>
                   </li>
                   {/* list group item */}
-                  <li className="list-group-item py-3 ps-0 border-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
                       <div className="left-sec-text">
                         {cartDatas?.discount_title}
@@ -74,7 +74,7 @@ function CartDetails({ cartDatas }) {
                       {cartDatas?.discount_display}
                     </span>
                   </li>
-                  <li className="list-group-item py-3 ps-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item ps-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
                       <div className="fw-bold">
                         <p className="text mb-0">
@@ -93,7 +93,7 @@ function CartDetails({ cartDatas }) {
               </div>
 
               {/* heading */}
-              <div className="mt-8">
+              <div className="mt-2">
                 <div className="d-grid">
                   <button
                     type="button"
@@ -105,7 +105,7 @@ function CartDetails({ cartDatas }) {
                     SECURE CHECKOUT
                   </button>
                 </div>
-                <p className="delivery-info">
+                <p className="delivery-info mb-0">
                   <span>
                     <svg
                       width={21}

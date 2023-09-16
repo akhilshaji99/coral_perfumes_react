@@ -23,10 +23,10 @@ function AddressListComponent({
         {/* form */}
         <div className="card address-card">
           <div className="row align-items-center">
-            <div className="col-md-9">
+            <div className="col-md-9 col-9">
               <div className="card-body">
                 <div className="row">
-                  <div className="col-md-1 justify-content-end">
+                  <div className="col-md-1 col-1 justify-content-end">
                     <div className="form-check">
                       <input
                         className="form-check-input"
@@ -45,9 +45,9 @@ function AddressListComponent({
                     </label> */}
                     </div>
                   </div>
-                  <div className="col-md-11 px-0">
+                  <div className="col-md-11 col-9 px-lg-0">
                     {/* address */}
-                    <p className="mb-6 pl-5">
+                    <p className="mb-0">
                       {componentDatas.first_name} {componentDatas.last_name}
                       <br />
                       {componentDatas.flat_name} ,{" "}
@@ -61,7 +61,7 @@ function AddressListComponent({
                 </div>
               </div>
             </div>
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 col-3 text-center">
               <div className="row">
                 <div className="col-md-12">
                   <a

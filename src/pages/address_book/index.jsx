@@ -43,7 +43,7 @@ function Index() {
       {/* <BreadCrumps /> */}
       <br />
       <section>
-        <div className="container-fluid">
+        <div className="container-md-fluid">
           <BreadCrumps />
           <div className="row">
             <MyAccountSidebar />

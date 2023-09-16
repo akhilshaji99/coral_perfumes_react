@@ -92,7 +92,7 @@ function BannerFlashSale({ componentDatas }) {
                 <div className="col-1"></div>
               </div>
             </div>
-            <div className="container my-5 d-none d-xl-block">
+            <div className="container my-5 d-none d-lg-block">
               <div className="row align-items-center d-end">
                 <div className="col-md-1 col-4">
                   <div className="timer-card">

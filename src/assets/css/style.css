@@ -260,7 +260,7 @@ div.zoom img {
   --fc-tertiary-color-rgb: 92, 108, 117;
   --fc-tertiary-bg: #f0f3f2;
   --fc-tertiary-bg-rgb: 240, 243, 242;
-  --fc-heading-color: #21313c;
+  --fc-heading-color: #000;
   --fc-link-color: #0aad0a;
   --fc-link-color-rgb: 10, 173, 10;
   --fc-link-decoration: underline;
@@ -26674,6 +26674,9 @@ span.flatpickr-weekday {
 .cc-margin {
   margin: 3.5rem 0;
 }
+.cd-margin {
+  margin-bottom: 3.5rem;
+}
 .wallet-banner {
   border-radius: 9px;
   background: #a37073;
@@ -26762,6 +26765,9 @@ span.flatpickr-weekday {
   }
   .cc-margin {
     margin: 2rem 0;
+  }
+  .cd-margin {
+    margin-bottom: 2rem;
   }
   .brands-card h1 {
     line-height: normal;
@@ -28395,15 +28401,41 @@ border-radius: none !important;
   .alert-padding {
     padding: 3rem 0 !important;
   }
+  .address-card {
+    border-radius: 9px !important;
+    background: #fff !important;
+    box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25) !important;
+    border: none;
+    padding: 8px;
+    color: #000;
+    font-size: 14px;
+    font-family: var(--fc-font-light);
+    margin-bottom: 15px;
+  }
+  .container-md-fluid {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    width: 100%;
+  }
+}
+.container-md-fluid {
+  --fc-gutter-x: 4rem;
+  --fc-gutter-y: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(var(--fc-gutter-x) * 0.5);
+  padding-right: calc(var(--fc-gutter-x) * 0.5);
+  width: 100%;
 }
 .my-bag-card h2 {
   text-transform: uppercase;
   font-size: 16px;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-medium);
   padding-bottom: 0;
   line-height: 0.8;
   letter-spacing: 1.44px;
   margin-bottom: 8px;
+  color: var(--fc-black);
 }
 .guest-modal .btn-dark {
   border-radius: 7px !important;
@@ -28419,7 +28451,7 @@ border-radius: none !important;
 .my-bag-card .form-label {
   color: #000;
   font-size: 12px;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-medium);
   line-height: 185%; /* 22.2px */
   letter-spacing: 1.08px;
 }
@@ -28527,7 +28559,7 @@ border-radius: none !important;
   margin-top: 2.5rem;
 }
 .fixed-top-margin {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 .my-bag-title {
   text-align: center;
@@ -28556,7 +28588,8 @@ border-radius: none !important;
   object-fit: contain;
 }
 .my-bag-remove-btn {
-  top: 10%;
+  top: 0;
+  right: 5%;
   cursor: pointer;
   position: absolute;
 }
@@ -28619,8 +28652,13 @@ border-radius: none !important;
 }
 .promo-code-label {
   color: #000;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-medium);
   cursor: pointer;
+}
+.amount-dispaly{
+  color: var(--fc-black);
+  font-family: var(--fc-font-bold);
+
 }
 .my-bag-card .list-group:last-child {
   border-bottom-left-radius: 0px !important;
@@ -29216,7 +29254,7 @@ border-radius: none !important;
   border-radius: 9px !important;
   background: #fff;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-  padding: 33px;
+  padding: 5%;
 }
 /* .transformable {
   transform: rotate(180deg);
@@ -29604,7 +29642,8 @@ border-radius: none !important;
   padding-left: 5px;
 }
 .cart-details-img {
-  width: 120px;
+  width: 80px;
+  max-width: 90px;
   height: 80px;
   background-color: rgba(235, 236, 233, 1);
   display: flex;
@@ -29618,13 +29657,14 @@ border-radius: none !important;
 }
 .checkout-left-card h4 {
   color: #000;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-medium);
   font-size: 12px;
   text-transform: capitalize;
+  line-height: 185%;
 }
 .checkout-left-card h6 {
   color: #000;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-medium);
   font-size: 12px;
   text-transform: capitalize;
 }
@@ -29667,6 +29707,20 @@ body {
   }
   .mob-menu-container {
     margin-top: 55px;
+  }
+  .cart-details-img {
+    width: 60px;
+    max-width: 70px;
+    height: 60px;
+    background-color: rgba(235, 236, 233, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cart-details-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
   }
 }
 

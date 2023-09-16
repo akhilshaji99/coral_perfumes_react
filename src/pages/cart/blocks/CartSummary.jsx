@@ -60,9 +60,9 @@ function CartSummary({
               Add Promo Code
             </label>
             <form>
-              <div className="row align-items-center row-flex">
+              <div className="row ">
                 <div className="col-md-6 col-6">
-                  <div className="mb-2">
+                  <div className="">
                     <input
                       type="text"
                       className="form-control"
@@ -175,7 +175,7 @@ function CartSummary({
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                 </div>
-                &nbsp; <span>{cartDatas?.total_amount_display}</span>
+                &nbsp; <span className="amount-dispaly">{cartDatas?.total_amount_display}</span>
               </li>
             </ul>
           </div>

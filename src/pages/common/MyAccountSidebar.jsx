@@ -19,7 +19,7 @@ function MyAccountSidebar() {
           <h3 className="fs-5 mb-0">Account Setting</h3>
           {/* button */}
           <button
-            className="btn btn-outline-gray-400 text-muted d-md-none btn-icon btn-sm ms-3 "
+            className="btn btn-outline-gray-400 text-muted d-none d-lg-lock btn-icon btn-sm ms-3 "
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasAccount"
