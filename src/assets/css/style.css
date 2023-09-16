@@ -5956,7 +5956,7 @@ fieldset:disabled .btn {
 .breadcrumb {
   --fc-breadcrumb-padding-x: 0;
   --fc-breadcrumb-padding-y: 0;
-  --fc-breadcrumb-margin-bottom: 1.45rem;
+  --fc-breadcrumb-margin-bottom: 3.5%;
   --fc-breadcrumb-bg: ;
   --fc-breadcrumb-border-radius: ;
   --fc-breadcrumb-divider-color: #dfe2e1;
@@ -26392,9 +26392,15 @@ span.flatpickr-weekday {
 }
 .login-card {
   border: none;
+  margin-top: 20%;
 }
 .social-head {
-  margin-bottom: 42px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.social-haed svg{
+  width: 85%;
 }
 .login-card p {
   line-height: normal;
@@ -26428,6 +26434,9 @@ span.flatpickr-weekday {
 .separator h2 {
   padding: 0 2rem;
   font-size: 16px;
+  font-family: var(--fc-font-regular);
+  font-weight: 390;
+  color: var(--fc-black);
 }
 .home-banner .react-multiple-carousel__arrow {
   /* top: 15%; */
@@ -26630,20 +26639,20 @@ span.flatpickr-weekday {
 }
 .selling-price {
   color: #000;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--fc-font-bold);
   text-transform: uppercase;
 }
 .discounted-price {
   color: rgba(0, 0, 0, 0.33);
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--fc-font-regular);
   text-decoration: line-through;
   text-transform: uppercase;
 }
 .discount-percentage {
   color: #80ba27;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--fc-font-bold);
   text-transform: uppercase;
 }
@@ -27988,6 +27997,7 @@ border-radius: none !important;
 }
 .offcanvas-body {
   max-height: 90vh;
+  padding-top: 0;
 }
 .mini-cart-final-price {
   font-size: 16px;

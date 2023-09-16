@@ -4,7 +4,7 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-function RatingModal({ setRefetch, currentVariant, ratingType  }) {
+function RatingModal({ setRefetch, currentVariant, ratingType }) {
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -79,7 +79,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType  }) {
       aria-labelledby="ratingModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-dialog modal-dialog-centered modal-lg">
         <div className="modal-content otp-modal ">
           <h5 className="modal-title text-center " id="ratingModalLabel">
             REVIEW AND RATING
@@ -92,11 +92,14 @@ function RatingModal({ setRefetch, currentVariant, ratingType  }) {
             onClick={handleModalClose}
           />
           <div className="modal-body ">
-            <div className="text-center">
+            <div className="text-center mb-5">
               <Rating
                 onClick={handleRating}
                 initialValue={rating}
                 fillColor="#0f0f0f"
+                emptyColor="#ffffff"
+                SVGstrokeColor="#0f0f0f"
+                SVGstorkeWidth={1}
                 allowHover={false}
               />
             </div>
@@ -107,20 +110,24 @@ function RatingModal({ setRefetch, currentVariant, ratingType  }) {
                 onChange={(e) => onTodoChange(e.target.value)}
                 placeholder="write a review"
                 id="textAreaExample3"
-                rows="2"
+                rows="4"
               ></textarea>
             </div>
-            <div className="form-outline mt-5">
-              <button
-                // type="submit"
-                className="btn btn-dark px-4 validate w-100"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleOnSubmit();
-                }}
-              >
-                APPLY
-              </button>
+            <div className="row justify-content-center">
+              <div className="col-md-4">
+                <div className="form-outline mt-5">
+                  <button
+                    // type="submit"
+                    className="btn btn-dark px-4 validate w-100"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleOnSubmit();
+                    }}
+                  >
+                    APPLY
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
