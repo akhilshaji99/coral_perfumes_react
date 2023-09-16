@@ -5956,7 +5956,7 @@ fieldset:disabled .btn {
 .breadcrumb {
   --fc-breadcrumb-padding-x: 0;
   --fc-breadcrumb-padding-y: 0;
-  --fc-breadcrumb-margin-bottom: 3.5%;
+  --fc-breadcrumb-margin-bottom: 6%;
   --fc-breadcrumb-bg: ;
   --fc-breadcrumb-border-radius: ;
   --fc-breadcrumb-divider-color: #dfe2e1;
@@ -28451,7 +28451,7 @@ border-radius: none !important;
 .my-bag-card .form-label {
   color: #000;
   font-size: 12px;
-  font-family: var(--fc-font-medium);
+  font-family: var(--fc-font-bold);
   line-height: 185%; /* 22.2px */
   letter-spacing: 1.08px;
 }
@@ -28589,7 +28589,7 @@ border-radius: none !important;
 }
 .my-bag-remove-btn {
   top: 0;
-  right: 5%;
+  right: 3%;
   cursor: pointer;
   position: absolute;
 }
@@ -28652,7 +28652,7 @@ border-radius: none !important;
 }
 .promo-code-label {
   color: #000;
-  font-family: var(--fc-font-medium);
+  font-family: var(--fc-font-bold);
   cursor: pointer;
 }
 .amount-dispaly{

@@ -59,7 +59,7 @@ function Index() {
                       My Wishlist
                     </h2>
                     <div className="row">
-                      {wishList.map((product, index) => {
+                      {wishList?.map((product, index) => {
                         return (
                           <div className="col-md-4 col-6" key={index}>
                             <div className="product-grid">

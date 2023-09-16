@@ -39,32 +39,35 @@ const Router = () => {
         { path: "cart", element: <Cart /> },
         {
           path: "checkout",
-          element: userDatas ? <CheckOut /> : <Navigate to="/" />,
+          element: userDatas ? <CheckOut /> : <Navigate to="/login" />,
         },
-        { path: "wishlist", element: <Wishlist /> },
+        {
+          path: "wishlist",
+          element: userDatas ? <Wishlist /> : <Navigate to="/login" />,
+        },
         {
           path: "personal-info",
-          element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
+          element: userDatas ? <PersonalInfo /> : <Navigate to="/login" />,
         },
         {
           path: "address-book",
-          element: userDatas ? <AddressBook /> : <Navigate to="/" />,
+          element: userDatas ? <AddressBook /> : <Navigate to="/login" />,
         },
         {
           path: "orders",
-          element: userDatas ? <Orders /> : <Navigate to="/" />,
+          element: userDatas ? <Orders /> : <Navigate to="/login" />,
         },
         {
           path: "order-details/*",
-          element: userDatas ? <SingleOrder /> : <Navigate to="/" />,
+          element: userDatas ? <SingleOrder /> : <Navigate to="/login" />,
         },
         {
           path: "returns",
-          element: userDatas ? <Returns /> : <Navigate to="/" />,
+          element: userDatas ? <Returns /> : <Navigate to="/login" />,
         },
         {
           path: "dashboard",
-          element: userDatas ? <DashBoard /> : <Navigate to="/" />,
+          element: userDatas ? <DashBoard /> : <Navigate to="/login" />,
         },
         { path: "stores", element: <Stores /> },
         { path: "about", element: <About /> },
@@ -82,15 +85,15 @@ const Router = () => {
         // },
         {
           path: "tamara/payment-response",
-          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
         {
           path: "tap/payment-response",
-          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
         {
           path: "cod/success",
-          element: userDatas ? <PaymentWaiting /> : <Navigate to="/" />,
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
         // {
         //   path: "*",
@@ -98,7 +101,7 @@ const Router = () => {
         // },
         {
           path: "faq",
-          element: userDatas ? <Faq /> : <Navigate to="/" />,
+          element: <Faq />,
         },
       ],
     },
