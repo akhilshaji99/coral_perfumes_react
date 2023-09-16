@@ -97,6 +97,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType  }) {
                 onClick={handleRating}
                 initialValue={rating}
                 fillColor="#0f0f0f"
+                allowHover={false}
               />
             </div>
             <div className="form-outline">
