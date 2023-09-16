@@ -21520,6 +21520,7 @@ fieldset:disabled .btn {
 }
 .navbar .navbar-nav .nav-item .nav-link {
   line-height: 1.75;
+  font-family: var(--fc-font-bold) !important;
 }
 @media (max-width: 992px) {
   .navbar .navbar-nav .nav-item .nav-link {
@@ -30100,4 +30101,7 @@ body {
 }
 .scrollable-area .btn-variant{
   margin-bottom: 10px;
+}
+.text-green{
+  color: #80BA27 !important;
 }

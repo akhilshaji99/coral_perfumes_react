@@ -73,14 +73,16 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                 {Array.isArray(menuItems)
                   ? menuItems.map((item, index) => (
                       <li
-                        className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth"
+                        className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth "
                         key={index}
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={handleMouseLeave}
                         onClick={() => handleSubmenuToggle(index)}
                       >
                         <NavLink
-                          className="nav-link dropdown-toggle"
+                          className={`nav-link dropdown-toggle ${
+                            index === 0 ? "text-green" : ""
+                          }`}
                           role="button"
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
