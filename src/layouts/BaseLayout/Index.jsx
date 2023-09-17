@@ -31,7 +31,7 @@ const BaseLayout = () => {
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="border-bottom ">
+      <div className="">
         <nav className="fixed-top bg-white ">
           <TopHeader />
           <Account changeMyAccountMenuStatus={changeMyAccountMenuStatus} />
