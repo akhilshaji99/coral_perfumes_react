@@ -21531,7 +21531,7 @@ fieldset:disabled .btn {
     padding: 18px 20px;
   }
   .mob-c-view .offcanvas.offcanvas-start {
-    margin-top: 26%;
+    margin-top: 30%;
   }
   .mob-c-view .offcanvas-backdrop.show {
     opacity: 0 !important;
@@ -29777,11 +29777,11 @@ body {
   font-size: 12px;
   text-transform: capitalize;
 }
-.mob-count .timer-row {
+/* .mob-count .timer-row {
   position: absolute;
   top: 0;
   right: 15%;
-}
+} */
 .mob-sort-icon {
   padding-left: 5px;
   visibility: hidden;
@@ -29838,6 +29838,15 @@ body {
   }
   .filter-side .offcanvas-body {
     margin-top: 10%;
+  }
+  .fixed-top {
+    left: unset;
+    position: relative;
+    right: unset;
+    z-index: 1030;
+  }
+  .fixed-top-margin{
+    margin-top: unset;
   }
 }
 .main-layout {
