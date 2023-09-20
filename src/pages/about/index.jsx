@@ -1,157 +1,90 @@
-import deviceImageRender from "../../utils/deviceImageRender";
-
+import "../../assets/custom/css/style-new.css";
+import "../../assets/custom/css/responsive.css";
+// Import your images
+import img01 from "../../assets/custom/images/about-img01.webp";
+import img02 from "../../assets/custom/images/about-img02.webp";
+import img03 from "../../assets/custom/images/about-img03.webp";
+import img04 from "../../assets/custom/images/about-img04.webp";
+import img05 from "../../assets/custom/images/about-img05.webp";
+import img06 from "../../assets/custom/images/about-img06.webp";
+import img08 from "../../assets/custom/images/about-img08.webp";
+import img09 from "../../assets/custom/images/about-img09.webp";
 function Index() {
   return (
-    <section className="mt-8 mb-lg-14 mb-8">
-      <div className="container-lg-fluid mt-5">
-        <div className="row">
-          {/* col */}
-          <div className="col-12">
-            <div>
-              <div className="mb-8 text-center">
-                {/* text */}
-                <h1 className="stores-heading mb-0">ABOUT US</h1>
+    <>
+      <div className="page-new">
+            <section>
+              <div className="container-new">
+                    <div className="title-page">
+                        <h1>About Us</h1>
+                    </div>
+                    <div className="info-text">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, </p>
+                    </div>
+                    <div className="image-list-one">
+                    <img src={img01} alt="img" />
+                    </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container-fluid">
-          <div className="row g-0 ">
-            <p className="mt-5">
-              Lorem Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed Diam
-              Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Magna Aliquam
-              Erat Volutpat. Ut Wisi Enim Ad Minim Veniam, Quis Nostrud Exerci
-              Tation Ullamcorper Suscipit Lobortis Nisl Ut Aliquip Ex Ea Commodo
-              Consequat. Duis Autem Vel Eum Iriure Dolor In Hendrerit In
-              Vulputate Velit Esse Molestie Consequat, Vel Illum Dolore Eu
-              Feugiat Nulla Facilisis At Vero Eros Et Accumsan Et Iusto Odio
-              Dignissim Qui Blandit Praesent Luptatum Zzril Delenit Augue Duis
-              Dolore Te Feugait Nulla Facilisi. lorem Ipsum Dolor Sit Amet, Cons
-              Ectetuer Adipiscing Elit,
-            </p>
-          </div>
-          <div className="row g-0 ">
-            <img
-              alt="Rectangle"
-              src="https://c.animaapp.com/0E12mN08/img/rectangle-245-2.svg"
-            />
-          </div>
-          <div className="row g-0 mt-5">
-            <p className="h3">LOREM IPSUM DOLOR SIT AMET</p>
-            <div className="row g-0 ">
-              <p className="lorem-ipsum-dolor-2">
-                Lorem Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed
-                Diam Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Magna
-                Aliquam Erat Volutpat. Ut Wisi Enim Ad Minim Veniam, Quis
-                Nostrud Exerci Tation Ullamcorper Suscipit Lobortis Nisl Ut
-                Aliquip Ex Ea Commodo Consequat. Duis Autem Vel Eum Iriure Dolor
-                In Hendrerit In Vulputate Velit Esse Molestie Consequat, Vel
-                Illum Dolore Eu Feugiat Nulla Facilisis At Vero Eros Et Accumsan
-                Et Iusto Odio Dignissim Qui Blandit Praesent Luptatum Zzril
-                Delenit Augue Duis Dolore Te Feugait Nulla Facilisi. lorem Ipsum
-                Dolor Sit Amet, Cons Ectetuer Adipiscing Elit,&nbsp;&nbsp;Lorem
-                Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed Diam
-                Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Magna Aliquam
-                Erat Volutpat. Ut Wisi Enim Ad Minim Veniam, Quis Nostrud Exerci
-                Tation Ullamcorper Suscipit Lobortis Nisl Ut Aliquip Ex Ea
-                Commodo Consequat. Duis Autem Vel Eum Iriure Dolor In Hendrerit
-                In Vulputate Velit Esse Molestie Consequat, Vel Illum Dolore Eu
-                Feugiat Nulla Facilisis At Vero Eros Et Accumsan Et Iusto Odio
-                Dignissim Qui Blandit Praesent Luptatum Zzril Delenit Augue Duis
-                Dolore Te Feugait Nulla Facilisi. lorem Ipsum Dolor Sit Amet,
-                Cons Ectetuer Adipiscing Elit,
-              </p>
-            </div>
-          </div>
-
-          <div className="row g-0">
-            <div className="col-4">
-              <div className="" style={{"minHeight":'600px',"minWidth":"414px"}}>
-                <img
-                  alt="Rectangle"
-                  src="https://c.animaapp.com/0E12mN08/img/rectangle-246-2.svg"
-                  className="img-fluid"
-                  style={{ height: "100%" }}
-                />
-              </div>
-            </div>
-            <div className="col-8">
-              <div className="row g-0">
-                <div style={{"minHeight":"287px"}}>
-                  <img
-                    alt="Rectangle"
-                    className=""
-                    src="https://c.animaapp.com/0E12mN08/img/rectangle-247.svg"
-                    style={{ "width": "100%","objectFit":"cover","height":"287px" }}
-                  />
+            </section>
+            <section className="abut-section">
+                <div className="container-new">
+                    <div className="sub-abt">
+                            <h2>Lorem ipsum DOLOR SIT AMET</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                                Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit,  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                                Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, </p>
+                    </div>
+              
+                <div className="gallery">
+                    <div className="left-gallery-one">
+                    <img src={img02} alt="img" />
+                    </div>
+                    <div className="right-gallery-one" >
+                    <img src={img03} alt="img" />
+                    <img src={img04} alt="img" />
+                    </div>
                 </div>
-              </div>
-              <div className="row g-0 mt-5">
-                <div style={{"minHeight":"287px"}}>
-                  <img
-                    className=""
-                    alt="Rectangle"
-                    src="https://c.animaapp.com/0E12mN08/img/rectangle-248.svg"
-                    style={{ "width": "100%","objectFit":"cover","height":"287px" }}
-                  />
+                
+            </div>
+            </section>  
+           <section>
+            <div className="container-new">
+                <div className="sub-abt">
+                        <h2>Lorem ipsum DOLOR SIT AMET</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit,  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, </p>
                 </div>
-              </div>
+                <div className="gallery-flex">
+                    <ul>
+                        <li>   <img src={img05} alt="img" /></li>
+                        <li>  <img src={img06} alt="img" /></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div className="row g-0 mt-5">
-            <p className="h3">LOREM IPSUM DOLOR SIT AMET</p>
-            <div className="row g-0 ">
-              <p className="lorem-ipsum-dolor-2">
-                Lorem Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed
-                Diam Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Magna
-                Aliquam Erat Volutpat. Ut Wisi Enim Ad Minim Veniam, Quis
-                Nostrud Exerci Tation Ullamcorper Suscipit Lobortis Nisl Ut
-                Aliquip Ex Ea Commodo Consequat. Duis Autem Vel Eum Iriure Dolor
-                In Hendrerit In Vulputate Velit Esse Molestie Consequat, Vel
-                Illum Dolore Eu Feugiat Nulla Facilisis At Vero Eros Et Accumsan
-                Et Iusto Odio Dignissim Qui Blandit Praesent Luptatum Zzril
-                Delenit Augue Duis Dolore Te Feugait Nulla Facilisi. lorem Ipsum
-                Dolor Sit Amet, Cons Ectetuer Adipiscing Elit,&nbsp;&nbsp;Lorem
-                Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed Diam
-                Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Magna Aliquam
-                Erat Volutpat. Ut Wisi Enim Ad Minim Veniam, Quis Nostrud Exerci
-                Tation Ullamcorper Suscipit Lobortis Nisl Ut Aliquip Ex Ea
-                Commodo Consequat. Duis Autem Vel Eum Iriure Dolor In Hendrerit
-                In Vulputate Velit Esse Molestie Consequat, Vel Illum Dolore Eu
-                Feugiat Nulla Facilisis At Vero Eros Et Accumsan Et Iusto Odio
-                Dignissim Qui Blandit Praesent Luptatum Zzril Delenit Augue Duis
-                Dolore Te Feugait Nulla Facilisi. lorem Ipsum Dolor Sit Amet,
-                Cons Ectetuer Adipiscing Elit,
-              </p>
+           </section>
+           <section>
+            <div className="container-new">
+                <div className="sub-abt pg-top">
+                        <h2>Lorem ipsum DOLOR SIT AMET</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit,  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit,  </p>
+                </div>
+                <div className="gallery-flex">
+                    <ul>
+                        <li>   <img src={img08} alt="img" /></li>
+                        <li>   <img src={img09} alt="img" /></li>
+                    </ul>
+                </div>
+                <div className="start-explor">
+                    <a href="#">start exploring</a>
+                </div>
             </div>
-          </div>
-
-          <div className="row g-0">
-            <div className="col-6">
-              <div className="me-2">
-                <img
-                  className="img-fluid"
-                  style={{ width: "100%" }}
-                  alt="Rectangle"
-                  src="https://c.animaapp.com/0E12mN08/img/rectangle-245.svg"
-                />
-              </div>
-            </div>
-            <div className="col-6 ">
-              <div className="ms-2">
-                <img
-                  className="img-fluid"
-                  alt="Rectangle"
-                  style={{ width: "100%" }}
-                  src="https://c.animaapp.com/0E12mN08/img/rectangle-246.svg"
-                />
-              </div>
-            </div>
-          </div>
+           </section>
         </div>
-      </div>
-    </section>
+    </>
   );
 }
 export default Index;
