@@ -16,6 +16,7 @@ import Stores from "../pages/stores/index";
 import About from "../pages/about/index";
 import Blog from "../pages/blog/index";
 import Careers from "../pages/careers/index"
+import CareerDetail from "../pages/career_detail/index"
 
 import AlertPages from "../pages/alert_pages/index";
 // import PaymentSuccess from "../pages/alert_pages/PaymentSuccess";
@@ -76,6 +77,9 @@ const Router = () => {
         { path: "about", element: <About /> },
         { path: "blog", element: <Blog /> },
         { path: "careers", element: <Careers /> },
+        { path: "career-detail", element: <CareerDetail /> },
+
+        
 
         {
           path: "alert",
