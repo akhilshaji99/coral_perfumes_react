@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
-import CustomDropdown from "./blocks/CustomDropdown";
 import getStores from "./js/getStores";
 import getEmirates from "../checkout/js/getEmiratesList";
+import "../../assets/custom/css/style-new.css";
+import "../../assets/custom/css/responsive.css";
+// Import your images
+import img01 from "../../assets/custom/images/visit-img1.webp";
 
 function Index() {
   const [stores, setStores] = useState([]);
   const [emirates, setEmirates] = useState([]);
 
-
-  
   useEffect(() => {
     getStores().then((response) => {
       if (response?.data) {
@@ -17,118 +18,161 @@ function Index() {
       }
     });
     getEmirates().then((response) => {
-      if(response?.data){
-        setEmirates(response?.data)
+      if (response?.data) {
+        setEmirates(response?.data);
       }
-    })
+    });
   }, []);
-  const applyRelevanceFilter = (id) =>{
-    // alert(id)
-    console.log(id)
+
+  useEffect(() => {
+    renderDropDownBox();
+  }, []);
+
+  const renderDropDownBox = () => {
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < ll; j++) {
+        /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function (e) {
+          /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+          var y, i, k, s, h, sl, yl;
+          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+          sl = s.length;
+          h = this.parentNode.previousSibling;
+          for (i = 0; i < sl; i++) {
+            if (s.options[i].innerHTML == this.innerHTML) {
+              s.selectedIndex = i;
+              h.innerHTML = this.innerHTML;
+              y = this.parentNode.getElementsByClassName("same-as-selected");
+              yl = y.length;
+              for (k = 0; k < yl; k++) {
+                y[k].removeAttribute("class");
+              }
+              this.setAttribute("class", "same-as-selected");
+              break;
+            }
+          }
+          h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function (e) {
+        /*when the select box is clicked, close any other select boxes,
+                  and open/close the current select box:*/
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
+      });
+    }
+  };
+  function closeAllSelect(elmnt) {
+    /*a function that will close all select boxes in the document,
+              except the current select box:*/
+    var x,
+      y,
+      i,
+      xl,
+      yl,
+      arrNo = [];
+    x = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    xl = x.length;
+    yl = y.length;
+    for (i = 0; i < yl; i++) {
+      if (elmnt == y[i]) {
+        arrNo.push(i);
+      } else {
+        y[i].classList.remove("select-arrow-active");
+      }
+    }
+    for (i = 0; i < xl; i++) {
+      if (arrNo.indexOf(i)) {
+        x[i].classList.add("select-hide");
+      }
+    }
   }
+  /*if the user clicks anywhere outside the select box,
+            then close all select boxes:*/
+  document.addEventListener("click", closeAllSelect);
   return (
-    <section className="mt-8 mb-lg-14 mb-8">
-      <div className="container-lg-fluid mt-5">
-        <div className="row">
-          {/* col */}
-          <div className="col-12">
-            <div>
-              <div className="mb-8 text-center">
-                {/* text */}
-                <h1 className="stores-heading mb-0">VISIT US</h1>
-              </div>
+    <div className="page-new">
+      <div className="container-new">
+        <div className="choose-row">
+          <div className="visit-tittle">
+            <h1>Visit us </h1>
+          </div>
+          <div className="choose-emirates">
+            <div className=" custom-select">
+              <form action="#">
+                <select
+                  id="Emirates"
+                  style={{ cursor: "pointer !important", borderRadius: 0 }}
+                >
+                  <option disabled="" selected="">
+                    Choose Emirates{" "}
+                  </option>
+                  <option value="Abu Dhabi">Abu Dhabi</option>
+                  <option value="Dubai">Dubai</option>
+                  <option value="Sharjah">Sharjah</option>
+                </select>
+              </form>
             </div>
           </div>
         </div>
-        <div className="row justify-content-end mx-3 mb-3">
-          <div className="col-md-12 mr-5 d-flex justify-content-end ">
-            <CustomDropdown applyRelevanceFilter={applyRelevanceFilter} filterDatas={emirates}/>
-          </div>
-        </div>
-        <div className="container-fluid">
-          <div className="row g-0 ">
-            {stores?.map((brand, index) => {
-              return (
+      </div>
+      <section className="visit-section">
+        <div className="container-new">
+          {/*-row 1*/}
+          {stores?.map((store, index) => {
+            return (
+              <div className={`${index % 2 === 0 ? "visit-row " : ""}`}>
                 <>
-                  <div className="col-md-6 col-12" key={index}>
-                    <div className="card2 card mb-3">
-                      <div className="row g-0 align-items-center">
-                        <div className="col-sm-5 col-5">
-                          <img
-                            src={deviceImageRender(brand.store_listing_image)}
-                            className="img-fluid rounded-start"
-                            alt="..."
-                          />
-                        </div>
-                        <div className="col-sm-7 col-7">
-                          <div className="card-body">
-                            <h5 className="card-title">{brand.store_name}</h5>
-                            <p className="card-text">{brand.emirate_name}</p>
-                            <p className="card-text d-none d-sm-block">
-                              <small>{brand.store_address}</small>
-                            </p>
-                            <div className="row">
-                              <div className="col-md-6 col-12">
-                                <button className="btn btn-white w-100 ">
-                                  visit us{" "}
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                  {index % 2}
+                  <div
+                    className={`viisit-img ${index % 2 !== 0 ? "t-gap" : ""}`}
+                    key={index}
+                  >
+                    <img src={img01} alt="" />
+                  </div>
+                  <div
+                    className={`visit-text ${index % 2 !== 0 ? "t-gap" : ""}`}
+                  >
+                    <div>
+                      {" "}
+                      <h2>{store?.store_name} </h2>
+                      <p>{store?.store_address}</p>
+                      <p>{store?.store_location}</p>
+                      <a href="#">VISIT US</a>
                     </div>
                   </div>
-                  {/* <div className="col-md-6 col-12   ps-0" key={index}>
-                    <div className="card mt-5">
-                      <div className="flex-fill">
-                        <div className="d-flex align-items-center">
-                          <div
-                            className="col-sm-6 store-image-frame"
-                            style={{
-                              backgroundImage:
-                                `url("` +
-                                deviceImageRender(brand.store_listing_image) +
-                                `")`,
-                            }}
-                          >
-                            <img
-                              src={deviceImageRender(brand.store_listing_image)}
-
-                              // alt={brand.image_alt}
-                            />
-                          </div>
-                          <div
-                            className="col-sm-6 bg-dark d-flex"
-                            style={{ "min-height": "250px" }}
-                          >
-                            <div>
-                              <h5 style={{ color: "white" }}>
-                                {brand.store_name}
-                              </h5>
-                              <h5 style={{ color: "white" }}>
-                                {brand.emirate_name}
-                              </h5>
-                              <h5 style={{ color: "white" }}>
-                                {brand.store_address}
-                              </h5>
-
-                              <button className="btn btn-white ">
-                                visit us{" "}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
+
+          {/*-row 2*/}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 export default Index;
