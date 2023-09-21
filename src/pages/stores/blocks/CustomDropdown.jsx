@@ -9,12 +9,7 @@ const CustomDropdown = ({applyRelevanceFilter,filterDatas=[]}) => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  // const filterDatas = [
-  //   { label: "Relevance", value: "" },
-  //   { label: "Price-Low To High", value: "low_to_high" },
-  //   { label: "Price-High to Low", value: "high_to_low" },
-  //   { label: "New", value: "new" },
-  // ];
+
 
   return (
     <div className="dropdown product-custom-dropdown">

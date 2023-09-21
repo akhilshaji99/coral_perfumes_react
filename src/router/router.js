@@ -15,6 +15,7 @@ import DashBoard from "../pages/dashboard/index";
 import Stores from "../pages/stores/index";
 import About from "../pages/about/index";
 import Blog from "../pages/blog/index";
+import Careers from "../pages/careers/index"
 
 import AlertPages from "../pages/alert_pages/index";
 // import PaymentSuccess from "../pages/alert_pages/PaymentSuccess";
@@ -74,6 +75,8 @@ const Router = () => {
         { path: "stores", element: <Stores /> },
         { path: "about", element: <About /> },
         { path: "blog", element: <Blog /> },
+        { path: "careers", element: <Careers /> },
+
         {
           path: "alert",
           element: <AlertPages />,
