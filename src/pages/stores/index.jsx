@@ -142,34 +142,30 @@ function Index() {
       <section className="visit-section">
         <div className="container-new">
           {/*-row 1*/}
-          {stores?.map((store, index) => {
-            return (
-              <div className={`${index % 2 === 0 ? "visit-row " : ""}`}>
-                <>
-                  {index % 2}
-                  <div
-                    className={`viisit-img ${index % 2 !== 0 ? "t-gap" : ""}`}
-                    key={index}
-                  >
-                    <img src={img01} alt="" />
-                  </div>
-                  <div
-                    className={`visit-text ${index % 2 !== 0 ? "t-gap" : ""}`}
-                  >
-                    <div>
-                      {" "}
-                      <h2>{store?.store_name} </h2>
-                      <p>{store?.store_address}</p>
-                      <p>{store?.store_location}</p>
-                      <a href="#">VISIT US</a>
+          <div className="visit-row">
+            <ul>
+              {stores?.map((store, index) => {
+                return (
+                  <li>
+                    <div className="viisit-img" key={index}>
+                      <img
+                        src={deviceImageRender(store?.store_listing_image)}
+                        alt=""
+                      />
                     </div>
-                  </div>
-                </>
-              </div>
-            );
-          })}
-
-          {/*-row 2*/}
+                    <div className="visit-text">
+                      <div>
+                        <h2>{store?.store_name} </h2>
+                        <p>{store?.store_address}</p>
+                        <p>{store?.store_location}</p>
+                        <a href="#">VISIT US</a>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </section>
     </div>

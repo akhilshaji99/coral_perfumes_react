@@ -75,7 +75,7 @@ ul li {
 .container-new {
   width: 100%;
   max-width: 1300px;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 .info-text p {
   color: #000;
@@ -219,14 +219,29 @@ ul li {
 }
 .visit-row {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
+}
+
+.visit-row ul {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 40px;
 }
+
+.visit-row ul li {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
 .viisit-img {
-  width: 25%;
+  width: 50%;
 }
 .visit-text {
-  width: 25%;
+  width: 50%;
+  height: 100%;
   background-color: #000;
   max-height: 349px;
   display: flex;
@@ -1211,7 +1226,7 @@ span#word-count {
   width: 16px;
   height: 16px;
   background-image: url(../images/arrow-btm.svg);
-  /* background-size: contain; */
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10px;
@@ -1337,3 +1352,4 @@ span#word-count {
   text-decoration-line: underline;
   text-transform: capitalize;
 }
+
