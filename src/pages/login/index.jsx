@@ -13,11 +13,15 @@ import request from "../../utils/request";
 import LoginOTPModal from "./LoginOTPModal";
 import $ from "jquery";
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  email: yup.string().email(),
+  phone_number: yup
+    .string()
+    .matches(
+      /^(0\d{9})$/,
+      "Phone number must start with '0' and have 10 digits"
+    )
+    .required("Phone number is required"),
 });
 const REDIRECT_URI =
   "https://plenty-planets-beam-42-118-51-2.loca.lt/account/login";
@@ -86,7 +90,7 @@ function Login() {
       phone_number: "",
     },
 
-    validationSchema: schema,
+    // validationSchema: schema,
     onSubmit: handleOnSubmit,
   });
   const setInputValue = useCallback(
@@ -226,25 +230,11 @@ function Login() {
                   {/* col */}
 
                   <div className="col-12 mb-5">
-                    {/* input */}
-                    <input
-                      type="email"
-                      className={`form-control ${
-                        formik.errors.email ? "border-danger" : ""
-                      }`}
-                      id="inputEmail4"
-                      placeholder="E-mail*"
-                      required
-                      value={formik.values.email}
-                      onChange={(e) => setInputValue("email", e.target.value)}
-                    />
-                  </div>
-                  <div className="col-12 mb-5">
                     <div className="password-field position-relative">
                       <input
                         type="text"
                         id="phone_number"
-                        placeholder="8547533484"
+                        placeholder="0559339099"
                         className={`form-control ${
                           formik.errors.phone_number ? "border-danger" : ""
                         }`}
@@ -257,10 +247,29 @@ function Login() {
                           formik.touched.type && Boolean(formik.errors.type)
                         }
                       />
+                      {formik.touched.phone_number &&
+                      formik.errors.phone_number ? (
+                        <h6 style={{ color: "red" }}>
+                          {formik.errors.phone_number}
+                        </h6>
+                      ) : null}
                       <span>
                         <i id="passwordToggler" className="bi bi-eye-slash" />
                       </span>
                     </div>
+                  </div>
+                  <div className="col-12 mb-5">
+                    {/* input */}
+                    <input
+                      type="email"
+                      className={`form-control ${
+                        formik.errors.email ? "border-danger" : ""
+                      }`}
+                      id="inputEmail4"
+                      placeholder="E-mail*"
+                      value={formik.values.email}
+                      onChange={(e) => setInputValue("email", e.target.value)}
+                    />
                   </div>
                   <div className="col-12 d-grid">
                     {" "}

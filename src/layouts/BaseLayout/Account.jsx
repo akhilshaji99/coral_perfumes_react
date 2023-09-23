@@ -370,7 +370,7 @@ function Account({ changeMyAccountMenuStatus }) {
                         />
                       </svg>
                       <span className="dropdown-text">
-                        {username !== "" ? username : "Sign In"}
+                        {username !== "" ? "Profile" : "Sign In"}
                       </span>
                     </a>
 
@@ -526,7 +526,7 @@ function Account({ changeMyAccountMenuStatus }) {
                       <li>
                         <NavLink
                           className="dropdown-item menu-drop-link"
-                          to="/address-book"
+                          to="/personal-info"
                         >
                           <span>
                             <svg
