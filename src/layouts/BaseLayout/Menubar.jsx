@@ -47,7 +47,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
       className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
       aria-label="Offcanvas navbar large"
     >
-      <div className="container-fluid  mob-c-view">
+      <div className="container-lg-fluid  mob-c-view">
         <div
           className={`offcanvas offcanvas-start  ${
             mobileMenuStatus ? "show" : ""
@@ -122,7 +122,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                           }`}
                         >
                           <div className="row p-2 p-lg-4">
-                            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+                            <div className="col-lg-3 col-md-4 col-12 mb-4 mb-lg-0">
                               <h6 className=" ps-3">SHOP BY PRODUCTS</h6>
                               {item.shop_by_category !== undefined &&
                               Array.isArray(item.shop_by_category)
@@ -158,7 +158,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                   ))
                                 : null}
                             </div>
-                            <div className="col-lg-2 col-12 mb-4 mb-lg-0">
+                            <div className="col-lg-2 col-md-4  col-12 mb-4 mb-lg-0">
                               <h6 className=" ps-3">SHOP BY BRAND</h6>
                               {item.shop_by_brand !== undefined &&
                               Array.isArray(item.shop_by_brand)
@@ -193,7 +193,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                   ))
                                 : null}
                             </div>
-                            <div className="col-lg-4 col-12 mb-4 mb-lg-0">
+                            <div className="col-lg-4 col-md-4 col-12 mb-4 mb-lg-0">
                               <h6 className=" ps-3 text-lg-center">
                                 TRENDING NOW
                               </h6>
