@@ -5,6 +5,10 @@ import getUserToken from "../../../utils/userToken.js";
 
 const addToWishlist = async (variant_slug) => {
   try {
+    if(getUserToken() == null){
+      window.location.href = "/login";
+      return;
+    }
     const response = await request.post("add-to-wishlist", {
       variant_slug,
       token: getUserToken(),
