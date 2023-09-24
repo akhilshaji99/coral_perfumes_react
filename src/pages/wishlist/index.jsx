@@ -8,9 +8,8 @@ import request from "../../utils/request";
 function Index() {
   const [wishList, setWishList] = useState([]);
   const [wishListMessages, setWishListMessages] = useState(null);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const [reFetchApi, setReFetchApi] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getWishlistDatas();
   }, []);
@@ -24,19 +23,22 @@ function Index() {
   const getWishlistDatas = async () => {
     try {
       const response = await request.post("get_user_wishlists/");
-      setPageLoaded(true);
       setReFetchApi(false);
       if (response?.data) {
         setWishList(response?.data?.data);
         setWishListMessages(response?.data?.message);
       }
+      setLoading(false);
     } catch (error) {
       console.log("error", error);
     }
   };
+  const isDataListEmpty = wishList.length === 0;
+
   return (
     <>
-      {wishList.length <= 0 && pageLoaded ? (
+      {isDataListEmpty  ? (
+        !loading ? (
         <section className="mb-lg-14 mb-8 mt-8 my-bag">
           <div className="container-fluid" style={{ marginTop: "15%" }}>
             <div className="row mt-8">
@@ -44,7 +46,14 @@ function Index() {
             </div>
           </div>
         </section>
+        ):(
+          
+          <div style={{minHeight:"500px"}}>
+            
+          </div>
+        )
       ) : (
+        
         <main>
           <BreadCrumps />
 

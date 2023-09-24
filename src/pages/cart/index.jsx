@@ -19,8 +19,8 @@ function Index() {
   const [cartItems, setCartItems] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
-  const [pageLoaded, setPageLoaded] = useState(false);
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     cartFetchFunctionCall();
@@ -34,7 +34,6 @@ function Index() {
 
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
-      setPageLoaded(true);
       console.log(response);
       if (response?.status) {
         setCartItems(response?.data?.shopping_cart_items);
@@ -44,11 +43,16 @@ function Index() {
         setCartItems(response?.data);
         setCartEmptyMessages(response?.message_data);
       }
+      setLoading(false);
+   
+
     });
   };
+  const isDataListEmpty = cartItems.length === 0;
   return (
     <>
-      {cartItems?.length <= 0 && pageLoaded ? (
+     {isDataListEmpty  ? (
+        !loading ? (
         <section className="mb-lg-14 mb-8 mt-8 my-bag">
           <div className="container-fluid" style={{ marginTop: "15%" }}>
             <div className="row mt-8">
@@ -56,6 +60,12 @@ function Index() {
             </div>
           </div>
         </section>
+         ):(
+          
+          <div style={{minHeight:"500px"}}>
+            
+          </div>
+        )
       ) : (
         <section className="my-bag">
           <div className="container-fluid">
