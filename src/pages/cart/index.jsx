@@ -44,27 +44,22 @@ function Index() {
         setCartEmptyMessages(response?.message_data);
       }
       setLoading(false);
-   
-
     });
   };
   const isDataListEmpty = cartItems.length === 0;
   return (
     <>
-     {isDataListEmpty  ? (
+      {isDataListEmpty ? (
         !loading ? (
-        <section className="mb-lg-14 mb-8 mt-8 my-bag">
-          <div className="container-fluid" style={{ marginTop: "15%" }}>
-            <div className="row mt-8">
-              <BagEmpty cartEmptyMessages={cartEmptyMessages} />
+          <section className="mb-lg-14 mb-8 mt-8 my-bag">
+            <div className="container-fluid" style={{ marginTop: "15%" }}>
+              <div className="row mt-8">
+                <BagEmpty cartEmptyMessages={cartEmptyMessages} />
+              </div>
             </div>
-          </div>
-        </section>
-         ):(
-          
-          <div style={{minHeight:"500px"}}>
-            
-          </div>
+          </section>
+        ) : (
+          <div style={{ minHeight: "500px" }}></div>
         )
       ) : (
         <section className="my-bag">
@@ -142,34 +137,28 @@ function Index() {
                             <div className="row ">
                               <div className="col-md-3">
                                 <div className="input-group-custom input-spinner  my-bag-spinner">
-                                  {/* <input
-                                    type="button"
-                                    defaultValue="-"
-                                    className="button-minus1  btn  btn-sm "
-                                    disabled={cartData?.quantity <= 1}
-                                    onClick={() => {
-                                      cartDecrement(cartData?.id).then(
-                                        (response) => {
-                                          if (response) {
-                                            cartFetchFunctionCall();
-                                          }
-                                        }
-                                      );
-                                    }}
-                                  /> */}
                                   <img
                                     type="button"
                                     defaultValue="-"
                                     className="img-fluid cart-icon-minus"
-                                    disabled={cartData?.quantity <= 1}
+                                    style={{
+                                      cursor:
+                                        cartData?.quantity <= 1
+                                          ? "not-allowed"
+                                          : "pointer",
+                                    }}
                                     onClick={() => {
-                                      cartDecrement(cartData?.id).then(
-                                        (response) => {
-                                          if (response) {
-                                            cartFetchFunctionCall();
+                                      if (cartData?.quantity <= 1) {
+                                        return;
+                                      } else {
+                                        cartDecrement(cartData?.id).then(
+                                          (response) => {
+                                            if (response) {
+                                              cartFetchFunctionCall();
+                                            }
                                           }
-                                        }
-                                      );
+                                        );
+                                      }
                                     }}
                                     src={minusIcon}
                                     alt="Coral Perfumes"
@@ -179,21 +168,6 @@ function Index() {
                                     className="quantity-field1 form-control-sm form-input1"
                                     value={cartData?.quantity}
                                   />
-                                  {/* <input
-                                    type="button"
-                                    defaultValue="+"
-                                    className="button-plus1 btn btn-sm "
-                                    data-field="quantity"
-                                    onClick={() => {
-                                      cartIncrement(cartData?.id).then(
-                                        (response) => {
-                                          if (response) {
-                                            cartFetchFunctionCall();
-                                          }
-                                        }
-                                      );
-                                    }}
-                                  /> */}
                                   <img
                                     type="button"
                                     defaultValue="+"
