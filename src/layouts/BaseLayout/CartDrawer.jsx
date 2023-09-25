@@ -33,6 +33,10 @@ function CartDrawer() {
         setcartDatas(response?.data);
       } else {
         setCartItems(response?.data);
+        if (response?.data.length <= 0) {
+          $("#cartDrawer").toggleClass("hide");
+          $("#cartDrawer").removeClass("show");
+        }
       }
     });
   };
