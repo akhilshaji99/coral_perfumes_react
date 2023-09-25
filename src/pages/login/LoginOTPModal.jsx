@@ -31,12 +31,8 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const resendOtp = async (e) => {
     try {
       var bodyFormData = new FormData();
-      // let otpString = letters.toString();
-      // var otp = otpString.split(',').join("");
-      bodyFormData.append("phone_or_email", componentDatas.phone_number);
-      // bodyFormData.append("otp", otp);
-
-      const response = await request.post("resend_otp/", bodyFormData);
+      bodyFormData.append("phone_number", componentDatas.phone_number);
+      const response = await request.post("resend-otp/", bodyFormData);
 
       console.log("response", response);
       let status = "succsss";
@@ -45,12 +41,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
         status = "error";
         title = "ERROR";
       } else {
-        const userData = {
-          token: response.data.token,
-          userInfo: response.data.user,
-        };
-
-        localStorage.setItem("userDatas", JSON.stringify(userData));
+       
         // navigate("/");
       }
       toast((t) => (
