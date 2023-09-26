@@ -4,8 +4,6 @@ import getStores from "./js/getStores";
 import getEmirates from "../checkout/js/getEmiratesList";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
-// Import your images
-import img01 from "../../assets/custom/images/visit-img1.webp";
 
 function Index() {
   const [stores, setStores] = useState([]);

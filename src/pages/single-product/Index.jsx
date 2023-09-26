@@ -234,11 +234,21 @@ function Index() {
                     {/* <input /> */}
                     <img
                       type="button"
-                      disabled={
-                        addToCartQuantity >= currentVariant?.stock_value
-                      }
+                      // disabled={
+                      //   addToCartQuantity >= currentVariant?.stock_value
+                      // }
+                      style={{
+                        cursor:
+                          addToCartQuantity >= currentVariant?.stock_value
+                            ? "not-allowed"
+                            : "pointer",
+                      }}
                       onClick={() => {
-                        setAddToCartQuantity(addToCartQuantity + 1);
+                        if (addToCartQuantity >= currentVariant?.stock_value) {
+                          return;
+                        } else {
+                          setAddToCartQuantity(addToCartQuantity + 1);
+                        }
                       }}
                       data-field="quantity"
                       className="img-fluid btn-plus"
@@ -252,12 +262,19 @@ function Index() {
                     />
                     <img
                       type="button"
-                      // defaultValue="-"
-                      // className="button-minus  btn  btn-sm "
+                      style={{
+                        cursor:
+                          parseInt(addToCartQuantity) <= 1
+                            ? "not-allowed"
+                            : "pointer",
+                      }}
                       data-field="quantity"
-                      disabled={addToCartQuantity <= 1}
                       onClick={() => {
-                        setAddToCartQuantity(addToCartQuantity - 1);
+                        if (parseInt(addToCartQuantity) <= 1) {
+                          return;
+                        } else {
+                          setAddToCartQuantity(addToCartQuantity - 1);
+                        }
                       }}
                       className="img-fluid btn-minus"
                       src={minusIcon}
@@ -309,7 +326,7 @@ function Index() {
                         <span className="select-size">
                           {productVariant?.attribute_name}
                         </span>
-                        <div className="col-md-7 scrollable-area" >
+                        <div className="col-md-7 scrollable-area">
                           <div className="mb-5 variant-box">
                             {productVariant?.variants?.map(
                               (variant, index_inner) => {

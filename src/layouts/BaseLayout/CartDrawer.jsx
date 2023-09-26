@@ -153,15 +153,25 @@ function CartDrawer() {
                             <img
                               type="button"
                               defaultValue="-"
-                              // className="button-minus1  btn  btn-sm "
                               className="img-fluid cart-icon-plus"
-                              disabled={cartData?.quantity <= 1}
+                              style={{
+                                cursor:
+                                  cartData?.quantity <= 1
+                                    ? "not-allowed"
+                                    : "pointer",
+                              }}
                               onClick={() => {
-                                cartDecrement(cartData?.id).then((response) => {
-                                  if (response) {
-                                    cartFetchFunctionCall();
-                                  }
-                                });
+                                if (cartData?.quantity <= 1) {
+                                  return;
+                                } else {
+                                  cartDecrement(cartData?.id).then(
+                                    (response) => {
+                                      if (response) {
+                                        cartFetchFunctionCall();
+                                      }
+                                    }
+                                  );
+                                }
                               }}
                               src={minusIcon}
                               alt="Coral Perfumes"
