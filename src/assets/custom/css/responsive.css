@@ -513,5 +513,18 @@
     font-size: 16px;
     line-height: 50px;
 }
+.product-grid .card-footer {
+    margin: 0;
+}
+.card-footer.border-0 h4.ellipsis-text {
+    font-size: 12px !important;
+}
+.sortHeader h5 {
+    text-align: center;
+    padding-bottom: 15px;
+}
+a.dropdown-toggle.text-dark.btn-filter {
+    padding: 2px 5px;
+}
 }
 

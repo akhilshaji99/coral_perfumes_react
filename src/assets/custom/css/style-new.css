@@ -1361,3 +1361,12 @@ a.dropdown-toggle.text-dark.btn-filter {
   font-weight: 600;
   color: #000;
 }
+.card-footer.border-0 h4.ellipsis-text {
+  text-align: left !important;
+  font-weight: 500;
+}
+
+.input-spinner .form-input {
+  font-size: 13px;
+  font-weight: bolder;
+}
