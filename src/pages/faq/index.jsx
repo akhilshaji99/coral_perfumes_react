@@ -8,7 +8,6 @@ function Index() {
   const [faq,setFaq] =  useState("<></>")
   useEffect(() => {
     
-    accordWithPage();
     getFaq().then((response) => {
       console.log("faq",response)
 
@@ -17,7 +16,13 @@ function Index() {
         setFaq(response?.data?.data);
       }
     });
+
   }, []);
+  useEffect(() => {
+    accordWithPage();
+
+  }, [faq]);
+
   var accordWithPage = function() {
     var faqDiv = $('#faq-links div');
     $(function() {
@@ -26,19 +31,19 @@ function Index() {
             var $this = $(this),
                 $id = $this.attr('id'),
                 $className = '.' + $('.about-' + $id).attr('className').replace(hideSec, '');
-            $('#faq-wrapper').addclassName(hideSec);
-            $('.about-' + $id).removeclassName(hideSec);
-            $('div[className*=about]').not($className).addclassName(hideSec);
+            $('#faq-wrapper').addClass(hideSec);
+            $('.about-' + $id).removeClass(hideSec);
+            $('div[className*=about]').not($className).addClass(hideSec);
         });
     });
     $(function() {
         var select = 'faq-selected';
         faqDiv.click(function() {
-            if ($(this).hasclassName(select)) {
-                $(this).removeclassName(select);
+            if ($(this).hasClass(select)) {
+                $(this).removeClass(select);
             } else {
-                $('#faq-links .faq-selected').removeclassName(select);
-                $(this).addclassName(select);
+                $('#faq-links .faq-selected').removeClass(select);
+                $(this).addClass(select);
             }
         }); //faq link selected
     });
@@ -49,14 +54,14 @@ function Index() {
         //FAQ Accordion
         $('.faq-accordion > li > a').click(function(e) {
             e.preventDefault();
-            if ($(this).hasclassName(expand)) {
-                $(this).removeclassName(expand);
+            if ($(this).hasClass(expand)) {
+                $(this).removeClass(expand);
                 //          $('.faq-accordion > li > a > div').not(this).css('opacity', '1');//returns li back to normal state
                 $(this).parent().children('ul').stop(true, true).slideUp();
             } else {
                 //            $('.faq-accordion > li > a > div').not(this).css('opacity', '0.5');//dims inactive li
-                $('.faq-accordion > li > a.expanded').removeclassName(expand);
-                $(this).addclassName(expand);
+                $('.faq-accordion > li > a.expanded').removeClass(expand);
+                $(this).removeClass(expand);
                 content.filter(":visible").slideUp();
                 $(this).parent().children('ul').stop(true, true).slideDown();
             }
