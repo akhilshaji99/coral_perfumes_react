@@ -79,6 +79,10 @@
     .blog-col-1 img {
         height: 380px;
     }
+    ol.breadcrumb {
+        margin-bottom: 2rem;
+        margin-top: 50px;
+      }
 }
 @media (max-width:1366px){
     .container-new  {
