@@ -14,6 +14,7 @@ import addToWishlist from "../wishlist/js/addToWishlist";
 import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Index() {
   const dispatch = useDispatch();
@@ -112,7 +113,11 @@ function Index() {
           <div className="col-md-5">
             <div className="product-desc-section">
               <h1>{currentVariant?.name}</h1>
-              <h2 className="product-author">{currentVariant?.brand_name}</h2>
+              <h2 className="product-author">
+                <Link to={currentVariant?.brand_link}>
+                  {currentVariant?.brand_name}
+                </Link>
+              </h2>
               <div className="row">
                 <div className="col-md-9 col-10">
                   <div className="row">
