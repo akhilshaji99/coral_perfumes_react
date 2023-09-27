@@ -26591,6 +26591,7 @@ span.flatpickr-weekday {
 }
 .add-to-bag-btn svg {
   margin-left: 26px;
+  margin-top: -3px;
 }
 .custom-badge {
   border-radius: 9px;
@@ -26683,7 +26684,7 @@ span.flatpickr-weekday {
   border-radius: 9px;
   background: #a37073;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-  padding: 79px 54px;
+  padding: 65px 54px;
   border: none !important;
 }
 .wallet-banner h1 {
@@ -26731,7 +26732,7 @@ span.flatpickr-weekday {
 .wallet-card h3 {
   font-size: 18px;
   text-transform: uppercase;
-  font-family: var(--fc-font-regular);
+  font-family: var(--fc-font-bold);
 }
 .wallet-card h2 {
   color: #000;
@@ -28171,6 +28172,7 @@ border-radius: none !important;
     text-transform: uppercase;
   }
   .wallet-card {
+    background: #fff;
     border-radius: 16px;
     border: 2.5px solid #fff;
     display: flex;
@@ -28180,8 +28182,8 @@ border-radius: none !important;
     /* padding: 25px; */
     overflow: hidden;
     /* margin: 0 18px; */
-    height: 85px;
-    width: 85px;
+    height: 100px;
+    width: 100px;
   }
   .wallet-card > div {
     background: #fff;
@@ -28189,7 +28191,6 @@ border-radius: none !important;
       -12px -9px 35px 0px rgba(255, 255, 255, 0.39),
       -5px 10px 16px 0px rgba(55, 10, 53, 0.27) inset;
     width: 100%;
-    padding: 15px;
   }
   .wallet-card h3 {
     font-size: 10px;
@@ -28200,7 +28201,7 @@ border-radius: none !important;
     color: #000;
     text-align: center;
     font-family: Arial Black;
-    font-size: 18px;
+    font-size: 23px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
