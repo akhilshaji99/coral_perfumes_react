@@ -1352,4 +1352,12 @@ span#word-count {
   text-decoration-line: underline;
   text-transform: capitalize;
 }
-
+ol.breadcrumb {
+  margin-bottom: 2rem;
+}
+a.dropdown-toggle.text-dark.btn-filter {
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  color: #000;
+}
