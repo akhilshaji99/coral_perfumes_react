@@ -61,7 +61,7 @@ function Index() {
             } else {
                 //            $('.faq-accordion > li > a > div').not(this).css('opacity', '0.5');//dims inactive li
                 $('.faq-accordion > li > a.expanded').removeClass(expand);
-                $(this).removeClass(expand);
+                $(this).addClass(expand);
                 content.filter(":visible").slideUp();
                 $(this).parent().children('ul').stop(true, true).slideDown();
             }
