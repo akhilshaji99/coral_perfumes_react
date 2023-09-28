@@ -151,6 +151,15 @@
         flex-wrap: wrap;
         width: 95%;
     }
+    .selling-price {
+        font-size: 13px;
+    }
+.discounted-price {
+    font-size: 13px;
+}
+.discount-percentage {
+    font-size: 13px;
+}
     .storage-care-img img {
         width: 120px;
         height: 120px;}

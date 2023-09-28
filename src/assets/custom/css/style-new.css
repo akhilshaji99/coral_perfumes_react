@@ -1404,3 +1404,6 @@ a.dropdown-toggle.text-dark.btn-filter {
   padding-top: 10px;
   font-weight: 600;
 }
+.card.login-card .row.social-head {
+  text-align: center;
+}
