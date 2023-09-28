@@ -1363,10 +1363,33 @@ a.dropdown-toggle.text-dark.btn-filter {
 }
 .card-footer.border-0 h4.ellipsis-text {
   text-align: left !important;
-  font-weight: 500;
 }
 
 .input-spinner .form-input {
   font-size: 13px;
   font-weight: bolder;
+}
+.product-desc-section h2 {
+  color: #000;
+  font-family: Brandon Text;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 390;
+  line-height: 185%;
+  text-transform: capitalize;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 36px;
+}
+.flash-sale-box h2 {
+  color: #fff !important;
+  text-transform: uppercase;
+}
+.flash-sale-box p {
+  line-height: 17px;
+}
+.flash-sale-box span img, svg {
+  vertical-align: baseline;
+}.fixed-top-margin.main-layout .conatiner.px-5 {
+  padding-bottom: 0px;
 }

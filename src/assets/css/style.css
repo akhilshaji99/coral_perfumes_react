@@ -3081,6 +3081,8 @@ textarea.form-control-lg {
   padding-left: 2rem;
   color: var(--fc-black);
   text-transform: capitalize;
+  font-size: 16px;
+    font-weight: 600;
 }
 .form-check-label span {
   color: #bdbebb;
@@ -29905,6 +29907,8 @@ body {
   font-family: var(--fc-font-bold);
   font-size: 12px;
   font-style: normal;
+  display: inline-block;
+  padding: 15px 0px;
 }
 .product-rating p {
   color: #000;
@@ -30075,7 +30079,7 @@ body {
   margin-bottom: 1rem;
 }
 .react-simple-star-rating svg {
-  margin: 0 8px;
+  margin-right: 15px;
 }
 .brand-rating-date {
   color: var(--fc-black);
