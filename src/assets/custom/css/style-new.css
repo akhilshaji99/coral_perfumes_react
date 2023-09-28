@@ -1393,3 +1393,14 @@ a.dropdown-toggle.text-dark.btn-filter {
 }.fixed-top-margin.main-layout .conatiner.px-5 {
   padding-bottom: 0px;
 }
+.fixed-top-margin.main-layout.empty-top {
+  margin-top: 10px;
+}.alert-box-bag-empty p {
+  color: #000;
+  font-size: 12px;
+  line-height: 22px;
+  width: 30%;
+  margin: 0 auto;
+  padding-top: 10px;
+  font-weight: 600;
+}
