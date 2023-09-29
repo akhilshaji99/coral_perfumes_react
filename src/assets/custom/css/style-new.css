@@ -1371,7 +1371,6 @@ a.dropdown-toggle.text-dark.btn-filter {
 }
 .product-desc-section h2 {
   color: #000;
-  font-family: Brandon Text;
   font-size: 16px;
   font-style: normal;
   font-weight: 390;
@@ -1396,7 +1395,7 @@ a.dropdown-toggle.text-dark.btn-filter {
 .fixed-top-margin.main-layout.empty-top {
   margin-top: 10px;
 }.alert-box-bag-empty p {
-  color: #000;
+  color: #0000;
   font-size: 12px;
   line-height: 22px;
   width: 30%;
@@ -1406,4 +1405,31 @@ a.dropdown-toggle.text-dark.btn-filter {
 }
 .card.login-card .row.social-head {
   text-align: center;
+}
+.row.product-rating span svg {
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+.py-6.p-md-6.p-lg-10 {
+  padding-top: 0px !important;
+}
+ul.nav.flex-column.nav-pills.nav-pills-dark {
+  padding-top: 24px;
+}
+.my-profile-heading {
+  padding-bottom: 0rem;
+}button.btn.btn-dark.w-100.mt-2.add-to-bag-btn svg {
+  vertical-align: middle;
+}
+.row.product-rating .col-md-3.mt-3 {
+  text-align: center;
+}
+input.form-control.border-danger {
+  border-color: black !important;
+}
+
+.change-btn {
+  text-decoration-line: underline;
+  padding-top: 10px;
+  display: inline-block;
 }
