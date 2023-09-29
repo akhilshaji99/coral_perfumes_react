@@ -42,7 +42,7 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"product"}/> */}
       <div className="container-lg-fluid px-0">
         <div className="row product-rating">
-          <div className="col-10">
+          <div className="col-9">
             <div className="row align-items-center px-0">
               <div className="col-md-2 col-4">
                 <h1>{productReviews?.average_star_rating} </h1>
@@ -81,7 +81,7 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
             </span>
             
           </div>
-          <div className=" col-md-2 mt-3">
+          <div className=" col-md-3 mt-3">
               <div className="ml-10">
                 <button
                   type="button"

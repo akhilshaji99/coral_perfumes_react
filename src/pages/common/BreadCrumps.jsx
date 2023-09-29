@@ -7,7 +7,7 @@ function BreadCrumps() {
         <div className="mt-4">
           <div className="container-fluid">
             <div className="row ">
-              <div className="col-12 px-0">
+              <div className="col-12 px-10">
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
