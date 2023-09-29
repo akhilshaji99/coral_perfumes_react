@@ -1433,3 +1433,13 @@ input.form-control.border-danger {
   padding-top: 10px;
   display: inline-block;
 }
+.row.brand-rating .col-md-3.mt-3 {
+  text-align: center;
+}
+
+button.btn.btn-dark.btn-checkout.w-100 svg {
+  vertical-align: bottom;
+}
+.row.icon-section {
+  justify-content: center;
+}
