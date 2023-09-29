@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function PaymentFailed({ responseMessage }) {
   return (
     <div>
-      <div className="container-lg-fluid alert-padding">
+      <div className="container-lg-fluid alert-padding empty-top">
         <div className="row align-items-center justify-content-center alert-box-failed">
           <div className="col-md-8 text-center">
             <img

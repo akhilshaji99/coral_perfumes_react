@@ -7,7 +7,7 @@ import PaymentSuccess from "./PaymentSuccess";
 function index() {
   return (
     <div>
-      <div className="container-lg-fluid alert-padding">
+      <div className="container-lg-fluid alert-padding empty-top">
         <PaymentSuccess />
         {/* <PaymentFailed/> */}
         {/* <BagEmpty/> */}

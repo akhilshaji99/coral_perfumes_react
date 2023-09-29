@@ -39,7 +39,7 @@ function Index() {
     <>
       {isDataListEmpty  ? (
         !loading ? (
-        <section className="mb-lg-14 mb-8 mt-8 my-bag">
+        <section className="mb-lg-14 mb-8 mt-8 my-bag empty-top">
           <div className="container-fluid" style={{ marginTop: "15%" }}>
             <div className="row mt-8">
               <WishlistEmpty wishListMessages={wishListMessages} />

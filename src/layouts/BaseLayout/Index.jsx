@@ -41,7 +41,7 @@ const BaseLayout = () => {
           />
         </nav>
       </div>
-      <div className="fixed-top-margin main-layout">
+      <div className="fixed-top-margin main-layout ">
         <Outlet />
       </div>
       <MobileMyAccount

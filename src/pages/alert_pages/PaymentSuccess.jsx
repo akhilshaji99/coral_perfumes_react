@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function PaymentSuccess({ responseMessage }) {
   return (
-    <div>
+    <div className="empty-top">
       <div className="container-lg-fluid alert-padding">
         <div className="row align-items-center justify-content-center alert-box-success">
           <div className="col-md-8 text-center">
