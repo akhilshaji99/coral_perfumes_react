@@ -40,7 +40,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
       <div className="container-lg-fluid px-0">
         <div className="row brand-rating">
-          <div className="col-md-10 col-10">
+          <div className="col-md-9 col-10">
             {brandReviews?.map((component, index) => {
               return (
                 <div className="mb-5" key={index}>
@@ -80,7 +80,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
             })}
           </div>
 
-          <div className="col-md-2 mt-3">
+          <div className="col-md-3 mt-3">
             <div className="ml-10">
               <button
                 type="button"

@@ -145,7 +145,7 @@ function Index() {
                 </div>
                 <div className="col-md-3 col-2 px-0">
                   <div className="row icon-section">
-                    <div className="col-md-3 col-4">
+                    <div className="col-md-5 col-4 icon-end ">
                       <svg
                         width={23}
                         height={23}
