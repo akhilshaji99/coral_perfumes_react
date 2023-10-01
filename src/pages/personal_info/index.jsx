@@ -177,6 +177,7 @@ function Index() {
                           type="text"
                           className="form-control"
                           name="email"
+                          placeholder="Email"
                           value={profileForm.values.email}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "email")}

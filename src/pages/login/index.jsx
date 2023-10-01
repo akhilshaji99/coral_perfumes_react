@@ -50,35 +50,23 @@ function Login() {
       bodyFormData.append("email", values.email);
       bodyFormData.append("phone_number", values.phone_number);
       const response = await request.post("login/", bodyFormData);
-
-      console.log("response", response);
-      let status = "succsss";
-      let title = "SUCCESS";
-      if (!response.data.status) {
-        status = "error";
-        title = "ERROR";
-      } else {
-        console.log("otp verification");
-
-        // $('#userModal').modal('show');
+      if (response.data.status) {
         $("document").ready(function () {
-          // $('#btnTest').click(function() {
-          // $('#userModal').modal('show');
           $("#otpModal").toggle();
           $("#otpModal").toggleClass("modal fade modal");
-          // $('#userModal').show();
-          // });
         });
       }
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={title}
-          message={response.data.message}
-        />
-      ));
+      if (!response?.data?.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={response.data.status}
+            title={"Error"}
+            message={response.data.message}
+          />
+        ));
+      }
     } catch (error) {
       console.log("error", error);
     }

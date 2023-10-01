@@ -114,7 +114,7 @@ function Index() {
             <div className="product-desc-section">
               <h1>{currentVariant?.name}</h1>
               <h2 className="product-author">
-                <Link to={currentVariant?.brand_link}>
+                <Link to={'/'+currentVariant?.brand_link}>
                   {currentVariant?.brand_name}
                 </Link>
               </h2>

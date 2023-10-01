@@ -173,7 +173,8 @@ function Index() {
       postal_code:
         checkOutDetails?.default_address?.account_address?.postal_code,
       phone_number:
-        checkOutDetails?.default_address?.account_address?.phone_number,
+        checkOutDetails?.default_address?.account_address?.phone_number ||
+        checkOutDetails?.user_data?.phone_number,
       flat_name: checkOutDetails?.default_address?.account_address?.flat_name,
       // emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
       emirate: null,
@@ -183,7 +184,9 @@ function Index() {
         checkOutDetails?.default_address?.account_address?.building_number,
       first_name: checkOutDetails?.default_address?.account_address?.first_name,
       last_name: checkOutDetails?.default_address?.account_address?.last_name,
-      email: checkOutDetails?.default_address?.account_address?.email,
+      email:
+        checkOutDetails?.default_address?.account_address?.email ||
+        checkOutDetails?.user_data?.email,
       floor_number:
         checkOutDetails?.default_address?.account_address?.floor_number,
       city: checkOutDetails?.default_address?.account_address?.city,
@@ -531,7 +534,6 @@ function Index() {
                                       "phone_number"
                                     )}
                                     className="form-control"
-                                    placeholder="055 922 8088"
                                   />
                                 </div>
                               </div>
@@ -854,7 +856,7 @@ function Index() {
                                 </button>
                               </div>
                               {parseInt(addressForm.values.delivery_type) ===
-                              1 ? (
+                                1 && checkOutDetails?.default_address ? (
                                 <div className="col-md-6 col-12 text-end">
                                   <a
                                     onClick={(e) => {

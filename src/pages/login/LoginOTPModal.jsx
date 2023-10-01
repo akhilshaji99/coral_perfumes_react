@@ -40,9 +40,6 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       if (!response.data.status) {
         status = "error";
         title = "ERROR";
-      } else {
-       
-        // navigate("/");
       }
       toast((t) => (
         <AlerMessage
@@ -70,13 +67,10 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       bodyFormData.append("token", guestToken);
       const response = await request.post("verify_otp/", bodyFormData);
 
-      console.log("response", response);
-      let status = "succsss";
-      let title = "SUCCESS";
-      if (!response.data.status) {
-        status = "error";
-        title = "ERROR";
-      } else {
+      // console.log("response", response);
+      // let status = "succsss";
+      // let title = "SUCCESS";
+      if (response.data.status) {
         localStorage.clear();
         const userData = {
           token: response.data.token,
@@ -84,8 +78,6 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
         };
         localStorage.setItem("userDatas", JSON.stringify(userData));
         $("#otpModal").hide();
-        // $("#otpModal").toggle();
-        // $("#otpModal").toggleClass("modal fade modal");
         $("#cartDrawer").hide();
         if (redirectTo != null) {
           navigate("/" + redirectTo);
@@ -93,15 +85,17 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
           navigate("/");
         }
       }
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={title}
-          message={response.data.message}
-        />
-      ));
+      if (!response?.data?.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={response.data.status}
+            title={"Error"}
+            message={response.data.message}
+          />
+        ));
+      }
     } catch (error) {
       console.log("error", error);
     }
