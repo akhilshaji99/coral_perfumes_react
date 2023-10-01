@@ -53,6 +53,10 @@ function FilterSidebar({
     setDefaultMax(value[1]);
     passingDateRangeToParent({ min: value[0], max: value[1] });
   };
+  const changeMinMaxValue=(value)=>{
+    setDefaultMin(value[0]);
+    setDefaultMax(value[1]);
+  }
   return (
     <>
       <aside className="mb-6 mb-md-0 filter-side">
@@ -275,7 +279,8 @@ function FilterSidebar({
                                 defaultMin || minPrice,
                                 defaultMax || maxPrice,
                               ]}
-                              onChange={getSliderValue}
+                              onAfterChange={getSliderValue}
+                              onChange={changeMinMaxValue}
                             />
 
                             <label className="form-check-label">
