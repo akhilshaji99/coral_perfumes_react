@@ -2,6 +2,8 @@ import { useState } from "react";
 import request from "../../utils/request";
 import { useFormik, getIn } from "formik";
 import * as yup from "yup";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
 import $ from "jquery";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -15,13 +17,24 @@ function ChangePhone({setRefetch, profileForm }) {
       const response = await request.post("get_user_profile/", {
        ...values
       });
-
+      if (response.data.status) {
       if (response?.data) {
         $("#changePhone").toggle();
         $("#changePhone").toggleClass("modal modal fade");
         $("#changePhone").hide();
         setRefetch(true);
       }
+    }else{
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={response.data.status}
+          title={"CHANGE MOBILE NUMBER"}
+          message={response?.data?.message}
+        />
+      ));
+    }
     } catch (error) {
       console.log("error", error);
     }
