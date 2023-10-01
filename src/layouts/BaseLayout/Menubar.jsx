@@ -194,12 +194,12 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                 : null}
                             </div>
                             <div className="col-lg-4 col-md-4 col-12 mb-4 mb-lg-0">
-                              <h6 className=" ps-3 text-lg-center">
+                              <h6 className=" ps-3">
                                 TRENDING NOW
                               </h6>
                               {/* Mob View */}
-                              <div className="container-lg-fluid d-block d-sm-none">
-                                <div className="row  ads-block justify-content-center">
+                              <div className=" d-block d-sm-none">
+                                <div className="row  ads-block">
                                   {item.trending !== undefined &&
                                   Array.isArray(item.trending)
                                     ? item.trending.map((item, index) => (
@@ -254,8 +254,8 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
                                     : null}
                                 </div>
                               </div>
-                              <div className="container-fluid my-5 d-none d-lg-block">
-                                <div className="row g-5 ads-block justify-content-center">
+                              <div className="my-5 d-none d-lg-block">
+                                <div className="row g-5 ads-block">
                                   {item.trending !== undefined &&
                                   Array.isArray(item.trending)
                                     ? item.trending.map((item, index) => (
