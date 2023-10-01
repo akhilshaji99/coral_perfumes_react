@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
+  // email: yup.string().email().required(),
   phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
 });
 function GuestLoginModal() {
@@ -140,7 +140,6 @@ function GuestLoginModal() {
                       }`}
                       id="inputEmail4"
                       placeholder="E-mail*"
-                      required
                       value={formik.values.email}
                       onChange={(e) => setInputValue("email", e.target.value)}
                     />

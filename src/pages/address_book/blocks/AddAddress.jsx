@@ -66,9 +66,11 @@ function AddAddress({
       city: "",
       floor_number: "",
     },
-    enableReinitialize: true,
+  
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
+    validateOnBlur: true, // Enable validation on blur
+    validateOnChange: false,
   });
   useEffect(() => {
     if (addAddressFlag) {

@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
+
 import $ from "jquery";
 
 const prifileFormSchema = yup.object().shape({
@@ -16,6 +19,13 @@ const prifileFormSchema = yup.object().shape({
   date_of_birth: yup.string().required(),
   gender: yup.string().required(),
 });
+function getStyles(errors, fieldName) {
+  if (getIn(errors, fieldName)) {
+    return {
+      border: "1px solid red",
+    };
+  }
+}
 function Index() {
   const [profile, setProfile] = useState(null);
   const [genders, setGenders] = useState(null);
@@ -29,13 +39,32 @@ function Index() {
         ...values,
         date_of_birth:formattedDate
       });
-     
-      if (response?.data) {
+      if (response.data.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={response.data.status}
+            title={"Profile"}
+            message= {response.data.message}
+          />
+        ));
         setProfile(response?.data?.data);
         profileForm.setFieldValue({
           ...values
         })
+      } else {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={response.data.status}
+            title={"profile"}
+            message={response?.data?.message}
+          />
+        ));
       }
+     
     } catch (error) {
       console.log("error", error);
     }
@@ -53,6 +82,8 @@ function Index() {
     enableReinitialize: true,
     validationSchema: prifileFormSchema,
     onSubmit: handleOnSubmit,
+    validateOnBlur: true, // Enable validation on blur
+    validateOnChange: false,
   });
   useEffect(() => {
     getProfile();
@@ -92,6 +123,9 @@ function Index() {
       console.log("error", error);
     }
   };
+  useEffect(() => {
+    console.log("Formik props:", profileForm);
+  }, [profileForm]);
   return (
     <main>
       {/* section */}
@@ -116,39 +150,36 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className={`form-control ${
-                            profileForm.errors.first_name ? "border-danger" : ""
-                          }`}
+                          className="form-control"
                           placeholder="First Name"
                           name="first_name"
                           value={profileForm.values.first_name}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "first_name")}
+                  
                           
                         />
                       </div>
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className={`form-control ${
-                            profileForm.errors.last_name ? "border-danger" : ""
-                          }`}
+                          className="form-control"
                           placeholder="Last Name"
                           name="last_name"
                           value={profileForm.values.last_name}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "last_name")}
 
                         />
                       </div>
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className={`form-control ${
-                            profileForm.errors.email ? "border-danger" : ""
-                          }`}
-                          placeholder="Email"
+                          className="form-control"
                           name="email"
                           value={profileForm.values.email}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "email")}
 
                         />
                         <a
@@ -167,13 +198,12 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="text"
-                          className={`form-control ${
-                            profileForm.errors.phone_number ? "border-danger" : ""
-                          }`}
+                          className= "form-control"
                           placeholder="0559238088"
                           name="phone_number"
                           value={profileForm.values.phone_number}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "phone_number")}
 
                         />
                         <a
@@ -191,12 +221,12 @@ function Index() {
                       </div>
                       <div className="mb-30 col">
                         <select
-                           className={`form-control ${
-                            profileForm.errors.gender ? "border-danger" : ""
-                          }`}
+                           className="form-control"
                           name="gender"
                           value={profileForm.values.gender}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "gender")}
+
                         >
                           {genders?.map((gender, index) => {
                             return (
@@ -208,13 +238,13 @@ function Index() {
                       <div className="mb-30 col">
                         <input
                           type="date"
-                          className={`form-control ${
-                            profileForm.errors.date_of_birth ? "border-danger" : ""
-                          }`}
+                          className="form-control"
                           placeholder="My Birthdays"
                           name="date_of_birth"
                           value={profileForm.values.date_of_birth}
                           onChange={profileForm.handleChange}
+                          style={getStyles(profileForm.errors, "date_of_birth")}
+
                         />
                       </div>
                       <div className="row justify-content-center w-100">
