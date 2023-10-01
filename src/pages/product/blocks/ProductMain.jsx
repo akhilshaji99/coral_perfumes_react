@@ -179,7 +179,14 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
               </div>
             );
           })}
-          <div ref={targetElementRef}></div>
+          <div
+            ref={targetElementRef}
+            style={{
+              width: "100%",
+              height: "300px",
+              marginTop: "-750px",
+            }}
+          ></div>
         </div>
       </section>
     </>
