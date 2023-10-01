@@ -10,7 +10,8 @@ function SearchResult({ setResult, result, setQuery }) {
     <>
       {result ? (
         <div class="row search-container">
-          <div class="row">
+        
+          <div class="row search-top">
             {result?.top_blocks?.map((block, index) => (
               <div
                 className="col-auto search-tag"
@@ -64,7 +65,7 @@ function SearchResult({ setResult, result, setQuery }) {
           </div>
           <div class="col-lg-6 col-12 mb-4 mb-lg-0">
             {result.data?.length > 0 && (
-              <div className="col-md-8 col-10" style={{ display: "block" }}>
+              <div className="col-md-10 col-10" style={{ display: "block" }}>
                 <h5 className="pt-4 font-weight-bold">SUGGESTIONS</h5>
                 {result?.data?.map((result, index) => (
                   <div class="row py-2">
@@ -119,7 +120,7 @@ function SearchResult({ setResult, result, setQuery }) {
                     <div className="col-7 col-md-7 col-lg-7">
                       <h4 className=" mb-3">{product?.name}</h4>
                       <div className="row mb-3">
-                        <div className="col-md-5 price-minicart">
+                        <div className="col-md-6 price-minicart">
                           aed {product?.price_amount}
                         </div>
                       </div>
