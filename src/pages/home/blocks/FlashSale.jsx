@@ -256,13 +256,13 @@ function FlashSale({ componentDatas }) {
                         <div className="row custom-row1">
                           <div className="col-md-4 col-6 px-0">
                             <h5 className="selling-price">
-                              AED {product.price_amount}
+                              {product?.currency_code} {product.price_amount}
                             </h5>
                           </div>
                           {product.original_amount ? (
                             <div className="col-md-4 col-6 px-0">
                               <h5 className="discounted-price">
-                                AED {product.original_amount}
+                                {product?.currency_code} {product.original_amount}
                               </h5>
                             </div>
                           ) : null}
