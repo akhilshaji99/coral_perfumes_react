@@ -48,7 +48,7 @@ function Index() {
               homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
                 <>
                   <Suspense fallback={<Placeholder />}>
-                    <MainBanner componentDatas={homeContent[component][0]} />
+                    <MainBanner componentDatas={homeContent[component][0]} exclusive_deals={homeContent['exclusive_deals']} />
                   </Suspense>
                 </>
               ) : null}

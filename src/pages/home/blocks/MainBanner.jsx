@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import ModalBtn from "../../../assets/img/pop-up-btn.svg";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
-function MainBanner({ componentDatas }) {
+function MainBanner({ componentDatas, exclusive_deals }) {
   const banners = componentDatas?.datas;
 
   return (
@@ -155,7 +155,9 @@ function MainBanner({ componentDatas }) {
         data-bs-toggle="modal"
         data-bs-target="#userModal1"
       >
-        <img className="ModalBtn" src={ModalBtn} alt="Coral Perfumes" />
+        <button className="ModalBtn offer-button">
+          {exclusive_deals?.main_text}
+        </button>
       </a>
       {/* Modal */}
       <div
@@ -177,7 +179,7 @@ function MainBanner({ componentDatas }) {
             </div>
             <div className="modal-body">
               <h4>
-                upto{" "}
+                {exclusive_deals?.text_1}
                 <svg
                   width={65}
                   height={58}
@@ -205,16 +207,19 @@ function MainBanner({ componentDatas }) {
                 </svg>
               </h4>
               <h1>
-                10% <span>off</span>
+                {exclusive_deals?.discount_value}{" "}
+                <span>{exclusive_deals?.deal_price_suffix}</span>
               </h1>
-              <h3 className="order-now">order now</h3>
+              <h3 className="order-now">{exclusive_deals?.text_2}</h3>
               <div className="text-center">
                 <button type="submit" className="btn btn-dark my-5 w-100">
-                  Use code : UI1258GH
+                  {exclusive_deals?.code_title}
                 </button>
               </div>
               <div className="modal-footer border-0 justify-content-center t-c">
-                <a href="#">t & c Apply</a>
+                <Link to={exclusive_deals?.terms_link}>
+                  {exclusive_deals?.terms_title}
+                </Link>
               </div>
             </div>
           </div>

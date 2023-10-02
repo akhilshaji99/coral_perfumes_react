@@ -14,15 +14,15 @@ const addToWishlist = async (variant_slug) => {
       token: getUserToken(),
     });
     if (response.data.status) {
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={"Add To Wishlist"}
-          message={response?.data?.message}
-        />
-      ));
+      // toast((t) => (
+      //   <AlerMessage
+      //     t={t}
+      //     toast={toast}
+      //     status={response.data.status}
+      //     title={"Add To Wishlist"}
+      //     message={response?.data?.message}
+      //   />
+      // ));
       return { status: true, variant_slug: variant_slug };
     } else {
       toast((t) => (

@@ -15,6 +15,7 @@ function Index() {
   }, []);
 
   useEffect(() => {
+    console.log(reFetchApi)
     if (reFetchApi) {
       getWishlistDatas();
     }
