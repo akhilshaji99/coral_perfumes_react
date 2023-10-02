@@ -8,15 +8,15 @@ const cartRemove = async (product_variant_id) => {
       "api/cart/delete/" + product_variant_id + "/"
     );
     if (response.data.status) {
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response?.data?.status}
-          title={"Success"}
-          message={response?.data?.message}
-        />
-      ));
+      // toast((t) => (
+      //   <AlerMessage
+      //     t={t}
+      //     toast={toast}
+      //     status={response?.data?.status}
+      //     title={"Success"}
+      //     message={response?.data?.message}
+      //   />
+      // ));
       return true;
     } else {
       toast((t) => (
