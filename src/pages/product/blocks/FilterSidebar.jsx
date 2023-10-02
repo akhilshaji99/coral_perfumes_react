@@ -15,11 +15,12 @@ function FilterSidebar({
   const urlParams = useParams([]);
 
   const [productFilters, setProductFilters] = useState([]);
-  const [orgProductFilters, setOrgProductFilters] = useState([]);
+  // const [orgProductFilters, setOrgProductFilters] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState(null);
   const [categorySearchKey, setCategorySearchKey] = useState(null);
   const [defaultMin, setDefaultMin] = useState(minPrice);
   const [defaultMax, setDefaultMax] = useState(maxPrice);
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     getProductFilters();
@@ -40,7 +41,12 @@ function FilterSidebar({
         );
         if (response.data) {
           setProductFilters(response?.data?.data);
-          setOrgProductFilters(response?.data?.data);
+          localStorage.setItem(
+            "originalFilterDatas",
+            JSON.stringify(response?.data?.data)
+          );
+
+          // setOrgProductFilters(response?.data?.data);
         }
       }
     } catch (error) {
@@ -53,10 +59,10 @@ function FilterSidebar({
     setDefaultMax(value[1]);
     passingDateRangeToParent({ min: value[0], max: value[1] });
   };
-  const changeMinMaxValue=(value)=>{
+  const changeMinMaxValue = (value) => {
     setDefaultMin(value[0]);
     setDefaultMax(value[1]);
-  }
+  };
   return (
     <>
       <aside className="mb-6 mb-md-0 filter-side">
@@ -162,26 +168,18 @@ function FilterSidebar({
                             onChange={(event) => {
                               const searchTerm =
                                 event.target.value.toLowerCase(); // Convert search term to lowercase for case-insensitive search
-                              const copyDatas = { ...orgProductFilters };
-
-                              const filtered = copyDatas[
-                                main_index
-                              ]?.values.filter((entry) =>
+                              const filtered = JSON.parse(
+                                localStorage.getItem("originalFilterDatas")
+                              )[main_index]?.values.filter((entry) =>
                                 Object.values(entry).some(
                                   (val) =>
                                     typeof val === "string" &&
                                     val.toLowerCase().includes(searchTerm)
                                 )
                               );
-                              // setProductFilters((prevState) => ({
-                              //   ...prevState,
-                              //   productFilters[main_index]["values"] : filtered,
-                              // }));
-                              // productFilters[main_index]["values"] = filtered;
-                              productFilter['values']=filtered
-                              console.log(orgProductFilters);
-
-                              console.log(productFilters);
+                              productFilters[main_index]["values"] = filtered;
+                              setProductFilters(productFilters);
+                              setStatus(!status);
                             }}
                           />
                         </div>
