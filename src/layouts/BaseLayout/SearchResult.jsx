@@ -117,7 +117,7 @@ function SearchResult({ setResult, result, setQuery }) {
                         />
                       </div>
                     </div>
-                    <div className="col-7 col-md-7 col-lg-7">
+                    <div className="col-9 col-md-9 col-lg-9">
                       <h4 className=" mb-3">{product?.name}</h4>
                       <div className="row mb-3">
                         <div className="col-md-6 price-minicart">
