@@ -796,7 +796,7 @@ function Index() {
                             tabIndex={0}
                           >
                             <div className="card-body p-1">
-                              <div className="row g-2 m-2">
+                              <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 b-lg-0">
                                     <select

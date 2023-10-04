@@ -63,7 +63,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                               className="mb-4 react-simple-star-rating"
                             />{" "}
                           </div>
-                          <div className="col-md-4">
+                          <div className="col-md-4 pr-0">
                             <p className="brand-rating-date">
                               {component.submitted_date}
                             </p>

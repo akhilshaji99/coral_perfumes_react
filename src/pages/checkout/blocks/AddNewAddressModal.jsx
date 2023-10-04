@@ -73,9 +73,11 @@ function AddNewAddressModal({
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content p-4">
             <div className="modal-header border-0">
-              <h5 className="modal-title fs-3 fw-bold " id="userModalLabel">
-                CHOOSE ADDRESS
-              </h5>
+              <div className="col-12 text-center">
+                <h5 className="modal-title fs-3 fw-bold " id="userModalLabel">
+                  CHOOSE ADDRESS
+                </h5>
+              </div>
               <button
                 type="button"
                 className="btn-close"
@@ -98,8 +100,8 @@ function AddNewAddressModal({
                 );
               })}
             </div>
-            <div className="row g-2 m-2">
-              <div className="col-md-6 col-12">
+            <div className="row g-2 ms-3">
+              <div className="col-12">
                 <a
                   onClick={(e) => {
                     setAddAddressListFlag(false);
@@ -113,8 +115,8 @@ function AddNewAddressModal({
                   + Add new address
                 </a>
               </div>
-              <div className="col-md-6 col-12">
-                <div className="pt-2 m-2">
+              <div className="col-12 text-center">
+                <div className="mb-5">
                   {" "}
                   <button
                     onClick={markDefaultAddress}
