@@ -2,6 +2,10 @@ import request from "../../utils/request";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Placeholder from "../common/PlaceHolder";
 import getUserToken from "../../utils/userToken";
+import { changeFooterDatas } from "../../redux/footer/footerSlice";
+import { changeApiCallStatus } from "../../redux/footer/footerSlice";
+
+import { useDispatch } from "react-redux";
 
 const MainBanner = lazy(() => import("./blocks/MainBanner"));
 const Deals = lazy(() => import("./blocks/Deals"));
@@ -18,6 +22,8 @@ const BannerFlashSale = lazy(() => import("./blocks/BannerFlashSale"));
 const ProductCarousel = lazy(() => import("./blocks/ProductCarousel"));
 
 function Index() {
+  const dispatch = useDispatch();
+
   const [homeContent, setHomeContent] = useState([]);
   const [homeComponents, setHomeComponents] = useState([]);
   useEffect(() => {
@@ -27,9 +33,13 @@ function Index() {
     try {
       var bodyFormData = new FormData();
       bodyFormData.append("token", getUserToken());
+      dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.post("get_home_content/", bodyFormData);
       if (response.data) {
         const mainKeys = Object.entries(response.data).map(([key]) => key);
+        dispatch(changeFooterDatas(response?.data?.footer_content)); //Add footer datas to redux
+        dispatch(changeApiCallStatus(true)); // Change api call status
+
         setHomeComponents(mainKeys);
         setHomeContent(response.data);
       }
@@ -48,7 +58,10 @@ function Index() {
               homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
                 <>
                   <Suspense fallback={<Placeholder />}>
-                    <MainBanner componentDatas={homeContent[component][0]} exclusive_deals={homeContent['exclusive_deals']} />
+                    <MainBanner
+                      componentDatas={homeContent[component][0]}
+                      exclusive_deals={homeContent["exclusive_deals"]}
+                    />
                   </Suspense>
                 </>
               ) : null}

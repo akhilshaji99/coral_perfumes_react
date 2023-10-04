@@ -10,10 +10,13 @@ import ProductDetails from "../../common/ProductDetails";
 import FilterMob from "../../../assets/img/icons/filter-mob.svg";
 import getUserToken from "../../../utils/userToken";
 import { useParams } from "react-router-dom";
+import { changeFooterDatas } from "../../../redux/footer/footerSlice";
+import { changeApiCallStatus } from "../../../redux/footer/footerSlice";
+import { useDispatch } from "react-redux";
 
 function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const urlParams = useParams([]);
-
+  const dispatch = useDispatch();
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
@@ -72,6 +75,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   const getProductList = async (page_number) => {
     try {
       if (urlParams?.link_type && urlParams?.link_value) {
+        dispatch(changeApiCallStatus(false)); // Change api call status
         const response = await request.post(
           "productsbycategory/" +
             urlParams?.link_type +
@@ -96,6 +100,8 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
               ...new Set([...prev, ...response?.data?.data]),
             ]);
           }
+          dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
+          dispatch(changeApiCallStatus(true)); // Change api call status
         }
       }
     } catch (error) {

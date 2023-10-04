@@ -330,6 +330,7 @@ function Account({ changeMyAccountMenuStatus }) {
                       setResult={setResult}
                       result={result}
                       setQuery={setQuery}
+                      query={query}
                     />
                   )}
                 </div>

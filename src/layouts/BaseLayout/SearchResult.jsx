@@ -1,16 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
-function SearchResult({ setResult, result, setQuery }) {
+function SearchResult({ setResult, result, setQuery, query }) {
   const navigate = useNavigate();
   const closeModal = () => {
     // setResults([])
     setResult([]);
   };
+
+  function highlightSearchTerm(title, query) {
+    // Use JavaScript's replace method to replace the search term with a span
+    const highlightedTitle = title.replace(
+      new RegExp(query, "g"),
+      (match) => `${'<span class="highlighted">' + match + "</span>"}`
+    );
+    console.log(highlightedTitle);
+    return highlightedTitle;
+  }
+
   return (
     <>
       {result ? (
         <div class="row search-container">
-        
           <div class="row search-top">
             {result?.top_blocks?.map((block, index) => (
               <div
@@ -80,7 +90,21 @@ function SearchResult({ setResult, result, setQuery }) {
                           // setQuery(result);
                         }}
                       >
-                        {result.title}
+                        {/* {result.title} */}
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: highlightSearchTerm(result.title, query),
+                          }}
+                        />
+                        {/* <div
+                          className="p-d-c"
+                          dangerouslySetInnerHTML={{
+                            __html: result.title.replace(
+                              new RegExp(query, "g"),
+                              <span className="active">{query}</span>
+                            ),
+                          }}
+                        /> */}
                       </a>
                     </div>
                     <div class="col text-right">

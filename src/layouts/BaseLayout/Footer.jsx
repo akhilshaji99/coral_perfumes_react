@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
 import { BottomNavigation } from "reactjs-bottom-navigation";
 import { useNavigate } from "react-router-dom";
+import FooterText from "./FooterText";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -42,7 +43,7 @@ function Footer({ changeMobileMenuStatus }) {
   const bottomNavItems = [
     {
       title: "Home",
-      onClick: ({ id }) =>  navigate("/"),
+      onClick: ({ id }) => navigate("/"),
       icon: (
         <svg
           width={25}
@@ -80,8 +81,8 @@ function Footer({ changeMobileMenuStatus }) {
     // items can have either title, icon or both or neither!
     {
       title: "Categories",
-      onClick: ({ id }) =>  {
-        changeMobileMenuStatus()
+      onClick: ({ id }) => {
+        changeMobileMenuStatus();
       },
       icon: (
         <svg
@@ -162,7 +163,7 @@ function Footer({ changeMobileMenuStatus }) {
     },
     {
       title: "Wishlist",
-      onClick: ({ id }) =>  navigate("/wishlist"),
+      onClick: ({ id }) => navigate("/wishlist"),
       icon: (
         <svg
           width={26}
@@ -198,7 +199,7 @@ function Footer({ changeMobileMenuStatus }) {
     },
     {
       title: "Store",
-      onClick: ({ id }) =>  navigate("/stores"),
+      onClick: ({ id }) => navigate("/stores"),
       icon: (
         <svg
           width={27}
@@ -295,7 +296,7 @@ function Footer({ changeMobileMenuStatus }) {
     // the render method enables custom item content
     {
       title: "Profile",
-      onClick: ({ id }) =>  navigate("/dashboard"),
+      onClick: ({ id }) => navigate("/dashboard"),
       icon: (
         <svg
           width={27}
@@ -391,7 +392,7 @@ function Footer({ changeMobileMenuStatus }) {
       </div>
       <div className="container">
         <div className="row footer-row align-items-center">
-        <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6>
+          <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6>
           <div className="col-md-3">
             <div className="row  social-mdedia-icons g-10">
               <div className="col-md-3 col-1">
@@ -707,15 +708,15 @@ function Footer({ changeMobileMenuStatus }) {
         </div>
         <div className="border-top py-4 footer-bottom">
           <div className="d-block d-sm-none footer-expand-section">
-            <div className="row text-end">
+            {/* <div className="row text-end">
               <div className="col-md-2">
                 <a className="footer-expand" onClick={toggleCollapse}>
                   <img src={FooterExpand} alt="Coral Perfume" />
                 </a>
               </div>
-            </div>
+            </div> */}
 
-            {!isCollapsed && (
+            {/* {!isCollapsed && (
               <div>
                 <p className="mb-5">BEST PERFUME ECOMMERCE IN DUBAI</p>
                 <p className="mb-5">
@@ -775,62 +776,9 @@ function Footer({ changeMobileMenuStatus }) {
                   </li>
                 </ol>
               </div>
-            )}
+            )} */}
           </div>
-          <div className="d-none d-sm-block">
-            <p className="mb-5">BEST PERFUME ECOMMERCE IN DUBAI</p>
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              facilisi. Sed eu neque ut mi sagittis sodales. Phasellus auctor
-              magna ac neque condimentum, et tincidunt ligula viverra. Donec sed
-              massa eget lectus dapibus iaculis. Integer scelerisque, elit
-              eusagittis efficitur, nisi libero viverra dolor, ac laoreet enim
-              velit id velit. Suspendisse ac metus eu lorem egestas efficitur.
-              In hac habitasse platea dictumst. Pellentesque eu m
-            </p>
-            <ol>
-              <li className="mb-4">
-                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-                sagittis sodales. Phasellus auctor magna ac neque condimentum,
-                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-                libero viverra dolor, ac laoreet enim velit id velit.
-                Suspendisse ac metus eu lorem egestas efficitur. In hac
-                habitasse platea dictumst. Pellentesque eu m
-              </li>
-              <li className="mb-4">
-                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-                sagittis sodales. Phasellus auctor magna ac neque condimentum,
-                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-                libero viverra dolor, ac laoreet enim velit id velit.
-                Suspendisse ac metus eu lorem egestas efficitur. In hac
-                habitasse platea dictumst. Pellentesque eu m
-              </li>
-              <li className="mb-4">
-                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-                sagittis sodales. Phasellus auctor magna ac neque condimentum,
-                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-                libero viverra dolor, ac laoreet enim velit id velit.
-                Suspendisse ac metus eu lorem egestas efficitur. In hac
-                habitasse platea dictumst. Pellentesque eu m
-              </li>
-              <li className="mb-4">
-                BEST PERFUME ECOMMERCE IN DUBAI- Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nulla facilisi. Sed eu neque ut mi
-                sagittis sodales. Phasellus auctor magna ac neque condimentum,
-                et tincidunt ligula viverra. Donec sed massa eget lectus dapibus
-                iaculis. Integer scelerisque, elit eusagittis efficitur, nisi
-                libero viverra dolor, ac laoreet enim velit id velit.
-                Suspendisse ac metus eu lorem egestas efficitur. In hac
-                habitasse platea dictumst. Pellentesque eu m
-              </li>
-            </ol>
-          </div>
+          <FooterText />
         </div>
       </div>
       <ScrollToTop smooth />
