@@ -93,7 +93,7 @@ function CartDetails({ cartDatas }) {
               </div>
 
               {/* heading */}
-              <div className="mt-2">
+              <div className="mt-2 secure-checkout-top">
                 <div className="d-grid">
                   <button
                     type="button"

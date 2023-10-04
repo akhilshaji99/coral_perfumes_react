@@ -172,7 +172,7 @@ function Index() {
 
                         />
                       </div>
-                      <div className="mb-30 col">
+                      <div className="mb-5 col">
                         <input
                           type="text"
                           className="form-control"
@@ -196,7 +196,7 @@ function Index() {
                           Change Email
                         </a>
                       </div>
-                      <div className="mb-30 col">
+                      <div className="mb-5 col">
                         <input
                           type="text"
                           className= "form-control"

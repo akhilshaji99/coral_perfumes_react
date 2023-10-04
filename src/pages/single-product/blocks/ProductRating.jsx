@@ -47,7 +47,7 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               <div className="col-md-2 col-4">
                 <h1>{productReviews?.average_star_rating} </h1>
               </div>
-              <div className="col-md-3 col-8">
+              <div className="col-md-3 col-8 ps-0">
                 <span>
                   {" "}
                   <p>{productReviews?.review_message}</p>

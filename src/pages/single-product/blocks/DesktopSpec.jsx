@@ -94,14 +94,16 @@ function DesktopSpec({ currentVariant, productDatas }) {
                 (descriptive_attribute, index) => {
                   return (
                     <div className="col-md-6 p" key={index}>
-                      <li>
-                        {Object.keys(descriptive_attribute)} :{" "}
-                        {
-                          descriptive_attribute?.[
-                            Object.keys(descriptive_attribute)
-                          ]
-                        }
-                      </li>
+                      <ul>
+                        <li>
+                          {Object.keys(descriptive_attribute)} :{" "}
+                          {
+                            descriptive_attribute?.[
+                              Object.keys(descriptive_attribute)
+                            ]
+                          }
+                        </li>
+                      </ul>
                     </div>
                   );
                 }

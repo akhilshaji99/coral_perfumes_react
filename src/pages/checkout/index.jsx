@@ -382,7 +382,7 @@ function Index() {
                               <h5 className="mb-1 h6 "> Add Promo Code</h5>
                             </div>
                           </div>
-                          <div className="row g-2">
+                          <div className="row g-4">
                             <div className="col-md-6 col-12">
                               {/* input */}
                               <div className="mb-3 mb-lg-0">
@@ -487,7 +487,7 @@ function Index() {
                       >
                         <div className="mb-1">
                           <div className="card-body p-1">
-                            <div className="row g-2 m-2">
+                            <div className="row g-4 m-2">
                               <div className="col-md-6 col-12">
                                 <div className="mb-3 mb-lg-0">
                                   <input
@@ -521,7 +521,7 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <div className="row g-2 m-2">
+                            <div className="row g-4 m-2">
                               <div className="col-md-6 col-12">
                                 <div className="mb-3 mb-lg-0">
                                   <input
@@ -658,7 +658,7 @@ function Index() {
                             tabIndex={0}
                           >
                             <div className="card-body p-1">
-                              <div className="row g-2 m-2">
+                              <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
                                     <input
@@ -692,7 +692,7 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-2 m-2">
+                              <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
                                     <input
@@ -710,7 +710,7 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 b-lg-0">
+                                  <div className="mb-3 mb-lg-0">
                                     <select
                                       className="form-control"
                                       name="emirate"
@@ -730,7 +730,7 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-2 m-2">
+                              <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
                                     <input
@@ -764,7 +764,7 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-2 m-2">
+                              <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
                                     <input
