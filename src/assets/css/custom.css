@@ -51,10 +51,10 @@
     max-height: 69vh;
 }
 
-.ModalBtn.offer-button{
-    right: -58px !important;
+.ModalBtn.offer-button {
+    right: -155px !important;
+    top: 280px !important;
 }
-
 .custom-badge{
     display: flex;
     align-items: center;

@@ -222,7 +222,7 @@ function Login() {
                       <input
                         type="text"
                         id="phone_number"
-                        placeholder="0559339099"
+                        placeholder="0559339099*"
                         className={`form-control ${
                           formik.errors.phone_number ? "border-danger" : ""
                         }`}
@@ -254,7 +254,7 @@ function Login() {
                         formik.errors.email ? "border-danger" : ""
                       }`}
                       id="inputEmail4"
-                      placeholder="E-mail*"
+                      placeholder="E-mail"
                       value={formik.values.email}
                       onChange={(e) => setInputValue("email", e.target.value)}
                     />

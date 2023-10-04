@@ -1469,7 +1469,7 @@ p.delivery-info.mb-0 span svg {
   margin-left: calc(var(--fc-gutter-x) * -0.5) !important;
 }
 div#myTabContent button.btn.btn-dark.validate {
-  margin-left: 0px !important;
+  margin-left: 5px !important;
   padding-left: 40px;
     padding-right: 40px;
 }
@@ -1493,16 +1493,16 @@ ul.list-group.list-group-flush.px-6 {
   max-height: 240px;
   overflow-y: auto;
 }
-ul.list-group.list-group-flush.px-6::-webkit-scrollbar {
-  width: 5px; 
+::-webkit-scrollbar {
+  width: 3px; 
 }
 
-ul.list-group.list-group-flush.px-6::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #888; 
   border-radius: 6px; 
 }
 
-ul.list-group.list-group-flush.px-6::-webkit-scrollbar-thumb:hover {
+:-webkit-scrollbar-thumb:hover {
   background-color: #797979; /* Color of the thumb on hover */
 }
 .row.p-ul .col-md-6.p ul li {
@@ -1510,4 +1510,35 @@ ul.list-group.list-group-flush.px-6::-webkit-scrollbar-thumb:hover {
 }
 .col-md-5.col-4.icon-end {
   text-align: end;
+}
+div#myTabContent .col-md-6.col-12.text-end a {
+  cursor: pointer;
+}
+
+button.btn.btn-dark.p-32px.validate {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.address-popup-title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 29.6px;
+  font-family: "BrandonText-Bold", sans-serif;
+}
+button.ModalBtn.offer-button {
+  font-style: normal;
+  font-weight: 450;
+  line-height: 33px;
+  letter-spacing: 4.6px;
+  font-family: var(--fc-font-bold);
+  border-radius: 10px 10px 0px 0px !important;
+  padding: 4px 30px;
+}
+.row.align-items-center.justify-content-center.alert-box-bag-empty p {
+  color: #000;
+}
+.row.brand-rating {
+  max-height: 385px;
+  overflow-y: scroll;
 }

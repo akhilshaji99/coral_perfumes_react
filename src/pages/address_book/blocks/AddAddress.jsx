@@ -177,7 +177,7 @@ function AddAddress({
           <div className="modal-body p-5">
             <div>
               <form onSubmit={addressForm.handleSubmit} className="row mb-4">
-                <div className="mb-3 col-md-6 col-12">
+                <div className="mb-6 col-md-6 col-12">
                   <input
                     type="text"
                     className="form-control"
@@ -192,7 +192,7 @@ function AddAddress({
                     style={getStyles(addressForm.errors, "first_name")}
                   />
                 </div>
-                <div className="mb-3 col-md-6 col-12">
+                <div className="mb-6 col-md-6 col-12">
                   <input
                     type="text"
                     className="form-control"
