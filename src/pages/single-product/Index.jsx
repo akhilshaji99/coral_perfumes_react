@@ -15,6 +15,13 @@ import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  EmailIcon,
+  FacebookIcon,
+  PinterestIcon,
+  WhatsappIcon,
+} from "react-share";
+// import styled from 'styled-components'
 
 function Index() {
   const dispatch = useDispatch();
@@ -56,7 +63,9 @@ function Index() {
         }
         if (response?.data?.current_variant && response?.data?.other_variants) {
           response?.data?.other_variants.push(response?.data?.current_variant);
-          setOtherVariants(response?.data?.other_variants);
+          formatProductVariant(response?.data?.other_variants);
+          // console.log(response?.data?.other_variants);
+          // setOtherVariants(response?.data?.other_variants);
         }
 
         if (response?.data?.current_variant && response?.data?.other_variants) {
@@ -87,11 +96,61 @@ function Index() {
     }
   };
 
+  const formatProductVariant = (allVariants) => {
+    allVariants.forEach((variant) => {
+      variant.formattedVariant = [];
+      variant?.assigned_variant_attributes?.forEach((attributeData) => {
+        variant.formattedVariant.push({
+          [attributeData.attribute_name]:
+            attributeData?.attribute_values[0].value,
+        });
+      });
+    });
+    setOtherVariants(allVariants);
+    // return allVariants;
+  };
+
   const changeProductVariant = (attribute_name, variant_value) => {
     const updatedVariant = { ...activeVariant };
     updatedVariant[attribute_name] = variant_value;
     setActiveVariant(updatedVariant);
     setVariantChangeFlag(!variantChangeFlag);
+    // console.log("updatedVariant", updatedVariant);
+    console.log("all Datas", otherVariants);
+    otherVariants.forEach((otherVariant) => {
+      console.log("otherVariant", otherVariant?.assigned_variant_attributes);
+      console.log(activeVariant);
+    });
+
+    // Object.entries(activeVariant).map(([key, value]) => {
+    //   console.log(key);
+    //   console.log(value);
+    //   let flag = false;
+    //   otherVariants.forEach((variantData) => {
+    //     variantData?.assigned_variant_attributes.forEach((attributeData) => {
+    //       if (
+    //         attributeData?.attribute_name === key &&
+    //         attributeData?.attribute_values[0].value === value
+    //       ) {
+    //         console.log(
+    //           attributeData?.attribute_name +
+    //             "-" +
+    //             key +
+    //             "--" +
+    //             "value-" +
+    //             attributeData?.attribute_values[0].value +"-"+
+    //             value
+    //         );
+    //         // console.log("variantData", variantData);
+    //         flag = true;
+    //         return;
+    //       }
+    //     });
+    //   });
+    //   if (flag) {
+    //     return;
+    //   }
+    // });
   };
 
   useEffect(() => {
@@ -110,11 +169,12 @@ function Index() {
       <div className="conatiner px-5">
         <div className="row mb-5 ">
           <ProductCarousel sliderImages={currentVariant?.variant_images} />
+
           <div className="col-md-5">
             <div className="product-desc-section">
               <h1>{currentVariant?.name}</h1>
               <h2 className="product-author">
-                <Link to={'/'+currentVariant?.brand_link}>
+                <Link to={"/" + currentVariant?.brand_link}>
                   {currentVariant?.brand_name}
                 </Link>
               </h2>
@@ -146,20 +206,70 @@ function Index() {
                 <div className="col-md-4 col-2 px-0">
                   <div className="row icon-section">
                     <div className="col-md-5 col-4 icon-end ">
-                      <svg
-                        width={23}
-                        height={23}
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.7342 5.29158C18.8447 6.7718 20.301 9.12525 20.5965 11.8408M2.5196 11.894C2.65227 10.5918 3.06001 9.33345 3.71534 8.20371C4.37067 7.07397 5.25836 6.09911 6.31859 5.34483M7.4794 21.0203C8.70352 21.6486 10.0965 22 11.5633 22C12.9774 22 14.307 21.6805 15.4995 21.0948M11.5633 6.92089C12.3414 6.92089 13.0876 6.60899 13.6377 6.0538C14.1879 5.49861 14.497 4.74561 14.497 3.96045C14.497 3.17529 14.1879 2.42229 13.6377 1.86709C13.0876 1.3119 12.3414 1 11.5633 1C10.7853 1 10.0391 1.3119 9.4889 1.86709C8.93873 2.42229 8.62965 3.17529 8.62965 3.96045C8.62965 4.74561 8.93873 5.49861 9.4889 6.0538C10.0391 6.60899 10.7853 6.92089 11.5633 6.92089ZM3.93367 19.9341C4.71173 19.9341 5.45792 19.6222 6.00808 19.067C6.55825 18.5118 6.86734 17.7588 6.86734 16.9736C6.86734 16.1885 6.55825 15.4355 6.00808 14.8803C5.45792 14.3251 4.71173 14.0132 3.93367 14.0132C3.15561 14.0132 2.40942 14.3251 1.85925 14.8803C1.30908 15.4355 1 16.1885 1 16.9736C1 17.7588 1.30908 18.5118 1.85925 19.067C2.40942 19.6222 3.15561 19.9341 3.93367 19.9341ZM19.0663 19.9341C19.8444 19.9341 20.5906 19.6222 21.1407 19.067C21.6909 18.5118 22 17.7588 22 16.9736C22 16.1885 21.6909 15.4355 21.1407 14.8803C20.5906 14.3251 19.8444 14.0132 19.0663 14.0132C18.2883 14.0132 17.5421 14.3251 16.9919 14.8803C16.4417 15.4355 16.1327 16.1885 16.1327 16.9736C16.1327 17.7588 16.4417 18.5118 16.9919 19.067C17.5421 19.6222 18.2883 19.9341 19.0663 19.9341Z"
-                          stroke="black"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <div className="dropdown">
+                        <a
+                          className=" dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <svg
+                            width={23}
+                            height={23}
+                            viewBox="0 0 23 23"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M16.7342 5.29158C18.8447 6.7718 20.301 9.12525 20.5965 11.8408M2.5196 11.894C2.65227 10.5918 3.06001 9.33345 3.71534 8.20371C4.37067 7.07397 5.25836 6.09911 6.31859 5.34483M7.4794 21.0203C8.70352 21.6486 10.0965 22 11.5633 22C12.9774 22 14.307 21.6805 15.4995 21.0948M11.5633 6.92089C12.3414 6.92089 13.0876 6.60899 13.6377 6.0538C14.1879 5.49861 14.497 4.74561 14.497 3.96045C14.497 3.17529 14.1879 2.42229 13.6377 1.86709C13.0876 1.3119 12.3414 1 11.5633 1C10.7853 1 10.0391 1.3119 9.4889 1.86709C8.93873 2.42229 8.62965 3.17529 8.62965 3.96045C8.62965 4.74561 8.93873 5.49861 9.4889 6.0538C10.0391 6.60899 10.7853 6.92089 11.5633 6.92089ZM3.93367 19.9341C4.71173 19.9341 5.45792 19.6222 6.00808 19.067C6.55825 18.5118 6.86734 17.7588 6.86734 16.9736C6.86734 16.1885 6.55825 15.4355 6.00808 14.8803C5.45792 14.3251 4.71173 14.0132 3.93367 14.0132C3.15561 14.0132 2.40942 14.3251 1.85925 14.8803C1.30908 15.4355 1 16.1885 1 16.9736C1 17.7588 1.30908 18.5118 1.85925 19.067C2.40942 19.6222 3.15561 19.9341 3.93367 19.9341ZM19.0663 19.9341C19.8444 19.9341 20.5906 19.6222 21.1407 19.067C21.6909 18.5118 22 17.7588 22 16.9736C22 16.1885 21.6909 15.4355 21.1407 14.8803C20.5906 14.3251 19.8444 14.0132 19.0663 14.0132C18.2883 14.0132 17.5421 14.3251 16.9919 14.8803C16.4417 15.4355 16.1327 16.1885 16.1327 16.9736C16.1327 17.7588 16.4417 18.5118 16.9919 19.067C17.5421 19.6222 18.2883 19.9341 19.0663 19.9341Z"
+                              stroke="black"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </a>
+                        <div
+                          className="dropdown-menu lang-dropdown-menu"
+                          aria-labelledby="dropdownMenuButton"
+                        >
+                          <Link
+                            to={"https://wa.me/?text=" + window.location.href}
+                            target="_blank"
+                          >
+                            <WhatsappIcon size={32} round={true} />
+                          </Link>
+                          <Link
+                            to={
+                              "https://www.facebook.com/sharer/sharer.php?u=" +
+                              window.location.href
+                            }
+                            target="_blank"
+                          >
+                            <FacebookIcon size={32} round={true} />
+                          </Link>
+                          <Link
+                            to={
+                              "mailto:?subject=Check%20out%20this%20link&body=Hello%,%0A%0AI%20thought%20you%20might%20be%20interested%20in%20this%20webpage:" +
+                              window.location.href
+                            }
+                            target="_blank"
+                          >
+                            <EmailIcon size={32} round={true} />
+                          </Link>
+                          <Link
+                            to={
+                              "https://www.pinterest.com/pin/create/button/?url=" +
+                              window.location.href +
+                              "&description=Coral Perfume"
+                            }
+                            target="_blank"
+                          >
+                            <PinterestIcon size={32} round={true} />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                     <div className="col-md-3 col-4">
                       <span
