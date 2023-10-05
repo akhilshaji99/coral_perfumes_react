@@ -67,7 +67,7 @@ function productData({ productDatas, currentVariant }) {
       ) : null}
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-xl-2 col-sm-2 col-2">
+          <div className="col-xl-9 col-sm-12 col-12">
             <tamara-widget
               type="tamara-summary"
               amount={currentVariant?.price_amount}
