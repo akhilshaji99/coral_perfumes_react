@@ -86,11 +86,32 @@
     }
 
     .wallet-banner .react-multi-carousel-list {
-        padding: 15px 0px;
+        padding: 20px 0px;
     }
 
     .wallet-banner h1{
           margin-bottom: 0px;
+    }
+
+    .button.ModalBtn.offer-button{
+        font-style: normal;
+    font-weight: 443;
+    line-height: 20px;
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    font-family: var(--fc-font-bold);
+    border-radius: 10px 10px 0px 0px !important;
+    padding: 4px 15px;
+    right: -90px !important;
+    top: 50% !important;
+    }
+
+    .search-top {
+        justify-content: left;
+    }
+
+    .search-tag{
+          margin: 6px;
     }
      
 }
