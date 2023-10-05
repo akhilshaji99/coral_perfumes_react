@@ -33,7 +33,7 @@ function FooterText() {
     <div className="d-sm-block">
       <p className="mb-5">{footerTitle ? footerTitle : footerDatas?.title}</p>
       <div
-        className="p-d-c"
+        className="p-d-c footer-text"
         dangerouslySetInnerHTML={{
           __html: footerContent ? footerContent : footerDatas?.content,
         }}
