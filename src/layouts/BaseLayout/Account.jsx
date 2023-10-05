@@ -5,7 +5,7 @@ import EngLang from "../../assets/img/icons/lang/english.png";
 import { useEffect, useState, useRef } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../pages/common/Logo";
 import { useDispatch } from "react-redux";
 import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
@@ -18,14 +18,18 @@ function useComponentVisible(initialIsVisible) {
 
   const handleClickOutside = (event) => {
     const screensWidth = window.innerWidth;
-  //Code for device identification
-  let screen_type = "Desktop";
-  if (screensWidth <= 760) {
-    screen_type = "Mobile";
-  } else {
-    screen_type = "Desktop";
-  }
-    if (ref.current && !ref.current.contains(event.target) && screen_type !== "Mobile") {
+    //Code for device identification
+    let screen_type = "Desktop";
+    if (screensWidth <= 760) {
+      screen_type = "Mobile";
+    } else {
+      screen_type = "Desktop";
+    }
+    if (
+      ref.current &&
+      !ref.current.contains(event.target) &&
+      screen_type !== "Mobile"
+    ) {
       setIsComponentVisible(false);
     }
   };
@@ -62,7 +66,7 @@ function Account({ changeMyAccountMenuStatus }) {
     setQuery(inputValue);
     performSearch(inputValue);
   };
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -353,7 +357,11 @@ function Account({ changeMyAccountMenuStatus }) {
                       className="text-center"
                       onClick={(e) => {
                         e.preventDefault();
-                        // navigate("/dashboard");
+                        if (username) {
+                          navigate("/dashboard");
+                        } else {
+                          navigate("/login");
+                        }
                       }}
                     >
                       <svg

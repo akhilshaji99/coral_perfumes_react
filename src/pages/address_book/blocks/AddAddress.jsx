@@ -4,19 +4,19 @@ import { useFormik, getIn } from "formik";
 import * as yup from "yup";
 import addNewAddress from "../../checkout/js/addUserAddress";
 import getEmirates from "../../checkout/js/getEmiratesList";
-import  "../css/style.css"
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+import "../css/style.css";
+// const phoneRegExp =
+//   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const newAddressFormSchema = yup.object().shape({
   postal_code: yup.string().required(),
-  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  phone_number: yup.string().required(),
   flat_name: yup.string().required(),
   building_number: yup.string().required(),
   street_address: yup.string().required(),
   emirate: yup.string().required(),
   first_name: yup.string().required(),
   last_name: yup.string().required(),
-  email: yup.string().required(),
+  email: yup.string().email().required(),
 });
 
 function getStyles(errors, fieldName) {
@@ -66,7 +66,7 @@ function AddAddress({
       city: "",
       floor_number: "",
     },
-  
+
     validationSchema: newAddressFormSchema,
     onSubmit: handleOnSubmit,
     validateOnBlur: true, // Enable validation on blur
@@ -151,7 +151,9 @@ function AddAddress({
             <div className="row">
               <div col-12 col-md-12 mb-2>
                 {/* heading */}
-                <h5 className="mb-5 text-center address-popup-title">ADD NEW ADDRESS</h5>
+                <h5 className="mb-5 text-center address-popup-title">
+                  ADD NEW ADDRESS
+                </h5>
               </div>
               <div className="col-3 col-md-2">
                 {/* button */}
@@ -360,7 +362,10 @@ function AddAddress({
                   </div>
                 </div>
                 <div className="col-md-12 col-12 text-center">
-                  <button className="btn btn-dark col-lg-3 col-12 address-button" type="submit">
+                  <button
+                    className="btn btn-dark col-lg-3 col-12 address-button"
+                    type="submit"
+                  >
                     SAVE
                   </button>
                 </div>

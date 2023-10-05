@@ -158,7 +158,11 @@ function Index() {
                       <div className="visit-text">
                         <div>
                           <h2>{store?.store_name} </h2>
-                          <p>{store?.store_address}</p>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: store?.store_address,
+                            }}
+                          ></p>
                           <p>{store?.store_location}</p>
                           <a href="#">VISIT US</a>
                         </div>

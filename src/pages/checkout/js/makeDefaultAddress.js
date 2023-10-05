@@ -6,9 +6,12 @@ const MakeDefaultAddress = async (defaultAddress) => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
-    bodyFormData.append("address_id",defaultAddress);
-    
-    const response = await request.post("update_default_address/", bodyFormData);
+    bodyFormData.append("address_id", defaultAddress);
+
+    const response = await request.post(
+      "update_default_address/",
+      bodyFormData
+    );
 
     if (response.data.status) {
       toast((t) => (
@@ -20,6 +23,7 @@ const MakeDefaultAddress = async (defaultAddress) => {
           message={response.data.message}
         />
       ));
+      return true;
     } else {
       toast((t) => (
         <AlerMessage
@@ -30,6 +34,7 @@ const MakeDefaultAddress = async (defaultAddress) => {
           message={response?.data?.message}
         />
       ));
+      return false;
     }
   } catch (error) {
     toast((t) => (
@@ -44,7 +49,7 @@ const MakeDefaultAddress = async (defaultAddress) => {
         }
       />
     ));
-    console.log("error", error);
+    return false;
   }
 };
 export default MakeDefaultAddress;

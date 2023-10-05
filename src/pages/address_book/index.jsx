@@ -25,7 +25,15 @@ function Index() {
     }
   }, [addAddressListFlag]);
   const markDefaultAddress = () => {
-    MakeDefaultAddress(defaultAddress).then((response) => {});
+    MakeDefaultAddress(defaultAddress).then((response) => {
+      if (response) {
+        getAddressList().then((response) => {
+          if (response?.data) {
+            setAddressList(response?.data);
+          }
+        });
+      }
+    });
   };
   const editAddress = (info) => {
     setEditAddressInfo(info);
@@ -37,6 +45,7 @@ function Index() {
     $("#AddAddress").toggle();
     $("#AddAddress").toggleClass("modal fade modal");
   };
+
   return (
     <main>
       {/* section */}
@@ -87,15 +96,17 @@ function Index() {
                 >
                   + Add New Address
                 </label>
-                <div className="col-12 text-start">
-                  <button
-                    className="btn btn-dark col-md-2 mt-4"
-                    type="button"
-                    onClick={markDefaultAddress}
-                  >
-                    Save
-                  </button>
-                </div>
+                {addressList.length > 0 ? (
+                  <div className="col-12 text-start">
+                    <button
+                      className="btn btn-dark col-md-2 mt-4"
+                      type="button"
+                      onClick={markDefaultAddress}
+                    >
+                      Save
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
