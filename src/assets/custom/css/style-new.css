@@ -1539,6 +1539,24 @@ button.ModalBtn.offer-button {
   color: #000;
 }
 .row.brand-rating {
+  width: 90%;
   max-height: 385px;
   overflow-y: scroll;
+}
+div#addressModal .modal-body {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+p.delivery-info span svg {
+  vertical-align: middle;
+}
+.rec-products-container .col-md-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+.product-grid h4 {
+  text-transform: lowercase;
+}
+.product-grid h4::first-letter {
+  text-transform: uppercase;
 }
