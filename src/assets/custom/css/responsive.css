@@ -83,15 +83,7 @@
             margin-bottom: 2rem;
             margin-top: 50px;
           }
-          .selling-price {
-            font-size: 13px;
-        }
-    .discounted-price {
-        font-size: 13px;
-    }
-    .discount-percentage {
-        font-size: 13px;
-    }
+        
     .brand-rating-date {
         font-size: 11px;
         line-height: 24px;
@@ -550,10 +542,21 @@
         padding-bottom: 15px;
     }
     a.dropdown-toggle.text-dark.btn-filter {
-        padding: 2px 5px;
+        padding: 3px 5px;
     }
     .flash-sale-box span img, svg {
         vertical-align: middle;
+    }
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+       padding-left: calc(var(--fc-gutter-x) * 0.2);
+        padding-right: calc(var(--fc-gutter-x) * 0.2);
+        width: 100%;
+    }
+    .d-block.d-lg-none.my-2 {
+        margin-bottom: 0px !important;
+    }
+    .col-lg-9.col-md-12 .mt-4 {
+        margin-top: 5px !important;
     }
     }
     
