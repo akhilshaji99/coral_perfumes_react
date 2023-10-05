@@ -71,7 +71,7 @@ function productData({ productDatas, currentVariant }) {
             <tamara-widget
               type="tamara-summary"
               amount={currentVariant?.price_amount}
-              inline-type="4"
+              inline-type="2"
             ></tamara-widget>
           </div>
           {/* <div className="col-xl-11 col-sm-10 col-10 text-sm-end text-lg-start">
