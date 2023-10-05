@@ -4,6 +4,7 @@ import getStores from "./js/getStores";
 import getEmirates from "../checkout/js/getEmiratesList";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
+import BreadCrumps from "../common/BreadCrumps";
 
 function Index() {
   const [stores, setStores] = useState([]);
@@ -112,61 +113,65 @@ function Index() {
             then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
   return (
-    <div className="page-new">
-      <div className="container-new">
-        <div className="choose-row">
-          <div className="visit-tittle">
-            <h1>Visit us </h1>
-          </div>
-          <div className="choose-emirates">
-            <div className=" custom-select">
-              <form action="#">
-                <select
-                  id="Emirates"
-                  style={{ cursor: "pointer !important", borderRadius: 0 }}
-                >
-                  <option disabled="" selected="">
-                    Choose Emirates{" "}
-                  </option>
-                  <option value="Abu Dhabi">Abu Dhabi</option>
-                  <option value="Dubai">Dubai</option>
-                  <option value="Sharjah">Sharjah</option>
-                </select>
-              </form>
+    <>
+      <div className="page-new">
+        <BreadCrumps />
+        <div className="container-new">
+          <div className="choose-row">
+            <div className="visit-tittle">
+              <h1>Visit us </h1>
+            </div>
+            <div className="choose-emirates">
+              <div className=" custom-select">
+                <form action="#">
+                  <select
+                    id="Emirates"
+                    style={{ cursor: "pointer !important", borderRadius: 0 }}
+                  >
+                    <option disabled="" selected="">
+                      Choose Emirates{" "}
+                    </option>
+                    <option value="Abu Dhabi">Abu Dhabi</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Sharjah">Sharjah</option>
+                  </select>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <section className="visit-section">
-        <div className="container-new">
-          {/*-row 1*/}
-          <div className="visit-row">
-            <ul>
-              {stores?.map((store, index) => {
-                return (
-                  <li>
-                    <div className="viisit-img" key={index}>
-                      <img
-                        src={deviceImageRender(store?.store_listing_image)}
-                        alt=""
-                      />
-                    </div>
-                    <div className="visit-text">
-                      <div>
-                        <h2>{store?.store_name} </h2>
-                        <p>{store?.store_address}</p>
-                        <p>{store?.store_location}</p>
-                        <a href="#">VISIT US</a>
+
+        <section className="visit-section">
+          <div className="container-new">
+            {/*-row 1*/}
+            <div className="visit-row">
+              <ul>
+                {stores?.map((store, index) => {
+                  return (
+                    <li>
+                      <div className="viisit-img" key={index}>
+                        <img
+                          src={deviceImageRender(store?.store_listing_image)}
+                          alt=""
+                        />
                       </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+                      <div className="visit-text">
+                        <div>
+                          <h2>{store?.store_name} </h2>
+                          <p>{store?.store_address}</p>
+                          <p>{store?.store_location}</p>
+                          <a href="#">VISIT US</a>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
 export default Index;

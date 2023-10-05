@@ -21,6 +21,7 @@ import {
   PinterestIcon,
   WhatsappIcon,
 } from "react-share";
+import BreadCrumps from "../common/BreadCrumps";
 // import styled from 'styled-components'
 
 function Index() {
@@ -166,6 +167,7 @@ function Index() {
 
   return (
     <>
+      <BreadCrumps />
       <div className="conatiner px-5">
         <div className="row mb-5 ">
           <ProductCarousel sliderImages={currentVariant?.variant_images} />

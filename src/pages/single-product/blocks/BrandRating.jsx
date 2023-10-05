@@ -45,7 +45,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               return (
                 <div className="mb-5" key={index}>
                   <div className="row align-items-center">
-                    <div className="col-md-6">
+                    <div className="col-md-8">
                       <div className="col-md-12">
                         {/* address */}
                         <div className="row">
