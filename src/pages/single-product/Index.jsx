@@ -52,107 +52,111 @@ function Index() {
           "get_product_variants/" + product_slug + "/",
           bodyFormData
         );
-
-        if (response?.data?.product_data) {
-          setProductDatas(response?.data?.product_data);
-        }
-        if (response?.data?.flash_sale) {
-          setFlashSale(response?.data?.flash_sale);
-        }
-        if (response?.data?.current_variant) {
-          setCurrentVariant(response.data.current_variant);
-        }
-        if (response?.data?.current_variant && response?.data?.other_variants) {
-          response?.data?.other_variants.push(response?.data?.current_variant);
-          formatProductVariant(response?.data?.other_variants);
-          // console.log(response?.data?.other_variants);
-          // setOtherVariants(response?.data?.other_variants);
-        }
-
-        if (response?.data?.current_variant && response?.data?.other_variants) {
-          CreateProductVariants(
-            response.data.current_variant,
-            response.data.other_variants
-          ).then((data) => {
-            // console.log(data);
-            setproductVariants(data);
-            //Set active variant datas
-            let activeVariantArray = {};
-            response?.data?.current_variant?.assigned_variant_attributes?.forEach(
-              (variants) => {
-                activeVariantArray[variants.attribute_name] =
-                  variants?.attribute_values?.[0]?.value;
-              }
-            );
-            setActiveVariant(activeVariantArray);
-            //#End
-          });
-        }
-        if (response?.data?.product_data.recommended_products) {
-          setRecProducts(response?.data?.product_data.recommended_products);
-        }
+        setDatasToState(response);
       }
     } catch (error) {
       console.log("error", error);
     }
   };
 
-  const formatProductVariant = (allVariants) => {
-    allVariants.forEach((variant) => {
-      variant.formattedVariant = [];
-      variant?.assigned_variant_attributes?.forEach((attributeData) => {
-        variant.formattedVariant.push({
-          [attributeData.attribute_name]:
-            attributeData?.attribute_values[0].value,
+  const setDatasToState = (response) => {
+    if (response?.data?.product_data) {
+      setProductDatas(response?.data?.product_data);
+    }
+    if (response?.data?.flash_sale) {
+      setFlashSale(response?.data?.flash_sale);
+    }
+    if (response?.data?.current_variant) {
+      setCurrentVariant(response.data.current_variant);
+    }
+    if (response?.data?.attribute_datas) {
+      const dataArray = [];
+      let i = 0;
+      for (const key in response?.data?.attribute_datas) {
+        dataArray.push({
+          main_label: key,
+          sub_datas: [],
         });
-      });
-    });
-    setOtherVariants(allVariants);
-    // return allVariants;
+        for (const key_sub in response?.data?.attribute_datas[key]["values"]) {
+          dataArray[i].sub_datas.push(
+            response?.data?.attribute_datas[key]["values"][key_sub]
+          );
+        }
+        i++;
+      }
+      // console.log(dataArray);
+      setproductVariants(dataArray);
+    }
+    if (response?.data?.product_data.recommended_products) {
+      setRecProducts(response?.data?.product_data.recommended_products);
+    }
   };
 
-  const changeProductVariant = (attribute_name, variant_value) => {
-    const updatedVariant = { ...activeVariant };
-    updatedVariant[attribute_name] = variant_value;
-    setActiveVariant(updatedVariant);
-    setVariantChangeFlag(!variantChangeFlag);
-    // console.log("updatedVariant", updatedVariant);
-    console.log("all Datas", otherVariants);
-    otherVariants.forEach((otherVariant) => {
-      console.log("otherVariant", otherVariant?.assigned_variant_attributes);
-      console.log(activeVariant);
-    });
+  // const formatProductVariant = (allVariants) => {
+  //   allVariants.forEach((variant) => {
+  //     variant.formattedVariant = [];
+  //     variant?.assigned_variant_attributes?.forEach((attributeData) => {
+  //       variant.formattedVariant.push({
+  //         [attributeData.attribute_name]:
+  //           attributeData?.attribute_values[0].value,
+  //       });
+  //     });
+  //   });
+  //   setOtherVariants(allVariants);
+  //   // return allVariants;
+  // };
 
-    // Object.entries(activeVariant).map(([key, value]) => {
-    //   console.log(key);
-    //   console.log(value);
-    //   let flag = false;
-    //   otherVariants.forEach((variantData) => {
-    //     variantData?.assigned_variant_attributes.forEach((attributeData) => {
-    //       if (
-    //         attributeData?.attribute_name === key &&
-    //         attributeData?.attribute_values[0].value === value
-    //       ) {
-    //         console.log(
-    //           attributeData?.attribute_name +
-    //             "-" +
-    //             key +
-    //             "--" +
-    //             "value-" +
-    //             attributeData?.attribute_values[0].value +"-"+
-    //             value
-    //         );
-    //         // console.log("variantData", variantData);
-    //         flag = true;
-    //         return;
-    //       }
-    //     });
-    //   });
-    //   if (flag) {
-    //     return;
-    //   }
-    // });
+  const changeProductVariant = async (variant_slug) => {
+    const response = await request.post(
+      "get_product_by_variants/" + variant_slug + "/"
+    );
+    setDatasToState(response);
+    // console.log(response);
+    // console.log(slug);
   };
+
+  // const changeProductVariant = (attribute_name, variant_value) => {
+  //   const updatedVariant = { ...activeVariant };
+  //   updatedVariant[attribute_name] = variant_value;
+  //   setActiveVariant(updatedVariant);
+  //   setVariantChangeFlag(!variantChangeFlag);
+  //   // console.log("updatedVariant", updatedVariant);
+  //   console.log("all Datas", otherVariants);
+  //   otherVariants.forEach((otherVariant) => {
+  //     console.log("otherVariant", otherVariant?.assigned_variant_attributes);
+  //     console.log(activeVariant);
+  //   });
+
+  // Object.entries(activeVariant).map(([key, value]) => {
+  //   console.log(key);
+  //   console.log(value);
+  //   let flag = false;
+  //   otherVariants.forEach((variantData) => {
+  //     variantData?.assigned_variant_attributes.forEach((attributeData) => {
+  //       if (
+  //         attributeData?.attribute_name === key &&
+  //         attributeData?.attribute_values[0].value === value
+  //       ) {
+  //         console.log(
+  //           attributeData?.attribute_name +
+  //             "-" +
+  //             key +
+  //             "--" +
+  //             "value-" +
+  //             attributeData?.attribute_values[0].value +"-"+
+  //             value
+  //         );
+  //         // console.log("variantData", variantData);
+  //         flag = true;
+  //         return;
+  //       }
+  //     });
+  //   });
+  //   if (flag) {
+  //     return;
+  //   }
+  // });
+  // };
 
   useEffect(() => {
     const result = Object.entries(activeVariant)
@@ -438,42 +442,42 @@ function Index() {
               {productVariants?.map((productVariant, index) => {
                 return (
                   <>
-                    {productVariant?.layout === "layout_1" ? (
-                      <div className="row" key={index}>
-                        <span className="select-size">
-                          {productVariant?.attribute_name}
-                        </span>
-                        <div className="col-md-7 scrollable-area">
-                          <div className="mb-5 variant-box">
-                            {productVariant?.variants?.map(
-                              (variant, index_inner) => {
-                                return (
-                                  <button
-                                    key={index_inner}
-                                    type="button"
-                                    className={`btn btn-outline-secondary btn-variant ${
-                                      activeVariant[
-                                        productVariant?.attribute_name
-                                      ] === variant?.value
-                                        ? `variant-active`
-                                        : null
-                                    }`}
-                                    onClick={() => {
-                                      changeProductVariant(
-                                        productVariant?.attribute_name,
-                                        variant?.value
-                                      );
-                                    }}
-                                  >
-                                    {variant?.value}
-                                  </button>
-                                );
-                              }
-                            )}
-                          </div>
+                    {/* {productVariant?.layout === "layout_1" ? ( */}
+                    <div className="row" key={index}>
+                      <span className="select-size">
+                        {productVariant?.main_label}
+                      </span>
+                      <div className="col-md-7 scrollable-area">
+                        <div className="mb-5 variant-box">
+                          {productVariant?.sub_datas?.map(
+                            (variant, index_inner) => {
+                              return (
+                                <button
+                                  key={index_inner}
+                                  type="button"
+                                  className={`btn btn-outline-secondary btn-variant ${
+                                    variant?.active === true
+                                      ? `variant-active`
+                                      : null
+                                  }`}
+                                  onClick={() => {
+                                    changeProductVariant(
+                                      variant?.slug
+                                      // productVariant?.attribute_name,
+                                      // variant?.value
+                                    );
+                                  }}
+                                  disabled={variant?.availabilty === false}
+                                >
+                                  {variant?.label}
+                                </button>
+                              );
+                            }
+                          )}
                         </div>
                       </div>
-                    ) : productVariant?.layout === "layout_2" ? (
+                    </div>
+                    {/* ) : productVariant?.layout === "layout_2" ? (
                       <div className="row" key={index}>
                         <span className="select-size">
                           {productVariant?.attribute_name}
@@ -508,7 +512,7 @@ function Index() {
                           </div>
                         </div>
                       </div>
-                    ) : null}
+                    ) : null} */}
                   </>
                 );
               })}

@@ -8,6 +8,10 @@ import Logout from "../../assets/img/icons/my-account/logout-2x.svg";
 import { NavLink } from "react-router-dom";
 
 function index() {
+  const logoutUser = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <main>
       <section>
@@ -62,14 +66,20 @@ function index() {
               </NavLink>
             </div>{" "}
             <div className="col-md-3 col-6 text-center">
-              <img src={Returns} alt="Coral Perfumes" className="img-fluid" />
-              <h6>returns</h6>
-              <p>edit details</p>
+              <NavLink to={"/returns"}>
+                <img src={Returns} alt="Coral Perfumes" className="img-fluid" />
+                <h6>returns</h6>
+                <p>edit details</p>
+              </NavLink>
             </div>{" "}
-            <div className="col-md-3 col-6 text-center">
+            <div
+              className="col-md-3 col-6 text-center"
+              onClick={() => logoutUser()}
+              style={{ cursor: "pointer" }}
+            >
               <img src={Logout} alt="Coral Perfumes" className="img-fluid" />
               <h6>logout</h6>
-              <p>edit details</p>
+              {/* <p>edit details</p> */}
             </div>
           </div>
         </div>
