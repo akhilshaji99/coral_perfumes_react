@@ -22431,6 +22431,7 @@ h3 {
   font-family: var(--fc-font-thin);
   line-height: 246%; /* 29.52px */
   letter-spacing: 1.08px;
+  color: #fff;
 }
 
 .footer .form-control::placeholder {
@@ -26569,7 +26570,7 @@ span.flatpickr-weekday {
   }
   .product-img img {
     height: 90px !important;
-    height: 90px !important;
+    height: 120px !important;
     object-fit: contain;
     margin-top: 25px;
   }
@@ -26579,7 +26580,7 @@ span.flatpickr-weekday {
   .product-grid h4 {
     color: #000;
     font-family: Arial;
-    font-size: 8.5px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
     text-transform: capitalize;
     text-align: center !important;
@@ -27098,8 +27099,9 @@ span.flatpickr-weekday {
     transform: scale(0.75);
   }
   .product-desc-section .btn-checkout {
-    font-size: 12px !important;
+    font-size: 14px !important;
     padding: 12px 20px;
+    color: #fff;
   }
   .timer-box {
     border-radius: 9px;
@@ -27366,7 +27368,7 @@ span.flatpickr-weekday {
     margin: 0 auto !important;
   }
   .product-desc-section h1 {
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
   .product-desc-section h2 {
     font-size: 12px !important;
@@ -27612,7 +27614,6 @@ span.flatpickr-weekday {
   border-radius: 9px;
   background: #000;
   text-transform: uppercase;
-  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -27958,6 +27959,7 @@ border-radius: none !important;
 .dashboard-row p {
   text-transform: capitalize;
   color: #000;
+  padding-top: 5px;
 }
 .dashboard-heading {
   text-transform: uppercase;

@@ -156,7 +156,7 @@ function Index() {
                         />
                       </div>
                       <div className="visit-text">
-                        <div>
+                        <div class="ms-9 me-9">
                           <h2>{store?.store_name} </h2>
                           <p
                             dangerouslySetInnerHTML={{
