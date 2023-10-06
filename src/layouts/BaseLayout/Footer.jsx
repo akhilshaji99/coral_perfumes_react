@@ -543,7 +543,7 @@ function Footer({ changeMobileMenuStatus }) {
                       </span>
                     </a>
                   </li>
-                  <li className="nav-item mb-2">
+                  <li className="nav-item mb-2 ft-top ">
                     <a href="#!" className="nav-link">
                       {" "}
                       return policies{" "}
@@ -552,7 +552,7 @@ function Footer({ changeMobileMenuStatus }) {
                       </span>
                     </a>
                   </li>
-                  <li className="nav-item mb-2">
+                  <li className="nav-item mb-2 ft-top ">
                     <a href="#!" className="nav-link">
                       product recall{" "}
                       <span className="footer-link-seperator">
@@ -570,7 +570,7 @@ function Footer({ changeMobileMenuStatus }) {
               <div className="col-md-3">
                 <h6 className="mb-5">support</h6>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2">
+                  <li className="nav-item mb-2 ft-top ">
                     <a href="tel:+97123345346767" className="nav-link">
                       +971 2334 5346767
                     </a>

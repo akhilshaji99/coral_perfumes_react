@@ -226,7 +226,7 @@ ul li {
 .visit-row ul {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .visit-row ul li {
@@ -252,7 +252,6 @@ ul li {
 .choose-row {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 35px;
 }
 .visit-text p {
   color: #fff;
@@ -283,11 +282,14 @@ ul li {
 .visit-text h2 {
   color: #fff;
   font-family: "BrandonText-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 450;
-  line-height: 50px;
-  text-transform: capitalize;
+  line-height: 40px;
+  text-transform: lowercase;
+}
+.visit-text h2::first-letter {
+  text-transform: uppercase;
 }
 .visit-text p {
   color: #fff;
@@ -1177,7 +1179,8 @@ span#word-count {
 }
 .custom-select {
   position: relative;
-  font-family: Arial;
+  font-family: "BrandonText-regular", sans-serif;
+  font-size: 18px;
 }
 
 .custom-select select {
@@ -1221,15 +1224,15 @@ span#word-count {
 .select-selected:after {
   position: absolute;
   content: "";
-  top: 7px;
-  right: -11px;
+  top: 16px !important;
+  right: -5px;
   width: 16px;
-  height: 16px;
+  height: 17px;
   background-image: url(../images/arrow-btm.svg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 10px;
+  width: 18px;
 }
 
 /*hide the items when the select box is closed:*/
@@ -1368,6 +1371,7 @@ a.dropdown-toggle.text-dark.btn-filter {
 .input-spinner .form-input {
   font-size: 13px;
   font-weight: bolder;
+  color: #000 !important;
 }
 .product-desc-section h2 {
   color: #000;
@@ -1540,9 +1544,12 @@ button.ModalBtn.offer-button {
 }
 .row.brand-rating {
   width: 90%;
+}
+.row.brand-rating .col-md-9.col-10 {
   max-height: 385px;
   overflow-y: scroll;
 }
+
 div#addressModal .modal-body {
   max-height: 300px;
   overflow-y: scroll;
@@ -1555,8 +1562,18 @@ p.delivery-info span svg {
   width: 33.33333333%;
 }
 .product-grid h4 {
-  text-transform: lowercase;
+  text-transform: capitalize;
+  text-align: left;
 }
 .product-grid h4::first-letter {
   text-transform: uppercase;
+}
+.product-grid .card-footer {
+  margin: 0px;
+}
+.row.d-flex.justify-content-center.dashboard-row {
+  padding-bottom: 30px;
+}
+.row.d-flex.justify-content-center.dashboard-row .col-md-3.col-6.text-center {
+  padding: 20px 0px;
 }
