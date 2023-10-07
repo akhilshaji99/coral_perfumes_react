@@ -167,7 +167,7 @@ function Index() {
   return (
     <>
       <BreadCrumps />
-      <div className="conatiner px-5">
+      <div className="conatiner">
         <div className="row mb-5 ">
           <ProductCarousel sliderImages={currentVariant?.variant_images} />
 

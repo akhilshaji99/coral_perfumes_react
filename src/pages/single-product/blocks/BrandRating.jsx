@@ -45,7 +45,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               return (
                 <div className="mb-5" key={index}>
                   <div className="row align-items-center">
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                       <div className="col-md-12">
                         {/* address */}
                         <div className="row">
@@ -54,7 +54,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                           </p>
                         </div>
                         <div className="row">
-                          <div className="col-md-8">
+                          <div className="col-md-6">
                             <Rating
                               initialValue={component.stars_count}
                               fillColor="#0f0f0f"
@@ -63,7 +63,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                               className="mb-4 react-simple-star-rating"
                             />{" "}
                           </div>
-                          <div className="col-md-4 pr-0">
+                          <div className="col-md-6 pr-0">
                             <p className="brand-rating-date">
                               {component.submitted_date}
                             </p>
