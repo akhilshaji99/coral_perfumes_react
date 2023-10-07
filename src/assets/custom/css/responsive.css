@@ -94,6 +94,10 @@
     li.nav-item.mb-2.ft-top {
         margin-bottom: -10px !important;
     }
+    .input-group-custom.input-spinner {
+        justify-content: center;
+        margin-left: 29px;
+      }
     }
     @media (max-width:1366px){
         .container-new  {
@@ -467,6 +471,7 @@
         .blog-text-personality {
             padding: 20px 0px;
         }
+        
         .bg-blog-banner {
             background-image: url(../images/blog-banner.webp);
             background-position: center;
@@ -545,7 +550,7 @@
         padding-bottom: 15px;
     }
     a.dropdown-toggle.text-dark.btn-filter {
-        padding: 2px 5px;
+        padding:5px;
         display: block;
     }
     .flash-sale-box span img, svg {
@@ -573,7 +578,6 @@
     .container.d-block.d-sm-none.mob-count {
         position: absolute;
         top: -14px;
-         right: 10px;
     }
     .banner-flashsale {
         position: relative;
@@ -581,7 +585,53 @@
     .flash-sale-container h1 {
         text-align: left;
     }
-
+    .col-lg-9.col-md-12.brands-sub {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .container{
+        width: 95% !important;
+        margin: 0 auto;
+    }
+    .col-auto.search-tag {
+        margin-right: 20px;
+    }
+ .hd-left {
+        padding-left: 35px;
+    }
+    h1.mb-5.flash-sale {
+        text-align: center;
+    }
+    .custom-badge {
+        position: absolute;
+        left: -17px;
+        transform: scale(0.55);
+        top: 4px;
+        
+      }
+      .my-bag-spinner {
+        transform: scale(0.65);
+        position: relative;
+        left: -26%;
+    }
+    .pd-detail {
+        padding: 0px 15px;
+    }
+    span.color-txt {
+        color: #A7A9A2;
+    }
+    div#myTabContent button.btn.btn-dark.validate {
+        margin-left: 5px !important;
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 94%;
+    }
+    h6.ps-15.h6 {
+        padding-left: 4rem !important;
+    }
+    li.list-group-item.ps-0.d-flex.justify-content-between.align-items-start.border-tp {
+        border-top: solid 1px #e8dede;
+    }
     }
     
     
