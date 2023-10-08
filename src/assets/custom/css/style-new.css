@@ -1498,7 +1498,7 @@ ul.list-group.list-group-flush.px-6 {
   overflow-y: auto;
 }
 ::-webkit-scrollbar {
-  width: 3px; 
+  width: 3px !important; 
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1576,4 +1576,15 @@ p.delivery-info span svg {
 }
 .row.d-flex.justify-content-center.dashboard-row .col-md-3.col-6.text-center {
   padding: 20px 0px;
+}
+.selling-price {
+  padding-left: 5px;
+}
+.col.best-scroll {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.category-top {
+  padding-top: 40px;
 }

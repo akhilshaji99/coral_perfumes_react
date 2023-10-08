@@ -26576,6 +26576,7 @@ span.flatpickr-weekday {
   }
   .btn-dark {
     font-size: 0.5rem !important;
+    font-size: 12px !important;
   }
   .product-grid h4 {
     color: #000;
@@ -26853,7 +26854,7 @@ span.flatpickr-weekday {
   }
   .category-top-img img {
     border-radius: 50%;
-    padding: 8px;
+    padding: 4px;
     background: conic-gradient(
         from 180deg at 50% 50%,
         #00bb61 0deg,
@@ -27992,6 +27993,7 @@ border-radius: none !important;
   text-transform: uppercase;
   text-decoration: line-through;
   font-family: var(--fc-font-light);
+  font-size: 12px;
 }
 .input-spinner .button-minus1,
 .input-spinner .button-plus1 {
@@ -28066,6 +28068,7 @@ border-radius: none !important;
   }
   .regular-sort-icon {
     visibility: hidden !important;
+    display: none;
   }
 
   .mob-payment-icons img {
@@ -28104,7 +28107,6 @@ border-radius: none !important;
   }
   .my-bag-img {
     width: 80px !important;
-    height: 80px !important;
   }
   .my-bag-card {
     border-radius: 9px !important;
@@ -30075,7 +30077,7 @@ body {
   font-size: 12px !important;
   line-height: normal;
   text-transform: capitalize;
-  font-family: var(--fc-font-medium);
+  /*font-family: var(--fc-font-medium);*/
 }
 .search-container .mini-cart-img {
   background-color: #ebece9;
