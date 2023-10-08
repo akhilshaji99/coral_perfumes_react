@@ -161,7 +161,7 @@ function FlashSale({ componentDatas }) {
               infinite
               itemClass=""
               keyBoardControl
-              minimumTouchDrag={80}
+              minimumTouchDrag={-10000}
               pauseOnHover={false}
               renderArrowsWhenDisabled={false}
               renderButtonGroupOutside={false}

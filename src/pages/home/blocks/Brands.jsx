@@ -28,7 +28,7 @@ function Brands({ componentDatas }) {
             itemClass=""
             // partialVisbile
             keyBoardControl
-            minimumTouchDrag={80}
+            minimumTouchDrag={-10000}
             pauseOnHover
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}

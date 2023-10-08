@@ -27,7 +27,7 @@ function CategoryTop({ componentDatas }) {
             itemClass=""
             partialVisible
             keyBoardControl
-            minimumTouchDrag={80}
+            minimumTouchDrag={-10000}
             pauseOnHover
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
