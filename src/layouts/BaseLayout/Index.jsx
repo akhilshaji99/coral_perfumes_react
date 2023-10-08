@@ -11,6 +11,12 @@ import MobileMyAccount from "../../pages/common/MobileMyAccount";
 const BaseLayout = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.body.className = "";
+    document.body.classList.add(
+      window.location.pathname.split("/")[1] === ""
+        ? "home"
+        : window.location.pathname.split("/")[1]
+    );
   }, [window.location.href]);
 
   //Change language direction using js
