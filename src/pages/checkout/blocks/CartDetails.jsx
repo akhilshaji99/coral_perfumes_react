@@ -74,7 +74,7 @@ function CartDetails({ cartDatas }) {
                       {cartDatas?.discount_display}
                     </span>
                   </li>
-                  <li className="list-group-item ps-0  d-flex justify-content-between align-items-start">
+                  <li className="list-group-item ps-0  d-flex justify-content-between align-items-start border-tp">
                     <div className="me-auto">
                       <div className="fw-bold">
                         <p className="text mb-0">

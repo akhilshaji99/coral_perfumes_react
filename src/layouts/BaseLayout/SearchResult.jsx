@@ -11,7 +11,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
     // Use JavaScript's replace method to replace the search term with a span
     const highlightedTitle = title.replace(
       new RegExp(query, "g"),
-      (match) => `${'<span class="highlighted">' + match + "</span>"}`
+      (match) => `${'<span class="color-txt">' + match + "</span>"}`
     );
     console.log(highlightedTitle);
     return highlightedTitle;
@@ -115,7 +115,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
               </div>
             )}
           </div>
-          <div class="col">
+          <div class="col best-scroll">
             {result.products?.length > 0 && (
               <div className="" style={{ display: "block" }}>
                 <h5 className="pt-4">PRODUCTS</h5>
@@ -130,7 +130,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                       // setQuery(result);
                     }}
                   >
-                    <div className="col-5 col-md-3 col-lg-3">
+                    <div className="col-3 col-md-3 col-lg-3">
                       <div className="d-flex mini-cart-img">
                         <img
                           src={deviceImageRender(
@@ -141,7 +141,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                         />
                       </div>
                     </div>
-                    <div className="col-9 col-md-9 col-lg-9">
+                    <div className="hd-left col-9 col-md-9 col-lg-9">
                       <h4 className=" mb-3">{product?.name}</h4>
                       <div className="row mb-3">
                         <div className="col-md-6 price-minicart">

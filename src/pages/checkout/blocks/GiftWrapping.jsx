@@ -48,7 +48,7 @@ function GiftWrapping({
         <div className="d-flex row align-items-center">
           <div className="col-md-10">
             <div className="row align-items-center">
-              <div className="col-md-1">
+              <div className="col-2 ßcol-md-1">
                 <div className="form-check">
                   <input
                     className="form-check-input"
@@ -62,7 +62,7 @@ function GiftWrapping({
                   />
                 </div>
               </div>
-              <div className="col-md-9">
+              <div className="col-10 col-md-9">
                 <h5 className="h6 pt-2">
                   {" "}
                   Add Gift Wrapping (AED 5 Charge Apply){" "}

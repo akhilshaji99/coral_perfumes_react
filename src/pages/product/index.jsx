@@ -63,7 +63,7 @@ function Index() {
                 unselectAll={unselectAll}
               />
             </div>
-            <div className="col-lg-9 col-md-12">
+            <div className="col-lg-9 col-md-12 brands-sub">
               <ProductMain
                 filterArray={filterArray}
                 passingDataToParent={passingDataToParent}

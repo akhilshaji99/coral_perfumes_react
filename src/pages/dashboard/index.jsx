@@ -21,7 +21,7 @@ function index() {
         <div className="container ">
           <h2 className="dashboard-heading">my dashboard</h2>
           <div className="row d-flex justify-content-center dashboard-row">
-            <div className="col-md-3 col-6 text-center">
+            <div className="col-md-3 col-6 text-center mt-3">
               <NavLink to={"/personal-info"}>
                 <img
                   src={personalInfo}
@@ -32,7 +32,7 @@ function index() {
                 <p>edit details</p>
               </NavLink>
             </div>
-            <div className="col-md-3 col-6 text-center">
+            <div className="col-md-3 col-6 text-center mt-4">
               <NavLink to={"/address-book"}>
                 <img
                   src={addressBook}
@@ -54,7 +54,7 @@ function index() {
                 <p>edit details</p>
               </NavLink>
             </div>
-            <div className="col-md-3 col-6 text-center">
+            <div className="col-md-3 col-6 text-center mt-2">
               <NavLink to={"/wishlist"}>
                 <img
                   src={myWishlist}

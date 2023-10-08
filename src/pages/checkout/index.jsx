@@ -383,7 +383,7 @@ function Index() {
                             </div>
                           </div>
                           <div className="row g-4">
-                            <div className="col-md-6 col-12">
+                            <div className="col-md-6 col-6">
                               {/* input */}
                               <div className="mb-3 mb-lg-0">
                                 <input
@@ -396,7 +396,7 @@ function Index() {
                                 />
                               </div>
                             </div>
-                            <div className="col-md-3 col-12">
+                            <div className="col-md-3 col-6">
                               {/* input */}
                               <div className="mb-3  mb-lg-0 position-relative">
                                 <div class="">

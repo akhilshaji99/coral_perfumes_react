@@ -73,10 +73,10 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
         <div className="mb-1">
           {/* card body */}
           <div className="card-body p-1">
-            {deliveryTypes?.map((deliveryType, index) => {
+            {deliveryTypes?.map((deliveryType, index) => {  
               return (
                 <div className="row" key={index}>
-                  <div className="col-md-4 col-12">
+                  <div className="col-md-4 col-8">
                     {/* input */}
                     <div className="mb-3 mb-lg-0">
                       <div className="card-body p-3">
@@ -112,7 +112,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4 col-12">
+                  <div className="col-md-4 col-4">
                     {/* input */}
                     <div className="card-body pt-3">
                       <h5 className=" pt-1  h6"> AED {deliveryType?.amount}</h5>
