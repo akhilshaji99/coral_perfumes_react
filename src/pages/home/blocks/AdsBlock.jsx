@@ -3,11 +3,16 @@ import deviceImageRender from "../../../utils/deviceImageRender";
 function AdsBlock({ componentDatas }) {
   return (
     <>
-      <div className="container-fluid cc-margin">
+      <div className="container-fluid full-width cc-margin">
         <div className="row g-8 ads-block justify-content-center">
           {componentDatas?.datas?.map((adBlock, index) => {
             return (
-              <div className="col-md-6 col-12" key={index}>
+              <div
+                className={`col-md-6 col-12 ${
+                  index % 2 === 0 ? `side-padding` : ""
+                }`}
+                key={index}
+              >
                 <Link to={adBlock?.link}>
                   <img
                     src={deviceImageRender(

@@ -30,7 +30,7 @@ function Timer({ flash_sale }) {
   const timer = async () => {
     const currentDate = new Date();
     const timeDifferenceInMilliseconds =
-      endDate.getTime() - currentDate.getTime();
+      endDate.getTime() - currentDate.getTime() || 0;
     const hour = Math.floor(timeDifferenceInMilliseconds / (1000 * 60 * 60));
     const minutes = Math.floor(
       (timeDifferenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60)

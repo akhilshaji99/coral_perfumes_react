@@ -37,6 +37,7 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       aria-labelledby="reviews-tab"
       tabIndex={0}
     >
+      hiiii
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
       <div className="container-lg-fluid px-0">
         <div className="row brand-rating">
