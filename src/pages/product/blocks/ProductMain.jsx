@@ -87,6 +87,11 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
             priceRange: priceRangeFilter,
             sortRelevance: relevanceFilter,
             token: getUserToken(),
+            slug_items: window.location.pathname.includes(
+              "/products/search/items"
+            )
+              ? localStorage.getItem("link_items")
+              : "",
           }
         );
         if (response?.data) {

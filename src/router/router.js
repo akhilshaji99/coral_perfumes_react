@@ -39,6 +39,7 @@ const Router = () => {
           element: userDatas ? <Navigate to="/" /> : <LoginPage />,
         },
         { path: "products/:link_type/:link_value", element: <ProductPage /> },
+        { path: "products/:link_type/:link_value/:random_key", element: <ProductPage /> },
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
         {

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
+import { Link } from "react-router-dom";
 function SearchResult({ setResult, result, setQuery, query }) {
   const navigate = useNavigate();
   const closeModal = () => {
@@ -13,7 +14,6 @@ function SearchResult({ setResult, result, setQuery, query }) {
       new RegExp(query, "g"),
       (match) => `${'<span class="color-txt">' + match + "</span>"}`
     );
-    console.log(highlightedTitle);
     return highlightedTitle;
   }
 
@@ -27,8 +27,14 @@ function SearchResult({ setResult, result, setQuery, query }) {
                 className="col-auto search-tag"
                 onClick={() => {
                   closeModal();
-                  navigate("/" + block.link);
+                  navigate(
+                    "/" +
+                      block.link +
+                      "/" +
+                      Math.random().toString(36).slice(2, 7)
+                  );
                   setQuery(block.title);
+                  localStorage.setItem("link_items", block?.link_items);
                   // setQuery(result);
                 }}
               >
@@ -114,6 +120,26 @@ function SearchResult({ setResult, result, setQuery, query }) {
                 ))}
               </div>
             )}
+
+            <span
+              to={""}
+              onClick={() => {
+                closeModal();
+                navigate(
+                  "/" +
+                    result?.see_all_item?.link +
+                    "/" +
+                    Math.random().toString(36).slice(2, 7)
+                );
+                localStorage.setItem(
+                  "link_items",
+                  result?.see_all_item?.link_items
+                );
+              }}
+              className="mt-3"
+            >
+              <u>{result?.see_all_item?.title}</u>
+            </span>
           </div>
           <div class="col best-scroll">
             {result.products?.length > 0 && (
