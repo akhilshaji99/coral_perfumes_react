@@ -37,7 +37,7 @@ function ProductCarousel({ componentDatas }) {
             infinite
             itemClass=""
             keyBoardControl
-            minimumTouchDrag={0}
+            minimumTouchDrag={-10000}
             pauseOnHover={false}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
