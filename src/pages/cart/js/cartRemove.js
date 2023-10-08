@@ -2,12 +2,13 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 
-const cartRemove = async (product_variant_id) => {
+const cartRemove = async (product_variant_id, dispatch) => {
   try {
     const response = await request.delete(
       "api/cart/delete/" + product_variant_id + "/"
     );
     if (response.data.status) {
+      // dispatch(changeCartCount(cartTotalCount - 1));
       // toast((t) => (
       //   <AlerMessage
       //     t={t}

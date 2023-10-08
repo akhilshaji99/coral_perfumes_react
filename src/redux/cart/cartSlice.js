@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartDrawerFlag: false,
+  cartCount:0
 };
 
 export const cartSlice = createSlice({

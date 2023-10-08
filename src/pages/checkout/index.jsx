@@ -587,7 +587,7 @@ function Index() {
                               DELIVERY ADDRESS
                             </button>
                           </li>
-                          <li className="nav-item" role="presentation">
+                          <li className="nav-item mobile-right" role="presentation">
                             <button
                               className={
                                 parseInt(addressForm.values.delivery_type) === 2

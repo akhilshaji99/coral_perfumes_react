@@ -73,7 +73,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType }) {
 
   return (
     <div
-      className="modal fade"
+      className="modal "
       id="ratingModal"
       tabIndex={-1}
       aria-labelledby="ratingModalLabel"

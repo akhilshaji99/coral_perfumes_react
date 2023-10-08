@@ -11,7 +11,10 @@ import { useDispatch } from "react-redux";
 import { changeCartDrawerFlag } from "../../redux/cart/cartSlice";
 import SearchResult from "./SearchResult";
 import request from "../../utils/request";
+import { useSelector } from "react-redux";
+
 function useComponentVisible(initialIsVisible) {
+  
   const [isComponentVisible, setIsComponentVisible] =
     useState(initialIsVisible);
   const ref = useRef(null);
@@ -45,7 +48,11 @@ function useComponentVisible(initialIsVisible) {
 
   return { ref, isComponentVisible, setIsComponentVisible };
 }
+
 function Account({ changeMyAccountMenuStatus }) {
+  //Cart Count :: Redux
+  const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
+  //#End
   const [query, setQuery] = useState("");
   const [result, setResult] = useState([]);
 
@@ -208,6 +215,7 @@ function Account({ changeMyAccountMenuStatus }) {
                     mask="url(#path-2-inside-1_1991_17572)"
                   />
                 </svg>
+                <span class="mob-cart-count">{cartTotalCount}</span>
               </Link>
             </div>
           </div>

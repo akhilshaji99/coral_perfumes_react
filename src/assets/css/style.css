@@ -21846,8 +21846,16 @@ h3 {
     display: none;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .nav-lb-tab .nav-item {
+    margin-right: 1rem !important; 
+  }
+}
+
 .nav-lb-tab .nav-item {
   margin-right: 10rem;
+  
 }
 .nav-lb-tab .nav-item .nav-link {
   /* border-bottom: 2px solid transparent; */
@@ -30193,4 +30201,15 @@ margin: 0 8px;
     color: #000;
     font-weight: bolder;
     text-transform: capitalize;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #hide-mob-brand-name{
+        display: none;
+    }
+  }
+  .mob-cart-count{
+    border-style: solid;
+    border-radius: 100%;
+    background: #76bc21;
   }

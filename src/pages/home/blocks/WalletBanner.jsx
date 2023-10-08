@@ -38,9 +38,9 @@ function WalletBanner({ componentDatas }) {
             <div className="col-md-9 px-0">
               <Carousel
                 additionalTransfrom={0}
-                autoPlay={true}
+                autoPlay={false}
                 arrows={true}
-                autoPlaySpeed={3500}
+                autoPlaySpeed={1000}
                 centerMode={false}
                 className=""
                 containerClass="container-with-dots"
@@ -51,7 +51,7 @@ function WalletBanner({ componentDatas }) {
                 itemClass=""
                 partialVisbile
                 keyBoardControl
-                minimumTouchDrag={80}
+                minimumTouchDrag={10}
                 pauseOnHover
                 renderArrowsWhenDisabled={false}
                 renderButtonGroupOutside={false}
@@ -83,13 +83,13 @@ function WalletBanner({ componentDatas }) {
                   },
                 }}
                 rewind={false}
-                rewindWithAnimation={false}
+                rewindWithAnimation={true}
                 rtl={false}
                 shouldResetAutoplay
                 showDots={false}
                 sliderClass=""
-                slidesToSlide={2}
-                swipeable
+                slidesToSlide={1}
+                swipeable={true}
               >
                 {componentDatas?.datas?.[0]?.collection?.map(
                   (walletData, index) => {

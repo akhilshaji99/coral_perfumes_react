@@ -37,7 +37,7 @@ function ProductCarousel({ componentDatas }) {
             infinite
             itemClass=""
             keyBoardControl
-            minimumTouchDrag={80}
+            minimumTouchDrag={0}
             pauseOnHover={false}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
@@ -83,7 +83,7 @@ function ProductCarousel({ componentDatas }) {
             shouldResetAutoplay
             showDots={false}
             sliderClass=""
-            slidesToSlide={2}
+            slidesToSlide={1}
             swipeable
           >
             {componentDatas?.datas?.[0]?.products?.map((product, index) => {
