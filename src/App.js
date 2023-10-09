@@ -1,5 +1,6 @@
 import "./assets/css/style.css";
 import "./assets/css/custom.css";
+// import "./assets/css/jquery-simple-mobilemenu-slide.css";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router/router";
 

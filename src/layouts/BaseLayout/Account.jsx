@@ -14,7 +14,6 @@ import request from "../../utils/request";
 import { useSelector } from "react-redux";
 
 function useComponentVisible(initialIsVisible) {
-  
   const [isComponentVisible, setIsComponentVisible] =
     useState(initialIsVisible);
   const ref = useRef(null);

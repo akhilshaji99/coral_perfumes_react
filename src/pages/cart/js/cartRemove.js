@@ -1,6 +1,7 @@
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
+import { changeCartCount } from "../../../redux/cart/cartCount";
 
 const cartRemove = async (product_variant_id, dispatch) => {
   try {
@@ -8,7 +9,8 @@ const cartRemove = async (product_variant_id, dispatch) => {
       "api/cart/delete/" + product_variant_id + "/"
     );
     if (response.data.status) {
-      // dispatch(changeCartCount(cartTotalCount - 1));
+      console.log(response?.data?.items_count);
+      dispatch(changeCartCount(response?.data?.items_count));
       // toast((t) => (
       //   <AlerMessage
       //     t={t}

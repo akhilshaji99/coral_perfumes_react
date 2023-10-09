@@ -14,11 +14,9 @@ import GuestLoginModal from "./blocks/GuestLoginModal";
 import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
 import BagEmpty from "../alert_pages/BagEmpty";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-
+// import { useSelector } from "react-redux";
 
 function Index() {
-
   const dispatch = useDispatch();
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -226,11 +224,13 @@ function Index() {
                             <div className="mt-2 my-bag-remove-btn mob-remove  ">
                               <a
                                 onClick={() => {
-                                  cartRemove(cartData?.id).then((response) => {
-                                    if (response) {
-                                      cartFetchFunctionCall();
+                                  cartRemove(cartData?.id, dispatch).then(
+                                    (response) => {
+                                      if (response) {
+                                        cartFetchFunctionCall();
+                                      }
                                     }
-                                  });
+                                  );
                                 }}
                               >
                                 <img src={RemoveBtn} alt="Coral Perfumes" />
