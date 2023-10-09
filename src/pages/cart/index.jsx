@@ -209,7 +209,7 @@ function Index() {
                             <div className="mt-2 my-bag-remove-btn">
                               <a
                                 onClick={() => {
-                                  cartRemove(cartData?.id, dispatch).then(
+                                  cartRemove(cartData?.id).then(
                                     (response) => {
                                       if (response) {
                                         cartFetchFunctionCall();

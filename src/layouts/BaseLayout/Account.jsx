@@ -214,7 +214,9 @@ function Account({ changeMyAccountMenuStatus }) {
                     mask="url(#path-2-inside-1_1991_17572)"
                   />
                 </svg>
-                <span class="mob-cart-count">{cartTotalCount}</span>
+                {cartTotalCount > 0 ? (
+                  <span class="mob-cart-count">{cartTotalCount}</span>
+                ) : null}
               </Link>
             </div>
           </div>

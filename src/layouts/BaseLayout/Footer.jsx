@@ -12,8 +12,8 @@ import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
 import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
 import VisaIcon from "../../assets/img/icons/payment/visa.svg";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
-import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
-import ScrollToTop from "react-scroll-to-top";
+// import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
+// import ScrollToTop from "react-scroll-to-top";
 import toast from "react-hot-toast";
 import AlerMessage from "../../../src/pages/common/AlerMessage";
 import { BottomNavigation } from "reactjs-bottom-navigation";
@@ -781,7 +781,7 @@ function Footer({ changeMobileMenuStatus }) {
           <FooterText />
         </div>
       </div>
-      <ScrollToTop smooth />
+      {/* <ScrollToTop smooth /> */}
     </footer>
   );
 }
