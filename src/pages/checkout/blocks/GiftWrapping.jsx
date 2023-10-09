@@ -64,8 +64,8 @@ function GiftWrapping({
               </div>
               <div className="col-10 col-md-9">
                 <h5 className="h6 pt-2">
-                  {" "}
-                  Add Gift Wrapping (AED 5 Charge Apply){" "}
+                  {checkoutUpdateParams?.gift_wrap_content}
+                  {}
                 </h5>
               </div>
               <div
@@ -73,7 +73,7 @@ function GiftWrapping({
                 style={{
                   textDecoration: "underline",
                   color: "#010101",
-                  fontSize:'12px'
+                  fontSize: "12px",
                 }}
               >
                 {giftWrappingStatus ? (

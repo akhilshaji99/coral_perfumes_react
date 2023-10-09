@@ -1,14 +1,21 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
-function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
+function DeliveryTypes({
+  fetchCheckoutDetailsByDeliveryType,
+  checkedValue,
+  checkout_api_status,
+}) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
   const [checkedShippingType, setCheckedShippingType] = useState(null);
 
   useEffect(() => {
-    getDeliveryTypes();
-  }, []);
+    if (checkout_api_status) {
+      getDeliveryTypes();
+    }
+  }, [checkout_api_status]);
 
   useEffect(() => {
+    console.log("checkedValue", checkedValue);
     if (checkedValue) {
       setCheckedShippingType(checkedValue);
     }
@@ -73,7 +80,7 @@ function DeliveryTypes({ fetchCheckoutDetailsByDeliveryType, checkedValue }) {
         <div className="mb-1">
           {/* card body */}
           <div className="card-body p-1">
-            {deliveryTypes?.map((deliveryType, index) => {  
+            {deliveryTypes?.map((deliveryType, index) => {
               return (
                 <div className="row" key={index}>
                   <div className="col-md-4 col-8">

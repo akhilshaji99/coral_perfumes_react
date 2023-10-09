@@ -274,7 +274,7 @@ function CartDrawer() {
                     strokeLinejoin="round"
                   />
                 </svg>{" "}
-                &nbsp; Add AED 20 more for free delivery
+                &nbsp;  {cartDatas?.free_delivery_message}
               </p>
             </div>
           ) : null}

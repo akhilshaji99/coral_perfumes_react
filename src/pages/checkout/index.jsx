@@ -40,12 +40,14 @@ function Index() {
   const [storeEmirates, setStoreEmirates] = useState([]);
   const [avaibleStores, setAvailableStores] = useState([]);
   const [status, setStatus] = useState(false);
+  const [checkout_api_status, setCheckout_delivery_type] = useState(false);
   //State for checkout fetch api parameters
   const [checkoutUpdateParams, setCheckoutUpdateParams] = useState({
     shipping_zone_type: null,
     payment_type: null,
     gift_wrap: 0,
     gift_message: null,
+    gift_wrap_content: null,
   });
 
   const applyPrmocode = () => {
@@ -140,10 +142,13 @@ function Index() {
         checkoutUpdateParams.payment_type = response?.data?.payment_type;
         checkoutUpdateParams.gift_wrap = response?.data?.is_gift_wrap;
         checkoutUpdateParams.gift_message = response?.data?.gift_wrap_message;
+        checkoutUpdateParams.gift_wrap_content =
+          response?.data?.gift_wrap_content;
         checkoutUpdateParams.payment_type = response?.data?.payment_type;
         setCheckoutUpdateParams(checkoutUpdateParams);
         setPromoCode(response?.data?.cart_items?.voucher_code);
         setPromoCodeId(response?.data?.cart_items?.voucher_id);
+        setCheckout_delivery_type(true);
         //#End
       }
     });
@@ -587,7 +592,10 @@ function Index() {
                               DELIVERY ADDRESS
                             </button>
                           </li>
-                          <li className="nav-item mobile-right" role="presentation">
+                          <li
+                            className="nav-item mobile-right"
+                            role="presentation"
+                          >
                             <button
                               className={
                                 parseInt(addressForm.values.delivery_type) === 2
@@ -897,6 +905,7 @@ function Index() {
                         fetchCheckoutDetailsByDeliveryType
                       }
                       checkedValue={checkoutUpdateParams?.shipping_zone_type}
+                      checkout_api_status={checkout_api_status}
                     />
                   ) : null}
 

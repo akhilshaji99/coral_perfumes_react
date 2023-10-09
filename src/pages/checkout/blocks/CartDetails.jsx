@@ -55,6 +55,16 @@ function CartDetails({ cartDatas }) {
                     </span>
                   </li>
                   {/* list group item */}
+                  {cartDatas?.is_gift_wrap  ? (
+                    <li className="list-group-item  ps-0 border-0  d-flex justify-content-between align-items-start">
+                      <div className="me-auto">
+                        <div className="left-sec-text">
+                          {cartDatas?.gift_wrap_title}
+                        </div>
+                      </div>
+                      <span>{cartDatas?.gift_wrap_amount}</span>
+                    </li>
+                  ) : null}
                   <li className="list-group-item  ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
                       <div className="left-sec-text">
