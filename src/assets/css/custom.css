@@ -80,19 +80,36 @@
 }
 
 .dashboard-icon{
-    height: 110px;
+    height: 90px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.dashboard-icon img{
-    max-height: 95px;
+.justify-content-center.dashboard-row{
+      align-items: baseline;
+}
+
+.dashboard-icon img {
+    max-height: 90px;
+    max-width: 70px;
 }
 
 .nav.nav-category{
       padding-bottom: 160px;
 }
 
+body.products .selling-price{
+    font-size: 15px;
+}
+
+body.products .discounted-price{
+    font-size: 15px;
+}
+
+body.products .discount-percentage{
+    font-size: 15px;
+}
 
 @media only screen and (min-width: 1200px) and (max-width: 1920px) {
     .filter-side{
@@ -168,6 +185,14 @@
        border-radius: 0px;
 }
 
+
+.mobile-search{
+    display: none;
+}
+
+.fixed-top{
+    padding-bottom: 20px;
+}
 
      
 }
