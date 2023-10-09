@@ -224,7 +224,7 @@ function Account({ changeMyAccountMenuStatus }) {
             <div className="d-block d-lg-none my-2">
               <div className="input-group ">
                 <input
-                  className="form-control rounded"
+                  className="form-control rounded mob-search-box"
                   type="search"
                   placeholder="Search for products"
                   value={query}
