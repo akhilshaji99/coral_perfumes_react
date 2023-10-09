@@ -70,6 +70,7 @@ function Index() {
       for (const key in response?.data?.attribute_datas) {
         dataArray.push({
           main_label: key,
+          layout: null,
           sub_datas: [],
         });
         for (const key_sub in response?.data?.attribute_datas[key]["values"]) {
@@ -535,40 +536,50 @@ function Index() {
                 return (
                   <>
                     {/* {productVariant?.layout === "layout_1" ? ( */}
-                    <div className="row" key={index}>
-                      <span className="select-size">
-                        {productVariant?.main_label}
-                      </span>
-                      <div className="col-md-7 scrollable-area">
-                        <div className="mb-5 variant-box">
-                          {productVariant?.sub_datas?.map(
-                            (variant, index_inner) => {
-                              return (
-                                <button
-                                  key={index_inner}
-                                  type="button"
-                                  className={`btn btn-outline-secondary btn-variant ${
-                                    variant?.active === true
-                                      ? `variant-active`
-                                      : null
-                                  }`}
-                                  onClick={() => {
-                                    changeProductVariant(
-                                      variant?.slug
-                                      // productVariant?.attribute_name,
-                                      // variant?.value
-                                    );
-                                  }}
-                                  disabled={variant?.availabilty === false}
-                                >
-                                  {variant?.label}
-                                </button>
-                              );
-                            }
-                          )}
+                    {productVariant.sub_datas.length > 0 ? (
+                      <div className="row" key={index}>
+                        <span className="select-size">
+                          {productVariant?.main_label}
+                        </span>
+                        <div className="col-md-7 scrollable-area">
+                          <div className="mb-5 variant-box">
+                            {productVariant?.sub_datas?.map(
+                              (variant, index_inner) => {
+                                return (
+                                  <button
+                                    key={index_inner}
+                                    type="button"
+                                    className={`btn btn-outline-secondary btn-variant ${
+                                      variant?.active === true
+                                        ? `variant-active`
+                                        : null
+                                    }`}
+                                    onClick={() => {
+                                      changeProductVariant(
+                                        variant?.slug
+                                        // productVariant?.attribute_name,
+                                        // variant?.value
+                                      );
+                                    }}
+                                    disabled={variant?.availabilty === false}
+                                  >
+                                    {variant?.label}
+                                    {variant.layout === "layout_1" ? (
+                                      <span>
+                                        <br />
+                                        {variant?.current_amount}
+                                        <br />
+                                        <del>{variant?.original_amount}</del>
+                                      </span>
+                                    ) : null}
+                                  </button>
+                                );
+                              }
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ) : null}
                     {/* ) : productVariant?.layout === "layout_2" ? (
                       <div className="row" key={index}>
                         <span className="select-size">
