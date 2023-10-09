@@ -79,6 +79,20 @@
        font-size: 16px;
 }
 
+.dashboard-icon{
+    height: 110px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-icon img{
+    max-height: 95px;
+}
+
+.nav.nav-category{
+      padding-bottom: 160px;
+}
+
 
 @media only screen and (min-width: 1200px) and (max-width: 1920px) {
     .filter-side{

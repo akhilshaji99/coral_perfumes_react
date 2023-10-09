@@ -23,51 +23,51 @@ function index() {
           <div className="row d-flex justify-content-center dashboard-row">
             <div className="col-md-3 col-6 text-center mt-3">
               <NavLink to={"/personal-info"}>
-                <img
+              <div class="dashboard-icon"><img
                   src={personalInfo}
                   alt="Coral Perfumes"
                   className="img-fluid"
-                />
+                /></div>
                 <h6>my personal info</h6>
                 <p>edit details</p>
               </NavLink>
             </div>
             <div className="col-md-3 col-6 text-center mt-4">
               <NavLink to={"/address-book"}>
-                <img
+              <div class="dashboard-icon"><img
                   src={addressBook}
                   alt="Coral Perfumes"
                   className="img-fluid"
-                />
+                /></div>
                 <h6>address book</h6>
                 <p>edit details</p>
               </NavLink>
             </div>{" "}
             <div className="col-md-3 col-6 text-center">
               <NavLink to={"/orders"}>
-                <img
+              <div class="dashboard-icon"> <img
                   src={myOrders}
                   alt="Coral Perfumes"
                   className="img-fluid"
-                />
+                /></div>
                 <h6>my orders</h6>
                 <p>edit details</p>
               </NavLink>
             </div>
             <div className="col-md-3 col-6 text-center mt-2">
               <NavLink to={"/wishlist"}>
-                <img
+              <div class="dashboard-icon"> <img
                   src={myWishlist}
                   alt="Coral Perfumes"
                   className="img-fluid"
-                />
+                /></div>
                 <h6>my wishlist</h6>
                 <p>edit details</p>
               </NavLink>
             </div>{" "}
             <div className="col-md-3 col-6 text-center">
               <NavLink to={"/returns"}>
-                <img src={Returns} alt="Coral Perfumes" className="img-fluid" />
+              <div class="dashboard-icon"> <img src={Returns} alt="Coral Perfumes" className="img-fluid" /></div>
                 <h6>returns</h6>
                 <p>edit details</p>
               </NavLink>
@@ -77,7 +77,7 @@ function index() {
               onClick={() => logoutUser()}
               style={{ cursor: "pointer" }}
             >
-              <img src={Logout} alt="Coral Perfumes" className="img-fluid" />
+              <div class="dashboard-icon"><img src={Logout} alt="Coral Perfumes" className="img-fluid" /></div>
               <h6>logout</h6>
               {/* <p>edit details</p> */}
             </div>
