@@ -1577,9 +1577,9 @@ p.delivery-info span svg {
 .row.d-flex.justify-content-center.dashboard-row .col-md-3.col-6.text-center {
   padding: 20px 0px;
 }
-.selling-price {
+/*.selling-price {
   padding-left: 5px;
-}
+}*/
 .col.best-scroll {
   max-height: 320px;
   overflow-y: auto;
@@ -1587,4 +1587,17 @@ p.delivery-info span svg {
 }
 .category-top {
   padding-top: 40px;
+}
+.icon-input .icon-input__icon {
+  cursor: pointer;
+}
+img.img-fluid.img-base {
+  margin-top: 10px;
+}
+.card-body.p-0.carts-pd {
+  /* padding: 20px 30px; */
+  margin: 10px 5px;
+}
+.fw-bold p.text.mb-0 {
+  font-family: "BrandonText-bold", sans-serif;
 }
