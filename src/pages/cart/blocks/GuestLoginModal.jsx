@@ -139,7 +139,7 @@ function GuestLoginModal() {
                         formik.errors.email ? "border-danger" : ""
                       }`}
                       id="inputEmail4"
-                      placeholder="E-mail*"
+                      placeholder="E-mail"
                       value={formik.values.email}
                       onChange={(e) => setInputValue("email", e.target.value)}
                     />

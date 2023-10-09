@@ -26584,7 +26584,7 @@ span.flatpickr-weekday {
   }
   .btn-dark {
     font-size: 0.5rem !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
   .product-grid h4 {
     color: #000;
@@ -28029,6 +28029,7 @@ border-radius: none !important;
   background-color: #fff;
   font-size: 13px;
     font-weight: 700;
+    color: #000 !important;
 }
 .cart-footer {
   position: sticky;
@@ -29749,9 +29750,9 @@ body {
     margin-top: 55px;
   }
   .cart-details-img {
-    width: 60px;
-    max-width: 70px;
-    height: 60px;
+    width: 80px;
+    max-width: 80px;
+    height: 65px;
     background-color: rgba(235, 236, 233, 1);
     display: flex;
     justify-content: center;
@@ -30208,8 +30209,14 @@ margin: 0 8px;
         display: none;
     }
   }
-  .mob-cart-count{
-    border-style: solid;
-    border-radius: 100%;
+  .mob-cart-count {
+    border-style: none;
+    border-radius: 50%;
     background: #76bc21;
-  }
+    padding: 2px 7px;
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    left: 5px;
+    top: -6px;
+}

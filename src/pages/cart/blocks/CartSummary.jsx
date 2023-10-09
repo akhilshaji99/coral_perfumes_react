@@ -53,8 +53,8 @@ function CartSummary({
     <div className="col-12 col-lg-4 col-md-5">
       {/* card */}
       <div className="mb-5 card my-bag-card mt-6">
-        <div className="card-body p-0">
-          <div className="">
+        <div className="card-body p-0 carts-pd">
+          <div className=" ">
             <h2 className="h5">Promo Code</h2>
             <label htmlFor="giftcard" className="form-label sr-only">
               Add Promo Code

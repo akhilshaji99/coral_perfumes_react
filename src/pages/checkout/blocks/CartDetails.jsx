@@ -42,7 +42,7 @@ function CartDetails({ cartDatas }) {
               <h5 className="h5 mb-4">Summary</h5>
               <div className="mb-2">
                 {/* list group */}
-                <ul className="list-group list-group-flush">
+                <ul className="list-group list-group-flush mob-flush">
                   {/* list group item */}
                   <li className="list-group-item ps-0 border-0  d-flex justify-content-between align-items-start">
                     <div className="me-auto">
