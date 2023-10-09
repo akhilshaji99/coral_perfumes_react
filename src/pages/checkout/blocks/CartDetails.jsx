@@ -13,7 +13,7 @@ function CartDetails({ cartDatas }) {
               return (
                 <li className="list-group-item py-3 ps-0" key={index}>
                   <div className="row align-items-center d-flex justify-content-space-between">
-                    <div className="col-3 col-xs-2 col-lg-2 col-md-3 cart-details-img">
+                    <div className="col-4 col-xs-2 col-lg-2 col-md-3 cart-details-img">
                       <img
                         src={deviceImageRender(
                           cartData?.variant?.product_listing_image
@@ -21,7 +21,7 @@ function CartDetails({ cartDatas }) {
                         alt="Ecommerce"
                       />
                     </div>
-                    <div className="col-9 col-lg-8 col-xs-8 col-md-8 ">
+                    <div className="col-8 col-lg-8 col-xs-8 col-md-8 ">
                       <h4 className="mb-0">{cartData?.variant?.name}</h4>
                       <h6 className="mb-0">
                         AED {cartData?.variant?.price_amount}

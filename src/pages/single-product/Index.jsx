@@ -179,8 +179,8 @@ function Index() {
                   {currentVariant?.brand_name}
                 </Link>
               </h2>
-              <div className="row">
-                <div className="col-md-8 col-10">
+              <div className="row full-views">
+                <div className="col-md-8 col-8">
                   <div className="row">
                     <div className="col-md-4 col-4">
                       <div className="product-single-price">
@@ -204,7 +204,7 @@ function Index() {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-4 col-2 px-0">
+                <div className="col-md-4 col-4 px-0">
                   <div className="row icon-section">
                     <div className="col-md-5 col-4 icon-end ">
                       <div className="dropdown">
