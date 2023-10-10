@@ -14,7 +14,12 @@ import { changeFooterDatas } from "../../../redux/footer/footerSlice";
 import { changeApiCallStatus } from "../../../redux/footer/footerSlice";
 import { useDispatch } from "react-redux";
 
-function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
+function ProductMain({
+  filterArray,
+  passingDataToParent,
+  priceRangeFilter,
+  passPageToParent,
+}) {
   const urlParams = useParams([]);
   const dispatch = useDispatch();
   const [productList, setProductList] = useState([]);
@@ -29,6 +34,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
   useEffect(() => {
     if (count !== 0 && count !== productList.length) {
       setPage((page) => page + 1);
+      passPageToParent(page);
     }
   }, [scrollStatus]);
 
@@ -36,6 +42,7 @@ function ProductMain({ filterArray, passingDataToParent, priceRangeFilter }) {
     if (count !== 0 && count !== productList.length) {
       getProductList(page);
     }
+    passPageToParent(page);
   }, [page]);
 
   useEffect(() => {

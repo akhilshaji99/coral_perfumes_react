@@ -45,6 +45,11 @@ function Index() {
     delete updatedFilterArray[filter_name];
     setFilterArray(updatedFilterArray);
   };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const passPageToParent = (page) => {
+    setCurrentPage(page);
+  };
   return (
     <>
       <main>
@@ -61,6 +66,7 @@ function Index() {
                 passingDateRangeToParent={passingDateRangeToParent}
                 filterArray={filterArray}
                 unselectAll={unselectAll}
+                currentPage={currentPage}
               />
             </div>
             <div className="col-lg-9 col-md-12 brands-sub">
@@ -68,6 +74,7 @@ function Index() {
                 filterArray={filterArray}
                 passingDataToParent={passingDataToParent}
                 priceRangeFilter={priceRangeFilter}
+                passPageToParent={passPageToParent}
               />
             </div>
           </div>
