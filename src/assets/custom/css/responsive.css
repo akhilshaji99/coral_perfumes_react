@@ -118,6 +118,13 @@
             width: 90%;
             margin: 0 auto;
         }
+        .product-grid h4 {
+            white-space: wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 80px;
+            text-align: left !important;
+        }
         .right-gallery-one img:nth-child(1) {
             padding-bottom: 1px;
         }
@@ -659,6 +666,71 @@
         margin-right: 0 !important;
         padding-right: 13px;
     }
+    .alert-box-bag-empty p {
+        width: 70%;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 40px;
     }
-    
+    #price-my-bag .selling-price {
+        padding-left: 5px;
+    }
+    #price-my-bag .discount-percentage {
+        margin-left: 0px; 
+    }
+    .my-bag-card {
+        margin: 20px 0 10px 0;
+    }
+    .input-group-custom.input-spinner {
+        justify-content: center;
+        margin-left: 30px;
+    }
+    .mob-change {
+        padding: 0px 20px;
+    }
+    .col-md-6.col-12.text-end.mob-change a {
+        display: inline-block;
+        padding-right: 20px;
+        padding-top: 20px;
+    }
+    .icon-input__icon {
+        display: block;
+    }
+    .icon-input__icon {
+        top: 17px !important;
+        right: 1rem;
+        transform: translateY(-50%);
+        width: 14px;
+    }
+    .mob-view .input-group .form-control {
+        padding: 5px 20px !important;
+    }
+    .row.search-container.row.search-top {
+        padding: 0px 25px;
+    }
+    .row.mob-view .input-group {
+        display: none;
+    }
+    body.home .row.mob-view .input-group {
+        display: block !important;
+    }
+    .fixed-top-margin {
+        margin-top: 10px;
+    }
+    .product-single-price, .product-single-discounted-price, .product-single-discounted {
+        font-size: 13px !important;
+    }
+    .row.full-views .col-4 {
+        margin-right: 0px;
+        padding-right: 0px;
+        width: 30%;
+    }
+    .row.full-views .row.icon-section {
+        justify-content: end;
+        padding-right: 20px;
+    }
+    .row.full-views .col-md-8.col-8 {
+        padding-right: 0px;
+    }
+}
     
