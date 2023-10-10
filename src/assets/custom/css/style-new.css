@@ -1601,3 +1601,36 @@ img.img-fluid.img-base {
 .fw-bold p.text.mb-0 {
   font-family: "BrandonText-bold", sans-serif;
 }
+.col-auto.search-tag {
+  cursor: pointer;
+}
+.see-btn {
+  cursor: pointer;
+  color: #000;
+  font-family: "BrandonText-Bold", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+body.cart .fixed-top-margin {
+  margin-top: 40px;
+}
+.order-middle-row p {
+  padding-top: 5px;
+}
+body.returns ul.nav.flex-column.nav-pills.nav-pills-dark {
+  padding-top: 33px;
+}
+.order-bottom-row .react-multiple-carousel__arrow {
+  background-color: #ebece9 !important;
+  display: none;
+}
+.order-img {
+  width: 140px;
+}
+.return-reason {
+  margin-top: 20px;
+}
