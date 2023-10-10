@@ -136,7 +136,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                   result?.see_all_item?.link_items
                 );
               }}
-              className="mt-3"
+              className="mt-3 see-btn"
             >
               <u>{result?.see_all_item?.title}</u>
             </span>

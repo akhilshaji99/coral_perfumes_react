@@ -853,7 +853,7 @@ function Index() {
                           </div>
                           <div>
                             <div className="row align-items-center mt-5 ml-5">
-                              <div className="col-md-6 col-12">
+                              <div className="col-md-6 col-12 mob-change">
                                 {" "}
                                 <button
                                   type="submit"
@@ -865,7 +865,7 @@ function Index() {
                               </div>
                               {parseInt(addressForm.values.delivery_type) ===
                                 1 && checkOutDetails?.default_address ? (
-                                <div className="col-md-6 col-12 text-end">
+                                <div className="col-md-6 col-12 text-end mob-change">
                                   <a
                                     onClick={(e) => {
                                       setAddAddressListFlag(true);
