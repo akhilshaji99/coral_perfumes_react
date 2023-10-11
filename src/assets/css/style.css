@@ -27598,7 +27598,7 @@ span.flatpickr-weekday {
 .vat-included {
   color: #000;
   font-family: var(--fc-font-light);
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   line-height: 185%; /* 22.2px */
   text-transform: capitalize;
@@ -30095,6 +30095,7 @@ body {
   width: 92px;
   height: 70px;
   align-items: center;
+  cursor: pointer;
 }
 .green-text {
   color: #80ba27 !important;
