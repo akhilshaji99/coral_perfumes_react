@@ -1618,9 +1618,7 @@ img.img-fluid.img-base {
   display: inline-block;
   padding-bottom: 20px;
 }
-body.cart .fixed-top-margin {
-  margin-top: 40px;
-}
+
 .order-middle-row p {
   padding-top: 5px;
 }
@@ -1643,9 +1641,7 @@ body.returns ul.nav.flex-column.nav-pills.nav-pills-dark {
 .row.search-container span {
   cursor: pointer;
 }
-body.wishlist .fixed-top-margin.main-layout{
-  margin-top: 30px !important;
-}
+
 a.col-12.link-dark {
   cursor: pointer;
 }
