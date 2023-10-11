@@ -1,5 +1,5 @@
 import React from "react";
-import BagEmptyImg from "./img/bag-empty.png";
+import BagEmptyImg from "./img/Bag.svg";
 import { Link } from "react-router-dom";
 function BagEmpty(cartEmptyMessages = null) {
   console.log("cartEmptyMessages", cartEmptyMessages);

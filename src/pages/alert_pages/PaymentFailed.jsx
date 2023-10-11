@@ -1,5 +1,5 @@
 import React from "react";
-import PaymentFailedImg from "./img/payment-failed.png";
+import PaymentFailedImg from "./img/Cross.svg";
 import failedIcon from "./img/close-icon.svg";
 import { Link } from "react-router-dom";
 

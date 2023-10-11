@@ -67,7 +67,7 @@ function FilterSidebar({
   };
   return (
     <>
-      <aside className={`mb-6 mb-md-0 ${currentPage > 2 ? "filter-side" : ""}`}>
+      <aside className={`mb-6 mb-md-0 filter-side`}>
         <div
           className="offcanvas offcanvas-start offcanvas-collapse w-md-50 "
           tabIndex={-1}

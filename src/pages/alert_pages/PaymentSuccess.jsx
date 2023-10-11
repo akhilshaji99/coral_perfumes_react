@@ -1,5 +1,5 @@
 import React from "react";
-import PaymentSuccessImg from "./img/payment-success.png";
+import PaymentSuccessImg from "./img/Tick.svg";
 import { Link } from "react-router-dom";
 
 function PaymentSuccess({ responseMessage }) {
