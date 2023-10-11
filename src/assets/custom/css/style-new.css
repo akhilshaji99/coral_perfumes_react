@@ -1549,7 +1549,10 @@ button.ModalBtn.offer-button {
   max-height: 385px;
   overflow-y: scroll;
 }
-
+.row.brand-rating .col-md-9.col-12 {
+  max-height: 385px;
+  overflow-y: scroll;
+}
 div#addressModal .modal-body {
   max-height: 300px;
   overflow-y: scroll;
@@ -1633,4 +1636,16 @@ body.returns ul.nav.flex-column.nav-pills.nav-pills-dark {
 }
 .return-reason {
   margin-top: 20px;
+}
+.col-md-2.text-end.p-0 span {
+  cursor: pointer;
+}
+.row.search-container span {
+  cursor: pointer;
+}
+body.wishlist .fixed-top-margin.main-layout{
+  margin-top: 30px !important;
+}
+a.col-12.link-dark {
+  cursor: pointer;
 }
