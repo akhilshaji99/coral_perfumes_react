@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-import style from "../../../assets/css/order/style.css"
+import style from "../../../assets/css/order/style.css";
 function OrderCancelModal({
   setRefetch,
   modalData,
@@ -11,7 +11,6 @@ function OrderCancelModal({
   showOrderCancelFlag,
   modalType,
 }) {
-  
   const [addressList, setAddressList] = useState([]);
   const [radioOptions, setRadioOptions] = useState([]);
 
@@ -56,9 +55,7 @@ function OrderCancelModal({
   };
 
   const getSelectedText = () => {
-    const option = radioOptions.find(
-      (option) => option.id === selectedOption
-    );
+    const option = radioOptions.find((option) => option.id === selectedOption);
     return option ? option.question : "";
   };
 
@@ -69,9 +66,10 @@ function OrderCancelModal({
         bodyFormData.append("cancel_reason_id", selectedOption);
         bodyFormData.append("cancel_reason_text", await getSelectedText());
         const response = await request.post(
-          "order-cancellation/" + modalData?.ongoingOrder?.order_no , bodyFormData
+          "order-cancellation/" + modalData?.ongoingOrder?.order_no,
+          bodyFormData
         );
-        handleModalClose()
+        handleModalClose();
         if (response.data.status) {
           setRefetch(true);
           toast((t) => (
@@ -100,9 +98,10 @@ function OrderCancelModal({
         bodyFormData.append("cancel_reason_text", getSelectedText());
 
         const response = await request.post(
-          "order-return/" + modalData?.ongoingOrder?.order_no,bodyFormData
+          "order-return/" + modalData?.ongoingOrder?.order_no,
+          bodyFormData
         );
-        handleModalClose()
+        handleModalClose();
         if (response.data.status) {
           setRefetch(true);
 
@@ -208,7 +207,6 @@ function OrderCancelModal({
                             htmlFor={option.id}
                           >
                             <p className="options"> {option.question}</p>
-                           
                           </label>
                         </div>
                       ))}
@@ -219,11 +217,14 @@ function OrderCancelModal({
             </div>
             <div className="row g-2 m-2">
               <div className="col-12">
-              <div className="pt-2 text-center" >
-            <button onClick={cancelOrder} className="btn btn-dark  col-lg-8 col-12 validate cancel-popup-button">
-              SUBMIT
-            </button>
-          </div>
+                <div className="pt-2 text-center">
+                  <button
+                    onClick={cancelOrder}
+                    className="btn btn-dark  col-lg-8 col-12 validate cancel-popup-button"
+                  >
+                    SUBMIT
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -30221,3 +30221,16 @@ margin: 0 8px;
     left: 5px;
     top: -6px;
 }
+
+.order-btn-active{
+  background: black;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+.order-btn-inactive{
+  background: white;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+}

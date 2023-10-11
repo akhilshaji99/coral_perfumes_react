@@ -3,12 +3,21 @@ import "react-multi-carousel/lib/styles.css";
 import OrderProgress from "./OrderProgress";
 import OrderHeader from "./OrderHeader";
 import ProductInfo from "./ProductInfo";
-function OrderDatas({setModalData,setShowOrderCancelFlag,
-  showOrderCancelFlag, modalType,setModalType, ongoingOrder }) {
+
+function OrderDatas({
+  setModalData,
+  setShowOrderCancelFlag,
+  showOrderCancelFlag,
+  modalType,
+  setModalType,
+  ongoingOrder,
+}) {
   return (
     <>
       <div className="orders-card">
-        <OrderProgress order_current_status={ongoingOrder?.order_status} />
+        <OrderProgress
+          order_current_status={ongoingOrder?.order_status}
+        />
         <OrderHeader ongoingOrder={ongoingOrder} />
         <div className="row order-bottom-row">
           <div className="col-md-12">
@@ -68,7 +77,15 @@ function OrderDatas({setModalData,setShowOrderCancelFlag,
               {ongoingOrder?.orderline?.map((orderItem, index) => {
                 return (
                   <div key={index}>
-                    <ProductInfo  setModalData={setModalData} showOrderCancelFlag={showOrderCancelFlag} setShowOrderCancelFlag={setShowOrderCancelFlag} modalType={modalType} setModalType={setModalType} orderItem={orderItem} ongoingOrder={ongoingOrder}/>
+                    <ProductInfo
+                      setModalData={setModalData}
+                      showOrderCancelFlag={showOrderCancelFlag}
+                      setShowOrderCancelFlag={setShowOrderCancelFlag}
+                      modalType={modalType}
+                      setModalType={setModalType}
+                      orderItem={orderItem}
+                      ongoingOrder={ongoingOrder}
+                    />
                   </div>
                 );
               })}

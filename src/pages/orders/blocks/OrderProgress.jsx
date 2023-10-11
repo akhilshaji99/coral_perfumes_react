@@ -236,6 +236,7 @@ function OrderProgress({ order_current_status }) {
   const statusIndex = { Ordered: 0, Processing: 1, Shipping: 2, Delivery: 3 };
 
   useEffect(() => {
+    // if (apiSatus) {
     let copyOrderStatuses = orderStatuses;
     copyOrderStatuses?.forEach((orderStatus, index) => {
       if (parseInt(index) <= parseInt(statusIndex[order_current_status])) {
@@ -244,6 +245,8 @@ function OrderProgress({ order_current_status }) {
     });
     setOrderStatuses(copyOrderStatuses);
     setStatus(!status);
+    // }
+    console.log("orderStatuses", order_current_status);
   }, []);
   return (
     <div className="row order-top-row">
