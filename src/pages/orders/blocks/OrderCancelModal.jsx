@@ -41,8 +41,9 @@ function OrderCancelModal({
     try {
       // var bodyFormData = new FormData();
       // bodyFormData.append("token", getUserToken());
+      let type = modalType === "cancel" ? 1 : 2;
       const response = await request.get(
-        "order-return-popup/" + modalData?.ongoingOrder?.order_no
+        "order-return-popup/" + type + "/" + modalData?.ongoingOrder?.order_no
       );
       if (response?.data) {
         setRadioOptions(response?.data?.data?.queries);
