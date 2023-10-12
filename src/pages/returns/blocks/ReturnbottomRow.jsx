@@ -1,9 +1,9 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Sample from "../../../assets/img/sample-product1.png";
+import deviceImageRender from "../../../utils/deviceImageRender";
 
-function OrderbottomRow() {
+function OrderbottomRow({ orderDetails }) {
   return (
     <div className="row order-bottom-row">
       <div className="col-md-8">
@@ -60,35 +60,32 @@ function OrderbottomRow() {
           slidesToSlide={1}
           swipeable
         >
-          <div className="row">
-            <div className="col-md-4">
-              <div className="order-img">
-                <img src={Sample} alt="" />
+          {orderDetails?.orderline?.map((orderItem, index) => {
+            return (
+              <div className="row" key={index}>
+                <div className="col-md-4">
+                  <div className="order-img">
+                    <img
+                      src={deviceImageRender(orderItem?.listing_image)}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col-md-8">
+                  <h4>{orderItem?.product_name}</h4>
+                  <h2>{orderItem?.amount}</h2>
+                  <p className="return-reason">
+                    <span>Reason:</span> Lorem ipsum dolor sit amet,
+                    consectetuer adipiscing elit, sed diam
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="col-md-8">
-              <h4>Bvlgari Jasmin Noir Splendida Eau De Parfum 100 Ml</h4>
-              <h2>AED &nbsp; 200</h2>
-              <p className="return-reason">
-                <span>Reason:</span> Lorem ipsum dolor sit amet, consectetuer
-                adipiscing elit, sed diam
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
-              <div className="order-img">
-                <img src={Sample} alt="" />
-              </div>
-            </div>
-            <div className="col-md-8">
-              <h4>Bvlgari Jasmin Noir Splendida Eau De Parfum 100 Ml</h4>
-            </div>
-          </div>
+            );
+          })}
         </Carousel>
       </div>
-      <div className="col-md-4 text-lg-end">
-        <h3>Approved</h3>
+      <div className="col-md-4 text-lg-end" >
+        <h3 style={{ textDecoration: "none" }}>{orderDetails?.order_cancellation_text}</h3>
       </div>
     </div>
   );

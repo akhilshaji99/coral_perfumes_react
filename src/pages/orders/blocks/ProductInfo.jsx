@@ -26,9 +26,11 @@ function ProductInfo({
         ) : null}
       </div>
       <div className="col-md-4 text-lg-end">
-        {orderItem?.order_status === "Delivery" ? <h3>Tax invoice</h3> : null}
-        {orderItem?.order_status === "Ordered" ||
-        orderItem?.order_status === "Processing" ? (
+        {ongoingOrder?.order_status === "Delivery" ? <h3>Tax invoice</h3> : null}
+
+        {ongoingOrder?.order_status === "Ordered" ||
+        ongoingOrder?.order_status === "Processing" ||
+        ongoingOrder?.order_cancellation_status === 2 ? (
           <h3
             style={{
               position: "relative",
@@ -53,7 +55,7 @@ function ProductInfo({
             {ongoingOrder?.order_cancellation_text}
           </h3>
         ) : null}
-        {orderItem?.order_status ? (
+        {ongoingOrder?.order_status === "Delivery" ? (
           <h3
             style={{ position: "relative", bottom: "-66px" }}
             onClick={() => {

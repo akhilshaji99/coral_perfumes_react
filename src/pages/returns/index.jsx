@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import MyAccountSidebar from "../common/MyAccountSidebar";
 import ReturntopRow from "./blocks/ReturntopRow";
 import ReturnmiddleRow from "./blocks/ReturnmiddleRow";
 import ReturnbottomRow from "./blocks/ReturnbottomRow";
+import request from "../../utils/request";
+import getUserToken from "../../utils/userToken";
 
-function index() {
+function Index() {
+  const [buttonActive, setButtonActive] = useState(1);
+  const [cancelledOrders, setCancelledOrders] = useState([]);
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  const getOrders = async () => {
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append("token", getUserToken());
+      const response = await request.post("cancelled-orders/", bodyFormData);
+      if (response?.data) {
+        setCancelledOrders(response?.data?.data?.cancelled_orders);
+        // setActiveOrders(response?.data?.data?.ongoing_orders);
+        // setOnGoingOrders(response?.data?.data?.ongoing_orders);
+        // setCompletedOrders(response?.data?.data?.completed_orders);
+        // seStatus(!status);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <section>
       <div className="container-fluid">
@@ -17,12 +43,48 @@ function index() {
               <h2 className="mb-6 text-center my-profile-heading">
                 My Returns
               </h2>
-              {/* Order Card */}
-              <div className="orders-card">
-                <ReturntopRow />
-                <ReturnmiddleRow />
-                <ReturnbottomRow />
+              <div
+                class="btn-group mb-4"
+                role="group"
+                aria-label="Basic example"
+              >
+                <button
+                  type="button"
+                  class={
+                    buttonActive === 1
+                      ? `order-btn-active`
+                      : "order-btn-inactive"
+                  }
+                  onClick={() => {
+                    setButtonActive(1);
+                  }}
+                >
+                  CANCELLED
+                </button>
+                <button
+                  type="button"
+                  class={
+                    buttonActive === 2
+                      ? `order-btn-active`
+                      : "order-btn-inactive"
+                  }
+                  onClick={() => {
+                    setButtonActive(2);
+                  }}
+                >
+                  RETURNED
+                </button>
               </div>
+              {/* Order Card */}
+              {cancelledOrders?.map((orderDetails, index) => {
+                return (
+                  <div className="orders-card" key={index}>
+                    <ReturntopRow />
+                    <ReturnmiddleRow orderDetails={orderDetails}/>
+                    <ReturnbottomRow orderDetails={orderDetails}/>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -31,4 +93,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
