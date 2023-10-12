@@ -28161,7 +28161,7 @@ border-radius: none !important;
   }
   .company-name {
     color: var(--fc-white) !important;
-    padding: 0 5px;
+    padding: 0 0px;
     font-size: 10px;
     text-align: start !important;
   }
