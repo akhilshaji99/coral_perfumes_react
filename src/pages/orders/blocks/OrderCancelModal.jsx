@@ -98,7 +98,7 @@ function OrderCancelModal({
         bodyFormData.append("cancel_reason_text", getSelectedText());
 
         const response = await request.post(
-          "order-return/" + modalData?.ongoingOrder?.order_no,
+          "order-return-submit/" + modalData?.ongoingOrder?.order_no,
           bodyFormData
         );
         handleModalClose();

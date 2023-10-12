@@ -16,7 +16,7 @@ const prifileFormSchema = yup.object().shape({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().required(),
-  date_of_birth: yup.string().required(),
+  // date_of_birth: yup.string().required(),
   gender: yup.string().required(),
 });
 function getStyles(errors, fieldName) {
@@ -244,7 +244,7 @@ function Index() {
                           name="date_of_birth"
                           value={profileForm.values.date_of_birth}
                           onChange={profileForm.handleChange}
-                          style={getStyles(profileForm.errors, "date_of_birth")}
+                          // style={getStyles(profileForm.errors, "date_of_birth")}
 
                         />
                       </div>

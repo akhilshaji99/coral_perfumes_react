@@ -230,7 +230,7 @@ function AddAddress({
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Building Number"
+                      placeholder="Building Address"
                       value={addressForm.values.building_number}
                       name="building_number"
                       // onChange={(e) =>
@@ -241,6 +241,20 @@ function AddAddress({
                       // }
                       onChange={addressForm.handleChange}
                       style={getStyles(addressForm.errors, "building_number")}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 col-md-6 col-12">
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Floor Number"
+                      required=""
+                      value={addressForm.values.floor_number}
+                      name="floor_number"
+                      onChange={addressForm.handleChange}
+                      style={getStyles(addressForm.errors, "floor_number")}
                     />
                   </div>
                 </div>
@@ -266,6 +280,20 @@ function AddAddress({
                 </div>
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="City"
+                      required=""
+                      value={addressForm.values.city}
+                      name="city"
+                      onChange={addressForm.handleChange}
+                      style={getStyles(addressForm.errors, "city")}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 col-md-6 col-12">
+                  <div className="mb-3">
                     <select
                       className="form-control"
                       // onChange={(e) => {
@@ -285,34 +313,8 @@ function AddAddress({
                     </select>
                   </div>
                 </div>
-                <div className="mb-3 col-md-6 col-12">
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="City"
-                      required=""
-                      value={addressForm.values.city}
-                      name="city"
-                      onChange={addressForm.handleChange}
-                      style={getStyles(addressForm.errors, "city")}
-                    />
-                  </div>
-                </div>
-                <div className="mb-3 col-md-6 col-12">
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Floor Number"
-                      required=""
-                      value={addressForm.values.floor_number}
-                      name="floor_number"
-                      onChange={addressForm.handleChange}
-                      style={getStyles(addressForm.errors, "floor_number")}
-                    />
-                  </div>
-                </div>
+                
+                
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3">
                     <input

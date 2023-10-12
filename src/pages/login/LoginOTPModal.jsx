@@ -175,7 +175,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                           "border-bottom": "1px solid rgba(0,0,0,0.30)",
                           "font-size": "1.45rem",
                         }}
-                        type="text"
+                        type="number"
                         id={`input${index}-1`}
                         required
                         onChange={(e) => {
