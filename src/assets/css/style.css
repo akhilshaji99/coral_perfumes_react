@@ -38,6 +38,9 @@
   font-family: NexaRegular;
   src: url(../fonts/NexaRegular.otf);
 }
+input, textarea {
+  touch-action: manipulation !important; /* Helps prevent double-tap zoom. */
+}
 .text-reset:hover {
   color: var(--fc-primary) !important;
 }
