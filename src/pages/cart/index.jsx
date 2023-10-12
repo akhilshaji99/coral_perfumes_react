@@ -42,17 +42,17 @@ function Index() {
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
+        setCartEmptyMessages(response?.message);
       } else {
         setCartItems(response?.data);
-        setCartEmptyMessages(response?.message_data);
       }
       setLoading(false);
     });
   };
-  const isDataListEmpty = cartItems.length === 0;
+  // const isDataListEmpty = cartItems.length === 0;
   return (
     <>
-      {isDataListEmpty ? (
+      {cartDatas.length === 0 ? (
         !loading ? (
           <section className="mb-lg-14 mb-8 mt-8 my-bag empty-top">
             <div className="container-fluid" style={{ marginTop: "15%" }}>
@@ -209,13 +209,11 @@ function Index() {
                             <div className="mt-2 my-bag-remove-btn">
                               <a
                                 onClick={() => {
-                                  cartRemove(cartData?.id).then(
-                                    (response) => {
-                                      if (response) {
-                                        cartFetchFunctionCall();
-                                      }
+                                  cartRemove(cartData?.id).then((response) => {
+                                    if (response) {
+                                      cartFetchFunctionCall();
                                     }
-                                  );
+                                  });
                                 }}
                               >
                                 <img src={RemoveBtn} alt="Coral Perfumes" />
