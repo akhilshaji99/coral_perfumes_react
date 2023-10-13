@@ -20,7 +20,7 @@ function MainBanner({ componentDatas, exclusive_deals }) {
           dotListClass=""
           showDots
           focusOnSelect={false}
-          infinite
+          infinite={true}
           partialVisible={false}
           itemClass=""
           pauseOnHover={false}
@@ -88,7 +88,7 @@ function MainBanner({ componentDatas, exclusive_deals }) {
           className=""
           draggable
           focusOnSelect={false}
-          infinite
+          infinite={true}
           partialVisible={false}
           itemClass=""
           pauseOnHover={false}

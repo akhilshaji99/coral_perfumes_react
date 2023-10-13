@@ -24,7 +24,7 @@ function ShopMore({ componentDatas }) {
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite
+            infinite={true}
             itemClass=""
             partialVisbile
             keyBoardControl

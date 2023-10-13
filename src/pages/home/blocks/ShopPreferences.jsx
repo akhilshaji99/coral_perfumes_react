@@ -24,7 +24,7 @@ function ShopPreferences({ componentDatas }) {
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite
+            infinite={true}
             itemClass=""
             keyBoardControl
             minimumTouchDrag={80}

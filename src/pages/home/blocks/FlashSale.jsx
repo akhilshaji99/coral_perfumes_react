@@ -158,7 +158,7 @@ function FlashSale({ componentDatas }) {
               dotListClass=""
               draggable
               focusOnSelect={false}
-              infinite
+              infinite={true}
               itemClass=""
               keyBoardControl
               minimumTouchDrag={-10000}

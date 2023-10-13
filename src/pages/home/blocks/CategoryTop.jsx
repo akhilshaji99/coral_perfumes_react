@@ -23,7 +23,7 @@ function CategoryTop({ componentDatas }) {
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite
+            infinite={true}
             itemClass=""
             partialVisible
             keyBoardControl

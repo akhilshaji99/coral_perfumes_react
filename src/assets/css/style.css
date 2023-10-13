@@ -38,7 +38,8 @@
   font-family: NexaRegular;
   src: url(../fonts/NexaRegular.otf);
 }
-input, textarea {
+input,
+textarea {
   touch-action: manipulation !important; /* Helps prevent double-tap zoom. */
 }
 .text-reset:hover {
@@ -3085,7 +3086,7 @@ textarea.form-control-lg {
   color: var(--fc-black);
   text-transform: capitalize;
   font-size: 16px;
-    font-weight: 600;
+  font-weight: 600;
 }
 .form-check-label span {
   color: #bdbebb;
@@ -21852,13 +21853,12 @@ h3 {
 
 @media only screen and (max-width: 600px) {
   .nav-lb-tab .nav-item {
-    margin-right: 1rem !important; 
+    margin-right: 1rem !important;
   }
 }
 
 .nav-lb-tab .nav-item {
   margin-right: 10rem;
-  
 }
 .nav-lb-tab .nav-item .nav-link {
   /* border-bottom: 2px solid transparent; */
@@ -26238,15 +26238,14 @@ span.flatpickr-weekday {
 }
 
 @media only screen and (max-width: 1200px) {
-       .shop-p-head{
-          font-size:18px;
-       }
+  .shop-p-head {
+    font-size: 18px;
+  }
 
-       .react-multi-carousel-list h3{
-        font-size:18px;
-       }
+  .react-multi-carousel-list h3 {
+    font-size: 18px;
+  }
 }
-
 
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .shop-more {
@@ -26426,7 +26425,7 @@ span.flatpickr-weekday {
   display: flex;
   justify-content: space-evenly;
 }
-.social-haed svg{
+.social-haed svg {
   width: 85%;
 }
 .login-card p {
@@ -26946,7 +26945,7 @@ span.flatpickr-weekday {
     color: #000 !important;
     line-height: 20px;
     padding: 2px 5px;
-}
+  }
   .px-5 {
     padding: 1rem !important;
   }
@@ -27998,7 +27997,7 @@ border-radius: none !important;
   text-transform: uppercase;
   font-family: var(--fc-font-bold);
   color: #000;
-  font-size: 12px
+  font-size: 12px;
 }
 .price-minicart-discount {
   text-transform: uppercase;
@@ -28031,8 +28030,8 @@ border-radius: none !important;
   width: 100%;
   background-color: #fff;
   font-size: 13px;
-    font-weight: 700;
-    color: #000 !important;
+  font-weight: 700;
+  color: #000 !important;
 }
 .cart-footer {
   position: sticky;
@@ -28699,7 +28698,7 @@ border-radius: none !important;
   font-family: var(--fc-font-bold);
   cursor: pointer;
 }
-.amount-dispaly{
+.amount-dispaly {
   color: var(--fc-black);
   font-family: var(--fc-font-bold);
   font-size: 16px;
@@ -29888,7 +29887,7 @@ body {
     right: unset;
     z-index: 1030;
   }
-  .fixed-top-margin{
+  .fixed-top-margin {
     margin-top: unset;
   }
 }
@@ -30080,8 +30079,8 @@ body {
   font-family: var(--fc-font-regular);
   margin-bottom: 0px;
 }
-.search-container .row.py-2{
-    align-items: center;
+.search-container .row.py-2 {
+  align-items: center;
 }
 .search-container h4 {
   color: #a7a9a2;
@@ -30115,11 +30114,9 @@ body {
   font-family: var(--fc-font-medium);
   text-transform: capitalize;
   margin-bottom: 1rem;
-  
 }
 .react-simple-star-rating svg {
-margin: 0 8px;
-  
+  margin: 0 8px;
 }
 .brand-rating-date {
   color: var(--fc-black);
@@ -30133,27 +30130,26 @@ margin: 0 8px;
   font-family: var(--fc-font-regular);
   text-transform: capitalize;
 }
-@media only screen and (min-width: 768px) and (max-width: 1380px)  {
-  .wallet-banner h1{
+@media only screen and (min-width: 768px) and (max-width: 1380px) {
+  .wallet-banner h1 {
     font-size: 38px !important;
-  } 
-  .dropdown-text{
+  }
+  .dropdown-text {
     padding: 0.25rem 0.75rem;
   }
- 
 }
-.price-footer h5{
+.price-footer h5 {
   font-size: 13px;
   color: var(--fc-black);
   font-family: var(--fc-font-regular);
   margin-bottom: 0;
 }
-.price-footer span{
+.price-footer span {
   font-size: 11px;
   font-weight: var(--fc-font-light);
   color: var(--fc-black);
 }
-.scrollable-area{
+.scrollable-area {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
@@ -30161,79 +30157,80 @@ margin: 0 8px;
   scrollbar-width: thin;
   margin-top: 10px;
 }
-.scrollable-area .btn-variant{
+.scrollable-area .btn-variant {
   margin-bottom: 10px;
-  
 }
-.text-green{
-  color: #80BA27 !important;
+.text-green {
+  color: #80ba27 !important;
 }
 /* Tab view */
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-    .navbar-expand-lg .navbar-nav .nav-link {
-      padding-left: 10px !important;
-      padding-right: 10px !important;
-      color: #fff !important;
-    }
-    .navbar .navbar-nav .nav-item .nav-link {
-      border-bottom: none;
-      font-family: var(--fc-font-regular);
-      color: #fff !important;
-      padding: 10px;
-      text-transform: unset !important;
-      font-size: 12px !important;
-    }
-    .navbar .dropdown-fullwidth .dropdown-menu{
-      top: 0 !important;
-      margin: 0 !important;
-    }
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    color: #fff !important;
   }
-  .offer-button{
-    display: inline-block;
-    transform: rotate(-90deg);
-    border-radius: 12px 0px 0px 12px;
+  .navbar .navbar-nav .nav-item .nav-link {
+    border-bottom: none;
+    font-family: var(--fc-font-regular);
+    color: #fff !important;
+    padding: 10px;
+    text-transform: unset !important;
+    font-size: 12px !important;
+  }
+  .navbar .dropdown-fullwidth .dropdown-menu {
+    top: 0 !important;
+    margin: 0 !important;
+  }
+}
+.offer-button {
+  display: inline-block;
+  transform: rotate(-90deg);
+  border-radius: 12px 0px 0px 12px;
   background: #000;
-  color: #FFF;
+  color: #fff;
   font-family: Brandon Text;
   font-size: 16px;
   font-style: normal;
   margin-top: 100px;
   text-transform: uppercase;
-  }  
-
-
-  .highlighted {
-    color: #000;
-    font-weight: bolder;
-    text-transform: capitalize;
-  }
-
-  @media only screen and (max-width: 600px) {
-    #hide-mob-brand-name{
-        display: none;
-    }
-  }
-  .mob-cart-count {
-    border-style: none;
-    border-radius: 50%;
-    background: #76bc21;
-    padding: 2px 7px;
-    color: #fff;
-    font-size: 9px;
-    position: absolute;
-    left: 5px;
-    top: -6px;
 }
 
-.order-btn-active{
+.highlighted {
+  color: #000;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 600px) {
+  #hide-mob-brand-name {
+    display: none;
+  }
+}
+.mob-cart-count {
+  border-style: none;
+  border-radius: 50%;
+  background: #76bc21;
+  padding: 2px 7px;
+  color: #fff;
+  font-size: 9px;
+  position: absolute;
+  left: 5px;
+  top: -6px;
+}
+
+.order-btn-active {
   background: black;
   color: white;
   font-weight: bold;
   border: none;
 }
-.order-btn-inactive{
+.order-btn-inactive {
   background: white;
   color: black;
   font-weight: bold;
   border: 1px solid black;
+}
+.carousel {
+  transform: translate3d(0, 0, 0);
 }
