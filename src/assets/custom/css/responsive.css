@@ -578,8 +578,12 @@
     .visit-row ul li {
         width: 100%;
     }
+
+    .offcanvas{
+        z-index: 999 !important;
+    }
     .product-grid h4 {
-        white-space: wrap;
+        white-space: normal;
         line-height: 20px;
         height: 58px;
         text-align: left !important;
