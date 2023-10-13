@@ -2,6 +2,8 @@ import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
 import RatingModal from "./RatingModal";
 import { useState } from "react";
+import deviceImgeRender from "../../../utils/deviceImageRender";
+
 function MobileSpec({ currentVariant, productDatas }) {
   const [refetch, setRefetch] = useState(false);
   const [ratingType, setRatingType] = useState("product");
@@ -131,6 +133,13 @@ function MobileSpec({ currentVariant, productDatas }) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
+              <div className="col-12 mb-2">
+                <img
+                  className="img-fluid"
+                  src={deviceImgeRender(productDatas?.type_banner_image)}
+                  alt=""
+                />
+              </div>
               <div className="col-md-4 return-policy-div">
                 <h1>{productDatas?.return_title}</h1>
                 <p>{productDatas?.return_text_1}</p>

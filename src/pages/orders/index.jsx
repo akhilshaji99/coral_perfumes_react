@@ -70,7 +70,7 @@ function Index() {
           <div className="col-lg-9 col-md-9 col-12">
             <div className="py-6 p-md-6 p-lg-10">
               <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
-              {/* <OrdersEmpty/> */}
+
               <div
                 class="btn-group mb-4"
                 role="group"
@@ -103,6 +103,7 @@ function Index() {
                   COMPLETED
                 </button>
               </div>
+              {/* <OrdersEmpty /> */}
               {activeOrders?.map((ongoingOrder, index) => {
                 return (
                   <div key={index}>
