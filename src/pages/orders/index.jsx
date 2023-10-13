@@ -18,6 +18,7 @@ function Index() {
   const [refetch, setRefetch] = useState(false);
   const [buttonActive, setButtonActive] = useState(1);
   const [status, seStatus] = useState(false);
+  // const [ordeStatus, setOrderStatus] = useState(false);
 
   useEffect(() => {
     getOrders();
@@ -70,54 +71,64 @@ function Index() {
           <div className="col-lg-9 col-md-9 col-12">
             <div className="py-6 p-md-6 p-lg-10">
               <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
-
-              <div
-                class="btn-group mb-4"
-                role="group"
-                aria-label="Basic example"
-              >
-                <button
-                  type="button"
-                  class={
-                    buttonActive === 1
-                      ? `order-btn-active`
-                      : "order-btn-inactive"
-                  }
-                  onClick={() => {
-                    setButtonActive(1);
-                  }}
-                >
-                  ONGOING ORDERS
-                </button>
-                <button
-                  type="button"
-                  class={
-                    buttonActive === 2
-                      ? `order-btn-active`
-                      : "order-btn-inactive"
-                  }
-                  onClick={() => {
-                    setButtonActive(2);
-                  }}
-                >
-                  COMPLETED
-                </button>
-              </div>
-              {/* <OrdersEmpty /> */}
-              {activeOrders?.map((ongoingOrder, index) => {
-                return (
-                  <div key={index}>
-                    <OrderDatas
-                      setModalData={setModalData}
-                      showOrderCancelFlag={showOrderCancelFlag}
-                      setShowOrderCancelFlag={setShowOrderCancelFlag}
-                      modalType={modalType}
-                      setModalType={setModalType}
-                      ongoingOrder={ongoingOrder}
-                    />
+              {activeOrders === undefined ? (
+                <OrdersEmpty />
+              ) : (
+                <>
+                  <div
+                    class="btn-group mb-4"
+                    role="group"
+                    aria-label="Basic example"
+                  >
+                    <button
+                      type="button"
+                      class={
+                        buttonActive === 1
+                          ? `order-btn-active`
+                          : "order-btn-inactive"
+                      }
+                      onClick={() => {
+                        setButtonActive(1);
+                      }}
+                    >
+                      ONGOING ORDERS
+                    </button>
+                    <button
+                      type="button"
+                      class={
+                        buttonActive === 2
+                          ? `order-btn-active`
+                          : "order-btn-inactive"
+                      }
+                      onClick={() => {
+                        setButtonActive(2);
+                      }}
+                    >
+                      COMPLETED
+                    </button>
                   </div>
-                );
-              })}
+                  {activeOrders.data && activeOrders.data.length <= 0 ? (
+                    <OrdersEmpty orderEmptyMessages={activeOrders?.message} />
+                  ) : (
+                    <>
+                      {activeOrders?.map((ongoingOrder, index) => {
+                        return (
+                          <div key={index}>
+                            <OrderDatas
+                              setModalData={setModalData}
+                              showOrderCancelFlag={showOrderCancelFlag}
+                              setShowOrderCancelFlag={setShowOrderCancelFlag}
+                              modalType={modalType}
+                              setModalType={setModalType}
+                              ongoingOrder={ongoingOrder}
+                            />
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>

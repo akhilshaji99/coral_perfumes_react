@@ -2,14 +2,14 @@ import React from "react";
 import BagEmptyImg from "./img/Bag.svg";
 import { Link } from "react-router-dom";
 
-function OrdersEmpty(cartEmptyMessages = null) {
-  console.log("cartEmptyMessages", cartEmptyMessages);
+function OrdersEmpty(orderEmptyMessages = null) {
+  console.log("orderEmptyMessages", orderEmptyMessages);
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-order-empty mt-2">
         <div className="col-md-8 text-center">
           <img src={BagEmptyImg} className="img-fluid" alt="Coral Perfumes" />
-          <h1>{cartEmptyMessages?.cartEmptyMessages?.message_1}</h1>
+          <h1>{orderEmptyMessages?.orderEmptyMessages?.message_1}</h1>
           <h5>
             <span>
               <svg
@@ -49,7 +49,7 @@ function OrdersEmpty(cartEmptyMessages = null) {
               </svg>
             </span>
             <Link to={"/"}>
-              {cartEmptyMessages?.cartEmptyMessages?.message_2}
+              {orderEmptyMessages?.orderEmptyMessages?.message_2}
             </Link>
             <span>
               <svg
@@ -89,7 +89,7 @@ function OrdersEmpty(cartEmptyMessages = null) {
               </svg>
             </span>
           </h5>
-          <p>{cartEmptyMessages?.cartEmptyMessages?.message_3}</p>
+          <p>{orderEmptyMessages?.orderEmptyMessages?.message_3}</p>
         </div>
       </div>
     </div>
