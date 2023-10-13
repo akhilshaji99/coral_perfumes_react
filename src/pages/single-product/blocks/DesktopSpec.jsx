@@ -11,6 +11,11 @@ function DesktopSpec({ currentVariant, productDatas }) {
 
   return (
     <>
+      <RatingModal
+        setRefetch={setRefetch}
+        currentVariant={currentVariant}
+        ratingType={ratingType}
+      />
       <div className="container-fluid d-none d-sm-block">
         <div className="row">
           <div className="col-md-7">
@@ -187,12 +192,6 @@ function DesktopSpec({ currentVariant, productDatas }) {
             {/* tab content */}
             <div className="tab-content" id="myTabContent">
               {/* tab pane */}
-              <RatingModal
-                setRefetch={setRefetch}
-                currentVariant={currentVariant}
-                ratingType={ratingType}
-              />
-
               <ProductRating
                 refetch={refetch}
                 setRefetch={setRefetch}

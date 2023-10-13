@@ -1,105 +1,64 @@
-import React, { useState } from "react";
+// App.js
+import React, { useEffect } from "react";
+import $ from "jquery";
 
-const Submenu = ({ submenu, styleClass, showSubMenu, goBack }) => {
-  return (
-    <ul className={`submenu ${styleClass}`}>
-      {submenu.map((item, index) => (
-        <li key={index} className={item.hasChild ? "hasChild" : ""}>
-          <a href="#" onClick={() => showSubMenu(item)}>
-            {item.text}
-          </a>
-        </li>
-      ))}
-      <li className="back">
-        <a href="#" onClick={goBack}>
-          Back
-        </a>
-      </li>
-    </ul>
-  );
-};
+// import './App.css';
 
-const SimpleMobileMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState(null);
+function MobileMenu() {
+  useEffect(() => {
+    const $ = window.jQuery;
 
-  const toggleMobileMenu = () => {
-    setIsOpen(!isOpen);
-    setActiveSubMenu(null);
-    document.body.classList.toggle("mmactive", isOpen);
-  };
+    $("#mobile-menu").simpleMobileMenu();
 
-  const showSubMenu = (item) => {
-    setActiveSubMenu(item);
-  };
+    $("#menu-toggle").click(function () {
+      $("#mobile-menu").toggleClass("menu-open");
+    });
 
-  const goBack = () => {
-    setActiveSubMenu(null);
-  };
+    $("#back-button").click(function () {
+      $("#mobile-menu .sub-menu-open").removeClass("sub-menu-open");
+    });
 
-  const options = {
-    hamburgerId: "sm_menu_ham",
-    wrapperClass: "sm_menu_outer",
-    submenuClass: "submenu",
-    menuStyle: "slide", // 'slide' or 'accordion'
-    onMenuLoad: () => true,
-    onMenuToggle: () => true,
-  };
-
-  const menuItems = [
-    { text: "Home" },
-    {
-      text: "Services",
-      hasChild: true,
-      submenu: [
-        { text: "Service 1" },
-        { text: "Service 2" },
-        { text: "Service 3" },
-      ],
-    },
-    { text: "About" },
-    {
-      text: "Contact",
-      hasChild: true,
-      submenu: [{ text: "Contact 1" }, { text: "Contact 2" }],
-    },
-  ];
+    $(".has-submenu a").click(function (e) {
+      e.preventDefault();
+      $(this).parent().toggleClass("sub-menu-open");
+    });
+  }, []);
 
   return (
-    <div>
-      <div
-        id={options.hamburgerId}
-        className={`hamburger ${isOpen ? "open" : ""}`}
-        onClick={toggleMobileMenu}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div
-        className={`menu-outer ${options.wrapperClass} ${
-          isOpen ? "active" : ""
-        }`}
-      >
+    <div className="App">
+      <header>
+        <button id="menu-toggle">Open Menu</button>
+      </header>
+
+      <nav id="mobile-menu">
         <ul>
-          {menuItems.map((item, index) => (
-            <li key={index} className={item.hasChild ? "hasChild" : ""}>
-              <a href="#">{item.text}</a>
-              {item.hasChild && activeSubMenu === item && (
-                <Submenu
-                  submenu={item.submenu}
-                  styleClass={options.menuStyle}
-                  showSubMenu={showSubMenu}
-                  goBack={goBack}
-                />
-              )}
-            </li>
-          ))}
+          <li>
+            <a href="#menu-item-1">Menu Item 1</a>
+          </li>
+          <li>
+            <a href="#menu-item-2">Menu Item 2</a>
+          </li>
+          <li className="has-submenu">
+            <a href="#">Submenu</a>
+            <ul>
+              <li>
+                <a href="#submenu-item-1">Submenu Item 1</a>
+              </li>
+              <li>
+                <a href="#submenu-item-2">Submenu Item 2</a>
+              </li>
+            </ul>
+          </li>
         </ul>
+      </nav>
+
+      <div id="menu-back">
+        <button id="back-button">Back</button>
       </div>
+
+      <main>{/* Your content goes here */}</main>
     </div>
   );
-};
+}
 
-export default SimpleMobileMenu;
+export default MobileMenu;

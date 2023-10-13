@@ -79,26 +79,25 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               {"  "}
               97% of customers recommend this product
             </span>
-            
           </div>
           <div className=" col-md-3 mt-3">
-              <div className="ml-10">
-                <button
-                  type="button"
-                  className="btn btn-outline-dark"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setRefetch(false);
-                    setRatingType("product");
+            <div className="ml-10 d-none d-sm-block">
+              <button
+                type="button"
+                className="btn btn-outline-dark"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRefetch(false);
+                  setRatingType("product");
 
-                    $("#ratingModal").toggle();
-                    $("#ratingModal").toggleClass("modal fade modal");
-                  }}
-                >
-                  Rate
-                </button>
-              </div>
+                  $("#ratingModal").toggle();
+                  $("#ratingModal").toggleClass("modal fade modal");
+                }}
+              >
+                Rate
+              </button>
             </div>
+          </div>
           {productReviews?.stars_array?.map((component, index) => {
             return (
               <div key={index}>
@@ -126,6 +125,22 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
               </div>
             );
           })}
+          <div className="ml-10 text-center">
+              <button
+                type="button"
+                className="btn btn-outline-dark d-md-none mb-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRefetch(false);
+                  setRatingType("product");
+
+                  $("#ratingModal").toggle();
+                  $("#ratingModal").toggleClass("modal fade modal");
+                }}
+              >
+                Rate
+              </button>
+            </div>
         </div>
       </div>
     </div>

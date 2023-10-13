@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import MobileMyAccount from "../../pages/common/MobileMyAccount";
+import MobileMenu from "./Mobilemenu";
 
 const BaseLayout = () => {
   useEffect(() => {
@@ -45,6 +46,7 @@ const BaseLayout = () => {
             mobileMenuStatus={mobileMenuStatus}
             setMobileMenuStatus={setMobileMenuStatus}
           />
+          {/* <MobileMenu/> */}
         </nav>
       </div>
       <div className="fixed-top-margin main-layout ">
