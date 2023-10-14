@@ -13,19 +13,22 @@ function CategoryTop({ componentDatas }) {
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
+            removeClippedSubviews={true}
             additionalTransfrom={0}
+            autoPlay
             arrows={false}
-            autoPlaySpeed={3000}
+            autoPlaySpeed={3500}
             centerMode={false}
             className=""
             containerClass="container-with-dots"
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite
+            infinite={true}
             itemClass=""
+            partialVisible
             keyBoardControl
-            minimumTouchDrag={80}
+            minimumTouchDrag={-10000}
             pauseOnHover
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
@@ -36,7 +39,7 @@ function CategoryTop({ componentDatas }) {
                   max: 3000,
                   min: 1024,
                 },
-                items: 3,
+                items: 6,
                 partialVisibilityGutter: 40,
               },
               mobile: {
@@ -45,15 +48,15 @@ function CategoryTop({ componentDatas }) {
                   min: 0,
                 },
                 items: 3,
-                partialVisibilityGutter: 30,
+                partialVisibilityGutter: 20,
               },
               tablet: {
                 breakpoint: {
                   max: 1024,
                   min: 464,
                 },
-                items: 2,
-                partialVisibilityGutter: 30,
+                items: 4,
+                partialVisibilityGutter: 10,
               },
             }}
             rewind={false}
@@ -63,7 +66,7 @@ function CategoryTop({ componentDatas }) {
             showDots={false}
             sliderClass=""
             slidesToSlide={3}
-            swipeable
+            swipeable={true}
           >
             {componentDatas.datas?.map((category, index) => {
               return (
