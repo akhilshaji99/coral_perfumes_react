@@ -5,11 +5,12 @@ import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import style from "../../../assets/css/order/style.css";
 function OrderCancelModal({
-  setRefetch,
+  refetchApi,
   modalData,
   setShowOrderCancelFlag,
   showOrderCancelFlag,
   modalType,
+  orderType = null,
 }) {
   const [addressList, setAddressList] = useState([]);
   const [radioOptions, setRadioOptions] = useState([]);
@@ -25,7 +26,6 @@ function OrderCancelModal({
 
   useEffect(() => {
     if (showOrderCancelFlag) {
-      console.log(modalData);
       // if (modalType == "cancel") {
       getReasons(modalData);
       // }
@@ -66,13 +66,18 @@ function OrderCancelModal({
         var bodyFormData = new FormData();
         bodyFormData.append("cancel_reason_id", selectedOption);
         bodyFormData.append("cancel_reason_text", await getSelectedText());
-        const response = await request.post(
-          "order-cancellation/" + modalData?.ongoingOrder?.order_no,
-          bodyFormData
-        );
+        let cancel_endpoint =
+          orderType === "SingleOrder"
+            ? "order-item-cancel-submit/" +
+              modalData?.ongoingOrder?.order_no +
+              "/" +
+              modalData?.orderItem?.id
+            : "order-cancellation/" + modalData?.ongoingOrder?.order_no;
+
+        const response = await request.post(cancel_endpoint, bodyFormData);
         handleModalClose();
         if (response.data.status) {
-          setRefetch(true);
+          refetchApi();
           toast((t) => (
             <AlerMessage
               t={t}
@@ -104,7 +109,7 @@ function OrderCancelModal({
         );
         handleModalClose();
         if (response.data.status) {
-          setRefetch(true);
+          refetchApi();
 
           toast((t) => (
             <AlerMessage

@@ -15,7 +15,6 @@ function Index() {
   const [showOrderCancelFlag, setShowOrderCancelFlag] = useState(false);
   const [modalType, setModalType] = useState("cancel");
   const [modalData, setModalData] = useState(null);
-  const [refetch, setRefetch] = useState(false);
   const [buttonActive, setButtonActive] = useState(1);
   const [status, seStatus] = useState(false);
   // const [ordeStatus, setOrderStatus] = useState(false);
@@ -24,11 +23,9 @@ function Index() {
     getOrders();
   }, []);
 
-  useEffect(() => {
-    if (refetch) {
-      getOrders();
-    }
-  }, [refetch]);
+  const refetchApi = () => {
+    getOrders();
+  };
 
   const getOrders = async () => {
     try {
@@ -36,7 +33,12 @@ function Index() {
       bodyFormData.append("token", getUserToken());
       const response = await request.post("get_user_orders/", bodyFormData);
       if (response?.data) {
-        setActiveOrders(response?.data?.data?.ongoing_orders);
+        if (buttonActive === 1) {
+          setActiveOrders(response?.data?.data?.ongoing_orders);
+        } else {
+          setActiveOrders(response?.data?.data?.completed_orders);
+        }
+
         setOnGoingOrders(response?.data?.data?.ongoing_orders);
         setCompletedOrders(response?.data?.data?.completed_orders);
         seStatus(!status);
@@ -59,7 +61,7 @@ function Index() {
       <div className="container-fluid">
         <BreadCrumps />
         <OrderCancelModal
-          setRefetch={setRefetch}
+          refetchApi={refetchApi}
           modalData={modalData}
           showOrderCancelFlag={showOrderCancelFlag}
           setShowOrderCancelFlag={setShowOrderCancelFlag}

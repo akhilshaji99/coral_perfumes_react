@@ -4,8 +4,8 @@ import $ from "jquery";
 function ProductInfo({
   setModalData,
   setShowOrderCancelFlag,
-  showOrderCancelFlag,
-  modalType,
+  // showOrderCancelFlag,
+  // modalType,
   setModalType,
   orderItem,
   ongoingOrder,
@@ -26,7 +26,9 @@ function ProductInfo({
         ) : null}
       </div>
       <div className="col-md-4 text-lg-end">
-        {ongoingOrder?.order_status === "Delivery" ? <h3>Tax invoice</h3> : null}
+        {ongoingOrder?.order_status === "Delivery" ? (
+          <h3>Tax invoice</h3>
+        ) : null}
 
         {ongoingOrder?.order_status === "Ordered" ||
         ongoingOrder?.order_status === "Processing" ||

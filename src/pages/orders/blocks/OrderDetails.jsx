@@ -3,7 +3,12 @@ import OrderProgress from "./OrderProgress";
 import OrderHeader from "./OrderHeader";
 import ProductInfo from "./ProductInfo";
 
-function OrderDetails({ orderDetails }) {
+function OrderDetails({
+  orderDetails,
+  setShowOrderCancelFlag,
+  setModalData,
+  setModalType,
+}) {
   return (
     <>
       <div className="orders-card order-details">
@@ -85,7 +90,18 @@ function OrderDetails({ orderDetails }) {
             <OrderHeader ongoingOrder={orderDetails} />
             <div className="row order-bottom-row">
               <div className="col-md-12">
-                <ProductInfo orderItem={orderItem} />
+                <ProductInfo
+                  setShowOrderCancelFlag={setShowOrderCancelFlag}
+                  setModalData={setModalData}
+                  setModalType={setModalType}
+                  orderItem={orderItem}
+                  ongoingOrder={{
+                    order_status: orderItem?.order_status,
+                    order_cancellation_status: 1,
+                    order_cancellation_text: "cancel Order",
+                    order_no: orderDetails?.order_no,
+                  }}
+                />
               </div>
             </div>
           </div>
