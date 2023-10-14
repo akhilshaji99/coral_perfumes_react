@@ -13,7 +13,6 @@ function CategoryTop({ componentDatas }) {
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
-            removeClippedSubviews={true}
             additionalTransfrom={0}
             autoPlay
             arrows={false}
@@ -26,10 +25,9 @@ function CategoryTop({ componentDatas }) {
             focusOnSelect={false}
             infinite={true}
             itemClass=""
-            partialVisible
             keyBoardControl
             minimumTouchDrag={-10000}
-            pauseOnHover
+            pauseOnHover={false}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
@@ -65,8 +63,8 @@ function CategoryTop({ componentDatas }) {
             shouldResetAutoplay
             showDots={false}
             sliderClass=""
-            slidesToSlide={3}
-            swipeable={true}
+            slidesToSlide={1}
+            swipeable
           >
             {componentDatas.datas?.map((category, index) => {
               return (
