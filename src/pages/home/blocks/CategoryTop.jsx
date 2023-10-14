@@ -22,7 +22,7 @@ function CategoryTop({ componentDatas }) {
             className=""
             containerClass="container-with-dots"
             dotListClass=""
-            draggable
+            draggable={true}
             focusOnSelect={false}
             infinite={true}
             itemClass=""
