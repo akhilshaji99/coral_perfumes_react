@@ -390,7 +390,7 @@ function Footer({ changeMobileMenuStatus }) {
           activeTextColor="#80BA27"
         />
       </div>
-      <div className="container">
+      <div className="container px-4">
         <div className="row footer-row align-items-center">
           <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6>
           <div className="col-md-3">
