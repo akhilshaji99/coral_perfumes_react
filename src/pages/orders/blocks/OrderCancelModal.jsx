@@ -103,10 +103,15 @@ function OrderCancelModal({
         bodyFormData.append("cancel_reason_id", selectedOption);
         bodyFormData.append("cancel_reason_text", getSelectedText());
 
-        const response = await request.post(
-          "order-return-submit/" + modalData?.ongoingOrder?.order_no,
-          bodyFormData
-        );
+        let return_endpoint =
+          orderType === "SingleOrder"
+            ? "order-item-return-submit/" +
+              modalData?.ongoingOrder?.order_no +
+              "/" +
+              modalData?.orderItem?.id
+            : "order-return-submit/" + modalData?.ongoingOrder?.order_no;
+
+        const response = await request.post(return_endpoint, bodyFormData);
         handleModalClose();
         if (response.data.status) {
           refetchApi();
