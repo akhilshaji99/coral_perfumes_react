@@ -8,7 +8,8 @@ import * as yup from "yup";
 import request from "../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import $ from "jquery";
 
 const prifileFormSchema = yup.object().shape({
@@ -29,15 +30,22 @@ function getStyles(errors, fieldName) {
 function Index() {
   const [profile, setProfile] = useState(null);
   const [genders, setGenders] = useState(null);
-  const  [refetch, setRefetch] = useState(false)
+  const [refetch, setRefetch] = useState(false);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    profileForm.values.date_of_birth = date;
+  };
 
   const handleOnSubmit = async (values) => {
     try {
       const date = new Date(values.date_of_birth);
-            const formattedDate = date.toLocaleDateString('en-GB');
-      const response = await request.post("get_user_profile/",{
+      const formattedDate = date.toLocaleDateString("en-GB");
+      const response = await request.post("get_user_profile/", {
         ...values,
-        date_of_birth:formattedDate
+        date_of_birth: formattedDate,
       });
       if (response.data.status) {
         toast((t) => (
@@ -46,13 +54,13 @@ function Index() {
             toast={toast}
             status={response.data.status}
             title={"Profile"}
-            message= {response.data.message}
+            message={response.data.message}
           />
         ));
         setProfile(response?.data?.data);
         profileForm.setFieldValue({
-          ...values
-        })
+          ...values,
+        });
       } else {
         toast((t) => (
           <AlerMessage
@@ -64,7 +72,6 @@ function Index() {
           />
         ));
       }
-     
     } catch (error) {
       console.log("error", error);
     }
@@ -77,7 +84,7 @@ function Index() {
       last_name: "",
       email: "",
       gender: "",
-      date_of_birth: "",
+      date_of_birth: null,
     },
     enableReinitialize: true,
     validationSchema: prifileFormSchema,
@@ -90,11 +97,10 @@ function Index() {
   }, []);
 
   useEffect(() => {
-    if(refetch){
-    getProfile();
+    if (refetch) {
+      getProfile();
     }
   }, [refetch]);
-  
 
   const getProfile = async () => {
     try {
@@ -116,8 +122,10 @@ function Index() {
           gender: response?.data?.data?.gender,
           date_of_birth: response?.data?.data?.date_of_birth,
         });
+        const isoDate = response?.data?.data?.date_of_birth;
+        const dateObject = new Date(isoDate);
+        setSelectedDate(dateObject);
         setRefetch(false);
-
       }
     } catch (error) {
       console.log("error", error);
@@ -135,8 +143,8 @@ function Index() {
         <div className="container-fluid">
           <div className="row">
             <MyAccountSidebar />
-            <ChangeEmail setRefetch={setRefetch} profileForm={profileForm}/>
-            <ChangePhone setRefetch={setRefetch} profileForm={profileForm}/>
+            <ChangeEmail setRefetch={setRefetch} profileForm={profileForm} />
+            <ChangePhone setRefetch={setRefetch} profileForm={profileForm} />
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
@@ -146,7 +154,10 @@ function Index() {
                 <div className="row">
                   <div className="pe-lg-14">
                     {/* heading */}
-                    <form onSubmit={profileForm.handleSubmit} className=" row row-cols-1 row-cols-lg-2">
+                    <form
+                      onSubmit={profileForm.handleSubmit}
+                      className=" row row-cols-1 row-cols-lg-2"
+                    >
                       <div className="mb-30 col">
                         <input
                           type="text"
@@ -156,8 +167,6 @@ function Index() {
                           value={profileForm.values.first_name}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "first_name")}
-                  
-                          
                         />
                       </div>
                       <div className="mb-30 col">
@@ -169,7 +178,6 @@ function Index() {
                           value={profileForm.values.last_name}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "last_name")}
-
                         />
                       </div>
                       <div className="mb-5 col">
@@ -181,14 +189,13 @@ function Index() {
                           value={profileForm.values.email}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "email")}
-
                         />
                         <a
                           href="javascript:;"
                           // data-bs-toggle="modal"
                           // data-bs-target="#changeEmail"
                           className="change-btn"
-                          onClick={(e)=>{
+                          onClick={(e) => {
                             $("#changeEmail").toggle();
                             $("#changeEmail").toggleClass("modal fade modal");
                           }}
@@ -199,20 +206,19 @@ function Index() {
                       <div className="mb-5 col">
                         <input
                           type="text"
-                          className= "form-control"
+                          className="form-control"
                           placeholder="0559238088"
                           name="phone_number"
                           value={profileForm.values.phone_number}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "phone_number")}
-
                         />
                         <a
                           href="javascript:;"
                           // data-bs-toggle="modal"
                           // data-bs-target="#changePhone"
                           className="change-btn"
-                          onClick={(e)=>{
+                          onClick={(e) => {
                             $("#changePhone").toggle();
                             $("#changePhone").toggleClass("modal fade modal");
                           }}
@@ -222,12 +228,11 @@ function Index() {
                       </div>
                       <div className="mb-30 col">
                         <select
-                           className="form-control"
+                          className="form-control"
                           name="gender"
                           value={profileForm.values.gender}
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "gender")}
-
                         >
                           {genders?.map((gender, index) => {
                             return (
@@ -237,7 +242,7 @@ function Index() {
                         </select>
                       </div>
                       <div className="mb-30 col">
-                        <input
+                        {/* <input
                           type="date"
                           className="form-control"
                           placeholder="My Birthdays"
@@ -246,13 +251,30 @@ function Index() {
                           onChange={profileForm.handleChange}
                           // style={getStyles(profileForm.errors, "date_of_birth")}
 
+                        /> */}
+                        <DatePicker
+                          selected={selectedDate}
+                          onChange={handleDateChange}
+                          showYearDropdown
+                          showMonthDropdown
+                          dateFormatCalendar="MMMM"
+                          yearDropdownItemNumber={100}
+                          scrollableYearDropdown
+                          placeholderText="My Birthday"
+                          maxDate={new Date()}
+                          dateFormat="dd/MM/yyyy"
+                          isClearable
+                          className="form-control"
+                          style={{ width: "100%" }}
                         />
                       </div>
                       <div className="row justify-content-center w-100">
-                      <div className="col-md-3 text-center">
-                        <button type="submit" className="btn btn-dark w-100" >Save</button>
+                        <div className="col-md-3 text-center">
+                          <button type="submit" className="btn btn-dark w-100">
+                            Save
+                          </button>
+                        </div>
                       </div>
-                    </div>
                     </form>
                     {/* <div className="row justify-content-center">
                       <div className="col-md-3 text-center">

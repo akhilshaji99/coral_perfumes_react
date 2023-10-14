@@ -30234,3 +30234,6 @@ body {
 .carousel {
   transform: translate3d(0, 0, 0);
 }
+.react-datepicker-wrapper{
+  width: 100%;
+}
