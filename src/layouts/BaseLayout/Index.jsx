@@ -56,7 +56,7 @@ const BaseLayout = () => {
         myAccountStatus={myAccountStatus}
         setMyAccountStatus={setMyAccountStatus}
       />
-      <Footer changeMobileMenuStatus={changeMobileMenuStatus} />
+      {/* <Footer changeMobileMenuStatus={changeMobileMenuStatus} /> */}
     </>
   );
 };
