@@ -72,7 +72,7 @@ function CategoryTop({ componentDatas }) {
             shouldResetAutoplay
             showDots={false}
             sliderClass=""
-            slidesToSlide={1}
+            slidesToSlide={2.5}
             swipeable
           >
             {componentDatas.datas?.map((category, index) => {
