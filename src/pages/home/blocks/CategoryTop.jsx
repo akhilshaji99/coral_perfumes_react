@@ -14,38 +14,29 @@ function CategoryTop({ componentDatas }) {
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
-            autoPlay={false}
             arrows={false}
-            autoPlaySpeed={3500}
+            autoPlaySpeed={3000}
             centerMode={false}
             className=""
             containerClass="container-with-dots"
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite={true}
+            infinite
             itemClass=""
             keyBoardControl
-            minimumTouchDrag={-10000}
-            pauseOnHover={false}
+            minimumTouchDrag={80}
+            pauseOnHover
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
             responsive={{
-              largescreen: {
-                breakpoint: {
-                  max: 3000,
-                  min: 1480,
-                },
-                items: 5,
-                partialVisibilityGutter: 40,
-              },
               desktop: {
                 breakpoint: {
-                  max: 1680,
+                  max: 3000,
                   min: 1024,
                 },
-                items: 4,
+                items: 3,
                 partialVisibilityGutter: 40,
               },
               mobile: {
@@ -53,8 +44,7 @@ function CategoryTop({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-
-                items: 2.5,
+                items: 1,
                 partialVisibilityGutter: 30,
               },
               tablet: {
@@ -72,7 +62,7 @@ function CategoryTop({ componentDatas }) {
             shouldResetAutoplay
             showDots={false}
             sliderClass=""
-            slidesToSlide={2.5}
+            slidesToSlide={1}
             swipeable
           >
             {componentDatas.datas?.map((category, index) => {
