@@ -44,7 +44,7 @@ function CategoryTop({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 1,
+                items: 3,
                 partialVisibilityGutter: 30,
               },
               tablet: {
@@ -62,7 +62,7 @@ function CategoryTop({ componentDatas }) {
             shouldResetAutoplay
             showDots={false}
             sliderClass=""
-            slidesToSlide={1}
+            slidesToSlide={3}
             swipeable
           >
             {componentDatas.datas?.map((category, index) => {
