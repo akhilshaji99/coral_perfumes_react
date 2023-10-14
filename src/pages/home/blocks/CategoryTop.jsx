@@ -13,6 +13,7 @@ function CategoryTop({ componentDatas }) {
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
+            removeClippedSubviews={true}
             additionalTransfrom={0}
             autoPlay
             arrows={false}
