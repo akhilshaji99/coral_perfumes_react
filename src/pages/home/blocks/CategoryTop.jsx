@@ -14,8 +14,8 @@ function CategoryTop({ componentDatas }) {
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <Carousel
             additionalTransfrom={0}
-            autoPlay
-            arrows={false}
+            autoPlay={false}
+            arrows
             autoPlaySpeed={3500}
             centerMode={false}
             className=""
@@ -32,12 +32,20 @@ function CategoryTop({ componentDatas }) {
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
             responsive={{
-              desktop: {
+              largescreen: {
                 breakpoint: {
                   max: 3000,
+                  min: 1480,
+                },
+                items: 5,
+                partialVisibilityGutter: 40,
+              },
+              desktop: {
+                breakpoint: {
+                  max: 1680,
                   min: 1024,
                 },
-                items: 6,
+                items: 4,
                 partialVisibilityGutter: 40,
               },
               mobile: {
@@ -45,16 +53,17 @@ function CategoryTop({ componentDatas }) {
                   max: 464,
                   min: 0,
                 },
-                items: 3,
-                partialVisibilityGutter: 20,
+
+                items: 2.5,
+                partialVisibilityGutter: 30,
               },
               tablet: {
                 breakpoint: {
                   max: 1024,
                   min: 464,
                 },
-                items: 4,
-                partialVisibilityGutter: 10,
+                items: 2,
+                partialVisibilityGutter: 30,
               },
             }}
             rewind={false}
