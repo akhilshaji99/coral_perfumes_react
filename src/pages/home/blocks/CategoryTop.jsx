@@ -15,7 +15,7 @@ function CategoryTop({ componentDatas }) {
           <Carousel
             additionalTransfrom={0}
             autoPlay={false}
-            arrows
+            arrows={false}
             autoPlaySpeed={3500}
             centerMode={false}
             className=""
