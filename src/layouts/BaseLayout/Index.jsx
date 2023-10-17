@@ -8,8 +8,11 @@ import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import MobileMyAccount from "../../pages/common/MobileMyAccount";
 import MobileMenu from "./Mobilemenu";
+import request from "../../utils/request";
 
 const BaseLayout = () => {
+  const [menuItems, setMenuItems] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.className = "";
@@ -35,6 +38,19 @@ const BaseLayout = () => {
     setMobileMenuStatus(false);
     setMyAccountStatus(status === false ? status : !myAccountStatus);
   };
+
+  useEffect(() => {
+    getMenuList();
+  }, []);
+
+  const getMenuList = async () => {
+    try {
+      const response = await request.get("get_menus/");
+      setMenuItems(response.data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
@@ -45,8 +61,13 @@ const BaseLayout = () => {
           <Menubar
             mobileMenuStatus={mobileMenuStatus}
             setMobileMenuStatus={setMobileMenuStatus}
+            menuItems={menuItems}
           />
-          {/* <MobileMenu/> */}
+          <MobileMenu
+            mobileMenuStatus={mobileMenuStatus}
+            setMobileMenuStatus={setMobileMenuStatus}
+            menuItems={menuItems}
+          />
         </nav>
       </div>
       <div className="fixed-top-margin main-layout ">

@@ -1,4 +1,3 @@
-import request from "../../utils/request";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import deviceImageRender from "../../utils/deviceImageRender";
@@ -6,24 +5,11 @@ import flashGif from "../../assets/img/flash/gif-menu.gif";
 import { Link } from "react-router-dom";
 // import Mobilemenu from "./Mobilemenu";
 
-function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
+function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
   const navigate = useNavigate();
-  const [menuItems, setMenuItems] = useState([]);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   // const [showMobileMenu, setShowMobileMenu] = useState(true);
 
-  useEffect(() => {
-    getMenuList();
-  }, []);
-
-  const getMenuList = async () => {
-    try {
-      const response = await request.get("get_menus/");
-      setMenuItems(response.data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   const handleClick = (link) => {
     setMobileMenuStatus(false);
     navigate(link);
@@ -69,7 +55,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus }) {
         aria-label="Close"
       />
     </div> */}
-            <div className="offcanvas-body">
+            <div className="offcanvas-body" id="desktop-menu">
               <div className="custom-mega-menu">
                 <ul className="navbar-nav align-items-center ">
                   {Array.isArray(menuItems)

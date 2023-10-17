@@ -157,7 +157,9 @@ function Account({ changeMyAccountMenuStatus }) {
           <div className="row align-items-center d-lg-none mt-2">
             <div
               className="col-md-4 col-4"
-              onClick={() => changeMyAccountMenuStatus()}
+              onClick={() => {
+                changeMyAccountMenuStatus();
+              }}
             >
               <button
                 className="navbar-toggler collapsed"
@@ -177,7 +179,9 @@ function Account({ changeMyAccountMenuStatus }) {
               <NavLink
                 className="navbar-brand"
                 to="/"
-                onClick={() => changeMyAccountMenuStatus(false)}
+                onClick={() => {
+                  changeMyAccountMenuStatus(false);
+                }}
               >
                 {/* <img src={Logo} alt="Coral Perfumes" width={55} height={33} /> */}
                 <Logo />
