@@ -22457,7 +22457,7 @@ h3 {
 .footer .nav .nav-item .nav-link {
   color: var(--fc-white);
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: capitalize;
   display: table;
   margin: 2px 0;
@@ -30236,4 +30236,8 @@ body {
 }
 .react-datepicker-wrapper{
   width: 100%;
+}
+.col-md-4.text-end.col-4.company-name a {
+  padding: 0;
+  text-transform: uppercase;
 }

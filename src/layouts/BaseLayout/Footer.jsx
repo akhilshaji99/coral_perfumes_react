@@ -433,7 +433,7 @@ function Footer({ changeMobileMenuStatus }) {
         </div>
         <hr />
         <div className="row g-4 py-4 footer-row">
-          <div className="col-md-5">
+          <div className="col-md-6">
             <div className="row ">
               <div className="col-md-3">
                 <h6 className="mb-5">info</h6>
@@ -543,7 +543,7 @@ function Footer({ changeMobileMenuStatus }) {
                       </span>
                     </a>
                   </li>
-                  <li className="nav-item mb-2 ft-top ">
+                  <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       {" "}
                       return policies{" "}
@@ -552,7 +552,7 @@ function Footer({ changeMobileMenuStatus }) {
                       </span>
                     </a>
                   </li>
-                  <li className="nav-item mb-2 ft-top ">
+                  <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
                       product recall{" "}
                       <span className="footer-link-seperator">
