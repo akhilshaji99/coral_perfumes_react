@@ -111,6 +111,31 @@ body.products .discount-percentage{
     font-size: 15px;
 }
 
+.search-result-close{
+    width: 30px;
+    height: 31px;
+    line-height: 27px;
+    display: flex;
+    margin-left: auto;
+    background: #ff3d3d;
+    text-align: center;
+    color: #ffff;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    margin-right: 12px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.search-result-close:hover{
+    background: #000;
+    text-align: center;
+    color: #ffff;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1920px) {
     .filter-side{
         width: 22%;
