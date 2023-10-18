@@ -23,7 +23,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
         <div class="row search-container">
           {result.top_blocks && result.top_blocks.length > 0 ? (
             <a href="javascript:;" className="search-result-close">
-              Close
+              X
             </a>
           ) : null}
           <div class="row search-top">
