@@ -580,7 +580,6 @@ function Footer({ changeMobileMenuStatus }) {
                       href="mailto:coral@coralperfumes.com"
                       className="nav-link"
                     >
-                      {" "}
                       coral@coralperfumes.com
                     </a>
                   </li>
@@ -701,7 +700,7 @@ function Footer({ changeMobileMenuStatus }) {
             <div className="col-md-4 text-end col-4 company-name">
               Engineerd By{" "}
               <a href="https://cloud6.co.in/" target="_blank">
-                Cloud 6
+                Cloud6
               </a>
             </div>
           </div>
