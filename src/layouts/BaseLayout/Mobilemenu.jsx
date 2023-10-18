@@ -5,6 +5,7 @@ import flashGif from "../../assets/img/flash/gif-menu.gif";
 import deviceImageRender from "../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../../assets/icons/back_button.svg";
 
 function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
   const [showSubMenus, setShowSubMenus] = useState(false);
@@ -116,7 +117,12 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                 setShowSubMenus(false);
               }}
             >
-              <h5 className="text-left ml-2 my-dash-head">Back</h5>
+              {/* <h5 className="text-left ml-2 my-dash-head">Back</h5> */}
+              <img
+                src={BackButton}
+                alt="coral-menu-back"
+                className="mob-menu-back-button"
+              />
             </div>
             <ul className="nav flex-column nav-pills nav-pills-dark">
               <li

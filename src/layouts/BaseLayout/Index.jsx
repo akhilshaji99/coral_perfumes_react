@@ -51,13 +51,20 @@ const BaseLayout = () => {
       console.log("error", error);
     }
   };
+  const closeMoibileMenu = () => {
+    setMobileMenuStatus(false);
+  };
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <div className="">
         <nav className="fixed-top bg-white ">
           <TopHeader />
-          <Account changeMyAccountMenuStatus={changeMyAccountMenuStatus} />
+          <Account
+            changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+            mobileMenuStatus={mobileMenuStatus}
+            closeMoibileMenu={closeMoibileMenu}
+          />
           <Menubar
             mobileMenuStatus={mobileMenuStatus}
             setMobileMenuStatus={setMobileMenuStatus}

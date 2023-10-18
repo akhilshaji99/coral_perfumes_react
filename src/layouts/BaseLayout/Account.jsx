@@ -16,6 +16,7 @@ import Profile from "../../assets/icons/Profile.svg";
 import Bag from "../../assets/icons/Bag.svg";
 import Store from "../../assets/icons/Store.svg";
 import Whishlist from "../../assets/icons/Whishlist.svg";
+import CloseButton from "../../assets/icons/close.svg";
 
 function useComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
@@ -52,7 +53,7 @@ function useComponentVisible(initialIsVisible) {
   return { ref, isComponentVisible, setIsComponentVisible };
 }
 
-function Account({ changeMyAccountMenuStatus }) {
+function Account({ changeMyAccountMenuStatus, mobileMenuStatus ,closeMoibileMenu}) {
   //Cart Count :: Redux
   const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
   //#End
@@ -158,7 +159,11 @@ function Account({ changeMyAccountMenuStatus }) {
             <div
               className="col-md-4 col-4"
               onClick={() => {
-                changeMyAccountMenuStatus();
+                if (mobileMenuStatus) {
+                  closeMoibileMenu()
+                } else {
+                  changeMyAccountMenuStatus();
+                }
               }}
             >
               <button
@@ -172,7 +177,15 @@ function Account({ changeMyAccountMenuStatus }) {
                 // aria-controls="offcanvasAccount"
                 // aria-label="Toggle navigation"
               >
-                <img src={HamburgerMenu} alt="Coral Perfumes" />
+                {mobileMenuStatus ? (
+                  <img
+                    src={CloseButton}
+                    alt="Coral Menu Close"
+                    className="mob-menu-close"
+                  />
+                ) : (
+                  <img src={HamburgerMenu} alt="Coral Perfumes" />
+                )}
               </button>
             </div>
             <div className="col-md-4 col-4">
