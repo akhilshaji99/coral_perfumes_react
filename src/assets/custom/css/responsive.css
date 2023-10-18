@@ -573,7 +573,8 @@
     padding: 5px;
     display: block;
   }
-  .flash-sale-box span img,
+  
+.flash-sale-box span img,
   svg {
     vertical-align: middle;
   }
@@ -770,9 +771,7 @@
   body.wishlist .fixed-top-margin.main-layout {
     margin-top: 5px;
   }
-  aside.mb-6.mb-md-0 {
-    display: none;
-  }
+
   .d-flex.justify-content-between.align-items-center.d-md-none.py-4 {
     display: none !important;
   }
@@ -814,6 +813,7 @@
   .col-md-4.text-end.col-4.company-name a {
     text-transform: uppercase;
   }
+
 }
 .menu-zindex {
   z-index: -1 !important;
