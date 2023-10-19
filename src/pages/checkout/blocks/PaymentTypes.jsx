@@ -2,11 +2,12 @@ import deviceImageRender from "../../../utils/deviceImageRender";
 
 function PaymentTypes({
   paymentTypes,
+  paymentComponentToScrollRef,
   activePaymentType,
   fetchCheckoutDetailsForPaymentType,
 }) {
   return (
-    <div className="accordion-item checkout-accordion">
+    <div className="accordion-item checkout-accordion" ref={paymentComponentToScrollRef}>
       <div className="d-flex justify-content-between align-items-center h">
         {/* heading one */}
 

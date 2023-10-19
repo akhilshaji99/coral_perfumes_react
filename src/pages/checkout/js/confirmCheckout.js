@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import getUserToken from "../../../utils/userToken";
 
-const confirmCheckout = async () => {
+const confirmCheckout = async (scrollToPaymentComponent) => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
@@ -16,18 +16,20 @@ const confirmCheckout = async () => {
         window.location.href = response?.data?.data;
       }
     } else {
+      scrollToPaymentComponent();
       toast((t) => (
         <AlerMessage
           t={t}
           toast={toast}
           status={response.data.status}
           title={"Error"}
-          message={response?.data?.message}
+          message={response?.data?.message_1}
         />
       ));
       //   return response;
     }
   } catch (error) {
+   
     toast((t) => (
       <AlerMessage
         t={t}
@@ -35,7 +37,7 @@ const confirmCheckout = async () => {
         status={false}
         title={"Error"}
         message={
-          error?.response?.["data"]?.message ||
+          error?.response?.["data"]?.message_1 ||
           "Something went wrong.Please try again."
         }
       />

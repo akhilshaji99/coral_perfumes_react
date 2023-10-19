@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef } from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import CartDetails from "./blocks/CartDetails";
 import getCheckOutDetails from "./js/checkOutFetch";
@@ -28,6 +28,8 @@ function getStyles(errors, fieldName) {
   }
 }
 function Index() {
+  const componentToScrollRef = useRef(null);
+  const paymentComponentToScrollRef = useRef(null);
   const [checkOutDetails, setCheckOutDetails] = useState([]);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
@@ -49,6 +51,18 @@ function Index() {
     gift_message: null,
     gift_wrap_content: null,
   });
+
+  const scrollToComponent = () => {
+    if (componentToScrollRef.current) {
+      componentToScrollRef.current.scrollIntoView({ behavior: 'smooth',block: 'start'  });
+    }
+  };
+  const scrollToPaymentComponent = () => {
+    if (paymentComponentToScrollRef.current) {
+      paymentComponentToScrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
 
   const applyPrmocode = () => {
     if (promoCode == "") {
@@ -256,6 +270,9 @@ function Index() {
     } else {
       validationStatus = true;
     }
+    if(!validationStatus){
+      scrollToComponent()
+    }
     return validationStatus;
   };
   const fetchCheckoutDetailsByDeliveryType = (shipping_type) => {
@@ -377,6 +394,7 @@ function Index() {
                       id="flush-collapseOne"
                       className="accordion-collapse collapse show "
                       data-bs-parent="#accordionFlushExample"
+                      ref={componentToScrollRef}
                     >
                       <div className="mb-1">
                         {/* card body */}
@@ -452,7 +470,7 @@ function Index() {
                     </div>
                   </div>
                   <form onSubmit={addressForm.handleSubmit}>
-                    <div className="accordion-item checkout-accordion">
+                    <div className="accordion-item checkout-accordion" >
                       <div className="d-flex justify-content-between align-items-center h">
                         <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
                         <a
@@ -911,6 +929,7 @@ function Index() {
 
                   <PaymentTypes
                     paymentTypes={paymentTypes}
+                    paymentComponentToScrollRef={paymentComponentToScrollRef}
                     activePaymentType={checkoutUpdateParams?.payment_type}
                     fetchCheckoutDetailsForPaymentType={
                       fetchCheckoutDetailsForPaymentType
@@ -919,7 +938,7 @@ function Index() {
                 </div>
               </div>
               <div className="col-lg-4 col-md-8">
-                <CartDetails cartDatas={cartItems} />
+                <CartDetails cartDatas={cartItems} scrollToPaymentComponent={scrollToPaymentComponent}/>
               </div>
             </div>
           </div>

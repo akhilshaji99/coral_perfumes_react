@@ -1,6 +1,6 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 import confirmCheckout from "../js/confirmCheckout";
-function CartDetails({ cartDatas }) {
+function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
   return (
     <div className=" card checkout-left-card">
       <div className="">
@@ -109,7 +109,7 @@ function CartDetails({ cartDatas }) {
                     type="button"
                     className="btn btn-dark mb-1"
                     onClick={() => {
-                      confirmCheckout();
+                      confirmCheckout(scrollToPaymentComponent);
                     }}
                   >
                     SECURE CHECKOUT
