@@ -102,6 +102,10 @@ function Index() {
     }
   }, [refetch]);
 
+  const refetchProfileApi = () => {
+    getProfile();
+  };
+
   const getProfile = async () => {
     try {
       const response = await request.post("get_user_profile/");
@@ -125,7 +129,7 @@ function Index() {
         const isoDate = response?.data?.data?.date_of_birth;
         const dateObject = new Date(isoDate);
         setSelectedDate(dateObject);
-        setRefetch(false);
+        // setRefetch(false);
       }
     } catch (error) {
       console.log("error", error);
@@ -143,7 +147,10 @@ function Index() {
         <div className="container-fluid">
           <div className="row">
             <MyAccountSidebar />
-            <ChangeEmail setRefetch={setRefetch} profileForm={profileForm} />
+            <ChangeEmail
+              refetchProfileApi={refetchProfileApi}
+              profileForm={profileForm}
+            />
             <ChangePhone setRefetch={setRefetch} profileForm={profileForm} />
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
