@@ -8,7 +8,7 @@ function OrdersEmpty(orderEmptyMessages = null) {
     <div>
       <div className="row align-items-center justify-content-center alert-box-order-empty mt-2">
         <div className="col-md-8 text-center">
-          <img src={BagEmptyImg} className="img-fluid" alt="Coral Perfumes" />
+          <img src={BagEmptyImg} className="img-fluid mb-4" alt="Coral Perfumes" />
           <h1>{orderEmptyMessages?.orderEmptyMessages?.message_1}</h1>
           <h5>
             <span>

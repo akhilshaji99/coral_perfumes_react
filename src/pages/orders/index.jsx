@@ -17,6 +17,7 @@ function Index() {
   const [modalData, setModalData] = useState(null);
   const [buttonActive, setButtonActive] = useState(1);
   const [status, seStatus] = useState(false);
+  const [errorMessages, setErrorMessages] = useState(null);
   // const [ordeStatus, setOrderStatus] = useState(false);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Index() {
         } else {
           setActiveOrders(response?.data?.data?.completed_orders);
         }
-
+        setErrorMessages(response?.data?.message);
         setOnGoingOrders(response?.data?.data?.ongoing_orders);
         setCompletedOrders(response?.data?.data?.completed_orders);
         seStatus(!status);
@@ -74,7 +75,7 @@ function Index() {
             <div className="py-6 p-md-6 p-lg-10">
               <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
               {activeOrders === undefined ? (
-                <OrdersEmpty />
+                <OrdersEmpty orderEmptyMessages={errorMessages} />
               ) : (
                 <>
                   <div
