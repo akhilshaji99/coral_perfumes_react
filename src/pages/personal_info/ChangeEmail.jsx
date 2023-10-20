@@ -11,7 +11,6 @@ const emailFormSchema = yup.object().shape({
   email: yup.string().required().email(),
 });
 function ChangeEmail({ refetchProfileApi, profileForm }) {
-  // const [email, setEmail] = useState("");
   const [otpModalDatas, setOtpModalDatas] = useState(null);
   const [verificationType, setVerificationType] = useState(null);
 
@@ -28,7 +27,7 @@ function ChangeEmail({ refetchProfileApi, profileForm }) {
         updateEmailForm.resetForm({
           values: { email: "" },
         });
-        $("#ProfileOtpVerification").show();
+        $("#ProfileOtpVerification_Email").show();
       } else {
         toast((t) => (
           <AlerMessage
@@ -63,6 +62,7 @@ function ChangeEmail({ refetchProfileApi, profileForm }) {
         otpModalDatas={otpModalDatas}
         verificationType={verificationType}
         refetchProfileApi={refetchProfileApi}
+        modal_id={"ProfileOtpVerification_Email"}
       />
       <div
         className="modal fade"

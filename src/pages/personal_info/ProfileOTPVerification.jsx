@@ -9,12 +9,13 @@ function ProfileOTPVerification({
   otpModalDatas,
   verificationType,
   refetchProfileApi,
+  modal_id,
 }) {
   // const navigate = useNavigate();
   const handleModalClose = () => {
-    $("#ProfileOtpVerification").toggle();
-    $("#ProfileOtpVerification").toggleClass("modal modal fade");
-    $("#ProfileOtpVerification").hide();
+    $("#" + modal_id).toggle();
+    $("#" + modal_id).toggleClass("modal modal fade");
+    $("#" + modal_id).hide();
   };
 
   const [inputRefsArray] = useState(() =>
@@ -25,47 +26,37 @@ function ProfileOTPVerification({
     e.preventDefault();
     verify_otp();
   };
-  const resendOtp = async (e) => {
-    try {
-      var bodyFormData = new FormData();
-      bodyFormData.append("phone_number", otpModalDatas?.phone_number);
-      const response = await request.post("resend-otp/", bodyFormData);
-
-      console.log("response", response);
-      let status = "succsss";
-      let title = "SUCCESS";
-      if (!response.data.status) {
-        status = "error";
-        title = "ERROR";
-      }
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={title}
-          message={response.data.message}
-        />
-      ));
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   const verify_otp = async () => {
     try {
       var bodyFormData = new FormData();
       const guestToken = localStorage.getItem("guestToken");
-      bodyFormData.append("new_email", otpModalDatas?.new_email);
+      let url = "";
+      console.log(otpModalDatas);
+      console.log(verificationType);
+      if (verificationType === "Email") {
+        bodyFormData.append("new_email", otpModalDatas?.new_email);
+        url = "profile-email-verify/";
+      } else {
+        bodyFormData.append(
+          "new_phone_number",
+          otpModalDatas?.new_phone_number
+        );
+        url = "profile-phone-number-verify/";
+      }
+
       bodyFormData.append("otp", otpVal.join(""));
       bodyFormData.append("token", guestToken);
-      const response = await request.post(
-        "profile-email-verify/",
-        bodyFormData
-      );
+
+      const response = await request.post(url, bodyFormData);
       if (response?.data?.status) {
         refetchProfileApi();
-        $("#ProfileOtpVerification").hide();
-        $("#changeEmail").hide();
+        $("#" + modal_id).hide();
+        if (verificationType === "Email") {
+          $("#changeEmail").hide();
+        } else {
+          $("#changePhone").hide();
+        }
+
         toast((t) => (
           <AlerMessage
             t={t}
@@ -121,7 +112,7 @@ function ProfileOTPVerification({
   return (
     <div
       className="modal fade"
-      id="ProfileOtpVerification"
+      id={modal_id}
       tabIndex={-1}
       aria-labelledby="userModalLabel"
       aria-hidden="true"
@@ -144,7 +135,9 @@ function ProfileOTPVerification({
               <h6 className="text-center">
                 Enter the <span>OTP</span> sent to{" "}
                 <span className="text-underline">
-                  {verificationType === "Email" ? otpModalDatas?.new_email : ""}
+                  {verificationType === "Email"
+                    ? otpModalDatas?.new_email
+                    : otpModalDatas?.new_phone_number}
                 </span>{" "}
               </h6>
               <form onSubmit={handleOnSubmit}>
@@ -176,7 +169,7 @@ function ProfileOTPVerification({
                     );
                   })}{" "}
                 </div>
-                <div className="modal-footer border-0 justify-content-center">
+                {/* <div className="modal-footer border-0 justify-content-center">
                   Didn't received the <span>OTP?</span> click{" "}
                   <a
                     href="#"
@@ -186,7 +179,7 @@ function ProfileOTPVerification({
                   >
                     Resend
                   </a>
-                </div>
+                </div> */}
                 <div className="mt-4">
                   {" "}
                   <button
