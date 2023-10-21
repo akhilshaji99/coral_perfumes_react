@@ -56,7 +56,7 @@ function GiftWrapping({
                     checked={giftWrappingStatus}
                     name="gift_wrapping"
                     onClick={() => {
-                      setGiftWrappingStatus(1);
+                      // setGiftWrappingStatus(1);
                       fetchCheckoutDetailsForGiftStatus(1);
                     }}
                   />

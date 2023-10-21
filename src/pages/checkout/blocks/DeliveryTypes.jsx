@@ -17,7 +17,7 @@ function DeliveryTypes({
   useEffect(() => {
     console.log("checkedValue", checkedValue);
     if (checkedValue) {
-      setCheckedShippingType(checkedValue);
+      // setCheckedShippingType(checkedValue);
     }
   }, [checkedValue]);
 
@@ -96,13 +96,13 @@ function DeliveryTypes({
                               value={deliveryType?.id}
                               name="del_type"
                               checked={
-                                parseInt(checkedShippingType) ===
+                                parseInt(checkedValue) ===
                                 parseInt(deliveryType?.id)
                               }
                               onChange={(event) => {
-                                setCheckedShippingType(
-                                  parseInt(event.target.value)
-                                );
+                                // setCheckedShippingType(
+                                //   parseInt(event.target.value)
+                                // );
                                 fetchCheckoutDetailsByDeliveryType(
                                   parseInt(event.target.value)
                                 );
