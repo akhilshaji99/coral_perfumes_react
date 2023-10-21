@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import BreadCrumps from "../common/BreadCrumps";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
+import RatingModal from "./blocks/RatingModal";
 
 function Index() {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ function Index() {
   const [flashSale, setFlashSale] = useState(null);
   const [otherVariants, setOtherVariants] = useState({});
   const [variantChangeFlag, setVariantChangeFlag] = useState(false);
+  const [ratingType, setRatingType] = useState("product");
+  const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     getProductDetails();
@@ -168,6 +171,12 @@ function Index() {
   return (
     <>
       <BreadCrumps />
+      <RatingModal
+        setRefetch={setRefetch}
+        currentVariant={currentVariant}
+        ratingType={ratingType}
+        refetch={refetch}
+      />
       <div className="conatiner pd-detail">
         <div className="row mb-5 ">
           <ProductCarousel sliderImages={currentVariant?.variant_images} />
@@ -649,10 +658,14 @@ function Index() {
         <DesktopSpec
           currentVariant={currentVariant}
           productDatas={productDatas}
+          setRatingType={setRatingType}
+          refetch={refetch}
         />
         <MobileSpec
           currentVariant={currentVariant}
           productDatas={productDatas}
+          setRatingType={setRatingType}
+          refetch={refetch}
         />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />

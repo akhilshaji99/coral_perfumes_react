@@ -3,20 +3,19 @@ import { useEffect, useState } from "react";
 import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
-function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
+function BrandRating({ refetch, currentVariant, setRatingType }) {
   const [brandReviews, setBrandReviews] = useState([]);
-  // const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     if (currentVariant?.brand_id) {
       getBrandRatings();
     }
   }, [currentVariant?.brand_id]);
+
   useEffect(() => {
-    if (refetch) {
-      getBrandRatings();
-    }
+    getBrandRatings();
   }, [refetch]);
+
   const getBrandRatings = async () => {
     try {
       const response = await request.get(
@@ -37,7 +36,6 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       aria-labelledby="reviews-tab"
       tabIndex={0}
     >
-      {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"brand"}/> */}
       <div className="container-lg-fluid px-0">
         <div className="row brand-rating">
           <div className="col-md-9 col-12">
@@ -70,7 +68,9 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                           </div>
                         </div>
                         <div className="row">
-                          <p className="mb-6 brand-rating-message">{component.message}</p>
+                          <p className="mb-6 brand-rating-message">
+                            {component.message}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -87,7 +87,6 @@ function BrandRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                 className="btn btn-outline-dark"
                 onClick={(e) => {
                   e.preventDefault();
-                  setRefetch(false);
                   setRatingType("brand");
                   $("#ratingModal").toggle();
                   $("#ratingModal").toggleClass("modal fade modal");

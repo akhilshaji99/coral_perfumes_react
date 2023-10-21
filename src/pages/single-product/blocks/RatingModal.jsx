@@ -4,7 +4,7 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
-function RatingModal({ setRefetch, currentVariant, ratingType }) {
+function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -17,6 +17,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType }) {
     setMessage(value);
   };
   const onPointerEnter = () => console.log("Enter");
+
   const handleModalClose = () => {
     $("#ratingModal").toggle();
     $("#ratingModal").toggleClass("modal modal fade");
@@ -40,6 +41,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType }) {
       const response = await request.post(`/` + endPoint + `/`, bodyFormData);
       setRating(1);
       setMessage("");
+      setRefetch(!refetch);
       if (response.data.status) {
         toast((t) => (
           <AlerMessage
@@ -65,7 +67,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType }) {
         ));
       }
       handleModalClose();
-      setRefetch(true);
+      
     } catch (error) {
       console.log("error", error);
     }

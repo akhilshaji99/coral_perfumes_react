@@ -1,21 +1,11 @@
-// import Sample from "../../../assets/img/sample-banner.png";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
-import RatingModal from "./RatingModal";
 import { useState } from "react";
 
-function DesktopSpec({ currentVariant, productDatas }) {
-  const [refetch, setRefetch] = useState(false);
-  const [ratingType, setRatingType] = useState("product");
-
+function DesktopSpec({ currentVariant, productDatas, setRatingType, refetch }) {
   return (
     <>
-      <RatingModal
-        setRefetch={setRefetch}
-        currentVariant={currentVariant}
-        ratingType={ratingType}
-      />
       <div className="container-fluid d-none d-sm-block">
         <div className="row">
           <div className="col-md-7">
@@ -113,12 +103,6 @@ function DesktopSpec({ currentVariant, productDatas }) {
                   );
                 }
               )}
-              {/* <div className="col-md-6">
-                <li>Colour:Black</li>
-              </div>
-              <div className="col-md-6">
-                <li>Made in Italy</li>
-              </div> */}
             </div>
           </div>
         </div>
@@ -194,14 +178,12 @@ function DesktopSpec({ currentVariant, productDatas }) {
               {/* tab pane */}
               <ProductRating
                 refetch={refetch}
-                setRefetch={setRefetch}
                 currentVariant={currentVariant}
                 setRatingType={setRatingType}
               />
               {/* tab pane */}
               <BrandRating
                 refetch={refetch}
-                setRefetch={setRefetch}
                 currentVariant={currentVariant}
                 setRatingType={setRatingType}
               />

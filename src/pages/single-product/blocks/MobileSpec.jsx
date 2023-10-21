@@ -1,12 +1,8 @@
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
-import RatingModal from "./RatingModal";
-import { useState } from "react";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 
-function MobileSpec({ currentVariant, productDatas }) {
-  const [refetch, setRefetch] = useState(false);
-  const [ratingType, setRatingType] = useState("product");
+function MobileSpec({ currentVariant, productDatas, setRatingType, refetch }) {
   return (
     <>
       <div className="mob-specs">
@@ -50,12 +46,6 @@ function MobileSpec({ currentVariant, productDatas }) {
                       );
                     }
                   )}
-                  {/* <div className="col-md-6">
-    <li>Colour:Black</li>
-  </div>
-  <div className="col-md-6">
-    <li>Made in Italy</li>
-  </div> */}
                 </div>
               </div>
             </div>
@@ -146,12 +136,6 @@ function MobileSpec({ currentVariant, productDatas }) {
               </div>
             </div>
           </div>
-          {/* <RatingModal
-      setRefetch={setRefetch}
-      currentVariant={currentVariant}
-      ratingType={ratingType}
-    /> */}
-
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingFive">
               <button
@@ -171,11 +155,8 @@ function MobileSpec({ currentVariant, productDatas }) {
               aria-labelledby="headingFive"
               data-bs-parent="#accordionExample"
             >
-              {/* <ProductRating productDatas={productDatas} currentVariant={currentVariant}/>
-               */}
               <ProductRating
                 refetch={refetch}
-                setRefetch={setRefetch}
                 currentVariant={currentVariant}
                 setRatingType={setRatingType}
               />
@@ -200,10 +181,8 @@ function MobileSpec({ currentVariant, productDatas }) {
               aria-labelledby="headingSix"
               data-bs-parent="#accordionExample"
             >
-              {/* <BrandRating currentVariant={currentVariant}/> */}
               <BrandRating
                 refetch={refetch}
-                setRefetch={setRefetch}
                 currentVariant={currentVariant}
                 setRatingType={setRatingType}
               />

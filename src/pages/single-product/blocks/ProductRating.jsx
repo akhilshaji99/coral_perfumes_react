@@ -2,7 +2,7 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
 
-function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
+function ProductRating({ refetch, currentVariant, setRatingType }) {
   const [productReviews, setProductReviews] = useState([]);
 
   useEffect(() => {
@@ -10,11 +10,11 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
       getProductRatings();
     }
   }, [currentVariant?.id]);
+
   useEffect(() => {
-    if (refetch) {
-      getProductRatings();
-    }
+    getProductRatings();
   }, [refetch]);
+
   const getProductRatings = async () => {
     try {
       const response = await request.get(
@@ -87,7 +87,6 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
                 className="btn btn-outline-dark"
                 onClick={(e) => {
                   e.preventDefault();
-                  setRefetch(false);
                   setRatingType("product");
 
                   $("#ratingModal").toggle();
@@ -126,21 +125,20 @@ function ProductRating({ refetch, setRefetch, currentVariant, setRatingType }) {
             );
           })}
           <div className="ml-10 text-center">
-              <button
-                type="button"
-                className="btn btn-outline-dark d-md-none mb-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setRefetch(false);
-                  setRatingType("product");
+            <button
+              type="button"
+              className="btn btn-outline-dark d-md-none mb-2"
+              onClick={(e) => {
+                e.preventDefault();
+                setRatingType("product");
 
-                  $("#ratingModal").toggle();
-                  $("#ratingModal").toggleClass("modal fade modal");
-                }}
-              >
-                Rate
-              </button>
-            </div>
+                $("#ratingModal").toggle();
+                $("#ratingModal").toggleClass("modal fade modal");
+              }}
+            >
+              Rate
+            </button>
+          </div>
         </div>
       </div>
     </div>
