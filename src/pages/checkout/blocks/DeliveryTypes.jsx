@@ -96,13 +96,13 @@ function DeliveryTypes({
                               value={deliveryType?.id}
                               name="del_type"
                               checked={
-                                parseInt(checkedValue) ===
+                                parseInt(checkedShippingType) ===
                                 parseInt(deliveryType?.id)
                               }
                               onChange={(event) => {
-                                // setCheckedShippingType(
-                                //   parseInt(event.target.value)
-                                // );
+                                setCheckedShippingType(
+                                  parseInt(event.target.value)
+                                );
                                 fetchCheckoutDetailsByDeliveryType(
                                   parseInt(event.target.value)
                                 );
