@@ -6,6 +6,7 @@ import { changeFooterDatas } from "../../redux/footer/footerSlice";
 import { changeApiCallStatus } from "../../redux/footer/footerSlice";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch } from "react-redux";
+import SlickTest from "./SlickTest";
 
 const MainBanner = lazy(() => import("./blocks/MainBanner"));
 const Deals = lazy(() => import("./blocks/Deals"));
@@ -186,6 +187,8 @@ function Index() {
           })}
         </div>
       </main>
+      <SlickTest />
+
     </>
   );
 }
