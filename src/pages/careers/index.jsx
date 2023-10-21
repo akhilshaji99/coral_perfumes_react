@@ -6,6 +6,7 @@ import img02 from "../../assets/custom/images/careers-img.png";
 import { useEffect, useState } from "react";
 import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
+import { Link } from "react-router-dom";
 
 function Index() {
   const [banners, setBanners] = useState({});
@@ -40,10 +41,13 @@ function Index() {
             <h1>Careers</h1>
           </div>
           <div className="banner-careers">
+            {
+            banners?.banner_image ?
             <img
               src={deviceImageRender(banners?.banner_image)}
               alt="img-banner"
-            />
+            />:null
+            }
           </div>
         </div>
         <section className="carrer-sect">
@@ -58,7 +62,8 @@ function Index() {
                         {categories?.job_titles?.map((jobTitle, index) => {
                           return (
                             <li>
-                              <a href="#">{jobTitle?.job_title}</a>
+                              {/* <a href="#"></a> */}
+                              <Link to={"/"}>{jobTitle?.job_title}</Link>
                             </li>
                           );
                         })}
@@ -116,10 +121,13 @@ function Index() {
           <div className="container-new">
             <div className="career-review">
               <div className="career-review-img">
+              {
+            banners?.footer_banner ?
                 <img
                   src={deviceImageRender(footerbanner?.footer_banner)}
                   alt="img"
-                />
+                /> : null
+              }
               </div>
               <div className="career-review-text lg-none">
                 <h3>
