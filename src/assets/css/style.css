@@ -30234,7 +30234,7 @@ body {
 .carousel {
   transform: translate3d(0, 0, 0);
 }
-.react-datepicker-wrapper{
+.react-datepicker-wrapper {
   width: 100%;
 }
 .col-md-4.text-end.col-4.company-name a {
@@ -30259,4 +30259,12 @@ body {
   #mobile-menu {
     display: none;
   }
+}
+
+img {
+  user-drag: none;
+  -webkit-user-drag: none; /* For older versions of Webkit-based browsers (e.g., Safari) */
+  -moz-user-drag: none; /* For older versions of Firefox */
+  -ms-user-drag: none; /* For older versions of Microsoft Edge */
+  -o-user-drag: none; /* For older versions of Opera */
 }

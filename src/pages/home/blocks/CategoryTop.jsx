@@ -1,55 +1,19 @@
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
 
 function CategoryTop({ componentDatas }) {
   const dynamicBackground = {
     backgroundColor: componentDatas?.bg_color,
   };
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    // swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-    ],
-  };
   return (
     <>
       <div className="container-lg-fluid cd-margin">
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
-          {/* <Carousel
+          <Carousel
             removeClippedSubviews={true}
             additionalTransfrom={0}
             autoPlay
@@ -104,26 +68,24 @@ function CategoryTop({ componentDatas }) {
             sliderClass=""
             slidesToSlide={3}
             swipeable={true}
-          > */}
-          <Slider {...settings}>
+          >
             {componentDatas.datas?.map((category, index) => {
               return (
                 <div className="category-top-img" key={index}>
                   {/* <NavLink to={category?.link}> */}
-                    <img
-                      src={deviceImageRender(
-                        category?.desktop_image,
-                        category?.mobile_image
-                      )}
-                      alt={category?.image_alt}
-                    />
-                    <h3 className="text-dark py-3">{category?.title}</h3>
+                  <img
+                    src={deviceImageRender(
+                      category?.desktop_image,
+                      category?.mobile_image
+                    )}
+                    alt={category?.image_alt}
+                  />
+                  <h3 className="text-dark py-3">{category?.title}</h3>
                   {/* </NavLink> */}
                 </div>
               );
             })}
-          </Slider>
-          {/* </Carousel> */}
+          </Carousel>
         </div>
       </div>
     </>
