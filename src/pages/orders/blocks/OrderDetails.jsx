@@ -87,7 +87,7 @@ function OrderDetails({
         return (
           <div className="orders-card">
             <OrderProgress order_current_status={orderItem?.order_status} />
-            <OrderHeader ongoingOrder={orderDetails} />
+            <OrderHeader ongoingOrder={orderDetails} orderType={"SingleItem"} />
             <div className="row order-bottom-row">
               <div className="col-md-12">
                 <ProductInfo
@@ -98,7 +98,8 @@ function OrderDetails({
                   ongoingOrder={{
                     order_status: orderItem?.order_status,
                     order_cancellation_status: 1,
-                    order_cancellation_text: "cancel Order",
+                    order_cancellation_text:
+                      orderItem?.cancel_status || "Cancel Order",
                     order_no: orderDetails?.order_no,
                   }}
                 />

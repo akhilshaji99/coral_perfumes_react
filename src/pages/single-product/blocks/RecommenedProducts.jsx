@@ -83,6 +83,7 @@ function RecommendedProducts({ componentDatas }) {
                         slug: product?.slug,
                         product_tag: product?.product_tag,
                         is_in_wishlist: product?.is_in_wishlist,
+                        currency_code: product?.currency_code,
                       }}
                     />
                   </div>
