@@ -29,15 +29,15 @@ function ProductDetails({ product, setReFetchApi = null }) {
             }}
           />
           <div className="text-center position-relative ">
-            <NavLink to={`/product-details/?slug=${product?.slug}`}>
-              <div className="product-img">
-                <img
-                  src={deviceImageRender(product.listing_image)}
-                  alt="Coral Perfumes"
-                  className="img-fluid"
-                />
-              </div>
-            </NavLink>
+            {/* <NavLink to={`/product-details/?slug=${product?.slug}`}> */}
+            <div className="product-img">
+              <img
+                src={deviceImageRender(product.listing_image)}
+                alt="Coral Perfumes"
+                className="img-fluid"
+              />
+            </div>
+            {/* </NavLink> */}
           </div>
           <AddToBag variant_id={product?.id} />
         </div>
@@ -50,7 +50,9 @@ function ProductDetails({ product, setReFetchApi = null }) {
           </h4>
           <div className="row custom-row1 mb-5 ">
             <div className="col-md-4 col-6 px-0">
-              <h5 className="selling-price">{product?.currency_code} {product.price_amount}</h5>
+              <h5 className="selling-price">
+                {product?.currency_code} {product.price_amount}
+              </h5>
             </div>
             <div className="col-md-4 col-6 px-0">
               <h5 className="discounted-price">
