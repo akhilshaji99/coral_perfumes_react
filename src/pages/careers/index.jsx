@@ -63,7 +63,7 @@ function Index() {
                           return (
                             <li>
                               {/* <a href="#"></a> */}
-                              <Link to={"/"}>{jobTitle?.job_title}</Link>
+                              <Link to={"/career-detail/"+jobTitle?.id}>{jobTitle?.job_title}</Link>
                             </li>
                           );
                         })}

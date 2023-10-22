@@ -78,7 +78,7 @@ const Router = () => {
         { path: "about", element: <About /> },
         { path: "blog", element: <Blog /> },
         { path: "careers", element: <Careers /> },
-        { path: "career-detail", element: <CareerDetail /> },
+        { path: "career-detail/*", element: <CareerDetail /> },
 
         {
           path: "alert",
