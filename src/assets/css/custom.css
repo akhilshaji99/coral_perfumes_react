@@ -247,4 +247,6 @@ body.products .discount-percentage {
 .slick-slide .slick-slider-alignment div {
   display: block !important;
 }
-
+.slider .variable-width {
+  width: 128px;
+}
