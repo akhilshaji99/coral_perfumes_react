@@ -11,7 +11,6 @@ function ProductCarousel({ componentDatas }) {
   var settings = {
     dots: false,
     infinite: true,
-    containerClass: "container-with-dots",
     speed: 500,
     initialSlide: 0,
     responsive: [
