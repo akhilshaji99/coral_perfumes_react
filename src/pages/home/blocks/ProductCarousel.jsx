@@ -18,7 +18,7 @@ function ProductCarousel({ componentDatas }) {
         breakpoint: 768, // Tablet and mobile view
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 2.5,
+          slidesToScroll: 1,
         },
       },
     ],

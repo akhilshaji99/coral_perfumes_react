@@ -19,7 +19,7 @@ function WalletBanner({ componentDatas }) {
         breakpoint: 768, // Tablet and mobile view
         settings: {
           slidesToShow: 3.5,
-          slidesToScroll: 3.5,
+          slidesToScroll: 1,
         },
       },
     ],
