@@ -34,11 +34,11 @@ function CategoryTop({ componentDatas }) {
       <div className="container-lg-fluid cd-margin">
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
-          <div className="desktop_slider">
+          <div >
             <Carousel
               removeClippedSubviews={true}
               additionalTransfrom={0}
-              autoPlay
+              autoPlay={false}
               arrows={false}
               autoPlaySpeed={3500}
               centerMode={false}
@@ -109,7 +109,7 @@ function CategoryTop({ componentDatas }) {
               })}
             </Carousel>
           </div>
-          <div className="mob_tab_slider">
+          <div>
             <Slider {...settings}>
               {componentDatas.datas?.map((category, index) => {
                 return (
