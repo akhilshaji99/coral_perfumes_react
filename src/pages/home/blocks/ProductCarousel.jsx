@@ -12,7 +12,7 @@ function ProductCarousel({ componentDatas }) {
     dots: false,
     infinite: true,
     speed: 500,
-    initialSlide: 0,
+    initialSlide: 0.5,
     responsive: [
       {
         breakpoint: 768, // Tablet and mobile view

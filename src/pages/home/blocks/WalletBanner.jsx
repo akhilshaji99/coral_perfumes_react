@@ -13,7 +13,7 @@ function WalletBanner({ componentDatas }) {
     infinite: true,
     speed: 500,
     className: "slider variable-width",
-    initialSlide: 0,
+    initialSlide: 0.5,
     responsive: [
       {
         breakpoint: 768, // Tablet and mobile view
@@ -123,7 +123,7 @@ function WalletBanner({ componentDatas }) {
                 </Carousel>
               </div>
               <div className="mob_tab_slider">
-                <Slider {...settings}>
+                <Slider {...settings} className="wallet-friendly-mob-slider-padding">
                   {componentDatas?.datas?.[0]?.collection?.map(
                     (walletData, index) => {
                       return (

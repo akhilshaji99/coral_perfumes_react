@@ -255,3 +255,6 @@ body.products .discount-percentage {
   padding-left: 9px;
   padding-right: 9px;
 }
+.wallet-friendly-mob-slider-padding {
+  padding-left: 20px !important;
+}
