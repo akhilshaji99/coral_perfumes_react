@@ -26245,6 +26245,11 @@ span.flatpickr-weekday {
   .react-multi-carousel-list h3 {
     font-size: 18px;
   }
+  .slick-slider h3 {
+    font-size: 18px;
+  }
+  
+
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px) {
@@ -28988,6 +28993,10 @@ border-radius: none !important;
 .flash-sale-container .react-multi-carousel-list {
   position: unset !important;
 }
+.flash-sale-container .slick-slider {
+  position: unset !important;
+}
+
 .flash-sale-container .react-multiple-carousel__arrow {
   background-color: #ebece9 !important;
 }
@@ -29003,6 +29012,11 @@ border-radius: none !important;
 .rec-products-container .react-multi-carousel-list {
   position: unset !important;
 }
+
+.rec-products-container .slick-slider{
+  position: unset !important;
+}
+
 .rec-products-container .react-multiple-carousel__arrow {
   background-color: #ebece9 !important;
 }
@@ -29018,6 +29032,12 @@ border-radius: none !important;
 .wallet-banner .react-multi-carousel-list {
   position: unset !important;
 }
+.wallet-banner .slick-slider {
+  position: unset !important;
+}
+
+
+
 .wallet-banner .react-multiple-carousel__arrow--left {
   left: calc(23% + 10px);
   display: none;
@@ -29394,6 +29414,10 @@ border-radius: none !important;
   text-decoration: underline;
 }
 .order-bottom-row .react-multi-carousel-list {
+  position: unset !important;
+}
+.order-bottom-row .slick-slider
+{
   position: unset !important;
 }
 .order-bottom-row .react-multiple-carousel__arrow--left {

@@ -8,6 +8,10 @@
 .wallet-banner .react-multi-carousel-list {
   padding: 25px 0px;
 }
+.wallet-banner .slick-slider
+{
+  padding: 25px 0px;
+}
 
 .wallet-card h2 {
   line-height: 36px;
@@ -153,6 +157,12 @@ body.products .discount-percentage {
   .wallet-banner .react-multi-carousel-list {
     padding: 20px 0px;
   }
+
+  .wallet-banner .slick-slider {
+    padding: 20px 0px;
+  }
+
+  
 
   .wallet-banner h1 {
     margin-bottom: 0px;
