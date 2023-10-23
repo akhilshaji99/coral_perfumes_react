@@ -107,7 +107,7 @@ function ProductCarousel({ componentDatas }) {
             </Carousel>
           </div>
           <div className="mob_tab_slider">
-            <Slider {...settings}>
+            <Slider {...settings} className="prod-carosal-mob-padding">
               {componentDatas?.datas?.[0]?.products?.map((product, index) => {
                 return <ProductSliderDatas product={product} index={index} />;
               })}
