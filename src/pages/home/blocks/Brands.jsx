@@ -99,7 +99,7 @@ function Brands({ componentDatas }) {
             </Carousel>
           </div>
           <div className="mob_tab_slider">
-            <Slider {...settings}>
+            <Slider {...settings} className="mob-slick-slider-padding">
               {brands.map((brand, index) => {
                 return <BrandsSliderDatas brand={brand} index={index} />;
               })}

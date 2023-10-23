@@ -250,3 +250,8 @@ body.products .discount-percentage {
 .slider .variable-width {
   width: 128px;
 }
+
+.mob-slick-slider-padding {
+  padding-left: 9px;
+  padding-right: 9px;
+}
