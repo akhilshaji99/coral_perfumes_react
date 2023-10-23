@@ -12,11 +12,7 @@ function CategoryTop({ componentDatas }) {
     dots: false,
     infinite: true,
     speed: 500,
-    // slidesToShow: 4,
-    // slidesToScroll: 4,
     initialSlide: 0,
-    // autoplay: true, // Enable auto-sliding
-    // autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 768, // Tablet and mobile view
