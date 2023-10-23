@@ -66,7 +66,7 @@ function ProductCarousel({ sliderImages }) {
     <>
       <div className="col-md-2 single-product-row">
         <div className="desktop-thumbs">
-          <Slider {...settings}>
+          <Slider {...settings} className="slick-product-carosal">
             {sliderImages?.map((sliderImage, index) => {
               return (
                 <div className="thumbnail-slide" key={index}>
@@ -91,7 +91,7 @@ function ProductCarousel({ sliderImages }) {
           ) : null}
         </div>
         <div className="d-block d-sm-none">
-          <Slider {...settings1}>
+          <Slider {...settings1} >
             {sliderImages?.map((sliderImage, index) => {
               return (
                 <img

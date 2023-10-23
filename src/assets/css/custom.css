@@ -8,8 +8,7 @@
 .wallet-banner .react-multi-carousel-list {
   padding: 25px 0px;
 }
-.wallet-banner .slick-slider
-{
+.wallet-banner .slick-slider {
   padding: 25px 0px;
 }
 
@@ -162,8 +161,6 @@ body.products .discount-percentage {
     padding: 20px 0px;
   }
 
-  
-
   .wallet-banner h1 {
     margin-bottom: 0px;
   }
@@ -246,3 +243,8 @@ body.products .discount-percentage {
 .slick-arrow {
   display: none !important;
 }
+
+.slick-slide .slick-slider-alignment div {
+  display: block !important;
+}
+

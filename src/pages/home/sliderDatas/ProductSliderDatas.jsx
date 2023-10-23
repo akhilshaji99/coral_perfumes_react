@@ -2,7 +2,7 @@ import ProductDetails from "../../common/ProductDetails";
 
 function ProductSliderDatas({ product, index }) {
   return (
-    <div className="product-grid" key={index}>
+    <div className="product-grid slick-slider-alignment" key={index}>
       <div className="product-grid carousel-product-margin">
         <ProductDetails
           product={{
