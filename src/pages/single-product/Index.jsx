@@ -194,14 +194,14 @@ function Index() {
                   <div className="row">
                     <div className="col-md-4 col-4">
                       <div className="product-single-price">
-                        aed {currentVariant?.price_amount}
+                        {currentVariant?.currency_code} {currentVariant?.price_amount}
                       </div>
                       <span className="vat-included">VAT included</span>
                     </div>
                     <div className="col-md-4 col-4">
                       {currentVariant?.original_amount ? (
                         <div className="product-single-discounted-price">
-                          aed {currentVariant?.original_amount}
+                          {currentVariant?.currency_code} {currentVariant?.original_amount}
                         </div>
                       ) : null}
                     </div>
