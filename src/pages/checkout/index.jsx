@@ -1,4 +1,4 @@
-import { useEffect, useState ,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import CartDetails from "./blocks/CartDetails";
 import getCheckOutDetails from "./js/checkOutFetch";
@@ -54,15 +54,19 @@ function Index() {
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
-      componentToScrollRef.current.scrollIntoView({ behavior: 'smooth',block: 'start'  });
+      componentToScrollRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   };
   const scrollToPaymentComponent = () => {
     if (paymentComponentToScrollRef.current) {
-      paymentComponentToScrollRef.current.scrollIntoView({ behavior: 'smooth' });
+      paymentComponentToScrollRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   };
-  
 
   const applyPrmocode = () => {
     if (promoCode == "") {
@@ -213,6 +217,7 @@ function Index() {
       address_id: checkOutDetails?.default_address?.account_address?.id,
       // store_id: checkOutDetails?.store_id,
       store_id: null,
+      delivery_instruction_message: null,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
@@ -270,8 +275,8 @@ function Index() {
     } else {
       validationStatus = true;
     }
-    if(!validationStatus){
-      scrollToComponent()
+    if (!validationStatus) {
+      scrollToComponent();
     }
     return validationStatus;
   };
@@ -470,7 +475,7 @@ function Index() {
                     </div>
                   </div>
                   <form onSubmit={addressForm.handleSubmit}>
-                    <div className="accordion-item checkout-accordion" >
+                    <div className="accordion-item checkout-accordion">
                       <div className="d-flex justify-content-between align-items-center h">
                         <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
                         <a
@@ -808,6 +813,27 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
+                              <div className="row g-4 m-2">
+                                <div className="col-md-12 col-12">
+                                  <div className="mb-3 mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Enter your special delivery instructions here."
+                                      value={
+                                        addressForm.values
+                                          .delivery_instruction_message
+                                      }
+                                      name="delivery_instruction_message"
+                                      onChange={addressForm.handleChange}
+                                      // style={getStyles(
+                                      //   addressForm.errors,
+                                      //   "delivery_instruction_message"
+                                      // )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -938,7 +964,10 @@ function Index() {
                 </div>
               </div>
               <div className="col-lg-4 col-md-8">
-                <CartDetails cartDatas={cartItems} scrollToPaymentComponent={scrollToPaymentComponent}/>
+                <CartDetails
+                  cartDatas={cartItems}
+                  scrollToPaymentComponent={scrollToPaymentComponent}
+                />
               </div>
             </div>
           </div>

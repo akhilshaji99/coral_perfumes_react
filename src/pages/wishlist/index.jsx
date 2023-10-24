@@ -15,7 +15,7 @@ function Index() {
   }, []);
 
   useEffect(() => {
-    console.log(reFetchApi)
+    console.log(reFetchApi);
     if (reFetchApi) {
       getWishlistDatas();
     }
@@ -38,23 +38,19 @@ function Index() {
 
   return (
     <>
-      {isDataListEmpty  ? (
+      {isDataListEmpty ? (
         !loading ? (
-        <section className="mb-lg-14 mb-8 mt-8 my-bag empty-top">
-          <div className="container-fluid" style={{ marginTop: "15%" }}>
-            <div className="row mt-8">
-              <WishlistEmpty wishListMessages={wishListMessages} />
+          <section className="mb-lg-14 mb-8 mt-8 my-bag empty-top">
+            <div className="container-fluid" style={{ marginTop: "15%" }}>
+              <div className="row mt-8">
+                <WishlistEmpty wishListMessages={wishListMessages} />
+              </div>
             </div>
-          </div>
-        </section>
-        ):(
-          
-          <div style={{minHeight:"500px"}}>
-            
-          </div>
+          </section>
+        ) : (
+          <div style={{ minHeight: "500px" }}></div>
         )
       ) : (
-        
         <main>
           <BreadCrumps />
 
@@ -91,6 +87,8 @@ function Index() {
                                   product_tag:
                                     product?.product_variant?.product_tag,
                                   is_in_wishlist: true,
+                                  currency_code:
+                                    product?.product_variant?.currency_code,
                                 }}
                                 setReFetchApi={setReFetchApi}
                               />
