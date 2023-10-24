@@ -1645,3 +1645,6 @@ body.returns ul.nav.flex-column.nav-pills.nav-pills-dark {
 a.col-12.link-dark {
   cursor: pointer;
 }
+.row.custom-row1.mb-5 {
+  display: flex !important;
+}
