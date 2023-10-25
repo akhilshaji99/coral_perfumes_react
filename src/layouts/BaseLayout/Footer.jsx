@@ -19,6 +19,7 @@ import AlerMessage from "../../../src/pages/common/AlerMessage";
 import { BottomNavigation } from "reactjs-bottom-navigation";
 import { useNavigate } from "react-router-dom";
 import FooterText from "./FooterText";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -544,13 +545,17 @@ function Footer({ changeMobileMenuStatus }) {
                     </a>
                   </li>
                   <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
+                    {/* <a href="#!" className="nav-link">
                       {" "}
                       return policies{" "}
                       <span className="footer-link-seperator">
                         &nbsp; | &nbsp;
                       </span>
-                    </a>
+                    </a> */}
+                    <Link to={"/return-policy"} className="nav-link">  {" "} return policies{" "}
+                      <span className="footer-link-seperator">
+                        &nbsp; | &nbsp;
+                      </span></Link>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
@@ -694,7 +699,8 @@ function Footer({ changeMobileMenuStatus }) {
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">2023 All Rights Reserved</div>
             <div className="col-md-4 text-start col-8">
-              <a href="">Privacy & Cookies </a> / <a href="">Ts & Cs</a> /{" "}
+              
+              <Link to={"/privacy-policy"}>Privacy & Cookies</Link> / <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
               <a href="">Shipping</a>{" "}
             </div>
             <div className="col-md-4 text-end col-4 company-name">

@@ -3,9 +3,39 @@ import "../../assets/custom/css/responsive.css";
 // Import your images
 import img01 from "../../assets/custom/images/careers-banner.webp";
 import upload1 from "../../assets/custom/images/upload -1img.svg";
+import { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import request from "../../utils/request";
+import deviceImageRender from "../../utils/deviceImageRender";
+
 
 
 function Index() {
+  const [banners, setBanners] = useState({});
+  const [jobDetails, setJobDetails] = useState({});
+
+  const urlParams = useParams([]);
+  console.log("urlParams",urlParams?.id)
+  useEffect(() => {
+    getCareerDetails();
+  }, []);
+  const getCareerDetails = async () => {
+    try {
+      //   var bodyFormData = new FormData();
+      //   bodyFormData.append("token", getUserToken());
+      //   dispatch(changeApiCallStatus(false)); // Change api call status
+      const response = await request.get("job-detail/"+1+"/");
+      if (response.data) {
+        setBanners(response.data.banner_image);
+        setJobDetails(response.data.job_details);
+        // setJobcategories(response.data.job_categories);
+        console.log("jobDetails", jobDetails);
+        // setHomeContent(response.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
    <div className="page-new">
@@ -14,21 +44,28 @@ function Index() {
                 <h1>Careers</h1>
             </div>
             <div className="banner-careers">
-                <img src={img01} alt="img-banner"/>
+            {
+            banners?.banner_image ?
+            <img
+              src={deviceImageRender(banners?.banner_image)}
+              alt="img-banner"
+            />:null
+            }
             </div>
         </div>
         <section>
             <div className="container-new">
                 <div className="retail-sales">
-                    <h2>Retail Sales Associate</h2>
-                    <span>02/02/2023</span>
-                    <h3>Job Description</h3>
-                    <p>As a Retail Store Associate, you will play a key role in providing exceptional customer service, ensuring the store's overall cleanliness and organization, and contributing to the achievement of sales goals. Your friendly demeanor, product knowledge, and willingness to assist customers will create a positive shopping experience and foster customer loyalty.
+                    <h2>{jobDetails?.job_title}</h2>
+                    <span>{jobDetails?.last_date}</span>
+                    {/* <h3>{jobDetails?.last_date}</h3> */}
+                    <p>
+                    {jobDetails?.job_description}
                     </p>
                 </div>
                 <div className="respons-list">
                     <h3>Responsibilities</h3>
-                    <ul>
+                    {/* <ul>
                         <li>Meet and assist customers in a friendly and professional manner.</li>
                         <li>Provide product information and recommendations to customers.</li>
                         <li>Assist in maintaining the visual appearance of the store, including displays, shelves, and product arrangements.</li>
@@ -39,7 +76,12 @@ function Index() {
                         <li>Collaborate with team members to achieve daily and weekly sales targets.</li>
 
                     
-                    </ul>
+                    </ul> */}
+                      <div   dangerouslySetInnerHTML={{
+                        __html: jobDetails?.job_responsibilities,
+                      }}>
+                      
+                        </div>
                 </div>
                 <div className="apply-form">
                  

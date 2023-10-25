@@ -23,6 +23,9 @@ import AlertPages from "../pages/alert_pages/index";
 // import PaymentFailed from "../pages/alert_pages/PaymentFailed";
 import PaymentWaiting from "../pages/alert_pages/PaymentWaiting";
 import Faq from "../pages/faq/index";
+import ReturnPolicy from "../pages/returnPolicy/index"
+import PrivacyPolicy from "../pages/privacyPolicy/index"
+import TermsConditions from "../pages/termsAndConditions/index"
 import SingleOrder from "../pages/orders/SingleOrder";
 
 const Router = () => {
@@ -78,7 +81,7 @@ const Router = () => {
         { path: "about", element: <About /> },
         { path: "blog", element: <Blog /> },
         { path: "careers", element: <Careers /> },
-        { path: "career-detail/*", element: <CareerDetail /> },
+        { path: "career-detail/:id", element: <CareerDetail /> },
 
         {
           path: "alert",
@@ -112,6 +115,21 @@ const Router = () => {
           path: "faq",
           element: <Faq />,
         },
+        {
+          path: "return-policy",
+          element: <ReturnPolicy />,
+        },
+        {
+          path: "privacy-policy",
+          element: <PrivacyPolicy />,
+
+        },
+        {
+          path: "terms-conditions",
+          element: <TermsConditions />,
+
+        },
+        
       ],
     },
   ];
