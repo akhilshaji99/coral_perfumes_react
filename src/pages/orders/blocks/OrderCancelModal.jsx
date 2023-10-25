@@ -12,9 +12,9 @@ function OrderCancelModal({
   modalType,
   orderType = null,
 }) {
-  const [addressList, setAddressList] = useState([]);
   const [radioOptions, setRadioOptions] = useState([]);
-
+  const [enableTextBox, setEnableTextBox] = useState(false);
+  const [feedbackText, setFeedbackText] = useState(null);
   const [selectedOption, setSelectedOption] = useState(""); // Initialize the selected option
 
   const [title, setTitle] = useState("");
@@ -56,8 +56,9 @@ function OrderCancelModal({
   };
 
   const getSelectedText = () => {
-    const option = radioOptions.find((option) => option.id === selectedOption);
-    return option ? option.question : "";
+    return enableTextBox ? feedbackText : "";
+    // const option = radioOptions.find((option) => option.id === selectedOption);
+    // return option ? option.question : "";
   };
 
   const cancelOrder = async () => {
@@ -211,6 +212,10 @@ function OrderCancelModal({
                             checked={selectedOption === option.id}
                             onClick={() => {
                               handleRadioChange(option.id);
+                              setEnableTextBox(false);
+                              if (option?.question === "Other") {
+                                setEnableTextBox(true);
+                              }
                             }}
                           />
                           <label
@@ -221,6 +226,17 @@ function OrderCancelModal({
                           </label>
                         </div>
                       ))}
+                      {enableTextBox ? (
+                        <input
+                          type="text"
+                          value={feedbackText}
+                          onChange={(e) => {
+                            setFeedbackText(e.target.value);
+                          }}
+                          className="form-control mt-2"
+                          placeholder="Enter your feedback"
+                        />
+                      ) : null}
                     </form>
                   </div>
                 </div>
