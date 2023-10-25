@@ -819,6 +819,12 @@
   .input-icon-close{
     display: block;
   }
+  img.input-icon-close {
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      width: 7px;
+  }
 }
 .menu-zindex {
   z-index: -1 !important;
