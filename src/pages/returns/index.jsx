@@ -19,7 +19,7 @@ function Index() {
     try {
       var bodyFormData = new FormData();
       bodyFormData.append("token", getUserToken());
-      const response = await request.post("cancelled-orders/", bodyFormData);
+      const response = await request.post("get_user_cancel_return_items/", bodyFormData);
       if (response?.data) {
         setCancelledOrders(response?.data?.data?.cancelled_orders);
         // setActiveOrders(response?.data?.data?.ongoing_orders);

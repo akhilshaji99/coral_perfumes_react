@@ -17,6 +17,7 @@ import Bag from "../../assets/icons/Bag.svg";
 import Store from "../../assets/icons/Store.svg";
 import Whishlist from "../../assets/icons/Whishlist.svg";
 import CloseButton from "../../assets/icons/close.svg";
+import TextBoxClose from "../../assets/icons/textbox_close.svg";
 
 function useComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
@@ -53,7 +54,11 @@ function useComponentVisible(initialIsVisible) {
   return { ref, isComponentVisible, setIsComponentVisible };
 }
 
-function Account({ changeMyAccountMenuStatus, mobileMenuStatus ,closeMoibileMenu}) {
+function Account({
+  changeMyAccountMenuStatus,
+  mobileMenuStatus,
+  closeMoibileMenu,
+}) {
   //Cart Count :: Redux
   const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
   //#End
@@ -160,7 +165,7 @@ function Account({ changeMyAccountMenuStatus, mobileMenuStatus ,closeMoibileMenu
               className="col-md-4 col-4"
               onClick={() => {
                 if (mobileMenuStatus) {
-                  closeMoibileMenu()
+                  closeMoibileMenu();
                 } else {
                   changeMyAccountMenuStatus();
                 }
@@ -251,6 +256,7 @@ function Account({ changeMyAccountMenuStatus, mobileMenuStatus ,closeMoibileMenu
                   value={query}
                   onChange={handleInputChange}
                 />
+                <img src={TextBoxClose} className="input-icon-close" />
                 {query.length === 0 ? (
                   <svg
                     className="icon-input__icon"
