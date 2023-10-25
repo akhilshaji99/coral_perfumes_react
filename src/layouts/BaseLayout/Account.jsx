@@ -63,7 +63,7 @@ function Account({
   const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
   //#End
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState("");
   const [status, setStatus] = useState(false);
 
   const performSearch = async (query) => {
