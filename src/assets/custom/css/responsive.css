@@ -573,8 +573,8 @@
     padding: 5px;
     display: block;
   }
-  
-.flash-sale-box span img,
+
+  .flash-sale-box span img,
   svg {
     vertical-align: middle;
   }
@@ -813,22 +813,22 @@
   .col-md-4.text-end.col-4.company-name a {
     text-transform: uppercase;
   }
-  .mob_tab_slider .slick-list{
-     overflow: visible;
-    }
-  .input-icon-close{
+  .mob_tab_slider .slick-list {
+    overflow: visible;
+  }
+  .input-icon-close {
     display: block;
   }
   img.input-icon-close {
-      position: absolute;
-      right: 15px;
-      top: 12px;
-      width: 7px;
+    position: absolute;
+    right: 48px;
+    top: 72px;
+    width: 7px;
   }
 }
 .menu-zindex {
   z-index: -1 !important;
 }
-.bottom-nav{
+.bottom-nav {
   z-index: 9999 !important;
 }
