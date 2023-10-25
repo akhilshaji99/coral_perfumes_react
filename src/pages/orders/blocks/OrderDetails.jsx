@@ -99,8 +99,11 @@ function OrderDetails({
                     order_status: orderItem?.order_status,
                     order_cancellation_status: 1,
                     order_cancellation_text:
-                      orderItem?.cancel_status || "Cancel Order",
+                      orderItem?.cancel_status || "Request Cancellation",
                     order_no: orderDetails?.order_no,
+                    order_cancellation_status:
+                      orderItem?.order_cancellation_status,
+                    return_status: orderItem?.return_status || "Request Return",
                   }}
                 />
               </div>

@@ -18,6 +18,7 @@ function Index() {
   const [buttonActive, setButtonActive] = useState(1);
   const [status, seStatus] = useState(false);
   const [errorMessages, setErrorMessages] = useState(null);
+  const [resetOrderProgress, setResetOrderProgress] = useState(false);
   // const [ordeStatus, setOrderStatus] = useState(false);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ function Index() {
     } else {
       setActiveOrders(completedOrders);
     }
+    setResetOrderProgress(!resetOrderProgress);
   }, [buttonActive]);
 
   return (
@@ -124,6 +126,7 @@ function Index() {
                               modalType={modalType}
                               setModalType={setModalType}
                               ongoingOrder={ongoingOrder}
+                              resetOrderProgress={resetOrderProgress}
                             />
                           </div>
                         );

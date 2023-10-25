@@ -57,23 +57,34 @@ function ProductInfo({
             {ongoingOrder?.order_cancellation_text}
           </h3>
         ) : null}
+        {/* Return Datas */}
         {ongoingOrder?.order_status === "Delivery" ? (
           <h3
-            style={{ position: "relative", bottom: "-66px" }}
+            style={{
+              position: "relative",
+              bottom: "-66px",
+              "text-decoration":
+                ongoingOrder?.return_status === "Request Return"
+                  ? null
+                  : "none",
+            }}
             onClick={() => {
-              setShowOrderCancelFlag(true);
-              setModalType("return");
-              setModalData({
-                ongoingOrder: ongoingOrder,
-                orderItem: orderItem,
-              });
-              $("#orderCancelModal").toggle();
-              $("#orderCancelModal").toggleClass("modal fade modal");
+              if (ongoingOrder?.return_status === "Request Return") {
+                setShowOrderCancelFlag(true);
+                setModalType("return");
+                setModalData({
+                  ongoingOrder: ongoingOrder,
+                  orderItem: orderItem,
+                });
+                $("#orderCancelModal").toggle();
+                $("#orderCancelModal").toggleClass("modal fade modal");
+              }
             }}
           >
-            Request Return
+            {ongoingOrder?.return_status}
           </h3>
         ) : null}
+        {/* End of Return Datas */}
       </div>
     </div>
   );

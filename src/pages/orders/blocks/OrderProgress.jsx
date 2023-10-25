@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function OrderProgress({ order_current_status }) {
+function OrderProgress({ order_current_status, resetOrderProgress }) {
   const [status, setStatus] = useState(false);
   const [orderStatuses, setOrderStatuses] = useState([
     {
@@ -236,7 +236,9 @@ function OrderProgress({ order_current_status }) {
   const statusIndex = { Ordered: 0, Processing: 1, Shipping: 2, Delivery: 3 };
 
   useEffect(() => {
-    // if (apiSatus) {
+    orderStatuses?.forEach((orderStatus) => {
+      orderStatus.flag = false;
+    });
     let copyOrderStatuses = orderStatuses;
     copyOrderStatuses?.forEach((orderStatus, index) => {
       if (parseInt(index) <= parseInt(statusIndex[order_current_status])) {
@@ -245,9 +247,8 @@ function OrderProgress({ order_current_status }) {
     });
     setOrderStatuses(copyOrderStatuses);
     setStatus(!status);
-    // }
     console.log("orderStatuses", order_current_status);
-  }, []);
+  }, [resetOrderProgress]);
   return (
     <div className="row order-top-row">
       {orderStatuses?.map((orderStatus, index) => {

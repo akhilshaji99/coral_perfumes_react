@@ -11,12 +11,14 @@ function OrderDatas({
   modalType,
   setModalType,
   ongoingOrder,
+  resetOrderProgress
 }) {
   return (
     <>
       <div className="orders-card">
         <OrderProgress
           order_current_status={ongoingOrder?.order_status}
+          resetOrderProgress={resetOrderProgress}
         />
         <OrderHeader ongoingOrder={ongoingOrder} />
         <div className="row order-bottom-row">
