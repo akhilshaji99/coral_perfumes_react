@@ -6,12 +6,16 @@ import ReturnmiddleRow from "./blocks/ReturnmiddleRow";
 import ReturnbottomRow from "./blocks/ReturnbottomRow";
 import request from "../../utils/request";
 import getUserToken from "../../utils/userToken";
+import OrdersEmpty from "../alert_pages/OrdersEmpty";
 
 function Index() {
   const [buttonActive, setButtonActive] = useState(1);
-  const [activeOrders,setActiveOrders]=useState([])
+  const [activeOrders, setActiveOrders] = useState([]);
   const [cancelledOrders, setCancelledOrders] = useState([]);
-  const [returnedOrders,setReturnedOrders]=useState([])
+  const [returnedOrders, setReturnedOrders] = useState([]);
+  const [errorMessages, setErrorMessages] = useState(null);
+  const [cancelledError, setCancelledError] = useState(null);
+  const [returnedError, setReturnedError] = useState(null);
 
   useEffect(() => {
     getOrders();
@@ -21,11 +25,34 @@ function Index() {
     try {
       var bodyFormData = new FormData();
       bodyFormData.append("token", getUserToken());
-      const response = await request.post("get_user_cancel_return_items/", bodyFormData);
+      const response = await request.post(
+        "get_user_cancel_return_items/",
+        bodyFormData
+      );
       if (response?.data) {
-        setActiveOrders(response?.data?.data?.cancelled_orders_data);
-        setCancelledOrders(response?.data?.data?.cancelled_orders_data);
-        setReturnedOrders(response?.data?.data?.return_order_data);
+        if (response?.data?.data?.cancelled_orders_data?.data.length <= 0) {
+          setActiveOrders([]);
+          setCancelledOrders([]);
+          // Setting Error messages
+          setCancelledError(
+            response?.data?.data?.cancelled_orders_data?.message
+          );
+          setErrorMessages(
+            response?.data?.data?.cancelled_orders_data?.message
+          );
+          //#End
+        } else {
+          setActiveOrders(response?.data?.data?.cancelled_orders_data);
+          setCancelledOrders(response?.data?.data?.cancelled_orders_data);
+        }
+        if (response?.data?.data?.return_order_data?.data.length <= 0) {
+          setReturnedOrders([]);
+          // Setting Error messages
+          setReturnedError(response?.data?.data?.return_order_data?.message);
+          //#End
+        } else {
+          setReturnedOrders(response?.data?.data?.return_order_data);
+        }
       }
     } catch (error) {
       console.log("error", error);
@@ -35,8 +62,10 @@ function Index() {
   useEffect(() => {
     if (buttonActive === 1) {
       setActiveOrders(cancelledOrders);
+      setErrorMessages(cancelledError);
     } else {
       setActiveOrders(returnedOrders);
+      setErrorMessages(returnedError);
     }
   }, [buttonActive]);
 
@@ -83,13 +112,14 @@ function Index() {
                   RETURNED
                 </button>
               </div>
+              <OrdersEmpty orderEmptyMessages={errorMessages} />
               {/* Order Card */}
               {activeOrders?.map((orderDetails, index) => {
                 return (
                   <div className="orders-card" key={index}>
-                    <ReturntopRow buttonActive={buttonActive}/>
-                    <ReturnmiddleRow orderDetails={orderDetails}/>
-                    <ReturnbottomRow orderDetails={orderDetails}/>
+                    <ReturntopRow buttonActive={buttonActive} />
+                    <ReturnmiddleRow orderDetails={orderDetails} />
+                    <ReturnbottomRow orderDetails={orderDetails} />
                   </div>
                 );
               })}
