@@ -1648,3 +1648,6 @@ a.col-12.link-dark {
 .row.custom-row1.mb-5 {
   display: flex !important;
 }
+.input-icon-close{
+  display: none;
+}

@@ -813,7 +813,12 @@
   .col-md-4.text-end.col-4.company-name a {
     text-transform: uppercase;
   }
-
+  .mob_tab_slider .slick-list{
+     overflow: visible;
+    }
+  .input-icon-close{
+    display: block;
+  }
 }
 .menu-zindex {
   z-index: -1 !important;
