@@ -9,7 +9,9 @@ import getUserToken from "../../utils/userToken";
 
 function Index() {
   const [buttonActive, setButtonActive] = useState(1);
+  const [activeOrders,setActiveOrders]=useState([])
   const [cancelledOrders, setCancelledOrders] = useState([]);
+  const [returnedOrders,setReturnedOrders]=useState([])
 
   useEffect(() => {
     getOrders();
@@ -21,16 +23,22 @@ function Index() {
       bodyFormData.append("token", getUserToken());
       const response = await request.post("get_user_cancel_return_items/", bodyFormData);
       if (response?.data) {
-        setCancelledOrders(response?.data?.data?.cancelled_orders);
-        // setActiveOrders(response?.data?.data?.ongoing_orders);
-        // setOnGoingOrders(response?.data?.data?.ongoing_orders);
-        // setCompletedOrders(response?.data?.data?.completed_orders);
-        // seStatus(!status);
+        setActiveOrders(response?.data?.data?.cancelled_orders_data);
+        setCancelledOrders(response?.data?.data?.cancelled_orders_data);
+        setReturnedOrders(response?.data?.data?.return_order_data);
       }
     } catch (error) {
       console.log("error", error);
     }
   };
+
+  useEffect(() => {
+    if (buttonActive === 1) {
+      setActiveOrders(cancelledOrders);
+    } else {
+      setActiveOrders(returnedOrders);
+    }
+  }, [buttonActive]);
 
   return (
     <section>
@@ -76,10 +84,10 @@ function Index() {
                 </button>
               </div>
               {/* Order Card */}
-              {cancelledOrders?.map((orderDetails, index) => {
+              {activeOrders?.map((orderDetails, index) => {
                 return (
                   <div className="orders-card" key={index}>
-                    <ReturntopRow />
+                    <ReturntopRow buttonActive={buttonActive}/>
                     <ReturnmiddleRow orderDetails={orderDetails}/>
                     <ReturnbottomRow orderDetails={orderDetails}/>
                   </div>

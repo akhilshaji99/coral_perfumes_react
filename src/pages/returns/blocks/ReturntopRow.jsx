@@ -1,10 +1,10 @@
 import React from "react";
 
-function OrdertopRow() {
+function OrdertopRow({ buttonActive }) {
   return (
     <div className="row order-top-row">
       <div className="col-md-3 returned-haed">
-        <h3>Returned</h3>
+        <h3>{buttonActive === 1 ? "Cancelled" : "Returned"}</h3>
       </div>
     </div>
   );
