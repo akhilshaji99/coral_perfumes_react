@@ -29,15 +29,15 @@ function ProductDetails({ product, setReFetchApi = null }) {
             }}
           />
           <div className="text-center position-relative ">
-            {/* <NavLink to={`/product-details/?slug=${product?.slug}`}> */}
-            <div className="product-img">
-              <img
-                src={deviceImageRender(product.listing_image)}
-                alt="Coral Perfumes"
-                className="img-fluid"
-              />
-            </div>
-            {/* </NavLink> */}
+            <NavLink to={`/product-details/?slug=${product?.slug}`}>
+              <div className="product-img">
+                <img
+                  src={deviceImageRender(product.listing_image)}
+                  alt="Coral Perfumes"
+                  className="img-fluid"
+                />
+              </div>
+            </NavLink>
           </div>
           <AddToBag variant_id={product?.id} />
         </div>

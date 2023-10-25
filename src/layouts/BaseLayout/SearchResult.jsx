@@ -21,11 +21,11 @@ function SearchResult({ setResult, result, setQuery, query }) {
     <>
       {result ? (
         <div class="row search-container">
-          {result.top_blocks && result.top_blocks.length > 0 ? (
+          {/* {result.top_blocks && result.top_blocks.length > 0 ? (
             <a href="javascript:;" className="search-result-close">
               X
             </a>
-          ) : null}
+          ) : null} */}
           <div class="row search-top">
             {result?.top_blocks?.map((block, index) => (
               <div

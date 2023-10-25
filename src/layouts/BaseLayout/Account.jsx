@@ -246,7 +246,7 @@ function Account({ changeMyAccountMenuStatus, mobileMenuStatus ,closeMoibileMenu
               <div className="input-group ">
                 <input
                   className="form-control rounded mob-search-box"
-                  type="search"
+                  type="text"
                   placeholder="Search for products"
                   value={query}
                   onChange={handleInputChange}

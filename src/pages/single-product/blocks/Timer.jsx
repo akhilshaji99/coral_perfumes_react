@@ -4,6 +4,7 @@ function Timer({ flash_sale }) {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [hideBanner, setHideBanner] = useState(false);
+
   const timeEnd = flash_sale?.end_time;
   const inputDate = new Date(timeEnd);
   const customTimeZoneOffset = -5.5; // -5 hours and -30 minutes
@@ -38,6 +39,10 @@ function Timer({ flash_sale }) {
     const seconds = Math.floor(
       (timeDifferenceInMilliseconds % (1000 * 60)) / 1000
     );
+    console.log("hour", hour);
+    console.log("minutes", minutes);
+    console.log("seconds", seconds);
+
     if (hour <= 0 && minutes <= 0 && seconds <= 0) {
       setHideBanner(true);
     }
@@ -45,12 +50,15 @@ function Timer({ flash_sale }) {
     setMinutes(minutes);
     setSeconds(seconds);
   };
+
   useEffect(() => {
-    setInterval(timer, 1000);
+    if (flash_sale?.status) {
+      setInterval(timer, 1000);
+    }
   });
   return (
     <>
-      {!hideBanner ? (
+      {!hideBanner && flash_sale?.status ? (
         <div className="row py-1 align-items-center">
           <div className="col-xl-11 col-sm-12">
             <div className="flash-sale-box">

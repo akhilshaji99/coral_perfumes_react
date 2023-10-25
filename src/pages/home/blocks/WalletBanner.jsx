@@ -1,10 +1,28 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import WalletSliderDatas from "../sliderDatas/WalletSliderDatas";
 
 function WalletBanner({ componentDatas }) {
   const dynamicBackground = {
     backgroundColor: componentDatas?.bg_color,
+  };
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    className: "slider variable-width",
+    initialSlide: 0.5,
+    responsive: [
+      {
+        breakpoint: 768, // Tablet and mobile view
+        settings: {
+          slidesToShow: 3.5,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <>
@@ -36,82 +54,88 @@ function WalletBanner({ componentDatas }) {
               <h5></h5>
             </div>
             <div className="col-md-9 px-0">
-              <Carousel
-                additionalTransfrom={0}
-                autoPlay={false}
-                arrows={true}
-                autoPlaySpeed={1000}
-                centerMode={false}
-                className=""
-                containerClass="container-with-dots"
-                dotListClass=""
-                draggable
-                focusOnSelect={false}
-                infinite={true}
-                itemClass=""
-                partialVisbile
-                keyBoardControl
-                minimumTouchDrag={10}
-                pauseOnHover
-                renderArrowsWhenDisabled={false}
-                renderButtonGroupOutside={false}
-                renderDotsOutside={false}
-                responsive={{
-                  desktop: {
-                    breakpoint: {
-                      max: 3000,
-                      min: 1024,
+              <div className="desktop_slider">
+                <Carousel
+                  additionalTransfrom={0}
+                  autoPlay={false}
+                  arrows={true}
+                  autoPlaySpeed={1000}
+                  centerMode={false}
+                  className=""
+                  containerClass="container-with-dots"
+                  dotListClass=""
+                  draggable
+                  focusOnSelect={false}
+                  infinite={true}
+                  itemClass=""
+                  partialVisbile
+                  keyBoardControl
+                  minimumTouchDrag={10}
+                  pauseOnHover
+                  renderArrowsWhenDisabled={false}
+                  renderButtonGroupOutside={false}
+                  renderDotsOutside={false}
+                  responsive={{
+                    desktop: {
+                      breakpoint: {
+                        max: 3000,
+                        min: 1024,
+                      },
+                      items: 4,
+                      partialVisibilityGutter: 0,
                     },
-                    items: 4,
-                    partialVisibilityGutter: 0,
-                  },
-                  mobile: {
-                    breakpoint: {
-                      max: 464,
-                      min: 0,
+                    mobile: {
+                      breakpoint: {
+                        max: 464,
+                        min: 0,
+                      },
+                      items: 3,
+                      partialVisibilityGutter: 20,
                     },
-                    items: 3,
-                    partialVisibilityGutter: 20,
-                  },
-                  tablet: {
-                    breakpoint: {
-                      max: 1024,
-                      min: 464,
+                    tablet: {
+                      breakpoint: {
+                        max: 1024,
+                        min: 464,
+                      },
+                      items: 3,
+                      partialVisibilityGutter: 30,
                     },
-                    items: 3,
-                    partialVisibilityGutter: 30,
-                  },
-                }}
-                rewind={false}
-                rewindWithAnimation={true}
-                rtl={false}
-                shouldResetAutoplay
-                showDots={false}
-                sliderClass=""
-                slidesToSlide={1}
-                swipeable={true}
-              >
-                {componentDatas?.datas?.[0]?.collection?.map(
-                  (walletData, index) => {
-                    return (
-                      <>
-                        {walletData?.name &&
-                        walletData?.name.split(" ").length === 3 ? (
-                          <Link to={walletData?.link}>
-                            <div className="wallet-card" key={index}>
-                              <div className="">
-                                <h3>{walletData?.name.split(" ")[0]}</h3>
-                                <h2>{walletData?.name.split(" ")[1]}</h2>
-                                <h3>{walletData?.name.split(" ")[2]}</h3>
-                              </div>
-                            </div>
-                          </Link>
-                        ) : null}
-                      </>
-                    );
-                  }
-                )}
-              </Carousel>
+                  }}
+                  rewind={false}
+                  rewindWithAnimation={true}
+                  rtl={false}
+                  shouldResetAutoplay
+                  showDots={false}
+                  sliderClass=""
+                  slidesToSlide={1}
+                  swipeable={true}
+                >
+                  {componentDatas?.datas?.[0]?.collection?.map(
+                    (walletData, index) => {
+                      return (
+                        <WalletSliderDatas
+                          walletData={walletData}
+                          index={index}
+                        />
+                      );
+                    }
+                  )}
+                </Carousel>
+              </div>
+              <div className="mob_tab_slider">
+                <Slider {...settings} className="wallet-friendly-mob-slider-padding">
+                  {componentDatas?.datas?.[0]?.collection?.map(
+                    (walletData, index) => {
+                      return (
+                        <WalletSliderDatas
+                          walletData={walletData}
+                          index={index}
+                        />
+                      );
+                    }
+                  )}
+                </Slider>
+              </div>
             </div>
           </div>
         </div>
