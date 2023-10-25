@@ -64,12 +64,16 @@ function ProductInfo({
               position: "relative",
               bottom: "-66px",
               "text-decoration":
-                ongoingOrder?.return_status === "Request Return"
+                ongoingOrder?.return_status === "Request Return" ||
+                ongoingOrder?.return_status === ""
                   ? null
                   : "none",
             }}
             onClick={() => {
-              if (ongoingOrder?.return_status === "Request Return") {
+              if (
+                ongoingOrder?.return_status === "Request Return" ||
+                ongoingOrder?.return_status === ""
+              ) {
                 setShowOrderCancelFlag(true);
                 setModalType("return");
                 setModalData({
@@ -81,7 +85,7 @@ function ProductInfo({
               }
             }}
           >
-            {ongoingOrder?.return_status}
+            {ongoingOrder?.return_status || "Request Return" }
           </h3>
         ) : null}
         {/* End of Return Datas */}

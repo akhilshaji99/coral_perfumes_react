@@ -11,7 +11,7 @@ function OrderDatas({
   modalType,
   setModalType,
   ongoingOrder,
-  resetOrderProgress
+  resetOrderProgress,
 }) {
   return (
     <>
