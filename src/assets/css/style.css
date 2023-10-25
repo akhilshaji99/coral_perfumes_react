@@ -26851,7 +26851,7 @@ span.flatpickr-weekday {
   border-radius: 9px;
   background: #fff;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-  padding: 43px 31px;
+  padding: 43px 0px;
 }
 @media only screen and (min-width: 321px) and (max-width: 769px) {
   .category-top {
@@ -29970,7 +29970,7 @@ body {
   font-family: var(--fc-font-bold);
   font-size: 12px;
   font-style: normal;
-  line-height: 0.95;
+  line-height: 17px;
   margin-bottom: 0;
 }
 .star-rating {
