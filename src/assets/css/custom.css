@@ -158,7 +158,11 @@ body.products .discount-percentage {
   }
 
   .wallet-banner .slick-slider {
-    padding: 20px 0px;
+    padding: 0;
+  }
+
+  .wallet-banner .slick-slide div{
+    padding: 25px 0;
   }
 
   .wallet-banner h1 {
