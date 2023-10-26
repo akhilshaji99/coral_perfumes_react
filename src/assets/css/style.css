@@ -29349,6 +29349,7 @@ border-radius: none !important;
 }
 .order-top-row svg {
   margin-right: 8px !important;
+  vertical-align: middle;
 }
 .order-middle-row {
   background: #b5f7de;
@@ -29373,6 +29374,7 @@ border-radius: none !important;
   color: #000;
   font-family: var(--fc-font-light);
   text-transform: capitalize;
+  font-weight: 600;
 }
 .order-img {
   width: 159px;
