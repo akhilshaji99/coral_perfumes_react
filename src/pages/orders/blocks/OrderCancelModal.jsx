@@ -190,7 +190,7 @@ function OrderCancelModal({
             <div className="modal-body">
               <div className="">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-md-12">
+                  <div className="col-12 col-md-12 cancel-btns">
                     <p
                       style={{
                         "font-family": "Brandon Text",

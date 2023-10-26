@@ -87,11 +87,12 @@ function Index() {
               >
                 <button
                   type="button"
-                  class={
-                    buttonActive === 1
-                      ? `order-btn-active`
-                      : "order-btn-inactive"
-                  }
+                  class={`
+                    ${
+                      buttonActive === 1
+                        ? `order-btn-active`
+                        : "order-btn-inactive"
+                    }`}
                   onClick={() => {
                     setButtonActive(1);
                   }}
@@ -100,11 +101,12 @@ function Index() {
                 </button>
                 <button
                   type="button"
-                  class={
-                    buttonActive === 2
-                      ? `order-btn-active`
-                      : "order-btn-inactive"
-                  }
+                  class={`
+                    ${
+                      buttonActive === 2
+                        ? `order-btn-active`
+                        : "order-btn-inactive"
+                    }`}
                   onClick={() => {
                     setButtonActive(2);
                   }}
