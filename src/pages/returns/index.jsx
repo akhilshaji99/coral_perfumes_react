@@ -87,7 +87,7 @@ function Index() {
               >
                 <button
                   type="button"
-                  class={`
+                  class={`btn-cancelled
                     ${
                       buttonActive === 1
                         ? `order-btn-active`
@@ -101,7 +101,7 @@ function Index() {
                 </button>
                 <button
                   type="button"
-                  class={`
+                  class={`btn-returned
                     ${
                       buttonActive === 2
                         ? `order-btn-active`
