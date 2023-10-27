@@ -75,7 +75,7 @@ function Index() {
           <MyAccountSidebar />
           <div className="col-lg-9 col-md-9 col-12">
             <div className="py-6 p-md-6 p-lg-10">
-              <h2 className="mb-6 text-center my-profile-heading">My Orders</h2>
+              <h2 className="mb-6 text-center my-profile-heading order-btn">My Orders</h2>
               {activeOrders === undefined ? (
                 <OrdersEmpty orderEmptyMessages={errorMessages} />
               ) : (

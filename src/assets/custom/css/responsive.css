@@ -98,9 +98,7 @@
   .col-md-5.col-4.icon-end {
     text-align: center;
   }
-  li.nav-item.mb-2.ft-top {
-    padding-right: 10px;
-  }
+ 
   .input-group-custom.input-spinner {
     justify-content: center;
     margin-left: 29px;
@@ -111,6 +109,10 @@
   .container-new {
     width: 90%;
     margin: 0 auto;
+  }
+  li.nav-item.mb-2.ft-top {
+    padding-right: 10px;
+    margin-bottom: -14px !important;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -805,7 +807,7 @@
   }
   .offcanvas.show:not(.hiding),
   .offcanvas.showing {
-    padding-top: 100px;
+    padding-top: 130px;
   }
   .visit-text p {
     font-size: 14px;
@@ -826,7 +828,15 @@
       width: 7px;
       z-index: 9999;
   }
-
+  body.home .row.mob-view .input-group {
+    display: block;
+}
+button.btn-ongoing{
+  margin-top: 20px;
+}
+button.btn-complete{
+  margin-top: 20px;
+}
 }
 .menu-zindex {
   z-index: -1 !important;
