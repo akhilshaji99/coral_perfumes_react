@@ -63,6 +63,7 @@ const BaseLayout = () => {
           <Account
             changeMyAccountMenuStatus={changeMyAccountMenuStatus}
             mobileMenuStatus={mobileMenuStatus}
+            myAccountStatus={myAccountStatus}
             closeMoibileMenu={closeMoibileMenu}
           />
           <Menubar

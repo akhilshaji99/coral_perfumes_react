@@ -161,7 +161,7 @@ body.products .discount-percentage {
     padding: 0;
   }
 
-  .wallet-banner .slick-slide div{
+  .wallet-banner .slick-slide div {
     padding: 25px 0;
   }
 
@@ -262,6 +262,7 @@ body.products .discount-percentage {
 .wallet-friendly-mob-slider-padding {
   padding-left: 20px !important;
 }
-.prod-carosal-mob-padding{
+.prod-carosal-mob-padding {
   padding-left: 7px !important;
 }
+

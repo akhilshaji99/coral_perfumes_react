@@ -46,7 +46,7 @@ function CategoryTop({ componentDatas }) {
               itemClass=""
               partialVisible
               keyBoardControl
-              minimumTouchDrag={-10000}
+              // minimumTouchDrag={-10000}
               pauseOnHover
               renderArrowsWhenDisabled={false}
               renderButtonGroupOutside={false}
@@ -83,8 +83,8 @@ function CategoryTop({ componentDatas }) {
               shouldResetAutoplay
               showDots={false}
               sliderClass=""
-              slidesToSlide={3}
-              swipeable={true}
+              slidesToSlide={6}
+              // swipeable={true}
             >
               {componentDatas.datas?.map((category, index) => {
                 return (
