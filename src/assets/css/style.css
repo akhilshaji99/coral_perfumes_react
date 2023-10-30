@@ -27901,12 +27901,14 @@ border-radius: none !important;
   color: #000;
   font-family: var(--fc-font-light);
   margin: 0 12px;
+  font-size: 16px;
 }
 .p-d-c {
   color: #000;
   text-align: justify;
   font-family: var(--fc-font-light);
   line-height: 2;
+  font-size: 16px;
 }
 .variant-active {
   background-color: #000;
