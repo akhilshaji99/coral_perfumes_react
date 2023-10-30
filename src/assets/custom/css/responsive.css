@@ -807,7 +807,11 @@
   }
   .offcanvas.show:not(.hiding),
   .offcanvas.showing {
-    padding-top: 130px;
+    padding-top: 0px;
+  }
+  .offcanvas-title {
+    color: #000;
+        text-transform: uppercase;
   }
   .visit-text p {
     font-size: 14px;
@@ -836,6 +840,31 @@ button.btn-ongoing{
 }
 button.btn-complete{
   margin-top: 20px;
+}
+.border-top.py-4.footer-bottom p {
+  font-size: 12px;
+  font-weight: 600;
+}
+.p-d-c.footer-text ul li {
+  font-size: 13px;
+  font-weight: var(--fc-nav-link-font-weight);
+}
+.offcanvas-title {
+  color: #000;
+}
+.offcanvas-header {
+  background-color: #f3f3f3;
+}
+div#offcanvasCategory .offcanvas-header.d-lg-none svg {
+  display: none;
+}
+.offcanvas.show:not(.hiding), .offcanvas.showing {
+  position: absolute;
+  top:0;
+  z-index: 2000 !important;
+}
+span.line-break {
+  display: block;
 }
 }
 .menu-zindex {

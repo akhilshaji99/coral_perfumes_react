@@ -1727,3 +1727,11 @@ button.order-btn-inactive {
     height: 35px;
     margin-bottom: 30px;
 }
+
+  .rc-slider-track {
+ background-color: #000000 !important;
+   
+}
+h2.product-author a {
+  color: #80ba66;
+}
