@@ -1626,7 +1626,7 @@ body.returns ul.nav.flex-column.nav-pills.nav-pills-dark {
 }
 .order-bottom-row .react-multiple-carousel__arrow {
   background-color: #ebece9 !important;
-  display: none;
+  /* display: none; */
 }
 .order-img {
   width: 140px;
