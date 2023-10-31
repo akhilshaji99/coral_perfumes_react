@@ -84,6 +84,9 @@ const BaseLayout = () => {
       <MobileMyAccount
         myAccountStatus={myAccountStatus}
         setMyAccountStatus={setMyAccountStatus}
+        mobileMenuStatus={mobileMenuStatus}
+        closeMoibileMenu={closeMoibileMenu}
+        changeMyAccountMenuStatus={changeMyAccountMenuStatus}
       />
       <Footer changeMobileMenuStatus={changeMobileMenuStatus} />
     </>

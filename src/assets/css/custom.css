@@ -265,4 +265,6 @@ body.products .discount-percentage {
 .prod-carosal-mob-padding {
   padding-left: 7px !important;
 }
-
+#offcanvasAccount {
+  padding-top: 0px !important;
+}

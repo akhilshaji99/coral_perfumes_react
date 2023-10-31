@@ -5,7 +5,14 @@ import myOrders from "../../assets/img/icons/my-account/my-orders.svg";
 import myWishlist from "../../assets/img/icons/my-account/my-wishlist.svg";
 import Returns from "../../assets/img/icons/my-account/returns.svg";
 import Logout from "../../assets/img/icons/my-account/logout.svg";
-function MobileMyAccount({ myAccountStatus,setMyAccountStatus }) {
+import MobileHeader from "../../layouts/BaseLayout/MobileHeader";
+function MobileMyAccount({
+  myAccountStatus,
+  setMyAccountStatus,
+  mobileMenuStatus,
+  closeMoibileMenu,
+  changeMyAccountMenuStatus,
+}) {
   return (
     <div className="container mob-c-view d-block d-sm-none">
       <div
@@ -16,12 +23,18 @@ function MobileMyAccount({ myAccountStatus,setMyAccountStatus }) {
         id="offcanvasAccount"
         aria-labelledby="offcanvasAccountLabel"
       >
-        <div className="offcanvas-body mob-account-sidebar">
-          <h5 className="text-center my-dash-head">MY DASHBOARD</h5>
+        <div className="offcanvas-body mob-account-sidebar ">
+          <MobileHeader
+            changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+            myAccountStatus={myAccountStatus}
+            mobileMenuStatus={mobileMenuStatus}
+            closeMoibileMenu={closeMoibileMenu}
+          />
+          <h5 className="text-center my-dash-head mt-5">MY DASHBOARD</h5>
           <ul
             className="nav flex-column nav-pills nav-pills-dark"
             onClick={() => {
-                setMyAccountStatus(false);
+              setMyAccountStatus(false);
             }}
           >
             <li className="nav-item">
