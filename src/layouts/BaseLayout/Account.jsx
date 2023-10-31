@@ -158,16 +158,16 @@ function Account({
       </div> */}
       <div className="py-lg-3">
         <div className="container-fluid">
-          {!mobileMenuStatus && !myAccountStatus ? (
-            <MobileHeader
-              changeMyAccountMenuStatus={changeMyAccountMenuStatus}
-              myAccountStatus={myAccountStatus}
-              mobileMenuStatus={mobileMenuStatus}
-              closeMoibileMenu={closeMoibileMenu}
-            />
-          ) : (
+          {/* {!mobileMenuStatus && !myAccountStatus ? ( */}
+          <MobileHeader
+            changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+            myAccountStatus={myAccountStatus}
+            mobileMenuStatus={mobileMenuStatus}
+            closeMoibileMenu={closeMoibileMenu}
+          />
+          {/* ) : (
             ""
-          )}
+          )} */}
           {!mobileMenuStatus && !myAccountStatus ? (
             <div className="row mob-view ">
               <div className="d-block d-lg-none my-2">
