@@ -21646,7 +21646,8 @@ fieldset:disabled .btn {
   }
 }
 .navbar-dark .navbar-brand {
-  filter: brightness(0) invert(1);
+  /* filter: brightness(0) invert(1);  commented by akhil*/
+  filter: unset;
 }
 .navbar-dark .navbar-toggler {
   border-color: var(--fc-white);

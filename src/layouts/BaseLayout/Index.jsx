@@ -31,12 +31,15 @@ const BaseLayout = () => {
   const [myAccountStatus, setMyAccountStatus] = useState(false);
 
   const changeMobileMenuStatus = (status = null) => {
+    setMyAccountStatus(false);
     setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
   };
 
-  const changeMyAccountMenuStatus = (status = null) => {
-    setMobileMenuStatus(false);
-    setMyAccountStatus(status === false ? status : !myAccountStatus);
+  const changeMyAccountMenuStatus = (status = null, type = null) => {
+    setMobileMenuStatus(status === null ? false : status);
+    if (type === null) {
+      setMyAccountStatus(status === false ? status : !myAccountStatus);
+    }
   };
 
   useEffect(() => {
@@ -75,6 +78,9 @@ const BaseLayout = () => {
             mobileMenuStatus={mobileMenuStatus}
             setMobileMenuStatus={setMobileMenuStatus}
             menuItems={menuItems}
+            changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+            myAccountStatus={myAccountStatus}
+            closeMoibileMenu={closeMoibileMenu}
           />
         </nav>
       </div>

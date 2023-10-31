@@ -269,4 +269,16 @@ body.products .discount-percentage {
 #offcanvasAccount {
   padding-top: 0px !important;
 }
+#mobile_category_list {
+  padding-top: 0px !important;
+}
+#mobile-menu {
+  z-index: unset !important;
+}
+#offcanvasSubMenus {
+  padding-top: 0px !important;
+}
+#offcanvasCategory {
+  background-color: unset;
+}
 /* End */

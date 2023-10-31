@@ -6,8 +6,16 @@ import deviceImageRender from "../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../assets/icons/back_button.svg";
+import MobileHeader from "../../layouts/BaseLayout/MobileHeader";
 
-function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
+function MobileMenu({
+  mobileMenuStatus,
+  setMobileMenuStatus,
+  menuItems,
+  changeMyAccountMenuStatus,
+  myAccountStatus,
+  closeMoibileMenu,
+}) {
   const [showSubMenus, setShowSubMenus] = useState(false);
   const [subMenuDatas, setSubMenuDatas] = useState(null);
   const navigate = useNavigate();
@@ -16,11 +24,11 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
     navigate(link);
   };
 
-  useEffect(() => {
-    if (!mobileMenuStatus) {
-      setShowSubMenus(false);
-    }
-  }, [mobileMenuStatus]);
+  // useEffect(() => {
+  //   if (!mobileMenuStatus) {
+  //     setShowSubMenus(false);
+  //   }
+  // }, [mobileMenuStatus]);
   return (
     <>
       <nav
@@ -34,10 +42,16 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
               mobileMenuStatus ? "show" : ""
             }`}
             tabIndex={-1}
-            id="navbar-default"
+            id="mobile_category_list"
             aria-labelledby="navbar-defaultLabel"
           >
             <div className="offcanvas-body">
+              <MobileHeader
+                changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+                myAccountStatus={myAccountStatus}
+                mobileMenuStatus={mobileMenuStatus}
+                closeMoibileMenu={closeMoibileMenu}
+              />
               <div className="custom-mega-menu">
                 <ul className="navbar-nav align-items-center ">
                   {Array.isArray(menuItems)
@@ -51,6 +65,7 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                           onClick={() => {
                             setShowSubMenus(true);
                             setSubMenuDatas(item);
+                            changeMyAccountMenuStatus(false);
                           }}
                         >
                           <NavLink
@@ -107,7 +122,7 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
             showSubMenus ? "show" : "hide"
           }`}
           tabIndex={-1}
-          id="offcanvasAccount"
+          id="offcanvasSubMenus"
           aria-labelledby="offcanvasAccountLabel"
         >
           <div className="offcanvas-body mob-account-sidebar">
@@ -115,6 +130,7 @@ function MobileMenu({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
               className="p-4 mt-2"
               onClick={() => {
                 setShowSubMenus(false);
+                changeMyAccountMenuStatus(true, "back");
               }}
             >
               {/* <h5 className="text-left ml-2 my-dash-head">Back</h5> */}
