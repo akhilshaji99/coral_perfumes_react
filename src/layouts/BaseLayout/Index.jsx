@@ -35,11 +35,9 @@ const BaseLayout = () => {
     setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
   };
 
-  const changeMyAccountMenuStatus = (status = null, type = null) => {
-    setMobileMenuStatus(status === null ? false : status);
-    if (type === null) {
-      setMyAccountStatus(status === false ? status : !myAccountStatus);
-    }
+  const changeMyAccountMenuStatus = (status = null) => {
+    setMobileMenuStatus(false);
+    setMyAccountStatus(status === false ? status : !myAccountStatus);
   };
 
   useEffect(() => {

@@ -275,6 +275,9 @@ body.products .discount-percentage {
 #mobile-menu {
   z-index: unset !important;
 }
+#mobile-sub-menu {
+  z-index: 999 !important;
+}
 #offcanvasSubMenus {
   padding-top: 0px !important;
 }
