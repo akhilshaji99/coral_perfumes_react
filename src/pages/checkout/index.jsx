@@ -217,7 +217,8 @@ function Index() {
       address_id: checkOutDetails?.default_address?.account_address?.id,
       // store_id: checkOutDetails?.store_id,
       store_id: null,
-      delivery_instruction_message: null,
+      delivery_instruction_message:
+        checkOutDetails?.delivery_instruction_message,
     },
     enableReinitialize: true,
     // validationSchema: newAddressFormSchema,4
