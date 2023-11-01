@@ -844,9 +844,10 @@ button.btn-complete{
 .border-top.py-4.footer-bottom p {
   font-size: 12px;
   font-weight: 600;
+  font-family: BrandonText-Bold,sans-serif;
 }
 .p-d-c.footer-text ul li {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: var(--fc-nav-link-font-weight);
 }
 .offcanvas-title {
@@ -878,6 +879,9 @@ div#offcanvasCategory .offcanvas-header.d-lg-none svg {
 }
 .mob-info-sidebar {
   padding-top: 95px !important;
+}
+.collect-banner {
+  padding: 0px 0;
 }
 }
 .menu-zindex {
