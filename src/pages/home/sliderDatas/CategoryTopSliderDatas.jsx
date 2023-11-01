@@ -14,7 +14,7 @@ function CategoryTopSliderDatas({ category, index }) {
           )}
           alt={category?.image_alt}
         />
-        <h3 className="text-dark py-3">{category?.title}</h3>
+        <h3 className="text-dark py-3 line-break">{category?.title}</h3>
       </NavLink>
     </div>
   );

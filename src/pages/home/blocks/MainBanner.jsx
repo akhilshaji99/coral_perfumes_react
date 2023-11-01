@@ -1,6 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ModalBtn from "../../../assets/img/pop-up-btn.svg";
+import sudeButtonIcon from "../../../assets/icons/sidebutton.svg";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
 function MainBanner({ componentDatas, exclusive_deals }) {
@@ -156,7 +156,9 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         data-bs-target="#userModal1"
       >
         <button className="ModalBtn offer-button">
+          <img src={sudeButtonIcon} alt="coral-icon"/>
           {exclusive_deals?.main_text}
+          <img src={sudeButtonIcon} alt="coral-icon"/>
         </button>
       </a>
       {/* Modal */}
