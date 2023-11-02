@@ -3,6 +3,8 @@
     width: 100%;
     max-width: 1150px;
   }
+  .order-bottom-row .react-multiple-carousel__arrow--left {
+    left: calc(29% + 18px);}
   .navbar .dropdown-fullwidth .dropdown-menu {
     max-height: 75vh;
   }
