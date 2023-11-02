@@ -1537,6 +1537,7 @@ button.ModalBtn.offer-button {
   font-family: var(--fc-font-bold);
   border-radius: 10px 10px 0px 0px !important;
   padding: 4px 30px;
+  border: none;
 }
 .row.align-items-center.justify-content-center.alert-box-bag-empty p {
   color: #000;
@@ -1737,4 +1738,8 @@ h2.product-author a {
 }
 .rc-slider-handle {
   border: solid 2px #000000 !important;
+}
+button.ModalBtn.offer-button img {
+  transform: rotate(-90deg);
+  padding: 0px 5px;
 }
