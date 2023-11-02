@@ -1743,3 +1743,6 @@ button.ModalBtn.offer-button img {
   transform: rotate(-90deg);
   padding: 0px 5px;
 }
+.row.order-middle-row.align-items-center a:hover {
+  color: #000;
+}
