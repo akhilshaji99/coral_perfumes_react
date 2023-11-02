@@ -30248,6 +30248,7 @@ body {
   position: absolute;
   left: 5px;
   top: -6px;
+  border-style: none;
 }
 
 .order-btn-active {
