@@ -1746,3 +1746,11 @@ button.ModalBtn.offer-button img {
 .row.order-middle-row.align-items-center a:hover {
   color: #000;
 }
+.deals-banner {
+  width: 100%;
+  border-radius: 10px;
+}
+sapn.text-break {
+  display: inline-block;
+  padding-left: 35px;
+}
