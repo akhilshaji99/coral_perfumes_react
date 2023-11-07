@@ -1,8 +1,8 @@
 import request from "../../../utils/request";
 
-const getStores = async () => {
+const getStores = async (id) => {
   try {
-    return await request.get("get_store_details/");
+    return await request.get("api/store/"+id+"/");
   } catch (error) {
     console.log("error", error);
   }
