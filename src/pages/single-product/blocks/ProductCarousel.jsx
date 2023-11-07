@@ -30,7 +30,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-function ProductCarousel({ sliderImages }) {
+function ProductCarousel({ sliderImages, stock_status }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -87,11 +87,18 @@ function ProductCarousel({ sliderImages }) {
       <div className="col-md-5 ">
         <div className="product-showcase d-none d-sm-block">
           {activeImage ? (
-            <InnerImageZoom src={deviceImgeRender(activeImage)} />
+            <>
+              <div className="product-active-image-wrapper">
+                {!stock_status ? (
+                  <span className="badge out-of-stock-badge">Out Of Stock</span>
+                ) : null}
+                <InnerImageZoom src={deviceImgeRender(activeImage)} />
+              </div>
+            </>
           ) : null}
         </div>
         <div className="d-block d-sm-none">
-          <Slider {...settings1} >
+          <Slider {...settings1}>
             {sliderImages?.map((sliderImage, index) => {
               return (
                 <img

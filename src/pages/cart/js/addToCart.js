@@ -15,6 +15,7 @@ const addToCart = async (product_variant_id, quantity, dispatch) => {
       quantity,
       token: getUserOrGuestToken(),
     });
+    console.log(response.data.status)
     if (response.data.status) {
       if (deviceCheck() === "Desktop") {
         $("#cartDrawer").show();

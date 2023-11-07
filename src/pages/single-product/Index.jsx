@@ -2,7 +2,7 @@ import ProductCarousel from "./blocks/ProductCarousel";
 import { useEffect } from "react";
 import request from "../../utils/request";
 import { useState } from "react";
-import CreateProductVariants from "./js/CreateProductVariants";
+// import CreateProductVariants from "./js/CreateProductVariants";
 import Timer from "./blocks/Timer";
 import RecommendedProducts from "./blocks/RecommenedProducts";
 import ProductData from "./blocks/ProductData";
@@ -19,6 +19,7 @@ import BreadCrumps from "../common/BreadCrumps";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import RatingModal from "./blocks/RatingModal";
+import NotifyIcon from "../../assets/icons/notify.svg";
 
 function Index() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Index() {
   const [addToCartQuantity, setAddToCartQuantity] = useState(1);
   const [status, setStatus] = useState(false);
   const [flashSale, setFlashSale] = useState(null);
-  const [otherVariants, setOtherVariants] = useState({});
+  // const [otherVariants, setOtherVariants] = useState({});
   const [variantChangeFlag, setVariantChangeFlag] = useState(false);
   const [ratingType, setRatingType] = useState("product");
   const [refetch, setRefetch] = useState(false);
@@ -179,7 +180,10 @@ function Index() {
       />
       <div className="conatiner pd-detail">
         <div className="row mb-5 ">
-          <ProductCarousel sliderImages={currentVariant?.variant_images} />
+          <ProductCarousel
+            sliderImages={currentVariant?.variant_images}
+            stock_status={currentVariant?.stock_status}
+          />
 
           <div className="col-md-5">
             <div className="product-desc-section">
@@ -194,14 +198,16 @@ function Index() {
                   <div className="row">
                     <div className="col-md-4 col-4">
                       <div className="product-single-price">
-                        {currentVariant?.currency_code} {currentVariant?.price_amount}
+                        {currentVariant?.currency_code}{" "}
+                        {currentVariant?.price_amount}
                       </div>
                       <span className="vat-included">VAT included</span>
                     </div>
                     <div className="col-md-4 col-4">
                       {currentVariant?.original_amount ? (
                         <div className="product-single-discounted-price">
-                          {currentVariant?.currency_code} {currentVariant?.original_amount}
+                          {currentVariant?.currency_code}{" "}
+                          {currentVariant?.original_amount}
                         </div>
                       ) : null}
                     </div>
@@ -428,117 +434,135 @@ function Index() {
                       addToCart(currentVariant?.id, addToCartQuantity, dispatch)
                     }
                   >
-                    add to bag{" "}
-                    <svg
-                      width={17}
-                      height={20}
-                      viewBox="0 0 17 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                    {currentVariant?.stock_status ? "add to bag" : "Notify Me"}
+
+                    {currentVariant?.stock_status ? (
+                      <svg
+                        width={17}
+                        height={20}
+                        viewBox="0 0 17 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <img
+                        src={NotifyIcon}
+                        alt="notify-icon"
+                        className="notify-icon"
                       />
-                      <path
-                        d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    )}
                   </button>
                 </div>
-                {/*  */}
-                <div className="col-xl-5 col-12 incriment-button">
-                  <div className="input-group input-spinner  d-end">
-                    {/* <input /> */}
-                    <img
-                      type="button"
-                      // disabled={
-                      //   addToCartQuantity >= currentVariant?.stock_value
-                      // }
-                      style={{
-                        cursor:
-                          addToCartQuantity >= currentVariant?.stock_value
-                            ? "not-allowed"
-                            : "pointer",
-                      }}
-                      onClick={() => {
-                        if (addToCartQuantity >= currentVariant?.stock_value) {
-                          return;
-                        } else {
-                          setAddToCartQuantity(addToCartQuantity + 1);
-                        }
-                      }}
-                      data-field="quantity"
-                      className="img-fluid btn-plus"
-                      src={plusIcon}
-                      alt="Coral Perfumes"
-                    />
-                    <input
-                      value={addToCartQuantity}
-                      type="button"
-                      className="quantity-field form-control-sm form-input"
-                    />
-                    <img
-                      type="button"
-                      style={{
-                        cursor:
-                          parseInt(addToCartQuantity) <= 1
-                            ? "not-allowed"
-                            : "pointer",
-                      }}
-                      data-field="quantity"
-                      onClick={() => {
-                        if (parseInt(addToCartQuantity) <= 1) {
-                          return;
-                        } else {
-                          setAddToCartQuantity(addToCartQuantity - 1);
-                        }
-                      }}
-                      className="img-fluid btn-minus"
-                      src={minusIcon}
-                      alt=" Coral Perfumes"
-                    />
-                    {/* <input /> */}
+                {currentVariant?.stock_status ? (
+                  <div className="col-xl-5 col-12 incriment-button">
+                    <div className="input-group input-spinner  d-end">
+                      <img
+                        type="button"
+                        // disabled={
+                        //   addToCartQuantity >= currentVariant?.stock_value
+                        // }
+                        style={{
+                          cursor:
+                            addToCartQuantity >= currentVariant?.stock_value
+                              ? "not-allowed"
+                              : "pointer",
+                        }}
+                        onClick={() => {
+                          if (
+                            addToCartQuantity >= currentVariant?.stock_value
+                          ) {
+                            return;
+                          } else {
+                            setAddToCartQuantity(addToCartQuantity + 1);
+                          }
+                        }}
+                        data-field="quantity"
+                        className="img-fluid btn-plus"
+                        src={plusIcon}
+                        alt="Coral Perfumes"
+                      />
+                      <input
+                        value={addToCartQuantity}
+                        type="button"
+                        className="quantity-field form-control-sm form-input"
+                      />
+                      <img
+                        type="button"
+                        style={{
+                          cursor:
+                            parseInt(addToCartQuantity) <= 1
+                              ? "not-allowed"
+                              : "pointer",
+                        }}
+                        data-field="quantity"
+                        onClick={() => {
+                          if (parseInt(addToCartQuantity) <= 1) {
+                            return;
+                          } else {
+                            setAddToCartQuantity(addToCartQuantity - 1);
+                          }
+                        }}
+                        className="img-fluid btn-minus"
+                        src={minusIcon}
+                        alt=" Coral Perfumes"
+                      />
+                    </div>
                   </div>
-                </div>
-                {/* Mobile Button */}
+                ) : null}
+                {/* Mobile button */}
                 <div className="col-md-6 d-block d-sm-none mt-4">
                   <button
                     disabled={currentVariant === null}
                     className="btn btn-dark btn-checkout w-100"
                     onClick={() =>
-                      addToCart(currentVariant?.id, addToCartQuantity)
+                      addToCart(currentVariant?.id, addToCartQuantity, dispatch)
                     }
                   >
-                    add to bag{" "}
-                    <svg
-                      width={17}
-                      height={20}
-                      viewBox="0 0 17 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                    {currentVariant?.stock_status ? "add to bag" : "Notify Me"}
+
+                    {currentVariant?.stock_status ? (
+                      <svg
+                        width={17}
+                        height={20}
+                        viewBox="0 0 17 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <img
+                        src={NotifyIcon}
+                        alt="notify-icon"
+                        className="notify-icon"
                       />
-                      <path
-                        d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    )}
                   </button>
                 </div>
-                {/*  */}
               </div>
 
               {productVariants?.map((productVariant, index) => {

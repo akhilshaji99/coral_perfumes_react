@@ -281,4 +281,24 @@ body.products .discount-percentage {
 #offcanvasSubMenus {
   padding-top: 0px !important;
 }
+.product-active-image-wrapper {
+  position: relative;
+}
+.out-of-stock-badge {
+  background: #f22f2f;
+  padding: 3px 12px;
+  left: 0;
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  letter-spacing: 1.08px;
+  text-transform: capitalize;
+  border-radius: 0;
+}
+.prod-notify-me {
+  color: #f22f2f;
+}
 /* End */
