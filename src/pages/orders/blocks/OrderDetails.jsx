@@ -12,8 +12,8 @@ function OrderDetails({
   return (
     <>
       <div className="orders-card order-details">
-        <div className="row align-items-center">
-          <div className="col-md-6">
+        <div className="row align-items-center mb-4">
+          <div className="col-md-6 pb-2">
             <h3>
               Order No: {orderDetails?.order_no}{" "}
               <span>(Item: {orderDetails?.items_count})</span>
@@ -30,7 +30,7 @@ function OrderDetails({
             <h3>{orderDetails?.sub_total}</h3>
           </div>
         </div>
-        <div className="row align-items-center">
+        <div className="row align-items-center mb-6">
           <div className="col-md-6">
             <p>{orderDetails?.shipping_title}</p>
           </div>
@@ -97,7 +97,6 @@ function OrderDetails({
                   orderItem={orderItem}
                   ongoingOrder={{
                     order_status: orderItem?.order_status,
-                    order_cancellation_status: 1,
                     order_cancellation_text:
                       orderItem?.cancel_status || "Request Cancellation",
                     order_no: orderDetails?.order_no,
