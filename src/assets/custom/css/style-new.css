@@ -215,7 +215,8 @@ ul li {
 }
 .choose-emirates {
   width: 45%;
-  text-align: right;
+  display: flex;
+  justify-content: end;
 }
 .visit-row {
   display: flex;
@@ -1753,4 +1754,7 @@ button.ModalBtn.offer-button img {
 sapn.text-break {
   display: inline-block;
   padding-left: 35px;
+}
+.product-active-image-wrapper span.badge.out-of-stock-badge {
+  left: -30px;
 }
