@@ -50,12 +50,12 @@ function ProductMain({
     // Create the Intersection Observer
     const options = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '300px 0px',
       threshold: 0.1,
     };
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
-      if (target.isIntersecting) {
+      if (target.isIntersecting && target.intersectionRatio > 0) {
         setScrollStatus((scrollStatus) => !scrollStatus);
       }
     }, options);
