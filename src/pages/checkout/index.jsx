@@ -38,8 +38,8 @@ function Index() {
   const [cartItems, setCartItems] = useState(null);
   const [addressType, setAddressType] = useState(1);
   const [paymentTypes, setPaymentTypes] = useState([]);
-  const [storeDatas, setStoredatas] = useState([]);
-  const [storeEmirates, setStoreEmirates] = useState([]);
+  // const [storeDatas, setStoredatas] = useState([]);
+  // const [storeEmirates, setStoreEmirates] = useState([]);
   const [avaibleStores, setAvailableStores] = useState([]);
   const [status, setStatus] = useState(false);
   const [checkout_api_status, setCheckout_delivery_type] = useState(false);
@@ -91,49 +91,54 @@ function Index() {
       fetchCheckoutApi();
     });
   };
-  const fetchStoreApi = async (checkoutResponseData) => {
+  const fetchStoreApi = async (emirate_id, store_id) => {
     try {
-      const response = await getStores();
+      const response = await getStores(emirate_id);
       if (response?.data?.status) {
-        setStoredatas(response?.data?.data);
-
-        const uniqueStores = [
-          ...new Map(response?.data?.data?.map((m) => [m.emirate, m])).values(),
-        ];
-        setStoreEmirates(uniqueStores);
-        await filterStoresByEmirates(
-          checkoutResponseData?.store_emirate_id || uniqueStores[0]?.emirate,
-          checkoutResponseData?.store_id,
-          response?.data?.data
+        setAvailableStores(response?.data?.data);
+        addressForm.setFieldValue("emirate", emirate_id);
+        addressForm.setFieldValue(
+          "store_id",
+          store_id || response?.data?.data[0]?.id
         );
+
+        // const uniqueStores = [
+        //   ...new Map(response?.data?.data?.map((m) => [m.emirate, m])).values(),
+        // ];
+        // setStoreEmirates(uniqueStores);
+        // await filterStoresByEmirates(
+        //   checkoutResponseData?.store_emirate_id || uniqueStores[0]?.emirate,
+        //   checkoutResponseData?.store_id,
+        //   response?.data?.data
+        // );
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const filterStoresByEmirates = async (
-    emirate_id,
-    store_id = null,
-    availableStores = []
-  ) => {
-    let emirateStores = [];
-    let stores = [];
-    if (availableStores.length === 0) {
-      stores = storeDatas;
-    } else {
-      stores = availableStores;
-    }
-    await stores.forEach((store) => {
-      if (parseInt(store.emirate) === parseInt(emirate_id)) {
-        emirateStores.push(store);
-      }
-    });
-    setAvailableStores(emirateStores);
-    addressForm.setFieldValue("emirate", emirate_id);
-    setStatus(!status);
-    addressForm.setFieldValue("store_id", store_id || emirateStores?.[0]?.id);
-  };
+  // const filterStoresByEmirates = async (
+  //   emirate_id,
+  //   store_id = null,
+  //   availableStores = []
+  // ) => {
+  //   let emirateStores = [];
+  //   let stores = [];
+  //   if (availableStores.length === 0) {
+  //     stores = storeDatas;
+  //   } else {
+  //     stores = availableStores;
+  //   }
+  //   await stores.forEach((store) => {
+  //     if (parseInt(store.emirate) === parseInt(emirate_id)) {
+  //       emirateStores.push(store);
+  //     }
+  //   });
+  //   setAvailableStores(emirateStores);
+  //   addressForm.setFieldValue("emirate", emirate_id);
+  //   setStatus(!status);
+  //   addressForm.setFieldValue("store_id", store_id || emirateStores?.[0]?.id);
+  // };
   //#End
 
   useEffect(() => {
@@ -149,7 +154,16 @@ function Index() {
     getCheckOutDetails().then(async (response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
-        await fetchStoreApi(response?.data); //Fetch store api
+        if (response?.data?.emirates.length > 0) {
+          let emirate_id = "";
+          if (response?.data?.store_emirate_id) {
+            emirate_id = response?.data?.store_emirate_id;
+          } else {
+            emirate_id = response?.data?.emirates[0]?.id;
+          }
+          await fetchStoreApi(emirate_id, response?.data?.store_id); //Fetch store api
+        }
+
         setCartItems(response?.data?.cart_items);
         setPaymentTypes(response?.data?.payment_types);
         addressForm.setFieldValue(
@@ -205,8 +219,12 @@ function Index() {
         checkOutDetails?.default_address?.account_address?.street_address,
       building_number:
         checkOutDetails?.default_address?.account_address?.building_number,
-      first_name: checkOutDetails?.default_address?.account_address?.first_name,
-      last_name: checkOutDetails?.default_address?.account_address?.last_name,
+      first_name:
+        checkOutDetails?.default_address?.account_address?.first_name ||
+        checkOutDetails?.user_data?.first_name,
+      last_name:
+        checkOutDetails?.default_address?.account_address?.last_name ||
+        checkOutDetails?.user_data?.last_name,
       email:
         checkOutDetails?.default_address?.account_address?.email ||
         checkOutDetails?.user_data?.email,
@@ -857,21 +875,21 @@ function Index() {
                                       name="emirate"
                                       value={addressForm.values.emirate}
                                       onChange={(event) => {
-                                        filterStoresByEmirates(
-                                          event.target.value
-                                        );
+                                        fetchStoreApi(event.target.value);
                                       }}
                                     >
-                                      {storeEmirates?.map((emirate, index) => {
-                                        return (
-                                          <option
-                                            value={emirate.emirate}
-                                            key={index}
-                                          >
-                                            {emirate.emirate_name}
-                                          </option>
-                                        );
-                                      })}
+                                      {checkOutDetails?.emirates?.map(
+                                        (emirate, index) => {
+                                          return (
+                                            <option
+                                              value={emirate.id}
+                                              key={index}
+                                            >
+                                              {emirate.name}
+                                            </option>
+                                          );
+                                        }
+                                      )}
                                     </select>
                                   </div>
                                 </div>
