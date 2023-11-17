@@ -301,7 +301,7 @@ body.products .discount-percentage {
 .prod-notify-me {
   color: #f22f2f;
 }
-.react-multi-carousel-list li::after {
+.fbt-product-plus li::after {
   content: "+";
   position: absolute;
   top: 50%;

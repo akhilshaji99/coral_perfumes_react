@@ -14,7 +14,7 @@ function BoughtTogether({ FbtDatas }) {
           autoPlaySpeed={3500}
           centerMode={false}
           className=""
-          containerClass="container-with-dots"
+          containerClass="container-with-dots fbt-product-plus"
           dotListClass=""
           draggable
           focusOnSelect={false}
@@ -68,7 +68,7 @@ function BoughtTogether({ FbtDatas }) {
         >
           {FbtDatas?.products?.map((fbtProduct, index) => {
             return (
-              <div className="product-grid slick-slider-alignment" key={index}>
+              <div className="product-grid slick-slider-alignment " key={index}>
                 <div className="product-grid carousel-product-margin">
                   <div className="card border-0 card-product">
                     <div className="card-body fbt-product-box">
