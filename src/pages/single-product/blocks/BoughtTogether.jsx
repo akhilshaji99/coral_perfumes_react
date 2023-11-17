@@ -72,6 +72,9 @@ function BoughtTogether({ FbtDatas }) {
                 <div className="product-grid carousel-product-margin">
                   <div className="card border-0 card-product">
                     <div className="card-body fbt-product-box">
+                    <span class="badge">
+                        <input type="radio" checked className="form-check-input"/>
+                    </span>
                       <div className="text-center position-relative ">
                         <NavLink
                           to={`/product-details/?slug=${fbtProduct?.slug}`}
