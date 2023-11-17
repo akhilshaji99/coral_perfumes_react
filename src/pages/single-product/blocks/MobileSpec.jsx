@@ -1,8 +1,15 @@
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
 import deviceImgeRender from "../../../utils/deviceImageRender";
+import BoughtTogether from "./BoughtTogether";
 
-function MobileSpec({ currentVariant, productDatas, setRatingType, refetch }) {
+function MobileSpec({
+  currentVariant,
+  productDatas,
+  setRatingType,
+  refetch,
+  FbtDatas,
+}) {
   return (
     <>
       <div className="mob-specs">
@@ -196,6 +203,14 @@ function MobileSpec({ currentVariant, productDatas, setRatingType, refetch }) {
           src={deviceImgeRender(productDatas?.type_banner_image)}
           alt=""
         />
+      </div>
+      <div className="col-md-5" id="mobile-menu">
+        {FbtDatas && FbtDatas?.products?.length > 0 ? (
+          <>
+            <h2 className="p-d">bought together</h2>
+            <BoughtTogether FbtDatas={FbtDatas} />
+          </>
+        ) : null}
       </div>
     </>
   );

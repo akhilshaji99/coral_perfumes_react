@@ -35,6 +35,7 @@ function Index() {
   const [variantChangeFlag, setVariantChangeFlag] = useState(false);
   const [ratingType, setRatingType] = useState("product");
   const [refetch, setRefetch] = useState(false);
+  const [FbtDatas, setFbtDatas] = useState(null);
 
   useEffect(() => {
     getProductDetails();
@@ -67,6 +68,9 @@ function Index() {
     }
     if (response?.data?.current_variant) {
       setCurrentVariant(response.data.current_variant);
+    }
+    if (response?.data?.fbt_data) {
+      setFbtDatas(response?.data?.fbt_data);
     }
     if (response?.data?.attribute_datas) {
       const dataArray = [];
@@ -684,12 +688,14 @@ function Index() {
           productDatas={productDatas}
           setRatingType={setRatingType}
           refetch={refetch}
+          FbtDatas={FbtDatas}
         />
         <MobileSpec
           currentVariant={currentVariant}
           productDatas={productDatas}
           setRatingType={setRatingType}
           refetch={refetch}
+          FbtDatas={FbtDatas}
         />
         {recProducts != null ? (
           <RecommendedProducts componentDatas={recProducts} />

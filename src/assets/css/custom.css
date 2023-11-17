@@ -301,4 +301,13 @@ body.products .discount-percentage {
 .prod-notify-me {
   color: #f22f2f;
 }
+.react-multi-carousel-list li::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 94%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #333; /* Adjust the color as needed */
+}
 /* End */

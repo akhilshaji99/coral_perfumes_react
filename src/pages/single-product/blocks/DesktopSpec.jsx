@@ -1,9 +1,15 @@
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
-import { useState } from "react";
+import BoughtTogether from "./BoughtTogether";
 
-function DesktopSpec({ currentVariant, productDatas, setRatingType, refetch }) {
+function DesktopSpec({
+  currentVariant,
+  productDatas,
+  setRatingType,
+  refetch,
+  FbtDatas,
+}) {
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
@@ -190,7 +196,12 @@ function DesktopSpec({ currentVariant, productDatas, setRatingType, refetch }) {
             </div>
           </div>
           <div className="col-md-5">
-            <h2 className="p-d">bought together</h2>
+            {FbtDatas && FbtDatas?.products?.length > 0 ? (
+              <>
+                <h2 className="p-d">bought together</h2>
+                <BoughtTogether FbtDatas={FbtDatas} />
+              </>
+            ) : null}
           </div>
         </div>
       </div>
