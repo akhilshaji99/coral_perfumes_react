@@ -540,9 +540,17 @@ function Index() {
                   <button
                     disabled={currentVariant === null}
                     className="btn btn-dark btn-checkout w-100"
-                    onClick={() =>
-                      addToCart(currentVariant?.id, addToCartQuantity, dispatch)
-                    }
+                    onClick={() => {
+                      if (currentVariant?.stock_status) {
+                        addToCart(
+                          currentVariant?.id,
+                          addToCartQuantity,
+                          dispatch
+                        );
+                      } else {
+                        notify(currentVariant?.id);
+                      }
+                    }}
                   >
                     {currentVariant?.stock_status ? "add to bag" : "Notify Me"}
 

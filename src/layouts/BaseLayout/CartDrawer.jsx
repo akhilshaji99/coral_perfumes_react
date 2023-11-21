@@ -29,14 +29,14 @@ function CartDrawer() {
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
       if (response?.status) {
-        setCartItems(response?.data?.shopping_cart_items);
-        setcartDatas(response?.data);
-      } else {
-        setCartItems(response?.data);
-        if (response?.data.length <= 0) {
+        if (response?.data?.length <= 0) {
           $("#cartDrawer").toggleClass("hide");
           $("#cartDrawer").removeClass("show");
         }
+        setCartItems(response?.data?.shopping_cart_items || []);
+        setcartDatas(response?.data);
+      } else {
+        setCartItems(response?.data);
       }
     });
   };
@@ -274,7 +274,7 @@ function CartDrawer() {
                     strokeLinejoin="round"
                   />
                 </svg>{" "}
-                &nbsp;  {cartDatas?.free_delivery_message}
+                &nbsp; {cartDatas?.free_delivery_message}
               </p>
             </div>
           ) : null}
