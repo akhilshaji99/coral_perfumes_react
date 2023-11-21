@@ -58,7 +58,7 @@ function Index() {
             <BreadCrumps />
           </div>
           <div className="row gx-10">
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg-3 col-md-4 product-filter-sidebar">
               <FilterSidebar
                 checkCategoryFilter={checkCategoryFilter}
                 minPrice={minPrice}

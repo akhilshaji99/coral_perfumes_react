@@ -2,8 +2,25 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { NavLink } from "react-router-dom";
+import request from "../../../utils/request";
+import { useEffect, useState } from "react";
 
 function BoughtTogether({ FbtDatas }) {
+  const fbtAddToCart = async () => {
+    try {
+      // var bodyFormData = new FormData();
+      // bodyFormData.append("stars_count", rating);
+      // bodyFormData.append("message", message);
+      const response = await request.post("add_to_cart_fbt/", {
+        id: FbtDatas?.id,
+      });
+      // if (response?.data?.status) {
+      //   // setBrandReviews(response?.data?.data);
+      // }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div>
       <>
@@ -72,9 +89,13 @@ function BoughtTogether({ FbtDatas }) {
                 <div className="product-grid carousel-product-margin">
                   <div className="card border-0 card-product">
                     <div className="card-body fbt-product-box">
-                    <span class="badge">
-                        <input type="radio" checked className="form-check-input"/>
-                    </span>
+                      <span class="badge">
+                        <input
+                          type="radio"
+                          checked
+                          className="form-check-input"
+                        />
+                      </span>
                       <div className="text-center position-relative ">
                         <NavLink
                           to={`/product-details/?slug=${fbtProduct?.slug}`}
@@ -105,7 +126,12 @@ function BoughtTogether({ FbtDatas }) {
             );
           })}
         </Carousel>
-        <button className="btn btn-dark w-100 mt-2 fbt-add-to-cart">
+        <button
+          className="btn btn-dark w-100 mt-2 fbt-add-to-cart"
+          onClick={() => {
+            fbtAddToCart();
+          }}
+        >
           {FbtDatas?.button_title}
         </button>
       </>
