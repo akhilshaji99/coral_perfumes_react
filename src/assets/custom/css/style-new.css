@@ -1758,3 +1758,15 @@ sapn.text-break {
 .product-active-image-wrapper span.badge.out-of-stock-badge {
   left: -30px;
 }
+.p-d-c.footer-text p, a {
+  color: #fff;
+  font-size: 14px;
+}
+.p-d-c.footer-text p {
+ 
+  line-height: 30px;
+}
+.p-d-c.footer-text h2{
+  padding: 10px 0px;
+  color: #fff;
+}
