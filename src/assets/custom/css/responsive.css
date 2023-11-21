@@ -848,7 +848,6 @@ button.btn-complete{
 .border-top.py-4.footer-bottom p {
   font-size: 12px;
   font-weight: 600;
-  font-family: BrandonText-Bold,sans-serif;
 }
 .p-d-c.footer-text ul li {
   font-size: 14px;
@@ -884,10 +883,21 @@ div#offcanvasCategory .offcanvas-header.d-lg-none svg {
 .mob-info-sidebar {
   padding-top: 95px !important;
 }
+.card.flash-sale-container h1.flash-sale {
+  font-size: 12px;
+}
 .collect-banner {
-  padding: 0px 0;
+  padding: 0px 0 !important;
 }
+body.home .cc-margin {
+  margin: 1rem 0 !important;
 }
+
+}
+@media only screen and (min-width: 321px) and (max-width: 769px){
+  body.home .cd-margin {
+      margin-bottom: 0rem;
+  }}
 .menu-zindex {
   z-index: -1 !important;
 }
