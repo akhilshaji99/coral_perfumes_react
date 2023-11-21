@@ -573,11 +573,11 @@ function Account({
                               alt="Coral perfumes"
                             />
                           </div>
-                          <div className="col-md-2 langName">
+                          <div className="col-md-4 langName">
                             {languageDirection === null ||
                             languageDirection === "ltr"
-                              ? "ENG"
-                              : "UAE"}
+                              ? "ENG-AED"
+                              : "AED-ENG"}
                           </div>
                           <div className="col-md-1">
                             <svg
@@ -611,7 +611,7 @@ function Account({
                         }}
                       >
                         <img src={ArabLang} alt="Coral Perfumes" />
-                        <span>UAE</span>
+                        <span>AED-ENG</span>
                       </span>
                       <span
                         className="dropdown-item"
@@ -621,7 +621,7 @@ function Account({
                         }}
                       >
                         <img src={EngLang} alt="Coral Perfumes" />
-                        <span>ENG</span>
+                        <span>ENG-AED</span>
                       </span>
                     </div>
                   </div>
