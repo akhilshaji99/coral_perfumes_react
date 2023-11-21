@@ -575,7 +575,7 @@ function Index() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    ) : (
+                    ) : ( 
                       <img
                         src={NotifyIcon}
                         alt="notify-icon"
