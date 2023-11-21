@@ -680,15 +680,6 @@ function Index() {
                     );
                   })}
                 </div>
-                <div className="col-md-2">
-                  <select className="form-control">
-                    {productDatas?.emirates_list.map((emirate) => {
-                      return (
-                        <option value={emirate?.id}>{emirate?.name}</option>
-                      );
-                    })}
-                  </select>
-                </div>
               </div>
 
               {/* <div className="row py-5">

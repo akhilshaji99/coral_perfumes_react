@@ -567,8 +567,8 @@ function Account({
                               src={
                                 languageDirection === null ||
                                 languageDirection === "ltr"
-                                  ? EngLang
-                                  : ArabLang
+                                  ? ArabLang
+                                  : EngLang
                               }
                               alt="Coral perfumes"
                             />
