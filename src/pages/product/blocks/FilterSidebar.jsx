@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useParams } from "react-router-dom";
+import TextBoxClose from "../../../assets/icons/textbox_close.svg";
 
 function FilterSidebar({
   checkCategoryFilter,
@@ -166,8 +167,16 @@ function FilterSidebar({
                                 </svg>
                               </span>
                             ) : null}
+                            <img
+                              src={TextBoxClose}
+                              className="product-search-icon-close"
+                              // onClick={() => {
+                              //   setQuery("");
+                              //   setIsComponentVisible(false);
+                              // }}
+                            />
                             <input
-                              type="search"
+                              type="text"
                               className="form-control accordion-search"
                               placeholder="Search"
                               onChange={(event) => {
