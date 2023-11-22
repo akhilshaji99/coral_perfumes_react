@@ -31,12 +31,54 @@ function ProductMain({
 
   const targetElementRef = useRef(null);
 
-  useEffect(() => {
-    if (count !== 0 && count !== productList.length) {
-      setPage((page) => page + 1);
-      passPageToParent(page);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
+  // useEffect(() => {
+  //   if (count !== 0 && count !== productList.length) {
+  //     setPage((page) => page + 1);
+  //     passPageToParent(page);
+  //   }
+  // }, [scrollStatus]);
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPosition =
+      window.scrollY ||
+      window.pageYOffset ||
+      document.documentElement.scrollTop;
+
+    // Calculate the position where you want to trigger the API call
+    const scrollTriggerPoint = scrollHeight / 2;
+
+    if (scrollPosition + windowHeight >= scrollTriggerPoint) {
+      console.log(count + "   " + productList.length);
+      // User has scrolled to the middle, load more data
+      if (!loading && count !== 0 && count !== productList.length) {
+        setPage((page) => page + 1);
+        passPageToParent(page);
+      }
     }
-  }, [scrollStatus]);
+  };
+
+  useEffect(() => {
+    // Attach the scroll event listener
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      // Detach the scroll event listener when the component is unmounted
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    // Attach the scroll event listener
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      // Detach the scroll event listener when the component is unmounted
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [loading, hasMore]);
 
   useEffect(() => {
     if (count !== 0 && count !== productList.length) {
@@ -45,32 +87,32 @@ function ProductMain({
     passPageToParent(page);
   }, [page]);
 
-  useEffect(() => {
-    const targetElement = targetElementRef.current;
-    // Create the Intersection Observer
-    const options = {
-      root: null,
-      rootMargin: '300px 0px',
-      threshold: 0.1,
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const target = entries[0];
-      if (target.isIntersecting && target.intersectionRatio > 0) {
-        setScrollStatus((scrollStatus) => !scrollStatus);
-      }
-    }, options);
+  // useEffect(() => {
+  //   const targetElement = targetElementRef.current;
+  //   // Create the Intersection Observer
+  //   const options = {
+  //     root: null,
+  //     rootMargin: "300px 0px",
+  //     threshold: 0.1,
+  //   };
+  //   const observer = new IntersectionObserver((entries) => {
+  //     const target = entries[0];
+  //     if (target.isIntersecting && target.intersectionRatio > 0) {
+  //       setScrollStatus((scrollStatus) => !scrollStatus);
+  //     }
+  //   }, options);
 
-    // Attach the observer to the target element
-    if (targetElement) {
-      observer.observe(targetElement);
-    }
-    // Cleanup observer on component unmount
-    return () => {
-      if (targetElement) {
-        observer.unobserve(targetElement);
-      }
-    };
-  }, []);
+  //   // Attach the observer to the target element
+  //   if (targetElement) {
+  //     observer.observe(targetElement);
+  //   }
+  //   // Cleanup observer on component unmount
+  //   return () => {
+  //     if (targetElement) {
+  //       observer.unobserve(targetElement);
+  //     }
+  //   };
+  // }, []);
 
   useEffect(() => {
     setProductList([]);
@@ -81,6 +123,7 @@ function ProductMain({
 
   const getProductList = async (page_number) => {
     try {
+      setLoading(true);
       if (urlParams?.link_type && urlParams?.link_value) {
         dispatch(changeApiCallStatus(false)); // Change api call status
         const response = await request.post(
@@ -118,6 +161,8 @@ function ProductMain({
       }
     } catch (error) {
       console.log("error", error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -190,21 +235,24 @@ function ProductMain({
         <div className="row">
           {productList.map((product, index) => {
             return (
-              <div className={productLayout} key={index}>
-                <div className="product-grid">
-                  <ProductDetails product={product} />
+              <>
+                <div className={productLayout} key={index}>
+                  <div className="product-grid">
+                    <ProductDetails product={product} />
+                  </div>
                 </div>
-              </div>
+              </>
             );
           })}
-          <div
+          {/* <div
             ref={targetElementRef}
             style={{
               width: "100%",
               height: "300px",
               marginTop: "-750px",
+              backgroundColor: "red",
             }}
-          ></div>
+          ></div> */}
         </div>
       </section>
     </>

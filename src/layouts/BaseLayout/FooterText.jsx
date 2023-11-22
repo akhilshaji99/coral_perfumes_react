@@ -15,7 +15,7 @@ function FooterText() {
   const [footerContent, setFooterContent] = useState(null);
   const [footerTitle, setFooterTitle] = useState(null);
   useEffect(() => {
-    if (isApiCompleted && footerDatas.content === undefined) {
+    if (isApiCompleted && footerDatas?.content === undefined) {
       getFooterContent();
     }
   }, [isApiCompleted]);
