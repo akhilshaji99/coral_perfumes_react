@@ -892,7 +892,30 @@ div#offcanvasCategory .offcanvas-header.d-lg-none svg {
 body.home .cc-margin {
   margin: 1rem 0 !important;
 }
+.flash-sale span {
+  padding: 0 5px;
+}
+.product-filter-sidebar .offcanvas.show:not(.hiding), .offcanvas.showing {
+  padding-top: 0px;
+}
 
+.custom-badge2 {
+  left: -10%;
+}
+.text-size {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: normal;
+  font-family: "BrandonText-Bold", sans-serif;
+}
+.return-policy-div h1,h6 {
+  padding-bottom: 5px;
+}
+.form-group.has-search .product-search-icon-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
 }
 @media only screen and (min-width: 321px) and (max-width: 769px){
   body.home .cd-margin {
