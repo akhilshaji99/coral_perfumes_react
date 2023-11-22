@@ -482,6 +482,31 @@ function Index() {
                 {currentVariant?.stock_status ? (
                   <div className="col-xl-5 col-12 incriment-button">
                     <div className="input-group input-spinner  d-end">
+                    <img
+                        type="button"
+                        style={{
+                          cursor:
+                            parseInt(addToCartQuantity) <= 1
+                              ? "not-allowed"
+                              : "pointer",
+                        }}
+                        data-field="quantity"
+                        onClick={() => {
+                          if (parseInt(addToCartQuantity) <= 1) {
+                            return;
+                          } else {
+                            setAddToCartQuantity(addToCartQuantity - 1);
+                          }
+                        }}
+                        className="img-fluid btn-plus"
+                        src={minusIcon}
+                        alt=" Coral Perfumes"
+                      />
+                      <input
+                        value={addToCartQuantity}
+                        type="button"
+                        className="quantity-field form-control-sm form-input"
+                      />
                       <img
                         type="button"
                         // disabled={
@@ -503,35 +528,11 @@ function Index() {
                           }
                         }}
                         data-field="quantity"
-                        className="img-fluid btn-plus"
+                        className="img-fluid btn-minus "
                         src={plusIcon}
                         alt="Coral Perfumes"
                       />
-                      <input
-                        value={addToCartQuantity}
-                        type="button"
-                        className="quantity-field form-control-sm form-input"
-                      />
-                      <img
-                        type="button"
-                        style={{
-                          cursor:
-                            parseInt(addToCartQuantity) <= 1
-                              ? "not-allowed"
-                              : "pointer",
-                        }}
-                        data-field="quantity"
-                        onClick={() => {
-                          if (parseInt(addToCartQuantity) <= 1) {
-                            return;
-                          } else {
-                            setAddToCartQuantity(addToCartQuantity - 1);
-                          }
-                        }}
-                        className="img-fluid btn-minus"
-                        src={minusIcon}
-                        alt=" Coral Perfumes"
-                      />
+                      
                     </div>
                   </div>
                 ) : null}

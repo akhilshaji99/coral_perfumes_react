@@ -24,6 +24,7 @@ function FilterSidebar({
   const [defaultMax, setDefaultMax] = useState(maxPrice);
   const [status, setStatus] = useState(false);
   const [hideSearchIcon, setHideSearchIcon] = useState(false);
+  const [searchTermString, setSearchTermString] = useState("");
 
   useEffect(() => {
     getProductFilters();
@@ -167,21 +168,39 @@ function FilterSidebar({
                                 </svg>
                               </span>
                             ) : null}
-                            <img
-                              src={TextBoxClose}
-                              className="product-search-icon-close"
-                              // onClick={() => {
-                              //   setQuery("");
-                              //   setIsComponentVisible(false);
-                              // }}
-                            />
+                            {hideSearchIcon ? (
+                              <img
+                                src={TextBoxClose}
+                                style={{ cursor: "pointer" }}
+                                className="product-search-icon-close"
+                                onClick={() => {
+                                  setHideSearchIcon(false);
+                                  setSearchTermString("");
+                                  const filtered = JSON.parse(
+                                    localStorage.getItem("originalFilterDatas")
+                                  )[main_index]?.values.filter((entry) =>
+                                    Object.values(entry).some(
+                                      (val) =>
+                                        typeof val === "string" &&
+                                        val.toLowerCase().includes("")
+                                    )
+                                  );
+                                  productFilters[main_index]["values"] =
+                                    filtered;
+                                  setProductFilters(productFilters);
+                                  setStatus(!status);
+                                }}
+                              />
+                            ) : null}
                             <input
                               type="text"
                               className="form-control accordion-search"
                               placeholder="Search"
+                              value={searchTermString}
                               onChange={(event) => {
                                 const searchTerm =
                                   event.target.value.toLowerCase(); // Convert search term to lowercase for case-insensitive search
+                                setSearchTermString(searchTerm);
                                 setHideSearchIcon(false);
                                 if (searchTerm.length > 0) {
                                   setHideSearchIcon(true);

@@ -59,9 +59,9 @@ function productData({ productDatas, currentVariant }) {
                       </svg>
                     </span>
                   </div>
-                  <div className="col-md-3">Deliver To</div>
+                  <div className="col-3">Deliver To</div>
                   <div className="col-5">
-                    <select className="form-control">
+                    <select className="form-control sub-option">
                       {productDatas?.emirates_list.map((emirate) => {
                         return (
                           <option value={emirate?.id}> {emirate?.name}</option>

@@ -31,7 +31,7 @@ function FooterText() {
   };
   return (
     <div className="d-sm-block">
-      <p className="mb-5">{footerTitle ? footerTitle : footerDatas?.title}</p>
+      <p className="mb-5 text-size">{footerTitle ? footerTitle : footerDatas?.title}</p>
       <div
         className="p-d-c footer-text"
         dangerouslySetInnerHTML={{

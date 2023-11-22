@@ -129,31 +129,8 @@ function CartDrawer() {
                             {/* <input /> */}
                             <img
                               type="button"
-                              // defaultValue="+"
-                              // className="button-plus1 btn btn-sm "
-                              className="img-fluid cart-icon-minus"
-                              data-field="quantity"
-                              onClick={() => {
-                                cartIncrement(cartData?.id).then((response) => {
-                                  if (response) {
-                                    cartFetchFunctionCall();
-                                  }
-                                });
-                              }}
-                              src={plusIcon}
-                              alt="Coral Perfumes"
-                            />
-                            <input
-                              type="button"
-                              className="quantity-field1 form-control-sm form-input1"
-                              value={cartData?.quantity}
-                            />
-                            {/* <input /> */}
-
-                            <img
-                              type="button"
                               defaultValue="-"
-                              className="img-fluid cart-icon-plus"
+                              className="img-fluid cart-icon-minus"
                               style={{
                                 cursor:
                                   cartData?.quantity <= 1
@@ -176,6 +153,29 @@ function CartDrawer() {
                               src={minusIcon}
                               alt="Coral Perfumes"
                             />
+                            <input
+                              type="button"
+                              className="quantity-field1 form-control-sm form-input1"
+                              value={cartData?.quantity}
+                            />
+                            <img
+                              type="button"
+                              // defaultValue="+"
+                              // className="button-plus1 btn btn-sm "
+                              className="img-fluid cart-icon-plus "
+                              data-field="quantity"
+                              onClick={() => {
+                                cartIncrement(cartData?.id).then((response) => {
+                                  if (response) {
+                                    cartFetchFunctionCall();
+                                  }
+                                });
+                              }}
+                              src={plusIcon}
+                              alt="Coral Perfumes"
+                            />
+
+                            
                           </div>
                         </div>
                         <div

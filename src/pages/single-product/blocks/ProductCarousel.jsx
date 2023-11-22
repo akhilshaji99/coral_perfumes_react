@@ -98,6 +98,9 @@ function ProductCarousel({ sliderImages, stock_status }) {
           ) : null}
         </div>
         <div className="d-block d-sm-none">
+          {!stock_status && sliderImages ? (
+            <span className="badge out-of-stock-badge">Out Of Stock</span>
+          ) : null}
           <Slider {...settings1}>
             {sliderImages?.map((sliderImage, index) => {
               return (
