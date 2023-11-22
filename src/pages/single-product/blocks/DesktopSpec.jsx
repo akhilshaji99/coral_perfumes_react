@@ -10,6 +10,9 @@ function DesktopSpec({
   refetch,
   FbtDatas,
 }) {
+  const midpoint = Math.ceil(productDatas?.descriptive_attributes.length / 2);
+  const firstHalf = productDatas?.descriptive_attributes.slice(0, midpoint);
+  const secondHalf = productDatas?.descriptive_attributes.slice(midpoint);
   return (
     <>
       <div className="container-fluid d-none d-sm-block">
@@ -91,24 +94,38 @@ function DesktopSpec({
           <div className="col-md-5">
             <h2 className="p-d">Product Detail</h2>
             <div className="row p-ul">
-              {productDatas?.descriptive_attributes?.map(
-                (descriptive_attribute, index) => {
-                  return (
-                    <div className="col-md-6 p" key={index}>
-                      <ul>
-                        <li>
-                          {Object.keys(descriptive_attribute)} :{" "}
-                          {
-                            descriptive_attribute?.[
-                              Object.keys(descriptive_attribute)
-                            ]
-                          }
-                        </li>
-                      </ul>
-                    </div>
-                  );
-                }
-              )}
+              <div className="col-md-6 p">
+                <ul>
+                  {firstHalf?.map((descriptive_attribute, index) => {
+                    return (
+                      <li key={index}>
+                        {Object.keys(descriptive_attribute)} :{" "}
+                        {
+                          descriptive_attribute?.[
+                            Object.keys(descriptive_attribute)
+                          ]
+                        }
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="col-md-6 p">
+                <ul>
+                  {secondHalf?.map((descriptive_attribute, index) => {
+                    return (
+                      <li key={index}>
+                        {Object.keys(descriptive_attribute)} :{" "}
+                        {
+                          descriptive_attribute?.[
+                            Object.keys(descriptive_attribute)
+                          ]
+                        }
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
