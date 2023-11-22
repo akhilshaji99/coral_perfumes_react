@@ -431,58 +431,62 @@ function Index() {
               </div>
               <div className="row py-5">
                 {/* large screen button */}
-                <div className="col-xl-6 col-12 mb-3 d-none d-sm-block">
-                  <button
-                    disabled={currentVariant === null}
-                    className="btn btn-dark btn-checkout w-100"
-                    onClick={() => {
-                      if (currentVariant?.stock_status) {
-                        addToCart(
-                          currentVariant?.id,
-                          addToCartQuantity,
-                          dispatch
-                        );
-                      } else {
-                        notify(currentVariant?.id);
-                      }
-                    }}
-                  >
-                    {currentVariant?.stock_status ? "add to bag" : "Notify Me"}
+                {currentVariant ? (
+                  <div className="col-xl-6 col-12 mb-3 d-none d-sm-block">
+                    <button
+                      disabled={currentVariant === null}
+                      className="btn btn-dark btn-checkout w-100"
+                      onClick={() => {
+                        if (currentVariant?.stock_status) {
+                          addToCart(
+                            currentVariant?.id,
+                            addToCartQuantity,
+                            dispatch
+                          );
+                        } else {
+                          notify(currentVariant?.id);
+                        }
+                      }}
+                    >
+                      {currentVariant?.stock_status
+                        ? "add to bag"
+                        : "Notify Me"}
 
-                    {currentVariant?.stock_status ? (
-                      <svg
-                        width={17}
-                        height={20}
-                        viewBox="0 0 17 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                          stroke="white"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                      {currentVariant?.stock_status ? (
+                        <svg
+                          width={17}
+                          height={20}
+                          viewBox="0 0 17 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <img
+                          src={NotifyIcon}
+                          alt="notify-icon"
+                          className="notify-icon"
                         />
-                        <path
-                          d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                          stroke="white"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    ) : (
-                      <img
-                        src={NotifyIcon}
-                        alt="notify-icon"
-                        className="notify-icon"
-                      />
-                    )}
-                  </button>
-                </div>
+                      )}
+                    </button>
+                  </div>
+                ) : null}
                 {currentVariant?.stock_status ? (
                   <div className="col-xl-5 col-12 incriment-button">
                     <div className="input-group input-spinner  d-end">
-                    <img
+                      <img
                         type="button"
                         style={{
                           cursor:
@@ -532,59 +536,62 @@ function Index() {
                         src={plusIcon}
                         alt="Coral Perfumes"
                       />
-                      
                     </div>
                   </div>
                 ) : null}
                 {/* Mobile button */}
-                <div className="col-md-6 d-block d-sm-none mt-4">
-                  <button
-                    disabled={currentVariant === null}
-                    className="btn btn-dark btn-checkout w-100"
-                    onClick={() => {
-                      if (currentVariant?.stock_status) {
-                        addToCart(
-                          currentVariant?.id,
-                          addToCartQuantity,
-                          dispatch
-                        );
-                      } else {
-                        notify(currentVariant?.id);
-                      }
-                    }}
-                  >
-                    {currentVariant?.stock_status ? "add to bag" : "Notify Me"}
+                {currentVariant ? (
+                  <div className="col-md-6 d-block d-sm-none mt-4">
+                    <button
+                      disabled={currentVariant === null}
+                      className="btn btn-dark btn-checkout w-100"
+                      onClick={() => {
+                        if (currentVariant?.stock_status) {
+                          addToCart(
+                            currentVariant?.id,
+                            addToCartQuantity,
+                            dispatch
+                          );
+                        } else {
+                          notify(currentVariant?.id);
+                        }
+                      }}
+                    >
+                      {currentVariant?.stock_status
+                        ? "add to bag"
+                        : "Notify Me"}
 
-                    {currentVariant?.stock_status ? (
-                      <svg
-                        width={17}
-                        height={20}
-                        viewBox="0 0 17 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                          stroke="white"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                      {currentVariant?.stock_status ? (
+                        <svg
+                          width={17}
+                          height={20}
+                          viewBox="0 0 17 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <img
+                          src={NotifyIcon}
+                          alt="notify-icon"
+                          className="notify-icon"
                         />
-                        <path
-                          d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                          stroke="white"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    ) : ( 
-                      <img
-                        src={NotifyIcon}
-                        alt="notify-icon"
-                        className="notify-icon"
-                      />
-                    )}
-                  </button>
-                </div>
+                      )}
+                    </button>
+                  </div>
+                ) : null}
               </div>
 
               <div className="row">
