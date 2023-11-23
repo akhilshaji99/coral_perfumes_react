@@ -1801,3 +1801,14 @@ sapn.text-break {
   right: 15px;
   top: 15px;
 }
+.tab-scrolls {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+.imgs-header {
+  width: 18px;
+}
+.collect-banner {
+  padding: 0px 0px !important;
+}
