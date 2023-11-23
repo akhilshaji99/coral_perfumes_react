@@ -1,8 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import request from "../../utils/request";
-
+import deviceImageRender from "../../utils/deviceImageRender";
 import FacebookIcon from "../../assets/img/icons/social/facebook.svg";
 import LinkedinIcon from "../../assets/img/icons/social/linkedin.svg";
 import InstagramIcon from "../../assets/img/icons/social/instagram.svg";
@@ -41,6 +41,25 @@ function Footer({ changeMobileMenuStatus }) {
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  // Footer Api Call
+  useEffect(() => {
+    getFooterDatas();
+  }, []);
+
+  const [footerDatas, setFooterDatas] = useState(null);
+
+  const getFooterDatas = async () => {
+    try {
+      const response = await request.get("api/footer");
+      if (response?.data?.data) {
+        setFooterDatas(response?.data?.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  //End of api call
   const bottomNavItems = [
     {
       title: "Home",
@@ -397,38 +416,49 @@ function Footer({ changeMobileMenuStatus }) {
           <div className="col-md-3">
             <div className="row  social-mdedia-icons g-10">
               <div className="col-md-3 col-1">
-                <img src={FacebookIcon} alt="facebook" />
+                <a
+                  href={footerDatas?.social_media?.facebook_url}
+                  target="_blank"
+                >
+                  <img src={FacebookIcon} alt="facebook" />
+                </a>
               </div>
               <div className="col-md-3 col-1">
-                <img src={LinkedinIcon} alt="LinkedIn" />
+                <a
+                  href={footerDatas?.social_media?.linkedin_url}
+                  target="_blank"
+                >
+                  <img src={LinkedinIcon} alt="LinkedIn" />
+                </a>
               </div>
               <div className="col-md-3 col-1">
-                <img src={InstagramIcon} alt="Instagram" />
+                <a
+                  href={footerDatas?.social_media?.instagram_url}
+                  target="_blank"
+                >
+                  <img src={InstagramIcon} alt="Instagram" />
+                </a>
               </div>
               <div className="col-md-3 col-1">
-                <img src={WhatsappIcon} alt="Whatsapp" />
+                <a
+                  href={footerDatas?.social_media?.whatsapp_number}
+                  target="_blank"
+                >
+                  <img src={WhatsappIcon} alt="Whatsapp" />
+                </a>
               </div>
             </div>
           </div>
           <h6 className="mt-5 mb-5 d-block d-sm-none">Payment methods</h6>
           <div className="col-md-4 py-lg-5 ">
             <div className="row mob-payment-icons align-items-center">
-              <div className="col-md-3 col-3">
-                {" "}
-                <img src={TamaraIcon} alt="Tamara" />
-              </div>
-              <div className="col-md-3 col-2 text-center">
-                {" "}
-                <img src={MastercardIcon} alt="Mastercard" />
-              </div>
-              <div className="col-md-3 col-2">
-                {" "}
-                <img src={TabbyIcon} alt="Tabby" />
-              </div>
-              <div className="col-md-3 col-2">
-                {" "}
-                <img src={VisaIcon} alt="Visa" />
-              </div>
+              {footerDatas?.payment_types?.map((payment_type, index) => {
+                return (
+                  <div className="col-md-3 col-3" key={index}>
+                    <img src={deviceImageRender(payment_type)} alt="Tamara" />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -439,156 +469,71 @@ function Footer({ changeMobileMenuStatus }) {
               <div className="col-md-3">
                 <h6>info</h6>
                 <ul className="nav flex-column mb-5">
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      about us{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      {" "}
-                      our brands{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      {" "}
-                      our stores{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      our services{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      our store
-                    </a>
-                  </li>
+                  {footerDatas?.info?.map((infoData, index) => {
+                    return (
+                      <li className="nav-item mb-2" key={index}>
+                        <Link to={infoData?.link} className="nav-link">
+                          {infoData?.title}
+                          <span className="footer-link-seperator">
+                            &nbsp; | &nbsp;
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="col-md-3">
                 <h6>shopping</h6>
                 <ul className="nav flex-column mb-5">
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      perfumes{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      {" "}
-                      Baggage{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      {" "}
-                      sunglass{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      jewllerry{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      watches
-                    </a>
-                  </li>
+                  {footerDatas?.shopping?.map((shoppingData, index) => {
+                    return (
+                      <li className="nav-item mb-2" key={index}>
+                        <Link to={shoppingData?.link} className="nav-link">
+                          {shoppingData?.title}
+                          <span className="footer-link-seperator">
+                            &nbsp; | &nbsp;
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="col-md-3">
                 <h6>help</h6>
                 <ul className="nav flex-column mb-5">
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      contact us{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      {" "}
-                      order status{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    {/* <a href="#!" className="nav-link">
-                      {" "}
-                      return policies{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a> */}
-                    <Link to={"/return-policy"} className="nav-link">
-                      {" "}
-                      return policies{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </Link>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      product recall{" "}
-                      <span className="footer-link-seperator">
-                        &nbsp; | &nbsp;
-                      </span>
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a href="#!" className="nav-link">
-                      gift cards
-                    </a>
-                  </li>
+                  {footerDatas?.help?.map((helpData, index) => {
+                    return (
+                      <li className="nav-item mb-2" key={index}>
+                        <Link to={helpData?.link} className="nav-link">
+                          {helpData?.title}
+                          <span className="footer-link-seperator">
+                            &nbsp; | &nbsp;
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="col-md-3">
                 <h6>support</h6>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2 ft-top ">
-                    <a href="tel:+97123345346767" className="nav-link">
-                      +971 2334 5346767
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
                     <a
-                      href="mailto:coral@coralperfumes.com"
+                      href={`tel:${footerDatas?.contact_number}`}
                       className="nav-link"
                     >
-                      coral@coralperfumes.com
+                      {footerDatas?.contact_number}
+                    </a>
+                  </li>
+                  <li className="nav-item mb-2 ">
+                    <a
+                      href={`mailto:${footerDatas?.footer_email}`}
+                      className="nav-link"
+                    >
+                      {footerDatas?.footer_email}
                     </a>
                   </li>
                 </ul>
@@ -700,16 +645,24 @@ function Footer({ changeMobileMenuStatus }) {
         </div>
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
-            <div className="col-md-4 col-12">2023 All Rights Reserved</div>
+            <div className="col-md-4 col-12">{footerDatas?.bottom_left}</div>
             <div className="col-md-4 text-start col-8">
-              <Link to={"/privacy-policy"}>Privacy & Cookies</Link> /{" "}
-              <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
-              <a href="">Shipping</a>{" "}
+              {footerDatas?.bottom_middle?.map((middleData, index) => {
+                return (
+                  <>
+                    <Link to={middleData?.link} key={index}>
+                      {middleData?.title}
+                    </Link>
+                    <span>/</span>
+                  </>
+                );
+              })}
+              {/* <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
+               <a href="">Shipping</a>{" "} */}
             </div>
-            <div className="col-md-4 text-end col-4 company-name">
-              Engineerd By{" "}
-              <a href="https://cloud6.co.in/" target="_blank">
-                Cloud6
+            <div className="col-md-4 text-end col-4 ">
+            <a href={footerDatas?.cloud6_link} target="_blank">
+              {footerDatas?.bottom_right}
               </a>
             </div>
           </div>
