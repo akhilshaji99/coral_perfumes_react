@@ -141,6 +141,7 @@ body.products .discount-percentage {
   .filter-side {
     width: 22%;
     position: fixed;
+    margin-top: -4%;
   }
 
   .footer {

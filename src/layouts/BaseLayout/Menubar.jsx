@@ -34,6 +34,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
       <nav
         className="navbar navbar-expand-lg  navbar-dark navbar-default py-0"
         aria-label="Offcanvas navbar large"
+        id="menubarDiv"
       >
         <div className="container-lg-fluid  mob-c-view">
           <div

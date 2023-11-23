@@ -25,6 +25,7 @@ function FilterSidebar({
   const [status, setStatus] = useState(false);
   const [hideSearchIcon, setHideSearchIcon] = useState(false);
   const [searchTermString, setSearchTermString] = useState("");
+  const [sideFixedClass, setSideFixedClass] = useState("");
 
   useEffect(() => {
     getProductFilters();
@@ -67,9 +68,31 @@ function FilterSidebar({
     setDefaultMin(value[0]);
     setDefaultMax(value[1]);
   };
+
+  const handleScroll = () => {
+    // Update the scroll offset in the state
+    // setScrollOffset(window.scrollY);
+    // console.log(window.scrollY);
+    if (window.scrollY > 90) {
+      // console.log("fixed");
+      setSideFixedClass("filter-side");
+    }else{
+      setSideFixedClass("");
+    }
+  };
+
+  useEffect(() => {
+    // Add the scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <aside className={`mb-6 mb-md-0 filter-side`}>
+      <aside className={`mb-6 mb-md-0 ${sideFixedClass}`}>
         <div
           className="offcanvas offcanvas-start offcanvas-collapse w-md-50 "
           tabIndex={-1}
