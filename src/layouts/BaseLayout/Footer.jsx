@@ -657,12 +657,10 @@ function Footer({ changeMobileMenuStatus }) {
                   </>
                 );
               })}
-              {/* <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
-               <a href="">Shipping</a>{" "} */}
             </div>
             <div className="col-md-4 text-end col-4 ">
-            <a href={footerDatas?.cloud6_link} target="_blank">
-              {footerDatas?.bottom_right}
+              <a href={footerDatas?.cloud6_link} target="_blank">
+                {footerDatas?.bottom_right}
               </a>
             </div>
           </div>
