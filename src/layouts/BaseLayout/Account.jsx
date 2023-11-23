@@ -318,7 +318,7 @@ function Account({
                     >
                       <img
                         src={Profile}
-                        className="img-fluid"
+                        className="img-fluid imgs-header"
                         alt="Coral Perfumes"
                       />
                       <span className="dropdown-text">
@@ -512,7 +512,7 @@ function Account({
                   <NavLink className="text-center" to="/wishlist">
                     <img
                       src={Whishlist}
-                      className="img-fluid"
+                      className="img-fluid imgs-header"
                       alt="Coral Perfumes"
                     />
                     <span className="dropdown-text">Wishlist</span>
@@ -520,7 +520,7 @@ function Account({
                 </div>
                 <div className="list-inline-item">
                   <Link to={"/cart"} className="text-center cursor">
-                    <img src={Bag} className="img-fluid" alt="Coral Perfumes" />
+                    <img src={Bag} className="img-fluid imgs-header" alt="Coral Perfumes" />
                     <span className="dropdown-text">My Bag</span>
                   </Link>
                 </div>
@@ -543,7 +543,7 @@ function Account({
                   <NavLink className="text-center" to="/stores">
                     <img
                       src={Store}
-                      className="img-fluid"
+                      className="img-fluid imgs-header"
                       alt="Coral Perfumes"
                     />
                     <span className="dropdown-text">Find Store</span>

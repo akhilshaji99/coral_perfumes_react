@@ -53,6 +53,9 @@ function MobileSpec({
                       );
                     }
                   )}
+                  <ul>
+                    <li>SKU: {currentVariant?.sku} </li>
+                  </ul>
                 </div>
               </div>
             </div>

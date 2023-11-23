@@ -66,7 +66,7 @@ function DesktopSpec({
                   <div className="mb-5">
                     {/* text */}
                     <p
-                      className="mb-0 p-d-c"
+                      className="mb-0 p-d-c tab-scrolls"
                       dangerouslySetInnerHTML={{
                         __html: productDatas?.description,
                       }}
@@ -124,6 +124,7 @@ function DesktopSpec({
                       </li>
                     );
                   })}
+                  <li>SKU: {currentVariant?.sku}</li>
                 </ul>
               </div>
             </div>

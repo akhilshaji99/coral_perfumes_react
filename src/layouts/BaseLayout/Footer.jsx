@@ -437,7 +437,7 @@ function Footer({ changeMobileMenuStatus }) {
           <div className="col-md-6">
             <div className="row ">
               <div className="col-md-3">
-                <h6 className="mb-5">info</h6>
+                <h6>info</h6>
                 <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
@@ -481,7 +481,7 @@ function Footer({ changeMobileMenuStatus }) {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-5">shopping</h6>
+                <h6>shopping</h6>
                 <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
@@ -525,7 +525,7 @@ function Footer({ changeMobileMenuStatus }) {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-5">help</h6>
+                <h6>help</h6>
                 <ul className="nav flex-column mb-5">
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
@@ -552,10 +552,13 @@ function Footer({ changeMobileMenuStatus }) {
                         &nbsp; | &nbsp;
                       </span>
                     </a> */}
-                    <Link to={"/return-policy"} className="nav-link">  {" "} return policies{" "}
+                    <Link to={"/return-policy"} className="nav-link">
+                      {" "}
+                      return policies{" "}
                       <span className="footer-link-seperator">
                         &nbsp; | &nbsp;
-                      </span></Link>
+                      </span>
+                    </Link>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="#!" className="nav-link">
@@ -573,7 +576,7 @@ function Footer({ changeMobileMenuStatus }) {
                 </ul>
               </div>
               <div className="col-md-3">
-                <h6 className="mb-5">support</h6>
+                <h6>support</h6>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2 ft-top ">
                     <a href="tel:+97123345346767" className="nav-link">
@@ -699,8 +702,8 @@ function Footer({ changeMobileMenuStatus }) {
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">2023 All Rights Reserved</div>
             <div className="col-md-4 text-start col-8">
-              
-              <Link to={"/privacy-policy"}>Privacy & Cookies</Link> / <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
+              <Link to={"/privacy-policy"}>Privacy & Cookies</Link> /{" "}
+              <Link to={"/terms-conditions"}>Ts & Cs</Link> /{" "}
               <a href="">Shipping</a>{" "}
             </div>
             <div className="col-md-4 text-end col-4 company-name">
