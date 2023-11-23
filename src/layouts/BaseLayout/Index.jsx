@@ -82,7 +82,7 @@ const BaseLayout = () => {
           />
         </nav>
       </div>
-      <div className="fixed-top-margin main-layout ">
+      <div className="fixed-top-margin main-layout "style={{ minHeight: '600px'}}>
         <Outlet />
       </div>
       <MobileMyAccount
