@@ -28115,6 +28115,7 @@ border-radius: none !important;
   }
   .footer-link-seperator {
     visibility: visible !important;
+    display: inline-block !important;
   }
   .my-bag .container-fluid {
     --fc-gutter-x: 2.5rem;
