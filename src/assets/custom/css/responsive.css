@@ -3,7 +3,8 @@
     width: 100%;
     max-width: 1150px;
   }
-  .scroll-container2 {
+  .scroll-container2
+   {
     max-height: 170px;}
   .order-bottom-row .react-multiple-carousel__arrow--left {
     left: calc(29% + 18px);}
@@ -108,18 +109,18 @@
     margin-left: 29px;
   }
   .imgs-header {
-    width: 16px;
-}
+    width: 17px;
+  }
+  .ftr-tamara img {
+    width: 95px;
+ }
 }
 @media (max-width: 1366px) {
   .container-new {
     width: 90%;
     margin: 0 auto;
   }
-  li.nav-item.mb-2.ft-top {
-    padding-right: 10px;
-    margin-bottom: -14px !important;
-  }
+ 
 }
 @media only screen and (max-width: 1200px) {
   .container-new {
@@ -209,6 +210,15 @@
     font-weight: 450;
     line-height: 144.49%;
   }
+  .ftr-tamara img {
+    width: 42px;
+}
+.ftr-visa img {
+  width: 37px;
+}
+.ftr-mcard img {
+  width: 40px;
+}
 }
 @media screen and (max-width: 767px) {
   .container-new {
@@ -928,20 +938,33 @@ body.home .cc-margin {
   margin-bottom: 10px;
 }
 .border-top.py-4.footer-bottom p.mb-5.text-size{
-  font-size: 1.75rem !important;
   font-weight: 600;
   line-height: normal;
   font-family: "BrandonText-Bold", sans-serif;
+  font-size: calc(1.3rem + 0.6vw);
+  margin-bottom: 0px !important;
+}
+.text-mid {
+  text-align: left;
 }
 a.btn.btn-filter.w-100:focus {
-  outline:.5 solid;
+  border:1px solid #000;
 }
 a.btn.btn-filter.w-100{
-  outline:.5 solid ;
+  border:1px solid #000 ;
 }
 .icon-end .lang-dropdown-menu {
   right: -35px;
   top: 30px;
+}
+.ftr-mcard {
+  text-align: start;
+}
+.ftr-tamara img {
+  width: 60px !important;
+}
+.mob-set {
+  padding-right: 10px;
 }
 }
 @media only screen and (min-width: 321px) and (max-width: 769px){

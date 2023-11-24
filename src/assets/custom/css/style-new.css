@@ -1807,8 +1807,24 @@ sapn.text-break {
   padding-right: 20px;
 }
 .imgs-header {
-  width: 18px;
+  width: 19px;
 }
 .collect-banner {
   padding: 0px 0px !important;
+}
+.text-mid {
+  text-align: center;
+}
+.footer-link-seperator {
+  visibility: hidden;
+  display: none;
+}
+.ftr-visa img {
+  width: 52px;
+}
+.ftr-mcard {
+  text-align: end;
+}
+.ftr-tamara img {
+  width: 100px;
 }

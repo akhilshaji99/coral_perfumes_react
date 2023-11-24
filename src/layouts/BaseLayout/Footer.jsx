@@ -450,7 +450,7 @@ function Footer({ changeMobileMenuStatus }) {
             </div>
           </div>
           <h6 className="mt-5 mb-5 d-block d-sm-none">Payment methods</h6>
-          <div className="col-md-4 py-lg-5 ">
+          <div className="col-md-4 py-lg-4">
             <div className="row mob-payment-icons align-items-center">
               {footerDatas?.payment_types?.map((payment_type, index) => {
                 return (
@@ -520,7 +520,7 @@ function Footer({ changeMobileMenuStatus }) {
               <div className="col-md-3">
                 <h6>support</h6>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2 ft-top ">
+                  <li className="nav-item mb-2 ft-top mob-set">
                     <a
                       href={`tel:${footerDatas?.contact_number}`}
                       className="nav-link"
@@ -646,7 +646,7 @@ function Footer({ changeMobileMenuStatus }) {
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">{footerDatas?.bottom_left}</div>
-            <div className="col-md-4 text-start col-8">
+            <div className="col-md-4 text-mid col-8">
               {footerDatas?.bottom_middle?.map((middleData, index) => {
                 return (
                   <>
