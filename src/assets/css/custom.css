@@ -141,7 +141,7 @@ body.products .discount-percentage {
   .filter-side {
     width: 22%;
     position: fixed;
-    margin-top: -4%;
+    margin-top: -5%;
   }
 
   .footer {
@@ -314,10 +314,15 @@ body.products .discount-percentage {
 .notify-icon {
   margin-left: 11px;
 }
-.footer-logo-size{
+.footer-logo-size {
   width: 40px;
 }
-.career-vac-text-color{
+.career-vac-text-color {
   color: #000;
+}
+@media screen and (min-width: 1190px) and (max-width: 1280px) {
+  .filter-side {
+    margin-top: -85px;
+  }
 }
 /* End */

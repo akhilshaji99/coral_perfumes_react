@@ -8,7 +8,6 @@ function Index() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [priceRangeFilter, setPriceRangeFilter] = useState({});
-  const [status, setStatus] = useState(false);
 
   //Creating filter array
   const checkCategoryFilter = (checkedValue, attribute) => {
@@ -50,6 +49,7 @@ function Index() {
   const passPageToParent = (page) => {
     setCurrentPage(page);
   };
+
   return (
     <>
       <main>

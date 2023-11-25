@@ -13,6 +13,7 @@ function FilterSidebar({
   filterArray,
   unselectAll,
   currentPage,
+  sidebarFixedStatus,
 }) {
   const urlParams = useParams([]);
 
@@ -70,15 +71,22 @@ function FilterSidebar({
   };
 
   const handleScroll = () => {
-    // Update the scroll offset in the state
-    // setScrollOffset(window.scrollY);
-    // console.log(window.scrollY);
+    console.log(window.scrollY);
     if (window.scrollY > 90) {
       // console.log("fixed");
       setSideFixedClass("filter-side");
-    }else{
+    } else {
       setSideFixedClass("");
     }
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+    if (scrollTop + windowHeight >= scrollHeight - 400) {
+      setSideFixedClass("");
+    }
+    // else {
+    //   setSideFixedClass("filter-side");
+    // }
   };
 
   useEffect(() => {

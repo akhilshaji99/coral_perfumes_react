@@ -25,14 +25,10 @@ function ProductMain({
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
-  const [scrollStatus, setScrollStatus] = useState(false);
   const [productLayout, setProductLayout] = useState("col-md-4 col-6");
   const [relevanceFilter, setRelevanceFilter] = useState("");
-
-  const targetElementRef = useRef(null);
-
+  const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
 
   // useEffect(() => {
   //   if (count !== 0 && count !== productList.length) {
@@ -55,7 +51,7 @@ function ProductMain({
     if (scrollPosition + windowHeight >= scrollTriggerPoint) {
       console.log(count + "   " + productList.length);
       // User has scrolled to the middle, load more data
-      if (!loading && count !== 0 && count !== productList.length) {
+      if (!loading && count !== 0 && pageCount !== 0) {
         setPage((page) => page + 1);
         passPageToParent(page);
       }
@@ -78,13 +74,13 @@ function ProductMain({
       // Detach the scroll event listener when the component is unmounted
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [loading, hasMore]);
+  }, [loading]);
 
   useEffect(() => {
-    if (count !== 0 && count !== productList.length) {
+    if (count !== 0 && pageCount !== 0) {
       getProductList(page);
     }
-    passPageToParent(page);
+    // passPageToParent(page);
   }, [page]);
 
   // useEffect(() => {
@@ -146,6 +142,7 @@ function ProductMain({
         );
         if (response?.data) {
           setCount(response?.data?.total_count);
+          setPageCount(response?.data?.count);
           passingDataToParent(
             response?.data?.minimum_price,
             response?.data?.maximum_price
