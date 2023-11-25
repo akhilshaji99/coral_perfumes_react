@@ -16,7 +16,7 @@ function AdsBlock({ componentDatas }) {
                   }`}
                   key={index}
                 >
-                  <a href="#">
+                  <Link to={adBlock?.link}>
                     <img
                       src={deviceImageRender(
                         adBlock?.desktop_image,
@@ -24,7 +24,7 @@ function AdsBlock({ componentDatas }) {
                       )}
                       alt={adBlock?.image_alt}
                     />
-                  </a>
+                  </Link>
                 </div>
               );
             })}
