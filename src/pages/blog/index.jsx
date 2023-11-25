@@ -10,12 +10,14 @@ import img06 from "../../assets/custom/images/blog-img6.png";
 import img07 from "../../assets/custom/images/blog-img7.png";
 import img08 from "../../assets/custom/images/blog-img8.png";
 import img09 from "../../assets/custom/images/blog-img9.png";
+import BreadCrumps from "../common/BreadCrumps";
 
 function Index() {
   return (
     <>
       <div className="page-new">
         <section classNameName="sm-none">
+          <BreadCrumps />
           <div className="container-new">
             <div className="title-page">
               <h1>Insights </h1>
@@ -140,7 +142,7 @@ function Index() {
               </div>
               <div className="blog-col-1 order-1">
                 <div className="blog-img-personality">
-                  <img src={img02} alt="img"  />
+                  <img src={img02} alt="img" />
                 </div>
               </div>
             </div>
@@ -208,7 +210,7 @@ function Index() {
               </div>
               <div className="blog-col-1 order-1">
                 <div className="blog-img-personality">
-                  <img src={img07} alt="img"  />
+                  <img src={img07} alt="img" />
                 </div>
               </div>
             </div>

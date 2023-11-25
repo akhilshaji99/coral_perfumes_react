@@ -1,12 +1,10 @@
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
-// Import your images
-import img01 from "../../assets/custom/images/careers-banner.webp";
-import img02 from "../../assets/custom/images/careers-img.png";
 import { useEffect, useState } from "react";
 import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
+import BreadCrumps from "../common/BreadCrumps";
 
 function Index() {
   const [banners, setBanners] = useState({});
@@ -36,18 +34,18 @@ function Index() {
   return (
     <>
       <div className="page-new">
+        <BreadCrumps />
         <div className="container-new">
           <div className="title-page">
             <h1>Careers</h1>
           </div>
           <div className="banner-careers">
-            {
-            banners?.banner_image ?
-            <img
-              src={deviceImageRender(banners?.banner_image)}
-              alt="img-banner"
-            />:null
-            }
+            {banners?.banner_image ? (
+              <img
+                src={deviceImageRender(banners?.banner_image)}
+                alt="img-banner"
+              />
+            ) : null}
           </div>
         </div>
         <section className="carrer-sect">
@@ -63,7 +61,12 @@ function Index() {
                           return (
                             <li>
                               {/* <a href="#"></a> */}
-                              <Link to={"/career-detail/"+jobTitle?.id}>{jobTitle?.job_title}</Link>
+                              <Link
+                                to={"/career-detail/" + jobTitle?.id}
+                                className="career-vac-text-color"
+                              >
+                                {jobTitle?.job_title}
+                              </Link>
                             </li>
                           );
                         })}
@@ -121,13 +124,12 @@ function Index() {
           <div className="container-new">
             <div className="career-review">
               <div className="career-review-img">
-              {
-            banners?.footer_banner ?
-                <img
-                  src={deviceImageRender(footerbanner?.footer_banner)}
-                  alt="img"
-                /> : null
-              }
+                {banners?.footer_banner ? (
+                  <img
+                    src={deviceImageRender(footerbanner?.footer_banner)}
+                    alt="img"
+                  />
+                ) : null}
               </div>
               <div className="career-review-text lg-none">
                 <h3>

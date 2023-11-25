@@ -7,10 +7,8 @@ import FacebookIcon from "../../assets/img/icons/social/facebook.svg";
 import LinkedinIcon from "../../assets/img/icons/social/linkedin.svg";
 import InstagramIcon from "../../assets/img/icons/social/instagram.svg";
 import WhatsappIcon from "../../assets/img/icons/social/whatsapp.png";
-import TamaraIcon from "../../assets/img/icons/payment/tamara.png";
-import MastercardIcon from "../../assets/img/icons/payment/mastercard.svg";
-import TabbyIcon from "../../assets/img/icons/payment/tabby.svg";
-import VisaIcon from "../../assets/img/icons/payment/visa.svg";
+import foot_ic1 from "../../assets/img/foot_ic1.jpeg";
+import foot_ic2 from "../../assets/img/foot_ic2.png";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
 // import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 // import ScrollToTop from "react-scroll-to-top";
@@ -643,6 +641,14 @@ function Footer({ changeMobileMenuStatus }) {
             </div>
           </div>
         </div>
+        <div className="row g-4">
+          <div className="col-md-2">
+            <img src={foot_ic1} alt="foot_logo" className="footer-logo-size" />
+          </div>
+          <div className="col-md-2">
+            <img src={foot_ic2} alt="foot_logo" className="footer-logo-size" />
+          </div>
+        </div>
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">{footerDatas?.bottom_left}</div>
@@ -653,7 +659,9 @@ function Footer({ changeMobileMenuStatus }) {
                     <Link to={middleData?.link} key={index}>
                       {middleData?.title}
                     </Link>
-                    <span>/</span>
+                    {index+1 !== footerDatas?.bottom_middle.length ? (
+                      <span>/</span>
+                    ) : null}
                   </>
                 );
               })}

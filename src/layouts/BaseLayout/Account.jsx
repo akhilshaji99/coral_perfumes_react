@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import ArabLang from "../../assets/img/icons/lang/arab.png";
-import EngLang from "../../assets/img/icons/lang/english.png";
+import ArabLang from "../../assets/img/icons/lang/Flag_02.svg";
+import EngLang from "../../assets/img/icons/lang/Flag_01.svg";
 import { useEffect, useState, useRef } from "react";
 import OutsideAlerter from "../../pages/common/js/OutsideAlerter";
 import CartDrawer from "../../layouts/BaseLayout/CartDrawer";
