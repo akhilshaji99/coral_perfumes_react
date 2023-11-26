@@ -10,15 +10,15 @@ const addToCart = async (product_variant_id) => {
       token: getUserOrGuestToken(),
     });
     if (response.data.status) {
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={"Notify"}
-          message="Notified"
-        />
-      ));
+      // toast((t) => (
+      //   <AlerMessage
+      //     t={t}
+      //     toast={toast}
+      //     status={response.data.status}
+      //     title={"Notify"}
+      //     message="Notified"
+      //   />
+      // ));
     } else {
       toast((t) => (
         <AlerMessage
