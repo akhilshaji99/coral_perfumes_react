@@ -24,7 +24,7 @@ function Index() {
       //   var bodyFormData = new FormData();
       //   bodyFormData.append("token", getUserToken());
       //   dispatch(changeApiCallStatus(false)); // Change api call status
-      const response = await request.get("job-detail/"+1+"/");
+      const response = await request.get("job-detail/"+urlParams?.id+"/");
       if (response.data) {
         setBanners(response.data.banner_image);
         setJobDetails(response.data.job_details);
