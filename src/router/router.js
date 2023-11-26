@@ -13,6 +13,7 @@ import Returns from "../pages/returns/index";
 import AddressBook from "../pages/address_book/index";
 import DashBoard from "../pages/dashboard/index";
 import Stores from "../pages/stores/index";
+import StoresDetails from "../pages/store_detail/index";
 import About from "../pages/about/index";
 import Blog from "../pages/blog/index";
 import Careers from "../pages/careers/index";
@@ -82,6 +83,7 @@ const Router = () => {
           element: userDatas ? <DashBoard /> : <Navigate to="/login" />,
         },
         { path: "stores", element: <Stores /> },
+        { path: "stores-detail/:id", element: <StoresDetails /> },
         { path: "about", element: <About /> },
         { path: "blog", element: <Blog /> },
         { path: "careers", element: <Careers /> },

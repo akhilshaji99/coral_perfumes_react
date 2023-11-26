@@ -6,6 +6,7 @@ import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
 import BreadCrumps from "../common/BreadCrumps";
 import EmiratesDropdown from "./blocks/EmiratesDropdown";
+import { Link } from "react-router-dom";
 
 function Index() {
   const [stores, setStores] = useState([]);
@@ -25,11 +26,13 @@ function Index() {
   }, []);
 
   useEffect(() => {
+    if(emirate){
     getStores(emirate).then((response) => {
       if (response?.data) {
         setStores(response?.data?.data);
       }
     });
+  }
   }, [emirate]);
 
 
@@ -59,7 +62,8 @@ function Index() {
               <ul>
                 {stores?.map((store, index) => {
                   return (
-                    <li>
+                    <li >
+                      <Link to={`/stores-detail/${store?.id}`} >
                       <div className="viisit-img" key={index}>
                         <img
                           src={deviceImageRender(store?.store_listing_image)}
@@ -78,6 +82,7 @@ function Index() {
                           <a href={store?.map_link}>VISIT US</a>
                         </div>
                       </div>
+                      </Link>
                     </li>
                   );
                 })}
