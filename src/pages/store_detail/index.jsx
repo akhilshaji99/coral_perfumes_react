@@ -34,8 +34,8 @@ function Index() {
   };
   return (
     <>
-      <div className="page-new" >
-      <BreadCrumps />
+      <div className="page-new">
+        <BreadCrumps />
 
         <div className="container-new">
           <div className="title-page">
@@ -84,14 +84,13 @@ function Index() {
         <section className="slider-owl-sect">
           <div className="container-new  sm-none">
             <div className="owl-carousel owl-theme owl-slider store-details-slider">
-
               {gallery_images.length > 0 ? (
                 <Carousel
                   additionalTransfrom={0}
                   autoPlay={false}
                   arrows
                   autoPlaySpeed={3500}
-                  centerMode={false}
+                  centerMode={true}
                   className=""
                   containerClass="container-with-dots"
                   dotListClass=""
@@ -141,7 +140,7 @@ function Index() {
                   swipeable
                 >
                   {gallery_images?.map((image, index) => (
-                    <div key={index} >
+                    <div key={index}>
                       <img
                         src={deviceImageRender(image?.image)}
                         alt={`img_${index}`}
@@ -151,6 +150,16 @@ function Index() {
                 </Carousel>
               ) : null}
             </div>
+          </div>
+          <div class="container-new  lg-none">
+            {gallery_images?.map((image, index) => (
+              <div class="slid-mobview">
+                <img
+                  src={deviceImageRender(image?.image)}
+                  alt={`img_${index}`}
+                />
+              </div>
+            ))}
           </div>
         </section>
       </div>
