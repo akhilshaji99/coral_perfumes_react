@@ -21,9 +21,12 @@ import AlerMessage from "../common/AlerMessage";
 import RatingModal from "./blocks/RatingModal";
 import NotifyIcon from "../../assets/icons/notify.svg";
 import notify from "../cart/js/notify";
+import { useNavigate } from "react-router-dom";
 
 function Index() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [currentVariant, setCurrentVariant] = useState(null);
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
@@ -444,7 +447,12 @@ function Index() {
                             dispatch
                           );
                         } else {
-                          notify(currentVariant?.id);
+                          if (getUserToken() == null) {
+                            navigate("/login");
+                            return;
+                          } else {
+                            notify(currentVariant?.id);
+                          }
                         }
                       }}
                     >
@@ -553,7 +561,12 @@ function Index() {
                             dispatch
                           );
                         } else {
-                          notify(currentVariant?.id);
+                          if (getUserToken() == null) {
+                            navigate("/login");
+                            return;
+                          } else {
+                            notify(currentVariant?.id);
+                          }
                         }
                       }}
                     >
