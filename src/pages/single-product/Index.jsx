@@ -177,13 +177,12 @@ function Index() {
     console.log(result);
   }, [variantChangeFlag]);
 
-  var productTitle = "Your Product Title";
-  var productDescription = "Description of your product.";
+  var productDescription = `Hey check this out: ${currentVariant?.name} | Coral Perfumes UAE  `;
   var productUrl = window.location.href;
 
   // Create the WhatsApp share link
   var rediction_datas = encodeURIComponent(
-    productTitle + "\n\n" + productDescription + "\n\n" + productUrl
+    productDescription + "\n\n" + productUrl
   );
   // var whatsappLink = "whatsapp://send?text=" + whatsappMessage;
   return (
