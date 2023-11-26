@@ -325,4 +325,22 @@ body.products .discount-percentage {
     margin-top: -85px;
   }
 }
+/* 404 page styles */
+.not-found-slide {
+  margin-right: 15px;
+}
+.error-carousel .react-multiple-carousel__arrow {
+  background-color: #ebece9 !important;
+}
+.error-carousel .react-multiple-carousel__arrow--left {
+  left: calc(25% + 10px);
+}
+.error-carousel .react-multiple-carousel__arrow--right {
+  right: calc(25% + 10px);
+}
+.error-carousel .react-multi-carousel-list {
+  position: unset !important;
+}
+/*End 404 page styles */
+
 /* End */

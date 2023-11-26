@@ -23,10 +23,11 @@ import AlertPages from "../pages/alert_pages/index";
 // import PaymentFailed from "../pages/alert_pages/PaymentFailed";
 import PaymentWaiting from "../pages/alert_pages/PaymentWaiting";
 import Faq from "../pages/faq/index";
-import ReturnPolicy from "../pages/returnPolicy/index"
-import PrivacyPolicy from "../pages/privacyPolicy/index"
-import TermsConditions from "../pages/termsAndConditions/index"
+import ReturnPolicy from "../pages/returnPolicy/index";
+import PrivacyPolicy from "../pages/privacyPolicy/index";
+import TermsConditions from "../pages/termsAndConditions/index";
 import SingleOrder from "../pages/orders/SingleOrder";
+import NotFound from "../pages/not_found/index";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -42,7 +43,10 @@ const Router = () => {
           element: userDatas ? <Navigate to="/" /> : <LoginPage />,
         },
         { path: "products/:link_type/:link_value", element: <ProductPage /> },
-        { path: "products/:link_type/:link_value/:random_key", element: <ProductPage /> },
+        {
+          path: "products/:link_type/:link_value/:random_key",
+          element: <ProductPage />,
+        },
         { path: "product-details/*", element: <SingleProduct /> },
         { path: "cart", element: <Cart /> },
         {
@@ -122,14 +126,15 @@ const Router = () => {
         {
           path: "privacy-policy",
           element: <PrivacyPolicy />,
-
         },
         {
           path: "terms-conditions",
           element: <TermsConditions />,
-
         },
-        
+        {
+          path: "404",
+          element: <NotFound />,
+        },
       ],
     },
   ];
