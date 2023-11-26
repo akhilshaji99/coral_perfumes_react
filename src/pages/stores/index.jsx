@@ -15,26 +15,24 @@ function Index() {
   const [label, setLabel] = useState("");
 
   useEffect(() => {
-    
     getEmirates().then((response) => {
       if (response?.data) {
         setEmirates(response?.data);
-        setEmirate(response?.data?.[0].id)
-        setLabel(response?.data?.[0].name)
+        setEmirate(response?.data?.[0].id);
+        setLabel(response?.data?.[0].name);
       }
     });
   }, []);
 
   useEffect(() => {
-    if(emirate){
-    getStores(emirate).then((response) => {
-      if (response?.data) {
-        setStores(response?.data?.data);
-      }
-    });
-  }
+    if (emirate) {
+      getStores(emirate).then((response) => {
+        if (response?.data) {
+          setStores(response?.data?.data);
+        }
+      });
+    }
   }, [emirate]);
-
 
   return (
     <>
@@ -47,9 +45,12 @@ function Index() {
             </div>
             <div className="choose-emirates">
               <div className=" custom-select">
-              <EmiratesDropdown setEmirate={setEmirate} emirates={emirates} label={label}
-              setLabel={setLabel}/>
-                
+                <EmiratesDropdown
+                  setEmirate={setEmirate}
+                  emirates={emirates}
+                  label={label}
+                  setLabel={setLabel}
+                />
               </div>
             </div>
           </div>
@@ -62,8 +63,7 @@ function Index() {
               <ul>
                 {stores?.map((store, index) => {
                   return (
-                    <li >
-                      <Link to={`/stores-detail/${store?.id}`} >
+                    <li>
                       <div className="viisit-img" key={index}>
                         <img
                           src={deviceImageRender(store?.store_listing_image)}
@@ -79,10 +79,11 @@ function Index() {
                             }}
                           ></p>
                           <p>{store?.store_location}</p>
-                          <a href={store?.map_link}>VISIT US</a>
+                          <Link to={`/stores-detail/${store?.id}`}>
+                            VISIT US{" "}
+                          </Link>
                         </div>
                       </div>
-                      </Link>
                     </li>
                   );
                 })}
