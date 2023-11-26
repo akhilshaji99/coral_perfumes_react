@@ -7,8 +7,7 @@ import error_img5 from "../../assets/img/404/error_img3.png";
 import error_img6 from "../../assets/img/404/error_img4.png";
 import error_img7 from "../../assets/img/404/error_img1.png";
 import error_img8 from "../../assets/img/404/error_img2.png";
-import Arrows_left1 from "../../assets/img/404/Arrows_left1.png";
-import Arrows_left2 from "../../assets/img/404/Arrows_left2.png";
+import { Link } from "react-router-dom";
 import BreadCrumps from "../common/BreadCrumps";
 import Carousel from "react-multi-carousel";
 
@@ -25,7 +24,7 @@ function NotFound() {
           </h1>
           <p>Looks like the product you are looking doesn’t exist.</p>
           <div className="strt-btns">
-            <a href="#">Start Exploring</a>
+            <Link to={"/"}>Start Exploring</Link>
           </div>
           <div className="error-text">
             {" "}

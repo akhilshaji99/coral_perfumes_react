@@ -111,10 +111,10 @@ const Router = () => {
           path: "cod/success",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
-        // {
-        //   path: "*",
-        //   element: userDatas ? <PersonalInfo /> : <Navigate to="/" />,
-        // },
+        {
+          path: "*",
+          element: <NotFound />,
+        },
         {
           path: "faq",
           element: <Faq />,
@@ -131,10 +131,10 @@ const Router = () => {
           path: "terms-conditions",
           element: <TermsConditions />,
         },
-        {
-          path: "404",
-          element: <NotFound />,
-        },
+        // {
+        //   path: "404",
+        //   element: <NotFound />,
+        // },
       ],
     },
   ];
