@@ -12,7 +12,7 @@ function FlashSaleSliderDatas({ product, index }) {
       <div className="card card-product  carousel-product-margin">
         <div className="card-body product-box">
           {product.discount_percentage ? (
-            <span className="badge custom-badge">
+            <span className="badge custom-badge" style={{backgroundColor:product?.offer_tag_color}}>
               <svg
                 width="29"
                 height="25"

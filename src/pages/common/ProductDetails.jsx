@@ -12,7 +12,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
       <div className="card border-0 card-product">
         <div className="card-body product-box">
           {product?.product_tag ? (
-            <span className="badge custom-badge2">
+            <span className="badge custom-badge2" style={{backgroundColor:product?.product_tag_color}}>
               {/* {product?.discount_percentage}% */}
               {product?.product_tag}
             </span>
