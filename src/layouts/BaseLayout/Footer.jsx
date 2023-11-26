@@ -7,8 +7,8 @@ import FacebookIcon from "../../assets/img/icons/social/facebook.svg";
 import LinkedinIcon from "../../assets/img/icons/social/linkedin.svg";
 import InstagramIcon from "../../assets/img/icons/social/instagram.svg";
 import WhatsappIcon from "../../assets/img/icons/social/whatsapp.png";
-import foot_ic1 from "../../assets/img/foot_ic1.jpeg";
-import foot_ic2 from "../../assets/img/foot_ic2.png";
+import foot_ic1 from "../../assets/img/foot_ic_1.png";
+import foot_ic2 from "../../assets/img/foot_ic_2.png";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
 // import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 // import ScrollToTop from "react-scroll-to-top";
@@ -410,9 +410,10 @@ function Footer({ changeMobileMenuStatus }) {
       </div>
       <div className="container px-lg-4">
         <div className="row footer-row align-items-center">
-          <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6>
+          {/* <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6> */}
           <div className="col-md-3">
-            <div className="row  social-mdedia-icons g-10">
+            <div className="row  social-mdedia-icons">
+            <h6>FOLLOW US</h6>
               <div className="col-md-3 col-1">
                 <a
                   href={footerDatas?.social_media?.facebook_url}
