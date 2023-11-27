@@ -22459,7 +22459,7 @@ h3 {
   color: var(--fc-white);
   padding: 0;
   font-size: 13px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   display: table;
   margin: 2px 0;
 }
