@@ -1,6 +1,14 @@
+import { useState } from "react";
 import Tabby from "../../../assets/img/icons/payment/tabby-1.png";
-// import Tamara from "../../../assets/img/icons/payment/tamara-1.png";
-function productData({ productDatas, currentVariant }) {
+
+function ProductData({ productDatas, currentVariant }) {
+
+  const [dropdownOpen, setDropDownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropDownOpen(!dropdownOpen);
+  };
+
   return (
     <>
       <div className="row py-5">
@@ -36,40 +44,6 @@ function productData({ productDatas, currentVariant }) {
             ) : null}
             {productDatas?.emirate_message ? (
               <h2 className="delivery-update">
-                {/* {productDatas?.emirate_message}
-                 */}
-                {/* <div className="row">
-                  <div className="col-md-1">
-                    <span>
-                      <svg
-                        width={18}
-                        height={22}
-                        viewBox="0 0 18 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10.3774 13.5063C10.7714 13.5063 11.1615 13.4287 11.5255 13.278C11.8895 13.1272 12.2202 12.9062 12.4988 12.6277C12.7773 12.3491 12.9983 12.0184 13.1491 11.6544C13.2998 11.2904 13.3774 10.9003 13.3774 10.5063C13.3774 10.1124 13.2998 9.72226 13.1491 9.35828C12.9983 8.99431 12.7773 8.66359 12.4988 8.38501C12.2202 8.10644 11.8895 7.88546 11.5255 7.73469C11.1615 7.58393 10.7714 7.50633 10.3774 7.50633C9.58179 7.50633 8.81873 7.8224 8.25612 8.38501C7.69351 8.94762 7.37744 9.71068 7.37744 10.5063C7.37744 11.302 7.69351 12.065 8.25612 12.6277C8.81873 13.1903 9.58179 13.5063 10.3774 13.5063Z"
-                          stroke="black"
-                        />
-                        <path
-                          d="M3.57451 9.02416C5.17377 1.66139 15.5893 1.66989 17.1804 9.03266C18.114 13.3517 15.5487 17.0076 13.3 19.2691C12.5142 20.0628 11.4651 20.5063 10.3734 20.5063C9.28171 20.5063 8.2326 20.0628 7.44683 19.2691C5.20624 17.0076 2.64093 13.3432 3.57451 9.02416Z"
-                          stroke="black"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div className="col-3">Deliver To</div>
-                  <div className="col-5">
-                    <select className="form-control sub-option">
-                      {productDatas?.emirates_list.map((emirate) => {
-                        return (
-                          <option value={emirate?.id}> {emirate?.name}</option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                </div> */}
                 <div class="row">
                   <div class="col-1 col-md-1">
                     <span>
@@ -93,13 +67,42 @@ function productData({ productDatas, currentVariant }) {
                   </div>
                   <div class="col-10 d-flex">
                     <div>Deliver To</div>
-                    <select className="form-control sub-option">
-                      {productDatas?.emirates_list.map((emirate) => {
-                        return (
-                          <option value={emirate?.id}> {emirate?.name}</option>
-                        );
-                      })}
-                    </select>
+                    <div className="dropdown  sub-option">
+                      <a
+                        className=" dropdown-toggle prod-selected-emirate"
+                        type="button"
+                        onClick={() => {
+                          toggleDropdown();
+                        }}
+                      >
+                        Dubai
+                      </a>
+                      {/* Render the dropdown content based on the state */}
+                      {dropdownOpen && (
+                        <div
+                          className="dropdown-menu"
+                          style={{ display: "block" }}
+                        >
+                          {/* Add your dropdown items here */}
+                          {productDatas?.emirates_list?.map(
+                            (emirate, index) => {
+                              return (
+                                <label
+                                  key={index}
+                                  className="dropdown-item dropdown-item-custom"
+                                  onClick={() => {
+                                    // applyRelevanceFilter(emirate.id);
+                                    setDropDownOpen(!dropdownOpen);
+                                  }}
+                                >
+                                  {emirate?.name}
+                                </label>
+                              );
+                            }
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -192,4 +195,4 @@ function productData({ productDatas, currentVariant }) {
     </>
   );
 }
-export default productData;
+export default ProductData;
