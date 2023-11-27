@@ -226,9 +226,14 @@ function Account({
           ) : null}
           <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
             <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
-              <NavLink className="navbar-brand d-none d-lg-block" to="/">
-                <Logo />
-              </NavLink>
+              {/* <NavLink
+                className="navbar-brand d-none d-lg-block"
+                to={() => {
+                  console.log("click");
+                }}
+              > */}
+              <Logo />
+              {/* </NavLink> */}
             </div>
 
             <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
@@ -520,7 +525,11 @@ function Account({
                 </div>
                 <div className="list-inline-item">
                   <Link to={"/cart"} className="text-center cursor">
-                    <img src={Bag} className="img-fluid imgs-header" alt="Coral Perfumes" />
+                    <img
+                      src={Bag}
+                      className="img-fluid imgs-header"
+                      alt="Coral Perfumes"
+                    />
                     <span className="dropdown-text">My Bag</span>
                   </Link>
                 </div>
