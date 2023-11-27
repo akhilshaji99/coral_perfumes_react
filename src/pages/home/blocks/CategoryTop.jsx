@@ -33,7 +33,7 @@ function CategoryTop({ componentDatas }) {
             <Carousel
               removeClippedSubviews={true}
               additionalTransfrom={0}
-              autoPlay
+              autoPlay={true}
               arrows={false}
               autoPlaySpeed={3500}
               centerMode={false}
@@ -84,7 +84,7 @@ function CategoryTop({ componentDatas }) {
               showDots={false}
               sliderClass=""
               slidesToSlide={6}
-              // swipeable={true}
+              swipeable={true}
             >
               {componentDatas.datas?.map((category, index) => {
                 return (

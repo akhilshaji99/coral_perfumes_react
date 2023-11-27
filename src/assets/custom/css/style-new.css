@@ -1595,6 +1595,7 @@ p.delivery-info span svg {
   overflow-x: hidden;
 }
 .category-top {
+  user-select: none;
   padding-top: 40px;
 }
 .icon-input .icon-input__icon {
