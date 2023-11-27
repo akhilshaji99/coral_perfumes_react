@@ -6,7 +6,7 @@ const getStores = async (id) => {
       return await request.get("api/store/"+id+"/");
 
     }else{
-    return await request.get("api/store/");
+    return await request.get("api/store");
 
     }
   } catch (error) {
