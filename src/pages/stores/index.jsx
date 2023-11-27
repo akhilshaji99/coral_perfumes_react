@@ -18,8 +18,13 @@ function Index() {
     getEmirates().then((response) => {
       if (response?.data) {
         setEmirates(response?.data);
-        setEmirate(response?.data?.[0].id);
-        setLabel(response?.data?.[0].name);
+        // setEmirate(response?.data?.[0].id);
+        setLabel("Choose Emirates");
+      }
+    });
+    getStores().then((response) => {
+      if (response?.data) {
+        setStores(response?.data?.data);
       }
     });
   }, []);
