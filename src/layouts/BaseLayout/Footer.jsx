@@ -413,7 +413,7 @@ function Footer({ changeMobileMenuStatus }) {
           {/* <h6 className="mb-5 d-block d-sm-none">Keep in touch</h6> */}
           <div className="col-md-3">
             <div className="row  social-mdedia-icons">
-            <h6>FOLLOW US</h6>
+              <h6>FOLLOW US</h6>
               <div className="col-md-3 col-1">
                 <a
                   href={footerDatas?.social_media?.facebook_url}
@@ -640,14 +640,23 @@ function Footer({ changeMobileMenuStatus }) {
                 <span className="flag-span">&nbsp;&nbsp;UAE</span>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="row g-4">
-          <div className="col-md-2">
-            <img src={foot_ic1} alt="foot_logo" className="footer-logo-size" />
-          </div>
-          <div className="col-md-2">
-            <img src={foot_ic2} alt="foot_logo" className="footer-logo-size" />
+            <div className="row g-4 mt-2">
+              <div className="col-8"></div>
+              <div className="col-2">
+                <img
+                  src={foot_ic1}
+                  alt="foot_logo"
+                  className="footer-logo-size"
+                />
+              </div>
+              <div className="col-2">
+                <img
+                  src={foot_ic2}
+                  alt="foot_logo"
+                  className="footer-logo-size"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className="border-top py-4 footer-credits">
@@ -660,7 +669,7 @@ function Footer({ changeMobileMenuStatus }) {
                     <Link to={middleData?.link} key={index}>
                       {middleData?.title}
                     </Link>
-                    {index+1 !== footerDatas?.bottom_middle.length ? (
+                    {index + 1 !== footerDatas?.bottom_middle.length ? (
                       <span>/</span>
                     ) : null}
                   </>
