@@ -12,7 +12,10 @@ function ProductDetails({ product, setReFetchApi = null }) {
       <div className="card border-0 card-product">
         <div className="card-body product-box">
           {product?.product_tag ? (
-            <span className="badge custom-badge2" style={{backgroundColor:product?.product_tag_color}}>
+            <span
+              className="badge custom-badge2"
+              style={{ backgroundColor: product?.product_tag_color }}
+            >
               {/* {product?.discount_percentage}% */}
               {product?.product_tag}
             </span>
@@ -39,7 +42,11 @@ function ProductDetails({ product, setReFetchApi = null }) {
               </div>
             </NavLink>
           </div>
-          <AddToBag variant_id={product?.id} />
+          {console.log(product?.stock_status)}
+          <AddToBag
+            variant_id={product?.id}
+            stock_status={product?.stock_status}
+          />
         </div>
         <div className="card-footer border-0">
           <h4

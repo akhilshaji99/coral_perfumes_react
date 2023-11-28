@@ -50,7 +50,7 @@ function FlashSaleSliderDatas({ product, index }) {
               </div>
             </a>
           </div>
-          <AddToBag variant_id={product?.id} />
+          <AddToBag variant_id={product?.id} stock_status={product?.stock_status}/>
         </div>
         <div className="card-footer border-0">
           <h4 className="ellipsis-text">{product.name}</h4>
