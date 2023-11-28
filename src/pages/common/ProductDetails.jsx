@@ -11,7 +11,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
     <>
       <div className="card border-0 card-product">
         <div className="card-body product-box">
-          {product?.product_tag ? (
+          {product?.product_tag && product?.stock_status ? (
             <span
               className="badge custom-badge2"
               style={{ backgroundColor: product?.product_tag_color }}
@@ -19,6 +19,9 @@ function ProductDetails({ product, setReFetchApi = null }) {
               {/* {product?.discount_percentage}% */}
               {product?.product_tag}
             </span>
+          ) : null}
+          {!product?.stock_status ? (
+            <span className="badge out-of-stock-badge">Out Of Stock</span>
           ) : null}
           <WishlistIcon
             product_slug={product?.slug}

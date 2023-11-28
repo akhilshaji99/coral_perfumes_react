@@ -5,14 +5,17 @@ import AddToBag from "../../common/AddToBag";
 import { useState } from "react";
 
 function FlashSaleSliderDatas({ product, index }) {
-    const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(false);
 
   return (
     <div className="product-grid slick-slider-alignment" key={index}>
       <div className="card card-product  carousel-product-margin">
         <div className="card-body product-box">
-          {product.discount_percentage ? (
-            <span className="badge custom-badge" style={{backgroundColor:product?.offer_tag_color}}>
+          {product.discount_percentage && product?.stock_status ? (
+            <span
+              className="badge custom-badge"
+              style={{ backgroundColor: product?.offer_tag_color }}
+            >
               <svg
                 width="29"
                 height="25"
@@ -26,6 +29,13 @@ function FlashSaleSliderDatas({ product, index }) {
                 />
               </svg>{" "}
               {product.discount_percentage}%
+            </span>
+          ) : null}
+          {!product?.stock_status ? (
+            <span
+              className="badge out-of-stock-badge"
+            >
+              Out Of Stock
             </span>
           ) : null}
           <WishlistIcon
@@ -50,7 +60,10 @@ function FlashSaleSliderDatas({ product, index }) {
               </div>
             </a>
           </div>
-          <AddToBag variant_id={product?.id} stock_status={product?.stock_status}/>
+          <AddToBag
+            variant_id={product?.id}
+            stock_status={product?.stock_status}
+          />
         </div>
         <div className="card-footer border-0">
           <h4 className="ellipsis-text">{product.name}</h4>
