@@ -89,6 +89,8 @@ function Index() {
                                   is_in_wishlist: true,
                                   currency_code:
                                     product?.product_variant?.currency_code,
+                                  stock_status:
+                                    product?.product_variant?.stock_status,
                                 }}
                                 setReFetchApi={setReFetchApi}
                               />
