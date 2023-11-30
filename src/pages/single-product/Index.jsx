@@ -616,7 +616,7 @@ function Index() {
               </div>
 
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-12">
                   {productVariants?.map((productVariant, index) => {
                     return (
                       <>
