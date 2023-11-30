@@ -21,7 +21,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
             </span>
           ) : null}
           {!product?.stock_status ? (
-            <span className="badge out-of-stock-badge">Out Of Stock</span>
+            <span className="badge out-of-stock-badge left-badge">Out Of Stock</span>
           ) : null}
           <WishlistIcon
             product_slug={product?.slug}

@@ -158,7 +158,7 @@ function Index() {
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
                 <h2 className="mb-6 text-center my-profile-heading">
-                  My profile
+                MY PERSONAL INFO
                 </h2>
                 <div className="row">
                   <div className="pe-lg-14">
