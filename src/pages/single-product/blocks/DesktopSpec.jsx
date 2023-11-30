@@ -124,7 +124,7 @@ function DesktopSpec({
                       </li>
                     );
                   })}
-                  <li>SKU: {currentVariant?.sku}</li>
+                  {currentVariant ? <li>SKU: {currentVariant?.sku}</li> : null}
                 </ul>
               </div>
             </div>
