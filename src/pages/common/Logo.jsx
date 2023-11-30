@@ -11,7 +11,7 @@ function Logo() {
         width={100}
         style={{ cursor: "pointer" }}
         alt="Coral Perfumes"
-        className="img-fluid"
+        className="img-fluid sm-none"
         onClick={() => {
           if (window.location.pathname === "/") {
             window.scrollTo(0, 0);

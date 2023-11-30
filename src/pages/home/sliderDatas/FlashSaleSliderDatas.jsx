@@ -33,7 +33,7 @@ function FlashSaleSliderDatas({ product, index }) {
           ) : null}
           {!product?.stock_status ? (
             <span
-              className="badge out-of-stock-badge"
+              className="badge out-of-stock-badge left-badge"
             >
               Out Of Stock
             </span>
