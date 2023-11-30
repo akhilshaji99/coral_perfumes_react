@@ -641,7 +641,7 @@ function Footer({ changeMobileMenuStatus }) {
               </div>
             </div>
             <div className="row g-4 mt-2">
-              <div className="col-8"></div>
+              <div className="col-8 sm-none"></div>
               <div className="col-2">
                 <img
                   src={foot_ic1}
@@ -649,7 +649,7 @@ function Footer({ changeMobileMenuStatus }) {
                   className="footer-logo-size"
                 />
               </div>
-              <div className="col-2">
+              <div className="col-2  logo-m">
                 <img
                   src={foot_ic2}
                   alt="foot_logo"
@@ -662,7 +662,7 @@ function Footer({ changeMobileMenuStatus }) {
         <div className="border-top py-4 footer-credits">
           <div className="row align-items-center footer-row">
             <div className="col-md-4 col-12">{footerDatas?.bottom_left}</div>
-            <div className="col-md-4 text-mid col-8">
+            <div className="col-md-4 text-mid col-6">
               {footerDatas?.bottom_middle?.map((middleData, index) => {
                 return (
                   <>
@@ -676,7 +676,7 @@ function Footer({ changeMobileMenuStatus }) {
                 );
               })}
             </div>
-            <div className="col-md-4 text-end col-4 ">
+            <div className="col-md-4 text-end col-6 ">
               <a href={footerDatas?.cloud6_link} target="_blank">
                 {footerDatas?.bottom_right}
               </a>
