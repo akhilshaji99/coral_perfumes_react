@@ -357,3 +357,12 @@ body.products .discount-percentage {
   position: unset !important;
 }
 /* End */
+.desktop_logo_section {
+  display: none !important;
+}
+@media (min-width: 992px) {
+  .desktop_logo_section {
+      display: block !important;
+  }
+}
+

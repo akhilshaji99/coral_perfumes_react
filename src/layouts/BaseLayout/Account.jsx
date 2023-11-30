@@ -225,7 +225,7 @@ function Account({
             </div>
           ) : null}
           <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
-            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
+            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center desktop_logo_section">
               {/* <NavLink
                 className="navbar-brand d-none d-lg-block"
                 to={() => {
