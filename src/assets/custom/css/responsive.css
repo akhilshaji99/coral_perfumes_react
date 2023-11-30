@@ -114,6 +114,18 @@
   .ftr-tamara img {
     width: 95px;
  }
+ .logo-m img.footer-logo-size {
+  width: 60px;
+  padding-top: 0px;
+}
+.footer-logo-size {
+  width: 47px;
+  padding-top: 5px;
+}
+h5.fbt-selling-price {
+  color: #000;
+  font-size: 14px;
+}
 }
 @media (max-width: 1366px) {
   .container-new {
@@ -903,6 +915,7 @@ div#offcanvasCategory .offcanvas-header.d-lg-none svg {
 }
 body.home .cc-margin {
   margin: 1rem 0 !important;
+  margin-bottom: 0px !important;
 }
 .flash-sale span {
   padding: 0 5px;
@@ -933,6 +946,14 @@ body.home .cc-margin {
   z-index: 10;
   left: 15px;
   top: 110px;
+}
+.badge.out-of-stock-badge.left-badge  {
+  position: absolute;
+  text-transform: capitalize;
+  z-index: 10;
+  left: 0px;
+  top: 14px;
+  font-size: 8px;
 }
 .d-block.d-sm-none.footer-expand-section {
   margin-bottom: 10px;
@@ -965,6 +986,24 @@ a.btn.btn-filter.w-100{
 }
 .mob-set {
   padding-right: 10px;
+}
+.row.mob-payment-icons.align-items-center img {
+  width: 50px;
+}
+.footer-logo-size {
+  width: 39px;
+  padding-top: 5px;
+}
+.logo-m img.footer-logo-size {
+  width: 50px;
+  padding-top: 0px;
+}
+.flash-sale-container {
+  padding-bottom: 0px;
+}
+
+img.notify-icon {
+  display: inline-block;
 }
 }
 @media only screen and (min-width: 321px) and (max-width: 769px){

@@ -89,7 +89,7 @@ ul li {
   text-transform: capitalize;
 }
 .title-page {
-  padding: 30px 0px;
+  padding: 2px 0px;
 }
 .image-list-one img {
   width: 100%;
@@ -1836,12 +1836,70 @@ h6 {
   visibility: hidden;
   display: none;
 }
-.ftr-visa img {
+body.orders .orders-card a {
+  color: #000;
+}
+.offcanvas-body h6.product-name-cart.mb-3 {
+  height: 37px;
+  overflow: hidden;
+  margin-bottom: 15px !important;
+}
+.checkout-left-card h4 {
+  overflow: hidden;
+  max-height: 50px;
+}
+.row.mob-payment-icons .col-md-3:first-child img {
+  width: 69px;
+}
+.store-address p::first-letter {
+  text-transform: uppercase;
+}
+.store-details-slider {
+  padding-bottom: 40px;
+}
+.logo-m img.footer-logo-size {
+  width: 66px;
+  padding-top: 0px;
+}
+.footer-logo-size {
   width: 52px;
+  padding-top: 5px;
 }
-.ftr-mcard {
-  text-align: end;
+.react-datepicker__close-icon::after {
+  background-color: #000000;
 }
-.ftr-tamara img {
-  width: 100px;
+.row.sortHeader {
+  padding-bottom: 10px;
+}
+.sortHeader h6 {
+  padding-bottom: 0px;
+}
+.card-body.fbt-product-box {
+    background-color: #ebece9;
+    border: none!important;
+    border-radius: 3px;
+    outline: none!important;
+    padding: 20px 10px;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus img {
+  width: 60%;
+}
+.fbt-product-plus li::after {
+  left: 100%;
+}
+h4.fbt-ellipsis-text {
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 185%;
+  text-transform: uppercase;
+}
+h5.fbt-selling-price {
+  color: #000;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
 }
