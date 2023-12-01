@@ -365,4 +365,7 @@ body.products .discount-percentage {
       display: block !important;
   }
 }
+.store-single-img-width{
+  width: 100% !important;
+}
 

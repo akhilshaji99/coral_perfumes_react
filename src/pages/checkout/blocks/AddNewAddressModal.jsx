@@ -101,7 +101,7 @@ function AddNewAddressModal({
               })}
             </div>
             <div className="row g-2 ms-3">
-              <div className="col-12">
+              <div className="col-12 change-pop">
                 <a
                   onClick={(e) => {
                     setAddAddressListFlag(false);

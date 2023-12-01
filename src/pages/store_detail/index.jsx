@@ -75,7 +75,9 @@ function Index() {
                 ></div>
                 <div className="direction-btn">
                   {" "}
-                  <a href={storeDetails?.data?.map_link}>Directions</a>
+                  <a href={storeDetails?.data?.map_link} target="_blank">
+                    Directions
+                  </a>
                 </div>
               </div>
             </div>
@@ -86,19 +88,14 @@ function Index() {
             <div className="owl-carousel owl-theme owl-slider store-details-slider">
               {gallery_images.length > 0 ? (
                 <Carousel
-                  autoPlay={true}
+                  autoPlay={false}
                   arrows
                   autoPlaySpeed={3500}
-                  centerMode={true}
                   className=""
-                  containerClass="container-with-dots"
-                  dotListClass=""
                   draggable
                   focusOnSelect={false}
                   infinite={true}
-                  itemClass=""
                   keyBoardControl
-                  minimumTouchDrag={-10000}
                   pauseOnHover={false}
                   renderArrowsWhenDisabled={false}
                   renderButtonGroupOutside={false}
@@ -110,7 +107,6 @@ function Index() {
                         min: 1024,
                       },
                       items: 1,
-                      // partialVisibilityGutter: 40,
                     },
                     mobile: {
                       breakpoint: {
@@ -118,7 +114,6 @@ function Index() {
                         min: 0,
                       },
                       items: 1,
-                      // partialVisibilityGutter: 20,
                     },
                     tablet: {
                       breakpoint: {
@@ -126,21 +121,14 @@ function Index() {
                         min: 464,
                       },
                       items: 1,
-                      // partialVisibilityGutter: 30,
                     },
                   }}
-                  rewind={false}
-                  rewindWithAnimation={false}
-                  rtl={false}
-                  shouldResetAutoplay
-                  showDots={false}
-                  sliderClass=""
-                  slidesToSlide={1}
                   swipeable
                 >
                   {gallery_images?.map((image, index) => (
                     <div key={index}>
                       <img
+                        className="store-single-img-width"
                         src={deviceImageRender(image?.image)}
                         alt={`img_${index}`}
                       />
@@ -154,6 +142,7 @@ function Index() {
             {gallery_images?.map((image, index) => (
               <div class="slid-mobview">
                 <img
+                  className="store-single-img-width"
                   src={deviceImageRender(image?.image)}
                   alt={`img_${index}`}
                 />
