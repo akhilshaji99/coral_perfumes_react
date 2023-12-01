@@ -567,7 +567,7 @@ function Footer({ changeMobileMenuStatus }) {
             </form>
             <div className="row mt-5 footer-row">
               <div className="col-md-8 col-8">
-                <div className="row">
+                <div className="row app-pay">
                   <div className="col-md-2 col-2">
                     <svg
                       width="20"
