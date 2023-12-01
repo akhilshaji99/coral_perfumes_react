@@ -115,11 +115,11 @@ function CartDrawer() {
                       </h6>
                       <div className="row mb-3">
                         <div className="col-md-5 price-minicart">
-                          aed {cartData?.product_variant?.price_amount}
+                          {cartData?.currency_code} {cartData?.product_variant?.price_amount}
                         </div>
                         {cartData?.product_variant?.original_amount ? (
                           <div className="col-md-5 price-minicart-discount">
-                            aed {cartData?.product_variant?.original_amount}
+                            {cartData?.currency_code} {cartData?.product_variant?.original_amount}
                           </div>
                         ) : null}
                       </div>

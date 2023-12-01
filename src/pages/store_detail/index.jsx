@@ -86,8 +86,7 @@ function Index() {
             <div className="owl-carousel owl-theme owl-slider store-details-slider">
               {gallery_images.length > 0 ? (
                 <Carousel
-                  additionalTransfrom={0}
-                  autoPlay={false}
+                  autoPlay={true}
                   arrows
                   autoPlaySpeed={3500}
                   centerMode={true}
@@ -111,7 +110,7 @@ function Index() {
                         min: 1024,
                       },
                       items: 1,
-                      partialVisibilityGutter: 40,
+                      // partialVisibilityGutter: 40,
                     },
                     mobile: {
                       breakpoint: {
@@ -119,7 +118,7 @@ function Index() {
                         min: 0,
                       },
                       items: 1,
-                      partialVisibilityGutter: 20,
+                      // partialVisibilityGutter: 20,
                     },
                     tablet: {
                       breakpoint: {
@@ -127,7 +126,7 @@ function Index() {
                         min: 464,
                       },
                       items: 1,
-                      partialVisibilityGutter: 30,
+                      // partialVisibilityGutter: 30,
                     },
                   }}
                   rewind={false}

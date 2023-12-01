@@ -28,6 +28,7 @@ function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
                         {cartData?.variant?.original_amount ? (
                           <span>AED {cartData?.variant?.original_amount}</span>
                         ) : null}
+                         &nbsp;<span style={{textDecoration:'none'}}>Qty:</span> {cartData?.quantity}
                       </h6>
                     </div>
                   </div>

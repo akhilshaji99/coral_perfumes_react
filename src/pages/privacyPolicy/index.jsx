@@ -77,7 +77,7 @@ function Index() {
 
   return (
     <>
-      <div classNameName="page-new" style={{ marginTop: "100px" }}>
+      <div classNameName="page-new">
         <BreadCrumps />
         <div classNameName="container-new">
           <div className="title-page">

@@ -111,7 +111,7 @@ function BoughtTogether({ FbtDatas }) {
                       </div>
                     </div>
                     <div className="card-footer border-0">
-                      <h4 className="fbt-ellipsis-text">xxxx</h4>
+                      <h4 className="fbt-ellipsis-text">{fbtProduct?.name}</h4>
                       <div className="row custom-row1 mb-5 ">
                         <div className="col-md-4 col-6 px-0">
                           <h5 className="fbt-selling-price">

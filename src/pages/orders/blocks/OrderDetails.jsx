@@ -71,14 +71,30 @@ function OrderDetails({
               {orderDetails?.shipping_address_id?.first_name}{" "}
               {orderDetails?.shipping_address_id?.last_name}
               <br />
-              {orderDetails?.shipping_address_id?.flat_name},
-              {orderDetails?.shipping_address_id?.floor_number},
-              {orderDetails?.shipping_address_id?.building_number},{" "}
-              {orderDetails?.shipping_address_id?.city},
-              {orderDetails?.shipping_address_id?.emirate},
+              {orderDetails?.shipping_address_id?.flat_name
+                ? orderDetails?.shipping_address_id?.flat_name + ", "
+                : ""}
+              {orderDetails?.shipping_address_id?.floor_number
+                ? orderDetails?.shipping_address_id?.floor_number + ", "
+                : null}
+              {orderDetails?.shipping_address_id?.building_number
+                ? orderDetails?.shipping_address_id?.building_number + ", "
+                : null}
+              {orderDetails?.shipping_address_id?.city
+                ? orderDetails?.shipping_address_id?.city + ","
+                : null}
+              {orderDetails?.shipping_address_id?.emirate
+                ? orderDetails?.shipping_address_id?.emirate + ", "
+                : null}
               {orderDetails?.shipping_address_id?.postal_code}
               <br />
               {orderDetails?.shipping_address_id?.phone_number}
+              {orderDetails?.store_data?.store_name
+                ? orderDetails?.store_data?.store_name + ","
+                : null}
+              {orderDetails?.store_data?.location
+                ? orderDetails?.store_data?.location
+                : null}
             </p>
           </div>
         </div>

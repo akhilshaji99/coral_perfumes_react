@@ -232,7 +232,9 @@ function Account({
                   console.log("click");
                 }}
               > */}
-              <Logo />
+              <div className="desktop_logo_section">
+                <Logo />
+              </div>
               {/* </NavLink> */}
             </div>
 
