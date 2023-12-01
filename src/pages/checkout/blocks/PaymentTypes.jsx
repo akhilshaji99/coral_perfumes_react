@@ -57,7 +57,7 @@ function PaymentTypes({
             {paymentTypes?.map((paymentType, index) => {
               return (
                 <div className="row" key={index}>
-                  <div className="col-md-6 col-12 payment-type">
+                  <div className="col-md-6 col-8 payment-type">
                     {/* input */}
                     <div className="mb-3 mb-lg-0">
                       <div className="card-body p-3">
@@ -91,7 +91,7 @@ function PaymentTypes({
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4 col-12">
+                  <div className="col-md-4 col-4">
                     {/* input */}
                     <div className="card-body pt-3">
                       {paymentType?.image ? (
