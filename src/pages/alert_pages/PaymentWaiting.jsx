@@ -3,6 +3,7 @@ import getUserToken from "../../utils/userToken";
 import request from "../../utils/request";
 import PaymentSuccess from "./PaymentSuccess";
 import PaymentFailed from "./PaymentFailed";
+import loader from "../../assets/img/loader.gif";
 
 function PaymentWaiting() {
   const [loading, setLoading] = useState(false);
@@ -103,10 +104,7 @@ function PaymentWaiting() {
     <>
       {loading ? (
         <div className="row align-items-center justify-content-center ">
-          <img
-            src="https://cdn.pixabay.com/animation/2023/03/20/02/45/02-45-27-186_512.gif"
-            style={{ width: "400px" }}
-          />
+          <img src={loader} style={{ width: "500px" }} />
         </div>
       ) : paymentStatus ? (
         <PaymentSuccess responseMessage={responseMessage} />

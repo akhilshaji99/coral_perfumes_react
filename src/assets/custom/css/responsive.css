@@ -126,6 +126,15 @@ h5.fbt-selling-price {
   color: #000;
   font-size: 14px;
 }
+
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--left {
+  left: calc(0% + 1px);
+  top: 103px;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--right {
+  right: calc(0% + 1px);
+  top: 103px;
+}
 }
 @media (max-width: 1366px) {
   .container-new {

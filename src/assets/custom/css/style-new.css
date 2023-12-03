@@ -1392,8 +1392,10 @@ a.dropdown-toggle.text-dark.btn-filter {
 .flash-sale-box p {
   line-height: 17px;
 }
-.flash-sale-box span img,
-svg {
+.flash-sale-box span img {
+  vertical-align: baseline;
+}
+.flash-sale-box span svg {
   vertical-align: baseline;
 }
 .fixed-top-margin.main-layout .conatiner.px-5 {
@@ -1875,15 +1877,37 @@ body.orders .orders-card a {
   padding-bottom: 0px;
 }
 .card-body.fbt-product-box {
-    background-color: #ebece9;
-    border: none!important;
-    border-radius: 3px;
-    outline: none!important;
-    padding: 20px 10px;
+  background-color: #ebece9;
+  border: none!important;
+  border-radius: 3px;
+  outline: none!important;
+  padding: 0px;
+  margin: 0 auto;
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus img {
   width: 60%;
 }
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .product-grid.slick-slider-alignment {
+  width: 75%;
+  margin: 0 auto;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--left {
+  left: calc(0% + 1px);
+  top: 120px;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--right {
+  right: calc(0% + 1px);
+  top: 125px;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow {
+  background: rgb(235 236 233);
+  min-width: 35px;
+  min-height: 35px;
+}
+.fbt-product-plus li::after {
+  content: "+";
+  position: absolute;
+  top: 35%;}
 .fbt-product-plus li::after {
   left: 100%;
 }
@@ -1892,14 +1916,53 @@ h4.fbt-ellipsis-text {
   font-style: normal;
   font-weight: 450;
   line-height: 185%;
-  text-transform: uppercase;
+  font-family: var(--fc-font-bold);
+  white-space: wrap;
+  max-height: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 h5.fbt-selling-price {
   color: #000;
-  font-size: 17px;
+  font-size: 16px;
+  font-family: var(--fc-font-bold);
   font-style: normal;
   font-weight: 450;
   line-height: normal;
   letter-spacing: 1.44px;
   text-transform: uppercase;
+}
+.app-pay svg{
+  cursor: pointer;
+}
+.dropdown-menu.lang-dropdown-menu svg {
+  cursor: pointer;
+}
+.dropdown-menu {
+  z-index: 1000;
+}
+.card.login-card .row.social-head svg {
+  cursor: pointer;
+}
+.card-body.fbt-product-box .product-img {
+  height: 200px;
+} 
+.react-multi-carousel-list.container-with-dots.fbt-product-plus.react-multiple-carousel__arrow {
+  position: absolute;
+  outline: 0;
+  transition: all .5s;
+  border-radius: 35px;
+  z-index: 1000;
+  border: 0;
+  background: rgba(0,0,0,0.5);
+  min-width: 35px;
+  min-height: 35px;
+  opacity: 1;
+  cursor: pointer;
+}
+body.cart p.promo-code-label {
+  color: #80ba27;
+}
+.change-pop a {
+  cursor: pointer;
 }

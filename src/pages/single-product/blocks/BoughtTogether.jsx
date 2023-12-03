@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { NavLink } from "react-router-dom";
 import request from "../../../utils/request";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 function BoughtTogether({ FbtDatas }) {
   const fbtAddToCart = async () => {
@@ -112,8 +112,8 @@ function BoughtTogether({ FbtDatas }) {
                     </div>
                     <div className="card-footer border-0">
                       <h4 className="fbt-ellipsis-text">{fbtProduct?.name}</h4>
-                      <div className="row custom-row1 mb-5 ">
-                        <div className="col-md-4 col-6 px-0">
+                      <div className="row custom-row1 mb-2 ">
+                        <div className="col-md-6 col-6 px-0">
                           <h5 className="fbt-selling-price">
                             {FbtDatas?.currency_code} {fbtProduct?.price_amount}
                           </h5>
