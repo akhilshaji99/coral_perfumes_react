@@ -117,7 +117,7 @@ function Index() {
                   <label for="file_input">
                     <img src={upload1} alt="img" />
                     <div className="upload-top">
-                      <h4>Upload your Resume</h4>
+                      <h4>Upload your Resume (pdf)</h4>
                       <p>OR</p>
                       <p>Drag and drop your Resume here</p>
                     </div>
