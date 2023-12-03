@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
 // Import your images
@@ -159,7 +160,12 @@ function Index() {
               </ul>
             </div>
             <div className="start-explor">
-              <a href="#">start exploring</a>
+              {/* <a href="#">start exploring</a> */}
+              <NavLink to="/login">
+                            <a >
+                            start exploring
+                            </a>
+                          </NavLink>
             </div>
           </div>
         </section>

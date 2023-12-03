@@ -30,7 +30,7 @@ service.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      // window.location.href = `/login`;
+      window.location.href = `/login`;
       return error?.response;
     } else {
       return error?.response;

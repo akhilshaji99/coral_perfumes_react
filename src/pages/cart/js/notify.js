@@ -10,27 +10,27 @@ const addToCart = async (product_variant_id) => {
       token: getUserOrGuestToken(),
     });
     if (response.data.status) {
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={response?.data?.status}
+          title={response?.data?.message_1}
+          message={response?.data?.message_2}
+        />
+      ));
+    } else {
       // toast((t) => (
       //   <AlerMessage
       //     t={t}
       //     toast={toast}
       //     status={response.data.status}
       //     title={"Notify"}
-      //     message="Notified"
+      //     message={
+      //       response?.data?.message || "Something went wrong.Please try again."
+      //     }
       //   />
       // ));
-    } else {
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={response.data.status}
-          title={"Notify"}
-          message={
-            response?.data?.message || "Something went wrong.Please try again."
-          }
-        />
-      ));
     }
   } catch (error) {
     toast((t) => (
