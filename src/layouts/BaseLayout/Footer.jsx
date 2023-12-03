@@ -371,16 +371,16 @@ function Footer({ changeMobileMenuStatus }) {
       );
 
       console.log("response", response.data.message);
-      let status = "succsss";
-      if (!response.data.status) {
-        status = "error";
+      let title = "ERROR";
+      if (response.data.message != "Invalid email address.") {
+        title = response.data.status? "SUCCESS": "MESSAGE";
       }
       toast((t) => (
         <AlerMessage
           t={t}
           toast={toast}
-          status={status}
-          title={"WARNING"}
+          status={response.data.status}
+          title={title}
           message={response.data.message}
         />
       ));
