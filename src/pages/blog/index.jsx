@@ -16,7 +16,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <section classNameName="sm-none">
+        <section className="sm-none">
           <BreadCrumps />
           <div className="container-new">
             <div className="title-page">

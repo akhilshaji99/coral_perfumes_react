@@ -1912,7 +1912,7 @@ body.orders .orders-card a {
   left: 100%;
 }
 h4.fbt-ellipsis-text {
-  font-size: 19px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 450;
   line-height: 185%;
@@ -1946,6 +1946,7 @@ h5.fbt-selling-price {
 }
 .card-body.fbt-product-box .product-img {
   height: 200px;
+  cursor: default;
 } 
 .react-multi-carousel-list.container-with-dots.fbt-product-plus.react-multiple-carousel__arrow {
   position: absolute;
@@ -1965,4 +1966,32 @@ body.cart p.promo-code-label {
 }
 .change-pop a {
   cursor: pointer;
+}
+.conatiner.pd-detail .col-md-5 .p-d {
+  padding-bottom: 20px;
+}
+button.btn.btn-dark.w-100.mt-2.fbt-add-to-cart {
+  text-transform: uppercase;
+  font-family: var(--fc-font-bold);
+}
+.card-body.fbt-product-box span input.form-check-input {
+  cursor: pointer !important;
+}
+button.btn.btn-dark.mt-2.fbt-add-to-cart {
+  width: 85% !important;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+div#flush-collapseOne .promo-code-label {
+  color: #0aad0a;
+}
+.return-policy-div a {
+  cursor: pointer;
+}
+.get-img {
+  cursor: pointer;
+}
+.container-new .title-page {
+  padding-bottom: 20px;
 }

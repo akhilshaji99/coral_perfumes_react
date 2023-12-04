@@ -560,6 +560,7 @@ h5.fbt-selling-price {
   }
   .blog-col-1 img {
     height: 350px;
+    width: 100%;
   }
   .right-gallery-one img {
     height: 122px;
@@ -1014,6 +1015,32 @@ a.btn.btn-filter.w-100{
 img.notify-icon {
   display: inline-block;
 }
+.career-review-text.lg-none {
+  display: block;
+}
+.gallery-flex ul li img {
+  width: 100%;
+  height: auto;
+}
+span.style-module_emptyIcons__Bg-FZ.empty-icons svg {
+  width: 23px;
+}
+body.product-details  svg.star-svg {
+  width: 23px;
+} 
+body.product-details .form-outline textarea.form-control {
+  min-height: calc(1.6em + 1.1rem + 2px);
+  height: 45px;
+}
+.btn-100 {
+  width: 100%;
+}
+.mb-center {
+  text-align: center;
+}
+.btn-complete {
+  position: absolute;
+  width: 134px;}
 }
 @media only screen and (min-width: 321px) and (max-width: 769px){
   body.home .cd-margin {
