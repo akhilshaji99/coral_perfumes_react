@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import sortIcon from "../../../assets/img/icons/filter-mob-new.svg";
 
-const CustomDropdown = ({ applyRelevanceFilter }) => {
+const CustomDropdown = ({ applyRelevanceFilter, relevanceFilter }) => {
   // Create a state variable to manage the visibility of the dropdown content
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -11,7 +11,7 @@ const CustomDropdown = ({ applyRelevanceFilter }) => {
   };
 
   const filterDatas = [
-    { label: "Relevance", value: "" },
+    { label: "Sort Relevance", value: "" },
     { label: "Price-Low To High", value: "low_to_high" },
     { label: "Price-High to Low", value: "high_to_low" },
     { label: "New", value: "new" },
@@ -52,9 +52,12 @@ const CustomDropdown = ({ applyRelevanceFilter }) => {
             return (
               <label
                 key={index}
-                className="dropdown-item dropdown-item-custom"
+                className={`dropdown-item dropdown-item-custom ${
+                  relevanceFilter === filterData.value
+                    ? "products-filter-active"
+                    : ""
+                }`}
                 onClick={() => {
-                  console.log(filterData.value);
                   applyRelevanceFilter(filterData.value);
                   setDropdownOpen(!isDropdownOpen);
                 }}
