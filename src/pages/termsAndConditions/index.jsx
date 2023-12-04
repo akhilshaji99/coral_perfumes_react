@@ -78,10 +78,10 @@ function Index() {
 
   return (
     <>
-      <div classNameName="page-new">
+      <div className="page-new">
         <BreadCrumps />
 
-        <div classNameName="container-new">
+        <div className="container-new">
           <div className="title-page">
             <h1>{title}</h1>
           </div>
