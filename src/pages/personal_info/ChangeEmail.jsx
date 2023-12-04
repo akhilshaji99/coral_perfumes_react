@@ -134,7 +134,7 @@ function ChangeEmail({ refetchProfileApi, profileForm }) {
                       // data-bs-dismiss="modal"
                       type="submit"
                     >
-                      Change
+                      CHANGE
                     </button>
                   </div>
                 </form>

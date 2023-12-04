@@ -126,7 +126,7 @@ function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
                       handleOnSubmit();
                     }}
                   >
-                    APPLY
+                    SUBMIT
                   </button>
                 </div>
               </div>
