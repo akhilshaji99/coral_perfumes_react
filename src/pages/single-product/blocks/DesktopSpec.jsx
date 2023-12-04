@@ -138,7 +138,7 @@ function DesktopSpec({
         <div className="row py-2 ">
           <div className=" col-xl-7 col-12 ">
             <img
-              className="img-fluid"
+              className="img-fluid get-img"
               src={deviceImgeRender(productDatas?.type_banner_image)}
               alt=""
             />
