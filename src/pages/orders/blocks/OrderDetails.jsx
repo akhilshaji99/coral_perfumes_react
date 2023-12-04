@@ -13,53 +13,53 @@ function OrderDetails({
     <>
       <div className="orders-card order-details">
         <div className="row align-items-center mb-4">
-          <div className="col-md-6 pb-2">
+          <div className="col-md-6 col-6 pb-2">
             <h3>
               Order No: {orderDetails?.order_no}{" "}
               <span>(Item: {orderDetails?.items_count})</span>
             </h3>
           </div>
-          <div className="col-md-6 text-lg-end tax-invoice">Tax invoice</div>
+          <div className="col-md-6 col-6 text-lg-end tax-invoice">Tax invoice</div>
           <p>{orderDetails?.order_date}</p>
         </div>
         <div className="row align-items-center">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <h3>{orderDetails?.sub_total_title}</h3>
           </div>
-          <div className="col-md-6 text-lg-end">
+          <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.sub_total}</h3>
           </div>
         </div>
         <div className="row align-items-center mb-6">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <p>{orderDetails?.shipping_title}</p>
           </div>
-          <div className="col-md-6 text-lg-end">
+          <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.shipping_amount_value}</h3>
           </div>
         </div>
         <div className="row align-items-center">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <h3>{orderDetails?.total_title}</h3>
           </div>
-          <div className="col-md-6 text-lg-end">
+          <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.total_title_amount}</h3>
           </div>
         </div>
         <div className="row align-items-center">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <p>{orderDetails?.vat_title}</p>
           </div>
-          <div className="col-md-6 text-lg-end">
+          <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.vat_amount}</h3>
           </div>
         </div>
         <hr />
         <div className="row align-items-center py-2">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <h3>{orderDetails?.payment_type_title}</h3>
           </div>
-          <div className="col-md-6 text-lg-end">
+          <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.payment_type_value}</h3>
           </div>
         </div>
