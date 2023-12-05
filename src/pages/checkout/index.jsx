@@ -258,6 +258,24 @@ function Index() {
   // );
 
   //update shipping_zone_type and refetch api :: Delivery type change
+  const checkPaymentTypeSelected = () => {
+    if(!checkoutUpdateParams.payment_type){
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={false}
+          title={"Error"}
+          message={"Please choose a payment method."}
+        />
+      ));
+      scrollToPaymentComponent();
+       return false;
+    }
+    return true;
+
+  }
+
   const basicInfoFormValidation = () => {
     var validEmailRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -295,6 +313,15 @@ function Index() {
       validationStatus = true;
     }
     if (!validationStatus) {
+      toast((t) => (
+        <AlerMessage
+          t={t}
+          toast={toast}
+          status={false}
+          title={"Error"}
+          message={"Please fill basic info."}
+        />
+      ));
       scrollToComponent();
     }
     return validationStatus;
@@ -986,6 +1013,8 @@ function Index() {
                 <CartDetails
                   cartDatas={cartItems}
                   scrollToPaymentComponent={scrollToPaymentComponent}
+                  basicInfoFormValidation= {basicInfoFormValidation}
+                  checkPaymentTypeSelected = {checkPaymentTypeSelected}
                 />
               </div>
             </div>

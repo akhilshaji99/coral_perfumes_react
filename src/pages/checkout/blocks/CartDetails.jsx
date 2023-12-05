@@ -1,6 +1,11 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 import confirmCheckout from "../js/confirmCheckout";
-function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
+function CartDetails({
+  cartDatas,
+  scrollToPaymentComponent,
+  basicInfoFormValidation,
+  checkPaymentTypeSelected,
+}) {
   return (
     <div className=" card checkout-left-card">
       <div className="">
@@ -28,7 +33,9 @@ function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
                         {cartData?.variant?.original_amount ? (
                           <span>AED {cartData?.variant?.original_amount}</span>
                         ) : null}
-                         &nbsp;<span style={{textDecoration:'none'}}>Qty:</span> {cartData?.quantity}
+                        &nbsp;
+                        <span style={{ textDecoration: "none" }}>Qty:</span>{" "}
+                        {cartData?.quantity}
                       </h6>
                     </div>
                   </div>
@@ -56,7 +63,7 @@ function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
                     </span>
                   </li>
                   {/* list group item */}
-                  {cartDatas?.is_gift_wrap  ? (
+                  {cartDatas?.is_gift_wrap ? (
                     <li className="list-group-item  ps-0 border-0  d-flex justify-content-between align-items-start">
                       <div className="me-auto">
                         <div className="left-sec-text">
@@ -110,7 +117,15 @@ function CartDetails({ cartDatas ,scrollToPaymentComponent}) {
                     type="button"
                     className="btn btn-dark mb-1"
                     onClick={() => {
-                      confirmCheckout(scrollToPaymentComponent);
+                      let basicValidationStatus = basicInfoFormValidation();
+                      if (basicValidationStatus) {
+                        let paymentModeSelected = checkPaymentTypeSelected();
+                        if (basicValidationStatus && paymentModeSelected) {
+                          confirmCheckout(scrollToPaymentComponent);
+                        }
+                      }
+
+                      // confirmCheckout(scrollToPaymentComponent);
                     }}
                   >
                     SECURE CHECKOUT
