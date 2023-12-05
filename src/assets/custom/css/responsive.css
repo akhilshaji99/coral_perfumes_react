@@ -135,6 +135,8 @@ h5.fbt-selling-price {
   right: calc(0% + 1px);
   top: 103px;
 }
+h4.fbt-ellipsis-text {
+  max-height: 70px;}
 }
 @media (max-width: 1366px) {
   .container-new {
@@ -1040,8 +1042,127 @@ body.product-details .form-outline textarea.form-control {
 }
 .btn-complete {
   position: absolute;
-  width: 134px;}
+  width: 134px;
 }
+body.product-details .otp-modal {
+  padding: 20px 10px 45px 10px !important;
+}
+body.product-details div#ratingModal .otp-modal .btn-close {
+  position: absolute;
+  right: 3%;
+  font-size: 10px;
+}
+body.checkout .cart-details-img {
+  height: 90px;}
+  body.checkout .checkout-left-card h6 {
+    display: block;
+    padding-right: 0px;
+  }
+  .react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--left {
+    display: none;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multiple-carousel__arrow--right {
+  display: none;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .product-grid.slick-slider-alignment {
+  width: 100%;
+  margin: 0 auto;
+}
+.card-body.fbt-product-box {
+  width: 100%;
+}
+button.btn.btn-dark.mt-2.fbt-add-to-cart {
+  width: 95% !important;
+  padding: 12px 0px;
+  font-size: 13px !important;
+  font-style: normal;
+}
+  h4.fbt-ellipsis-text {
+    font-size: 14px !important;
+}
+.card-body.fbt-product-box .product-img{
+  min-height: 170px !important;
+}
+.conatiner.pd-detail .col-md-5 .p-d {
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+body.orders .orders-card {
+  padding: 20px 10px;
+}
+body.orders .orders-card label {
+  font-size: 9px;
+}
+body.orders .react-multi-carousel-item .order-img {
+  width: 95px;
+ height: 100px;
+}
+body.order-details .order-img {
+  width: 95px;
+ height: 100px;
+}
+body.order-details .order-bottom-row h4 {
+  font-size: 10px;
+}
+body.order-details .order-bottom-row h2 {
+  font-size: 11px;
+  margin-top: 10px;
+}
+body.order-details .order-bottom-row h5 {
+  font-size: 10px;
+  text-transform: capitalize;
+}
+body.orders .react-multi-carousel-item h4 {
+  font-size: 9px;}
+body.orders .react-multi-carousel-item  h2 {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  body.orders .order-bottom-row h5 {
+    margin-top: 15px;
+  }
+  
+body.orders .react-multi-carousel-item   h3 {
+      font-size: 10px;}
+  
+      .order-bottom-row .react-multiple-carousel__arrow--left {
+        left: calc(29% + 18px);
+        display: none;
+    }
+    button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+      display: none;
+  }
+  body.orders .order-middle-row h3 {
+    font-size: 10px;
+}
+body.orders .orders-card a {
+  color: #000;
+  font-size: 10px;
+}
+body.orders .order-middle-row p {
+  font-size: 9px;
+}
+
+.order-bottom-row h3 {
+    font-size: 9px !important;
+  }
+  body.orders  .order-details p {
+    font-size: 9px;
+}
+body.order-details  .orders-card {
+  padding: 15px;
+}
+body.order-details .order_status_disable {
+  font-size: 9px;
+}
+body.order-details .text-lg-end {
+  text-align: end;
+}
+.orders-card.order-details h3 {
+  font-size: 11px !important;
+}
+}
+
 @media only screen and (min-width: 321px) and (max-width: 769px){
   body.home .cd-margin {
       margin-bottom: 0rem;
