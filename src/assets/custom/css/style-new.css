@@ -1995,3 +1995,7 @@ div#flush-collapseOne .promo-code-label {
 .container-new .title-page {
   padding-bottom: 20px;
 }
+body.checkout .checkout-left-card h6 {
+  display: inline-block;
+  padding-right: 10px;
+}
