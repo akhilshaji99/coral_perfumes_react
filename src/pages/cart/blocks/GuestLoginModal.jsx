@@ -54,6 +54,15 @@ function GuestLoginModal() {
       if (!response.data.status) {
         status = "error";
         title = "ERROR";
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={status}
+            title={title}
+            message={response.data.message}
+          />
+        ));
       } else {
         $("document").ready(function () {
           $("#guestLoginModal").toggleClass("modal modal fade");
@@ -62,15 +71,6 @@ function GuestLoginModal() {
           $("#otpModal").toggleClass("modal fade modal");
         });
       }
-      toast((t) => (
-        <AlerMessage
-          t={t}
-          toast={toast}
-          status={status}
-          title={title}
-          message={response.data.message}
-        />
-      ));
     } catch (error) {
       console.log("error", error);
     }
@@ -93,16 +93,15 @@ function GuestLoginModal() {
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-4">
-          <button
-                type="button"
-                className="btn-close"
-                onClick={handleModalClose}
-              />
+            <button
+              type="button"
+              className="btn-close"
+              onClick={handleModalClose}
+            />
             <div className="modal-header border-0 ">
               <h5 className="modal-title text-center" id="userModalLabel">
                 CONTINUE AS A GUEST
               </h5>
-             
             </div>
             <div className="modal-body">
               <form onSubmit={formik.handleSubmit}>

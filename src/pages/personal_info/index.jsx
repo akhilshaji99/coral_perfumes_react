@@ -277,8 +277,8 @@ function Index() {
                           style={{ width: "100%" }}
                         />
                       </div>
-                      <div className="row justify-content-center w-100">
-                        <div className="col-md-3 text-center">
+                      <div className="d-flex justify-content-center w-100">
+                        <div className="col-md-3 text-center btn-100">
                           <button type="submit" className="btn btn-dark w-100">
                             Save
                           </button>

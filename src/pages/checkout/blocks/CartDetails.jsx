@@ -33,10 +33,8 @@ function CartDetails({
                         {cartData?.variant?.original_amount ? (
                           <span>AED {cartData?.variant?.original_amount}</span>
                         ) : null}
-                        &nbsp;
-                        <span style={{ textDecoration: "none" }}>Qty:</span>{" "}
-                        {cartData?.quantity}
                       </h6>
+                      <span style={{textDecoration:'none'}}>Qty:</span> {cartData?.quantity}
                     </div>
                   </div>
                 </li>

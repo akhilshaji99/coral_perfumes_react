@@ -362,10 +362,14 @@ body.products .discount-percentage {
 }
 @media (min-width: 992px) {
   .desktop_logo_section {
-      display: block !important;
+    display: block !important;
   }
 }
-.store-single-img-width{
+.store-single-img-width {
   width: 100% !important;
 }
-
+.products-filter-active {
+  border-radius: 0 !important;
+  background: #80ba27 !important;
+  color: #fff !important;
+}

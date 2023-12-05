@@ -219,7 +219,7 @@ function ProductMain({
                   </div>
 
                   <div className="col-md-3 col-6">
-                    <CustomDropdown applyRelevanceFilter={setRelevanceFilter} />
+                    <CustomDropdown applyRelevanceFilter={setRelevanceFilter} relevanceFilter={relevanceFilter}/>
                   </div>
                   <div className="col-md-3 col-12">
                     <h6>{count} Items</h6>

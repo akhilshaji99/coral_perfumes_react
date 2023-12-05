@@ -17,6 +17,9 @@ function BrandRating({ refetch, currentVariant, setRatingType }) {
   }, [refetch]);
 
   const getBrandRatings = async () => {
+    if (currentVariant?.brand_id === undefined) {
+      return;
+    }
     try {
       const response = await request.get(
         "get-brand-reviews/" + currentVariant?.brand_id + "/"

@@ -210,7 +210,7 @@ function MobileSpec({
       <div className="col-md-5" id="mobile-menu">
         {FbtDatas && FbtDatas?.products?.length > 0 ? (
           <>
-            <h2 className="p-d">bought together</h2>
+            <h2 className="p-d mb-center">bought together</h2>
             <BoughtTogether FbtDatas={FbtDatas} />
           </>
         ) : null}

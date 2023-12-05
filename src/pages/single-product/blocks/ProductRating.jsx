@@ -16,6 +16,12 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
   }, [refetch]);
 
   const getProductRatings = async () => {
+    if (
+      currentVariant?.product_id === undefined ||
+      currentVariant?.id === undefined
+    ) {
+      return;
+    }
     try {
       const response = await request.get(
         "get-product-reviews/" +

@@ -47,8 +47,8 @@ function Login() {
   const login = async (values) => {
     try {
       var bodyFormData = new FormData();
-      bodyFormData.append("email", values.email);
-      bodyFormData.append("phone_number", values.phone_number);
+      // bodyFormData.append("email", values.email);
+      bodyFormData.append("email_phone", values.phone_number);
       const response = await request.post("login/", bodyFormData);
       if (response.data.status) {
         $("document").ready(function () {
@@ -222,7 +222,7 @@ function Login() {
                       <input
                         type="text"
                         id="phone_number"
-                        placeholder="0559339099*"
+                        placeholder="Email OR Phone"
                         className={`form-control ${
                           formik.errors.phone_number ? "border-danger" : ""
                         }`}
@@ -246,8 +246,7 @@ function Login() {
                       </span>
                     </div>
                   </div>
-                  <div className="col-12 mb-5">
-                    {/* input */}
+                  {/* <div className="col-12 mb-5">
                     <input
                       type="email"
                       className={`form-control ${
@@ -258,7 +257,7 @@ function Login() {
                       value={formik.values.email}
                       onChange={(e) => setInputValue("email", e.target.value)}
                     />
-                  </div>
+                  </div> */}
                   <div className="col-12 d-grid">
                     {" "}
                     <button type="submit" className="btn btn-dark">

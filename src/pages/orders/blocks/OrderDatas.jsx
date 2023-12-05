@@ -22,7 +22,7 @@ function OrderDatas({
         />
         <OrderHeader ongoingOrder={ongoingOrder} />
         <div className="row order-bottom-row">
-          <div className="col-md-12">
+          <div className="col-md-12 col-12">
             <Carousel
               additionalTransfrom={0}
               arrows={ongoingOrder?.orderline?.length > 1 ? true : false}
