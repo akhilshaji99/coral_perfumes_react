@@ -12,7 +12,7 @@ function ProductInfo({
 }) {
   return (
     <div className="row">
-      <div className="col-md-3 col-3">
+      <div className="col-md-3 col-4">
         <div className="order-img">
           <img src={deviceImageRender(orderItem?.listing_image)} alt="" />
         </div>
@@ -25,7 +25,7 @@ function ProductInfo({
           <h3>Shipment : {orderItem?.shipment_number}</h3>
         ) : null}
       </div>
-      <div className="col-md-4 col-4 text-sm-end text-lg-end">
+      <div className="col-md-4 col-3 text-sm-end text-lg-end">
         {ongoingOrder?.order_status === "Delivery" ? (
           <h3>Tax invoice</h3>
         ) : null}

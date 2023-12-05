@@ -1904,13 +1904,7 @@ body.orders .orders-card a {
   min-width: 35px;
   min-height: 35px;
 }
-.fbt-product-plus li::after {
-  content: "+";
-  position: absolute;
-  top: 35%;}
-.fbt-product-plus li::after {
-  left: 100%;
-}
+
 h4.fbt-ellipsis-text {
   font-size: 14px;
   font-style: normal;
@@ -1999,3 +1993,11 @@ body.checkout .checkout-left-card h6 {
   display: inline-block;
   padding-right: 10px;
 }
+
+/* .fbt-product-plus li::after {
+  content: "+";
+  position: absolute;
+  top: 35%;}
+.fbt-product-plus li::after {
+  left: 100%;
+} */

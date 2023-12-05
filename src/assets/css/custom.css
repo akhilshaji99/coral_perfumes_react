@@ -302,15 +302,7 @@ body.products .discount-percentage {
 .prod-notify-me {
   color: #f22f2f;
 }
-.fbt-product-plus li::after {
-  content: "+";
-  position: absolute;
-  top: 50%;
-  left: 94%;
-  transform: translate(-50%, -50%);
-  font-size: 24px; /* Adjust the font size as needed */
-  color: #333; /* Adjust the color as needed */
-}
+
 .notify-icon {
   margin-left: 11px;
 }
@@ -372,4 +364,24 @@ body.products .discount-percentage {
   border-radius: 0 !important;
   background: #80ba27 !important;
   color: #fff !important;
+}
+
+.fbt-slide-wrapper {
+  position: relative;
+}
+
+.plus-button {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  color: #000;
+  font-family: Brandon Text;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 390;
+  line-height: normal;
+  letter-spacing: 3.6px;
+  text-transform: uppercase;
 }
