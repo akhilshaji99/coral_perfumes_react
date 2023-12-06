@@ -3,6 +3,8 @@ import "react-multi-carousel/lib/styles.css";
 import sudeButtonIcon from "../../../assets/icons/sidebutton.svg";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import AlerMessage from "../../common/AlerMessage";
 function MainBanner({ componentDatas, exclusive_deals }) {
   const banners = componentDatas?.datas;
 
@@ -156,9 +158,9 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         data-bs-target="#userModal1"
       >
         <button className="ModalBtn offer-button">
-          <img src={sudeButtonIcon} alt="coral-icon"/>
+          <img src={sudeButtonIcon} alt="coral-icon" />
           {exclusive_deals?.main_text}
-          <img src={sudeButtonIcon} alt="coral-icon"/>
+          <img src={sudeButtonIcon} alt="coral-icon" />
         </button>
       </a>
       {/* Modal */}
@@ -214,7 +216,22 @@ function MainBanner({ componentDatas, exclusive_deals }) {
               </h1>
               <h3 className="order-now">{exclusive_deals?.text_2}</h3>
               <div className="text-center">
-                <button type="submit" className="btn btn-dark my-5 w-100">
+                <button
+                  type="submit"
+                  onClick={() => {
+                     navigator.clipboard.writeText(exclusive_deals?.discount_code);
+                      toast((t) => (
+                      <AlerMessage
+                        t={t}
+                        toast={toast}
+                        status={true}
+                        title={"Success"}
+                        message="Code copied to clipboard"
+                      />
+                    ));
+                  }}
+                  className="btn btn-dark my-5 w-100"
+                >
                   {exclusive_deals?.code_title}
                 </button>
               </div>

@@ -5,6 +5,7 @@ function CartDetails({
   scrollToPaymentComponent,
   basicInfoFormValidation,
   checkPaymentTypeSelected,
+  validateDeliveryAddress
 }) {
   return (
     <div className=" card checkout-left-card">
@@ -118,7 +119,8 @@ function CartDetails({
                       let basicValidationStatus = basicInfoFormValidation();
                       if (basicValidationStatus) {
                         let paymentModeSelected = checkPaymentTypeSelected();
-                        if (basicValidationStatus && paymentModeSelected) {
+                        let validateDeliveryAddressStatus = validateDeliveryAddress();
+                        if (basicValidationStatus && paymentModeSelected && validateDeliveryAddressStatus) {
                           confirmCheckout(scrollToPaymentComponent);
                         }
                       }
