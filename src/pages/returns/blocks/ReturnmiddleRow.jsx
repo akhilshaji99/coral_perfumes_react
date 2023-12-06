@@ -6,9 +6,9 @@ function OrdermiddleRow({ orderDetails }) {
       <div className="col-md-6">
         <h3>
           Order No: {orderDetails?.order_no}{" "}
-          <span>(Item: {orderDetails?.items_count})</span>
+          {/* <span>(Item: {orderDetails?.items_count})</span> */}
         </h3>
-        <h4>View Details</h4>
+        {/* <h4>View Details</h4> */}
       </div>
       <div className="col-md-6 text-lg-end">
         <p>xxxxxxxxxxxxxxxxxxxxx</p>

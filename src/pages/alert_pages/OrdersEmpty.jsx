@@ -3,7 +3,6 @@ import BagEmptyImg from "./img/Bag.svg";
 import { Link } from "react-router-dom";
 
 function OrdersEmpty(orderEmptyMessages = null) {
-  console.log("orderEmptyMessages", orderEmptyMessages);
   return (
     <div>
       <div className="row align-items-center justify-content-center alert-box-order-empty mt-2">

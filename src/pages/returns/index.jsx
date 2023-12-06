@@ -30,7 +30,10 @@ function Index() {
         bodyFormData
       );
       if (response?.data) {
-        if (response?.data?.data?.cancelled_orders_data?.data.length <= 0) {
+        if (
+          response?.data?.data?.cancelled_orders_data?.data &&
+          response?.data?.data?.cancelled_orders_data?.data.length <= 0
+        ) {
           setActiveOrders([]);
           setCancelledOrders([]);
           // Setting Error messages
@@ -114,7 +117,9 @@ function Index() {
                   RETURNED
                 </button>
               </div>
-              <OrdersEmpty orderEmptyMessages={errorMessages} />
+              {errorMessages ? (
+                <OrdersEmpty orderEmptyMessages={errorMessages} />
+              ) : null}
               {/* Order Card */}
               {activeOrders?.map((orderDetails, index) => {
                 return (

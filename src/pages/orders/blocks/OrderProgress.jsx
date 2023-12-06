@@ -253,7 +253,10 @@ function OrderProgress({ order_current_status, resetOrderProgress }) {
     <div className="row order-top-row">
       {orderStatuses?.map((orderStatus, index) => {
         return (
-          <div className="col-md-2 col-3" key={index}>
+          <div
+            className={`col-md-2 col-3 ${index !== 0 ? "prd-0" : ""}`}
+            key={index}
+          >
             {orderStatus.flag === true
               ? orderStatus?.ActiveIcon
               : orderStatus?.inactiveIcon}
