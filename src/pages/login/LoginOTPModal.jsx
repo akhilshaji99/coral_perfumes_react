@@ -150,18 +150,20 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const focusNext = (e) => {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
-
-    if (e.target.value != "") {
+  
+    if (e.target.value !== "") {
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
       });
+  
       if (currentIndex !== childCount - 1) {
         e.target.nextSibling.focus();
+      } else {
+        e.target.blur(); // Prevent focusing on the next input
       }
-      if (values.length !== 0) {
-        setOtpVal(values);
-      }
+  
+      setOtpVal(values);
     }
   };
 
