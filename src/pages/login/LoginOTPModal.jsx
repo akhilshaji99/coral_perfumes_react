@@ -18,7 +18,30 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
     $("#otpModal").toggle();
     $("#otpModal").toggleClass("modal modal fade");
     $("#otpModal").hide();
+    // Clear inputs when the modal is closed
+    inputRefsArray.forEach((ref) => {
+      if (ref.current) {
+        ref.current.value = "";
+      }
+    });
+    setOtpVal([]);
   };
+    // Reset input values and state when the modal is closed
+    useEffect(() => {
+      const clearInputs = () => {
+        setOtpVal([]);
+        inputRefsArray.forEach((ref) => {
+          if (ref.current) {
+            ref.current.value = "";
+          }
+        });
+      };
+  
+      // Clear inputs when the component unmounts
+      return () => {
+        clearInputs();
+      };
+    }, []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputRefsArray] = useState(() =>
     Array.from({ length: 6 }, () => createRef())
@@ -28,8 +51,23 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
     e.preventDefault();
     verify_otp();
   };
+  const handleBackspace = (e, index) => {
+    // If Backspace is pressed and the current input is empty
+    if (e.key === "Backspace" && !e.target.value && index > 0) {
+      // Focus on the previous input field
+      inputRefsArray[index - 1].current.focus();
+      // Clear the value of the previous input field
+      setOtpVal((prevOtpVal) => prevOtpVal.slice(0, index - 1));
+    }
+  };
   const resendOtp = async (e) => {
     try {
+      inputRefsArray.forEach((ref) => {
+        if (ref.current) {
+          ref.current.value = "";
+        }
+      });
+      setOtpVal([]);
       var bodyFormData = new FormData();
       bodyFormData.append("phone_number", componentDatas.phone_number);
       const response = await request.post("resend-otp/", bodyFormData);
@@ -180,6 +218,9 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                         required
                         onChange={(e) => {
                           focusNext(e);
+                        }}
+                        onKeyDown={(e) => {
+                          handleBackspace(e, index);
                         }}
                         maxLength={"1"}
                       />
