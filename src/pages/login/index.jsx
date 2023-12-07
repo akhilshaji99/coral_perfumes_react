@@ -222,7 +222,7 @@ function Login() {
                       <input
                         type="text"
                         id="phone_number"
-                        placeholder="Email OR Phone"
+                        placeholder="Email OR Phone (0559239099)*"
                         className={`form-control ${
                           formik.errors.phone_number ? "border-danger" : ""
                         }`}
