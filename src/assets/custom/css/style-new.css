@@ -1993,7 +1993,14 @@ body.checkout .checkout-left-card h6 {
   display: inline-block;
   padding-right: 10px;
 }
-
+body.checkout .accordion-item.checkout-accordion button {
+  padding: 12px;
+}
+body.checkout  div#flush-collapseOne .promo-code-label {
+  color: #0aad0a;
+  padding-top: 4px !important;
+  margin: 0px !important;
+}
 /* .fbt-product-plus li::after {
   content: "+";
   position: absolute;
