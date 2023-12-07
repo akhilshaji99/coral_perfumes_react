@@ -51,15 +51,30 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
     e.preventDefault();
     verify_otp();
   };
+ 
   const handleBackspace = (e, index) => {
-    // If Backspace is pressed and the current input is empty
-    if (e.key === "Backspace" && !e.target.value && index > 0) {
-      // Focus on the previous input field
-      inputRefsArray[index - 1].current.focus();
-      // Clear the value of the previous input field
-      setOtpVal((prevOtpVal) => prevOtpVal.slice(0, index - 1));
+    const childCount = textBase.current.childElementCount;
+  
+    if (e.key === "Backspace" && index > 0) {
+      // Remove the last character from the OTP value
+      setOtpVal((prevOtpVal) => prevOtpVal.slice(0, -1));
+  
+      // If the current input is empty, focus on the previous input and clear its value
+      if (!e.target.value) {
+        // Set focus after a slight delay
+        setTimeout(() => {
+          inputRefsArray[index - 1].current.focus();
+          setOtpVal((prevOtpVal) => prevOtpVal.slice(0, -1));
+        }, 0);
+      }
     }
   };
+  
+  
+   
+  
+  
+  
   const resendOtp = async (e) => {
     try {
       inputRefsArray.forEach((ref) => {
@@ -151,7 +166,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
   
-    if (e.target.value !== "") {
+    if (/^\d$/.test(e.target.value)) {
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
@@ -160,12 +175,36 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       if (currentIndex !== childCount - 1) {
         e.target.nextSibling.focus();
       } else {
-        e.target.blur(); // Prevent focusing on the next input
+        // If the current input is not empty, prevent focusing on the next input
+        e.target.blur();
       }
   
       setOtpVal(values);
+    } else {
+      // If the current input is empty or contains non-numeric characters, clear it
+      e.target.value = "";
     }
   };
+
+  const handleClick = (e) => {
+    const childCount = textBase.current.childElementCount;
+    const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
+  
+    if (currentIndex === childCount - 1) {
+      // If the clicked input is the last one, set the focus to the last character
+      const length = e.target.value.length;
+  
+      // Change the input type to "text" temporarily
+      e.target.type = "text";
+  
+      // Set the selectionStart and selectionEnd properties to the length of the value
+      e.target.setSelectionRange(length, length);
+  
+      // Change the input type back to "number"
+      e.target.type = "number";
+    }
+  };
+  
 
   return (
     <div
@@ -207,19 +246,25 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                   {inputRefsArray.map((ref, index) => {
                     return (
                       <input
+                        key={`input-${index}`}
                         ref={ref}
                         className={`m-2 text-center`}
                         style={{
                           width: "2.5ch",
                           border: "0px solid transparent",
-                          "border-bottom": "1px solid rgba(0,0,0,0.30)",
-                          "font-size": "1.45rem",
+                          borderBottom: "1px solid rgba(0,0,0,0.30)",
+                          fontSize: "1.45rem",
                         }}
-                        type="number"
+                        type="text"
                         id={`input${index}-1`}
+                        pattern="[0-9]"  // Enforce numeric input
+                        inputMode="numeric"
                         required
                         onChange={(e) => {
                           focusNext(e);
+                        }}
+                        onClick={(e) => {
+                          handleClick(e);
                         }}
                         onKeyDown={(e) => {
                           handleBackspace(e, index);
@@ -227,6 +272,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                         maxLength={"1"}
                       />
                     );
+                    
                   })}{" "}
                 </div>
                 <div className="modal-footer border-0 justify-content-center">
