@@ -11,7 +11,7 @@ function OrdermiddleRow({ orderDetails }) {
         {/* <h4>View Details</h4> */}
       </div>
       <div className="col-md-6 text-lg-end">
-        <p>xxxxxxxxxxxxxxxxxxxxx</p>
+        {/* <p>xxxxxxxxxxxxxxxxxxxxx</p> */}
         <p>{orderDetails?.returned_on}</p>
       </div>
     </div>

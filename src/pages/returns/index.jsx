@@ -48,7 +48,10 @@ function Index() {
           setActiveOrders(response?.data?.data?.cancelled_orders_data);
           setCancelledOrders(response?.data?.data?.cancelled_orders_data);
         }
-        if (response?.data?.data?.return_order_data?.data.length <= 0) {
+        if (
+          response?.data?.data?.return_order_data?.data &&
+          response?.data?.data?.return_order_data?.data.length <= 0
+        ) {
           setReturnedOrders([]);
           // Setting Error messages
           setReturnedError(response?.data?.data?.return_order_data?.message);
