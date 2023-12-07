@@ -13,6 +13,29 @@ import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
 function LoginOTPModal({ componentDatas, redirectTo = null }) {
+  const [resendDisabled, setResendDisabled] = useState(false);
+  const [countdown, setCountdown] = useState(60);
+  const startCountdown = () => {
+    setResendDisabled(true);
+    setCountdown(60);
+  };
+  useEffect(() => {
+    let timer;
+    
+    if (resendDisabled) {
+      timer = setInterval(() => {
+        setCountdown((prevCountdown) => {
+          if (prevCountdown === 1) {
+            setResendDisabled(false);
+            clearInterval(timer);
+          }
+          return prevCountdown - 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [resendDisabled]);
   const navigate = useNavigate();
   const handleModalClose = () => {
     $("#otpModal").toggle();
@@ -25,23 +48,29 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       }
     });
     setOtpVal([]);
+      // Clear the countdown and re-enable Resend on modal close
+      setCountdown(0);
+      setResendDisabled(false);
   };
-    // Reset input values and state when the modal is closed
-    useEffect(() => {
-      const clearInputs = () => {
-        setOtpVal([]);
-        inputRefsArray.forEach((ref) => {
-          if (ref.current) {
-            ref.current.value = "";
-          }
-        });
-      };
-  
-      // Clear inputs when the component unmounts
-      return () => {
-        clearInputs();
-      };
-    }, []);
+  // Reset input values and state when the modal is closed
+  useEffect(() => {
+    const clearInputs = () => {
+      setOtpVal([]);
+      inputRefsArray.forEach((ref) => {
+        if (ref.current) {
+          ref.current.value = "";
+        }
+      });
+    };
+
+    // Clear inputs when the component unmounts
+    return () => {
+      clearInputs();
+    };
+      // Clear the countdown and re-enable Resend on modal close
+      setCountdown(0);
+      setResendDisabled(false);
+  }, []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputRefsArray] = useState(() =>
     Array.from({ length: 6 }, () => createRef())
@@ -50,15 +79,17 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     verify_otp();
+    setCountdown(0);
+    setResendDisabled(false);
   };
- 
+
   const handleBackspace = (e, index) => {
     const childCount = textBase.current.childElementCount;
-  
+
     if (e.key === "Backspace" && index > 0) {
       // Remove the last character from the OTP value
       setOtpVal((prevOtpVal) => prevOtpVal.slice(0, -1));
-  
+
       // If the current input is empty, focus on the previous input and clear its value
       if (!e.target.value) {
         // Set focus after a slight delay
@@ -69,12 +100,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       }
     }
   };
-  
-  
-   
-  
-  
-  
+
   const resendOtp = async (e) => {
     try {
       inputRefsArray.forEach((ref) => {
@@ -93,6 +119,8 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
       if (!response.data.status) {
         status = "error";
         title = "ERROR";
+      }else{
+        startCountdown();
       }
       toast((t) => (
         <AlerMessage
@@ -165,20 +193,20 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const focusNext = (e) => {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
-  
+
     if (/^\d$/.test(e.target.value)) {
       const values = [];
       textBase.current.childNodes.forEach((child) => {
         values.push(child.value);
       });
-  
+
       if (currentIndex !== childCount - 1) {
         e.target.nextSibling.focus();
       } else {
         // If the current input is not empty, prevent focusing on the next input
         e.target.blur();
       }
-  
+
       setOtpVal(values);
     } else {
       // If the current input is empty or contains non-numeric characters, clear it
@@ -189,22 +217,21 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   const handleClick = (e) => {
     const childCount = textBase.current.childElementCount;
     const currentIndex = [...e.target.parentNode.children].indexOf(e.target);
-  
+
     if (currentIndex === childCount - 1) {
       // If the clicked input is the last one, set the focus to the last character
       const length = e.target.value.length;
-  
+
       // Change the input type to "text" temporarily
       e.target.type = "text";
-  
+
       // Set the selectionStart and selectionEnd properties to the length of the value
       e.target.setSelectionRange(length, length);
-  
+
       // Change the input type back to "number"
       e.target.type = "number";
     }
   };
-  
 
   return (
     <div
@@ -257,7 +284,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                         }}
                         type="text"
                         id={`input${index}-1`}
-                        pattern="[0-9]"  // Enforce numeric input
+                        pattern="[0-9]" // Enforce numeric input
                         inputMode="numeric"
                         required
                         onChange={(e) => {
@@ -272,19 +299,34 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
                         maxLength={"1"}
                       />
                     );
-                    
                   })}{" "}
                 </div>
                 <div className="modal-footer border-0 justify-content-center">
-                  Didn't received the <span>OTP?</span> click{" "}
+                  Didn't receive the <span>OTP?</span> Click{" "}
+                  {/* <button
+                    disabled={resendDisabled}
+                    onClick={resendOtp}
+                    style={{ color: resendDisabled ? "black" : "red" }}
+                  >
+                    Resend
+                  </button> */}
                   <a
                     href="#"
                     onClick={(e) => {
+                      if (resendDisabled) {
+                        e.preventDefault(); // Prevents the default behavior (navigation)
+                      } else {
                       resendOtp();
+                      }
                     }}
+                    disabled={resendDisabled}
+
+                    style={{ color: resendDisabled ? "red" : "black" }}
+
                   >
                     Resend
                   </a>
+                  {resendDisabled && <span> in {countdown} seconds</span>}
                 </div>
                 <div className="mt-4">
                   {" "}
