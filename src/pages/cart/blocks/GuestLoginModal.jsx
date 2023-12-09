@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
-  // email: yup.string().email().required(),
-  phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  phone_number: yup.string().required(),
+  // phone_number: yup.string().matches(phoneRegExp, "Phone number is not valid"),
 });
 function GuestLoginModal() {
   const navigate = useNavigate();
@@ -45,8 +45,8 @@ function GuestLoginModal() {
   const login = async (values) => {
     try {
       var bodyFormData = new FormData();
-      bodyFormData.append("email", values.email);
-      bodyFormData.append("phone_number", values.phone_number);
+      // bodyFormData.append("email", values.email);
+      bodyFormData.append("email_phone", values.phone_number);
       const response = await request.post("login/", bodyFormData);
       console.log("response", response);
       let status = "succsss";
@@ -112,7 +112,7 @@ function GuestLoginModal() {
                       <input
                         type="text"
                         id="phone_number"
-                        placeholder="055 923 8088*"
+                        placeholder="Email OR Phone (0559239099)*"
                         className={`form-control ${
                           formik.errors.phone_number ? "border-danger" : ""
                         }`}
@@ -125,13 +125,12 @@ function GuestLoginModal() {
                           formik.touched.type && Boolean(formik.errors.type)
                         }
                       />
-                      <span>
+                      {/* <span>
                         <i id="passwordToggler" className="bi bi-eye-slash" />
-                      </span>
+                      </span> */}
                     </div>
                   </div>
-                  <div className="col-12 mb-5">
-                    {/* input */}
+                  {/* <div className="col-12 mb-5">
                     <input
                       type="email"
                       className={`form-control ${
@@ -142,7 +141,7 @@ function GuestLoginModal() {
                       value={formik.values.email}
                       onChange={(e) => setInputValue("email", e.target.value)}
                     />
-                  </div>
+                  </div> */}
 
                   {/* btn */}
                   <div className="col-12 d-grid">

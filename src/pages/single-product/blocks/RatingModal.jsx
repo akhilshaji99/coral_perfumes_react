@@ -4,7 +4,11 @@ import $ from "jquery";
 import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
+import getUserToken from "../../../utils/userToken.js";
+import { useNavigate } from "react-router-dom";
+
 function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
+  const navigate = useNavigate();
   const [rating, setRating] = useState(1);
   const [message, setMessage] = useState("");
 
@@ -26,6 +30,10 @@ function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
 
   const handleOnSubmit = async () => {
     try {
+      if (getUserToken() == null) {
+        navigate("/login");
+        return;
+      }
       var bodyFormData = new FormData();
       bodyFormData.append("stars_count", rating);
       bodyFormData.append("message", message);
@@ -67,7 +75,6 @@ function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
         ));
       }
       handleModalClose();
-      
     } catch (error) {
       console.log("error", error);
     }
