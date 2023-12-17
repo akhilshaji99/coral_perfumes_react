@@ -86,7 +86,7 @@ function ProductInfo({
               }
             }}
           >
-            {ongoingOrder?.return_status} <br />
+            {ongoingOrder?.return_status || 'Request Return'} <br />
           </h3>
         ) : null}
         {ongoingOrder?.return_option ? (

@@ -134,7 +134,7 @@ function OrderDetails({
                     order_no: orderDetails?.order_no,
                     order_cancellation_status:
                       orderItem?.order_cancellation_status,
-                    return_status: orderItem?.return_status,
+                    return_status: orderItem?.return_status || 'Request Return',
                   }}
                 />
               </div>
