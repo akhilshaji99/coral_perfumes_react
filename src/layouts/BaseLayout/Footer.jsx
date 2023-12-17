@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
-function Footer({ changeMobileMenuStatus }) {
+function Footer({ changeMobileMenuStatus,changeMyAccountMenuStatus }) {
   const navigate = useNavigate();
 
   const handleOnSubmit = (values) => {
@@ -314,7 +314,9 @@ function Footer({ changeMobileMenuStatus }) {
     // the render method enables custom item content
     {
       title: "Profile",
-      onClick: ({ id }) => navigate("/dashboard"),
+      onClick: ({ id }) => {
+        changeMyAccountMenuStatus();
+      },
       icon: (
         <svg
           width={27}

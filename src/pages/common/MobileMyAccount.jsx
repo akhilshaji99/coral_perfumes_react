@@ -13,6 +13,10 @@ function MobileMyAccount({
   closeMoibileMenu,
   changeMyAccountMenuStatus,
 }) {
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <div className="container mob-c-view d-block d-sm-none">
       <div
@@ -147,7 +151,7 @@ function MobileMyAccount({
                 </svg>
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={logout}>
               <a className="nav-link " aria-current="page" href="javascript:;">
                 <img src={Logout} alt="Coral perfumes" />
                 LOGOUT

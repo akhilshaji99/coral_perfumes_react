@@ -82,7 +82,10 @@ const BaseLayout = () => {
           />
         </nav>
       </div>
-      <div className="fixed-top-margin main-layout "style={{ minHeight: '600px'}}>
+      <div
+        className="fixed-top-margin main-layout "
+        style={{ minHeight: "600px" }}
+      >
         <Outlet />
       </div>
       <MobileMyAccount
@@ -92,7 +95,10 @@ const BaseLayout = () => {
         closeMoibileMenu={closeMoibileMenu}
         changeMyAccountMenuStatus={changeMyAccountMenuStatus}
       />
-      <Footer changeMobileMenuStatus={changeMobileMenuStatus} />
+      <Footer
+        changeMobileMenuStatus={changeMobileMenuStatus}
+        changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+      />
     </>
   );
 };
