@@ -12,7 +12,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
     // Use JavaScript's replace method to replace the search term with a span
     const highlightedTitle = title.replace(
       new RegExp(query, "g"),
-      (match) => `${'<span class="color-txt">' + match + "</span>"}`
+      (match) => `${'<span class="color-txt">' + query + "</span>"}`
     );
     return highlightedTitle;
   }
@@ -88,7 +88,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
             {result.data?.length > 0 && (
               <div className="col-md-10 col-10" style={{ display: "block" }}>
                 <h5 className="pt-4 font-weight-bold">SUGGESTIONS</h5>
-                {result?.data?.map((result, index) => (
+                {result?.data?.map((resultData, index) => (
                   <div class="row py-2">
                     <div class="col-8 search-product">
                       <a
@@ -96,17 +96,15 @@ function SearchResult({ setResult, result, setQuery, query }) {
                         className="col-12 link-dark"
                         onClick={() => {
                           closeModal();
-                          navigate("/" + result.link);
-                          setQuery(result.title);
+                          navigate("/" + resultData.link);
+                          setQuery(resultData.title);
                           // setQuery(result);
                         }}
                       >
                         {/* {result.title} */}
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: highlightSearchTerm(result.title, query),
-                          }}
-                        />
+                        <div>
+                          <p>{resultData.title}</p>
+                        </div>
                         {/* <div
                           className="p-d-c"
                           dangerouslySetInnerHTML={{
@@ -119,7 +117,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                       </a>
                     </div>
                     <div class="col text-right">
-                      <h6 className="text-right">{result.count}</h6>
+                      <h6 className="text-right">{resultData.count}</h6>
                     </div>
                   </div>
                 ))}

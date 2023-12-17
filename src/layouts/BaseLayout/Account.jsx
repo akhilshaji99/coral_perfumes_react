@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import ArabLang from "../../assets/img/icons/lang/Flag_02.svg";
 import EngLang from "../../assets/img/icons/lang/Flag_01.svg";
@@ -61,6 +62,8 @@ function Account({
   const [query, setQuery] = useState("");
   const [result, setResult] = useState("");
   const [status, setStatus] = useState(false);
+  const delayTimerRef = React.useRef(null);
+
 
   const performSearch = async (query) => {
     try {
@@ -77,7 +80,10 @@ function Account({
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
     setQuery(inputValue);
-    performSearch(inputValue);
+    clearTimeout(delayTimerRef.current);
+    delayTimerRef.current = setTimeout(() => {
+      performSearch(inputValue);
+    }, 500);
     setStatus(!status);
   };
   const navigate = useNavigate();
