@@ -19,7 +19,15 @@ function OrderDetails({
               <span>(Item: {orderDetails?.items_count})</span>
             </h3>
           </div>
-          <div className="col-md-6 col-6 text-lg-end tax-invoice">Tax invoice</div>
+          <div className="col-md-6 col-6 text-lg-end tax-invoice">
+            <a
+              target="_blank"
+              href={process.env.REACT_APP_BASE_URL + orderDetails?.invoice_link}
+              style={{ color: "#000" }}
+            >
+              Tax invoice
+            </a>
+          </div>
           <p>{orderDetails?.order_date}</p>
         </div>
         <div className="row align-items-center">
@@ -30,12 +38,20 @@ function OrderDetails({
             <h3>{orderDetails?.sub_total}</h3>
           </div>
         </div>
-        <div className="row align-items-center mb-6">
+        <div className="row align-items-center">
           <div className="col-md-6 col-6">
             <p>{orderDetails?.shipping_title}</p>
           </div>
           <div className="col-md-6 col-6 text-lg-end">
             <h3>{orderDetails?.shipping_amount_value}</h3>
+          </div>
+        </div>
+        <div className="row align-items-center mb-6">
+          <div className="col-md-6 col-6">
+            <p>{orderDetails?.gift_wrap_title}</p>
+          </div>
+          <div className="col-md-6 col-6 text-lg-end">
+            <h3>{orderDetails?.gift_wrap_amount}</h3>
           </div>
         </div>
         <div className="row align-items-center">
@@ -118,7 +134,7 @@ function OrderDetails({
                     order_no: orderDetails?.order_no,
                     order_cancellation_status:
                       orderItem?.order_cancellation_status,
-                    return_status: orderItem?.return_status || "Request Return",
+                    return_status: orderItem?.return_status,
                   }}
                 />
               </div>

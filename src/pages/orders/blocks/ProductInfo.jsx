@@ -26,9 +26,9 @@ function ProductInfo({
         ) : null}
       </div>
       <div className="col-md-4 col-3 text-sm-end text-lg-end">
-        {ongoingOrder?.order_status === "Delivery" ? (
+        {/* {ongoingOrder?.order_status === "Delivery" ? (
           <h3>Tax invoice</h3>
-        ) : null}
+        ) : null} */}
 
         {ongoingOrder?.order_status === "Ordered" ||
         ongoingOrder?.order_status === "Processing" ||
@@ -58,6 +58,7 @@ function ProductInfo({
           </h3>
         ) : null}
         {/* Return Datas */}
+
         {ongoingOrder?.order_status === "Delivery" ? (
           <h3
             style={{
@@ -85,9 +86,19 @@ function ProductInfo({
               }
             }}
           >
-            {ongoingOrder?.return_status || "Request Return" }
+            {ongoingOrder?.return_status} <br />
           </h3>
         ) : null}
+        {ongoingOrder?.return_option ? (
+          <>
+            <br />
+            <br />
+            <h3 style={{ "text-decoration": "none" }}>
+              {ongoingOrder?.return_message}
+            </h3>
+          </>
+        ) : null}
+
         {/* End of Return Datas */}
       </div>
     </div>
