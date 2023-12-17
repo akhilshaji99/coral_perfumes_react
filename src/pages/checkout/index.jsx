@@ -187,29 +187,27 @@ function Index() {
   };
 
   const handleOnSubmit = () => {
-    if(validateDeliveryAddress()){
-
-    
-    console.log(addressForm.values);
-    var combinedPayload = Object.assign(
-      {},
-      checkoutUpdateParams,
-      addressForm.values
-    );
-    console.log(combinedPayload);
-    UpdateCheckoutDetails(combinedPayload).then((response) => {
-      if (response?.data?.status) {
-        setCartItems(response?.data?.data?.cart_items);
-        addressForm.setFieldValue(
-          "address_id",
-          response?.data?.data?.address_id
-        );
-      }else{
-    fetchCheckoutApi();
-
-      }
-    });
-  }
+    if (validateDeliveryAddress()) {
+      console.log(addressForm.values);
+      var combinedPayload = Object.assign(
+        {},
+        checkoutUpdateParams,
+        addressForm.values
+      );
+      console.log(combinedPayload);
+      UpdateCheckoutDetails(combinedPayload).then((response) => {
+        if (response?.data?.status) {
+          setCartItems(response?.data?.data?.cart_items);
+          setPaymentTypes(response?.data?.data?.payment_types);
+          addressForm.setFieldValue(
+            "address_id",
+            response?.data?.data?.address_id
+          );
+        } else {
+          fetchCheckoutApi();
+        }
+      });
+    }
   };
 
   const addressForm = useFormik({
@@ -266,7 +264,7 @@ function Index() {
 
   //update shipping_zone_type and refetch api :: Delivery type change
   const checkPaymentTypeSelected = () => {
-    if(!checkoutUpdateParams.payment_type){
+    if (!checkoutUpdateParams.payment_type) {
       toast((t) => (
         <AlerMessage
           t={t}
@@ -277,15 +275,14 @@ function Index() {
         />
       ));
       scrollToPaymentComponent();
-       return false;
+      return false;
     }
     return true;
-
-  }
+  };
   const validateDeliveryAddress = () => {
     let validationStatus = true;
     let message = "";
-    if(addressForm.values.delivery_type == 1 ){
+    if (addressForm.values.delivery_type == 1) {
       if (
         addressForm.values.flat_name == undefined ||
         addressForm.values.flat_name == ""
@@ -293,42 +290,55 @@ function Index() {
         validationStatus = false;
         addressForm.setErrors({ flat_name: "Required" });
         message = "Flat name required.";
-      }else if(  addressForm.values.building_number == undefined ||
-        addressForm.values.building_number == ""){
-          validationStatus = false;
-          addressForm.setErrors({ building_number: "Required" });
-          message = "Building number required.";
-      }else if(addressForm.values.street_address == undefined ||
-        addressForm.values.street_address == ""){
-          validationStatus = false;
-          addressForm.setErrors({ street_address: "Required" });
-          message = "Street address required.";
-      }else if(addressForm.values.emirate == undefined ||
-        addressForm.values.emirate == ""){
-          validationStatus = false;
-          addressForm.setErrors({ emirate: "Required" });
-          message = "Emirate required.";
-      }else if(addressForm.values.floor_number == undefined ||
-        addressForm.values.floor_number == ""){
-          validationStatus = false;
-          addressForm.setErrors({ floor_number: "Required" });
-          message = "Floor number required.";
-      }else if(addressForm.values.city == undefined ||
-        addressForm.values.city == ""){
-          validationStatus = false;
-          addressForm.setErrors({ city: "Required" });
-          message = "City required.";
-      }else if(addressForm.values.postal_code == undefined ||
-        addressForm.values.postal_code == ""){
-          validationStatus = false;
-          addressForm.setErrors({ postal_code: "Required" });
-          message = "Postal code required.";
-      }else{
+      } else if (
+        addressForm.values.building_number == undefined ||
+        addressForm.values.building_number == ""
+      ) {
+        validationStatus = false;
+        addressForm.setErrors({ building_number: "Required" });
+        message = "Building number required.";
+      } else if (
+        addressForm.values.street_address == undefined ||
+        addressForm.values.street_address == ""
+      ) {
+        validationStatus = false;
+        addressForm.setErrors({ street_address: "Required" });
+        message = "Street address required.";
+      } else if (
+        addressForm.values.emirate == undefined ||
+        addressForm.values.emirate == ""
+      ) {
+        validationStatus = false;
+        addressForm.setErrors({ emirate: "Required" });
+        message = "Emirate required.";
+      }
+      //  else if (
+      //   addressForm.values.floor_number == undefined ||
+      //   addressForm.values.floor_number == ""
+      // ) {
+      //   validationStatus = false;
+      //   addressForm.setErrors({ floor_number: "Required" });
+      //   message = "Floor number required.";
+      // }
+      else if (
+        addressForm.values.city == undefined ||
+        addressForm.values.city == ""
+      ) {
+        validationStatus = false;
+        addressForm.setErrors({ city: "Required" });
+        message = "City required.";
+      } else if (
+        addressForm.values.postal_code == undefined ||
+        addressForm.values.postal_code == ""
+      ) {
+        validationStatus = false;
+        addressForm.setErrors({ postal_code: "Required" });
+        message = "Postal code required.";
+      } else {
         validationStatus = true;
-
       }
     }
-    if(!validationStatus){
+    if (!validationStatus) {
       toast((t) => (
         <AlerMessage
           t={t}
@@ -339,9 +349,8 @@ function Index() {
         />
       ));
     }
-    return validationStatus
-
-  }
+    return validationStatus;
+  };
 
   const basicInfoFormValidation = () => {
     var validEmailRegex =
@@ -670,6 +679,7 @@ function Index() {
                                     value={addressForm.values.phone_number}
                                     name="phone_number"
                                     onChange={addressForm.handleChange}
+                                    placeholder="Phone Number (0559239099)"
                                     style={getStyles(
                                       addressForm.errors,
                                       "phone_number"
@@ -1080,9 +1090,9 @@ function Index() {
                 <CartDetails
                   cartDatas={cartItems}
                   scrollToPaymentComponent={scrollToPaymentComponent}
-                  basicInfoFormValidation= {basicInfoFormValidation}
-                  checkPaymentTypeSelected = {checkPaymentTypeSelected}
-                  validateDeliveryAddress= {validateDeliveryAddress}
+                  basicInfoFormValidation={basicInfoFormValidation}
+                  checkPaymentTypeSelected={checkPaymentTypeSelected}
+                  validateDeliveryAddress={validateDeliveryAddress}
                 />
               </div>
             </div>

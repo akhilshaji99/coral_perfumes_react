@@ -2,6 +2,7 @@ import deviceImgeRender from "../../../utils/deviceImageRender";
 import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
 import BoughtTogether from "./BoughtTogether";
+import { Link } from "react-router-dom";
 
 function DesktopSpec({
   currentVariant,
@@ -137,11 +138,13 @@ function DesktopSpec({
         />
         <div className="row py-2 ">
           <div className=" col-xl-7 col-12 ">
+            <Link to={'/'+productDatas?.type_banner_link}>
             <img
               className="img-fluid get-img"
               src={deviceImgeRender(productDatas?.type_banner_image)}
               alt=""
             />
+            </Link>
           </div>
           <div className="col-xl-5 col-12 return-policy-div">
             <h1>{productDatas?.return_title}</h1>

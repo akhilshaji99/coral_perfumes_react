@@ -119,13 +119,14 @@ function ChangeEmail({ refetchProfileApi, profileForm }) {
                     <input
                       type="text"
                       className={`form-control ${
-                        updateEmailForm.errors.email ? "border-danger" : ""
-                      }`}
+                        updateEmailForm.errors.email ? "error-border" : ""
+                      } `}
                       required
                       name="email"
                       value={updateEmailForm.values.email}
                       onChange={updateEmailForm.handleChange}
                       placeholder="Email*"
+                      style={{ border: "1px solid red !important" }}
                     />
                   </div>
                   <div className="col-12 text-center my-5">

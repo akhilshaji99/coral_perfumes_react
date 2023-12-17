@@ -39,7 +39,7 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
             toast={toast}
             status={response.data.status}
             title={"CHANGE MOBILE NUMBER"}
-            message={response?.data?.message}
+            message={response?.data?.message_1 || response?.data?.message_2}
           />
         ));
       }
@@ -62,7 +62,7 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
         otpModalDatas={otpModalDatas}
         verificationType={verificationType}
         refetchProfileApi={refetchProfileApi}
-        modal_id={'ProfileOtpVerification_Phone'}
+        modal_id={"ProfileOtpVerification_Phone"}
       />
       <div
         className="modal fade"

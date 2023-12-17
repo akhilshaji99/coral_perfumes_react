@@ -2,6 +2,7 @@ import BrandRating from "./BrandRating";
 import ProductRating from "./ProductRating";
 import deviceImgeRender from "../../../utils/deviceImageRender";
 import BoughtTogether from "./BoughtTogether";
+import { Link } from "react-router-dom";
 
 function MobileSpec({
   currentVariant,
@@ -201,11 +202,13 @@ function MobileSpec({
         </div>
       </div>
       <div className="col-12 mb-2" id="mobile-menu">
-        <img
-          className="img-fluid"
-          src={deviceImgeRender(productDatas?.type_banner_image)}
-          alt=""
-        />
+        <Link to={"/" + productDatas?.type_banner_link}>
+          <img
+            className="img-fluid"
+            src={deviceImgeRender(productDatas?.type_banner_image)}
+            alt=""
+          />
+        </Link>
       </div>
       <div className="col-md-5" id="mobile-menu">
         {FbtDatas && FbtDatas?.products?.length > 0 ? (

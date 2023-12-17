@@ -11,6 +11,10 @@ function MyAccountSidebar() {
   //   localStorage.clear();
   //   window.location.href = "/";
   // };
+  const logoutUser = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <>
       <div className="col-12">
@@ -143,7 +147,7 @@ function MyAccountSidebar() {
                 </svg>
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={() => logoutUser()}>
               <a className="nav-link " aria-current="page" href="javascript:;">
                 <img src={Logout} alt="Coral perfumes" />
                 LOGOUT
@@ -169,7 +173,6 @@ function MyAccountSidebar() {
         </div>
       </div>
       {/* Mobile View */}
-      
     </>
   );
 }
