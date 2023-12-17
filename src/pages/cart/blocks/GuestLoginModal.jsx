@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import $ from "jquery";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 });
 function GuestLoginModal() {
   const navigate = useNavigate();
-
+  const [loader, setLoader] = useState(false);
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
     login(values);
@@ -44,6 +44,7 @@ function GuestLoginModal() {
 
   const login = async (values) => {
     try {
+      setLoader(true);
       var bodyFormData = new FormData();
       // bodyFormData.append("email", values.email);
       bodyFormData.append("email_phone", values.phone_number);
@@ -71,7 +72,9 @@ function GuestLoginModal() {
           $("#otpModal").toggleClass("modal fade modal");
         });
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log("error", error);
     }
   };
@@ -146,8 +149,23 @@ function GuestLoginModal() {
                   {/* btn */}
                   <div className="col-12 d-grid">
                     {" "}
-                    <button type="submit" className="btn btn-dark">
+                    <button
+                      type="submit"
+                      className="btn btn-dark"
+                      disabled={loader}
+                    >
                       CONTINUE
+                      {loader ? (
+                        <>
+                          &nbsp;
+                          <div
+                            class="spinner-border spinner-border-sm"
+                            role="status"
+                          >
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        </>
+                      ) : null}
                     </button>
                   </div>
 

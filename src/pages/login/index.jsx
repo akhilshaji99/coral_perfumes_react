@@ -26,6 +26,7 @@ const schema = yup.object().shape({
 const REDIRECT_URI =
   "https://plenty-planets-beam-42-118-51-2.loca.lt/account/login";
 function Login() {
+  const [loader, setLoader] = useState(false);
   // const [provider, setProvider] = useState("");
   const facebookRef = useRef();
   const [profile, setProfile] = useState(null);
@@ -46,6 +47,7 @@ function Login() {
 
   const login = async (values) => {
     try {
+      setLoader(true);
       var bodyFormData = new FormData();
       // bodyFormData.append("email", values.email);
       bodyFormData.append("email_phone", values.phone_number);
@@ -67,7 +69,9 @@ function Login() {
           />
         ));
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log("error", error);
     }
   };
@@ -259,9 +263,23 @@ function Login() {
                     />
                   </div> */}
                   <div className="col-12 d-grid">
-                    {" "}
-                    <button type="submit" className="btn btn-dark">
-                      PROCEED
+                    <button
+                      type="submit"
+                      className="btn btn-dark"
+                      disabled={loader}
+                    >
+                      PROCEED{" "}
+                      {loader ? (
+                        <>
+                          &nbsp;
+                          <div
+                            class="spinner-border spinner-border-sm"
+                            role="status"
+                          >
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        </>
+                      ) : null}
                     </button>
                   </div>
                 </div>
