@@ -51,6 +51,7 @@ function Index() {
     gift_message: null,
     gift_wrap_content: null,
   });
+  const [confirmButtonStatus, setConfirmButtonStatus] = useState(false);
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
@@ -197,6 +198,7 @@ function Index() {
       console.log(combinedPayload);
       UpdateCheckoutDetails(combinedPayload).then((response) => {
         if (response?.data?.status) {
+          setConfirmButtonStatus(true);
           setCartItems(response?.data?.data?.cart_items);
           setPaymentTypes(response?.data?.data?.payment_types);
           addressForm.setFieldValue(
@@ -1073,6 +1075,7 @@ function Index() {
                       }
                       checkedValue={checkoutUpdateParams?.shipping_zone_type}
                       checkout_api_status={checkout_api_status}
+                      confirmButtonStatus={confirmButtonStatus}
                     />
                   ) : null}
 
@@ -1083,6 +1086,7 @@ function Index() {
                     fetchCheckoutDetailsForPaymentType={
                       fetchCheckoutDetailsForPaymentType
                     }
+                    confirmButtonStatus={confirmButtonStatus}
                   />
                 </div>
               </div>

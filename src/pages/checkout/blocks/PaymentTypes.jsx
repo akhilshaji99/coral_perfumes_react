@@ -1,27 +1,50 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
+import AlerMessage from "../../common/AlerMessage";
+import toast from "react-hot-toast";
 
 function PaymentTypes({
   paymentTypes,
   paymentComponentToScrollRef,
   activePaymentType,
   fetchCheckoutDetailsForPaymentType,
+  confirmButtonStatus,
 }) {
   return (
-    <div className="accordion-item checkout-accordion" ref={paymentComponentToScrollRef}>
+    <div
+      className="accordion-item checkout-accordion"
+      ref={paymentComponentToScrollRef}
+    >
       <div className="d-flex justify-content-between align-items-center h">
         {/* heading one */}
-
         <h4 className="pt-3 ps-3 "> PAYMENT TYPE</h4>
-
         <a
-          href="#"
+          href="javascript:;"
           className="fs-5 text-inherit collapsed h4"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseFive"
-          aria-expanded="true"
-          aria-controls="flush-collapseFive"
+          // data-bs-toggle="collapse"
+          // data-bs-target="#flush-collapseFive"
+          // aria-expanded="true"
+          // aria-controls="flush-collapseFive"
         >
-          <button type="button" className="btn btn-default">
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={() => {
+              if (confirmButtonStatus) {
+                var myDiv = document.getElementById("payment_type_accordian");
+                myDiv.className = "accordion-collapse collapse show";
+              } else {
+                toast((t) => (
+                  <AlerMessage
+                    t={t}
+                    toast={toast}
+                    status={false}
+                    title={"Error"}
+                    message={"Press confirm button to continue."}
+                  />
+                ));
+              }
+            }}
+          >
             <span className="accordion-arrow">
               <svg
                 width={18}
@@ -42,14 +65,12 @@ function PaymentTypes({
             </span>
           </button>
         </a>
-        {/* btn */}
-
-        {/* collapse */}
       </div>
       <div
-        id="flush-collapseFive"
-        className="accordion-collapse collapse show "
-        data-bs-parent="#accordionFlushExample"
+        // id="flush-collapseFive"
+        id="payment_type_accordian"
+        className={`accordion-collapse collapse hide `}
+        // data-bs-parent="#accordionFlushExample"
       >
         <div className="mb-1">
           {/* card body */}

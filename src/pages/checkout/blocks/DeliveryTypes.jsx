@@ -1,9 +1,13 @@
 import request from "../../../utils/request";
 import { useEffect, useState } from "react";
+import AlerMessage from "../../common/AlerMessage";
+import toast from "react-hot-toast";
+
 function DeliveryTypes({
   fetchCheckoutDetailsByDeliveryType,
   checkedValue,
   checkout_api_status,
+  confirmButtonStatus,
 }) {
   const [deliveryTypes, setDeliveryTypes] = useState([]);
   const [checkedShippingType, setCheckedShippingType] = useState(null);
@@ -43,14 +47,33 @@ function DeliveryTypes({
       <div className="d-flex justify-content-between align-items-center h">
         <h4 className="pt-3 ps-3 "> DELIVERY TYPE</h4>
         <a
-          href="#"
+          href="javascript:;"
           className="fs-5 text-inherit collapsed h4"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseFour"
-          aria-expanded="true"
-          aria-controls="flush-collapseFour"
+          // data-bs-toggle="collapse"
+          // data-bs-target="#flush-collapseFour"
+          // aria-expanded="true"
+          // aria-controls="flush-collapseFour"
         >
-          <button type="button" className="btn btn-default">
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={() => {
+              if (confirmButtonStatus) {
+                var myDiv = document.getElementById("delivery_types_accordian");
+                myDiv.className = "accordion-collapse collapse show";
+              } else {
+                toast((t) => (
+                  <AlerMessage
+                    t={t}
+                    toast={toast}
+                    status={false}
+                    title={"Error"}
+                    message={"Press confirm button to continue."}
+                  />
+                ));
+              }
+            }}
+          >
             <span className="accordion-arrow">
               <svg
                 width={18}
@@ -73,9 +96,9 @@ function DeliveryTypes({
         </a>
       </div>
       <div
-        id="flush-collapseFour"
-        className="accordion-collapse collapse show "
-        data-bs-parent="#accordionFlushExample"
+        id="delivery_types_accordian"
+        className={`accordion-collapse collapse hide `}
+        // data-bs-parent="#accordionFlushExample"
       >
         <div className="mb-1">
           {/* card body */}
