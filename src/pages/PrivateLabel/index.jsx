@@ -176,8 +176,8 @@ function Index() {
           <div className="video-wrapper">
             <video
               playsInline=""
-              autoPlay=""
-              muted=""
+              autoPlay="true"
+              muted="true"
               loop=""
               poster={video_poster}
             >
