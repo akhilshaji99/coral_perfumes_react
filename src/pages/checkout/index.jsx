@@ -16,6 +16,7 @@ import $ from "jquery";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import RemovePromoCode from "./js/removePromoCode";
+import getEmirateName from "./js/getEmirateName";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -160,7 +161,9 @@ function Index() {
           if (response?.data?.store_emirate_id) {
             emirate_id = response?.data?.store_emirate_id;
           } else {
-            emirate_id = response?.data?.emirates[0]?.id;
+            emirate_id =
+              response?.data?.default_address?.account_address?.emirate_id ||
+              response?.data?.emirates[0]?.id;
           }
           await fetchStoreApi(emirate_id, response?.data?.store_id); //Fetch store api
         }
@@ -443,6 +446,19 @@ function Index() {
   };
   //#End
 
+  const [isDeliveryEmirateDropdownOpen, setDeliveryEmirateDropdownOpen] =
+    useState(false);
+
+  const [isStoreEmirateDropdownOpen, setStoreEmirateDropdownOpen] =
+    useState(false);
+
+  const toggleDeliveryEmirates = () => {
+    setDeliveryEmirateDropdownOpen(!isDeliveryEmirateDropdownOpen);
+  };
+
+  const toggleStoreDeliveryEmirates = () => {
+    setStoreEmirateDropdownOpen(!isStoreEmirateDropdownOpen);
+  };
   return (
     <>
       <section className="mb-lg-14 mb-8 mt-8">
@@ -867,7 +883,66 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <select
+                                    <div className="dropdown  form-control">
+                                      <a
+                                        className=" dropdown-toggle text-dark btn-filter"
+                                        type="button"
+                                        onClick={toggleDeliveryEmirates}
+                                      >
+                                        {getEmirateName(
+                                          addressForm.values.emirate,
+                                          checkOutDetails?.emirates
+                                        )}
+                                        <svg
+                                          className="regular-sort-icon"
+                                          width={24}
+                                          height={24}
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                            stroke="black"
+                                            strokeWidth="1.5"
+                                            strokeMiterlimit={10}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          />
+                                        </svg>
+                                      </a>
+                                      {/* Render the dropdown content based on the state */}
+                                      {isDeliveryEmirateDropdownOpen && (
+                                        <div
+                                          className="dropdown-menu"
+                                          style={{ display: "block" }}
+                                        >
+                                          {/* Add your dropdown items here */}
+                                          {checkOutDetails?.emirates?.map(
+                                            (emirate, index) => {
+                                              return (
+                                                <label
+                                                  key={index}
+                                                  className="dropdown-item dropdown-item-custom"
+                                                  onClick={() => {
+                                                    addressForm.setFieldValue(
+                                                      "emirate",
+                                                      emirate.id
+                                                    );
+                                                    setDeliveryEmirateDropdownOpen(
+                                                      !isDeliveryEmirateDropdownOpen
+                                                    );
+                                                  }}
+                                                >
+                                                  {emirate.name}
+                                                </label>
+                                              );
+                                            }
+                                          )}
+                                        </div>
+                                      )}
+                                    </div>
+                                    {/* <select
                                       className="form-control"
                                       name="emirate"
                                       value={addressForm.values.emirate}
@@ -882,7 +957,7 @@ function Index() {
                                           );
                                         }
                                       )}
-                                    </select>
+                                    </select> */}
                                   </div>
                                 </div>
                               </div>
@@ -976,7 +1051,66 @@ function Index() {
                               <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 b-lg-0">
-                                    <select
+                                    <div className="dropdown  form-control">
+                                      <a
+                                        className=" dropdown-toggle text-dark btn-filter"
+                                        type="button"
+                                        onClick={toggleStoreDeliveryEmirates}
+                                      >
+                                        {/* {getEmirateName(
+                                          addressForm.values.emirate,
+                                          checkOutDetails?.emirates
+                                        )} */}
+                                        <svg
+                                          className="regular-sort-icon"
+                                          width={24}
+                                          height={24}
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                            stroke="black"
+                                            strokeWidth="1.5"
+                                            strokeMiterlimit={10}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          />
+                                        </svg>
+                                      </a>
+                                      {/* Render the dropdown content based on the state */}
+                                      {isStoreEmirateDropdownOpen && (
+                                        <div
+                                          className="dropdown-menu"
+                                          style={{ display: "block" }}
+                                        >
+                                          {/* Add your dropdown items here */}
+                                          {checkOutDetails?.emirates?.map(
+                                            (emirate, index) => {
+                                              return (
+                                                <label
+                                                  key={index}
+                                                  className="dropdown-item dropdown-item-custom"
+                                                  onClick={() => {
+                                                    addressForm.setFieldValue(
+                                                      "store_emirate_id",
+                                                      emirate.id
+                                                    );
+                                                    setStoreEmirateDropdownOpen(
+                                                      !isStoreEmirateDropdownOpen
+                                                    );
+                                                  }}
+                                                >
+                                                  {emirate.name}
+                                                </label>
+                                              );
+                                            }
+                                          )}
+                                        </div>
+                                      )}
+                                    </div>
+                                    {/* <select
                                       className="form-control"
                                       name="emirate"
                                       value={addressForm.values.emirate}
@@ -996,7 +1130,7 @@ function Index() {
                                           );
                                         }
                                       )}
-                                    </select>
+                                    </select> */}
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
