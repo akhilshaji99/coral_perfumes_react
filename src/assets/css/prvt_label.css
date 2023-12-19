@@ -1,0 +1,411 @@
+.mian-pg p {
+    color: #000;
+    font-family: 'brandonTextRegular';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 390;
+    line-height: 196%;
+    letter-spacing: 1.08px;
+  }
+  .private-tittle h1 {
+      color: #000;
+      font-family: var(--fc-font-bold);
+      font-size: 45px;
+      font-style: normal;
+      font-weight: 450;
+      line-height: 144.49%;
+      text-transform: uppercase;
+  }
+  .private-tittle {
+      width: 75%;
+  }
+  .enquirys-btn {
+      padding: 20px 0px;
+  }
+  
+  .private-page .txt-end{
+      text-align: end;
+  }
+  .work-it-img {
+    width: 524px;
+    height: 490px;
+  }
+  .it-work {
+      padding: 40px 0px;
+  }
+  .develo-scent h2 {
+      color: #000;
+      font-family: var(--fc-font-bold);
+      font-size: 39px;
+      font-style: normal;
+      font-weight: 450;
+      line-height: 144.49%;
+      text-transform: uppercase;
+  }
+  .accordion-scent .accordion-title {
+    color: #000;
+    font-family: var(--fc-font-bold);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: uppercase;
+    padding: 10px 0px;
+    padding: 1em 1.5em 1em 0;
+  }
+  .accordion-scent .accordion-item-scent {
+    border-bottom: 1px solid #979292;
+    padding: 15px 0px;
+  }
+    
+    .accordion-scent button {
+      position: relative;
+      display: block;
+      text-align: left;
+      width: 100%;
+      padding: 1em 0;
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 400;
+      border: none;
+      background: none;
+      outline: none;
+    }
+    
+    .accordion-scent button:hover,
+    .accordion-scent button:focus {
+      cursor: pointer;
+      color: var(--blue);
+    }
+    
+    .accordion-scent button:hover::after,
+    .accordion-scent button:focus::after {
+      cursor: pointer;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+    }
+    
+   
+    
+    .accordion-scent .icon {
+      display: inline-block;
+      position: absolute;
+      top: 18px;
+      right: 0;
+      border-radius: 22px;
+      padding: 15px;
+    }
+    
+    .accordion-scent .icon::before {
+      display: block;
+      position: absolute;
+      content: '';
+      top: 9px;
+      left: 5px;
+      width: 10px;
+      height: 2px;
+      background: currentColor;
+    }
+    
+    .accordion-scent .icon::after {
+      display: block;
+      position: absolute;
+      content: '';
+      top: 5px;
+      left: 9px;
+      width: 2px;
+      height: 10px;
+      background: currentColor;
+    }
+    
+    .accordion-scent button[aria-expanded='true'] {
+      color: var(--blue);
+    }
+    
+    .accordion-scent button[aria-expanded='true'] .icon::after {
+      width: 0;
+    }
+    
+    .accordion-scent button[aria-expanded='true'] + .accordion-content-scent {
+      opacity: 1;
+      max-height: 9em;
+      transition: all 200ms linear;
+      will-change: opacity, max-height;
+    }
+    
+    .accordion-scent .accordion-content-scent {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 200ms linear, max-height 200ms linear;
+      will-change: opacity, max-height;
+    }
+    
+    .accordion-scent .accordion-content-scent p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 2em 0;
+      line-height: normal;
+      font-family: 'brandonTextRegular';
+    }
+    
+    video {
+      object-fit: cover;
+      height:auto;
+      width: 100%;
+    }
+    .video-wrapper {
+      height: auto;
+      position: relative;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-txt{
+      position: relative;
+      color: white;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+    }
+  .btr {
+    border-top: solid 1px #000;
+    border-bottom: solid 1px #000;
+  }
+  .btr-right{
+    border-right: solid 1px #000;
+  }
+  .benefit-tittle {
+    padding: 40px 0px;
+    text-align: center;
+  }
+  .quality-text {
+    padding: 40px 40px 10px 40px;
+    text-align: center;
+  }
+  .quality-text img {
+    width: 50px;
+  }
+  .quality-text img {
+    width: 50px;
+    padding-bottom: 35px;
+  }
+  .benefit-tittle h3 {
+    color: #000;
+    text-align: center;
+    font-family: var(--fc-font-bold);
+    font-size: 39px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: uppercase;
+  }
+  .quality-text h4 {
+    color: #000;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: var(--fc-font-bold);
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: uppercase;
+  }
+  .private-page .quality-text p {
+    color: #000;
+    text-align: center;
+    font-family: brandonTextRegular;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 390;
+    line-height: normal;
+  }
+  .lets-tittle h3 {
+    color: #000;
+    font-family: var(--fc-font-bold);
+    font-size: 39px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+  }
+  .lest-img img {
+    max-height: 370px;
+    width: 80%;
+  }
+  .lest-img {
+  text-align: end;
+  }
+  section.cont-ad {
+    background-color: #EBECE9;
+  }
+  section.cont-ad {
+    background-color: #EBECE9;
+    margin-top: 40px;
+    padding: 50px 0px;
+  }
+  .private_mails a {
+    color: #000;
+    font-family: var(--fc-font-bold);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: lowercase;
+    display: block;
+  }
+  .private_ph a {
+    color: #000;
+    font-family: var(--fc-font-bold);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 144.49%;
+    text-transform: capitalize;
+    display: block;
+    padding-left: 20px;
+  }
+  .private-cs p {
+    font-family: var(--fc-font-bold);
+    color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 150%; /* 24px */
+  text-transform: capitalize;
+  }
+  .private_ph {
+    display: flex;
+  }
+  .private_mails {
+    display: flex;
+  }
+  .enquirys-btn.lg-none {
+    display: none;
+  }
+  .lg-nones{
+    display: none;
+  }
+  .enquirys-btn a {
+    color: #FFF;
+    text-align: center;
+    font-family: var(--fc-font-bold); 
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  
+  .private-cs p  {
+    width: 68%;
+    padding-left: 20px;
+  }
+  .private_mails div {
+    padding-left: 20px;
+  }
+  .pro-dot{
+    background-color: #000;
+    height: 40px;
+  }
+  @media screen and (max-width:767px) {
+   .order-1 {
+      order: 1;
+   }
+   .order-2 {
+    order: 1;
+  }
+  
+  .private-tittle {
+    width: 100%;
+    padding: 20px 0px;
+  }
+  .private-tittle h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+  img.private-imgs {
+    width: 100%;
+  }
+  .enquirys-btn {
+    text-align: center;
+  }
+  .it-work {
+    padding-top: 10px;
+  }
+  .enquirys-btn {
+    padding: 5px 0px;
+  }
+  .private-page .pb-10 {
+    padding-bottom: 15px !important;
+  }
+  .develo-scent h2 {
+    font-size: 20px;
+  }
+  .accordion-scent .accordion-title {
+    font-size: 17px;
+    padding: 8px 0px;
+  }
+  .accordion-scent .accordion-content-scent p {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0em 0;
+  }
+  .enquirys-btn.lg-none {
+    display:block;
+  }
+  .work-it-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .lg-nones{
+    display: block;
+  }
+  .quality-text {
+   padding:0px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .quality-text p {
+    font-size: 11px;
+  }
+  .quality-text h4 {
+    font-size: 13px;}
+    .lest-img {
+      text-align: center;
+      padding-top: 30px;
+  }
+  .private-page .quality-text p {
+    font-size: 12px;
+  }
+  .lest-img img {
+    width: 100%;
+  }
+  .private-cs p {
+    font-size: 15px;
+    padding-bottom: 20px;
+  }
+  .private-cs svg {
+    width: 50%;
+  }
+  private_ph svg {
+    width: 13%;
+  }
+  .btr-right {
+    border-right: none;
+  }
+  .private_ph {
+    display: flex;
+    padding-bottom: 20px;
+  }
+  .bdr-sm {
+    border-right: solid 1px #000;
+  }
+  .bdr-top{
+    border-top: solid 1px #000;
+  }
+  .private-cs p  {
+    width: auto;
+  }
+  }

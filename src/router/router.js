@@ -30,6 +30,7 @@ import TermsConditions from "../pages/termsAndConditions/index";
 import SingleOrder from "../pages/orders/SingleOrder";
 import NotFound from "../pages/not_found/index";
 import PrivateLabel from "../pages/PrivateLabel/index";
+import ContactForm from "../pages/contact/ContactForm";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -137,6 +138,10 @@ const Router = () => {
         {
           path: "prvt-label",
           element: <PrivateLabel />,
+        },
+        {
+          path: "contact",
+          element: <ContactForm />,
         },
         // {
         //   path: "404",
