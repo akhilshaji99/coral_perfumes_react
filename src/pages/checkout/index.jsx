@@ -1231,6 +1231,7 @@ function Index() {
                   basicInfoFormValidation={basicInfoFormValidation}
                   checkPaymentTypeSelected={checkPaymentTypeSelected}
                   validateDeliveryAddress={validateDeliveryAddress}
+                  confirmButtonStatus={confirmButtonStatus}
                 />
               </div>
             </div>

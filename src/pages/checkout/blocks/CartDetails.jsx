@@ -1,11 +1,15 @@
 import deviceImageRender from "../../../utils/deviceImageRender";
 import confirmCheckout from "../js/confirmCheckout";
+import AlerMessage from "../../common/AlerMessage";
+import toast from "react-hot-toast";
+
 function CartDetails({
   cartDatas,
   scrollToPaymentComponent,
   basicInfoFormValidation,
   checkPaymentTypeSelected,
   validateDeliveryAddress,
+  confirmButtonStatus,
 }) {
   return (
     <div className=" card checkout-left-card">
@@ -117,6 +121,18 @@ function CartDetails({
                     type="button"
                     className="btn btn-dark mb-1"
                     onClick={() => {
+                      if (!confirmButtonStatus) {
+                        toast((t) => (
+                          <AlerMessage
+                            t={t}
+                            toast={toast}
+                            status={false}
+                            title={"Error"}
+                            message={"Press confirm button to continue."}
+                          />
+                        ));
+                        return;
+                      }
                       let basicValidationStatus = basicInfoFormValidation();
                       if (basicValidationStatus) {
                         let paymentModeSelected = checkPaymentTypeSelected();
