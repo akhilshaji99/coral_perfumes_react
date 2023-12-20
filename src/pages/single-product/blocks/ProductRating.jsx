@@ -83,7 +83,7 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
                 />
               </svg>
               {"  "}
-              97% of customers recommend this product
+              {productReviews?.customer_message}
             </span>
           </div>
           <div className=" col-md-3 mt-3">
@@ -103,7 +103,7 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
               </button>
             </div>
           </div>
-          {productReviews?.stars_array?.map((component, index) => {
+          {productReviews?.star_percentage_array?.map((component, index) => {
             return (
               <div key={index}>
                 <div className="row align-items-center mt-5">

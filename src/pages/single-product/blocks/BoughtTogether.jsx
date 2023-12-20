@@ -3,20 +3,63 @@ import "react-multi-carousel/lib/styles.css";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { NavLink } from "react-router-dom";
 import request from "../../../utils/request";
+import { useState } from "react";
+import AlerMessage from "../../common/AlerMessage";
+import toast from "react-hot-toast";
 // import { useEffect, useState } from "react";
 
 function BoughtTogether({ FbtDatas }) {
+  const [unCheckedFbt, setUncheckedFbt] = useState([]);
+  const [status, setStatus] = useState(false);
+
   const fbtAddToCart = async () => {
     try {
-      // var bodyFormData = new FormData();
-      // bodyFormData.append("stars_count", rating);
-      // bodyFormData.append("message", message);
       const response = await request.post("add_to_cart_fbt/", {
         id: FbtDatas?.id,
       });
-      // if (response?.data?.status) {
-      //   // setBrandReviews(response?.data?.data);
-      // }
+      if (!response?.data?.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={false}
+            title={"Error"}
+            message={response?.data?.message}
+          />
+        ));
+      } else {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={true}
+            title={"Success"}
+            message={response?.data?.message}
+          />
+        ));
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const changeFbtStatus = async (product_id) => {
+    try {
+      if (unCheckedFbt.includes(product_id)) {
+        const index = unCheckedFbt.indexOf(product_id);
+        unCheckedFbt.splice(index, 1);
+      } else {
+        unCheckedFbt.push(product_id);
+      }
+      setUncheckedFbt(unCheckedFbt);
+      console.log("unCheckedFbt", unCheckedFbt);
+      setStatus(!status);
+      const response = await request.post("fbt_uncheck/", {
+        unchecked_products: unCheckedFbt,
+        fbt_id: FbtDatas?.id,
+      });
+      if (response?.data?.status) {
+      }
     } catch (error) {
       console.log("error", error);
     }
@@ -95,9 +138,12 @@ function BoughtTogether({ FbtDatas }) {
                       <div className="card-body fbt-product-box">
                         <span class="badge">
                           <input
-                            type="radio"
-                            checked
+                            type="checkbox"
+                            checked={!unCheckedFbt.includes(fbtProduct?.id)}
                             className="form-check-input"
+                            onChange={() => {
+                              changeFbtStatus(fbtProduct?.id);
+                            }}
                           />
                         </span>
                         <div className="text-center position-relative ">
