@@ -2009,13 +2009,7 @@ body.checkout div#flush-collapseOne .promo-code-label {
 .error-border {
   border: 1px solid red;
 }
-/* .fbt-product-plus li::after {
-  content: "+";
-  position: absolute;
-  top: 35%;}
-.fbt-product-plus li::after {
-  left: 100%;
-} */
+
 body.address-book .mt-4 {
   margin-top: 0px !important;
 }
