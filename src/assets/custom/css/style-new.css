@@ -2005,11 +2005,13 @@ body.checkout div#flush-collapseOne .promo-code-label {
   padding-top: 4px !important;
   margin: 0px !important;
 }
-
 .error-border {
   border: 1px solid red;
 }
 
 body.address-book .mt-4 {
   margin-top: 0px !important;
+}
+body.contact .container.pt-10 {
+  padding-top: 0px !important;
 }
