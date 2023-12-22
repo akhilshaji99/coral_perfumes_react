@@ -187,7 +187,7 @@ function Index() {
           </div>
         </div>
         {/*-Benefits-*/}
-        <section>
+        <section className="ben-sect">
           <div className="benefit-tittle">
             <h3>Benefits</h3>
           </div>
@@ -287,11 +287,11 @@ function Index() {
             <div className="row ">
               <ul>
                 <li id="first" className="active">
-                  <div className="col-md-12">
-                    <div className="col-md-6 pro-dot-title">
+                  <div className="row">
+                    <div className="col-12 col-md-6 pro-dot-title">
                       <h2>Get in touch</h2>
                     </div>
-                    <div className="col-md-6 pro-dot-content">
+                    <div className="col-12 col-md-6 pro-dot-content">
                       <p>
                         Get in touch with our support team through any means
                         such as contact-form, email or telephone. Further, we
@@ -302,11 +302,11 @@ function Index() {
                   </div>
                 </li>
                 <li id="second">
-                  <div className="col-md-12">
-                    <div className="col-md-6 pro-dot-title">
+                  <div className="row">
+                    <div className="col-12 col-md-6 pro-dot-title">
                       <h2>Customization </h2>
                     </div>
-                    <div className="col-md-6 pro-dot-content">
+                    <div className="col-12 col-md-6 pro-dot-content">
                       <p>
                         As per your specifications, our manufacturing experts
                         will create three unique samples for you. You can either
@@ -317,11 +317,11 @@ function Index() {
                   </div>
                 </li>
                 <li id="third">
-                  <div className="col-md-12">
-                    <div className="col-md-6 pro-dot-title">
+                  <div className="row">
+                    <div className="col-12 col-md-6 pro-dot-title">
                       <h2>selection</h2>
                     </div>
-                    <div className="col-md-6 pro-dot-content">
+                    <div className="col-12 col-md-6 pro-dot-content">
                       <p>
                         You can select your bottle, the atomizer, the cap and
                         the design and packaging for your scent. If you may
@@ -331,11 +331,11 @@ function Index() {
                   </div>
                 </li>
                 <li id="fourth">
-                  <div className="col-md-12">
-                    <div className="col-md-6 pro-dot-title">
+                  <div className="row">
+                    <div className="col-12 col-md-6 pro-dot-title">
                       <h2>Final</h2>
                     </div>
-                    <div className="col-md-6 pro-dot-content">
+                    <div className="col-12 col-md-6 pro-dot-content">
                       <p>
                         After you’ve met the team, we will set you up on our
                         internal communications tool, Workplace by Facebook.
