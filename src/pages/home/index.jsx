@@ -26,11 +26,13 @@ function Index() {
 
   const [homeContent, setHomeContent] = useState([]);
   const [homeComponents, setHomeComponents] = useState([]);
+  const [apiLoader, setApiLoader] = useState(true);
   useEffect(() => {
     getHomeContent();
   }, []);
   const getHomeContent = async () => {
     try {
+      setApiLoader(true);
       var bodyFormData = new FormData();
       bodyFormData.append("token", getUserToken());
       dispatch(changeApiCallStatus(false)); // Change api call status
@@ -42,8 +44,10 @@ function Index() {
 
         setHomeComponents(mainKeys);
         setHomeContent(response.data);
+        setApiLoader(false);
       }
     } catch (error) {
+      setApiLoader(false);
       console.log("error", error);
     }
   };
@@ -68,123 +72,129 @@ function Index() {
             </>
           );
         })}
-        <div className="home-wrapper">
-          {homeComponents?.map((component, index) => {
-            return (
-              <>
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP3" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    {/* <div className="category-top-div"> */}
-                    <CategoryTop componentDatas={homeContent[component][0]} />
-                    {/* </div> */}
-                  </Suspense>
-                ) : null}
+        {!apiLoader ? (
+          <div className="home-wrapper">
+            {homeComponents?.map((component, index) => {
+              return (
+                <>
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP3" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      {/* <div className="category-top-div"> */}
+                      <CategoryTop componentDatas={homeContent[component][0]} />
+                      {/* </div> */}
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP5" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    {/* <div className="category-top-div2"> */}
-                    <BannerFlashSale
-                      componentDatas={homeContent[component][0]}
-                    />
-                    {/* </div> */}
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP5" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      {/* <div className="category-top-div2"> */}
+                      <BannerFlashSale
+                        componentDatas={homeContent[component][0]}
+                      />
+                      {/* </div> */}
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP6" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    {/* <div className="category-top-div3"> */}
-                    <FlashSale componentDatas={homeContent[component][0]} />
-                    {/* </div> */}
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP6" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      {/* <div className="category-top-div3"> */}
+                      <FlashSale componentDatas={homeContent[component][0]} />
+                      {/* </div> */}
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP9" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <ProductCarousel
-                      componentDatas={homeContent[component][0]}
-                    />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP9" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <ProductCarousel
+                        componentDatas={homeContent[component][0]}
+                      />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP7" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    {/* <div className="category-top-div4"> */}
-                    <WalletBanner componentDatas={homeContent[component][0]} />
-                    {/* </div> */}
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP7" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      {/* <div className="category-top-div4"> */}
+                      <WalletBanner
+                        componentDatas={homeContent[component][0]}
+                      />
+                      {/* </div> */}
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP8" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <Deals componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP8" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <Deals componentDatas={homeContent[component][0]} />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP11" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <TopCategories componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP11" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <TopCategories
+                        componentDatas={homeContent[component][0]}
+                      />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP12" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <AdsBanner componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP12" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <AdsBanner componentDatas={homeContent[component][0]} />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP13" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <ShopPreferences
-                      componentDatas={homeContent[component][0]}
-                    />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP13" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <ShopPreferences
+                        componentDatas={homeContent[component][0]}
+                      />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP14" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <Brands componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP14" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <Brands componentDatas={homeContent[component][0]} />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP15" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <ShopMore componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP15" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <ShopMore componentDatas={homeContent[component][0]} />
+                    </Suspense>
+                  ) : null}
 
-                {homeContent[component] &&
-                homeContent[component]?.[0]?.component_identifier ===
-                  "COMP10" ? (
-                  <Suspense fallback={<Placeholder />}>
-                    <AdsBlock componentDatas={homeContent[component][0]} />
-                  </Suspense>
-                ) : null}
-              </>
-            );
-          })}
-        </div>
+                  {homeContent[component] &&
+                  homeContent[component]?.[0]?.component_identifier ===
+                    "COMP10" ? (
+                    <Suspense fallback={<Placeholder />}>
+                      <AdsBlock componentDatas={homeContent[component][0]} />
+                    </Suspense>
+                  ) : null}
+                </>
+              );
+            })}
+          </div>
+        ) : null}
       </main>
     </>
   );
