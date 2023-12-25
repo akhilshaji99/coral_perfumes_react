@@ -53,6 +53,8 @@ function Index() {
     gift_wrap_content: null,
   });
   const [confirmButtonStatus, setConfirmButtonStatus] = useState(false);
+  const [storePickupEmirateName, setStorePickupEmirateName] = useState("");
+  const [storePickupStoreName, setStorePickupStoreName] = useState("");
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
@@ -93,79 +95,65 @@ function Index() {
       fetchCheckoutApi();
     });
   };
-  const fetchStoreApi = async (emirate_id, store_id) => {
+  const fetchStoreApi = async (emirate_id, store_id, store_name) => {
     try {
       const response = await getStores(emirate_id);
       if (response?.data?.status) {
         setAvailableStores(response?.data?.data);
-        addressForm.setFieldValue("emirate", emirate_id);
         addressForm.setFieldValue(
           "store_id",
           store_id || response?.data?.data[0]?.id
         );
-
-        // const uniqueStores = [
-        //   ...new Map(response?.data?.data?.map((m) => [m.emirate, m])).values(),
-        // ];
-        // setStoreEmirates(uniqueStores);
-        // await filterStoresByEmirates(
-        //   checkoutResponseData?.store_emirate_id || uniqueStores[0]?.emirate,
-        //   checkoutResponseData?.store_id,
-        //   response?.data?.data
-        // );
+        setStorePickupStoreName(
+          store_name || response?.data?.data[0]?.store_name
+        );
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-
-  // const filterStoresByEmirates = async (
-  //   emirate_id,
-  //   store_id = null,
-  //   availableStores = []
-  // ) => {
-  //   let emirateStores = [];
-  //   let stores = [];
-  //   if (availableStores.length === 0) {
-  //     stores = storeDatas;
-  //   } else {
-  //     stores = availableStores;
-  //   }
-  //   await stores.forEach((store) => {
-  //     if (parseInt(store.emirate) === parseInt(emirate_id)) {
-  //       emirateStores.push(store);
-  //     }
-  //   });
-  //   setAvailableStores(emirateStores);
-  //   addressForm.setFieldValue("emirate", emirate_id);
-  //   setStatus(!status);
-  //   addressForm.setFieldValue("store_id", store_id || emirateStores?.[0]?.id);
-  // };
   //#End
 
   useEffect(() => {
     fetchCheckoutApi();
   }, []);
-  // useEffect(() => {
-  //   if(!showPrmoCodeFlag && checkOutDetails.length > 0){
-  //   fetchCheckoutApi();
-  //   }
-  // }, [showPrmoCodeFlag]);
+
+  const [normalDeliveryEmirateName, setNormalDeliveryEmirateName] =
+    useState("");
 
   const fetchCheckoutApi = () => {
     getCheckOutDetails().then(async (response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
         if (response?.data?.emirates.length > 0) {
-          let emirate_id = "";
-          if (response?.data?.store_emirate_id) {
-            emirate_id = response?.data?.store_emirate_id;
-          } else {
-            emirate_id =
-              response?.data?.default_address?.account_address?.emirate_id ||
-              response?.data?.emirates[0]?.id;
-          }
-          await fetchStoreApi(emirate_id, response?.data?.store_id); //Fetch store api
+          // if (response?.data?.delivery_type === 1) {
+          //Type - Delivery address
+          let emirate_id =
+            response?.data?.default_address?.account_address?.emirate_id ||
+            response?.data?.emirates[0]?.id;
+          let emirate_name =
+            response?.data?.default_address?.account_address?.emirate ||
+            response?.data?.emirates[0]?.name;
+          addressForm.setFieldValue("emirate", emirate_id);
+          setNormalDeliveryEmirateName(emirate_name);
+
+          //Type - Store Pickup
+          let store_emirate_id =
+            response?.data?.store_emirate_id || response?.data?.emirates[0]?.id;
+          let store_emirate_name =
+            response?.data?.store_emirate_name ||
+            response?.data?.emirates[0]?.name;
+          setStorePickupEmirateName(store_emirate_name);
+          addressForm.setFieldValue(
+            "store_pickup_emirate_id",
+            store_emirate_id
+          );
+          fetchStoreApi(
+            store_emirate_id,
+            response?.data?.store_id,
+            response?.data?.store_name
+          ); //Fetch store api
+          //End of store pickup type
         }
 
         setCartItems(response?.data?.cart_items);
@@ -198,7 +186,10 @@ function Index() {
         checkoutUpdateParams,
         addressForm.values
       );
-      console.log(combinedPayload);
+      combinedPayload.store_emirate_id =
+        combinedPayload?.delivery_type === 2
+          ? combinedPayload?.store_pickup_emirate_id
+          : null;
       UpdateCheckoutDetails(combinedPayload).then((response) => {
         if (response?.data?.status) {
           setConfirmButtonStatus(true);
@@ -224,7 +215,7 @@ function Index() {
         checkOutDetails?.user_data?.phone_number,
       flat_name: checkOutDetails?.default_address?.account_address?.flat_name,
       // emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
-      emirate: null,
+      emirate: checkOutDetails?.default_address?.account_address?.emirate_id,
       street_address:
         checkOutDetails?.default_address?.account_address?.street_address,
       building_number:
@@ -245,6 +236,7 @@ function Index() {
       address_id: checkOutDetails?.default_address?.account_address?.id,
       // store_id: checkOutDetails?.store_id,
       store_id: null,
+      store_pickup_emirate_id: checkOutDetails?.store_emirate_id,
       delivery_instruction_message:
         checkOutDetails?.delivery_instruction_message,
     },
@@ -255,7 +247,6 @@ function Index() {
 
   const changeDeliveryType = (type) => {
     addressForm.setFieldValue("delivery_type", type);
-    // setAddressType(type);
   };
 
   // const setAddressFormInputValue = useCallback(
@@ -287,6 +278,7 @@ function Index() {
   const validateDeliveryAddress = () => {
     let validationStatus = true;
     let message = "";
+    console.log("addressFormaddressForm", addressForm);
     if (addressForm.values.delivery_type == 1) {
       if (
         addressForm.values.flat_name == undefined ||
@@ -458,6 +450,11 @@ function Index() {
 
   const toggleStoreDeliveryEmirates = () => {
     setStoreEmirateDropdownOpen(!isStoreEmirateDropdownOpen);
+  };
+
+  const [isStoreStoreDropdownOpen, setStoreStoreDropdownOpen] = useState(false);
+  const toggleStoreDeliveryStore = () => {
+    setStoreStoreDropdownOpen(!isStoreStoreDropdownOpen);
   };
   return (
     <>
@@ -889,10 +886,7 @@ function Index() {
                                         type="button"
                                         onClick={toggleDeliveryEmirates}
                                       >
-                                        {getEmirateName(
-                                          addressForm.values.emirate,
-                                          checkOutDetails?.emirates
-                                        )}
+                                        {normalDeliveryEmirateName}
                                         <svg
                                           className="regular-sort-icon"
                                           width={24}
@@ -929,12 +923,15 @@ function Index() {
                                                       "emirate",
                                                       emirate.id
                                                     );
+                                                    setNormalDeliveryEmirateName(
+                                                      emirate?.name
+                                                    );
                                                     setDeliveryEmirateDropdownOpen(
                                                       !isDeliveryEmirateDropdownOpen
                                                     );
                                                   }}
                                                 >
-                                                  {emirate.name}
+                                                  {emirate.name} 
                                                 </label>
                                               );
                                             }
@@ -1057,10 +1054,7 @@ function Index() {
                                         type="button"
                                         onClick={toggleStoreDeliveryEmirates}
                                       >
-                                        {/* {getEmirateName(
-                                          addressForm.values.emirate,
-                                          checkOutDetails?.emirates
-                                        )} */}
+                                        {storePickupEmirateName}
                                         <svg
                                           className="regular-sort-icon"
                                           width={24}
@@ -1094,12 +1088,16 @@ function Index() {
                                                   className="dropdown-item dropdown-item-custom"
                                                   onClick={() => {
                                                     addressForm.setFieldValue(
-                                                      "store_emirate_id",
+                                                      "store_pickup_emirate_id",
                                                       emirate.id
+                                                    );
+                                                    setStorePickupEmirateName(
+                                                      emirate?.name
                                                     );
                                                     setStoreEmirateDropdownOpen(
                                                       !isStoreEmirateDropdownOpen
                                                     );
+                                                    fetchStoreApi(emirate.id);
                                                   }}
                                                 >
                                                   {emirate.name}
@@ -1135,7 +1133,66 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <select
+                                    <div className="dropdown  form-control">
+                                      <a
+                                        className=" dropdown-toggle text-dark btn-filter"
+                                        type="button"
+                                        onClick={toggleStoreDeliveryStore}
+                                      >
+                                        {storePickupStoreName}
+                                        <svg
+                                          className="regular-sort-icon"
+                                          width={24}
+                                          height={24}
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                            stroke="black"
+                                            strokeWidth="1.5"
+                                            strokeMiterlimit={10}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          />
+                                        </svg>
+                                      </a>
+                                      {/* Render the dropdown content based on the state */}
+                                      {isStoreStoreDropdownOpen && (
+                                        <div
+                                          className="dropdown-menu"
+                                          style={{ display: "block" }}
+                                        >
+                                          {/* Add your dropdown items here */}
+                                          {avaibleStores?.map(
+                                            (store, index) => {
+                                              return (
+                                                <label
+                                                  key={index}
+                                                  className="dropdown-item dropdown-item-custom"
+                                                  onClick={() => {
+                                                    addressForm.setFieldValue(
+                                                      "store_id",
+                                                      store.id
+                                                    );
+                                                    setStorePickupStoreName(
+                                                      store?.store_name
+                                                    );
+                                                    setStoreStoreDropdownOpen(
+                                                      !isStoreStoreDropdownOpen
+                                                    );
+                                                  }}
+                                                >
+                                                  {store.store_name}
+                                                </label>
+                                              );
+                                            }
+                                          )}
+                                        </div>
+                                      )}
+                                    </div>
+                                    {/* <select
                                       className="form-control"
                                       name="store_id"
                                       value={addressForm.values.store_id}
@@ -1148,7 +1205,7 @@ function Index() {
                                           </option>
                                         );
                                       })}
-                                    </select>
+                                    </select> */}
                                   </div>
                                 </div>
                               </div>

@@ -158,7 +158,7 @@ function Index() {
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
                 <h2 className="mb-6 text-center my-profile-heading">
-                MY PERSONAL INFO
+                  MY PERSONAL INFO
                 </h2>
                 <div className="row">
                   <div className="pe-lg-14">
@@ -195,8 +195,9 @@ function Index() {
                           className="form-control"
                           name="email"
                           placeholder="Email"
+                          disabled={true}
                           value={profileForm.values.email}
-                          onChange={profileForm.handleChange}
+                          // onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "email")}
                         />
                         <a
@@ -218,8 +219,9 @@ function Index() {
                           className="form-control"
                           placeholder="0559238088"
                           name="phone_number"
+                          disabled={true}
                           value={profileForm.values.phone_number}
-                          onChange={profileForm.handleChange}
+                          // onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "phone_number")}
                         />
                         <a
