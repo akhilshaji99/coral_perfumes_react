@@ -1786,10 +1786,10 @@ a {
   color: #0000;
 }
 .text-size {
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: normal;
-  font-family: "BrandonText-Bold", sans-serif;
+  font-size: 1.75rem !important;
+  font-weight: 600!important;
+  line-height: normal!important;
+  font-family: "BrandonText-Bold", sans-serif!important;
 }
 
 .sub-option {
@@ -2014,4 +2014,12 @@ body.address-book .mt-4 {
 }
 body.contact .container.pt-10 {
   padding-top: 0px !important;
+}
+footer.footer p {
+  color: #fff !important;
+}
+.side-scroller
+{
+  height: 423px;
+  overflow-y: scroll;
 }

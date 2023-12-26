@@ -179,8 +179,9 @@
     text-align: center;
   }
   .quality-text {
-    padding: 40px 40px 40px 40px;
+    padding: 40px;
     text-align: center;
+    min-height: 290px;
   }
   .quality-text img {
     width: 50px;
@@ -345,7 +346,7 @@
     padding: 0px 30px;
     width: 85%;
     color: #FFF;
-    font-family: Brandon Text;
+    font-family: brandonTextRegular;
     font-size: 14px;
     font-style: normal;
     font-weight: 390;
