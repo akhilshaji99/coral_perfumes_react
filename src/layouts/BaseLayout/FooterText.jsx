@@ -14,6 +14,7 @@ function FooterText() {
 
   const [footerContent, setFooterContent] = useState(null);
   const [footerTitle, setFooterTitle] = useState(null);
+  const [showFooterText, setShowFooterText] = useState(false);
   useEffect(() => {
     if (isApiCompleted && footerDatas?.content === undefined) {
       getFooterContent();
@@ -31,13 +32,28 @@ function FooterText() {
   };
   return (
     <div className="d-sm-block">
-      <p className="mb-5 text-size">{footerTitle ? footerTitle : footerDatas?.title}</p>
-      <div
-        className="p-d-c footer-text"
-        dangerouslySetInnerHTML={{
-          __html: footerContent ? footerContent : footerDatas?.content,
+      <a
+        href="javascript:;"
+        className="footer-read-more-text"
+        onClick={() => {
+          setShowFooterText(!showFooterText);
         }}
-      />
+      >
+        Read More
+      </a>
+      {showFooterText ? (
+        <>
+          <p className="mb-5 text-size">
+            {footerTitle ? footerTitle : footerDatas?.title}
+          </p>
+          <div
+            className="p-d-c footer-text"
+            dangerouslySetInnerHTML={{
+              __html: footerContent ? footerContent : footerDatas?.content,
+            }}
+          />
+        </>
+      ) : null}
     </div>
   );
 }
