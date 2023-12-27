@@ -263,7 +263,7 @@ function FilterSidebar({
                           </a>
                         ) : null}
 
-                        <div>
+                        <div className="side-scroller">
                           <ul className="nav flex-custom-column ms-3 mt-3">
                             {productFilter?.values?.map((filterData, index) => {
                               return (
