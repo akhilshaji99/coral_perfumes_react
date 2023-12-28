@@ -2021,9 +2021,48 @@ footer.footer p {
 }
 .side-scroller
 {
-  height: 423px;
+  max-height: 423px;
   overflow-y: scroll;
 }
 .row.product-rating {
   width: 100%;
+}
+a.footer-read-more-text {
+  text-decoration: underline;
+  color: #fff !important;
+  text-align: center;
+  display: block;
+  line-height: normal;
+  font-family: "BrandonText-Bold", sans-serif;
+  font-size: 15px;
+}
+body.checkout div#rating-tab-pane svg.regular-sort-icon {
+  /* font-size: 11px; */
+  height: 17px !important;
+}
+body.checkout div#rating-tab-pane a.dropdown-toggle.text-dark.btn-filter {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+  border: none;
+}
+body.checkout div#reviews-tab-pane a.dropdown-toggle.text-dark.btn-filter {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+  border: none;
+}
+body.checkout div#reviews-tab-pane a svg.regular-sort-icon {
+  /* font-size: 11px; */
+  height: 17px !important;
+}
+img.footer-apple-logo {
+  width: 100%;
+}
+img.footer-gplay-logo {
+  width: 100%;
+}
+.check-form{
+  display: flex;
+  justify-content: space-between;
 }

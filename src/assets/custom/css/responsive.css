@@ -634,6 +634,7 @@ h4.fbt-ellipsis-text {
   .offcanvas {
     z-index: 999 !important;
   }
+
   .product-grid h4 {
     white-space: normal;
     line-height: 20px;
