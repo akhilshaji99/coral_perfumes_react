@@ -179,10 +179,11 @@
     text-align: center;
   }
   .quality-text {
+    min-height: 330px;
     padding: 40px;
     text-align: center;
-    min-height: 290px;
-  }
+    padding-bottom: 0px;
+}
   .quality-text img {
     width: 50px;
   }
