@@ -56,9 +56,9 @@ function Index() {
 
         {blogs?.map((blog, index) => {
          return  index % 2 === 0 ? (
-          <><RightSideImageContent key={index} blog={blog}/><RoundImageList blog={blog}/></>
+          <><RightSideImageContent key={index} blog={blog}/></>
         ) : (
-          <><LeftSideImageContent key={index} blog={blog} /><RoundImageList blog={blog} /></>
+          <><LeftSideImageContent key={index} blog={blog} /></>
         );
         })}
       </div>
