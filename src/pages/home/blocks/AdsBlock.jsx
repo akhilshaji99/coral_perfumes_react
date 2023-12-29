@@ -39,7 +39,7 @@ function AdsBlock({ componentDatas }) {
                   index % 2 === 0 ? `mob-inspired` : "mob-collect-banner"
                 }`}
               >
-                <a href="#">
+                <a href={adBlock?.link}>
                   <img
                     src={deviceImageRender(
                       adBlock?.desktop_image,

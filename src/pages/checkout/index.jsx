@@ -887,7 +887,7 @@ function Index() {
                                         onClick={toggleDeliveryEmirates}
                                       >
                                         {normalDeliveryEmirateName}
-                                        {/* <svg
+                                        <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -903,7 +903,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg> */}
+                                        </svg>
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isDeliveryEmirateDropdownOpen && (
@@ -1055,7 +1055,7 @@ function Index() {
                                         onClick={toggleStoreDeliveryEmirates}
                                       >
                                         {storePickupEmirateName}
-                                        {/* <svg
+                                        <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -1071,7 +1071,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg> */}
+                                        </svg>
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreEmirateDropdownOpen && (
@@ -1140,7 +1140,7 @@ function Index() {
                                         onClick={toggleStoreDeliveryStore}
                                       >
                                         {storePickupStoreName}
-                                        {/* <svg
+                                        <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -1156,7 +1156,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg> */}
+                                        </svg>
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreStoreDropdownOpen && (

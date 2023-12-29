@@ -10,8 +10,8 @@ import WhatsappIcon from "../../assets/img/icons/social/whatsapp.png";
 import foot_ic1 from "../../assets/img/foot_ic_1.png";
 import foot_ic2 from "../../assets/img/foot_ic_2.png";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
-import AppStore from "../../assets/img/icons/AppStore_n.svg";
-import Gplay from "../../assets/img/icons/Gplay_n.svg";
+import AppStore from "../../assets/img/icons/App_Store.svg";
+import Gplay from "../../assets/img/icons/Play_Store.svg";
 
 // import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 // import ScrollToTop from "react-scroll-to-top";
@@ -419,7 +419,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
           <div className="col-md-3">
             <div className="row  social-mdedia-icons">
               <h6>FOLLOW US</h6>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.facebook_url}
                   target="_blank"
@@ -427,7 +427,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={FacebookIcon} alt="facebook" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.linkedin_url}
                   target="_blank"
@@ -435,7 +435,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={LinkedinIcon} alt="LinkedIn" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.instagram_url}
                   target="_blank"
@@ -443,7 +443,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={InstagramIcon} alt="Instagram" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.whatsapp_number}
                   target="_blank"
