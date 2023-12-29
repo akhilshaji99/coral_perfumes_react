@@ -1203,7 +1203,11 @@ body.order-details .order-middle-row.align-items-center h3 {
 @media only screen and (min-width: 321px) and (max-width: 769px){
   body.home .cd-margin {
       margin-bottom: 0rem;
-  }}
+  }
+  .border-top.py-4.footer-bottom .d-sm-block {
+    padding-bottom: 50px;
+}
+}
 .menu-zindex {
   z-index: -1 !important;
 }
