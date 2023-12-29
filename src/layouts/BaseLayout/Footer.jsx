@@ -10,8 +10,8 @@ import WhatsappIcon from "../../assets/img/icons/social/whatsapp.png";
 import foot_ic1 from "../../assets/img/foot_ic_1.png";
 import foot_ic2 from "../../assets/img/foot_ic_2.png";
 import FlagUae from "../../assets/img/icons/lang/arab.png";
-import AppStore from "../../assets/img/icons/AppStore_n.svg";
-import Gplay from "../../assets/img/icons/Gplay_n.svg";
+import AppStore from "../../assets/img/icons/App_Store.svg";
+import Gplay from "../../assets/img/icons/Play_Store.svg";
 
 // import FooterExpand from "../../assets/img/icons/footer-expand-icon.svg";
 // import ScrollToTop from "react-scroll-to-top";
