@@ -880,14 +880,14 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <div className="dropdown  form-control">
+                                    <div className="dropdown  form-control check-form">
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
                                         onClick={toggleDeliveryEmirates}
                                       >
                                         {normalDeliveryEmirateName}
-                                        <svg
+                                        {/* <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -903,7 +903,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg>
+                                        </svg> */}
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isDeliveryEmirateDropdownOpen && (
@@ -931,7 +931,7 @@ function Index() {
                                                     );
                                                   }}
                                                 >
-                                                  {emirate.name} 
+                                                  {emirate.name}
                                                 </label>
                                               );
                                             }
@@ -1048,14 +1048,14 @@ function Index() {
                               <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 b-lg-0">
-                                    <div className="dropdown  form-control">
+                                    <div className="dropdown  form-control check-form">
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
                                         onClick={toggleStoreDeliveryEmirates}
                                       >
                                         {storePickupEmirateName}
-                                        <svg
+                                        {/* <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -1071,7 +1071,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg>
+                                        </svg> */}
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreEmirateDropdownOpen && (
@@ -1133,14 +1133,14 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <div className="dropdown  form-control">
+                                    <div className="dropdown  form-control check-form">
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
                                         onClick={toggleStoreDeliveryStore}
                                       >
                                         {storePickupStoreName}
-                                        <svg
+                                        {/* <svg
                                           className="regular-sort-icon"
                                           width={24}
                                           height={24}
@@ -1156,7 +1156,7 @@ function Index() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                           />
-                                        </svg>
+                                        </svg> */}
                                       </a>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreStoreDropdownOpen && (

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.653fb362.css",
-    "main.js": "/static/js/main.15d31aee.js",
+    "main.js": "/static/js/main.41cb268b.js",
     "static/js/95.af727143.chunk.js": "/static/js/95.af727143.chunk.js",
     "static/js/255.67fb6753.chunk.js": "/static/js/255.67fb6753.chunk.js",
     "static/js/494.52c26562.chunk.js": "/static/js/494.52c26562.chunk.js",
@@ -70,6 +70,8 @@
     "static/media/about-img05.webp": "/static/media/about-img05.8efb5561f7dc0b582de6.webp",
     "static/media/404-img.png": "/static/media/404-img.94bf076f271ab6f5d8d8.png",
     "static/media/blog-banner.webp": "/static/media/blog-banner.8b6c7fdc1324ec796c4f.webp",
+    "static/media/Gplay_n.svg": "/static/media/Gplay_n.a27c6160a54e9ff4609454f9d743e4f5.svg",
+    "static/media/AppStore_n.svg": "/static/media/AppStore_n.3d410eabbdc2335b4896ed8f21646ba8.svg",
     "static/media/about-img02.webp": "/static/media/about-img02.e1efd7f16445def2fe8d.webp",
     "static/media/about-img03.webp": "/static/media/about-img03.d2b42a17b30ce42c1efe.webp",
     "static/media/blog-img2.webp": "/static/media/blog-img2.1c5e17bec0be29136a98.webp",
@@ -78,8 +80,6 @@
     "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/Flag_02.svg": "/static/media/Flag_02.bec3986ca3636458f3f3a505f982511c.svg",
-    "static/media/AppStore.svg": "/static/media/AppStore.75f397207a70cbf4726f30c827cf43c4.svg",
-    "static/media/Gplay.svg": "/static/media/Gplay.ae3a4bdf62f67c0457880232a10a2bba.svg",
     "static/media/DS-DIGIB.woff": "/static/media/DS-DIGIB.c9dfb4d00765e88cafcf.woff",
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/logo_coral.svg": "/static/media/logo_coral.01ab3ccf1ff504e9fcf1efb8f76aab94.svg",
@@ -116,7 +116,7 @@
     "static/media/textbox_close.svg": "/static/media/textbox_close.bab6e43a9051228c3d26fa917df2db8a.svg",
     "static/media/hamburger.svg": "/static/media/hamburger.28ee926088598693c4d637f3b53aaf0b.svg",
     "main.653fb362.css.map": "/static/css/main.653fb362.css.map",
-    "main.15d31aee.js.map": "/static/js/main.15d31aee.js.map",
+    "main.41cb268b.js.map": "/static/js/main.41cb268b.js.map",
     "95.af727143.chunk.js.map": "/static/js/95.af727143.chunk.js.map",
     "255.67fb6753.chunk.js.map": "/static/js/255.67fb6753.chunk.js.map",
     "494.52c26562.chunk.js.map": "/static/js/494.52c26562.chunk.js.map",
@@ -135,6 +135,6 @@
   },
   "entrypoints": [
     "static/css/main.653fb362.css",
-    "static/js/main.15d31aee.js"
+    "static/js/main.41cb268b.js"
   ]
 }
