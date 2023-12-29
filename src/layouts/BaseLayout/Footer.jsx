@@ -419,7 +419,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
           <div className="col-md-3">
             <div className="row  social-mdedia-icons">
               <h6>FOLLOW US</h6>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.facebook_url}
                   target="_blank"
@@ -427,7 +427,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={FacebookIcon} alt="facebook" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.linkedin_url}
                   target="_blank"
@@ -435,7 +435,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={LinkedinIcon} alt="LinkedIn" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.instagram_url}
                   target="_blank"
@@ -443,7 +443,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                   <img src={InstagramIcon} alt="Instagram" />
                 </a>
               </div>
-              <div className="col-md-3 col-1">
+              <div className="col-md-3 col-2">
                 <a
                   href={footerDatas?.social_media?.whatsapp_number}
                   target="_blank"
