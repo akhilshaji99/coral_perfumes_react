@@ -31,7 +31,7 @@ function RightSideImageContent({ blog }) {
                 }}
               ></div>
               {/* <a href="#"></a> */}
-              <NavLink to={`/product-details/?slug=${blog?.slug}`}>
+              <NavLink to={`/blog-details/?slug=${blog?.slug}`}>
               Know more 
             </NavLink>
               <span className="blog-date">{blog.blog_date}</span>
