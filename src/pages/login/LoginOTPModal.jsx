@@ -12,7 +12,7 @@ import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
-function LoginOTPModal({ componentDatas, redirectTo = null }) {
+function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModalVisible}) {
   const [resendDisabled, setResendDisabled] = useState(false);
   const [countdown, setCountdown] = useState(60);
   const startCountdown = () => {
@@ -41,6 +41,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
     $("#otpModal").toggle();
     $("#otpModal").toggleClass("modal modal fade");
     $("#otpModal").hide();
+    setModalVisible(false)
     // Clear inputs when the modal is closed
     inputRefsArray.forEach((ref) => {
       if (ref.current) {
@@ -54,6 +55,13 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
   };
   // Reset input values and state when the modal is closed
   useEffect(() => {
+    if(modalVisible){
+    startCountdown();
+    }
+
+  },[modalVisible])
+  useEffect(() => {
+
     const clearInputs = () => {
       setOtpVal([]);
       inputRefsArray.forEach((ref) => {
@@ -160,6 +168,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null }) {
         localStorage.setItem("userDatas", JSON.stringify(userData));
         $("#otpModal").hide();
         $("#cartDrawer").hide();
+        setModalVisible(false);
         if (redirectTo != null) {
           navigate("/" + redirectTo);
         } else {

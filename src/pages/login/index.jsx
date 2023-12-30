@@ -33,6 +33,7 @@ function Login() {
   const onLoginStart = useCallback(() => {
     // alert("login start");
   }, []);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const onLogoutSuccess = useCallback(() => {
     // setProfile(null);
@@ -56,6 +57,7 @@ function Login() {
         $("document").ready(function () {
           $("#otpModal").toggle();
           $("#otpModal").toggleClass("modal fade modal");
+          setModalVisible(true);
         });
       }
       if (!response?.data?.status) {
@@ -215,7 +217,7 @@ function Login() {
                 <h2>OR</h2>
                 <div className="line"></div>
               </div>
-              <LoginOTPModal componentDatas={formik.values} />
+              <LoginOTPModal componentDatas={formik.values} modalVisible={modalVisible} setModalVisible={setModalVisible}/>
               <p>LOGIN/SIGN UP</p>
               <form onSubmit={formik.handleSubmit}>
                 <div className="row g-3">
