@@ -22,7 +22,39 @@ function PaymentWaiting() {
     if (payement_type === "cod") {
       getCodResponse();
     }
+    if (
+      payement_type === "payment-tabby-success" ||
+      payement_type === "payment-tabby-cancel" ||
+      payement_type === "payment-tabby-failure"
+    ) {
+      getTabbyResponse();
+    }
   }, []);
+
+  const getTabbyResponse = () => {
+    // console.log('hereee')
+    const queryParameters = new URLSearchParams(window.location.search);
+    const payment_id = queryParameters.get("payment_id");
+    try {
+      var bodyFormData = new FormData();
+      bodyFormData.append("token", getUserToken());
+      bodyFormData.append("payment_id", payment_id);
+      const response = request
+        .post("tabby_payment_reponse/", bodyFormData)
+        .then((response) => {
+          setLoading(false);
+          if (response?.data?.status) {
+            setPaymentStatus(response?.data?.status);
+          } else {
+            setPaymentStatus(response?.data?.status);
+          }
+          setResponseMessage(response?.data?.data);
+        });
+    } catch (error) {
+      setLoading(false);
+      setPaymentStatus(false);
+    }
+  };
 
   const getTamaraResponse = () => {
     const queryParameters = new URLSearchParams(window.location.search);
