@@ -18,8 +18,7 @@ function OrderbottomRow({ orderDetails }) {
             <h4>{orderDetails?.product_name}</h4>
             <h2>{orderDetails?.amount}</h2>
             <p className="return-reason">
-              <span>Reason:</span> Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit, sed diam
+              <span>Reason:</span> {orderDetails?.cancel_reason_user_text || orderDetails?.cancel_reason}
             </p>
           </div>
         </div>
