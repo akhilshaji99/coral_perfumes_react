@@ -126,6 +126,10 @@ const Router = () => {
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
         {
+          path: "payment-tabby-failure",
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
+        },
+        {
           path: "*",
           element: <NotFound />,
         },
