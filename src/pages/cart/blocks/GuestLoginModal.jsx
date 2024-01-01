@@ -17,6 +17,8 @@ const schema = yup.object().shape({
 });
 function GuestLoginModal() {
   const navigate = useNavigate();
+  const [modalVisible, setModalVisible] = useState(false);
+
   const [loader, setLoader] = useState(false);
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
@@ -70,6 +72,7 @@ function GuestLoginModal() {
           $("#guestLoginModal").hide();
           $("#otpModal").toggle();
           $("#otpModal").toggleClass("modal fade modal");
+          setModalVisible(true);
         });
       }
       setLoader(false);
@@ -86,7 +89,7 @@ function GuestLoginModal() {
   };
   return (
     <>
-      <LoginOTPModal componentDatas={formik.values} redirectTo={"checkout"} />
+      <LoginOTPModal componentDatas={formik.values} redirectTo={"checkout"} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <div
         className="modal fade"
         id="guestLoginModal"
