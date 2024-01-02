@@ -104,7 +104,7 @@ function Login() {
               <div className="row social-head">
                 <div className="col-md-2 col-3">
                   <LoginSocialGoogle
-                    client_id={process.env.REACT_APP_GG_APP_ID || ""}
+                    client_id={"644406818728-3kran05iakdlubirq868uh1qm0143asf.apps.googleusercontent.com"}
                     onLoginStart={onLoginStart}
                     // redirect_uri={REDIRECT_URI}
                     scope="openid profile email"
