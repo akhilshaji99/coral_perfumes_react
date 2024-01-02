@@ -2066,3 +2066,12 @@ img.footer-gplay-logo {
   display: flex;
   justify-content: space-between;
 }
+.dropdown.form-control.check-form .dropdown-menu {
+  margin-top: 20px;
+}
+body.order-details .marquee-text {
+  color: #fff !important;
+}
+footer p.bottom-nav-item--title {
+  color: #000 !important;
+}

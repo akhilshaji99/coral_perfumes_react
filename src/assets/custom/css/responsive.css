@@ -242,6 +242,9 @@ h4.fbt-ellipsis-text {
 .ftr-mcard img {
   width: 40px;
 }
+.desktop_logo_section {
+  display: block!important;
+}
 }
 @media screen and (max-width: 767px) {
   .container-new {
@@ -1206,6 +1209,10 @@ body.order-details .order-middle-row.align-items-center h3 {
   }
   .border-top.py-4.footer-bottom .d-sm-block {
     padding-bottom: 50px;
+}
+body.checkout div#rating-tab-pane svg.regular-sort-icon  {
+  display: block;
+  visibility: visible !important;
 }
 }
 .menu-zindex {
