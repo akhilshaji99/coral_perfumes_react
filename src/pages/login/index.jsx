@@ -104,7 +104,7 @@ function Login() {
               <div className="row social-head">
                 <div className="col-md-2 col-3">
                   <LoginSocialGoogle
-                    client_id={"644406818728-3kran05iakdlubirq868uh1qm0143asf.apps.googleusercontent.com"}
+                    client_id={process.env.REACT_APP_GG_APP_ID || ""}
                     onLoginStart={onLoginStart}
                     // redirect_uri={REDIRECT_URI}
                     scope="openid profile email"
@@ -137,7 +137,7 @@ function Login() {
                   {" "}
                   <LoginSocialFacebook
                     ref={facebookRef}
-                    appId={process.env.REACT_APP_FB_APP_ID || ""}
+                    appId={"1582875138839994"}
                     fieldsProfile={
                       "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender"
                     }
@@ -217,7 +217,11 @@ function Login() {
                 <h2>OR</h2>
                 <div className="line"></div>
               </div>
-              <LoginOTPModal componentDatas={formik.values} modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+              <LoginOTPModal
+                componentDatas={formik.values}
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+              />
               <p>LOGIN/SIGN UP</p>
               <form onSubmit={formik.handleSubmit}>
                 <div className="row g-3">

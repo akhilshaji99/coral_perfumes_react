@@ -176,7 +176,7 @@ function Account({
           )} */}
           {!mobileMenuStatus && !myAccountStatus ? (
             <div className="row mob-view ">
-              <div className="d-block d-lg-none my-2">
+              <div className="d-block d-md-none my-2">
                 <div className="input-group ">
                   <input
                     className="form-control rounded mob-search-box"
@@ -231,7 +231,7 @@ function Account({
             </div>
           ) : null}
           <div className="row w-100 align-items-center justify-content-center gx-lg-2 gx-0">
-            <div className="col-xxl-2 col-lg-2 d-flex justify-content-center">
+            <div className="col-xxl-2 col-lg-2 col-md-2 d-flex justify-content-center">
               {/* <NavLink
                 className="navbar-brand d-none d-lg-block"
                 to={() => {
@@ -244,7 +244,7 @@ function Account({
               {/* </NavLink> */}
             </div>
 
-            <div className="col-xxl-5 col-lg-5 d-none d-lg-block">
+            <div className="col-xxl-5 col-lg-5 col-md-4 d-none d-md-block">
               <div className="icon-input">
                 <input
                   className="icon-input__text-field"
@@ -305,7 +305,7 @@ function Account({
                 </div>
               </div>
             </div>
-            <div className="col-md-5 col-xxl-5 text-end d-none d-lg-block">
+            <div className="col-md-6 col-lg-5 col-xxl-5 text-end d-none d-md-block">
               <div className="list-inline custom-dropdown text-center">
                 <div className="list-inline-item me-5">
                   <div

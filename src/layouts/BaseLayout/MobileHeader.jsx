@@ -14,7 +14,7 @@ function MobileHeader({
   const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
   //#End
   return (
-    <div className="row align-items-center d-lg-none mt-2">
+    <div className="row align-items-center d-md-none mt-2">
       <div
         className="col-md-4 col-4"
         onClick={() => {
