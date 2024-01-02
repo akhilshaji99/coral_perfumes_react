@@ -6,6 +6,8 @@ import myWishlist from "../../assets/img/icons/my-account/my-wishlist.svg";
 import Returns from "../../assets/img/icons/my-account/returns.svg";
 import Logout from "../../assets/img/icons/my-account/logout.svg";
 import MobileHeader from "../../layouts/BaseLayout/MobileHeader";
+import { useNavigate } from "react-router-dom";
+
 function MobileMyAccount({
   myAccountStatus,
   setMyAccountStatus,
@@ -13,9 +15,14 @@ function MobileMyAccount({
   closeMoibileMenu,
   changeMyAccountMenuStatus,
 }) {
+  const navigate = useNavigate();
   const logout = () => {
-    localStorage.clear();
-    window.location.href = "/";
+    if (localStorage.getItem("userDatas")) {
+      localStorage.clear();
+      window.location.href = "/";
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <div className="container mob-c-view d-block d-sm-none">
@@ -154,7 +161,10 @@ function MobileMyAccount({
             <li className="nav-item" onClick={logout}>
               <a className="nav-link " aria-current="page" href="javascript:;">
                 <img src={Logout} alt="Coral perfumes" />
-                LOGOUT
+                {JSON.parse(localStorage.getItem("userDatas"))
+                  ? "LOGOUT"
+                  : " LOGIN"}
+
                 <svg
                   width={24}
                   height={24}
