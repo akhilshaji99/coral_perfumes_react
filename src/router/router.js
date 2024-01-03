@@ -114,6 +114,11 @@ const Router = () => {
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
         {
+          path: "payment-tamara-cancel",
+          element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
+        },
+        
+        {
           path: "cod/success",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },

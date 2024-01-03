@@ -2,6 +2,7 @@ import deviceImageRender from "../../../utils/deviceImageRender";
 import confirmCheckout from "../js/confirmCheckout";
 import AlerMessage from "../../common/AlerMessage";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 function CartDetails({
   cartDatas,
@@ -11,6 +12,7 @@ function CartDetails({
   validateDeliveryAddress,
   confirmButtonStatus,
 }) {
+  const [loader, setLoader] = useState(false);
   return (
     <div className=" card checkout-left-card">
       <div className="">
@@ -143,14 +145,27 @@ function CartDetails({
                           paymentModeSelected &&
                           validateDeliveryAddressStatus
                         ) {
+                          setLoader(true);
                           confirmCheckout(scrollToPaymentComponent);
                         }
                       }
 
                       // confirmCheckout(scrollToPaymentComponent);
                     }}
+                    disabled={loader}
                   >
                     SECURE CHECKOUT
+                    {loader ? (
+                      <>
+                        &nbsp;
+                        <div
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                        >
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </>
+                    ) : null}
                   </button>
                 </div>
                 {cartDatas?.free_delivery_message ? (

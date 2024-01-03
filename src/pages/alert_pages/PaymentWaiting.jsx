@@ -13,7 +13,7 @@ function PaymentWaiting() {
   useEffect(() => {
     setLoading(true);
     const payement_type = window.location.pathname.split("/")[1];
-    if (payement_type === "tamara") {
+    if (payement_type === "tamara" || payement_type==="payment-tamara-cancel") {
       getTamaraResponse();
     }
     if (payement_type === "tap") {

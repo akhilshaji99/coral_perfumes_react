@@ -225,7 +225,7 @@ function CartDrawer() {
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                   <div className="col-md-6 mini-cart-final-price">
-                    {cartDatas?.total_amount_display}
+                    {cartDatas?.sub_total_display}
                   </div>
                 </div>
               ) : null}

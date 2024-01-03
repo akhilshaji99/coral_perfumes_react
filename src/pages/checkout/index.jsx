@@ -887,24 +887,24 @@ function Index() {
                                         onClick={toggleDeliveryEmirates}
                                       >
                                         {normalDeliveryEmirateName}
-                                        <svg
-                                          className="regular-sort-icon"
-                                          width={24}
-                                          height={24}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
-                                            stroke="black"
-                                            strokeWidth="1.5"
-                                            strokeMiterlimit={10}
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                          />
-                                        </svg>
                                       </a>
+                                      <svg
+                                        className="regular-sort-icon"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                          stroke="black"
+                                          strokeWidth="1.5"
+                                          strokeMiterlimit={10}
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
                                       {/* Render the dropdown content based on the state */}
                                       {isDeliveryEmirateDropdownOpen && (
                                         <div
@@ -1055,24 +1055,24 @@ function Index() {
                                         onClick={toggleStoreDeliveryEmirates}
                                       >
                                         {storePickupEmirateName}
-                                        <svg
-                                          className="regular-sort-icon"
-                                          width={24}
-                                          height={24}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
-                                            stroke="black"
-                                            strokeWidth="1.5"
-                                            strokeMiterlimit={10}
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                          />
-                                        </svg>
                                       </a>
+                                      <svg
+                                        className="regular-sort-icon"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                          stroke="black"
+                                          strokeWidth="1.5"
+                                          strokeMiterlimit={10}
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreEmirateDropdownOpen && (
                                         <div
@@ -1140,24 +1140,24 @@ function Index() {
                                         onClick={toggleStoreDeliveryStore}
                                       >
                                         {storePickupStoreName}
-                                        <svg
-                                          className="regular-sort-icon"
-                                          width={24}
-                                          height={24}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
-                                            stroke="black"
-                                            strokeWidth="1.5"
-                                            strokeMiterlimit={10}
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                          />
-                                        </svg>
                                       </a>
+                                      <svg
+                                        className="regular-sort-icon"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M19.9201 8.95001L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.95001"
+                                          stroke="black"
+                                          strokeWidth="1.5"
+                                          strokeMiterlimit={10}
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
                                       {/* Render the dropdown content based on the state */}
                                       {isStoreStoreDropdownOpen && (
                                         <div
