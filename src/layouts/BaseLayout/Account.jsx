@@ -162,7 +162,7 @@ function Account({
           </div>
         )}
       </div> */}
-      <div className="py-lg-3">
+      <div className="py-md-3">
         <div className="container-fluid">
           {/* {!mobileMenuStatus && !myAccountStatus ? ( */}
           <MobileHeader

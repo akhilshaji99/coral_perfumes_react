@@ -26,7 +26,7 @@ function AddressListComponent({
             <div className="col-md-9 col-9">
               <div className="card-body">
                 <div className="row">
-                  <div className="col-md-1 col-1 justify-content-end">
+                  <div className="col-lg-1 col-md-2 col-1 justify-content-end">
                     <div className="form-check">
                       <input
                         className="form-check-input"
@@ -45,7 +45,7 @@ function AddressListComponent({
                     </label> */}
                     </div>
                   </div>
-                  <div className="col-md-11 col-9 px-lg-0">
+                  <div className="col-lg-11 col-md-10 col-9 px-lg-0">
                     {/* address */}
                     <p className="mb-0">
                       {componentDatas.first_name} {componentDatas.last_name}

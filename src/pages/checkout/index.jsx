@@ -486,7 +486,7 @@ function Index() {
           <div>
             {/* row */}
             <div className="row">
-              <div className="col-lg-8 col-md-8">
+              <div className="col-lg-8 col-md-7">
                 {/* accordion */}
                 <div
                   className="accordion accordion-flush "
@@ -1281,7 +1281,7 @@ function Index() {
                   />
                 </div>
               </div>
-              <div className="col-lg-4 col-md-8">
+              <div className="col-lg-4 col-md-5">
                 <CartDetails
                   cartDatas={cartItems}
                   scrollToPaymentComponent={scrollToPaymentComponent}

@@ -6,7 +6,7 @@ function OrderbottomRow({ orderDetails }) {
     <div className="row order-bottom-row">
       <div className="col-md-8">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-lg-4 col-md-6">
             <div className="order-img">
               <img
                 src={deviceImageRender(orderDetails?.listing_image)}
@@ -14,7 +14,7 @@ function OrderbottomRow({ orderDetails }) {
               />
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-lg-8 col-md-6">
             <h4>{orderDetails?.product_name}</h4>
             <h2>{orderDetails?.amount}</h2>
             <p className="return-reason">
