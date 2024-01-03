@@ -25,7 +25,7 @@ function OrderDetails({
               href={process.env.REACT_APP_BASE_URL + orderDetails?.invoice_link}
               style={{ color: "#000" }}
             >
-              Tax invoice
+              {orderDetails?.invoice_link_title}
             </a>
           </div>
           <p>{orderDetails?.order_date}</p>

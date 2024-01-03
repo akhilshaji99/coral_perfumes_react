@@ -22,7 +22,7 @@ function ProductInfo({
         <h2>{orderItem?.amount}</h2>
         <h5>Qty: {orderItem?.quantity}</h5>
         {orderItem?.shipment_number ? (
-          <h3>Shipment : {orderItem?.shipment_number}</h3>
+          <h3>{orderItem?.shipment_number_title} : {orderItem?.shipment_number}</h3>
         ) : null}
       </div>
       <div className="col-lg-4 col-md-3 col-3 text-sm-end text-lg-end">
