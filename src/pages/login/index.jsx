@@ -24,7 +24,7 @@ const schema = yup.object().shape({
     .required("Phone number is required"),
 });
 const REDIRECT_URI =
-  "https://plenty-planets-beam-42-118-51-2.loca.lt/account/login";
+  "http://localhost:3000/login";
 function Login() {
   const [loader, setLoader] = useState(false);
   // const [provider, setProvider] = useState("");
