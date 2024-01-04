@@ -2075,3 +2075,27 @@ body.order-details .marquee-text {
 footer p.bottom-nav-item--title{
   color: #000 !important;
 }
+.search-container h4 {
+  cursor: pointer;
+}
+.dropdown.form-control.check-form a.dropdown-toggle.text-dark.btn-filter {
+  display: inline-block;
+  width: 100%;
+}
+body.checkout .form-check .form-check-input {
+  border: solid 2px #000 !important;
+  
+}
+body.address-book .form-check .form-check-input {
+  border: solid 2px #000 !important;
+}
+body.orders .form-check .form-check-input {
+  border: solid 2px #000 !important;
+}
+.order-flex h5 {
+  width: 40%;
+}
+.order-flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;}

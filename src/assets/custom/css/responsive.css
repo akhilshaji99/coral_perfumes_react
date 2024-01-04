@@ -1064,7 +1064,8 @@ body.product-details .form-outline textarea.form-control {
 }
 .btn-complete {
   position: absolute;
-  width: 134px;
+  width: 140px;
+  padding-left: 20px;
 }
 body.product-details .otp-modal {
   padding: 20px 10px 45px 10px !important;
@@ -1113,7 +1114,7 @@ body.orders .orders-card {
   padding: 20px 10px;
 }
 body.orders .orders-card label {
-  font-size: 8px;
+  font-size: 11px;
 }
 body.orders .react-multi-carousel-item .order-img {
   width: 95px;
@@ -1192,11 +1193,12 @@ body.order-details .text-lg-end {
 }
 .prd-0 {
   padding-left: 0px;
+  padding-right: 0px
 }
 body.orders .order-top-row svg {
   margin-right: 3px !important;
   vertical-align: middle;
-  width: 7px;
+  width: 11px;
 }
 body.orders .order-middle-row {
   margin-top: 10px;
@@ -1219,6 +1221,24 @@ body.order-details .order-middle-row p {
 body.order-details .order-middle-row.align-items-center h3 {
   font-size: 9px !important;
 }
+body.home .footer {
+  margin-top: 30px;
+}
+
+body.orders .float-end {
+  margin-top: 2px;
+}
+.pds-0 {
+  padding-right: 0;
+}
+body.orders .order-bottom-row h3 {
+  margin-top: 0px;}
+  body.returns .orders-card {
+    padding: 20px 15px;
+}
+.wallet-card h3 {
+  font-family: brandonTextBold,sans-serif;
+  font-size: 15px;}
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px){
