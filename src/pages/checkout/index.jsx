@@ -880,11 +880,13 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <div className="dropdown  form-control check-form">
+                                    <div
+                                      className="dropdown  form-control check-form"
+                                      onClick={toggleDeliveryEmirates}
+                                    >
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
-                                        onClick={toggleDeliveryEmirates}
                                       >
                                         {normalDeliveryEmirateName}
                                       </a>
@@ -1048,11 +1050,11 @@ function Index() {
                               <div className="row g-4 m-2">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 b-lg-0">
-                                    <div className="dropdown  form-control check-form">
+                                    <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryEmirates}>
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
-                                        onClick={toggleStoreDeliveryEmirates}
+                                        
                                       >
                                         {storePickupEmirateName}
                                       </a>
@@ -1133,11 +1135,11 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-3 mb-lg-0">
-                                    <div className="dropdown  form-control check-form">
+                                    <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryStore}>
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
-                                        onClick={toggleStoreDeliveryStore}
+                                        
                                       >
                                         {storePickupStoreName}
                                       </a>
