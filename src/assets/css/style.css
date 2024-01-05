@@ -26493,8 +26493,10 @@ span.flatpickr-weekday {
   background-color: rgba(235, 236, 233, 1);
   padding: 20px 10px;
   /* margin: 0 24px; */
-  border: none !important;
+  /* border: none !important; */
   outline: none !important;
+  background-color: #fff;
+    border: 1px solid #0000000a;
 }
 .product-box:hover {
   border: none;
@@ -27258,6 +27260,8 @@ span.flatpickr-weekday {
   justify-content: center;
   align-items: center;
   margin-bottom: 27px;
+  background: #fff;
+    border: 1px solid #0000000a;
 }
 .thumbnail-slide img {
   width: 100px !important;
@@ -27273,6 +27277,8 @@ span.flatpickr-weekday {
   height: auto;
   min-height: auto;
   padding: 30px 30px;
+  background: #fff;
+  border: 1px solid #0000000a;
 }
 .slick-slide div {
   display: flex;
@@ -27718,6 +27724,7 @@ span.flatpickr-weekday {
   letter-spacing: 1.08px;
   text-transform: capitalize;
   border-radius: 0;
+  z-index: 9999;
 }
 .alert-btn {
   background-color: transparent;
@@ -28000,6 +28007,8 @@ border-radius: none !important;
   width: 120px;
   height: 120px;
   align-items: center;
+  background: #fff;
+    border: 1px solid #0000000a;
 }
 .price-minicart {
   text-transform: uppercase;
@@ -28127,6 +28136,7 @@ border-radius: none !important;
   }
   .my-bag-img {
     width: 80px !important;
+    
   }
   .my-bag-card {
     border-radius: 9px !important;
@@ -28626,7 +28636,9 @@ border-radius: none !important;
   padding: 33px;
 }
 .my-bag-img {
-  background-color: rgba(235, 236, 233, 1);
+  background: #fff;
+    border: 1px solid #0000000a;
+  /* background-color: rgba(235, 236, 233, 1); */
   width: 124px;
   height: 112px;
   display: flex;
@@ -29723,6 +29735,8 @@ border-radius: none !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fff;
+    border: 1px solid #0000000a;
 }
 .cart-details-img img {
   width: 90px;
