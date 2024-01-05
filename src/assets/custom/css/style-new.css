@@ -1272,9 +1272,11 @@ span#word-count {
   font-weight: 450;
   line-height: 144.49%;
   text-transform: uppercase;
+  padding-top: 40px;
+    padding-bottom: 20px;
 }
 .deatil-blog-content {
-  padding: 50px 0px;
+  padding: 20px 0px;
   border-bottom: solid 1px #ccc5c5;
 }
 .deatil-blog-content p {
@@ -1287,7 +1289,7 @@ span#word-count {
   line-height: 30px;
   letter-spacing: 1.08px;
   text-transform: capitalize;
-  padding-top: 25px;
+  padding-top: 10px;
 }
 .details-full-img {
   width: 90%;
@@ -1345,6 +1347,7 @@ span#word-count {
 }
 .deatil-blog-contents {
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 .storage-rows h3 {
   color: #000;
@@ -2074,4 +2077,56 @@ body.order-details .marquee-text {
 }
 footer p.bottom-nav-item--title{
   color: #000 !important;
+}
+.search-container h4 {
+  cursor: pointer;
+}
+.dropdown.form-control.check-form a.dropdown-toggle.text-dark.btn-filter {
+  display: inline-block;
+  width: 100%;
+}
+body.checkout .form-check .form-check-input {
+  border: solid 2px #000 !important;
+  
+}
+body.address-book .form-check .form-check-input {
+  border: solid 2px #000 !important;
+}
+body.orders .form-check .form-check-input {
+  border: solid 2px #000 !important;
+}
+.order-flex h5 {
+  width: 40%;
+}
+.order-flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;}
+  .deatil-blog-content a {
+    color: #000 !important;
+}
+span.blog-date {
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+.blog-sub-text {
+  padding: 0px;
+}
+.bg-blog-banner {
+  margin-bottom: 80px;
+}
+.blog-detail-page {
+  padding-top: 0px;
+}
+.deatil-blog-contents .faq a {
+color: #000 !important;
+}
+.deatil-blog-content .faq li {
+  line-height: 35px;
+}
+.deatil-blog-contents .faq li {
+  line-height: 35px;
+}
+body.blog-details .date-text {
+  padding: 15px 0px;
 }
