@@ -24,7 +24,7 @@ const schema = yup.object().shape({
     .required("Phone number is required"),
 });
 const REDIRECT_URI =
-  "https://plenty-planets-beam-42-118-51-2.loca.lt/account/login";
+  "http://localhost:3000/login";
 function Login() {
   const [loader, setLoader] = useState(false);
   // const [provider, setProvider] = useState("");
@@ -137,7 +137,7 @@ function Login() {
                   {" "}
                   <LoginSocialFacebook
                     ref={facebookRef}
-                    appId={"1582875138839994"}
+                    appId={"1518443792279104"}
                     fieldsProfile={
                       "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender"
                     }
