@@ -27724,7 +27724,7 @@ span.flatpickr-weekday {
   letter-spacing: 1.08px;
   text-transform: capitalize;
   border-radius: 0;
-  z-index: 9999;
+  /* z-index: 9999; */
 }
 .alert-btn {
   background-color: transparent;
