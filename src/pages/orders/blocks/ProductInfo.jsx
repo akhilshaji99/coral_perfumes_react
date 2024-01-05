@@ -17,26 +17,19 @@ function ProductInfo({
           <img src={deviceImageRender(orderItem?.listing_image)} alt="" />
         </div>
       </div>
-      <div className="col-lg-5 col-md-5 col-5">
+      <div className="col-lg-9 col-md-5 col-8 pds-0">
         <h4>{orderItem?.product_name}</h4>
         <h2>{orderItem?.amount}</h2>
+        <div class="order-flex">
         <h5>Qty: {orderItem?.quantity}</h5>
         {orderItem?.shipment_number ? (
           <h3>{orderItem?.shipment_number_title} : {orderItem?.shipment_number}</h3>
         ) : null}
-      </div>
-      <div className="col-lg-4 col-md-3 col-3 text-sm-end text-lg-end">
-        {/* {ongoingOrder?.order_status === "Delivery" ? (
-          <h3>Tax invoice</h3>
-        ) : null} */}
-
         {ongoingOrder?.order_status === "Ordered" ||
         ongoingOrder?.order_status === "Processing" ||
         ongoingOrder?.order_cancellation_status === 2 ? (
           <h3
             style={{
-              position: "relative",
-              bottom: "-66px",
               cursor: "pointer",
               "text-decoration":
                 ongoingOrder?.order_cancellation_status == 2 ? "none" : null,
@@ -98,9 +91,9 @@ function ProductInfo({
             </h3>
           </>
         ) : null}
-
-        {/* End of Return Datas */}
+        </div>
       </div>
+    
     </div>
   );
 }

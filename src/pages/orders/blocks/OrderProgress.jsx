@@ -254,7 +254,7 @@ function OrderProgress({ order_current_status, resetOrderProgress }) {
       {orderStatuses?.map((orderStatus, index) => {
         return (
           <div
-            className={`col-md-2 col-3 ${index !== 0 ? "prd-0" : ""}`}
+            className={`col-md-2 col-3  ${index === 0 ? "pds-0 " : ""} ${index !== 0 ? "prd-0 " : ""}`}
             key={index}
           >
             {orderStatus.flag === true
