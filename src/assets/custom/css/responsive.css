@@ -481,10 +481,27 @@ ul.nav.flex-column.nav-pills.nav-pills-dark a.nav-link img {
   }
   .blog-col-1 {
     width: 100%;
+    order: 0;
   }
   .blog-col-2 {
     width: 100%;
+    order: 1;
   }
+  span.blog-date {
+    padding-top: 15px;
+}
+.blog-content-sub a {
+  margin-top: 20px;
+}
+.blog-text-personality .faq p a {
+  margin-top: 0 !important;
+}
+.blog-text-personality a {
+  margin-top: 10px;
+}
+span.blog-date {
+  padding-bottom: 0px;
+}
   .blog-content-sub {
     padding: 20px 0px;
   }
@@ -1239,6 +1256,13 @@ body.orders .order-bottom-row h3 {
 .wallet-card h3 {
   font-family: brandonTextBold,sans-serif;
   font-size: 15px;}
+  body.blog-details .deatil-blog-content h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+body.blog-details .blog-detail-page {
+  padding-top: 0px;
+}
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px){
