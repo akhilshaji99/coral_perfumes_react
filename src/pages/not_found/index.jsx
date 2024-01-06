@@ -1,17 +1,36 @@
 import "../../assets/css/404.css";
 import error_img1 from "../../assets/img/404/404-img.png";
 import error_img2 from "../../assets/img/404/404-img1.png";
-import error_img3 from "../../assets/img/404/error_img1.png";
-import error_img4 from "../../assets/img/404/error_img2.png";
-import error_img5 from "../../assets/img/404/error_img3.png";
-import error_img6 from "../../assets/img/404/error_img4.png";
-import error_img7 from "../../assets/img/404/error_img1.png";
-import error_img8 from "../../assets/img/404/error_img2.png";
+
 import { Link } from "react-router-dom";
 import BreadCrumps from "../common/BreadCrumps";
 import Carousel from "react-multi-carousel";
+import { useEffect, useState } from "react";
+import request from "../../utils/request";
+import deviceImageRender from "../../utils/deviceImageRender";
 
 function NotFound() {
+  const [pageData, setPageData] = useState({});
+  const [text, setText] = useState("");
+  const [categories , setCategories]  = useState([])
+
+  useEffect(() => {
+    get404PageContent();
+  }, []);
+  const get404PageContent = async () => {
+    try {
+      const response = await request.get("page_404_categories");
+      if (response.data) {
+        setPageData(response.data.data);
+        setText(pageData["404_text"]);
+        setCategories(response.data.data.categories)
+        console.log('categories',categories)
+        console.log("setPageData", response.data.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div className="page-new">
       <BreadCrumps />
@@ -22,13 +41,13 @@ function NotFound() {
           <h1>
             Oops<span>! </span>{" "}
           </h1>
-          <p>Looks like the product you are looking doesn’t exist.</p>
+          <p>{text}</p>
           <div className="strt-btns">
-            <Link to={"/"}>Start Exploring</Link>
+            <Link to={"/"}>{pageData?.button_title}</Link>
           </div>
           <div className="error-text">
             {" "}
-            <h2>Recommended categories</h2>
+            <h2>{pageData?.category_title}</h2>
           </div>
           <div className="error-carousel owl-carousel owl-theme">
             <Carousel
@@ -85,34 +104,20 @@ function NotFound() {
               slidesToSlide={2}
               swipeable
             >
-              <div className="item not-found-slide">
-                <img src={error_img3} alt="img" />
-                <p>cosmetics</p>
-              </div>
-              <div className="item not-found-slide">
-                {" "}
-                <img src={error_img4} alt="img" />
-                <p>Watches</p>
-              </div>
-              <div className="item not-found-slide">
-                {" "}
-                <img src={error_img5} alt="img" />
-                <p>Bags</p>
-              </div>
-              <div className="item not-found-slide">
-                {" "}
-                <img src={error_img6} alt="img" />
-                <p>Perfumes</p>
-              </div>
-              <div className="item not-found-slide">
-                <img src={error_img7} alt="img" />
-                <p>cosmetics</p>
-              </div>
-              <div className="item not-found-slide">
-                {" "}
-                <img src={error_img8} alt="img" />
-                <p>Watches</p>
-              </div>
+              {categories?.map((category, index) => {
+                return (
+                  <Link to={category?.link}>
+                    <div className="item not-found-slide">
+                      <img
+                        src={deviceImageRender(category?.category_image)}
+                        alt="img"
+                      />
+
+                      <p>{category?.name}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </Carousel>
           </div>
         </div>
