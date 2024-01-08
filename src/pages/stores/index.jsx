@@ -68,7 +68,7 @@ function Index() {
               <ul>
                 {stores?.map((store, index) => {
                   return (
-                    <li>
+                    <li style={{ width: stores.length === 1 ? "100%" : "" }}>
                       <div className="viisit-img" key={index}>
                         <img
                           src={deviceImageRender(store?.store_listing_image)}

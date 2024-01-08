@@ -41,7 +41,7 @@ function NotFound() {
           <h1>
             Oops<span>! </span>{" "}
           </h1>
-          <p>{text}</p>
+          <p>{pageData['404_text']}</p>
           <div className="strt-btns">
             <Link to={"/"}>{pageData?.button_title}</Link>
           </div>
