@@ -2136,3 +2136,17 @@ body.blog-details .date-text {
 body.home .top-categories img {
   box-shadow: none;
 }
+.remove-cd a {
+  cursor: pointer;
+  padding-top: 10px;
+  display: inline-block;
+
+}
+body.cart .promo-modal .modal-content {
+  max-height: 440px;
+  overflow-y: auto;
+}
+body.checkout .promo-modal .modal-content {
+  max-height: 440px;
+  overflow-y: auto;
+}
