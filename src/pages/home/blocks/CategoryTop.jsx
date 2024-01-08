@@ -44,7 +44,6 @@ function CategoryTop({ componentDatas }) {
               focusOnSelect={false}
               infinite={true}
               itemClass=""
-              partialVisible
               keyBoardControl
               // minimumTouchDrag={-10000}
               pauseOnHover

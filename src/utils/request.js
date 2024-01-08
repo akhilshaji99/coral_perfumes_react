@@ -26,6 +26,64 @@ service.interceptors.request.use(
 // interceptor response
 service.interceptors.response.use(
   (response) => {
+    if (response?.data?.meta_data) {
+      let metaData = response?.data?.meta_data;
+      // console.log(response?.data?.meta_data);
+      // var metaData = {
+      //   title: "Locate Perfume Store near me | Coral Perfumes Dubai, UAE",
+      //   meta_description:
+      //     "Shop perfumes from the top online perfume in Dubai with multiple brand with affordable price we delivery Perfumes all over UAE & Saudi Arabia.",
+      //   meta_keywords: "",
+      //   og_type: "Website",
+      //   og_description:
+      //     "Shop perfumes from the top online perfume in Dubai with multiple brand with affordable price we delivery Perfumes all over UAE & Saudi Arabia.",
+      //   og_sitename: "Locate Perfume Store near me | Coral Perfumes Dubai, UAE",
+      // };
+      // Remove existing meta tags with the same name
+      document
+        .querySelectorAll('meta[name="description"]')
+        .forEach((meta) => meta.remove());
+      document
+        .querySelectorAll('meta[property^="og:"]')
+        .forEach((meta) => meta.remove());
+
+      // Create and append new meta tags
+      var head = document.head;
+      var meta;
+
+      // Title
+      document.title = metaData.title;
+
+      // Description
+      meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = metaData.meta_description;
+      head.appendChild(meta);
+
+      // Keywords (if any)
+      if (metaData.meta_keywords) {
+        meta = document.createElement("meta");
+        meta.name = "keywords";
+        meta.content = metaData.meta_keywords;
+        head.appendChild(meta);
+      }
+
+      // Open Graph (og) tags
+      meta = document.createElement("meta");
+      meta.property = "og:type";
+      meta.content = metaData.og_type;
+      head.appendChild(meta);
+
+      meta = document.createElement("meta");
+      meta.property = "og:description";
+      meta.content = metaData.og_description;
+      head.appendChild(meta);
+
+      meta = document.createElement("meta");
+      meta.property = "og:site_name";
+      meta.content = metaData.og_sitename;
+      head.appendChild(meta);
+    }
     return response;
   },
   (error) => {

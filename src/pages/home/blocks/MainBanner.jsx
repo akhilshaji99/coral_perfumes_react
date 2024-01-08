@@ -23,7 +23,6 @@ function MainBanner({ componentDatas, exclusive_deals }) {
           showDots
           focusOnSelect={false}
           infinite={true}
-          partialVisible={false}
           itemClass=""
           pauseOnHover={false}
           keyBoardControl
@@ -91,7 +90,6 @@ function MainBanner({ componentDatas, exclusive_deals }) {
           draggable
           focusOnSelect={false}
           infinite={true}
-          partialVisible={false}
           itemClass=""
           pauseOnHover={false}
           keyBoardControl
