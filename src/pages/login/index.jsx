@@ -137,7 +137,7 @@ function Login() {
                   {" "}
                   <LoginSocialFacebook
                     ref={facebookRef}
-                    appId={"1518443792279104"}
+                    appId={"920557969584588"}
                     fieldsProfile={
                       "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender"
                     }
