@@ -52,7 +52,7 @@ service.interceptors.response.use(
       var meta;
 
       // Title
-      document.title = metaData.title;
+      document.title = metaData.title || 'Coral Ecom';
 
       // Description
       meta = document.createElement("meta");

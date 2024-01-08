@@ -19,7 +19,7 @@ function NotFound() {
   }, []);
   const get404PageContent = async () => {
     try {
-      const response = await request.get("page_404_categories");
+      const response = await request.get("empty_page_categories");
       if (response.data) {
         setPageData(response.data.data);
         setText(pageData["404_text"]);

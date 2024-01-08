@@ -37,13 +37,13 @@ function Index() {
       bodyFormData.append("token", getUserToken());
       dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.post("get_home_content/", bodyFormData);
-      if (response.data) {
-        const mainKeys = Object.entries(response.data).map(([key]) => key);
-        dispatch(changeFooterDatas(response?.data?.footer_content)); //Add footer datas to redux
+      if (response.data?.data) {
+        const mainKeys = Object.entries(response.data?.data).map(([key]) => key);
+        dispatch(changeFooterDatas(response?.data?.data?.footer_content)); //Add footer datas to redux
         dispatch(changeApiCallStatus(true)); // Change api call status
 
         setHomeComponents(mainKeys);
-        setHomeContent(response.data);
+        setHomeContent(response.data?.data);
         setApiLoader(false);
       }
     } catch (error) {
