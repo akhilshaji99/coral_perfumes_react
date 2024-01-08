@@ -2130,3 +2130,9 @@ color: #000 !important;
 body.blog-details .date-text {
   padding: 15px 0px;
 }
+.dropdown.form-control.check-form svg.regular-sort-icon {
+  cursor: pointer;
+}
+body.home .top-categories img {
+  box-shadow: none;
+}

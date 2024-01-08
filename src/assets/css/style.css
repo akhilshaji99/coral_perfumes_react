@@ -26310,7 +26310,7 @@ span.flatpickr-weekday {
   font-size: 20px;
 }
 .top-categories img {
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+  /*box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);*/
   height: auto;
   max-width: 100%;
   object-fit: contain;
@@ -26496,7 +26496,7 @@ span.flatpickr-weekday {
   /* border: none !important; */
   outline: none !important;
   background-color: #fff;
-    border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
 }
 .product-box:hover {
   border: none;
@@ -27261,7 +27261,7 @@ span.flatpickr-weekday {
   align-items: center;
   margin-bottom: 27px;
   background: #fff;
-    border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
 }
 .thumbnail-slide img {
   width: 100px !important;
@@ -27278,7 +27278,7 @@ span.flatpickr-weekday {
   min-height: auto;
   padding: 30px 30px;
   background: #fff;
-  border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
 }
 .slick-slide div {
   display: flex;
@@ -27334,6 +27334,8 @@ span.flatpickr-weekday {
     min-height: auto;
     padding: 30px 30px;
     margin-bottom: 20px;
+    background-color: #fff;
+    border: solid 1px #a2a2a2 !important;
   }
   .product-showcase-mobile .slick-dots {
     position: absolute;
@@ -28008,7 +28010,8 @@ border-radius: none !important;
   height: 120px;
   align-items: center;
   background: #fff;
-    border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
+    
 }
 .price-minicart {
   text-transform: uppercase;
@@ -28637,7 +28640,7 @@ border-radius: none !important;
 }
 .my-bag-img {
   background: #fff;
-    border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
   /* background-color: rgba(235, 236, 233, 1); */
   width: 124px;
   height: 112px;
@@ -29396,9 +29399,11 @@ border-radius: none !important;
   width: 159px;
   height: 143px;
   background: rgba(235, 236, 233, 1);
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: solid 1px #a2a2a2 !important;
 }
 .order-img img {
   width: 100px;
@@ -29736,7 +29741,7 @@ border-radius: none !important;
   justify-content: center;
   align-items: center;
   background: #fff;
-    border: 1px solid #0000000a;
+  border: solid 1px #a2a2a2 !important;
 }
 .cart-details-img img {
   width: 90px;
@@ -29804,6 +29809,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
   }
   .cart-details-img img {
     width: 50px;
@@ -30144,6 +30150,7 @@ body {
   height: 70px;
   align-items: center;
   cursor: pointer;
+  background-color: #ffffff;
 }
 .green-text {
   color: #80ba27 !important;

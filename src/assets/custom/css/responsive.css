@@ -1135,7 +1135,7 @@ body.orders .orders-card label {
 }
 body.orders .react-multi-carousel-item .order-img {
   width: 95px;
- height: 100px;
+ height: auto;
 }
 body.order-details .order-img {
   width: 95px;
