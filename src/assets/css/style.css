@@ -26496,7 +26496,7 @@ span.flatpickr-weekday {
   /* border: none !important; */
   outline: none !important;
   background-color: #fff;
-  border: solid 1px #a2a2a2 !important;
+  border: solid 1px #a2a2a242 !important; 
 }
 .product-box:hover {
   border: none;

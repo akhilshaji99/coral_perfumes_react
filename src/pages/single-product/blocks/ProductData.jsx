@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Tabby from "../../../assets/img/icons/payment/tabby-1.png";
+import { useState, useEffect } from "react";
+// import Tabby from "../../../assets/img/icons/payment/tabby-1.png";
 
 function ProductData({ productDatas, currentVariant }) {
   const [dropdownOpen, setDropDownOpen] = useState(false);
@@ -7,6 +7,30 @@ function ProductData({ productDatas, currentVariant }) {
   const toggleDropdown = () => {
     setDropDownOpen(!dropdownOpen);
   };
+
+  useEffect(() => {
+    // Create a script element
+    const script = document.createElement("script");
+
+    // Set the source of the script to the TabbyPromo script
+    script.src = "https://checkout.tabby.ai/tabby-promo.js";
+
+    // Append the script to the body of the document
+    document.body.appendChild(script);
+
+    // Initialize TabbyPromo when the script is loaded
+    script.onload = () => {
+      new window.TabbyPromo({
+        selector: "#tabby",
+        price: currentVariant?.price_amount,
+      });
+    };
+
+    // Clean up the script when the component is unmounted
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [window.location.pathname]);
 
   return (
     <>
@@ -117,7 +141,7 @@ function ProductData({ productDatas, currentVariant }) {
       </div>
       {productDatas?.tabby_attribute_value === "1" ? (
         <div className="row py-2 align-items-center payment-tabby">
-          <div className="col-xl-2 col-sm-2 col-2">
+          {/* <div className="col-xl-2 col-sm-2 col-2">
             <img src={Tabby} alt="Coral Perfumes" />
           </div>
           <div
@@ -125,7 +149,8 @@ function ProductData({ productDatas, currentVariant }) {
             style={{ marginLeft: "3%" }}
           >
             {productDatas?.tabby_text}
-          </div>
+          </div> */}
+          <div id="tabby"></div>
         </div>
       ) : null}
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (
