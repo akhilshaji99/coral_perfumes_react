@@ -2130,3 +2130,23 @@ color: #000 !important;
 body.blog-details .date-text {
   padding: 15px 0px;
 }
+.dropdown.form-control.check-form svg.regular-sort-icon {
+  cursor: pointer;
+}
+body.home .top-categories img {
+  box-shadow: none;
+}
+.remove-cd a {
+  cursor: pointer;
+  padding-top: 10px;
+  display: inline-block;
+
+}
+body.cart .promo-modal .modal-content {
+  max-height: 440px;
+  overflow-y: auto;
+}
+body.checkout .promo-modal .modal-content {
+  max-height: 440px;
+  overflow-y: auto;
+}

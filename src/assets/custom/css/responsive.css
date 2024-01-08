@@ -1135,7 +1135,7 @@ body.orders .orders-card label {
 }
 body.orders .react-multi-carousel-item .order-img {
   width: 95px;
- height: 100px;
+ height: auto;
 }
 body.order-details .order-img {
   width: 95px;
@@ -1263,6 +1263,14 @@ body.orders .order-bottom-row h3 {
 body.blog-details .blog-detail-page {
   padding-top: 0px;
 }
+body.cart .promo-modal .modal-content {
+  max-height: 470px;
+  overflow-y: auto;
+}
+body.checkout .promo-modal .modal-content {
+  max-height: 470px;
+  overflow-y: auto;}
+
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px){
