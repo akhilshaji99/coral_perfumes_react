@@ -56,7 +56,7 @@ function ProductInfo({
           <h3
             style={{
               position: "relative",
-              bottom: "-66px",
+              // bottom: "-66px",
               "text-decoration":
                 ongoingOrder?.return_status === "Request Return" ||
                 ongoingOrder?.return_status === ""
