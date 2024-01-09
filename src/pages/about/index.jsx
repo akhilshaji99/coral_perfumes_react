@@ -150,7 +150,7 @@ function Index() {
             <div className="start-explor">
               {/* <a href="#">start exploring</a> */}
               <NavLink to="/">
-                <a>start exploring</a>
+                <a>{aboutDatas?.button_text}</a>
               </NavLink>
             </div>
           </div>

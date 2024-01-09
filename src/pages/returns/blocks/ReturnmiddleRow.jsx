@@ -12,6 +12,7 @@ function OrdermiddleRow({ orderDetails }) {
       </div>
       <div className="col-md-6 text-lg-end prd-0">
         {/* <p>xxxxxxxxxxxxxxxxxxxxx</p> */}
+        <p>{orderDetails?.order_date}</p>
         <p>{orderDetails?.returned_on}</p>
       </div>
     </div>
