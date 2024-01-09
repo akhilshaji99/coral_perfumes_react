@@ -74,7 +74,7 @@ function CartSummary({
                   </div>
                 </div>
                 <div className="col-md-6 col-6">
-                  <div className="d-grid">
+                  <div className="d-grid remove-cd">
                     {cartDatas?.voucher_id == null ? (
                       <button
                         // type="submit"

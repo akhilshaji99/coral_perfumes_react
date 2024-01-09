@@ -81,7 +81,7 @@ function Index() {
               ) : (
                 <>
                   <div
-                    class="btn-group mb-4"
+                    class="btn-group mb-4 w-100"
                     role="group"
                     aria-label="Basic example"
                   >
