@@ -46,6 +46,14 @@ function OrderDetails({
             <h3>{orderDetails?.shipping_amount_value}</h3>
           </div>
         </div>
+        <div className="row align-items-center">
+          <div className="col-md-6 col-6">
+            <p>{orderDetails?.discount_title}</p>
+          </div>
+          <div className="col-md-6 col-6 text-lg-end">
+            <h3>{orderDetails?.discount_amount_value}</h3>
+          </div>
+        </div>
         <div className="row align-items-center mb-6">
           <div className="col-md-6 col-6">
             <p>{orderDetails?.gift_wrap_title}</p>
