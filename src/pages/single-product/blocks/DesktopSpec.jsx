@@ -196,7 +196,7 @@ function DesktopSpec({
                   aria-controls="reviews-tab-pane"
                   aria-selected="false"
                 >
-                  BRAND REVIEWS
+                  REVIEWS
                 </button>
               </li>
             </ul>
