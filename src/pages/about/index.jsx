@@ -1,24 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import deviceImageRender from "../../utils/deviceImageRender";
-
+import { useDispatch } from "react-redux";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
-// Import your images
-import img01 from "../../assets/custom/images/about-img01.webp";
-import img02 from "../../assets/custom/images/about-img02.webp";
-import img03 from "../../assets/custom/images/about-img03.webp";
-import img04 from "../../assets/custom/images/about-img04.webp";
-import img05 from "../../assets/custom/images/about-img05.webp";
-import img06 from "../../assets/custom/images/about-img06.webp";
-import img08 from "../../assets/custom/images/about-img08.webp";
-import img09 from "../../assets/custom/images/about-img09.webp";
 import BreadCrumps from "../common/BreadCrumps";
 import request from "../../utils/request";
+import { changeFooterDatas } from "../../redux/footer/footerSlice";
 
 function Index() {
   const [aboutDatas, setAboutDatas] = useState(null);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     getAboutDetails();
   }, []);
@@ -28,6 +20,7 @@ function Index() {
       const response = await request.get("about");
       if (response.data) {
         setAboutDatas(response?.data?.data);
+        dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
       }
     } catch (error) {
       console.log("error", error);
