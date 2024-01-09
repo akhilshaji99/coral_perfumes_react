@@ -8,28 +8,67 @@ import { useParams } from "react-router-dom";
 import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
 import BreadCrumps from "../common/BreadCrumps";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
 
 function Index() {
   const [banners, setBanners] = useState({});
   const [jobDetails, setJobDetails] = useState({});
+  const [validationMessages, setValidationMessages] = useState(null);
+  const [submitStatus, setSubmiStatus] = useState(false);
 
   const urlParams = useParams([]);
-  console.log("urlParams", urlParams?.id);
   useEffect(() => {
     getCareerDetails();
   }, []);
   const getCareerDetails = async () => {
     try {
-      //   var bodyFormData = new FormData();
-      //   bodyFormData.append("token", getUserToken());
-      //   dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.get("job-detail/" + urlParams?.id + "/");
       if (response.data) {
         setBanners(response.data.banner_image);
         setJobDetails(response.data.job_details);
-        // setJobcategories(response.data.job_categories);
         console.log("jobDetails", jobDetails);
-        // setHomeContent(response.data);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const [formDatas, setFormDatas] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    mobile: "",
+    cv: null,
+    cover_letter: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+
+    setFormDatas((formDatas) => ({
+      ...formDatas,
+      [name]: type === "file" ? files[0] : value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      var formDataToSend = new FormData();
+      console.log(formDatas.cv);
+      formDataToSend.append("first_name", formDatas.first_name);
+      formDataToSend.append("last_name", formDatas.last_name);
+      formDataToSend.append("email", formDatas.email);
+      formDataToSend.append("mobile", formDatas.mobile);
+      formDataToSend.append("cv", formDatas.cv);
+      formDataToSend.append("cover_letter", formDatas.cover_letter);
+      console.log("formDataToSend", formDataToSend);
+      const response = await request.post("job-application/", formDataToSend);
+      if (response?.data?.status) {
+        setSubmiStatus(true);
+      } else {
+        setValidationMessages(response?.data?.data);
       }
     } catch (error) {
       console.log("error", error);
@@ -81,69 +120,91 @@ function Index() {
               ></div>
             </div>
             <div className="apply-form">
-              <form action="#" method="post">
-                <h3>Apply for this position</h3>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="first_name"
-                    name="first_name"
-                    placeholder="First Name"
-                    required
-                  />
-                  <input
-                    type="text"
-                    id="last_name"
-                    name="last_name"
-                    placeholder="Last Name"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="E-mail*"
-                    name="E-mail"
-                    placeholder="E-mail*"
-                  />
-                  <input
-                    type="text"
-                    id="num"
-                    name="num"
-                    placeholder="055 923 8088"
-                  />
-                </div>
-                <div className="form-group file-upload">
-                  <label for="file_input">
-                    <img src={upload1} alt="img" />
-                    <div className="upload-top">
-                      <h4>Upload your Resume (pdf)</h4>
-                      <p>OR</p>
-                      <p>Drag and drop your Resume here</p>
-                    </div>
-                  </label>
-                  <input
-                    type="file"
-                    id="file_input"
-                    name="file_upload"
-                    accept="image/*"
-                  />
-                </div>
+              {!submitStatus ? (
+                <form action="#" method="post" onSubmit={handleSubmit}>
+                  <h3>Apply for this position</h3>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      id="first_name"
+                      name="first_name"
+                      placeholder="First Name"
+                      value={formDatas.first_name}
+                      onChange={handleChange}
+                      className="is-invalid"
+                    />
+                    <p className="form-validation-message">{validationMessages?.first_name}</p>
+                    <input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last Name"
+                      value={formDatas.last_name}
+                      onChange={handleChange}
+                    />
+                      <p className="form-validation-message">{validationMessages?.last_name}</p>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="E-mail*"
+                      value={formDatas.email}
+                      onChange={handleChange}
+                    />
+                    <p className="form-validation-message">{validationMessages?.email}</p>
+                    <input
+                      type="text"
+                      id="num"
+                      name="mobile"
+                      placeholder="055 923 8088"
+                      value={formDatas.mobile}
+                      onChange={handleChange}
+                    />
+                    <p className="form-validation-message">{validationMessages?.mobile}</p>
+                  </div>
+                  <div className="form-group file-upload">
+                    <label for="file_input">
+                      <img src={upload1} alt="img" />
+                      <div className="upload-top">
+                        <h4>Upload your Resume (pdf)</h4>
+                        <p>OR</p>
+                        <p>
+                          {formDatas?.cv?.name
+                            ? formDatas?.cv?.name
+                            : "Drag and drop your Resume here"}
+                        </p>
+                      </div>
+                      <p className="form-validation-message">{validationMessages?.cv}</p>
+                    </label>
+                    <input
+                      type="file"
+                      id="file_input"
+                      name="cv"
+                      accept=""
+                      onChange={handleChange}
+                    />
+                  </div>
 
-                <div className="form-group-2 lt-count">
-                  <label>Add a cover letter*</label>
-                  <input
-                    type="text"
-                    id="field1"
-                    name="field1"
-                    placeholder="Add a cover letter"
-                  />
-                  <span id="word-count">0/200</span>
+                  <div className="form-group-2 lt-count">
+                    <label>Add a cover letter*</label>
+                    <input
+                      type="text"
+                      name="cover_letter"
+                      placeholder="Add a cover letter"
+                      value={formDatas.cover_letter}
+                      onChange={handleChange}
+                    />
+                    <span id="word-count">0/200</span>
+                  </div>
+                  <div className="form-group">
+                    <input type="submit" value="Apply" />
+                  </div>
+                </form>
+              ) : (
+                <div class="alert alert-success" role="alert">
+                  Your submission has been sent.
                 </div>
-                <div className="form-group">
-                  <input type="submit" value="Apply" />
-                </div>
-              </form>
+              )}
             </div>
           </div>
         </section>

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3a195fe8.css",
-    "main.js": "/static/js/main.bd186bc7.js",
+    "main.css": "/static/css/main.eaf4d2b0.css",
+    "main.js": "/static/js/main.a9eda107.js",
     "static/js/95.adfddc4c.chunk.js": "/static/js/95.adfddc4c.chunk.js",
     "static/js/255.9b610e94.chunk.js": "/static/js/255.9b610e94.chunk.js",
     "static/js/494.18933216.chunk.js": "/static/js/494.18933216.chunk.js",
@@ -52,18 +52,10 @@
     "static/media/HVD Fonts - BrandonText-Light.otf": "/static/media/HVD Fonts - BrandonText-Light.822492ebfd632c031fdd.otf",
     "static/media/HVD Fonts - BrandonText-Regular.otf": "/static/media/HVD Fonts - BrandonText-Regular.83620198839e84ef5e4c.otf",
     "static/media/HVD Fonts - BrandonText-RegularItalic.otf": "/static/media/HVD Fonts - BrandonText-RegularItalic.d6d37809947806a82df3.otf",
-    "static/media/about-img01.webp": "/static/media/about-img01.4aaf5cab1eace7b5767b.webp",
-    "static/media/about-img08.webp": "/static/media/about-img08.61b36fe3d9c694791fde.webp",
-    "static/media/about-img09.webp": "/static/media/about-img09.8e5e7144a3d44f99f464.webp",
-    "static/media/about-img05.webp": "/static/media/about-img05.8efb5561f7dc0b582de6.webp",
     "static/media/404-img.png": "/static/media/404-img.94bf076f271ab6f5d8d8.png",
     "static/media/blog-banner.webp": "/static/media/blog-banner.8b6c7fdc1324ec796c4f.webp",
     "static/media/Play_Store.svg": "/static/media/Play_Store.d4a2b25b12ffbedd17a09ad850b1a5db.svg",
     "static/media/App_Store.svg": "/static/media/App_Store.01b4e417d738d0e237de52afc134f978.svg",
-    "static/media/about-img02.webp": "/static/media/about-img02.e1efd7f16445def2fe8d.webp",
-    "static/media/about-img03.webp": "/static/media/about-img03.d2b42a17b30ce42c1efe.webp",
-    "static/media/about-img04.webp": "/static/media/about-img04.ed558ddb4fc4fcebf84e.webp",
-    "static/media/about-img06.webp": "/static/media/about-img06.f703ffbfbd0a42674020.webp",
     "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/Flag_02.svg": "/static/media/Flag_02.bec3986ca3636458f3f3a505f982511c.svg",
@@ -102,8 +94,8 @@
     "static/media/3-item.svg": "/static/media/3-item.7b25f2816fb5db40088947192f25668b.svg",
     "static/media/textbox_close.svg": "/static/media/textbox_close.bab6e43a9051228c3d26fa917df2db8a.svg",
     "static/media/hamburger.svg": "/static/media/hamburger.28ee926088598693c4d637f3b53aaf0b.svg",
-    "main.3a195fe8.css.map": "/static/css/main.3a195fe8.css.map",
-    "main.bd186bc7.js.map": "/static/js/main.bd186bc7.js.map",
+    "main.eaf4d2b0.css.map": "/static/css/main.eaf4d2b0.css.map",
+    "main.a9eda107.js.map": "/static/js/main.a9eda107.js.map",
     "95.adfddc4c.chunk.js.map": "/static/js/95.adfddc4c.chunk.js.map",
     "255.9b610e94.chunk.js.map": "/static/js/255.9b610e94.chunk.js.map",
     "494.18933216.chunk.js.map": "/static/js/494.18933216.chunk.js.map",
@@ -121,7 +113,7 @@
     "787.412e709e.chunk.js.map": "/static/js/787.412e709e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a195fe8.css",
-    "static/js/main.bd186bc7.js"
+    "static/css/main.eaf4d2b0.css",
+    "static/js/main.a9eda107.js"
   ]
 }
