@@ -1,10 +1,67 @@
 import img10 from "../../assets/img/prvt/lets-connect.png";
 import "../../assets/css/prvt_label.css";
 import BreadCrumps from "../common/BreadCrumps";
-
+import request from "../../utils/request";
+import { useState, useRef, useEffect } from "react";
+import toast from "react-hot-toast";
+import AlerMessage from "../common/AlerMessage";
 function ContactForm() {
+  const [validationMessages, setValidationMessages] = useState(null);
+  const [formDatas, setFormDatas] = useState({
+    name: "",
+    emal: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    console.log(name)
+    setFormDatas((formDatas) => ({
+      ...formDatas,
+      [name]:value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      var formDataToSend = new FormData();
+      console.log(formDatas.cv);
+      formDataToSend.append("name", formDatas.name);
+      formDataToSend.append("email", formDatas.email);
+      formDataToSend.append("phone", formDatas.phone);
+      formDataToSend.append("message", formDatas.message);
+      console.log("formDataToSend", formDataToSend);
+      const response = await request.post("api/submit-contact-form/", formDataToSend);
+      if (response?.data?.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={true}
+            title={"Success"}
+            message={response?.data?.message}
+          />
+        ));
+        setValidationMessages([]);
+        setFormDatas({
+          name: "",
+          emal: "",
+          phone: "",
+          message: "",
+        })
+
+      } else {
+        console.log('error',response?.data?.errors)
+        setValidationMessages(response?.data?.errors);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
-    <>
+    <>  
       {window.location.pathname === "/contact" ? <BreadCrumps /> : null}
       <div className="container pt-10">
         <div className="row ">
@@ -15,39 +72,61 @@ function ContactForm() {
           </div>
           <div className="col-md-6">
             <div className="lets-form">
-              <form>
+         
+                <form action="#" method="post" onSubmit={handleSubmit}>
                 <div className="form-group  mb-8">
                   <input
                     type="text"
                     className="form-control"
                     id="name"
+                    name="name"
                     placeholder="Name"
+                    value={formDatas.name}
+                    onChange={handleChange}
                   />
+                    <p className="form-validation-message">{validationMessages?.name}</p>
+
                 </div>
                 <div className="form-group mb-8">
                   <input
                     type="email"
                     className="form-control"
                     id="email"
+                    name="email"
                     placeholder="E-mail"
+                    value={formDatas.email}
+                    onChange={handleChange}
                   />
+                    <p className="form-validation-message">{validationMessages?.email}</p>
+
                 </div>
                 <div className="form-group mb-8">
                   <input
-                    type="tel"
+                    type="number"
                     className="form-control"
                     id="phone"
+                    name="phone"
                     placeholder="055 923 8088"
+                    value={formDatas.phone}
+                    onChange={handleChange}
+                    
                   />
+                    <p className="form-validation-message">{validationMessages?.phone}</p>
+
                 </div>
                 <div className="form-group mb-8">
                   <textarea
                     className="form-control"
-                    id="address"
+                    id="message"
                     rows={3}
                     placeholder="Your Message"
                     defaultValue={""}
+                    name="message"
+                    value={formDatas.message}
+                    onChange={handleChange}
                   />
+                    <p className="form-validation-message">{validationMessages?.message}</p>
+
                 </div>
                 <button
                   className="btn btn-dark col-md-6 col-12 address-button"
@@ -56,6 +135,7 @@ function ContactForm() {
                   SEND
                 </button>
               </form>
+             
             </div>
           </div>
           <div className="col-md-6 lest-img">
