@@ -26,7 +26,7 @@ function ProductCarousel({ componentDatas }) {
 
   return (
     <>
-      <div className="container-lg-fluid cc-margin">
+      <div className="container-fluid cc-margin">
         <div className="card flash-sale-container " style={dynamicBackground}>
           <div className="row d-end">
             <div className="col-md-8 ">

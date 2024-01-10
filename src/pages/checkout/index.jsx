@@ -564,7 +564,7 @@ function Index() {
                             <div className="col-md-3 col-6">
                               {/* input */}
                               <div className="mb-3  mb-lg-0 position-relative">
-                                <div class="">
+                                <div className="remove-cd">
                                   {" "}
                                   {promoCodeId == null ? (
                                     <button

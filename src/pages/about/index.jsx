@@ -1,17 +1,32 @@
 import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import deviceImageRender from "../../utils/deviceImageRender";
+import { useDispatch } from "react-redux";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
-// Import your images
-import img01 from "../../assets/custom/images/about-img01.webp";
-import img02 from "../../assets/custom/images/about-img02.webp";
-import img03 from "../../assets/custom/images/about-img03.webp";
-import img04 from "../../assets/custom/images/about-img04.webp";
-import img05 from "../../assets/custom/images/about-img05.webp";
-import img06 from "../../assets/custom/images/about-img06.webp";
-import img08 from "../../assets/custom/images/about-img08.webp";
-import img09 from "../../assets/custom/images/about-img09.webp";
 import BreadCrumps from "../common/BreadCrumps";
+import request from "../../utils/request";
+import { changeFooterDatas } from "../../redux/footer/footerSlice";
+
 function Index() {
+  const [aboutDatas, setAboutDatas] = useState(null);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getAboutDetails();
+  }, []);
+
+  const getAboutDetails = async () => {
+    try {
+      const response = await request.get("about");
+      if (response.data) {
+        setAboutDatas(response?.data?.data);
+        dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <>
       <div className="page-new">
@@ -19,62 +34,46 @@ function Index() {
         <section>
           <div className="container-new">
             <div className="title-page">
-              <h1>About Us</h1>
+              <h1>{aboutDatas?.title1}</h1>
             </div>
             <div className="info-text">
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel
-                illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum zzril
-                delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-                dolor sit amet, cons ectetuer adipiscing elit,{" "}
-              </p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: aboutDatas?.content1,
+                }}
+              ></p>
             </div>
             <div className="image-list-one">
-              <img src={img01} alt="img" />
+              {aboutDatas?.image1 ? (
+                <img src={deviceImageRender(aboutDatas?.image1)} alt="img" />
+              ) : null}
             </div>
           </div>
         </section>
         <section className="abut-section">
           <div className="container-new">
             <div className="sub-abt">
-              <h2>Lorem ipsum DOLOR SIT AMET</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel
-                illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum zzril
-                delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-                dolor sit amet, cons ectetuer adipiscing elit, Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                consequat. Duis autem vel eum iriure dolor in hendrerit in
-                vulputate velit esse molestie consequat, vel illum dolore eu
-                feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                dignissim qui blandit praesent luptatum zzril delenit augue duis
-                dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-                cons ectetuer adipiscing elit,{" "}
-              </p>
+              <h2>{aboutDatas?.title2}</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: aboutDatas?.content2,
+                }}
+              ></p>
             </div>
 
             <div className="gallery">
               <div className="left-gallery-one">
-                <img src={img02} alt="img" />
+                {aboutDatas?.image2 ? (
+                  <img src={deviceImageRender(aboutDatas?.image2)} alt="img" />
+                ) : null}
               </div>
               <div className="right-gallery-one">
-                <img src={img03} alt="img" />
-                <img src={img04} alt="img" />
+                {aboutDatas?.image3 ? (
+                  <img src={deviceImageRender(aboutDatas?.image3)} alt="img" />
+                ) : null}
+                {aboutDatas?.image4 ? (
+                  <img src={deviceImageRender(aboutDatas?.image4)} alt="img" />
+                ) : null}
               </div>
             </div>
           </div>
@@ -82,39 +81,30 @@ function Index() {
         <section>
           <div className="container-new">
             <div className="sub-abt">
-              <h2>Lorem ipsum DOLOR SIT AMET</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel
-                illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum zzril
-                delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-                dolor sit amet, cons ectetuer adipiscing elit, Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                consequat. Duis autem vel eum iriure dolor in hendrerit in
-                vulputate velit esse molestie consequat, vel illum dolore eu
-                feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                dignissim qui blandit praesent luptatum zzril delenit augue duis
-                dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-                cons ectetuer adipiscing elit,{" "}
-              </p>
+              <h2>{aboutDatas?.title3}</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: aboutDatas?.content3,
+                }}
+              ></p>
             </div>
             <div className="gallery-flex">
               <ul>
                 <li>
-                  {" "}
-                  <img src={img05} alt="img" />
+                  {aboutDatas?.image5 ? (
+                    <img
+                      src={deviceImageRender(aboutDatas?.image5)}
+                      alt="img"
+                    />
+                  ) : null}
                 </li>
                 <li>
-                  {" "}
-                  <img src={img06} alt="img" />
+                  {aboutDatas?.image6 ? (
+                    <img
+                      src={deviceImageRender(aboutDatas?.image6)}
+                      alt="img"
+                    />
+                  ) : null}
                 </li>
               </ul>
             </div>
@@ -123,49 +113,38 @@ function Index() {
         <section>
           <div className="container-new">
             <div className="sub-abt pg-top">
-              <h2>Lorem ipsum DOLOR SIT AMET</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel
-                illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum zzril
-                delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-                dolor sit amet, cons ectetuer adipiscing elit, Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                consequat. Duis autem vel eum iriure dolor in hendrerit in
-                vulputate velit esse molestie consequat, vel illum dolore eu
-                feugiat nulla facilisis at vero eros et accumsan et iusto odio
-                dignissim qui blandit praesent luptatum zzril delenit augue duis
-                dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-                cons ectetuer adipiscing elit,{" "}
-              </p>
+              <h2>{aboutDatas?.title4}</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: aboutDatas?.content4,
+                }}
+              ></p>
             </div>
             <div className="gallery-flex">
               <ul>
                 <li>
-                  {" "}
-                  <img src={img08} alt="img" />
+                  {aboutDatas?.image7 ? (
+                    <img
+                      src={deviceImageRender(aboutDatas?.image7)}
+                      alt="img"
+                    />
+                  ) : null}
                 </li>
                 <li>
-                  {" "}
-                  <img src={img09} alt="img" />
+                  {aboutDatas?.image8 ? (
+                    <img
+                      src={deviceImageRender(aboutDatas?.image8)}
+                      alt="img"
+                    />
+                  ) : null}
                 </li>
               </ul>
             </div>
             <div className="start-explor">
               {/* <a href="#">start exploring</a> */}
-              <NavLink to="/login">
-                            <a >
-                            start exploring
-                            </a>
-                          </NavLink>
+              <NavLink to="/">
+                <a>{aboutDatas?.button_text}</a>
+              </NavLink>
             </div>
           </div>
         </section>

@@ -183,7 +183,7 @@ function MobileSpec({
                 aria-expanded="false"
                 aria-controls="collapseSix"
               >
-                Brand Review
+                Review
               </button>
             </h2>
             <div

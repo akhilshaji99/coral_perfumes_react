@@ -4,28 +4,32 @@ import $ from "jquery";
 import { Rating } from "react-simple-star-rating";
 
 function BrandRating({ refetch, currentVariant, setRatingType }) {
-  const [brandReviews, setBrandReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    if (currentVariant?.brand_id) {
-      getBrandRatings();
+    if (currentVariant?.id) {
+      getReviews();
     }
-  }, [currentVariant?.brand_id]);
+  }, [currentVariant?.id]);
 
   useEffect(() => {
-    getBrandRatings();
+    getReviews();
   }, [refetch]);
 
-  const getBrandRatings = async () => {
-    if (currentVariant?.brand_id === undefined) {
+  const getReviews = async () => {
+    if (currentVariant?.id === undefined) {
       return;
     }
     try {
       const response = await request.get(
-        "get-brand-reviews/" + currentVariant?.brand_id + "/"
+        "get-product-reviews/" +
+          currentVariant?.product_id +
+          "/" +
+          currentVariant?.id +
+          "/"
       );
       if (response?.data?.status) {
-        setBrandReviews(response?.data?.data);
+        setReviews(response?.data?.data);
       }
     } catch (error) {
       console.log("error", error);
@@ -42,7 +46,7 @@ function BrandRating({ refetch, currentVariant, setRatingType }) {
       <div className="container-lg-fluid px-0">
         <div className="row brand-rating">
           <div className="col-md-9 col-12">
-            {brandReviews?.map((component, index) => {
+            {reviews?.review_data?.map((component, index) => {
               return (
                 <div className="mb-5" key={index}>
                   <div className="row align-items-center">
@@ -56,24 +60,17 @@ function BrandRating({ refetch, currentVariant, setRatingType }) {
                         </div>
                         <div className="row">
                           <div className="col-md-6">
-                            <Rating
-                              initialValue={component.stars_count}
-                              fillColor="#0f0f0f"
-                              readonly={true}
-                              size={20}
-                              className="mb-4 react-simple-star-rating"
-                            />{" "}
+                            <div className="row">
+                              <p className=" brand-rating-message">
+                                {component.message}
+                              </p>
+                            </div>
                           </div>
                           <div className="col-md-6 pr-0">
                             <p className="brand-rating-date">
                               {component.submitted_date}
                             </p>
                           </div>
-                        </div>
-                        <div className="row">
-                          <p className="mb-6 brand-rating-message">
-                            {component.message}
-                          </p>
                         </div>
                       </div>
                     </div>
@@ -90,7 +87,7 @@ function BrandRating({ refetch, currentVariant, setRatingType }) {
                 className="btn btn-outline-dark"
                 onClick={(e) => {
                   e.preventDefault();
-                  setRatingType("brand");
+                  setRatingType("product");
                   $("#ratingModal").toggle();
                   $("#ratingModal").toggleClass("modal fade modal");
                 }}

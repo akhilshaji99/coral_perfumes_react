@@ -34,7 +34,7 @@ function Brands({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-lg-fluid cc-margin">
+      <div className="container-fluid cc-margin">
         <div className="card brands-card " style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <div className="desktop_slider">

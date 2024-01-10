@@ -30323,3 +30323,6 @@ img {
   -ms-user-drag: none; /* For older versions of Microsoft Edge */
   -o-user-drag: none; /* For older versions of Opera */
 }
+.form-validation-message{
+  color: red;
+}
