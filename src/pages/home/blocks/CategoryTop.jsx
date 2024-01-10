@@ -26,7 +26,7 @@ function CategoryTop({ componentDatas }) {
 
   return (
     <>
-      <div className="container-fluid cd-margin">
+      <div className="container-lg-fluid cd-margin">
         <div className="category-top" style={dynamicBackground}>
           <h1 className="mb-5">{componentDatas?.title}</h1>
           <div className="desktop_slider">

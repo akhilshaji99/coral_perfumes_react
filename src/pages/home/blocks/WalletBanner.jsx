@@ -26,7 +26,7 @@ function WalletBanner({ componentDatas }) {
   };
   return (
     <>
-      <div className="container-fluid cc-margin ">
+      <div className="container-lg-fluid cc-margin ">
         <div className="card wallet-banner" style={dynamicBackground}>
           <div className="row align-items-center p-3">
             <div className="col-md-3 d-none d-md-block">
