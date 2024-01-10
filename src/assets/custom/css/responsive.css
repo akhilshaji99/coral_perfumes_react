@@ -1,8 +1,91 @@
+@media (min-width: 1600px) {
+  footer.footer .container {
+    max-width: 88% !important;
+}.footer .nav .nav-item .nav-link {
+  
+  font-size: 15px;
+}
+  .product-desc-section h1 {
+    font-size: 27px;
+  }
+  .footer h6 {
+    font-size: 14px;
+  }
+  .navbar .navbar-nav .nav-item .nav-link {
+    font-size: 17px;
+}
+.desktop_logo_section img {
+  width: 130px;}
+  .imgs-header {
+    width: 26px;
+}
+.dropdown-text {
+  font-size: 0.88rem;}
+  .custom-mega-menu .dropdown-item {
+    font-size: 13px;
+  }
+  .category-top-img h3 {
+    font-size: 17px;
+  }
+  .order-top-row {
+    font-size: 16px;
+  }
+  .order-bottom-row h4 {
+    font-size: 18px;}
+    .order-bottom-row h5 {
+      font-size: 15px;
+    }
+    .product-img img {
+      max-height: 300px;
+  }
+  .product-grid h4 {
+    font-size: 18px;}
+    .checkout-left-card h4 {
+      font-size: 21px;
+    }
+    .left-sec-text {
+      font-size: 15px;
+    }
+    .return-reason span {
+      font-size: 15px;
+  }
+  .cart-summary-label {
+    font-size: 14px;}
+    body.blog .container-new {
+      width: 100%;
+      max-width: 90%;
+  }
+  .social-mdedia-icons img {
+    width: 35px;
+    height: 35px;}
+   .menu-drop-link {
+      font-size: 14px;
+  }
+  .p-ul li {
+    font-size: 17px;
+}
+.p-d-c {
+  font-size: 17px;
+}
+.return-policy-div p {
+  font-size: 16px;
+}
+  .return-policy-div h6 {
+    font-size: 14px;
+  }
+  .product-img {
+    height: 100%;
+    height: 320px;}
+ .nav-category .nav-item .nav-link {
+      font-size: 21px;
+    }
+}
 @media (max-width: 1440px) {
   .container-new {
     width: 100%;
     max-width: 1150px;
   }
+
   .scroll-container2
    {
     max-height: 170px;}
@@ -915,7 +998,10 @@ span.blog-date {
     display: block;
 }
 button.btn-ongoing{
+  /*margin-top: 20px;*/
   margin-top: 20px;
+    margin-right: -20px;
+    width: 65%;
 }
 button.btn-complete{
   margin-top: 20px;
@@ -1080,8 +1166,11 @@ body.product-details .form-outline textarea.form-control {
   text-align: center;
 }
 .btn-complete {
-  position: absolute;
+ /*position: absolute;
   width: 140px;
+  padding-left: 20px;*/
+  position: static;
+  width: 160px;
   padding-left: 20px;
 }
 body.product-details .otp-modal {

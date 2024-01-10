@@ -2001,9 +2001,7 @@ body.checkout .checkout-left-card h6 {
   display: inline-block;
   padding-right: 10px;
 }
-body.checkout .accordion-item.checkout-accordion button {
-  padding: 12px;
-}
+
 body.checkout div#flush-collapseOne .promo-code-label {
   color: #0aad0a;
   padding-top: 4px !important;
@@ -2149,4 +2147,7 @@ body.cart .promo-modal .modal-content {
 body.checkout .promo-modal .modal-content {
   max-height: 440px;
   overflow-y: auto;
+}
+.desktop_slider .product-grid.slick-slider-alignment h4 { 
+  padding-top: 0px;
 }
