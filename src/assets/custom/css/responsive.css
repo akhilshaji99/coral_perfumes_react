@@ -1373,6 +1373,9 @@ body.checkout div#rating-tab-pane svg.regular-sort-icon  {
   display: block;
   visibility: visible !important;
 }
+.container-fluid.cc-margin.w-deals {
+  padding: 0 15px;
+}
 }
 .menu-zindex {
   z-index: -1 !important;
