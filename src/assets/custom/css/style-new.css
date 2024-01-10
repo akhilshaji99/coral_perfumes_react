@@ -2151,3 +2151,21 @@ body.checkout .promo-modal .modal-content {
 .desktop_slider .product-grid.slick-slider-alignment h4 { 
   padding-top: 0px;
 }
+body.home .product-img {
+  transition: transform 0.3s ease-in-out;
+}
+body.home .product-img:hover {
+  transform: scale(1.1);
+}
+body.product-details .product-img {
+  transition: transform 0.3s ease-in-out;
+}
+body.product-details .product-img:hover {
+  transform: scale(1.1);
+}
+body.products .product-img {
+  transition: transform 0.3s ease-in-out;
+}
+body.products .product-img:hover {
+  transform: scale(1.1);
+}
