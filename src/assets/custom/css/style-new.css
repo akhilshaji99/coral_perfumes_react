@@ -118,7 +118,6 @@ ul li {
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
 }
 .gallery {
   display: flex;
@@ -2168,4 +2167,13 @@ body.products .product-img {
 }
 body.products .product-img:hover {
   transform: scale(1.1);
+}
+body.about .info-text p {
+  text-transform: none;
+}
+body.about .info-text a {
+  color: #000;
+}
+.sub-abt a {
+  color: #000;
 }
