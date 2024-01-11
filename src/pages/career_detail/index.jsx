@@ -15,7 +15,7 @@ function Index() {
   const [banners, setBanners] = useState({});
   const [jobDetails, setJobDetails] = useState({});
   const [validationMessages, setValidationMessages] = useState(null);
-  const [submitStatus, setSubmiStatus] = useState(false);
+  // const [submitStatus, setSubmiStatus] = useState(false);
 
   const urlParams = useParams([]);
   useEffect(() => {
@@ -66,7 +66,25 @@ function Index() {
       console.log("formDataToSend", formDataToSend);
       const response = await request.post("job-application/", formDataToSend);
       if (response?.data?.status) {
-        setSubmiStatus(true);
+        // setSubmiStatus(true);
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={true}
+            title={"Success"}
+            message={response?.data?.message_1}
+          />
+        ));
+        setFormDatas({
+          first_name: "",
+          last_name: "",
+          email: "",
+          mobile: "",
+          cv: null,
+          cover_letter: "",
+        });
+        setValidationMessages(null)
       } else {
         setValidationMessages(response?.data?.data);
       }
@@ -120,91 +138,95 @@ function Index() {
               ></div>
             </div>
             <div className="apply-form">
-              {!submitStatus ? (
-                <form action="#" method="post" onSubmit={handleSubmit}>
-                  <h3>Apply for this position</h3>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      id="first_name"
-                      name="first_name"
-                      placeholder="First Name"
-                      value={formDatas.first_name}
-                      onChange={handleChange}
-                      className="is-invalid"
-                    />
-                    <p className="form-validation-message">{validationMessages?.first_name}</p>
-                    <input
-                      type="text"
-                      name="last_name"
-                      placeholder="Last Name"
-                      value={formDatas.last_name}
-                      onChange={handleChange}
-                    />
-                      <p className="form-validation-message">{validationMessages?.last_name}</p>
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="email"
-                      placeholder="E-mail*"
-                      value={formDatas.email}
-                      onChange={handleChange}
-                    />
-                    <p className="form-validation-message">{validationMessages?.email}</p>
-                    <input
-                      type="text"
-                      id="num"
-                      name="mobile"
-                      placeholder="055 923 8088"
-                      value={formDatas.mobile}
-                      onChange={handleChange}
-                    />
-                    <p className="form-validation-message">{validationMessages?.mobile}</p>
-                  </div>
-                  <div className="form-group file-upload">
-                    <label for="file_input">
-                      <img src={upload1} alt="img" />
-                      <div className="upload-top">
-                        <h4>Upload your Resume (pdf)</h4>
-                        <p>OR</p>
-                        <p>
-                          {formDatas?.cv?.name
-                            ? formDatas?.cv?.name
-                            : "Drag and drop your Resume here"}
-                        </p>
-                      </div>
-                      <p className="form-validation-message">{validationMessages?.cv}</p>
-                    </label>
-                    <input
-                      type="file"
-                      id="file_input"
-                      name="cv"
-                      accept=""
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="form-group-2 lt-count">
-                    <label>Add a cover letter*</label>
-                    <input
-                      type="text"
-                      name="cover_letter"
-                      placeholder="Add a cover letter"
-                      value={formDatas.cover_letter}
-                      onChange={handleChange}
-                    />
-                    <span id="word-count">0/200</span>
-                  </div>
-                  <div className="form-group">
-                    <input type="submit" value="Apply" />
-                  </div>
-                </form>
-              ) : (
-                <div class="alert alert-success" role="alert">
-                  Your submission has been sent.
+              <form action="#" method="post" onSubmit={handleSubmit}>
+                <h3>Apply for this position</h3>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    placeholder="First Name"
+                    value={formDatas.first_name}
+                    onChange={handleChange}
+                    className="is-invalid"
+                  />
+                  <p className="form-validation-message">
+                    {validationMessages?.first_name}
+                  </p>
+                  <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Last Name"
+                    value={formDatas.last_name}
+                    onChange={handleChange}
+                  />
+                  <p className="form-validation-message">
+                    {validationMessages?.last_name}
+                  </p>
                 </div>
-              )}
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="E-mail*"
+                    value={formDatas.email}
+                    onChange={handleChange}
+                  />
+                  <p className="form-validation-message">
+                    {validationMessages?.email}
+                  </p>
+                  <input
+                    type="text"
+                    id="num"
+                    name="mobile"
+                    placeholder="055 923 8088"
+                    value={formDatas.mobile}
+                    onChange={handleChange}
+                  />
+                  <p className="form-validation-message">
+                    {validationMessages?.mobile}
+                  </p>
+                </div>
+                <div className="form-group file-upload">
+                  <label for="file_input">
+                    <img src={upload1} alt="img" />
+                    <div className="upload-top">
+                      <h4>Upload your Resume (pdf)</h4>
+                      <p>OR</p>
+                      <p>
+                        {formDatas?.cv?.name
+                          ? formDatas?.cv?.name
+                          : "Drag and drop your Resume here"}
+                      </p>
+                    </div>
+                    <p className="form-validation-message">
+                      {validationMessages?.cv}
+                    </p>
+                  </label>
+                  <input
+                    type="file"
+                    id="file_input"
+                    name="cv"
+                    accept=""
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-group-2 lt-count">
+                  <label>Add a cover letter*</label>
+                  <input
+                    type="text"
+                    name="cover_letter"
+                    placeholder="Add a cover letter"
+                    value={formDatas.cover_letter}
+                    onChange={handleChange}
+                  />
+                  <span id="word-count">0/200</span>
+                </div>
+                <div className="form-group">
+                  <input type="submit" value="Apply" />
+                </div>
+              </form>
             </div>
           </div>
         </section>
