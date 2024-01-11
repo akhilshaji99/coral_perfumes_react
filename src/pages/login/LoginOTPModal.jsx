@@ -12,16 +12,22 @@ import AlerMessage from "../../../src/pages/common/AlerMessage";
 import request from "../../utils/request";
 import { useNavigate } from "react-router-dom";
 
-function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModalVisible}) {
+function LoginOTPModal({
+  componentDatas,
+  redirectTo = null,
+  modalVisible,
+  setModalVisible,
+}) {
   const [resendDisabled, setResendDisabled] = useState(false);
   const [countdown, setCountdown] = useState(60);
+  const [loader, setLoader] = useState(false);
   const startCountdown = () => {
     setResendDisabled(true);
     setCountdown(60);
   };
   useEffect(() => {
     let timer;
-    
+
     if (resendDisabled) {
       timer = setInterval(() => {
         setCountdown((prevCountdown) => {
@@ -41,7 +47,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
     $("#otpModal").toggle();
     $("#otpModal").toggleClass("modal modal fade");
     $("#otpModal").hide();
-    setModalVisible(false)
+    setModalVisible(false);
     // Clear inputs when the modal is closed
     inputRefsArray.forEach((ref) => {
       if (ref.current) {
@@ -49,19 +55,17 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
       }
     });
     setOtpVal([]);
-      // Clear the countdown and re-enable Resend on modal close
-      setCountdown(0);
-      setResendDisabled(false);
+    // Clear the countdown and re-enable Resend on modal close
+    setCountdown(0);
+    setResendDisabled(false);
   };
   // Reset input values and state when the modal is closed
   useEffect(() => {
-    if(modalVisible){
-    startCountdown();
+    if (modalVisible) {
+      startCountdown();
     }
-
-  },[modalVisible])
+  }, [modalVisible]);
   useEffect(() => {
-
     const clearInputs = () => {
       setOtpVal([]);
       inputRefsArray.forEach((ref) => {
@@ -75,9 +79,9 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
     return () => {
       clearInputs();
     };
-      // Clear the countdown and re-enable Resend on modal close
-      setCountdown(0);
-      setResendDisabled(false);
+    // Clear the countdown and re-enable Resend on modal close
+    setCountdown(0);
+    setResendDisabled(false);
   }, []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputRefsArray] = useState(() =>
@@ -127,7 +131,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
       if (!response.data.status) {
         status = "error";
         title = "ERROR";
-      }else{
+      } else {
         startCountdown();
       }
       toast((t) => (
@@ -148,6 +152,7 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
     if (queryParameters == "checkout=") {
       redirectTo = "checkout";
     }
+    setLoader(true);
     try {
       var bodyFormData = new FormData();
       const guestToken = localStorage.getItem("guestToken");
@@ -186,7 +191,9 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
           />
         ));
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log("error", error);
     }
   };
@@ -325,13 +332,11 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
                       if (resendDisabled) {
                         e.preventDefault(); // Prevents the default behavior (navigation)
                       } else {
-                      resendOtp();
+                        resendOtp();
                       }
                     }}
                     disabled={resendDisabled}
-
                     style={{ color: resendDisabled ? "red" : "black" }}
-
                   >
                     Resend
                   </a>
@@ -342,8 +347,20 @@ function LoginOTPModal({ componentDatas, redirectTo = null ,modalVisible,setModa
                   <button
                     type="submit"
                     className="btn btn-dark px-4 validate w-100"
+                    disabled={loader}
                   >
                     VERIFY
+                    {loader ? (
+                      <>
+                        &nbsp;
+                        <div
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                        >
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </>
+                    ) : null}
                   </button>{" "}
                 </div>
               </form>

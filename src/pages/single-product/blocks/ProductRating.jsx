@@ -48,46 +48,48 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
       {/* <RatingModal setRefetch={setRefetch} currentVariant={currentVariant} type={"product"}/> */}
       <div className="container-lg-fluid px-0">
         <div className="row product-rating">
-          <div className="col-12 col-md-9">
-            <div className="row align-items-center px-0">
-              <div className="col-md-2 col-4">
-                <h1>{productReviews?.average_star_rating} </h1>
+          {productReviews.length !==0 ? (
+            <div className="col-12 col-md-9">
+              <div className="row align-items-center px-0">
+                <div className="col-md-2 col-4">
+                  <h1>{productReviews?.average_star_rating} </h1>
+                </div>
+                <div className="col-md-3 col-8 ps-0">
+                  <span>
+                    {" "}
+                    <p>{productReviews?.review_message}</p>
+                  </span>
+                </div>
               </div>
-              <div className="col-md-3 col-8 ps-0">
-                <span>
-                  {" "}
-                  <p>{productReviews?.review_message}</p>
-                </span>
-              </div>
+              <span>
+                {productReviews?.customer_message ? (
+                  <svg
+                    width={24}
+                    height={25}
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.48047 18.8514L10.5805 21.2514C10.9805 21.6514 11.8805 21.8514 12.4805 21.8514H16.2805C17.4805 21.8514 18.7805 20.9514 19.0805 19.7514L21.4805 12.4514C21.9805 11.0514 21.0805 9.85143 19.5805 9.85143H15.5805C14.9805 9.85143 14.4805 9.35143 14.5805 8.65143L15.0805 5.45143C15.2805 4.55143 14.6805 3.55143 13.7805 3.25143C12.9805 2.95143 11.9805 3.35143 11.5805 3.95143L7.48047 10.0514"
+                      stroke="black"
+                      strokeWidth="1.5"
+                      strokeMiterlimit={10}
+                    />
+                    <path
+                      d="M2.38086 18.8515V9.05149C2.38086 7.65149 2.98086 7.15149 4.38086 7.15149H5.38086C6.78086 7.15149 7.38086 7.65149 7.38086 9.05149V18.8515C7.38086 20.2515 6.78086 20.7515 5.38086 20.7515H4.38086C2.98086 20.7515 2.38086 20.2515 2.38086 18.8515Z"
+                      stroke="black"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ) : null}
+                {"  "}
+                {productReviews?.customer_message}
+              </span>
             </div>
-            <span>
-              {productReviews?.customer_message ? (
-                <svg
-                  width={24}
-                  height={25}
-                  viewBox="0 0 24 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.48047 18.8514L10.5805 21.2514C10.9805 21.6514 11.8805 21.8514 12.4805 21.8514H16.2805C17.4805 21.8514 18.7805 20.9514 19.0805 19.7514L21.4805 12.4514C21.9805 11.0514 21.0805 9.85143 19.5805 9.85143H15.5805C14.9805 9.85143 14.4805 9.35143 14.5805 8.65143L15.0805 5.45143C15.2805 4.55143 14.6805 3.55143 13.7805 3.25143C12.9805 2.95143 11.9805 3.35143 11.5805 3.95143L7.48047 10.0514"
-                    stroke="black"
-                    strokeWidth="1.5"
-                    strokeMiterlimit={10}
-                  />
-                  <path
-                    d="M2.38086 18.8515V9.05149C2.38086 7.65149 2.98086 7.15149 4.38086 7.15149H5.38086C6.78086 7.15149 7.38086 7.65149 7.38086 9.05149V18.8515C7.38086 20.2515 6.78086 20.7515 5.38086 20.7515H4.38086C2.98086 20.7515 2.38086 20.2515 2.38086 18.8515Z"
-                    stroke="black"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ) : null}
-              {"  "}
-              {productReviews?.customer_message}
-            </span>
-          </div>
+          ) : null}
           <div className=" col-md-3 mt-3">
             <div className="ml-10 d-none d-sm-block">
               <button
@@ -116,9 +118,9 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
                   <div className="progress col-md-10 col-7">
                     <div
                       className="progress-bar"
-                      style={{ width: component }}
+                      style={{ width: component+'%' }}
                       role="progressbar"
-                      aria-valuenow="25"
+                      aria-valuenow="50"
                       aria-valuemin="0"
                       aria-valuemax="100"
                     >

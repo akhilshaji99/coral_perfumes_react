@@ -179,7 +179,7 @@ function Login() {
                     </svg>
                   </LoginSocialFacebook>
                 </div>
-                <div className="col-md-2 col-3">
+                {/* <div className="col-md-2 col-3">
                   <LoginSocialApple
                     client_id={process.env.REACT_APP_APPLE_ID || ""}
                     scope={"name email"}
@@ -210,7 +210,7 @@ function Login() {
                       />
                     </svg>
                   </LoginSocialApple>
-                </div>
+                </div> */}
               </div>
               <div className="separator">
                 <div className="line"></div>
