@@ -120,6 +120,7 @@ function ProductMain({
   const getProductList = async (page_number) => {
     try {
       setLoading(true);
+      let link_split = window.location.href.split("?");
       if (urlParams?.link_type && urlParams?.link_value) {
         dispatch(changeApiCallStatus(false)); // Change api call status
         const response = await request.post(
@@ -138,6 +139,7 @@ function ProductMain({
             )
               ? localStorage.getItem("link_items")
               : "",
+            link_filter: link_split.length > 1 ? link_split[1] : "",
           }
         );
         if (response?.data) {
@@ -219,7 +221,10 @@ function ProductMain({
                   </div>
 
                   <div className="col-md-3 col-6">
-                    <CustomDropdown applyRelevanceFilter={setRelevanceFilter} relevanceFilter={relevanceFilter}/>
+                    <CustomDropdown
+                      applyRelevanceFilter={setRelevanceFilter}
+                      relevanceFilter={relevanceFilter}
+                    />
                   </div>
                   <div className="col-md-3 col-12">
                     <h6>{count} Items</h6>
