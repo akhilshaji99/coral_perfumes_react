@@ -9,7 +9,7 @@ function ContactForm() {
   const [validationMessages, setValidationMessages] = useState(null);
   const [formDatas, setFormDatas] = useState({
     name: "",
-    emal: "",
+    email: "",
     phone: "",
     message: "",
   });
@@ -23,8 +23,33 @@ function ContactForm() {
     }));
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formDatas.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formDatas.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formDatas.email)) {
+      errors.email = "Invalid email format";
+    }
+
+    // if (!formDatas.phone.trim()) {
+    //   errors.phone = "Phone number is required";
+    // } else if (!/^\d{10}$/.test(formDatas.phone)) {
+    //   errors.phone = "Invalid phone number format";
+    // }
+
+   
+
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (validateForm()) {
     try {
       var formDataToSend = new FormData();
       console.log(formDatas.cv);
@@ -47,7 +72,7 @@ function ContactForm() {
         setValidationMessages([]);
         setFormDatas({
           name: "",
-          emal: "",
+          email: "",
           phone: "",
           message: "",
         })
@@ -59,6 +84,7 @@ function ContactForm() {
     } catch (error) {
       console.log("error", error);
     }
+  }
   };
   return (
     <>  
