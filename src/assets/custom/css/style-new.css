@@ -1554,7 +1554,8 @@ button.ModalBtn.offer-button {
 }
 .row.brand-rating {
   width: 100%;
-  padding-bottom:22px;
+    display: flex;
+    justify-content: end;
 }
 .row.brand-rating .col-md-9.col-10 {
   max-height: 385px;
@@ -2026,6 +2027,8 @@ footer.footer p {
 }
 .row.product-rating {
   width: 100%;
+  display: flex;
+  justify-content: end;
 }
 a.footer-read-more-text {
   text-decoration: underline;
@@ -2177,3 +2180,11 @@ body.about .info-text a {
 .sub-abt a {
   color: #000;
 }
+body.products .product-grid h4 {
+  padding-top: 0px;}
+body.product-details .product-grid h4 {
+    padding-top: 0px;
+  }
+body.cart .my-bag-img {
+    background: #fff !important;
+  }

@@ -354,6 +354,14 @@ ul.nav.flex-column.nav-pills.nav-pills-dark a.nav-link img {
   .image-list-one img {
     height: 246px;
   }
+  body.order-details .order-img img {
+    height: 85px;
+  }.request-ret h3 {
+    padding-right: 10px;
+}
+body.checkout div#flush-collapseOne input.form-control {
+  padding: 7px 10px !important;
+}
   .right-gallery-one img:nth-child(2) {
     padding-top: 0px;
   }
@@ -1222,6 +1230,12 @@ body.orders .orders-card {
 body.orders .orders-card label {
   font-size: 11px;
 }
+.order-flex {
+  padding-right: 10px;
+}
+body.orders .react-multi-carousel-item .pds-0 h4 {
+  padding-right: 10px;
+}
 body.orders .react-multi-carousel-item .order-img {
   width: 95px;
  height: auto;
@@ -1234,6 +1248,8 @@ body.order-details .order-bottom-row h4 {
   font-size: 10px;
   height: 27px;
   overflow: hidden;
+  padding-right: 5px;
+
 }
 body.order-details .order-bottom-row h2 {
   font-size: 11px;
