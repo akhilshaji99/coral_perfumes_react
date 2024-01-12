@@ -24,9 +24,12 @@ function ProductInfo({
           <div class="order-qty">
             <h5>Qty: {orderItem?.quantity}</h5>
             {/* {orderItem?.shipment_number ? ( */}
-            <h3>
-              {orderItem?.shipment_number_title} : {orderItem?.shipment_number}
-            </h3>
+            {orderItem?.order_status === "Shipping" ? (
+              <h3>
+                {orderItem?.shipment_number_title} :{" "}
+                {orderItem?.shipment_number}
+              </h3>
+            ) : null}
           </div>
           {/* ) : null} */}
           <div class="request-ret">
@@ -86,7 +89,7 @@ function ProductInfo({
                   }
                 }}
               >
-                {ongoingOrder?.return_status || "Request Return"} 
+                {ongoingOrder?.return_status || "Request Return"}
               </h3>
             ) : null}
             {ongoingOrder?.return_option ? (
