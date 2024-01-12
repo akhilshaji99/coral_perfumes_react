@@ -2177,3 +2177,11 @@ body.about .info-text a {
 .sub-abt a {
   color: #000;
 }
+body.products .product-grid h4 {
+  padding-top: 0px;}
+body.product-details .product-grid h4 {
+    padding-top: 0px;
+  }
+body.cart .my-bag-img {
+    background: #fff !important;
+  }
