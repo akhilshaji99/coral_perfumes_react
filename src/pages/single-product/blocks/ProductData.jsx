@@ -9,11 +9,13 @@ function ProductData({ productDatas, currentVariant }) {
   };
 
   useEffect(() => {
-    new window.TabbyPromo({
-      selector: "#tabby",
-      price: currentVariant?.price_amount,
-    });
-  }, [window.location.pathname]);
+    if (productDatas?.tabby_attribute_value) {
+      new window.TabbyPromo({
+        selector: "#tabby",
+        price: currentVariant?.price_amount,
+      });
+    }
+  }, [window.location.pathname, productDatas?.tabby_attribute_value]);
 
   return (
     <>
