@@ -38,7 +38,9 @@ function Index() {
       dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.post("get_home_content/", bodyFormData);
       if (response.data?.data) {
-        const mainKeys = Object.entries(response.data?.data).map(([key]) => key);
+        const mainKeys = Object.entries(response.data?.data).map(
+          ([key]) => key
+        );
         dispatch(changeFooterDatas(response?.data?.data?.footer_content)); //Add footer datas to redux
         dispatch(changeApiCallStatus(true)); // Change api call status
 
@@ -53,26 +55,28 @@ function Index() {
   };
   return (
     <>
-      <main style={{ minHeight: "500px" }}>
-        {homeComponents?.map((component, index) => {
-          return (
-            <>
-              {/* <section className="home-banner"> */}
-              {homeContent[component] &&
-              homeContent[component]?.[0]?.component_identifier === "COMP2" ? (
-                <>
-                  <Suspense fallback={<Placeholder />}>
-                    <MainBanner
-                      componentDatas={homeContent[component][0]}
-                      exclusive_deals={homeContent["exclusive_deals"]}
-                    />
-                  </Suspense>
-                </>
-              ) : null}
-            </>
-          );
-        })}
-        {!apiLoader ? (
+      {!apiLoader ? (
+        <main style={{ minHeight: "500px" }}>
+          {homeComponents?.map((component, index) => {
+            return (
+              <>
+                {/* <section className="home-banner"> */}
+                {homeContent[component] &&
+                homeContent[component]?.[0]?.component_identifier ===
+                  "COMP2" ? (
+                  <>
+                    <Suspense fallback={<Placeholder />}>
+                      <MainBanner
+                        componentDatas={homeContent[component][0]}
+                        exclusive_deals={homeContent["exclusive_deals"]}
+                      />
+                    </Suspense>
+                  </>
+                ) : null}
+              </>
+            );
+          })}
+
           <div className="home-wrapper">
             {homeComponents?.map((component, index) => {
               return (
@@ -101,7 +105,8 @@ function Index() {
 
                   {homeContent[component] &&
                   homeContent[component]?.[0]?.component_identifier ===
-                    "COMP6" ? (
+                    "COMP6" &&
+                  homeContent[component][0]?.datas?.[0]?.products.length > 0 ? (
                     <Suspense fallback={<Placeholder />}>
                       {/* <div className="category-top-div3"> */}
                       <FlashSale componentDatas={homeContent[component][0]} />
@@ -194,8 +199,8 @@ function Index() {
               );
             })}
           </div>
-        ) : null}
-      </main>
+        </main>
+      ) : null}
     </>
   );
 }

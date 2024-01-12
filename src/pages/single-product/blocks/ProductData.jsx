@@ -9,27 +9,10 @@ function ProductData({ productDatas, currentVariant }) {
   };
 
   useEffect(() => {
-    // Create a script element
-    const script = document.createElement("script");
-
-    // Set the source of the script to the TabbyPromo script
-    script.src = "https://checkout.tabby.ai/tabby-promo.js";
-
-    // Append the script to the body of the document
-    document.body.appendChild(script);
-
-    // Initialize TabbyPromo when the script is loaded
-    script.onload = () => {
-      new window.TabbyPromo({
-        selector: "#tabby",
-        price: currentVariant?.price_amount,
-      });
-    };
-
-    // Clean up the script when the component is unmounted
-    return () => {
-      document.body.removeChild(script);
-    };
+    new window.TabbyPromo({
+      selector: "#tabby",
+      price: currentVariant?.price_amount,
+    });
   }, [window.location.pathname]);
 
   return (
