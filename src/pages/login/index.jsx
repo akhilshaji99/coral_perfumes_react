@@ -114,7 +114,7 @@ function Login() {
       };
       const response = await request.post("web-social-login/", bodyFormData);
 
-      if (!response.data.status) {
+      if (response.data.status) {
         localStorage.clear();
         const userData = {
           token: response.data.token,
