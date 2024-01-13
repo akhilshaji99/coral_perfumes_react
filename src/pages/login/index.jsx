@@ -23,13 +23,12 @@ const schema = yup.object().shape({
     )
     .required("Phone number is required"),
 });
-const REDIRECT_URI =
-  "http://localhost:3000/login";
+const REDIRECT_URI = "http://localhost:3000/login";
 function Login() {
   const [loader, setLoader] = useState(false);
   // const [provider, setProvider] = useState("");
   const facebookRef = useRef();
-  const [profile, setProfile] = useState(null);
+  // const [profile, setProfile] = useState(null);
   const onLoginStart = useCallback(() => {
     // alert("login start");
   }, []);
@@ -40,6 +39,7 @@ function Login() {
     // setProvider("");
     alert("logout success");
   }, []);
+
   const handleOnSubmit = (values) => {
     // subscribeNewsLetter(values);
     login(values);
@@ -95,6 +95,42 @@ function Login() {
       }),
     [formik]
   );
+
+  const socialLogin = async (provider, socialData) => {
+    console.log(provider);
+    console.log(socialData);
+    try {
+      let bodyFormData = {
+        name: socialData?.name,
+        email: socialData?.email,
+        phone: socialData?.phone,
+        token: socialData?.accessToken,
+        social_type: provider,
+      };
+      const response = await request.post("web-social-login/", bodyFormData);
+
+      // console.log("response", response);
+      // let status = "succsss";
+      // let title = "SUCCESS";
+      // if (!response.data.status) {
+      //   status = "error";
+      //   title = "ERROR";
+      // } else {
+      //   startCountdown();
+      // }
+      // toast((t) => (
+      //   <AlerMessage
+      //     t={t}
+      //     toast={toast}
+      //     status={response.data.status}
+      //     title={title}
+      //     message={response.data.message}
+      //   />
+      // ));
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
       <div className="container-fluid">
@@ -111,9 +147,10 @@ function Login() {
                     discoveryDocs="claims_supported"
                     access_type="offline"
                     onResolve={({ provider, data }) => {
+                      socialLogin("google", data);
                       // setProvider(provider);
-                      setProfile(data);
-                      console.log("profileData", data);
+                      // setProfile(data);
+                      // console.log("profileData", data);
                     }}
                     onReject={(err) => {
                       console.log(err);
@@ -145,9 +182,10 @@ function Login() {
                     redirect_uri={REDIRECT_URI}
                     onLogoutSuccess={onLogoutSuccess}
                     onResolve={({ provider, data }) => {
+                      socialLogin("Facebook", data);
                       // setProvider(provider);
-                      setProfile(data);
-                      console.log(data);
+                      // setProfile(data);
+                      // console.log(data);
                     }}
                     onReject={(err) => {
                       console.log(err);
