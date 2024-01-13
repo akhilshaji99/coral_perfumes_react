@@ -27584,7 +27584,7 @@ span.flatpickr-weekday {
   text-overflow: ellipsis;
 }
 .product-main-banner {
-  height: 141px;
+  /* height: 141px; */
   border-radius: 14px;
   width: 100%;
   object-fit: fill;
