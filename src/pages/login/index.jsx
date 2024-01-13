@@ -12,6 +12,7 @@ import * as yup from "yup";
 import request from "../../utils/request";
 import LoginOTPModal from "./LoginOTPModal";
 import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup.string().email(),
@@ -25,6 +26,7 @@ const schema = yup.object().shape({
 });
 const REDIRECT_URI = "http://localhost:3000/login";
 function Login() {
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   // const [provider, setProvider] = useState("");
   const facebookRef = useRef();
@@ -104,29 +106,38 @@ function Login() {
         name: socialData?.name,
         email: socialData?.email,
         phone: socialData?.phone,
-        token: socialData?.accessToken,
+        token:
+          provider === "google"
+            ? socialData?.access_token
+            : socialData?.accessToken,
         social_type: provider,
       };
       const response = await request.post("web-social-login/", bodyFormData);
 
-      // console.log("response", response);
-      // let status = "succsss";
-      // let title = "SUCCESS";
-      // if (!response.data.status) {
-      //   status = "error";
-      //   title = "ERROR";
-      // } else {
-      //   startCountdown();
-      // }
-      // toast((t) => (
-      //   <AlerMessage
-      //     t={t}
-      //     toast={toast}
-      //     status={response.data.status}
-      //     title={title}
-      //     message={response.data.message}
-      //   />
-      // ));
+      if (!response.data.status) {
+        localStorage.clear();
+        const userData = {
+          token: response.data.token,
+          userInfo: response.data.user,
+        };
+        localStorage.setItem("userDatas", JSON.stringify(userData));
+        const queryParameters = new URLSearchParams(window.location.search);
+        if (queryParameters == "checkout=") {
+          navigate("/checkout");
+        } else {
+          navigate("/");
+        }
+      } else {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={response.data.status}
+            title={response?.data?.message_1}
+            message={response?.data?.message_2}
+          />
+        ));
+      }
     } catch (error) {
       console.log("error", error);
     }
