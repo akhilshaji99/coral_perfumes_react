@@ -112,7 +112,12 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                           >
                             <div className="row p-2 p-lg-4">
                               <div className="col-lg-3 col-md-4 col-12 mb-4 mb-lg-0">
-                                <h6 className=" ps-3">{item?.section_1_title}</h6>
+                                <h6
+                                  className="ps-3"
+                                  style={{ paddingBottom: "0px" }}
+                                >
+                                  {item?.section_1_title}
+                                </h6>
                                 {item.shop_by_category !== undefined &&
                                 Array.isArray(item.shop_by_category)
                                   ? item.shop_by_category.map((item, index) => (
@@ -148,7 +153,9 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                                   : null}
                               </div>
                               <div className="col-lg-2 col-md-4  col-12 mb-4 mb-lg-0">
-                                <h6 className=" ps-3">{item?.section_2_title}</h6>
+                                <h6 className="ps-3" style={{ paddingBottom: "0px" }}>
+                                  {item?.section_2_title}
+                                </h6>
                                 {item.shop_by_brand !== undefined &&
                                 Array.isArray(item.shop_by_brand)
                                   ? item.shop_by_brand.map((item, index) => (
@@ -183,7 +190,9 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                                   : null}
                               </div>
                               <div className="col-lg-4 col-md-4 col-12 mb-4 mb-lg-0">
-                                <h6 className=" ps-3">{item?.section_3_title}</h6>
+                                <h6 className=" ps-3" style={{ paddingBottom: "0px" }}>
+                                  {item?.section_3_title}
+                                </h6>
                                 {/* Mob View */}
                                 <div className=" d-block d-sm-none">
                                   <div className="row  ads-block">
