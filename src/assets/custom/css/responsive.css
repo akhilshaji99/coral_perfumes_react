@@ -1,3 +1,4 @@
+
 @media (min-width: 1600px) {
   footer.footer .container {
     max-width: 88% !important;
@@ -366,6 +367,11 @@ body.checkout .row.g-4.m-2.mts {
 .row.ads-block .menu-thumbnails img {
   border-radius: 50%;
   padding-right: 0px;
+  transform: none;
+}
+div#offcanvasSubMenus .megamenu-ads {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 body.checkout div#flush-collapseOne input.form-control {
   padding: 7px 10px !important;
@@ -488,6 +494,10 @@ body.checkout div#flush-collapseOne input.form-control {
   .slid-mobview {
     padding-bottom: 25px;
   }
+  body.checkout .dropdown-item, .inline-thumb {
+    border-bottom: 0.5px solid #bdbebb;
+    padding: 7px 20px;
+}
   .carrer-listing {
     width: 100%;
     display: flex;
