@@ -5100,7 +5100,8 @@ fieldset:disabled .btn {
 .nav-link {
   background: none;
   border: 0;
-  color: var(--fc-white);
+  /* color: var(--fc-white); */
+  color: #000;
   display: block;
   font-size: var(--fc-nav-link-font-size);
   font-weight: var(--fc-nav-link-font-weight);
