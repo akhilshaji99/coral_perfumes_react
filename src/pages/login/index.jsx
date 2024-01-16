@@ -117,8 +117,8 @@ function Login() {
       if (response.data.status) {
         localStorage.clear();
         const userData = {
-          token: response.data.token,
-          userInfo: response.data.user,
+          token: response.data.data.token,
+          userInfo: response.data.data,
         };
         localStorage.setItem("userDatas", JSON.stringify(userData));
         const queryParameters = new URLSearchParams(window.location.search);

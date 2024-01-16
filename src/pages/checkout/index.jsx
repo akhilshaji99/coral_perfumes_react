@@ -1261,7 +1261,7 @@ function Index() {
                       </div>
                     </div>
                   </form>
-                  {parseInt(addressForm.values.delivery_type) === 1 ? (
+                  {/* {parseInt(addressForm.values.delivery_type) === 1 ? (
                     <DeliveryTypes
                       fetchCheckoutDetailsByDeliveryType={
                         fetchCheckoutDetailsByDeliveryType
@@ -1270,7 +1270,7 @@ function Index() {
                       checkout_api_status={checkout_api_status}
                       confirmButtonStatus={confirmButtonStatus}
                     />
-                  ) : null}
+                  ) : null} */}
 
                   <PaymentTypes
                     paymentTypes={paymentTypes}
