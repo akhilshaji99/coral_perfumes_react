@@ -7,7 +7,7 @@ import ShopPreferenceSliderDatas from "../sliderDatas/ShopPreferenceSliderDatas"
 function ShopPreferences({ componentDatas }) {
   const preferences = componentDatas?.datas;
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {

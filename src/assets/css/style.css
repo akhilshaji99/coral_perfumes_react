@@ -5295,7 +5295,8 @@ fieldset:disabled .btn {
 }
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
-  color: var(--fc-navbar-active-color);
+  /* color: var(--fc-navbar-active-color); */
+  color: #000;
 }
 .navbar-nav .dropdown-menu {
   position: static;
@@ -26102,7 +26103,7 @@ span.flatpickr-weekday {
   margin-bottom: 0;
 }
 .navbar-dark {
-  background-color: var(--fc-gray);
+  background-color: #ffffff;
   color: var(--fc-white) !important;
   font-family: var(--fc-font-regular);
 }
@@ -26743,7 +26744,7 @@ span.flatpickr-weekday {
 }
 .wallet-card {
   border-radius: 26px;
-  border: 5px solid #fff;
+  /* border: 5px solid #fff; */
 
   display: flex;
   align-items: center;
@@ -26757,9 +26758,9 @@ span.flatpickr-weekday {
 }
 .wallet-card > div {
   background: #fff;
-  box-shadow: 7px 10px 18px 0px rgba(22, 21, 22, 0.56),
+  /* box-shadow: 7px 10px 18px 0px rgba(22, 21, 22, 0.56),
     -12px -9px 35px 0px rgba(255, 255, 255, 0.39),
-    -5px 10px 16px 0px rgba(55, 10, 53, 0.27) inset;
+    -5px 10px 16px 0px rgba(55, 10, 53, 0.27) inset; */
   width: 100%;
   padding: 25px;
 }

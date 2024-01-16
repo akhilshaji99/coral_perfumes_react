@@ -31,7 +31,7 @@ function TopHeader() {
   if (marqueeText !== "") {
     return (
       <>
-        <div className="bg-dark py-2 d-none d-md-block">
+        <div className="bg-cutom-banner py-2 d-none d-md-block">
           <div className="container-fluid">
             <div className="row">
               <Marquee autoFill>

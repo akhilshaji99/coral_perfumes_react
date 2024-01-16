@@ -5,7 +5,7 @@ import ProductSliderDatas from "../sliderDatas/ProductSliderDatas";
 
 function ProductCarousel({ componentDatas }) {
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {

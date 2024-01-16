@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function TopCategories({ componentDatas }) {
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
   const products = componentDatas?.datas;
 

@@ -8,7 +8,7 @@ import Slider from "react-slick";
 
 function FlashSale({ componentDatas }) {
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
   //Code for timer
   const [falseSaleEnd, setFlashSaleEnd] = useState(false);
