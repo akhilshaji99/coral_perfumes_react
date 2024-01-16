@@ -6,7 +6,7 @@ import ShopMoreSliderDatas from "../sliderDatas/ShopMoreSliderDatas";
 function ShopMore({ componentDatas }) {
   const shopMoreItems = componentDatas?.datas;
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {

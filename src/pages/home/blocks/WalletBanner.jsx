@@ -5,7 +5,7 @@ import WalletSliderDatas from "../sliderDatas/WalletSliderDatas";
 
 function WalletBanner({ componentDatas }) {
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {

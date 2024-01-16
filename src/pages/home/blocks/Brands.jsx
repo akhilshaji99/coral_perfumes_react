@@ -6,7 +6,7 @@ import BrandsSliderDatas from "../sliderDatas/BrandsSliderDatas";
 function Brands({ componentDatas }) {
   const brands = componentDatas?.datas;
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {

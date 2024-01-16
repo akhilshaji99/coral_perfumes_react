@@ -5,7 +5,7 @@ import CategoryTopSliderDatas from "../sliderDatas/CategoryTopSliderDatas";
 
 function CategoryTop({ componentDatas }) {
   const dynamicBackground = {
-    backgroundColor: componentDatas?.bg_color,
+    background: componentDatas?.bg_color,
   };
 
   var settings = {
