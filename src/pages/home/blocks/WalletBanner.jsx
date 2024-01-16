@@ -123,7 +123,10 @@ function WalletBanner({ componentDatas }) {
                 </Carousel>
               </div>
               <div className="mob_tab_slider">
-                <Slider {...settings} className="wallet-friendly-mob-slider-padding">
+                <Slider
+                  {...settings}
+                  className="wallet-friendly-mob-slider-padding"
+                >
                   {componentDatas?.datas?.[0]?.collection?.map(
                     (walletData, index) => {
                       return (
