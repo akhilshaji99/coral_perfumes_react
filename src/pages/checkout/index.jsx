@@ -652,9 +652,9 @@ function Index() {
                       >
                         <div className="mb-1">
                           <div className="card-body p-1">
-                            <div className="row g-4 m-2">
+                            <div className="row g-4 m-2 mts">
                               <div className="col-md-6 col-12">
-                                <div className="mb-3 mb-lg-0">
+                                <div className="mb-lg-0">
                                   <input
                                     type="text"
                                     className="form-control"
@@ -670,7 +670,7 @@ function Index() {
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">
-                                <div className="mb-3 mb-lg-0">
+                                <div className="mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.last_name}
@@ -686,9 +686,9 @@ function Index() {
                                 </div>
                               </div>
                             </div>
-                            <div className="row g-4 m-2">
+                            <div className="row g-4 m-2 mts">
                               <div className="col-md-6 col-12">
-                                <div className="mb-3 mb-lg-0">
+                                <div className="mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.phone_number}
@@ -704,7 +704,7 @@ function Index() {
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">
-                                <div className="mb-3 mb-lg-0">
+                                <div className="mb-lg-0">
                                   <input
                                     type="text"
                                     value={addressForm.values.email}
@@ -827,9 +827,9 @@ function Index() {
                             tabIndex={0}
                           >
                             <div className="card-body p-1">
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -845,7 +845,7 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -861,9 +861,9 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -879,7 +879,7 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <div
                                       className="dropdown  form-control check-form"
                                       onClick={toggleDeliveryEmirates}
@@ -960,9 +960,9 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className=" mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -978,7 +978,7 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className=" mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -994,9 +994,9 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -1012,9 +1012,9 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-12 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -1047,9 +1047,9 @@ function Index() {
                             tabIndex={0}
                           >
                             <div className="card-body p-1">
-                              <div className="row g-4 m-2">
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 b-lg-0">
+                                  <div className="b-lg-0">
                                     <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryEmirates}>
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
@@ -1134,7 +1134,7 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
-                                  <div className="mb-3 mb-lg-0">
+                                  <div className="mb-lg-0">
                                     <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryStore}>
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
