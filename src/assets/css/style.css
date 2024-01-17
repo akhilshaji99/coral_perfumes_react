@@ -26215,7 +26215,7 @@ span.dropdown-text.store-color {
 }
 .top-categories h1 {
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--fc-black);
   text-align: center;
   font-family: var(--fc-font-bold);
@@ -26303,7 +26303,7 @@ span.dropdown-text.store-color {
 }
 .shop-more h1 {
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--fc-black);
   text-align: center;
   font-family: var(--fc-font-bold);
@@ -26491,7 +26491,7 @@ span.dropdown-text.store-color {
 .flash-sale {
   text-align: center;
   font-family: var(--fc-font-bold);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .flash-sale span {
   padding: 0 12px;
@@ -26545,7 +26545,7 @@ span.dropdown-text.store-color {
 }
 .flash-sale-container h1 {
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--fc-black);
   text-align: center;
   font-family: var(--fc-font-bold);
@@ -26825,7 +26825,7 @@ span.dropdown-text.store-color {
 }
 .brands-card h1 {
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--fc-black);
   text-align: center;
   font-family: var(--fc-font-bold);
@@ -26968,7 +26968,7 @@ span.dropdown-text.store-color {
 }
 .category-top h1 {
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--fc-black);
   text-align: center;
   font-family: var(--fc-font-bold);
