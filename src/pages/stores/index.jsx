@@ -84,7 +84,7 @@ function Index() {
                             }}
                           ></p>
                           <p>{store?.store_location}</p>
-                          <Link to={`/stores-detail/${store?.id}`}>
+                          <Link to={`/stores-detail/${store?.title_slug}`}>
                             VISIT US{" "}
                           </Link>
                         </div>

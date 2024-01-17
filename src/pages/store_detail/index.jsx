@@ -41,9 +41,12 @@ function Index() {
           <div className="title-page">
             <h1> {storeDetails?.data?.store_name}</h1>
           </div>
-          <div className="info-text">
-            <p>{storeDetails?.data?.description}</p>
-          </div>
+          <div
+            className="info-text"
+            dangerouslySetInnerHTML={{
+              __html: storeDetails?.data?.description,
+            }}
+          ></div>
         </div>
         <section>
           <div className="container-new">

@@ -127,9 +127,9 @@ function Account({
   };
 
   useEffect(() => {
-    if (!window.location.href.includes("product")) {
+    // if (!window.location.href.includes("product")) {
       setQuery("");
-    }
+    // }
   }, [window.location.href]);
 
   const { ref, isComponentVisible, setIsComponentVisible } =
