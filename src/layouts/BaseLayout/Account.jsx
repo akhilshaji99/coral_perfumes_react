@@ -563,7 +563,7 @@ function Account({
                       className="img-fluid imgs-header"
                       alt="Coral Perfumes"
                     />
-                    <span className="dropdown-text">Find Store</span>
+                    <span className="dropdown-text store-color">Find Store</span>
                   </NavLink>
                 </div>
                 <div className="list-inline-item me-5">

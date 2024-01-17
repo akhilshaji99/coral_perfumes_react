@@ -631,6 +631,9 @@ span.blog-date {
     padding-left: 0px;
     padding-top: 35px;
   }
+  .navbar-dark {
+    border-bottom: none;
+  }
   .storage-care {
     display: flex;
     align-items: center;
