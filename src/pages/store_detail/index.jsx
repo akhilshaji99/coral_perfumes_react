@@ -119,7 +119,7 @@ function Index() {
           <div className="container-new">
             <div className="row-details">
               <div className="store-address">
-                <h2>Store Address</h2>
+                <h2>{storeDetails?.data?.address_title}</h2>
                 {/* {storeDetails.data.store_address} */}
 
                 <div
@@ -129,7 +129,7 @@ function Index() {
                 ></div>
               </div>
               <div className="store-hours">
-                <h2>Hours </h2>
+                <h2>{storeDetails?.data?.timing_title} </h2>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: storeDetails?.data?.working_hours,
@@ -137,7 +137,7 @@ function Index() {
                 ></div>
               </div>
               <div className="store-contact">
-                <h2>Contact Us</h2>
+                <h2>{storeDetails?.data?.location_title}</h2>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: storeDetails?.data?.store_contact,
