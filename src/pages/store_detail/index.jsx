@@ -41,6 +41,73 @@ function Index() {
           <div className="title-page">
             <h1> {storeDetails?.data?.store_name}</h1>
           </div>
+          <section className="slider-owl-sect">
+            <div className="container-new  sm-none">
+              <div className="owl-carousel owl-theme owl-slider store-details-slider">
+                {gallery_images.length > 0 ? (
+                  <Carousel
+                    autoPlay={false}
+                    arrows
+                    autoPlaySpeed={3500}
+                    className=""
+                    draggable
+                    focusOnSelect={false}
+                    infinite={true}
+                    keyBoardControl
+                    pauseOnHover={false}
+                    renderArrowsWhenDisabled={false}
+                    renderButtonGroupOutside={false}
+                    renderDotsOutside={false}
+                    responsive={{
+                      desktop: {
+                        breakpoint: {
+                          max: 3000,
+                          min: 1024,
+                        },
+                        items: 1,
+                      },
+                      mobile: {
+                        breakpoint: {
+                          max: 464,
+                          min: 0,
+                        },
+                        items: 1,
+                      },
+                      tablet: {
+                        breakpoint: {
+                          max: 1024,
+                          min: 464,
+                        },
+                        items: 1,
+                      },
+                    }}
+                    swipeable
+                  >
+                    {gallery_images?.map((image, index) => (
+                      <div key={index}>
+                        <img
+                          className="store-single-img-width"
+                          src={deviceImageRender(image?.image)}
+                          alt={`img_${index}`}
+                        />
+                      </div>
+                    ))}
+                  </Carousel>
+                ) : null}
+              </div>
+            </div>
+            <div class="container-new  lg-none">
+              {gallery_images?.map((image, index) => (
+                <div class="slid-mobview">
+                  <img
+                    className="store-single-img-width"
+                    src={deviceImageRender(image?.image)}
+                    alt={`img_${index}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
           <div
             className="info-text"
             dangerouslySetInnerHTML={{
@@ -84,73 +151,6 @@ function Index() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="slider-owl-sect">
-          <div className="container-new  sm-none">
-            <div className="owl-carousel owl-theme owl-slider store-details-slider">
-              {gallery_images.length > 0 ? (
-                <Carousel
-                  autoPlay={false}
-                  arrows
-                  autoPlaySpeed={3500}
-                  className=""
-                  draggable
-                  focusOnSelect={false}
-                  infinite={true}
-                  keyBoardControl
-                  pauseOnHover={false}
-                  renderArrowsWhenDisabled={false}
-                  renderButtonGroupOutside={false}
-                  renderDotsOutside={false}
-                  responsive={{
-                    desktop: {
-                      breakpoint: {
-                        max: 3000,
-                        min: 1024,
-                      },
-                      items: 1,
-                    },
-                    mobile: {
-                      breakpoint: {
-                        max: 464,
-                        min: 0,
-                      },
-                      items: 1,
-                    },
-                    tablet: {
-                      breakpoint: {
-                        max: 1024,
-                        min: 464,
-                      },
-                      items: 1,
-                    },
-                  }}
-                  swipeable
-                >
-                  {gallery_images?.map((image, index) => (
-                    <div key={index}>
-                      <img
-                        className="store-single-img-width"
-                        src={deviceImageRender(image?.image)}
-                        alt={`img_${index}`}
-                      />
-                    </div>
-                  ))}
-                </Carousel>
-              ) : null}
-            </div>
-          </div>
-          <div class="container-new  lg-none">
-            {gallery_images?.map((image, index) => (
-              <div class="slid-mobview">
-                <img
-                  className="store-single-img-width"
-                  src={deviceImageRender(image?.image)}
-                  alt={`img_${index}`}
-                />
-              </div>
-            ))}
           </div>
         </section>
       </div>
