@@ -135,7 +135,9 @@ function ProductData({ productDatas, currentVariant }) {
           >
             {productDatas?.tabby_text}
           </div> */}
-          <div id="tabby"></div>
+          <div class="col-xl-9 col-sm-12 col-12">
+            <div id="tabby"></div>
+          </div>
         </div>
       ) : null}
       {productDatas?.tamara_attribute_value === "1" && currentVariant ? (

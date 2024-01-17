@@ -26112,6 +26112,7 @@ span.flatpickr-weekday {
 }
 span.dropdown-text.store-color {
   color: #80ba51 !important;
+  font-family: var(--fc-font-bold);
 }
 .dropdown:hover .dropdown-menu {
   display: block;
