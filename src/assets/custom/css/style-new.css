@@ -1369,6 +1369,7 @@ a.dropdown-toggle.text-dark.btn-filter {
 }
 .card-footer.border-0 h4.ellipsis-text {
   text-align: left !important;
+  cursor: pointer;
 }
 
 .input-spinner .form-input {
@@ -2192,4 +2193,3 @@ body.cart .my-bag-img {
 .bg-cutom-banner{
   background-color: #88b48d;
 }
-

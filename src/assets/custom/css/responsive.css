@@ -954,6 +954,7 @@ span.blog-date {
   }
   .fixed-top {
     padding-bottom: 5px;
+    border: none;
   }
   .fixed-top-margin {
     margin-top: 5px;
