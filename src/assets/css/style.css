@@ -9099,6 +9099,7 @@ fieldset:disabled .btn {
 }
 .fixed-top {
   top: 0;
+  border-bottom: solid 1px #e6e6e6;
 }
 .fixed-bottom,
 .fixed-top {
@@ -21528,8 +21529,12 @@ fieldset:disabled .btn {
   transform: rotate(0);
 }
 .navbar .navbar-nav .nav-item .nav-link {
-  line-height: 1.75;
-  font-family: var(--fc-font-bold) !important;
+    line-height: 1.75;
+    color: #000;
+    font-family: Arial;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 185%;
 }
 @media (max-width: 992px) {
   .navbar .navbar-nav .nav-item .nav-link {
@@ -26108,7 +26113,7 @@ span.flatpickr-weekday {
   background-color: #ffffff;
   color: var(--fc-white) !important;
   font-family: var(--fc-font-regular);
-  border-bottom: solid 1px #e6e6e6;
+ 
 }
 span.dropdown-text.store-color {
   color: #80ba51 !important;
