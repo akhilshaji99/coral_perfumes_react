@@ -3,8 +3,11 @@ import AddToBag from "./AddToBag";
 import WishlistIcon from "../wishlist/blocks/WishlistIcon";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function ProductDetails({ product, setReFetchApi = null }) {
+  const navigate = useNavigate();
   const [status, setStatus] = useState(false);
 
   return (
@@ -53,6 +56,9 @@ function ProductDetails({ product, setReFetchApi = null }) {
         </div>
         <div className="card-footer border-0">
           <h4
+          onClick={()=>{
+            navigate(`/product-details/?slug=${product?.slug}`);
+          }}
             className="ellipsis-text {
 "
           >

@@ -3,9 +3,12 @@ import WishlistIcon from "../../wishlist/blocks/WishlistIcon";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import AddToBag from "../../common/AddToBag";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function FlashSaleSliderDatas({ product, index }) {
   const [status, setStatus] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="product-grid slick-slider-alignment" key={index}>
@@ -32,9 +35,7 @@ function FlashSaleSliderDatas({ product, index }) {
             </span>
           ) : null}
           {!product?.stock_status ? (
-            <span
-              className="badge out-of-stock-badge left-badge"
-            >
+            <span className="badge out-of-stock-badge left-badge">
               Out Of Stock
             </span>
           ) : null}
@@ -66,7 +67,14 @@ function FlashSaleSliderDatas({ product, index }) {
           />
         </div>
         <div className="card-footer border-0">
-          <h4 className="ellipsis-text">{product.name}</h4>
+          <h4
+            className="ellipsis-text"
+            onClick={() => {
+              navigate(`/product-details/?slug=${product?.slug}`);
+            }}
+          >
+            {product.name}
+          </h4>
           <div className="row custom-row1 mb-5">
             <div className="col-md-4 col-6 px-0">
               <h5 className="selling-price">
