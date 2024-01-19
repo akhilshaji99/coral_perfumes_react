@@ -2193,3 +2193,21 @@ body.cart .my-bag-img {
 .bg-cutom-banner{
   background-color: #88b48d;
 }
+.custom-mega-menu ul li a {
+  position: relative;
+}
+
+.custom-mega-menu ul li a.nav-link.dropdown-toggle:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #88b48d;
+  content: "";
+  transition: width 0.3s ease;
+}
+
+.custom-mega-menu ul li a.nav-link.dropdown-toggle:hover:before {
+  width: 100%;
+}
