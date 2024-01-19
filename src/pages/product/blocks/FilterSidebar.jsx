@@ -268,21 +268,23 @@ function FilterSidebar({
                             {productFilter?.values?.map((filterData, index) => {
                               return (
                                 <li className="nav-item" key={index}>
-                                  <div className="form-check mb-5">
+                                  <div
+                                    className="form-check mb-5"
+                                    onClick={() => {
+                                      checkCategoryFilter(
+                                        filterData?.slug,
+                                        productFilter?.name
+                                      );
+                                    }}
+                                  >
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      id="eGrocery"
+                                      id={"chk_box_" + index}
                                       checked={filterArray[
                                         productFilter?.name
                                       ]?.includes(filterData?.slug)}
                                       value={filterData?.slug}
-                                      onChange={(event) => {
-                                        checkCategoryFilter(
-                                          event.target.value,
-                                          productFilter?.name
-                                        );
-                                      }}
                                     />
                                     <label
                                       className="form-check-label"

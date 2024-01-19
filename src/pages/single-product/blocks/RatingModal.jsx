@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function RatingModal({ setRefetch, currentVariant, ratingType, refetch }) {
   const navigate = useNavigate();
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
 
   // Catch Rating value
