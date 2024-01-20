@@ -117,6 +117,14 @@ function ProductMain({
     getProductList(1);
   }, [window.location.href, filterArray, priceRangeFilter, relevanceFilter]);
 
+  useEffect(() => {
+    setRelevanceFilter("");
+    // setProductList([]);
+    // setCount(0);
+    // setPage(1);
+    // getProductList(1);
+  }, [filterArray]);
+
   const getProductList = async (page_number) => {
     try {
       setLoading(true);
