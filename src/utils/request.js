@@ -52,7 +52,7 @@ service.interceptors.response.use(
       var meta;
 
       // Title
-      document.title = metaData.title || 'Coral Ecom';
+      document.title = metaData.title || "Coral Ecom";
 
       // Description
       meta = document.createElement("meta");
@@ -87,8 +87,9 @@ service.interceptors.response.use(
     return response;
   },
   (error) => {
+    // console.log(error?.response?.status)
     if (error?.response?.status === 404) {
-      // window.location.href = `/404`;
+      window.location.href = `/404`;
       return error?.response;
     }
     if (error?.response?.status === 401) {
