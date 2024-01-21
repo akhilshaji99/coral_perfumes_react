@@ -1341,7 +1341,7 @@ span#word-count {
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   padding-top: 25px;
 }
 .deatil-blog-contents {
