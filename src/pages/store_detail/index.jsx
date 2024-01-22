@@ -42,7 +42,7 @@ function Index() {
             <h1> {storeDetails?.data?.store_name}</h1>
           </div>
           <section className="slider-owl-sect">
-            <div className="container-new  sm-none">
+            <div className="container-new">
               <div className="owl-carousel owl-theme owl-slider store-details-slider">
                 {gallery_images.length > 0 ? (
                   <Carousel
@@ -96,7 +96,7 @@ function Index() {
                 ) : null}
               </div>
             </div>
-            <div class="container-new  lg-none">
+            {/* <div class="container-new  lg-none">
               {gallery_images?.map((image, index) => (
                 <div class="slid-mobview">
                   <img
@@ -106,7 +106,7 @@ function Index() {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </section>
           <div
             className="info-text"
@@ -145,9 +145,17 @@ function Index() {
                 ></div>
                 <div className="direction-btn">
                   {" "}
-                  <a href={storeDetails?.data?.map_link} target="_blank">
+                  <iframe
+                    src={storeDetails?.data?.map_link}
+                    width="600"
+                    height="450"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                  {/* <a href={storeDetails?.data?.map_link} target="_blank">
                     Directions
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
