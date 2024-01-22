@@ -244,7 +244,7 @@ function Account({
               {/* </NavLink> */}
             </div>
 
-            <div className="col-xxl-5 col-lg-5 col-md-4 d-none d-md-block">
+            <div className="col-xxl-5 col-lg-5 col-md-4  d-md-block">
               <div className="icon-input">
                 <input
                   className="icon-input__text-field"
