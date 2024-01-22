@@ -5,6 +5,8 @@ import * as yup from "yup";
 import addNewAddress from "../../checkout/js/addUserAddress";
 import getEmirates from "../../checkout/js/getEmiratesList";
 import "../css/style.css";
+import ReactFlagsSelect from "react-flags-select";
+
 // const phoneRegExp =
 //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const newAddressFormSchema = yup.object().shape({
@@ -35,6 +37,39 @@ function AddAddress({
   setEditAddressFlag,
   setEditAddressInfo,
 }) {
+  //Country code
+  const [selected, setSelected] = useState("AE");
+  const onSelect = (code) => {
+    setSelected(code);
+  };
+  // const searchable = boolean("Searchable", false);
+
+  const customLabels = {
+    AE: { primary: "+971" },
+    AF: { primary: "+93" },
+    AL: { primary: "+355" },
+    DZ: { primary: "+213" },
+    AD: { primary: "+376" },
+    AO: { primary: "+244" },
+    AR: { primary: "+54" },
+    AM: { primary: "+374" },
+    AU: { primary: "+61" },
+    AT: { primary: "+43" },
+    AZ: { primary: "+994" },
+    GB: { primary: "+44" },
+    US: { primary: "+1" },
+    UY: { primary: "+598" },
+    UZ: { primary: "+998" },
+    VU: { primary: "+678" },
+    VA: { primary: "+379" }, // Vatican City
+    VE: { primary: "+58" },
+    VN: { primary: "+84" },
+    YE: { primary: "+967" },
+    ZM: { primary: "+260" },
+    ZW: { primary: "+263" },
+  };
+
+  //#End
   const [emirates, setEmirates] = useState([]);
   const handleOnSubmit = (values) => {
     addNewAddress(values).then((response) => {
@@ -313,8 +348,7 @@ function AddAddress({
                     </select>
                   </div>
                 </div>
-                
-                
+
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3">
                     <input
@@ -332,19 +366,34 @@ function AddAddress({
                   </div>
                 </div>
                 <div className="mb-3 col-md-6 col-12">
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="055 922 8088"
-                      name="phone_number"
-                      value={addressForm.values.phone_number}
-                      // onChange={(e) =>
-                      //   setAddressFormInputValue("phone_number", e.target.value)
-                      // }
-                      onChange={addressForm.handleChange}
-                      style={getStyles(addressForm.errors, "phone_number")}
-                    />
+                  <div className="mb-3 row">
+                    <div className="col-md-5">
+                      <ReactFlagsSelect
+                        selected={selected}
+                        onSelect={onSelect}
+                        className="country-list"
+                        customLabels={customLabels}
+                        countries={Object.keys(customLabels)}
+                        // searchable={true}
+                        placeholder="Country"
+                        // showSecondaryOptionLabel={true}
+                      />
+                    </div>
+                    <div className="col-md-7">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="055 922 8088"
+                        name="phone_number"
+                        value={addressForm.values.phone_number}
+                        // onChange={(e) =>
+                        //   setAddressFormInputValue("phone_number", e.target.value)
+                        // }
+
+                        onChange={addressForm.handleChange}
+                        style={getStyles(addressForm.errors, "phone_number")}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="mb-3 col-md-6 col-12">
