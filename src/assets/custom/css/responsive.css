@@ -370,8 +370,8 @@ body.checkout .row.g-4.m-2.mts {
   transform: none;
 }
 div#offcanvasSubMenus .megamenu-ads {
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
 }
 body.checkout div#flush-collapseOne input.form-control {
   padding: 7px 10px !important;
@@ -765,7 +765,18 @@ span.blog-date {
     padding: 5px;
     display: block;
   }
-  
+  nav.fixed-top  .icon-input input.icon-input__text-field::placeholder {
+    font-weight: 900;
+}
+input.form-control.rounded.mob-search-box{
+    font-weight: 900;
+}
+body.products .product-main-banner {
+  display: none;
+}
+body.checkout .nav-lb-tab .nav-item .nav-link {
+  text-transform: uppercase;
+  font-size: 13px;}
 .flash-sale-box span img,
   svg {
     vertical-align: middle;

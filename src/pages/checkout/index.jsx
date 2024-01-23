@@ -727,7 +727,7 @@ function Index() {
                     <div className="accordion-item checkout-accordion ">
                       <div className="d-flex justify-content-between align-items-center h">
                         <ul
-                          className="nav nav-pills nav-lb-tab"
+                          className="nav nav-pills nav-tabs nav-lb-tab"
                           id="myTab"
                           role="tablist"
                         >
