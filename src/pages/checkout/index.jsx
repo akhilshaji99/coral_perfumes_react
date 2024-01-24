@@ -17,6 +17,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import RemovePromoCode from "./js/removePromoCode";
 import getEmirateName from "./js/getEmirateName";
+import Select from "react-select";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -55,6 +56,7 @@ function Index() {
   const [confirmButtonStatus, setConfirmButtonStatus] = useState(false);
   const [storePickupEmirateName, setStorePickupEmirateName] = useState("");
   const [storePickupStoreName, setStorePickupStoreName] = useState("");
+  const [cityDefaultValue, setCityDefaultValue] = useState(null);
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
@@ -140,6 +142,18 @@ function Index() {
           //Type - Store Pickup
           let store_emirate_id =
             response?.data?.store_emirate_id || response?.data?.emirates[0]?.id;
+          await getSingleEmirateCities(
+            emirate_id,
+            response?.data?.emirates
+          ).then((data) => {
+            let cityData =
+              response?.data?.default_address?.account_address?.city;
+            changeCityDatas(
+              data,
+              cityData ? { label: cityData, value: cityData } : ""
+            );
+          });
+          //
           let store_emirate_name =
             response?.data?.store_emirate_name ||
             response?.data?.emirates[0]?.name;
@@ -176,6 +190,18 @@ function Index() {
         //#End
       }
     });
+  };
+
+  const getSingleEmirateCities = async (emirate_id, emirates) => {
+    let emirateCities = "";
+    await emirates.forEach((emirate) => {
+      if (parseInt(emirate.id) === parseInt(emirate_id)) {
+        console.log("emirate", emirate);
+        emirateCities = emirate.areas;
+        return;
+      }
+    });
+    return emirateCities;
   };
 
   const handleOnSubmit = () => {
@@ -456,6 +482,51 @@ function Index() {
   const toggleStoreDeliveryStore = () => {
     setStoreStoreDropdownOpen(!isStoreStoreDropdownOpen);
   };
+
+  const [emirateCityDatas, setEmirateCityDatas] = useState([]);
+
+  const changeCityDatas = async (cities, selected_city = null) => {
+    try {
+      const datas = await formatCities(cities);
+      setEmirateCityDatas(datas); //set emirate cities
+      if (datas.length > 0) {
+        if (selected_city) {
+          setCityDefaultValue(selected_city);
+          addressForm.setFieldValue("city", selected_city.value);
+        } else {
+          setCityDefaultValue(datas[0]); //set default value on refresh & edit
+          addressForm.setFieldValue("city", datas[0].value);
+        }
+      }
+      setStatus(!status);
+    } catch (error) {
+      // Handle any errors that might occur during the asynchronous operation
+      console.error("Error while formatting cities:", error);
+    }
+  };
+
+  const formatCities = async (cities) => {
+    try {
+      const emirateCityDatas =
+        cities?.map((element) => ({
+          label: element?.area_name || "",
+          value: element?.area_name || null,
+        })) || [];
+
+      return emirateCityDatas;
+    } catch (error) {
+      // Handle any errors that might occur during the formatting process
+      console.error("Error while formatting cities:", error);
+      throw error; // Propagate the error for the caller to handle
+    }
+  };
+
+  const emirateCityOnChange = (value) => {
+    addressForm.setFieldValue("city", value.value);
+    setCityDefaultValue(value);
+    setStatus(!status);
+  };
+
   return (
     <>
       <section className="mb-lg-14 mb-8 mt-8">
@@ -940,6 +1011,9 @@ function Index() {
                                                     setDeliveryEmirateDropdownOpen(
                                                       !isDeliveryEmirateDropdownOpen
                                                     );
+                                                    changeCityDatas(
+                                                      emirate?.areas
+                                                    );
                                                   }}
                                                 >
                                                   {emirate.name}
@@ -970,7 +1044,12 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className=" mb-lg-0">
-                                    <input
+                                    <Select
+                                      options={emirateCityDatas}
+                                      onChange={emirateCityOnChange}
+                                      value={cityDefaultValue}
+                                    />
+                                    {/* <input
                                       type="text"
                                       className="form-control"
                                       placeholder="City"
@@ -981,7 +1060,26 @@ function Index() {
                                         addressForm.errors,
                                         "city"
                                       )}
-                                    />
+                                    /> */}
+                                    {/* <select
+                                      class="form-control city-picker"
+                                      id="select-country"
+                                      data-live-search="true"
+                                      name="city"
+                                      onChange={addressForm.handleChange}
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "city"
+                                      )}
+                                    >
+                                      <option data-tokens="china">China</option>
+                                      <option data-tokens="malayasia">
+                                        Malayasia
+                                      </option>
+                                      <option data-tokens="singapore">
+                                        Singapore
+                                      </option>
+                                    </select> */}
                                   </div>
                                 </div>
                               </div>
