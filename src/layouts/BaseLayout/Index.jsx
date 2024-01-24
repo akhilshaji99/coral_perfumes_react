@@ -31,13 +31,18 @@ const BaseLayout = () => {
   const [myAccountStatus, setMyAccountStatus] = useState(false);
 
   const changeMobileMenuStatus = (status = null) => {
+    //for category
     setMyAccountStatus(false);
     setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
   };
 
   const changeMyAccountMenuStatus = (status = null) => {
-    setMobileMenuStatus(false);
-    setMyAccountStatus(status === false ? status : !myAccountStatus);
+    //For my account
+    // setMobileMenuStatus(false);
+    // setMyAccountStatus(status === false ? status : !myAccountStatus);
+    //for category
+    setMyAccountStatus(false);
+    setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
   };
 
   useEffect(() => {
