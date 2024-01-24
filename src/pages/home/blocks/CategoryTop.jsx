@@ -17,7 +17,7 @@ function CategoryTop({ componentDatas }) {
       {
         breakpoint: 768, // Tablet and mobile view
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 4,
           // slidesToScroll: 3.5,
         },
       },

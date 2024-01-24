@@ -86,7 +86,6 @@ ul li {
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
 }
 .title-page {
   padding: 2px 0px;
@@ -329,7 +328,6 @@ section.visit-section {
   font-style: normal;
   font-weight: 390;
   line-height: 245.99%;
-  text-transform: lowercase;
 }
 .row-details {
   display: flex;
@@ -952,6 +950,7 @@ div#faq-wrapper {
 }
 .blog-rows {
   display: flex;
+  padding: 22px 0px;
 }
 .blog-col-1 {
   width: 50%;
@@ -979,7 +978,6 @@ div#faq-wrapper {
   font-weight: 390;
   line-height: 25px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
 }
 .blog-content-sub {
   padding-left: 50px;
@@ -1110,7 +1108,6 @@ section.perfume-store {
   font-weight: 390;
   line-height: 25px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
 }
 .blog-text-personality h3 {
   color: #000;
@@ -1287,7 +1284,6 @@ span#word-count {
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
   padding-top: 10px;
 }
 .details-full-img {
@@ -2210,4 +2206,12 @@ body.cart .my-bag-img {
 
 .custom-mega-menu ul li a.nav-link.dropdown-toggle:hover:before {
   width: 100%;
+}
+
+/*body.blog .faq {
+  max-height: 180px;
+  overflow: hidden;
+}*/
+body.product-details .product-desc-section h1 {
+  padding-bottom: 15px;
 }

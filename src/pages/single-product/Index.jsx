@@ -203,12 +203,13 @@ function Index() {
 
           <div className="col-md-5">
             <div className="product-desc-section">
-              <h1>{currentVariant?.name}</h1>
+              
               <h2 className="product-author">
                 <Link to={"/" + currentVariant?.brand_link}>
                   {currentVariant?.brand_name}
                 </Link>
               </h2>
+              <h1>{currentVariant?.name}</h1>
               <div className="row full-views">
                 <div className="col-md-8 col-8">
                   <div className="row">
