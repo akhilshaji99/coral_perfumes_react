@@ -15,6 +15,8 @@ function MobileMyAccount({
   closeMoibileMenu,
   changeMyAccountMenuStatus,
 }) {
+  const languageDirection = localStorage.getItem("languageDirection");
+
   const navigate = useNavigate();
   const logout = () => {
     if (localStorage.getItem("userDatas")) {
@@ -157,6 +159,42 @@ function MobileMyAccount({
                   />
                 </svg>
               </NavLink>
+            </li>
+            <li
+              className="nav-item"
+              onClick={() => {
+                localStorage.setItem(
+                  "languageDirection",
+                  languageDirection === "ltr" ? "rtl" : "ltr"
+                );
+                window.location.reload();
+              }}
+            >
+              <a href="javascript:;" className="nav-link">
+                <img src={Returns} alt="Coral perfumes" />
+                Switch Language &nbsp;
+                <span className="my-accnt-language-name">
+                  {languageDirection === null || languageDirection === "ltr"
+                    ? "Arabic"
+                    : "English"}
+                </span>
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.94922 4.08L15.4692 10.6C16.2392 11.37 16.2392 12.63 15.4692 13.4L8.94922 19.92"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeMiterlimit={10}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
             </li>
             <li className="nav-item" onClick={logout}>
               <a className="nav-link " aria-current="page" href="javascript:;">
