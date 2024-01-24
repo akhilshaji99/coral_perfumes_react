@@ -38,11 +38,11 @@ const BaseLayout = () => {
 
   const changeMyAccountMenuStatus = (status = null) => {
     //For my account
-    // setMobileMenuStatus(false);
-    // setMyAccountStatus(status === false ? status : !myAccountStatus);
+    setMobileMenuStatus(false);
+    setMyAccountStatus(status === false ? status : !myAccountStatus);
     //for category
-    setMyAccountStatus(false);
-    setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
+    // setMyAccountStatus(false);
+    // setMobileMenuStatus(status === false ? status : !mobileMenuStatus);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const BaseLayout = () => {
         <nav className="fixed-top bg-white ">
           <TopHeader />
           <Account
-            changeMyAccountMenuStatus={changeMyAccountMenuStatus}
+            changeMyAccountMenuStatus={changeMobileMenuStatus}
             mobileMenuStatus={mobileMenuStatus}
             myAccountStatus={myAccountStatus}
             closeMoibileMenu={closeMoibileMenu}
