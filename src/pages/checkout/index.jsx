@@ -492,10 +492,9 @@ function Index() {
                   className="accordion accordion-flush "
                   id="accordionFlushExample"
                 >
-                  {/* accordion item */}
+                  {/* 
                   <div className="accordion-item checkout-accordion ">
                     <div className="d-flex justify-content-between align-items-center h">
-                      {/* heading one */}
 
                       <h4 className="pt-3 ps-3 "> PROMO CODE</h4>
 
@@ -528,9 +527,6 @@ function Index() {
                           </span>
                         </button>
                       </a>
-                      {/* btn */}
-
-                      {/* collapse */}
                     </div>
                     <div
                       id="flush-collapseOne"
@@ -539,17 +535,14 @@ function Index() {
                       ref={componentToScrollRef}
                     >
                       <div className="mb-1">
-                        {/* card body */}
                         <div className="card-body p-3">
                           <div className="d-flex mb-4">
                             <div>
-                              {/* <h5 className="mb-1 h6"> PROMO CODE</h5> */}
                               <h5 className="mb-1 h6 "> Add Promo Code</h5>
                             </div>
                           </div>
                           <div className="row g-4">
                             <div className="col-md-6 col-6">
-                              {/* input */}
                               <div className="mb-3 mb-lg-0">
                                 <input
                                   type="text"
@@ -562,7 +555,6 @@ function Index() {
                               </div>
                             </div>
                             <div className="col-md-3 col-6">
-                              {/* input */}
                               <div className="mb-3  mb-lg-0 position-relative">
                                 <div className="remove-cd">
                                   {" "}
@@ -610,7 +602,7 @@ function Index() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                            </div> */}
                   <form onSubmit={addressForm.handleSubmit}>
                     <div className="accordion-item checkout-accordion">
                       <div className="d-flex justify-content-between align-items-center h">
@@ -1050,11 +1042,13 @@ function Index() {
                               <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
                                   <div className="b-lg-0">
-                                    <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryEmirates}>
+                                    <div
+                                      className="dropdown  form-control check-form"
+                                      onClick={toggleStoreDeliveryEmirates}
+                                    >
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
-                                        
                                       >
                                         {storePickupEmirateName}
                                       </a>
@@ -1135,11 +1129,13 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="mb-lg-0">
-                                    <div className="dropdown  form-control check-form" onClick={toggleStoreDeliveryStore}>
+                                    <div
+                                      className="dropdown  form-control check-form"
+                                      onClick={toggleStoreDeliveryStore}
+                                    >
                                       <a
                                         className=" dropdown-toggle text-dark btn-filter"
                                         type="button"
-                                        
                                       >
                                         {storePickupStoreName}
                                       </a>
@@ -1291,6 +1287,14 @@ function Index() {
                   checkPaymentTypeSelected={checkPaymentTypeSelected}
                   validateDeliveryAddress={validateDeliveryAddress}
                   confirmButtonStatus={confirmButtonStatus}
+                  //Promocode
+                  promoCodeId={promoCodeId}
+                  setPromoCode={setPromoCode}
+                  promoCode={promoCode}
+                  applyPrmocode={applyPrmocode}
+                  removePrmocode={removePrmocode}
+                  setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+                  //#End of promo code
                 />
               </div>
             </div>

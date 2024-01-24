@@ -3,6 +3,7 @@ import confirmCheckout from "../js/confirmCheckout";
 import AlerMessage from "../../common/AlerMessage";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import $ from "jquery";
 
 function CartDetails({
   cartDatas,
@@ -11,12 +12,86 @@ function CartDetails({
   checkPaymentTypeSelected,
   validateDeliveryAddress,
   confirmButtonStatus,
+  //Promocode
+  promoCodeId,
+  setPromoCode,
+  promoCode,
+  applyPrmocode,
+  removePrmocode,
+  setShowPrmoCodeFlag,
+  //#End of promocode
 }) {
   const [loader, setLoader] = useState(false);
   return (
     <div className=" card checkout-left-card">
       <div className="">
         <div className="">
+          <div className="mb-1">
+            <div className="card-body p-3">
+              <div className="d-flex mb-4">
+                <div>
+                  <h5 className="mb-1 h6 "> Add Promo Code</h5>
+                </div>
+              </div>
+              <div className="row g-4">
+                <div className="col-md-6 col-6">
+                  <div className="mb-3 mb-lg-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Coupon Code"
+                      value={promoCode}
+                      disabled={promoCodeId != null ? true : false}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-3 col-6">
+                  <div className="mb-3  mb-lg-0 position-relative">
+                    <div className="remove-cd">
+                      {" "}
+                      {promoCodeId == null ? (
+                        <button
+                          // type="submit"
+                          class="btn btn-dark px-4 validate w-100"
+                          onClick={applyPrmocode}
+                        >
+                          APPLY
+                        </button>
+                      ) : (
+                        <>
+                          <a
+                            onClick={(e) => {
+                              e.preventDefault();
+                              removePrmocode(promoCodeId);
+                            }}
+                            class=""
+                            style={{
+                              color: "black",
+                              "text-decoration": "underline",
+                            }}
+                          >
+                            Remove
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <p
+                  class="promo-code-label mb-0"
+                  onClick={(e) => {
+                    setShowPrmoCodeFlag(true);
+                    $("#promocodeModal").toggle();
+                    $("#promocodeModal").toggleClass("modal fade modal");
+                  }}
+                >
+                  {" "}
+                  <small>View Available Promo Codes</small>
+                </p>
+              </div>
+            </div>
+          </div>
           <h5 className="mb-6 bg-transparent">
             {cartDatas?.total_items_count} ITEMS
           </h5>
