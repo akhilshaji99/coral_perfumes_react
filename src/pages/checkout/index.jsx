@@ -837,6 +837,23 @@ function Index() {
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
+                                  <div className=" mb-lg-0">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Floor number"
+                                      value={addressForm.values.floor_number}
+                                      name="floor_number"
+                                      onChange={addressForm.handleChange}
+                                      style={getStyles(
+                                        addressForm.errors,
+                                        "floor_number"
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+
+                                <div className="col-md-6 col-12">
                                   <div className="mb-lg-0">
                                     <input
                                       type="text"
@@ -852,8 +869,6 @@ function Index() {
                                     />
                                   </div>
                                 </div>
-                              </div>
-                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-lg-0">
                                     <input
@@ -870,6 +885,8 @@ function Index() {
                                     />
                                   </div>
                                 </div>
+                              </div>
+                              <div className="row g-4 m-2 mts">
                                 <div className="col-md-6 col-12">
                                   <div className="mb-lg-0">
                                     <div
@@ -949,24 +966,6 @@ function Index() {
                                         }
                                       )}
                                     </select> */}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="row g-4 m-2 mts">
-                                <div className="col-md-6 col-12">
-                                  <div className=" mb-lg-0">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Floor number"
-                                      value={addressForm.values.floor_number}
-                                      name="floor_number"
-                                      onChange={addressForm.handleChange}
-                                      style={getStyles(
-                                        addressForm.errors,
-                                        "floor_number"
-                                      )}
-                                    />
                                   </div>
                                 </div>
                                 <div className="col-md-6 col-12">
