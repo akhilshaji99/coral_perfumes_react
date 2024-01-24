@@ -146,8 +146,9 @@ function Index() {
                 <div className="direction-btn">
                   {" "}
                   <iframe
+                    className="store-iframe"
                     src={storeDetails?.data?.map_link}
-                    width="600"
+                    width="100%"
                     height="450"
                     allowfullscreen=""
                     loading="lazy"
