@@ -134,7 +134,9 @@ function Index() {
           // if (response?.data?.delivery_type === 1) {
           //Type - Delivery address
           //country code selection
-          setSelectedCountryCode(response?.data?.country_data);
+          if (response?.data?.country_data) {
+            setSelectedCountryCode(response?.data?.country_data);
+          }
           //#End
           let emirate_id =
             response?.data?.default_address?.account_address?.emirate_id ||
