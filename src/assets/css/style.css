@@ -21881,10 +21881,18 @@ h3 {
   font-family: var(--fc-font-bold);
  
 }
-body.checkout .nav-lb-tab .nav-item .nav-link { padding: 10px;border: solid 1px #dfe2e1;border-bottom:none;border-radius: 5px 5px 0px 0px;}
+body.checkout .nav-lb-tab .nav-item .nav-link { padding: 10px;border: solid 1px #dfe2e1;border-bottom:none;border-radius: 5px 5px 0px 0px;    width: 100%;}
 body.checkout .nav-lb-tab .nav-item .nav-link.active, .nav-lb-tab .nav-item .nav-link:hover {
  color: #fff;
   background-color: #000;
+}
+body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item {
+  margin-right: 0px;
+  width: 40%;
+}
+body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab  {
+ 
+  width: 100%;
 }
 .nav-lb-tab .nav-item .nav-link.active,
 .nav-lb-tab .nav-item .nav-link:hover {
@@ -26599,7 +26607,8 @@ span.dropdown-text.store-color {
     color: var(--fc-black);
     text-align: center;
     font-family: var(--fc-font-medium);
-    font-size: 14px;
+    font-size: 14px !important;
+    text-transform: capitalize;
   }
   .carousel-product-margin {
     margin: 0 7.5px;
@@ -26627,7 +26636,7 @@ span.dropdown-text.store-color {
     font-weight: 700 !important;
     text-transform: capitalize;
     text-align: center !important;
-    padding-top: 16px !important;
+    padding-top: 1px !important;
     /* white-space: normal !important;
     overflow: visible !important;
     text-overflow: unset !important; */
@@ -30351,3 +30360,13 @@ img {
 .form-validation-message{
   color: red;
 }
+body.checkout .css-13cymwt-control {
+  border-radius: 9px;
+  border-color: rgb(0 0 0);
+
+}
+body.checkout .css-hlgwow {
+  font-size: 12px!important;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.6;}

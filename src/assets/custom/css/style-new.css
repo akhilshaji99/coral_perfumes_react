@@ -2020,7 +2020,7 @@ footer.footer p {
 .side-scroller
 {
   max-height: 423px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .row.product-rating {
   width: 100%;
@@ -2058,9 +2058,11 @@ body.checkout div#reviews-tab-pane a svg.regular-sort-icon {
 }
 img.footer-apple-logo {
   width: 100%;
+  cursor: pointer;
 }
 img.footer-gplay-logo {
   width: 100%;
+  cursor: pointer;
 }
 .check-form{
   display: flex;
@@ -2214,4 +2216,56 @@ body.cart .my-bag-img {
 }*/
 body.product-details .product-desc-section h1 {
   padding-bottom: 15px;
+}
+body.stores-detail .store-contact {
+  padding-top: 0px;
+  width: 100%;
+}
+body.checkout p.promo-code-label.mb-0 small {
+  color: #80ba27;
+}
+body.checkout p.promo-code-label.mb-0 {
+  margin-top: 6px;
+}
+.add-heading h2 {
+  color: var(--fc-black);
+  font-family: var(--fc-font-regular);
+  font-size: 23px;
+  text-transform: uppercase;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+.add-heading p {
+  font-family: var(--fc-font-bold);
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-transform: capitalize;
+  width: 81%;
+}
+body.address-book .lists-code {
+  display: flex;
+  border: solid 1px #000;
+  border-radius: 9px;
+}
+body.address-book .lists-code button#rfs-btn {
+  border: none;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.6;
+    padding:2px;
+}
+body.address-book .lists-code input.form-control {
+  border: none;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 2px 6px;
+}
+body.product-details div#details-tab-pane .p-d-c {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 20px;
 }

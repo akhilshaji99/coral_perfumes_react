@@ -4,7 +4,7 @@ function BreadCrumps() {
   return (
     <>
       <aside>
-        <div className="mt-4">
+        <div className="mt-4  crumb-mob">
           <div className="container-fluid">
             <div className="row ">
               <div className="col-12 px-10">
