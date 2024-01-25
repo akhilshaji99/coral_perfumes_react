@@ -172,7 +172,7 @@ function ContactForm() {
       <section className="cont-ad">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 private-cs  d-flex">
+            <div className="col-md-5 private-cs  d-flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -187,12 +187,12 @@ function ContactForm() {
               </svg>
               <p>
                 {" "}
-                Coral Perfumes Industry LLCOffice No.9, Ware House No. 13,
+                Coral Perfumes Industry LLC Office No.9, Ware House No. 13,
                 Industrial Area-4, Al Quoz, Dubai. UAE – 186887Land Mark: Near
                 Al Ahli Driving School
               </p>
             </div>
-            <div className="col-md-3 private_ph">
+            <div className="col-md-4 private_ph">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -230,6 +230,77 @@ function ContactForm() {
                 <a href="mailto:operations@coralperfumes.com">
                   operations@coralperfumes.com
                 </a>
+              </div>
+            </div>
+          </div>
+          <div className="row mt-5">
+            <div className="col-md-5 d-flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={60}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M20.62 8.45C19.57 3.83 15.54 1.75 12 1.75C12 1.75 12 1.75 11.99 1.75C8.45997 1.75 4.41997 3.82 3.36997 8.44C2.19997 13.6 5.35997 17.97 8.21997 20.72C9.27997 21.74 10.64 22.25 12 22.25C13.36 22.25 14.72 21.74 15.77 20.72C18.63 17.97 21.79 13.61 20.62 8.45ZM12 13.46C10.26 13.46 8.84997 12.05 8.84997 10.31C8.84997 8.57 10.26 7.16 12 7.16C13.74 7.16 15.15 8.57 15.15 10.31C15.15 12.05 13.74 13.46 12 13.46Z"
+                  fill="black"
+                />
+              </svg>
+              <div className="add-heading"><h2>United States America</h2>
+              <p>
+                {" "}
+                Coral Perfumes LLC 
+                Coral Springs, florida 33065,
+                United States of America
+                email:info@coralperfumes.com
+              </p>
+              </div>
+            </div>
+            <div className="col-md-4 d-flex">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={60}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M20.62 8.45C19.57 3.83 15.54 1.75 12 1.75C12 1.75 12 1.75 11.99 1.75C8.45997 1.75 4.41997 3.82 3.36997 8.44C2.19997 13.6 5.35997 17.97 8.21997 20.72C9.27997 21.74 10.64 22.25 12 22.25C13.36 22.25 14.72 21.74 15.77 20.72C18.63 17.97 21.79 13.61 20.62 8.45ZM12 13.46C10.26 13.46 8.84997 12.05 8.84997 10.31C8.84997 8.57 10.26 7.16 12 7.16C13.74 7.16 15.15 8.57 15.15 10.31C15.15 12.05 13.74 13.46 12 13.46Z"
+                  fill="black"
+                />
+              </svg>
+              <div className="add-heading"><h2>MYANMAR</h2>
+              <p>
+                {" "}
+                Coral Perfumes myanmar <br></br>
+                yangon, myanmar
+                <br></br>phone: +95 9442652475| +95 9973050806
+                email:myanmar@coralperfumes.com
+              </p>
+              </div>
+            </div>
+            <div className="col-md-3 d-flex">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={90}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M20.62 8.45C19.57 3.83 15.54 1.75 12 1.75C12 1.75 12 1.75 11.99 1.75C8.45997 1.75 4.41997 3.82 3.36997 8.44C2.19997 13.6 5.35997 17.97 8.21997 20.72C9.27997 21.74 10.64 22.25 12 22.25C13.36 22.25 14.72 21.74 15.77 20.72C18.63 17.97 21.79 13.61 20.62 8.45ZM12 13.46C10.26 13.46 8.84997 12.05 8.84997 10.31C8.84997 8.57 10.26 7.16 12 7.16C13.74 7.16 15.15 8.57 15.15 10.31C15.15 12.05 13.74 13.46 12 13.46Z"
+                  fill="black"
+                />
+              </svg>
+              <div className="add-heading"><h2>INDIA</h2>
+              <p>
+                {" "}
+                Coral Perfumes private limited
+                door no. SIEK 13 Industrial estate
+                kallimel p.o  mavelikara, alleppey, kerala,INDIA
+                <br></br>phone: 04792359555
+              </p>
               </div>
             </div>
           </div>

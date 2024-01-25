@@ -231,6 +231,11 @@
   h4.fbt-ellipsis-text {
     max-height: 70px;
   }
+
+  body.checkout .remove-cd button {
+    font-size: 12px;
+    padding: 10px 8px;
+}
 }
 @media (max-width: 1366px) {
   .container-new {
@@ -380,10 +385,9 @@
     padding-right: 0px;
     transform: none;
   }
-  div#offcanvasSubMenus .megamenu-ads {
-    border-top-right-radius: 19px;
-    border-bottom-right-radius: 19px;
-  }
+  .nav-pills-dark img.megamenu-ads {
+    padding-right: 0px;
+}
   body.checkout div#flush-collapseOne input.form-control {
     padding: 7px 10px !important;
   }
@@ -788,7 +792,7 @@
   }
   body.checkout .nav-lb-tab .nav-item .nav-link {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 11px;
   }
   .flash-sale-box span img,
   svg {
@@ -812,7 +816,7 @@
   .product-grid h4 {
     white-space: normal;
     line-height: 20px;
-    height: 58px;
+    height: 45px;
     text-align: left !important;
   }
   button.ModalBtn.offer-button {
@@ -1436,6 +1440,37 @@
     max-height: 470px;
     overflow-y: auto;
   }
+  .add-heading p {
+    padding-bottom: 20px;
+}
+.add-heading p {
+  width: 100%;
+}
+.add-heading h2 {
+  font-size: 15px;
+}
+body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item {
+  margin-right: 0px;
+  width: 50%;
+  margin-right: 0px !important;
+}
+body.address-book div#AddAddress .modal-body.p-5 {
+  max-height: 300px;
+  overflow-y: auto;
+}
+body.product-details div#collapseThree .accordion-body {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+body.product-details div#collapseTwo .accordion-body {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+body.address-book .fixed-top-margin.main-layout main br {
+  display: none;
+}
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px) {
@@ -1452,6 +1487,19 @@
   .container-fluid.cc-margin.w-deals {
     padding: 0 15px;
   }
+  body.products .col-lg-3.col-md-4.product-filter-sidebar aside.mb-6.mb-md-0 {
+    display: none;
+}
+
+.container-new .visit-row {
+  margin-top: 0px;
+}
+.mt-4.crumb-mob {
+  display: none;
+}
+.page-new .container-new .title-page {
+  padding-top: 0px;
+}
 }
 @media (max-width: 320px) {
   .category-top-img img {

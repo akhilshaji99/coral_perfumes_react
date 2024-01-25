@@ -367,7 +367,8 @@ function AddAddress({
                 </div>
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3 row">
-                    <div className="col-md-5">
+                    <div className="col-md-12">
+                    <div className="lists-code">
                       <ReactFlagsSelect
                         selected={selected}
                         onSelect={onSelect}
@@ -378,8 +379,6 @@ function AddAddress({
                         placeholder="Country"
                         // showSecondaryOptionLabel={true}
                       />
-                    </div>
-                    <div className="col-md-7">
                       <input
                         type="text"
                         className="form-control"
@@ -393,6 +392,7 @@ function AddAddress({
                         onChange={addressForm.handleChange}
                         style={getStyles(addressForm.errors, "phone_number")}
                       />
+                      </div>
                     </div>
                   </div>
                 </div>
