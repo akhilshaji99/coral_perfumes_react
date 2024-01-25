@@ -548,7 +548,7 @@ function Index() {
   //#End
   return (
     <>
-      <section className="mb-lg-14 mb-8 mt-8">
+      <section className="mb-lg-14 mb-8">
         <div className="container-md-fluid">
           <BreadCrumps />
           <div className="row">
