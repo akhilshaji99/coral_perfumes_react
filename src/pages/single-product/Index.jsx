@@ -753,7 +753,7 @@ function Index() {
           FbtDatas={FbtDatas}
         />
         {recProducts != null ? (
-          <RecommendedProducts componentDatas={recProducts} />
+          <RecommendedProducts componentDatas={recProducts} rec_section_title={productDatas?.recommonded_products_title}/>
         ) : null}
       </div>
     </>

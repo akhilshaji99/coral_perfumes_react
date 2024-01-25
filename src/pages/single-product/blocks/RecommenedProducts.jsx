@@ -2,7 +2,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProductDetails from "../../common/ProductDetails";
 
-function RecommendedProducts({ componentDatas }) {
+function RecommendedProducts({ componentDatas, rec_section_title }) {
   return (
     <>
       <div className="container-lg-fluid my-5">
@@ -10,10 +10,7 @@ function RecommendedProducts({ componentDatas }) {
           className="card rec-products-container mb-5"
           //   style={dynamicBackground}
         >
-          <h3 className="mb-5 flash-sale text-center">
-            {" "}
-            RECOMMENDED PRODUCTS{" "}
-          </h3>
+          <h3 className="mb-5 flash-sale text-center">{rec_section_title}</h3>
           <Carousel
             additionalTransfrom={0}
             autoPlay={false}
