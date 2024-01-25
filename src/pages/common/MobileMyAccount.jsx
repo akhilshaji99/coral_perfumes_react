@@ -160,24 +160,13 @@ function MobileMyAccount({
                 </svg>
               </NavLink>
             </li>
-            <li
-              className="nav-item"
-              onClick={() => {
-                localStorage.setItem(
-                  "languageDirection",
-                  languageDirection === "ltr" ? "rtl" : "ltr"
-                );
-                window.location.reload();
-              }}
-            >
-              <a href="javascript:;" className="nav-link">
-                <img src={Returns} alt="Coral perfumes" />
-                Switch Language &nbsp;
-                <span className="my-accnt-language-name">
-                  {languageDirection === null || languageDirection === "ltr"
-                    ? "Arabic"
-                    : "English"}
-                </span>
+            <li className="nav-item" onClick={logout}>
+              <a className="nav-link " aria-current="page" href="javascript:;">
+                <img src={Logout} alt="Coral perfumes" />
+                {JSON.parse(localStorage.getItem("userDatas"))
+                  ? "LOGOUT"
+                  : " LOGIN"}
+
                 <svg
                   width={24}
                   height={24}
@@ -196,13 +185,23 @@ function MobileMyAccount({
                 </svg>
               </a>
             </li>
-            <li className="nav-item" onClick={logout}>
-              <a className="nav-link " aria-current="page" href="javascript:;">
-                <img src={Logout} alt="Coral perfumes" />
-                {JSON.parse(localStorage.getItem("userDatas"))
-                  ? "LOGOUT"
-                  : " LOGIN"}
-
+            <li
+              className="nav-item"
+              onClick={() => {
+                localStorage.setItem(
+                  "languageDirection",
+                  languageDirection === "ltr" ? "rtl" : "ltr"
+                );
+                window.location.reload();
+              }}
+            >
+              <a href="javascript:;" className="nav-link">
+                Switch Language &nbsp;
+                <span className="my-accnt-language-name">
+                  {languageDirection === null || languageDirection === "ltr"
+                    ? "Arabic"
+                    : "English"}
+                </span>
                 <svg
                   width={24}
                   height={24}
