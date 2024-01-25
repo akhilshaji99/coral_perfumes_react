@@ -37,41 +37,31 @@ function AddAddress({
   setEditAddressFlag,
   setEditAddressInfo,
 }) {
-  //Country code
-  const [selected, setSelected] = useState("AE");
-  const onSelect = (code) => {
-    setSelected(code);
-  };
-  // const searchable = boolean("Searchable", false);
-
   const customLabels = {
     AE: { primary: "+971" },
-    AF: { primary: "+93" },
-    AL: { primary: "+355" },
-    DZ: { primary: "+213" },
-    AD: { primary: "+376" },
-    AO: { primary: "+244" },
-    AR: { primary: "+54" },
-    AM: { primary: "+374" },
-    AU: { primary: "+61" },
-    AT: { primary: "+43" },
-    AZ: { primary: "+994" },
-    GB: { primary: "+44" },
-    US: { primary: "+1" },
-    UY: { primary: "+598" },
-    UZ: { primary: "+998" },
-    VU: { primary: "+678" },
-    VA: { primary: "+379" }, // Vatican City
-    VE: { primary: "+58" },
-    VN: { primary: "+84" },
-    YE: { primary: "+967" },
-    ZM: { primary: "+260" },
-    ZW: { primary: "+263" },
+    IN: { primary: "+91" },
+    OM: { primary: "+968" },
+    QA: { primary: "+974" },
+    SA: { primary: "+966" },
   };
+  //Country code
+  const [selectedCountryCode, setSelectedCountryCode] = useState({
+    country_code: "AE",
+    phone_code: "+971",
+  });
+
+  const onSelect = (code) => {
+    setSelectedCountryCode({
+      country_code: code,
+      phone_code: customLabels[code].primary,
+    });
+  };
+  // const searchable = boolean("Searchable", false);
 
   //#End
   const [emirates, setEmirates] = useState([]);
   const handleOnSubmit = (values) => {
+    values.country_datas = selectedCountryCode;
     addNewAddress(values).then((response) => {
       if (response?.data.status) {
         $("#AddAddress").toggle();
@@ -100,6 +90,7 @@ function AddAddress({
       address_id: "",
       city: "",
       floor_number: "",
+      country_datas: "",
     },
 
     validationSchema: newAddressFormSchema,
@@ -368,30 +359,30 @@ function AddAddress({
                 <div className="mb-3 col-md-6 col-12">
                   <div className="mb-3 row">
                     <div className="col-md-12">
-                    <div className="lists-code">
-                      <ReactFlagsSelect
-                        selected={selected}
-                        onSelect={onSelect}
-                        className="country-list"
-                        customLabels={customLabels}
-                        countries={Object.keys(customLabels)}
-                        // searchable={true}
-                        placeholder="Country"
-                        // showSecondaryOptionLabel={true}
-                      />
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="055 922 8088"
-                        name="phone_number"
-                        value={addressForm.values.phone_number}
-                        // onChange={(e) =>
-                        //   setAddressFormInputValue("phone_number", e.target.value)
-                        // }
+                      <div className="lists-code">
+                        <ReactFlagsSelect
+                          selected={selectedCountryCode.country_code}
+                          onSelect={onSelect}
+                          className="country-list"
+                          customLabels={customLabels}
+                          countries={Object.keys(customLabels)}
+                          // searchable={true}
+                          placeholder="Country"
+                          // showSecondaryOptionLabel={true}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="055 922 8088"
+                          name="phone_number"
+                          value={addressForm.values.phone_number}
+                          // onChange={(e) =>
+                          //   setAddressFormInputValue("phone_number", e.target.value)
+                          // }
 
-                        onChange={addressForm.handleChange}
-                        style={getStyles(addressForm.errors, "phone_number")}
-                      />
+                          onChange={addressForm.handleChange}
+                          style={getStyles(addressForm.errors, "phone_number")}
+                        />
                       </div>
                     </div>
                   </div>

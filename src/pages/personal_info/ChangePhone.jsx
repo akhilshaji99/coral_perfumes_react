@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import $ from "jquery";
 import ProfileOTPVerification from "./ProfileOTPVerification";
+import ReactFlagsSelect from "react-flags-select";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -24,6 +25,7 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
       const response = await request.post("profile-phone-number-update/", {
         current_phone_number: profileForm.values.phone_number,
         new_phone_number: values.phone_number,
+        country_data: selectedCountryCode,
       });
       if (response.data.status) {
         setOtpModalDatas(response?.data?.data);
@@ -56,6 +58,28 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
     validationSchema: phoneFormSchema,
     onSubmit: handleOnSubmit,
   });
+
+  //Country code
+  const countryCodes = {
+    AE: { primary: "+971" },
+    IN: { primary: "+91" },
+    OM: { primary: "+968" },
+    QA: { primary: "+974" },
+    SA: { primary: "+966" },
+  };
+
+  const [selectedCountryCode, setSelectedCountryCode] = useState({
+    country_code: "AE",
+    phone_code: "+971",
+  });
+
+  const onCountrySelect = (code) => {
+    setSelectedCountryCode({
+      country_code: code,
+      phone_code: countryCodes[code].primary,
+    });
+  };
+  // const searchable = boolean("Searchable", false);
   return (
     <>
       <ProfileOTPVerification
@@ -110,19 +134,30 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
                   <div className="col-12">
                     {/* input */}
                     <label>Add New Number</label>
-
-                    <input
-                      type="text"
-                      className={`form-control ${
-                        updatePhoneForm.errors.phone_number
-                          ? "border-danger"
-                          : ""
-                      }`}
-                      name="phone_number"
-                      value={updatePhoneForm.values.phone_number}
-                      onChange={updatePhoneForm.handleChange}
-                      placeholder="Mob Number (0559239099)*"
-                    />
+                    <div className="lists-code">
+                      <ReactFlagsSelect
+                        selected={selectedCountryCode.country_code}
+                        onSelect={onCountrySelect}
+                        className="country-list"
+                        customLabels={countryCodes}
+                        countries={Object.keys(countryCodes)}
+                        // searchable={true}
+                        placeholder="Country"
+                        // showSecondaryOptionLabel={true}
+                      />
+                      <input
+                        type="text"
+                        className={`form-control ${
+                          updatePhoneForm.errors.phone_number
+                            ? "border-danger"
+                            : ""
+                        }`}
+                        name="phone_number"
+                        value={updatePhoneForm.values.phone_number}
+                        onChange={updatePhoneForm.handleChange}
+                        placeholder="Mob Number (0559239099)*"
+                      />
+                    </div>
                   </div>
                   <div className="col-12 text-center">
                     <button

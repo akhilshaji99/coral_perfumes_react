@@ -2245,19 +2245,20 @@ body.checkout p.promo-code-label.mb-0 {
   text-transform: capitalize;
   width: 81%;
 }
-body.address-book .lists-code {
+.lists-code {
   display: flex;
   border: solid 1px #000;
   border-radius: 9px;
 }
-body.address-book .lists-code button#rfs-btn {
+
+.lists-code button#rfs-btn {
   border: none;
     font-size: 13px !important;
     font-weight: 500;
     line-height: 1.6;
     padding:2px;
 }
-body.address-book .lists-code input.form-control {
+.lists-code input.form-control {
   border: none;
     font-size: 13px !important;
     font-weight: 500;

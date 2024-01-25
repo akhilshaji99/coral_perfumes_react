@@ -18,6 +18,7 @@ import AlerMessage from "../common/AlerMessage";
 import RemovePromoCode from "./js/removePromoCode";
 import getEmirateName from "./js/getEmirateName";
 import Select from "react-select";
+import ReactFlagsSelect from "react-flags-select";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -57,6 +58,7 @@ function Index() {
   const [storePickupEmirateName, setStorePickupEmirateName] = useState("");
   const [storePickupStoreName, setStorePickupStoreName] = useState("");
   const [cityDefaultValue, setCityDefaultValue] = useState(null);
+  const [countryCodes, setContryCodes] = useState([]);
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
@@ -127,6 +129,7 @@ function Index() {
     getCheckOutDetails().then(async (response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
+        setContryCodes(response?.data?.country_phone_codes);
         if (response?.data?.emirates.length > 0) {
           // if (response?.data?.delivery_type === 1) {
           //Type - Delivery address
@@ -216,6 +219,7 @@ function Index() {
         combinedPayload?.delivery_type === 2
           ? combinedPayload?.store_pickup_emirate_id
           : null;
+      combinedPayload.country_data = selectedCountryCode;
       UpdateCheckoutDetails(combinedPayload).then((response) => {
         if (response?.data?.status) {
           setConfirmButtonStatus(true);
@@ -527,6 +531,21 @@ function Index() {
     setStatus(!status);
   };
 
+  //Country code
+  const [selectedCountryCode, setSelectedCountryCode] = useState({
+    country_code: "AE",
+    phone_code: "+971",
+  });
+
+  const onCountrySelect = (code) => {
+    setSelectedCountryCode({
+      country_code: code,
+      phone_code: countryCodes[code].primary,
+    });
+  };
+  // const searchable = boolean("Searchable", false);
+
+  //#End
   return (
     <>
       <section className="mb-lg-14 mb-8 mt-8">
@@ -752,18 +771,34 @@ function Index() {
                             <div className="row g-4 m-2 mts">
                               <div className="col-md-6 col-12">
                                 <div className="mb-lg-0">
-                                  <input
-                                    type="text"
-                                    value={addressForm.values.phone_number}
-                                    name="phone_number"
-                                    onChange={addressForm.handleChange}
-                                    placeholder="Phone Number (0559239099)"
-                                    style={getStyles(
-                                      addressForm.errors,
-                                      "phone_number"
-                                    )}
-                                    className="form-control"
-                                  />
+                                  <div className="col-md-12">
+                                    <div className="lists-code">
+                                      <ReactFlagsSelect
+                                        selected={
+                                          selectedCountryCode.country_code
+                                        }
+                                        onSelect={onCountrySelect}
+                                        className="country-list"
+                                        customLabels={countryCodes}
+                                        countries={Object.keys(countryCodes)}
+                                        // searchable={true}
+                                        placeholder="Country"
+                                        // showSecondaryOptionLabel={true}
+                                      />
+                                      <input
+                                        type="text"
+                                        value={addressForm.values.phone_number}
+                                        name="phone_number"
+                                        onChange={addressForm.handleChange}
+                                        placeholder="Phone Number (0559239099)"
+                                        style={getStyles(
+                                          addressForm.errors,
+                                          "phone_number"
+                                        )}
+                                        className="form-control"
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">

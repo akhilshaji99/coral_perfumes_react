@@ -19,6 +19,7 @@ const addNewAddress = async (formValues) => {
       address_id: formValues.address_id,
       city: formValues.city,
       floor_number: formValues.floor_number,
+      country_data: formValues.country_datas,
     });
     if (response.data.status) {
       toast((t) => (
