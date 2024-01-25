@@ -126,7 +126,7 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
                     className="form-control"
                     disabled
                     value={profileForm.values.phone_number}
-                    placeholder="9463777767"
+                    placeholder=""
                   />
                 </div>
                 {/* col */}

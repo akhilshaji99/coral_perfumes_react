@@ -217,7 +217,7 @@ function Index() {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="0559238088"
+                          placeholder=""
                           name="phone_number"
                           disabled={true}
                           value={profileForm.values.phone_number}
