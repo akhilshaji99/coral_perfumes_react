@@ -133,7 +133,9 @@ function Index() {
         if (response?.data?.emirates.length > 0) {
           // if (response?.data?.delivery_type === 1) {
           //Type - Delivery address
-
+          //country code selection
+          setSelectedCountryCode(response?.data?.country_data);
+          //#End
           let emirate_id =
             response?.data?.default_address?.account_address?.emirate_id ||
             response?.data?.emirates[0]?.id;
@@ -141,9 +143,9 @@ function Index() {
             response?.data?.default_address?.account_address?.emirate ||
             response?.data?.emirates[0]?.name;
           if (status === null) {
-            console.log('emirate_id',emirate_id)
+            console.log("emirate_id", emirate_id);
             addressForm.setFieldValue("emirate", emirate_id);
-            console.log(addressForm)
+            console.log(addressForm);
             addressForm.values.emirate = emirate_id;
             setNormalDeliveryEmirateName(emirate_name);
           }
