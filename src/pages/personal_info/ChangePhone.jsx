@@ -155,7 +155,7 @@ function ChangePhone({ profileForm, refetchProfileApi }) {
                         name="phone_number"
                         value={updatePhoneForm.values.phone_number}
                         onChange={updatePhoneForm.handleChange}
-                        placeholder="Mob Number (0559239099)*"
+                        placeholder="Mob Number*"
                       />
                     </div>
                   </div>

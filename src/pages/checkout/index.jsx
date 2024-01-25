@@ -799,7 +799,7 @@ function Index() {
                                         value={addressForm.values.phone_number}
                                         name="phone_number"
                                         onChange={addressForm.handleChange}
-                                        placeholder="Phone Number (0559239099)"
+                                        placeholder="Phone Number"
                                         style={getStyles(
                                           addressForm.errors,
                                           "phone_number"

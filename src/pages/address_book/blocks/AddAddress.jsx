@@ -373,7 +373,7 @@ function AddAddress({
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="055 922 8088"
+                          placeholder="Phone Number"
                           name="phone_number"
                           value={addressForm.values.phone_number}
                           // onChange={(e) =>
