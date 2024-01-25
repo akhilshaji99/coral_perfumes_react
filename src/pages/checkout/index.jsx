@@ -125,7 +125,7 @@ function Index() {
   const [normalDeliveryEmirateName, setNormalDeliveryEmirateName] =
     useState("");
 
-  const fetchCheckoutApi = () => {
+  const fetchCheckoutApi = (status = null) => {
     getCheckOutDetails().then(async (response) => {
       if (response?.data) {
         setCheckOutDetails(response?.data);
@@ -133,44 +133,53 @@ function Index() {
         if (response?.data?.emirates.length > 0) {
           // if (response?.data?.delivery_type === 1) {
           //Type - Delivery address
+
           let emirate_id =
             response?.data?.default_address?.account_address?.emirate_id ||
             response?.data?.emirates[0]?.id;
           let emirate_name =
             response?.data?.default_address?.account_address?.emirate ||
             response?.data?.emirates[0]?.name;
-          addressForm.setFieldValue("emirate", emirate_id);
-          setNormalDeliveryEmirateName(emirate_name);
+          if (status === null) {
+            addressForm.setFieldValue("emirate", emirate_id);
+            setNormalDeliveryEmirateName(emirate_name);
+          }
 
           //Type - Store Pickup
           let store_emirate_id =
             response?.data?.store_emirate_id || response?.data?.emirates[0]?.id;
-          await getSingleEmirateCities(
-            emirate_id,
-            response?.data?.emirates
-          ).then((data) => {
-            let cityData =
-              response?.data?.default_address?.account_address?.city;
-            changeCityDatas(
-              data,
-              cityData ? { label: cityData, value: cityData } : ""
-            );
-          });
+          if (status === null) {
+            await getSingleEmirateCities(
+              emirate_id,
+              response?.data?.emirates
+            ).then((data) => {
+              let cityData =
+                response?.data?.default_address?.account_address?.city;
+              changeCityDatas(
+                data,
+                cityData ? { label: cityData, value: cityData } : ""
+              );
+            });
+          }
           //
           let store_emirate_name =
             response?.data?.store_emirate_name ||
             response?.data?.emirates[0]?.name;
-          setStorePickupEmirateName(store_emirate_name);
-          addressForm.setFieldValue(
-            "store_pickup_emirate_id",
-            store_emirate_id
-          );
-          fetchStoreApi(
-            store_emirate_id,
-            response?.data?.store_id,
-            response?.data?.store_name
-          ); //Fetch store api
-          //End of store pickup type
+          if (status === null) {
+            setStorePickupEmirateName(store_emirate_name);
+            addressForm.setFieldValue(
+              "store_pickup_emirate_id",
+              store_emirate_id
+            );
+          }
+          if (status === null) {
+            fetchStoreApi(
+              store_emirate_id,
+              response?.data?.store_id,
+              response?.data?.store_name
+            ); //Fetch store api
+            //End of store pickup type
+          }
         }
 
         setCartItems(response?.data?.cart_items);
@@ -230,7 +239,7 @@ function Index() {
             response?.data?.data?.address_id
           );
         } else {
-          fetchCheckoutApi();
+          fetchCheckoutApi(false);
         }
       });
     }

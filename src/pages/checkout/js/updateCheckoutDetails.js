@@ -27,13 +27,14 @@ const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
     if (response.data.status) {
       return response;
     } else {
+      console.log('response',response)
       toast((t) => (
         <AlerMessage
           t={t}
           toast={toast}
           status={response.data.status}
           title={response?.data?.message_1 || "Error"}
-          message={response?.data?.message_2}
+          message={response?.data?.message || response?.data?.message_2}
         />
       ));
       return response;
