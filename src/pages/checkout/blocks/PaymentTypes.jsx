@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import deviceImageRender from "../../../utils/deviceImageRender";
 import AlerMessage from "../../common/AlerMessage";
 import toast from "react-hot-toast";
@@ -9,6 +10,12 @@ function PaymentTypes({
   fetchCheckoutDetailsForPaymentType,
   confirmButtonStatus,
 }) {
+  useEffect(() => {
+    if (confirmButtonStatus) {
+      var myDiv = document.getElementById("payment_type_accordian");
+      myDiv.className = "accordion-collapse collapse show";
+    }
+  }, [confirmButtonStatus]);
   return (
     <div
       className="accordion-item checkout-accordion"
