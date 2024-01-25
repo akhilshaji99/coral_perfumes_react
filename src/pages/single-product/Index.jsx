@@ -31,6 +31,7 @@ function Index() {
   const [productDatas, setProductDatas] = useState(null);
   const [productVariants, setproductVariants] = useState(null);
   const [recProducts, setRecProducts] = useState(null);
+  const [categoryProducts, setCategoryProducts] = useState(null);
   const [activeVariant, setActiveVariant] = useState({});
   const [addToCartQuantity, setAddToCartQuantity] = useState(1);
   const [status, setStatus] = useState(false);
@@ -97,6 +98,9 @@ function Index() {
     }
     if (response?.data?.product_data.recommended_products) {
       setRecProducts(response?.data?.product_data.recommended_products);
+    }
+    if (response?.data?.product_data.category_products) {
+      setCategoryProducts(response?.data?.product_data.category_products);
     }
   };
 
@@ -203,7 +207,6 @@ function Index() {
 
           <div className="col-md-5">
             <div className="product-desc-section">
-              
               <h2 className="product-author">
                 <Link to={"/" + currentVariant?.brand_link}>
                   {currentVariant?.brand_name}
@@ -753,7 +756,17 @@ function Index() {
           FbtDatas={FbtDatas}
         />
         {recProducts != null ? (
-          <RecommendedProducts componentDatas={recProducts} rec_section_title={productDatas?.recommonded_products_title}/>
+          <RecommendedProducts
+            componentDatas={recProducts}
+            rec_section_title={productDatas?.recommonded_products_title}
+          />
+        ) : null}
+
+        {categoryProducts !== null ? (
+          <RecommendedProducts
+            componentDatas={categoryProducts}
+            rec_section_title={productDatas?.category_products_title}
+          />
         ) : null}
       </div>
     </>
