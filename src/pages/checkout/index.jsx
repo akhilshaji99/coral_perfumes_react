@@ -141,7 +141,10 @@ function Index() {
             response?.data?.default_address?.account_address?.emirate ||
             response?.data?.emirates[0]?.name;
           if (status === null) {
+            console.log('emirate_id',emirate_id)
             addressForm.setFieldValue("emirate", emirate_id);
+            console.log(addressForm)
+            addressForm.values.emirate = emirate_id;
             setNormalDeliveryEmirateName(emirate_name);
           }
 
@@ -208,7 +211,6 @@ function Index() {
     let emirateCities = "";
     await emirates.forEach((emirate) => {
       if (parseInt(emirate.id) === parseInt(emirate_id)) {
-        console.log("emirate", emirate);
         emirateCities = emirate.areas;
         return;
       }
@@ -218,7 +220,6 @@ function Index() {
 
   const handleOnSubmit = () => {
     if (validateDeliveryAddress()) {
-      console.log(addressForm.values);
       var combinedPayload = Object.assign(
         {},
         checkoutUpdateParams,
@@ -317,7 +318,6 @@ function Index() {
   const validateDeliveryAddress = () => {
     let validationStatus = true;
     let message = "";
-    console.log("addressFormaddressForm", addressForm);
     if (addressForm.values.delivery_type == 1) {
       if (
         addressForm.values.flat_name == undefined ||
@@ -363,14 +363,16 @@ function Index() {
         validationStatus = false;
         addressForm.setErrors({ city: "Required" });
         message = "City required.";
-      } else if (
-        addressForm.values.postal_code == undefined ||
-        addressForm.values.postal_code == ""
-      ) {
-        validationStatus = false;
-        addressForm.setErrors({ postal_code: "Required" });
-        message = "Postal code required.";
-      } else {
+      }
+      // else if (
+      //   addressForm.values.postal_code == undefined ||
+      //   addressForm.values.postal_code == ""
+      // ) {
+      //   validationStatus = false;
+      //   addressForm.setErrors({ postal_code: "Required" });
+      //   message = "Postal code required.";
+      // }
+      else {
         validationStatus = true;
       }
     }
