@@ -26289,7 +26289,7 @@ span.dropdown-text.store-color {
   }
   .top-categories h1 {
     line-height: normal;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: var(--fc-black);
     text-align: center;
     font-family: var(--fc-font-medium);
@@ -26317,7 +26317,7 @@ span.dropdown-text.store-color {
 }
   .shop-more h1 {
     line-height: normal;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: var(--fc-black);
     text-align: center;
     font-family: var(--fc-font-medium) !important;
@@ -26694,7 +26694,6 @@ span.dropdown-text.store-color {
   line-height: 185%; /* 29.6px */
   text-transform: capitalize;
   text-align: center;
-  padding-top: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -26841,7 +26840,7 @@ span.dropdown-text.store-color {
   }
   .brands-card h1 {
     line-height: normal;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: var(--fc-black);
     text-align: center;
     font-family: var(--fc-font-medium) !important;

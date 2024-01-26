@@ -234,10 +234,10 @@ function ContactForm() {
             </div>
           </div>
           <div className="row mt-5">
-            <div className="col-md-5 d-flex">
+            <div className="col-md-5 d-flex loc-svg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width={60}
+                width={40}
                 height={24}
                 viewBox="0 0 24 24"
                 fill="none"
@@ -253,14 +253,16 @@ function ContactForm() {
                 Coral Perfumes LLC 
                 Coral Springs, florida 33065,
                 United States of America
-                email:info@coralperfumes.com
               </p>
+              <a href="mailto:info@coralperfumes.com">
+                Email: info@coralperfumes.com
+                </a>
               </div>
             </div>
-            <div className="col-md-4 d-flex">
+            <div className="col-md-4 d-flex loc-svg-1">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width={60}
+                width={40}
                 height={24}
                 viewBox="0 0 24 24"
                 fill="none"
@@ -275,15 +277,18 @@ function ContactForm() {
                 {" "}
                 Coral Perfumes myanmar <br></br>
                 yangon, myanmar
-                <br></br>phone: +95 9442652475| +95 9973050806
-                email:myanmar@coralperfumes.com
+                <br></br>phone: +95 9442652475 <br></br>+95 9973050806
+                
               </p>
+              <a href="mailto:myanmar@coralperfumes.com">
+                Email:myanmar@coralperfumes.com
+                </a>
               </div>
             </div>
-            <div className="col-md-3 d-flex">
+            <div className="col-md-3 d-flex loc-svg-2">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width={90}
+                width={80}
                 height={24}
                 viewBox="0 0 24 24"
                 fill="none"
