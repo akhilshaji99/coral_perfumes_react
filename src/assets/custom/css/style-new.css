@@ -81,7 +81,7 @@ ul li {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 30px;
@@ -112,7 +112,7 @@ ul li {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 30px;
@@ -545,12 +545,11 @@ section.career-detail-sect {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
-  text-transform: capitalize;
 }
 .respons-list {
   padding: 20px 0px;
@@ -973,7 +972,7 @@ div#faq-wrapper {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 25px;
@@ -1103,7 +1102,7 @@ section.perfume-store {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 25px;
@@ -1279,7 +1278,7 @@ span#word-count {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 30px;
@@ -1289,7 +1288,6 @@ span#word-count {
 .details-full-img {
   width: 90%;
   margin: 0 auto;
-  padding: 50px 0px 0px 0px;
 }
 .details-full-img img {
   width: 100%;
@@ -1303,7 +1301,7 @@ span#word-count {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 245.99%;
@@ -1318,6 +1316,8 @@ span#word-count {
   font-weight: 450;
   line-height: 144.49%;
   text-transform: uppercase;
+  padding-top: 15px;
+  ;
 }
 .deatil-blog-contents h3 {
   color: #000;
@@ -1332,16 +1332,15 @@ span#word-count {
   color: #000;
   text-align: justify;
   font-family: "BrandonText-Regular", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 390;
   line-height: 30px;
   letter-spacing: 1.08px;
   /* text-transform: capitalize; */
-  padding-top: 25px;
 }
 .deatil-blog-contents {
-  padding-top: 40px;
+  padding-top: 0px;
   padding-bottom: 40px;
 }
 .storage-rows h3 {
@@ -2232,7 +2231,7 @@ body.checkout p.promo-code-label.mb-0 {
   font-family: var(--fc-font-regular);
   font-size: 23px;
   text-transform: uppercase;
-  padding-left: 15px;
+  padding-left: 10px;
   padding-bottom: 10px;
 }
 .add-heading p {
@@ -2244,6 +2243,7 @@ body.checkout p.promo-code-label.mb-0 {
   line-height: 150%;
   text-transform: capitalize;
   width: 81%;
+  padding-left: 10px;
 }
 .lists-code {
   display: flex;
@@ -2269,4 +2269,22 @@ body.product-details div#details-tab-pane .p-d-c {
   max-height: 200px;
   overflow-y: auto;
   padding-right: 20px;
+}
+.add-heading a {
+  font-family: var(--fc-font-bold);
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  width: 81%;
+  padding-left: 10px;
+  display: block;
+}
+body.product-details .card.rec-products-container.mb-5 {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.card.flash-sale-container h1.mb-5.flash-sale {
+  margin-bottom: 0.5rem !important;
 }

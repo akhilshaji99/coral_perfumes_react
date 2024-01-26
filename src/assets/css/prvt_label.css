@@ -1,11 +1,12 @@
 .mian-pg p {
-    color: #000;
-    font-family: 'brandonTextRegular';
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 390;
-    line-height: 196%;
-    letter-spacing: 1.08px;
+  color: #000;
+  text-align: justify;
+  font-family: "BrandonText-Regular", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 390;
+  line-height: 30px;
+  letter-spacing: 1.08px;
   }
   .private-tittle h1 {
       color: #000;
@@ -142,11 +143,15 @@
     }
     
     .accordion-scent .accordion-content-scent p {
-      font-size: 1rem;
-      font-weight: 300;
+    
       margin: 2em 0;
-      line-height: normal;
-      font-family: 'brandonTextRegular';
+    text-align: justify;
+    font-family: "BrandonText-Regular", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 390;
+    line-height: 30px;
+    letter-spacing: 1.08px;
     }
     
     video {
@@ -215,11 +220,12 @@
   .private-page .quality-text p {
     color: #000;
     text-align: center;
-    font-family: brandonTextRegular;
-    font-size: 14px;
+    font-family: "BrandonText-Regular", sans-serif;
+    font-size: 16px;
     font-style: normal;
     font-weight: 390;
-    line-height: normal;
+    line-height: 29px;
+    letter-spacing: 1.08px;
   }
   .lets-tittle h3 {
     color: #000;
@@ -347,11 +353,12 @@
     padding: 0px 30px;
     width: 85%;
     color: #FFF;
-    font-family: brandonTextRegular;
-    font-size: 14px;
+    font-family: "BrandonText-Regular", sans-serif;
+    font-size: 16px;
     font-style: normal;
     font-weight: 390;
-    line-height: 144.49%;
+    line-height: 29px;
+    letter-spacing: 1.08px;
 }
 .pro-dot-title::after {
   content: "";
@@ -389,7 +396,9 @@ section.pro-dot ul li {
    .order-2 {
     order: 1;
   }
-  
+  .col-md-6.txt-end.order-1 {
+    order: 0;
+  }
   .private-tittle {
     width: 100%;
     padding: 20px 0px;
@@ -421,7 +430,7 @@ section.pro-dot ul li {
     padding: 8px 0px;
   }
   .accordion-scent .accordion-content-scent p {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 300;
     margin: 0em 0;
   }
@@ -452,7 +461,7 @@ section.pro-dot ul li {
       padding-top: 30px;
   }
   .private-page .quality-text p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .lest-img img {
     width: 100%;
@@ -510,7 +519,10 @@ section.pro-dot ul li {
   position: absolute;
   top: 50%;
   left: -36px;}
-  .private-cs svg {
+.private-cs svg {
     width: 21%;
+}
+section.cont-ad .row.mt-5.df svg {
+  width: 21% !important;
 }
   }

@@ -38,7 +38,7 @@ function Index() {
     <>
       <BreadCrumps />
       <div className="private-page">
-        <div className="container pb-10">
+        <div className="container-new pb-10">
           <div className="row mian-pg">
             <div className="col-md-6 order-2 ">
               <div className="private-tittle">
@@ -71,11 +71,18 @@ function Index() {
         </div>
         {/*-Faq-*/}
         <div className="it-work">
-          <div className="container">
+          <div className="container-new">
             <div className="row">
               <div className="col-md-6">
                 <div className="develo-scent">
                   <h2>{responseDatas?.private_label?.heading2}</h2>
+                  <div className="pt-5 txt-end lg-none">
+                <img
+                  src={deviceImageRender(responseDatas?.private_label?.image2)}
+                  alt="it-work"
+                  className="work-it-img"
+                />
+              </div>
                   <div className="accordion-scent">
                     <div className="accordion-item-scent">
                       <button
@@ -164,7 +171,7 @@ function Index() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 txt-end">
+              <div className="col-md-6 txt-end sm-none">
                 <img
                   src={deviceImageRender(responseDatas?.private_label?.image2)}
                   alt="it-work"
@@ -175,7 +182,7 @@ function Index() {
           </div>
         </div>
         {/*-vedio--*/}
-        <div className="container">
+        <div className="container-new">
           <div className="video-wrapper">
             <video
               playsInline=""
@@ -225,6 +232,17 @@ function Index() {
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content3,
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <div className="col-6 col-md-4 btr-right bdr-top lg-none">
+                <div className="quality-text">
+                  <img src={img7} alt="best-quality" />
+                  <h4>{responseDatas?.private_label?.card_title4}</h4>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: responseDatas?.private_label?.card_content4,
                     }}
                   ></div>
                 </div>
