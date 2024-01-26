@@ -2288,3 +2288,9 @@ body.product-details .card.rec-products-container.mb-5 {
 .card.flash-sale-container h1.mb-5.flash-sale {
   margin-bottom: 0.5rem !important;
 }
+body.checkout .ReactFlagsSelect-module_selectOptions__3LNBJ {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  font-size: 12px !important;
+}
