@@ -83,8 +83,8 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         <Carousel
           additionalTransfrom={0}
           arrows
-          autoPlay={false}
-          autoPlaySpeed={3000}
+          autoPlay={true}
+          autoPlaySpeed={3500}
           centerMode={false}
           className=""
           draggable
