@@ -10,8 +10,10 @@ import plusIcon from "../../../src/assets/img/icons/plus-circle.svg";
 import minusIcon from "../../../src/assets/img/icons/minus-circle.svg";
 import { useSelector } from "react-redux";
 import GuestLoginModal from "../../pages/cart/blocks/GuestLoginModal";
+import { useDispatch } from "react-redux";
 
 function CartDrawer() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [cartDatas, setcartDatas] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -115,11 +117,13 @@ function CartDrawer() {
                       </h6>
                       <div className="row mb-3">
                         <div className="col-md-5 price-minicart">
-                          {cartData?.currency_code} {cartData?.product_variant?.price_amount}
+                          {cartData?.currency_code}{" "}
+                          {cartData?.product_variant?.price_amount}
                         </div>
                         {cartData?.product_variant?.original_amount ? (
                           <div className="col-md-5 price-minicart-discount">
-                            {cartData?.currency_code} {cartData?.product_variant?.original_amount}
+                            {cartData?.currency_code}{" "}
+                            {cartData?.product_variant?.original_amount}
                           </div>
                         ) : null}
                       </div>
@@ -174,18 +178,18 @@ function CartDrawer() {
                               src={plusIcon}
                               alt="Coral Perfumes"
                             />
-
-                            
                           </div>
                         </div>
                         <div
                           className="col-md-5 text-end "
                           onClick={() => {
-                            cartRemove(cartData?.id).then((response) => {
-                              if (response) {
-                                cartFetchFunctionCall();
+                            cartRemove(cartData?.id, dispatch).then(
+                              (response) => {
+                                if (response) {
+                                  cartFetchFunctionCall();
+                                }
                               }
-                            });
+                            );
                           }}
                         >
                           <svg

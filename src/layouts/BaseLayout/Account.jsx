@@ -17,6 +17,8 @@ import Store from "../../assets/icons/Store.svg";
 import Whishlist from "../../assets/icons/Whishlist.svg";
 import TextBoxClose from "../../assets/icons/textbox_close.svg";
 import MobileHeader from "./MobileHeader";
+import { useSelector } from "react-redux";
+
 
 function useComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
@@ -59,11 +61,14 @@ function Account({
   myAccountStatus,
   closeMoibileMenu,
 }) {
+  //Cart Count :: Redux
+  const cartTotalCount = useSelector((state) => state.cartCount.cartTotalCount);
+  //#End
+
   const [query, setQuery] = useState("");
   const [result, setResult] = useState("");
   const [status, setStatus] = useState(false);
   const delayTimerRef = React.useRef(null);
-
 
   const performSearch = async (query) => {
     try {
@@ -128,7 +133,7 @@ function Account({
 
   useEffect(() => {
     // if (!window.location.href.includes("product")) {
-      setQuery("");
+    setQuery("");
     // }
   }, [window.location.href]);
 
@@ -538,6 +543,9 @@ function Account({
                       className="img-fluid imgs-header"
                       alt="Coral Perfumes"
                     />
+                    {cartTotalCount > 0 ? (
+                      <span class="desktop-cart-count">{cartTotalCount}</span>
+                    ) : null}
                     <span className="dropdown-text">My Bag</span>
                   </Link>
                 </div>
@@ -563,7 +571,9 @@ function Account({
                       className="img-fluid imgs-header"
                       alt="Coral Perfumes"
                     />
-                    <span className="dropdown-text store-color">Find Store</span>
+                    <span className="dropdown-text store-color">
+                      Find Store
+                    </span>
                   </NavLink>
                 </div>
                 <div className="list-inline-item me-5">

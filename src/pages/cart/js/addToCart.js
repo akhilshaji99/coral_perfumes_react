@@ -15,8 +15,9 @@ const addToCart = async (product_variant_id, quantity, dispatch) => {
       quantity,
       token: getUserOrGuestToken(),
     });
-    console.log(response.data.status)
+    console.log(response.data.status);
     if (response.data.status) {
+      dispatch(changeCartCount(response?.data?.data?.total_items_count));
       if (deviceCheck() === "Desktop") {
         $("#cartDrawer").show();
         $("#cartDrawer").toggleClass("show");
@@ -28,7 +29,6 @@ const addToCart = async (product_variant_id, quantity, dispatch) => {
         localStorage.setItem("guestToken", response?.data?.data?.token);
       }
       if (deviceCheck() === "Mobile") {
-        dispatch(changeCartCount(response?.data?.data?.total_items_count));
         toast((t) => (
           <AlerMessage
             t={t}
