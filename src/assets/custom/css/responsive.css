@@ -92,7 +92,9 @@
     width: 100%;
     max-width: 1150px;
   }
-
+  .store-single-img-width {
+    height: 470px;
+  }
   .scroll-container2 {
     max-height: 170px;
   }

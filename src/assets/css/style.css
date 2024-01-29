@@ -21888,7 +21888,7 @@ body.checkout .nav-lb-tab .nav-item .nav-link.active, .nav-lb-tab .nav-item .nav
 }
 body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item {
   margin-right: 0px;
-  width: 40%;
+  width: 50%;
 }
 body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab  {
  
@@ -28082,7 +28082,7 @@ border-radius: none !important;
   height: 15px !important;
   width: 100%;
   background-color: #fff;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: #000 !important;
 }
@@ -28733,7 +28733,7 @@ border-radius: none !important;
   font-size: 16px;
 }
 .my-bag-spinner {
-  transform: scale(0.65);
+  transform: scale(0.70);
   position: relative;
   left: -12%;
 }
@@ -30394,3 +30394,5 @@ body.checkout .css-hlgwow {
   font-size: .875rem;
   font-weight: 500;
   line-height: 1.6;}
+  .css-qbdosj-Input {
+    margin: 4px;}
