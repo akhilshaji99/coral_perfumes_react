@@ -993,8 +993,13 @@
   .product-single-price,
   .product-single-discounted-price,
   .product-single-discounted {
-    font-size: 13px !important;
+    font-size: 16px !important;
+    font-weight: 900;
+    font-family: var(--fc-font-medium);
   }
+  .product-desc-section h2.product-author a {
+    font-size: 16px;
+}
   .row.full-views .col-4 {
     margin-right: 0px;
     padding-right: 0px;
