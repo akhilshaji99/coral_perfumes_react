@@ -21532,9 +21532,11 @@ fieldset:disabled .btn {
     line-height: 1.75;
     color: #000;
     font-family: Arial;
-    font-weight: 600;
+    font-weight: bold;
     font-style: normal;
     line-height: 185%;
+    font-family: BrandonText-Light, sans-serif;
+    text-transform: uppercase;
 }
 @media (max-width: 992px) {
   .navbar .navbar-nav .nav-item .nav-link {
@@ -21881,14 +21883,27 @@ h3 {
   font-family: var(--fc-font-bold);
  
 }
-body.checkout .nav-lb-tab .nav-item .nav-link { padding: 10px;border: solid 1px #dfe2e1;border-bottom:none;border-radius: 5px 5px 0px 0px;    width: 100%;}
+body.checkout .nav-lb-tab .nav-item .nav-link {
+   padding: 10px;
+   border: solid 1px #bdbbbb;
+   border-radius: 5px; 
+   width: 100%;
+   color: #fff;
+   background-color: #c5c4c4;
+  }
 body.checkout .nav-lb-tab .nav-item .nav-link.active, .nav-lb-tab .nav-item .nav-link:hover {
- color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
+}
+ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item{
+  width: 52% !important;
+}
+ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item.mobile-right{
+  width: 48% !important;
 }
 body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab li.nav-item {
   margin-right: 0px;
-  width: 40%;
+  width: 50%;
 }
 body.checkout ul.nav.nav-pills.nav-tabs.nav-lb-tab  {
  
@@ -28082,7 +28097,7 @@ border-radius: none !important;
   height: 15px !important;
   width: 100%;
   background-color: #fff;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: #000 !important;
 }
@@ -28733,7 +28748,7 @@ border-radius: none !important;
   font-size: 16px;
 }
 .my-bag-spinner {
-  transform: scale(0.65);
+  transform: scale(0.70);
   position: relative;
   left: -12%;
 }
@@ -30394,3 +30409,5 @@ body.checkout .css-hlgwow {
   font-size: .875rem;
   font-weight: 500;
   line-height: 1.6;}
+  .css-qbdosj-Input {
+    margin: 4px;}
