@@ -98,6 +98,8 @@
   .scroll-container2 {
     max-height: 170px;
   }
+  .navbar .navbar-nav .nav-item .nav-link {
+    font-size: 12px;}
   .order-bottom-row .react-multiple-carousel__arrow--left {
     left: calc(29% + 18px);
   }

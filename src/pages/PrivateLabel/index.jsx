@@ -203,50 +203,42 @@ function Index() {
           </div>
           <div className="container-fluid btr">
             <div className="row">
-              <div className="col-6 col-md-4 btr-right bdr-sm">
+              <div className="col-12 col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                  <img src={img3} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title1}</h4>
+                 <div className="quality-imgs"><img src={img3} alt="best-quality" /></div> 
+                 <div> <h4>{responseDatas?.private_label?.card_title1}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content1,
                     }}
                   ></div>
+                  </div>
                 </div>
               </div>
-              <div className="col-6  col-md-4 btr-right">
+              <div className="col-12  col-md-4 btr-right">
                 <div className="quality-text">
-                  <img src={img4} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title2}</h4>
+                <div className="quality-imgs"><img src={img4} alt="best-quality" /></div>
+                  <div><h4>{responseDatas?.private_label?.card_title2}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content2,
                     }}
                   ></div>
+              </div>
                 </div>
               </div>
-              <div className="col-6  col-md-4 bdr-top bdr-sm">
+              <div className="col-12  col-md-4 bdr-top bdr-sm">
                 <div className="quality-text">
-                  <img src={img5} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title3}</h4>
+                <div className="quality-imgs"> <img src={img5} alt="best-quality" /></div> 
+                 <div><h4>{responseDatas?.private_label?.card_title3}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content3,
                     }}
-                  ></div>
+                  ></div></div> 
                 </div>
               </div>
-              <div className="col-6 col-md-4 btr-right bdr-top lg-none">
-                <div className="quality-text">
-                  <img src={img7} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title4}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content4,
-                    }}
-                  ></div>
-                </div>
-              </div>
+              
               {/* <div className="col-6 col-md-4 btr-right lg-nones bdr-top">
                 <div className="quality-text">
                   <img src={img6} alt="best-quality" />
@@ -262,37 +254,37 @@ function Index() {
           </div>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-6 col-md-4 btr-right sm-none">
+              <div className="col-12 col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                  <img src={img7} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title4}</h4>
+                <div className="quality-imgs"> <img src={img7} alt="best-quality" /></div> 
+                 <div><h4>{responseDatas?.private_label?.card_title4}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content4,
                     }}
-                  ></div>
+                  ></div></div> 
                 </div>
               </div>
-              <div className="col-6 col-md-4 btr-right bdr-sm">
+              <div className="col-12  col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                  <img src={img8} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title5}</h4>
+                <div className="quality-imgs"><img src={img8} alt="best-quality" /></div>
+                 <div><h4>{responseDatas?.private_label?.card_title5}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content5,
                     }}
-                  ></div>
+                  ></div></div> 
                 </div>
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-12 col-md-4 ">
                 <div className="quality-text">
-                  <img src={img9} alt="best-quality" />
-                  <h4>{responseDatas?.private_label?.card_title6}</h4>
+                <div className="quality-imgs"> <img src={img9} alt="best-quality" /></div>
+                 <div><h4>{responseDatas?.private_label?.card_title6}</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: responseDatas?.private_label?.card_content6,
                     }}
-                  ></div>
+                  ></div></div> 
                 </div>
               </div>
             </div>
