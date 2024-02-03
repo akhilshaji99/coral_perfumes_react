@@ -32,6 +32,7 @@ import SingleOrder from "../pages/orders/SingleOrder";
 import NotFound from "../pages/not_found/index";
 import PrivateLabel from "../pages/PrivateLabel/index";
 import ContactForm from "../pages/contact/ContactForm";
+import Checkout_v2 from "../pages/checkout_v2/index";
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -57,6 +58,11 @@ const Router = () => {
           path: "checkout",
           element: userDatas ? <CheckOut /> : <Navigate to="/login" />,
         },
+        {
+          path: "checkout_v2",
+          element: userDatas ? <Checkout_v2 /> : <Navigate to="/login" />,
+        },
+
         {
           path: "wishlist",
           element: userDatas ? <Wishlist /> : <Navigate to="/login" />,
@@ -117,7 +123,7 @@ const Router = () => {
           path: "payment-tamara-cancel",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
         },
-        
+
         {
           path: "cod/success",
           element: userDatas ? <PaymentWaiting /> : <Navigate to="/login" />,
