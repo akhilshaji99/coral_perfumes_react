@@ -6,15 +6,25 @@ import Ficon from "../../assets/checkout/f_icon.svg";
 import Logo from "../../assets/checkout/logo_coral.svg";
 import SafeCheck from "../../assets/checkout/safe-check.svg";
 import SecCheck from "../../assets/checkout/secu-check.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartDetails from "./blocks/CartDetails";
+import getCountryCodes from "../common/js/countryCodes";
+import ReactFlagsSelect from "react-flags-select";
 
 function Index() {
   const [deliveryType, setDeliveryType] = useState(1);
+  const [countryCodes, setCountryCodes] = useState([]);
 
   const changeDeliveryType = (del_type) => {
     setDeliveryType(del_type);
   };
+
+  useEffect(() => {
+    getCountryCodes().then((data) => {
+      setCountryCodes(data?.data);
+      // console.log("data", data?.data);
+    });
+  }, []);
 
   return (
     <>
@@ -130,15 +140,18 @@ function Index() {
                               <div className="col-md-6 col-12">
                                 <div className="mb-lg-0">
                                   <div className="adrs-ph">
-                                    <select
-                                      className="form-select"
-                                      aria-label="Default select example"
-                                    >
-                                      <option selected=""> +91</option>
-                                      <option>+91</option>
-                                      <option>+91</option>
-                                      <option>+91</option>
-                                    </select>
+                                    <ReactFlagsSelect
+                                      // selected={
+                                      //   selectedCountryCode.country_code
+                                      // }
+                                      // onSelect={onCountrySelect}
+                                      className="country-list"
+                                      customLabels={countryCodes}
+                                      countries={Object.keys(countryCodes)}
+                                      searchable={true}
+                                      placeholder="Country"
+                                      showSecondaryOptionLabel={true}
+                                    />
                                     <input
                                       type="text"
                                       className="form-control"
