@@ -110,6 +110,7 @@ function CartDetails({
                     </div>
                     <div className="col-8 col-lg-8 col-xs-8 col-md-8 ">
                       <h4 className="mb-0">{cartData?.variant?.name}</h4>
+                      <span class="checkout-brand-name">{cartData?.brand_name}</span>
                       <h6 className="mb-0">
                         AED {cartData?.variant?.price_amount}
                         {cartData?.variant?.original_amount ? (

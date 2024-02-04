@@ -10,21 +10,76 @@ import { useEffect, useState } from "react";
 import CartDetails from "./blocks/CartDetails";
 import getCountryCodes from "../common/js/countryCodes";
 import ReactFlagsSelect from "react-flags-select";
+import getCheckOutDetails from "../checkout/js/checkOutFetch";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 function Index() {
   const [deliveryType, setDeliveryType] = useState(1);
   const [countryCodes, setCountryCodes] = useState([]);
+  const [cartDetails, setCartDetails] = useState();
 
   const changeDeliveryType = (del_type) => {
     setDeliveryType(del_type);
   };
 
+  //Country code
   useEffect(() => {
     getCountryCodes().then((data) => {
       setCountryCodes(data?.data);
-      // console.log("data", data?.data);
     });
   }, []);
+  //#End of Country code
+
+  //Checkout fetch
+  useEffect(() => {
+    fetchCheckoutApi();
+  }, []);
+
+  const fetchCheckoutApi = () => {
+    getCheckOutDetails().then(async (response) => {
+      setCartDetails(response?.data?.cart_items);
+    });
+  };
+  //#End of checkout fetch
+
+  //Checkout Update
+  const checkoutValidation = yup.object().shape({
+    fullname: yup.string().required("Name is required"),
+    mobile_number: yup
+      .string()
+      .required("Mobile number is required")
+      .matches(/^[0-9]{10}$/, "Invalid mobile number"),
+    email: yup
+      .string()
+      .email("Enter valid email")
+      .required("Email is required"),
+    address: yup.string().required("Address is required"),
+    street_name: yup.string().required("Street Name is required"),
+  });
+
+  const addressForm = useFormik({
+    initialValues: {
+      fullname: "",
+      country_code: "",
+      mobile_number: "",
+      email: "",
+      address: "",
+      street_name: "",
+      emirate_id: "",
+      city: "",
+      instructions: "",
+      address_label: "Home",
+      gift_wrapping: "",
+      payment_type: "",
+      store_emirate_id: "",
+      store_store_id: "",
+    },
+    enableReinitialize: true,
+    validationSchema: checkoutValidation,
+    // onSubmit: handleOnSubmit,
+  });
+  //#End of checkout update
 
   return (
     <>
@@ -85,7 +140,7 @@ function Index() {
                   className="accordion accordion-flush "
                   id="accordionFlushExample"
                 >
-                  <form>
+                  <form onSubmit={addressForm.handleSubmit}>
                     <div className="accordion-item checkout-adrs">
                       <div className="d-flex justify-content-between align-items-center adrs-info">
                         <h4 className="pt-3 ps-3 "> BASIC INFO</h4>
@@ -131,9 +186,15 @@ function Index() {
                                 <div className="mb-lg-0">
                                   <input
                                     type="text"
-                                    className="form-control"
+                                    className={`form-control ${
+                                      addressForm?.errors?.fullname
+                                        ? "is-invalid"
+                                        : ""
+                                    }`}
                                     placeholder="Full  Name "
-                                    name="full_name"
+                                    name="fullname"
+                                    value={addressForm.values.fullname}
+                                    onChange={addressForm.handleChange}
                                   />
                                 </div>
                               </div>
@@ -154,9 +215,15 @@ function Index() {
                                     />
                                     <input
                                       type="text"
-                                      className="form-control"
                                       placeholder="Mob Number"
-                                      name="mob-num"
+                                      name="mobile_number"
+                                      className={`form-control ${
+                                        addressForm?.errors?.mobile_number
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                      value={addressForm.values.mobile_number}
+                                      onChange={addressForm.handleChange}
                                     />
                                   </div>
                                 </div>
@@ -166,8 +233,14 @@ function Index() {
                                   <input
                                     type="text"
                                     name="email"
-                                    className="form-control"
+                                    className={`form-control ${
+                                      addressForm?.errors?.email
+                                        ? "is-invalid"
+                                        : ""
+                                    }`}
                                     placeholder="Email*"
+                                    value={addressForm.values.email}
+                                    onChange={addressForm.handleChange}
                                   />
                                 </div>
                               </div>
@@ -262,10 +335,15 @@ function Index() {
                               <div className="mb-lg-0">
                                 <input
                                   type="text"
-                                  className="form-control"
                                   placeholder="Address (Room, Flat, Building)"
-                                  name="flat_building"
-                                  defaultValue=""
+                                  name="address"
+                                  className={`form-control ${
+                                    addressForm?.errors?.address
+                                      ? "is-invalid"
+                                      : ""
+                                  }`}
+                                  value={addressForm.values.address}
+                                  onChange={addressForm.handleChange}
                                 />
                               </div>
                             </div>
@@ -273,10 +351,15 @@ function Index() {
                               <div className=" mb-lg-0">
                                 <input
                                   type="text"
-                                  className="form-control"
                                   placeholder="Street Name"
-                                  name="Street_Name"
-                                  defaultValue=""
+                                  name="street_name"
+                                  className={`form-control ${
+                                    addressForm?.errors?.street_name
+                                      ? "is-invalid"
+                                      : ""
+                                  }`}
+                                  value={addressForm.values.street_name}
+                                  onChange={addressForm.handleChange}
                                 />
                               </div>
                             </div>
@@ -405,7 +488,7 @@ function Index() {
                                 <a href="#">+ Add New Address</a>
                               </div>
                             </div> */}
-                            <div className="col-12 sm-none">
+                            {/* <div className="col-12 sm-none">
                               <div className=" mb-lg-0">
                                 <input
                                   type="text"
@@ -415,7 +498,7 @@ function Index() {
                                   defaultValue=""
                                 />
                               </div>
-                            </div>
+                            </div> */}
                             <div className="col-12  d-md-none">
                               <a
                                 href="#"
@@ -485,124 +568,122 @@ function Index() {
                         </div>
                       </div>
                     </div>
-                    <div className="accordion-item checkout-adrs">
-                      <div className="d-flex justify-content-between align-items-center adrs-info">
-                        <h4 className="pt-3 ps-3 "> PAYMENT TYPE</h4>
-                        <a href="#" className="fs-5 text-inherit collapsed">
-                          <button type="button" className="btn btn-default">
-                            <span className="accordion-arrow">
-                              <svg
-                                width={18}
-                                height={9}
-                                viewBox="0 0 18 9"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
-                                  stroke="black"
-                                  strokeWidth="1.5"
-                                  strokeMiterlimit={10}
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
+                  </form>
+                  <div className="accordion-item checkout-adrs">
+                    <div className="d-flex justify-content-between align-items-center adrs-info">
+                      <h4 className="pt-3 ps-3 "> PAYMENT TYPE</h4>
+                      <a href="#" className="fs-5 text-inherit collapsed">
+                        <button type="button" className="btn btn-default">
+                          <span className="accordion-arrow">
+                            <svg
+                              width={18}
+                              height={9}
+                              viewBox="0 0 18 9"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M1.07992 8.04999L7.59992 1.52999C8.36992 0.759988 9.62992 0.759988 10.3999 1.52999L16.9199 8.04999"
+                                stroke="black"
+                                strokeWidth="1.5"
+                                strokeMiterlimit={10}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
+                        </button>
+                      </a>
+                    </div>
+                    <div id="payment_type_accordian" className="checkout-adrs">
+                      <div className="mb-1">
+                        <div className="card-body p-1">
+                          <div className="row">
+                            <div className="col-md-5 col-9 payment-method">
+                              <div className="mb-3 mb-lg-0">
+                                <div className="card-body p-3">
+                                  <div className="d-flex">
+                                    <div className="form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="payment_type"
+                                        defaultValue={4}
+                                      />
+                                    </div>
+                                    <div>
+                                      <h5 className="h6 pt-1 ps-5">
+                                        Tabby{" "}
+                                        <span>
+                                          : Split into 4, Interest Free
+                                        </span>
+                                      </h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-md-4 col-3">
+                              <div className="card-body pt-3">
+                                <img
+                                  src="https://coralperfumes.cloud6.ae//media/payment/image.webp"
+                                  alt="card-image"
+                                  className="payment-card-img"
                                 />
-                              </svg>
-                            </span>
-                          </button>
-                        </a>
-                      </div>
-                      <div
-                        id="payment_type_accordian"
-                        className="checkout-adrs"
-                      >
-                        <div className="mb-1">
-                          <div className="card-body p-1">
-                            <div className="row">
-                              <div className="col-md-5 col-9 payment-method">
-                                <div className="mb-3 mb-lg-0">
-                                  <div className="card-body p-3">
-                                    <div className="d-flex">
-                                      <div className="form-check">
-                                        <input
-                                          className="form-check-input"
-                                          type="radio"
-                                          name="payment_type"
-                                          defaultValue={4}
-                                        />
-                                      </div>
-                                      <div>
-                                        <h5 className="h6 pt-1 ps-5">
-                                          Tabby{" "}
-                                          <span>
-                                            : Split into 4, Interest Free
-                                          </span>
-                                        </h5>
-                                      </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-md-4 col-8 payment-method">
+                              <div className="mb-3 mb-lg-0">
+                                <div className="card-body p-3">
+                                  <div className="d-flex">
+                                    <div className="form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="payment_type"
+                                      />
+                                    </div>
+                                    <div>
+                                      <h5 className="h6 pt-1 ps-5">
+                                        Debit/ Credit Card
+                                      </h5>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div className="col-md-4 col-3">
-                                <div className="card-body pt-3">
-                                  <img
-                                    src="https://coralperfumes.cloud6.ae//media/payment/image.webp"
-                                    alt="card-image"
-                                    className="payment-card-img"
-                                  />
-                                </div>
+                            </div>
+                            <div className="col-md-4 col-4">
+                              <div className="card-body pt-3">
+                                <img
+                                  src="https://coralperfumes.cloud6.ae//media/payment/image_7.png"
+                                  alt="card-image"
+                                  className="payment-card-img"
+                                />
                               </div>
                             </div>
-                            <div className="row">
-                              <div className="col-md-4 col-8 payment-method">
-                                <div className="mb-3 mb-lg-0">
-                                  <div className="card-body p-3">
-                                    <div className="d-flex">
-                                      <div className="form-check">
-                                        <input
-                                          className="form-check-input"
-                                          type="radio"
-                                          name="payment_type"
-                                        />
-                                      </div>
-                                      <div>
-                                        <h5 className="h6 pt-1 ps-5">
-                                          Debit/ Credit Card
-                                        </h5>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-4 col-4">
-                                <div className="card-body pt-3">
-                                  <img
-                                    src="https://coralperfumes.cloud6.ae//media/payment/image_7.png"
-                                    alt="card-image"
-                                    className="payment-card-img"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-12">
-                                <div className="d-grid mt-5">
-                                  <button
-                                    type="button"
-                                    className="btn btn-bgc mb-1"
-                                  >
-                                    SECURE CHECKOUT
-                                  </button>
-                                </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-12">
+                              <div className="d-grid mt-5">
+                                <button
+                                  type="button"
+                                  className="btn btn-bgc mb-1"
+                                  disabled={true}
+                                >
+                                  SECURE CHECKOUT
+                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
-              <CartDetails />
+              <CartDetails cartDetails={cartDetails} />
             </div>
           </div>
         </section>
