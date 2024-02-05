@@ -179,7 +179,7 @@ function CartSummary({
               </li>
             </ul>
           </div>
-          <div className="d-grid mb-1 mt-4">
+          <div className="d-grid mb-1 mt-4 btn-bg-fix">
             {/* <NavLink to={"/checkout"}> */}
             <button
               onClick={handleOnProceed}

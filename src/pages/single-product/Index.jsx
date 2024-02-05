@@ -561,7 +561,7 @@ function Index() {
                 ) : null}
                 {/* Mobile button */}
                 {currentVariant ? (
-                  <div className="col-md-6 d-block d-sm-none mt-4">
+                  <div className="col-md-6 d-block d-sm-none mt-4  btn-fix-btm">
                     <button
                       disabled={currentVariant === null}
                       className="btn btn-dark btn-checkout w-100"
