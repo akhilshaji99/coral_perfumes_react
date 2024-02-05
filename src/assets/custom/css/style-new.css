@@ -1748,6 +1748,7 @@ button.order-btn-inactive {
 }
 h2.product-author a {
   color: #80ba66;
+  font-size: 18px;
 }
 .rc-slider-handle {
   border: solid 2px #000000 !important;
