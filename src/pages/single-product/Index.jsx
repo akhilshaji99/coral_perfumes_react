@@ -474,23 +474,23 @@ function Index() {
 
                       {currentVariant?.stock_status ? (
                         <svg
-                          width={17}
-                          height={20}
-                          viewBox="0 0 17 20"
+                          width="18"
+                          height="20"
+                          viewBox="0 0 18 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                            stroke="white"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            d="M5.61773 4.9375H12.376C15.5674 4.9375 15.8865 6.38004 16.1024 8.14012L16.9472 14.9446C17.2194 17.1764 16.5061 19 13.2208 19H4.78234C1.48768 19 0.774307 17.1764 1.0559 14.9446L1.90069 8.14012C2.10719 6.38004 2.42633 4.9375 5.61773 4.9375Z"
+                            stroke="black"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                           />
                           <path
-                            d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                            stroke="white"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            d="M5.14844 6.625V3.34375C5.14844 1.9375 6.1114 1 7.55584 1H10.4447C11.8892 1 12.8521 1.9375 12.8521 3.34375V6.625"
+                            stroke="black"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                           />
                         </svg>
                       ) : (
@@ -588,23 +588,23 @@ function Index() {
 
                       {currentVariant?.stock_status ? (
                         <svg
-                          width={17}
-                          height={20}
-                          viewBox="0 0 17 20"
+                          width="18"
+                          height="20"
+                          viewBox="0 0 18 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M5.11773 4.9375H11.876C15.0674 4.9375 15.3865 6.38004 15.6024 8.14012L16.4472 14.9446C16.7194 17.1764 16.0061 19 12.7208 19H4.28234C0.98768 19 0.274307 17.1764 0.555901 14.9446L1.40069 8.14012C1.60719 6.38004 1.92633 4.9375 5.11773 4.9375Z"
-                            stroke="white"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            d="M5.61773 4.9375H12.376C15.5674 4.9375 15.8865 6.38004 16.1024 8.14012L16.9472 14.9446C17.2194 17.1764 16.5061 19 13.2208 19H4.78234C1.48768 19 0.774307 17.1764 1.0559 14.9446L1.90069 8.14012C2.10719 6.38004 2.42633 4.9375 5.61773 4.9375Z"
+                            stroke="black"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                           />
                           <path
-                            d="M4.64795 6.625V3.34375C4.64795 1.9375 5.61091 1 7.05536 1H9.94425C11.3887 1 12.3517 1.9375 12.3517 3.34375V6.625"
-                            stroke="white"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            d="M5.14844 6.625V3.34375C5.14844 1.9375 6.1114 1 7.55584 1H10.4447C11.8892 1 12.8521 1.9375 12.8521 3.34375V6.625"
+                            stroke="black"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                           />
                         </svg>
                       ) : (
