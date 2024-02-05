@@ -12,12 +12,18 @@ import getCountryCodes from "../common/js/countryCodes";
 import ReactFlagsSelect from "react-flags-select";
 import getCheckOutDetails from "../checkout/js/checkOutFetch";
 import { useFormik } from "formik";
+import deviceImageRender from "../../utils/deviceImageRender";
+import Select from "react-select";
 import * as yup from "yup";
 
 function Index() {
   const [deliveryType, setDeliveryType] = useState(1);
   const [countryCodes, setCountryCodes] = useState([]);
+  const [checkoutDatas, setCheckoutDatas] = useState();
   const [cartDetails, setCartDetails] = useState();
+  const [emirates, setEmirates] = useState();
+  const [emirateCityDatas, setEmirateCityDatas] = useState([]);
+  const [cityDefaultValue, setCityDefaultValue] = useState(null);
 
   const changeDeliveryType = (del_type) => {
     setDeliveryType(del_type);
@@ -38,7 +44,19 @@ function Index() {
 
   const fetchCheckoutApi = () => {
     getCheckOutDetails().then(async (response) => {
+      setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
+      setEmirates(response?.data?.emirates);
+      formatCities(response?.data?.emirates[0]?.areas).then((data) => {
+        setCityDefaultValue(data[0]); //Setting default city
+        setEmirateCityDatas(data);
+        addressForm.setFieldValue("city", data[0].value);
+      }); //getting emirate cities
+      console.log("addressForm", addressForm.values);
+
+      //Set Values
+      // setEmirateCityDatas()
+      //#End of set values
     });
   };
   //#End of checkout fetch
@@ -58,18 +76,22 @@ function Index() {
     street_name: yup.string().required("Street Name is required"),
   });
 
+  const handleOnSubmit = () => {
+    console.log(addressForm.values);
+  };
+
   const addressForm = useFormik({
     initialValues: {
       fullname: "",
       country_code: "",
-      mobile_number: "",
-      email: "",
+      mobile_number: checkoutDatas?.user_data?.phone_number,
+      email: checkoutDatas?.user_data?.email,
       address: "",
       street_name: "",
       emirate_id: "",
       city: "",
       instructions: "",
-      address_label: "Home",
+      address_label: "1",
       gift_wrapping: "",
       payment_type: "",
       store_emirate_id: "",
@@ -77,9 +99,54 @@ function Index() {
     },
     enableReinitialize: true,
     validationSchema: checkoutValidation,
-    // onSubmit: handleOnSubmit,
+    onSubmit: handleOnSubmit,
   });
+
   //#End of checkout update
+
+  //Emirate City
+
+  // const changeCityDatas = async (cities, selected_city = null) => {
+  //   try {
+  //     const datas = await formatCities(cities);
+  //     setEmirateCityDatas(datas); //set emirate cities
+  //     if (datas.length > 0) {
+  //       if (selected_city) {
+  //         setCityDefaultValue(selected_city);
+  //         addressForm.setFieldValue("city", selected_city.value);
+  //       } else {
+  //         setCityDefaultValue(datas[0]); //set default value on refresh & edit
+  //         addressForm.setFieldValue("city", datas[0].value);
+  //       }
+  //     }
+  //     setStatus(!status);
+  //   } catch (error) {
+  //     // Handle any errors that might occur during the asynchronous operation
+  //     console.error("Error while formatting cities:", error);
+  //   }
+  // };
+
+  const formatCities = async (cities) => {
+    try {
+      const emirateCityDatas =
+        cities?.map((element) => ({
+          label: element?.area_name || "",
+          value: element?.area_name || null,
+        })) || [];
+
+      return emirateCityDatas;
+    } catch (error) {
+      // Handle any errors that might occur during the formatting process
+      console.error("Error while formatting cities:", error);
+      throw error; // Propagate the error for the caller to handle
+    }
+  };
+
+  const emirateCityOnChange = (value) => {
+    addressForm.setFieldValue("city", value.value);
+    setCityDefaultValue(value);
+  };
+  //#End of emirate city
 
   return (
     <>
@@ -367,26 +434,50 @@ function Index() {
                               <div className=" mb-lg-0">
                                 <select
                                   className="form-select"
-                                  aria-label="Default select "
+                                  aria-label="Default select"
+                                  name="emirate_id"
+                                  onChange={(event) => {
+                                    let emirateDatas = JSON.parse(
+                                      event.target.value
+                                    );
+                                    addressForm.initialValues.emirate_id =
+                                      emirateDatas?.id;
+                                    formatCities(emirateDatas?.areas).then(
+                                      (data) => {
+                                        setEmirateCityDatas(data);
+                                        setCityDefaultValue(data[0]);
+                                        addressForm.setFieldValue(
+                                          "city",
+                                          data[0].value
+                                        );
+                                      }
+                                    );
+                                  }}
                                 >
-                                  <option selected="">Dubai</option>
-                                  <option value={1}>Abu Dhabi</option>
-                                  <option value={2}>Sharjah</option>
-                                  <option value={3}>Ras Al Khaima</option>
+                                  {emirates?.map((emirate) => {
+                                    return (
+                                      <option
+                                        value={JSON.stringify(emirate)}
+                                        // selected={
+                                        //   parseInt(addressForm.emirate_id) ===
+                                        //   parseInt(emirate?.id)
+                                        // }
+                                      >
+                                        {emirate?.name}
+                                      </option>
+                                    );
+                                  })}
                                 </select>
                               </div>
                             </div>
                             <div className="col-md-6 col-12">
                               <div className=" mb-lg-0">
-                                <select
-                                  className="form-select"
-                                  aria-label="Default select"
-                                >
-                                  <option selected="">AL TAWR</option>
-                                  <option value={1}>AL TAWR 1</option>
-                                  <option value={2}>AL TAWR 2</option>
-                                  <option value={3}>AL TAWR 3</option>
-                                </select>
+                                <Select
+                                  className="emirate-city-select"
+                                  options={emirateCityDatas}
+                                  onChange={emirateCityOnChange}
+                                  value={cityDefaultValue}
+                                />
                               </div>
                             </div>
                             <div className="col-12">
@@ -395,8 +486,9 @@ function Index() {
                                   type="text"
                                   className="form-control"
                                   placeholder="Enter Your Special delivery Instructions here"
-                                  name="floor_number"
-                                  defaultValue=""
+                                  name="instructions"
+                                  value={addressForm.values.instructions}
+                                  onChange={addressForm.handleChange}
                                 />
                               </div>
                             </div>
@@ -518,22 +610,43 @@ function Index() {
                               Address Label (Optional)
                             </h5>
                             <div className="d-flex pt-2">
-                              <div className="form-check me-5">
-                                <input
-                                  className="form-check-input"
-                                  type="radio"
-                                  name="addrs_label"
-                                />
-                                <label className="option-lb ps-5">Home</label>
-                              </div>
-                              <div className="form-check ms-5">
+                              {checkoutDatas?.address_home_office.map(
+                                (addressData, index) => {
+                                  return (
+                                    <div
+                                      className={`form-check ${
+                                        index === 0 ? "me-5" : "ms-5"
+                                      }`}
+                                      key={index}
+                                    >
+                                      <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="addrs_label"
+                                        value={addressData?.value}
+                                        checked={
+                                          addressForm.values.address_label ===
+                                          addressData?.value
+                                            ? true
+                                            : false
+                                        }
+                                      />
+                                      <label className="option-lb ps-5">
+                                        {addressData?.title}
+                                      </label>
+                                    </div>
+                                  );
+                                }
+                              )}
+
+                              {/* <div className="form-check ms-5">
                                 <input
                                   className="form-check-input"
                                   type="radio"
                                   name="addrs_label"
                                 />
                                 <label className="option-lb ps-5">Work</label>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                           <div className="col-md-10">
@@ -549,7 +662,7 @@ function Index() {
                               </div>
                               <div className="col-10 col-md-9 p-0">
                                 <h5 className="h6 pt-2">
-                                  Add Gift Wrapping (AED 5 Charge Apply)
+                                  {checkoutDatas?.gift_wrap_content}
                                 </h5>
                               </div>
                             </div>
@@ -598,42 +711,58 @@ function Index() {
                     <div id="payment_type_accordian" className="checkout-adrs">
                       <div className="mb-1">
                         <div className="card-body p-1">
-                          <div className="row">
-                            <div className="col-md-5 col-9 payment-method">
-                              <div className="mb-3 mb-lg-0">
-                                <div className="card-body p-3">
-                                  <div className="d-flex">
-                                    <div className="form-check">
-                                      <input
-                                        className="form-check-input"
-                                        type="radio"
-                                        name="payment_type"
-                                        defaultValue={4}
-                                      />
-                                    </div>
-                                    <div>
-                                      <h5 className="h6 pt-1 ps-5">
-                                        Tabby{" "}
-                                        <span>
-                                          : Split into 4, Interest Free
-                                        </span>
-                                      </h5>
+                          {checkoutDatas?.payment_types?.map(
+                            (paymentType, index) => {
+                              return (
+                                <div className="row" key={index}>
+                                  <div className="col-md-5 col-9 payment-method">
+                                    <div className="mb-3 mb-lg-0">
+                                      <div className="card-body p-3">
+                                        <div className="d-flex">
+                                          <div className="form-check">
+                                            <input
+                                              className="form-check-input"
+                                              type="radio"
+                                              name="payment_type"
+                                              defaultValue={4}
+                                            />
+                                          </div>
+                                          <div>
+                                            <h5 className="h6 pt-1 ps-5">
+                                              {paymentType?.name}
+                                              {paymentType?.display_title ? (
+                                                <span>
+                                                  : {paymentType?.display_title}
+                                                </span>
+                                              ) : (
+                                                ""
+                                              )}
+                                            </h5>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
+                                  {paymentType?.image ? (
+                                    <div className="col-md-4 col-3">
+                                      <div className="card-body pt-3">
+                                        <img
+                                          src={deviceImageRender(
+                                            paymentType?.image
+                                          )}
+                                          alt="card-image"
+                                          className="payment-card-img"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
                                 </div>
-                              </div>
-                            </div>
-                            <div className="col-md-4 col-3">
-                              <div className="card-body pt-3">
-                                <img
-                                  src="https://coralperfumes.cloud6.ae//media/payment/image.webp"
-                                  alt="card-image"
-                                  className="payment-card-img"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
+                              );
+                            }
+                          )}
+                          {/* <div className="row">
                             <div className="col-md-4 col-8 payment-method">
                               <div className="mb-3 mb-lg-0">
                                 <div className="card-body p-3">
@@ -663,7 +792,7 @@ function Index() {
                                 />
                               </div>
                             </div>
-                          </div>
+                          </div> */}
                           <div className="row">
                             <div className="col-12">
                               <div className="d-grid mt-5">

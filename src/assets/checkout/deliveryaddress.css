@@ -98,7 +98,7 @@ body.deliv-address ul li {
 }
 .checkout-tab-content {
   display: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100%;
   font-size: 17px;
   line-height: 25px;
