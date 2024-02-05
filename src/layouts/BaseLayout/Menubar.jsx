@@ -64,7 +64,6 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                         <li
                           className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth "
                           key={index}
-                          onMouseEnter={() => handleMouseEnter(index)}
                           onMouseLeave={handleMouseLeave}
                           onClick={() => handleSubmenuToggle(index)}
                         >
@@ -77,16 +76,21 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                             aria-expanded="false"
                             to="/"
                           >
-                            {index === 0 ? (
-                              <span className="flash-icon">
-                                <img
-                                  src={flashGif}
-                                  className="flash-gif-menu"
-                                  alt="Coral Perfumes"
-                                />
-                              </span>
-                            ) : null}
-                            {item.name}
+                            <span
+                              onMouseEnter={() => handleMouseEnter(index)}
+                              className="coral-main-menu-hover"
+                            >
+                              {index === 0 ? (
+                                <span className="flash-icon">
+                                  <img
+                                    src={flashGif}
+                                    className="flash-gif-menu"
+                                    alt="Coral Perfumes"
+                                  />
+                                </span>
+                              ) : null}
+                              {item.name}
+                            </span>
                             <span className="mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
                               <svg
                                 width={5}
@@ -153,7 +157,10 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                                   : null}
                               </div>
                               <div className="col-lg-2 col-md-4  col-12 mb-4 mb-lg-0">
-                                <h6 className="ps-3" style={{ paddingBottom: "0px" }}>
+                                <h6
+                                  className="ps-3"
+                                  style={{ paddingBottom: "0px" }}
+                                >
                                   {item?.section_2_title}
                                 </h6>
                                 {item.shop_by_brand !== undefined &&
@@ -190,7 +197,10 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                                   : null}
                               </div>
                               <div className="col-lg-4 col-md-4 col-12 mb-4 mb-lg-0">
-                                <h6 className=" ps-3" style={{ paddingBottom: "0px" }}>
+                                <h6
+                                  className=" ps-3"
+                                  style={{ paddingBottom: "0px" }}
+                                >
                                   {item?.section_3_title}
                                 </h6>
                                 {/* Mob View */}
