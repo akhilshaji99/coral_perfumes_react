@@ -19,7 +19,6 @@ import TextBoxClose from "../../assets/icons/textbox_close.svg";
 import MobileHeader from "./MobileHeader";
 import { useSelector } from "react-redux";
 
-
 function useComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
     useState(initialIsVisible);
@@ -91,6 +90,10 @@ function Account({
     }, 500);
     setStatus(!status);
   };
+  const searchBoxEnterPress = () => {
+    performSearch(query);
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState(() => {
@@ -189,6 +192,11 @@ function Account({
                     placeholder="Search for products"
                     value={query}
                     onChange={handleInputChange}
+                    onKeyPress={(event) => {
+                      if (event.key === "Enter") {
+                        searchBoxEnterPress();
+                      }
+                    }}
                   />
                   {query.length === 0 ? (
                     <svg
@@ -257,6 +265,11 @@ function Account({
                   type="text"
                   value={query}
                   onChange={handleInputChange}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      searchBoxEnterPress();
+                    }
+                  }}
                 />
                 {query.length === 0 ? (
                   <svg
