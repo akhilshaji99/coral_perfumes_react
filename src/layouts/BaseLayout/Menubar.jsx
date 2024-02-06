@@ -65,6 +65,7 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                           className="nav-item dropdown w-100 w-lg-auto dropdown-fullwidth "
                           key={index}
                           onClick={() => handleSubmenuToggle(index)}
+                          onMouseLeave={handleMouseLeave}
                         >
                           <NavLink
                             className={`nav-link dropdown-toggle ${
@@ -76,9 +77,8 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
                             to="/"
                           >
                             <span
-                              onMouseEnter={() => handleMouseEnter(index)}
-                              onMouseLeave={handleMouseLeave}
                               className="coral-main-menu-hover"
+                              onMouseEnter={() => handleMouseEnter(index)}
                             >
                               {index === 0 ? (
                                 <span className="flash-icon">
