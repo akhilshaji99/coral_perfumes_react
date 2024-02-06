@@ -92,6 +92,19 @@ function Index() {
 
   const handleOnSubmit = () => {
     console.log(addressForm.values);
+    UpdateCheckoutDetails(addressForm.values).then((response) => {
+      // if (response?.data?.status) {
+      //   setConfirmButtonStatus(true);
+      //   setCartItems(response?.data?.data?.cart_items);
+      //   setPaymentTypes(response?.data?.data?.payment_types);
+      //   addressForm.setFieldValue(
+      //     "address_id",
+      //     response?.data?.data?.address_id
+      //   );
+      // } else {
+      //   fetchCheckoutApi(false);
+      // }
+    });
   };
 
   const addressForm = useFormik({
@@ -285,7 +298,10 @@ function Index() {
                                 <div className="mb-lg-0">
                                   <div className="adrs-ph">
                                     <ReactFlagsSelect
-                                      selected={addressForm.values.country_code.country_code}
+                                      selected={
+                                        addressForm.values.country_code
+                                          .country_code
+                                      }
                                       onSelect={onCountrySelect}
                                       className="country-list"
                                       customLabels={countryCodes}

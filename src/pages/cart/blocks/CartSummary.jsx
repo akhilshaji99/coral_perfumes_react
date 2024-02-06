@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import $ from "jquery";
-
+import CCode from "../../../assets/checkout/c_code.svg";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import UsePromoCode from "../../checkout/js/usePromoCode";
@@ -61,19 +61,45 @@ function CartSummary({
             </label>
             <form>
               <div className="row ">
-                <div className="col-md-6 col-6">
-                  <div className="">
+                <div className="col-md-8 col-12">
+                  <div className="apply-code">
+                    <img src={CCode} alt="coupon code" />
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control input-trans"
                       placeholder="Coupon Code"
                       value={promoCode}
                       disabled={cartDatas?.voucher_id != null ? true : false}
                       onChange={(e) => setPromoCode(e.target.value)}
                     />
+                    <div className="apply-cd">
+                      {cartDatas?.voucher_id == null ? (
+                        <button
+                          type="button"
+                          className="btn"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            applyPromocode();
+                          }}
+                        >
+                          Apply
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removePromocode(cartDatas?.voucher_id);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="col-md-6 col-6">
+                {/* <div className="col-md-6 col-6">
                   <div className="d-grid remove-cd">
                     {cartDatas?.voucher_id == null ? (
                       <button
@@ -104,7 +130,7 @@ function CartSummary({
                       </>
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
             </form>
             <p className="promo-code-label mb-0">
@@ -175,7 +201,10 @@ function CartSummary({
                     <span>{cartDatas?.total_amount_title_2}</span>
                   </div>
                 </div>
-                &nbsp; <span className="amount-dispaly">{cartDatas?.total_amount_display}</span>
+                &nbsp;{" "}
+                <span className="amount-dispaly">
+                  {cartDatas?.total_amount_display}
+                </span>
               </li>
             </ul>
           </div>
