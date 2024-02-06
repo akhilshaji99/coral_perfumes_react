@@ -20,7 +20,9 @@ function Menubar({ mobileMenuStatus, setMobileMenuStatus, menuItems }) {
   };
 
   const handleMouseEnter = (index) => {
-    setOpenSubmenu(index);
+    setTimeout(() => {
+      setOpenSubmenu(index);
+    }, 500);
   };
 
   const handleMouseLeave = () => {
