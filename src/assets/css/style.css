@@ -21748,8 +21748,7 @@ h3 {
 .scroll-container {
   height: 450px;
   overflow: auto;
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
-  scrollbar-width: thin;
+
 }
 .unselect {
   color: var(--fc-black);
@@ -21801,8 +21800,7 @@ h3 {
 .scroll-container2 {
   max-height: 220px;
   overflow: auto;
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
-  scrollbar-width: thin;
+ 
 }
 
 /* Track - The scrollbar itself */
@@ -30421,12 +30419,14 @@ body.checkout .css-hlgwow {
   .css-qbdosj-Input {
     margin: 4px;}
     .d-grid.mb-1.mt-4.btn-bg-fix button {
-      background-color: #88b48d;
-      border-color: #88b48d;
+      background-color: #76bc21;
+      border-color: #76bc21;
       color: #000;
+      font-family: var(--fc-font-bold);
   }
   body.product-details button.btn.btn-dark.btn-checkout.w-100 {
-    background-color: #88b48d;
-    border-color: #88b48d;
+    background-color: #76bc21;
+    border-color: #76bc21;
     color: #000;
+    font-family: var(--fc-font-bold);
 }
