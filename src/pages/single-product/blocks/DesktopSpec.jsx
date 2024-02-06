@@ -64,10 +64,10 @@ function DesktopSpec({
                 tabIndex={0}
               >
                 <div className="my-8">
-                  <div className="mb-5">
+                  <div className="mb-5 tab-scrolls">
                     {/* text */}
                     <p
-                      className="mb-0 p-d-c tab-scrolls"
+                      className="mb-0 p-d-c "
                       dangerouslySetInnerHTML={{
                         __html: productDatas?.description,
                       }}

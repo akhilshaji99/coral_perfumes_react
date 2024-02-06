@@ -2295,3 +2295,10 @@ body.checkout .ReactFlagsSelect-module_selectOptions__3LNBJ {
   width: 100%;
   font-size: 12px !important;
 }
+.scroll-container2::-webkit-scrollbar {
+  width: 10px; /* Adjust the width as needed */
+}
+
+.scroll-container2::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
