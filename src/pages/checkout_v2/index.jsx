@@ -14,6 +14,7 @@ import getCheckOutDetails from "../checkout/js/checkOutFetch";
 import { useFormik } from "formik";
 import deviceImageRender from "../../utils/deviceImageRender";
 import Select from "react-select";
+import UpdateCheckoutDetails from "../checkout/js/updateCheckoutDetails";
 import * as yup from "yup";
 
 function Index() {
@@ -35,6 +36,13 @@ function Index() {
       setCountryCodes(data?.data);
     });
   }, []);
+
+  const onCountrySelect = (code) => {
+    addressForm.setFieldValue("country_code", {
+      country_code: code,
+      phone_code: countryCodes[code].primary,
+    });
+  };
   //#End of Country code
 
   //Checkout fetch
@@ -47,13 +55,19 @@ function Index() {
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
+      //Setting initial states
+      addressForm.setFieldValue(
+        "mobile_number",
+        response?.data?.user_data?.phone_number
+      );
+      addressForm.setFieldValue("email", response?.data?.user_data?.email);
+      addressForm.setFieldValue("emirate_id", response?.data?.emirates[0].id);
+      //#End
       formatCities(response?.data?.emirates[0]?.areas).then((data) => {
         setCityDefaultValue(data[0]); //Setting default city
         setEmirateCityDatas(data);
         addressForm.setFieldValue("city", data[0].value);
       }); //getting emirate cities
-      console.log("addressForm", addressForm.values);
-
       //Set Values
       // setEmirateCityDatas()
       //#End of set values
@@ -83,9 +97,12 @@ function Index() {
   const addressForm = useFormik({
     initialValues: {
       fullname: "",
-      country_code: "",
-      mobile_number: checkoutDatas?.user_data?.phone_number,
-      email: checkoutDatas?.user_data?.email,
+      country_code: {
+        country_code: "AE",
+        phone_code: "+971",
+      },
+      mobile_number: "",
+      email: "",
       address: "",
       street_name: "",
       emirate_id: "",
@@ -97,7 +114,6 @@ function Index() {
       store_emirate_id: "",
       store_store_id: "",
     },
-    enableReinitialize: true,
     validationSchema: checkoutValidation,
     onSubmit: handleOnSubmit,
   });
@@ -269,10 +285,8 @@ function Index() {
                                 <div className="mb-lg-0">
                                   <div className="adrs-ph">
                                     <ReactFlagsSelect
-                                      // selected={
-                                      //   selectedCountryCode.country_code
-                                      // }
-                                      // onSelect={onCountrySelect}
+                                      selected={addressForm.values.country_code.country_code}
+                                      onSelect={onCountrySelect}
                                       className="country-list"
                                       customLabels={countryCodes}
                                       countries={Object.keys(countryCodes)}
@@ -440,8 +454,11 @@ function Index() {
                                     let emirateDatas = JSON.parse(
                                       event.target.value
                                     );
-                                    addressForm.initialValues.emirate_id =
-                                      emirateDatas?.id;
+
+                                    addressForm.setFieldValue(
+                                      "emirate_id",
+                                      emirateDatas?.id
+                                    );
                                     formatCities(emirateDatas?.areas).then(
                                       (data) => {
                                         setEmirateCityDatas(data);
@@ -624,6 +641,12 @@ function Index() {
                                         type="radio"
                                         name="addrs_label"
                                         value={addressData?.value}
+                                        onChange={() => {
+                                          addressForm.setFieldValue(
+                                            "address_label",
+                                            addressData?.value
+                                          );
+                                        }}
                                         checked={
                                           addressForm.values.address_label ===
                                           addressData?.value
@@ -649,6 +672,21 @@ function Index() {
                               </div> */}
                             </div>
                           </div>
+                        </div>
+                      </div>
+                      <div className="row align-items-center mt-5 ml-5 pb-5">
+                        <div className="col-md-6 col-12 mob-change">
+                          <button
+                            type="submit"
+                            className="btn btn-dark validate"
+                            style={{ marginLeft: 14 }}
+                          >
+                            SAVE ADDRESS
+                          </button>
+                        </div>
+                      </div>
+                      <div className="card-body p-6">
+                        <div className="d-flex row align-items-center">
                           <div className="col-md-10">
                             <div className="row align-items-center">
                               <div className="col-2 col-md-1">
@@ -667,17 +705,6 @@ function Index() {
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="row align-items-center mt-5 ml-5 pb-5">
-                        <div className="col-md-6 col-12 mob-change">
-                          <button
-                            type="submit"
-                            className="btn btn-dark validate"
-                            style={{ marginLeft: 14 }}
-                          >
-                            SAVE ADDRESS
-                          </button>
                         </div>
                       </div>
                     </div>
