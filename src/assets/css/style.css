@@ -30432,3 +30432,6 @@ body.checkout .css-hlgwow {
     color: #000;
     font-family: var(--fc-font-bold);
 }
+body.product-details .slick-arrow{
+  display: block !important;
+}
