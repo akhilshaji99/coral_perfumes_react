@@ -242,7 +242,7 @@ ul li {
   width: 50%;
   height: 100%;
   background-color: #000;
-  max-height: 349px;
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;

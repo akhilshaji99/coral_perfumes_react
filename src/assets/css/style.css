@@ -28722,11 +28722,13 @@ border-radius: none !important;
 }
 .my-bag-text p {
   color: #000;
-  font-family: var(--fc-font-light);
+  font-family: var(--fc-font-regular);
   font-size: 12px;
   text-transform: capitalize;
   padding-left: 15px;
   padding-bottom: 1.5%;
+  color: #76bc21;
+  cursor: pointer;
 }
 .price-area-bag {
   transform: scale(0.25);
