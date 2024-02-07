@@ -4,30 +4,30 @@ import AlerMessage from "../../common/AlerMessage";
 
 const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
   try {
-    const response = await request.post(
-      "update_checkout_details/",
-      checkoutUpdateParams
-      // {
-      //   flat_name:formValues.flat_name,
-      //   street_address:formValues.street_address,
-      //   building_number:formValues.building_number,
-      //   postal_code:formValues.pin,
-      //   phone_number:formValues.phone_number,
-      //   emirate:formValues.emirate,
-      //   phone_number:formValues.phone_number,
-      //   email:formValues.email,
-      //   first_name:formValues.first_name,
-      //   last_name:formValues.last_name,
-      //   delivery_type:formValues.delivery_type,
-      //   address_id:formValues.address_id,
-      //   address_type:formValues.address_type,
-      //   token: getUserOrGuestToken(),
-      // }
-    );
+    const response = await request.post("update_checkout_details/", {
+      delivery_type: checkoutUpdateParams.delivery_type,
+      payment_type: checkoutUpdateParams.payment_type,
+      gift_wrap: checkoutUpdateParams.gift_wrapping,
+      fullname: checkoutUpdateParams.fullname,
+      mobile_number: checkoutUpdateParams.mobile_number,
+      country_data: checkoutUpdateParams.country_code,
+      email: checkoutUpdateParams.email,
+      address: checkoutUpdateParams.address,
+      street_name: checkoutUpdateParams.street_name,
+      address_label: checkoutUpdateParams.address_label,
+      city: checkoutUpdateParams.city,
+      emirate_id: checkoutUpdateParams.emirate_id,
+      delivery_instruction_message: checkoutUpdateParams.instructions,
+      address_id: "",
+      gift_message: "",
+      is_whatsapp_number: 1,
+      store_id: "",
+      // token: getUserOrGuestToken(),
+    });
     if (response.data.status) {
       return response;
     } else {
-      console.log('response',response)
+      console.log("response", response);
       toast((t) => (
         <AlerMessage
           t={t}

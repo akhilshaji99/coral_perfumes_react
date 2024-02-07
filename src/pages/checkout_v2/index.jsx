@@ -91,7 +91,8 @@ function Index() {
   });
 
   const handleOnSubmit = () => {
-    console.log(addressForm.values);
+    // addressForm.setFieldValue("delivery_type", deliveryType);
+    // console.log(addressForm.values);
     UpdateCheckoutDetails(addressForm.values).then((response) => {
       // if (response?.data?.status) {
       //   setConfirmButtonStatus(true);
@@ -126,6 +127,7 @@ function Index() {
       payment_type: "",
       store_emirate_id: "",
       store_store_id: "",
+      delivery_type: "1",
     },
     validationSchema: checkoutValidation,
     onSubmit: handleOnSubmit,
