@@ -22,7 +22,7 @@ const UpdateCheckoutDetails = async (
       emirate_id: checkoutUpdateParams.emirate_id,
       delivery_instruction_message: checkoutUpdateParams.instructions,
       address_id: checkoutUpdateParams.address_id,
-      gift_message: "",
+      gift_message: checkoutUpdateParams?.gift_message,
       is_whatsapp_number: 1,
       store_id: checkoutUpdateParams?.store_store_id,
       // token: getUserOrGuestToken(),

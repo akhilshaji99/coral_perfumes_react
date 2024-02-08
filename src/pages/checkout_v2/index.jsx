@@ -23,6 +23,8 @@ import UsePromoCode from "../checkout/js/usePromoCode";
 import RemovePromoCode from "../checkout/js/removePromoCode";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
+import AddNewAddressModal from "../checkout/blocks/AddNewAddressModal";
+import $ from "jquery";
 
 function Index() {
   const [countryCodes, setCountryCodes] = useState([]);
@@ -33,11 +35,13 @@ function Index() {
   const [cityDefaultValue, setCityDefaultValue] = useState(null);
   const [giftWrappingStatus, setGiftWrappingStatus] = useState(false);
   const [payemntAccordianStatus, setpaymentAccordianStatus] = useState("hide");
-  const [apiLoading, setApiLoading] = useState(false);
+  const [checkoutUpdateLoading, setCheckoutUpdateLoading] = useState(false);
+  const [finalLoading, setFinalLoading] = useState(false);
   const [availableStores, setAvailableStores] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
   const [promoCodeId, setPromoCodeId] = useState(null);
+  const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [status, setStatus] = useState(false);
 
   const changeDeliveryType = (del_type) => {
@@ -65,7 +69,6 @@ function Index() {
   }, []);
 
   const fetchCheckoutApi = () => {
-    setApiLoading(false);
     getCheckOutDetails().then(async (response) => {
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
@@ -136,8 +139,6 @@ function Index() {
       setPromoCodeId(response?.data?.cart_items?.voucher_id);
 
       //Set Values
-
-      setApiLoading(true);
     });
   };
   //#End of checkout fetch
@@ -158,17 +159,25 @@ function Index() {
   });
 
   const handleOnSubmit = (type = null) => {
+    setCheckoutUpdateLoading(true);
+    if (type === "final_submit") {
+      setFinalLoading(true);
+    }
     // addressForm.setFieldValue("gift_wrapping", giftWrappingStatus);
     addressForm.values.gift_wrapping = giftWrappingStatus;
     UpdateCheckoutDetails(addressForm.values, giftWrappingStatus).then(
       (response) => {
         if (response?.data?.status) {
+          setpaymentAccordianStatus("show");
           if (type === "final_submit") {
-            confirmCheckout();
+            confirmCheckout().then((data) => {
+              setFinalLoading(false);
+            });
           } else {
             fetchCheckoutApi();
           }
         }
+        setCheckoutUpdateLoading(false);
         //   setConfirmButtonStatus(true);
         //   setCartItems(response?.data?.data?.cart_items);
         //   setPaymentTypes(response?.data?.data?.payment_types);
@@ -199,6 +208,7 @@ function Index() {
       instructions: "",
       address_label: "",
       gift_wrapping: "",
+      gift_message: "",
       payment_type: "",
       store_emirate_id: "",
       store_store_id: "",
@@ -362,6 +372,12 @@ function Index() {
           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
           showPrmoCodeFlag={showPrmoCodeFlag}
           setPromoCode={setPromoCode}
+          fetchCheckoutApi={fetchCheckoutApi}
+        />
+        <AddNewAddressModal
+          // componentDatas={addressForm.values}
+          setAddAddressListFlag={setAddAddressListFlag}
+          addAddressListFlag={addAddressListFlag}
           fetchCheckoutApi={fetchCheckoutApi}
         />
         <section className="delivery-adrs-top">
@@ -734,7 +750,18 @@ function Index() {
                                 </div>
                                 <div className="col-md-6 col-12">
                                   <div className="display-add">
-                                    <a href="#">+ Add New Address</a>
+                                    <a
+                                      href="javascript:;"
+                                      onClick={(e) => {
+                                        setAddAddressListFlag(true);
+                                        $("#addressModal").toggle();
+                                        $("#addressModal").toggleClass(
+                                          "modal fade modal"
+                                        );
+                                      }}
+                                    >
+                                      + Add New Address
+                                    </a>
                                   </div>
                                 </div>
                               </>
@@ -905,20 +932,38 @@ function Index() {
                       ) : (
                         ""
                       )}
-                      {checkoutDatas?.address_id === null ||
-                      parseInt(addressForm.values.delivery_type) === 2 ? (
-                        <div className="row align-items-center mt-5 ml-5 pb-5">
-                          <div className="col-md-6 col-12 mob-change">
-                            <button
-                              type="submit"
-                              className="btn btn-dark validate"
-                              style={{ marginLeft: 14 }}
-                            >
-                              SAVE ADDRESS
-                            </button>
-                          </div>
+                      {/* {checkoutDatas?.address_id === null ||
+                      parseInt(addressForm.values.delivery_type) === 2 ? ( */}
+                      <div className="row align-items-center mt-5 ml-5 pb-5">
+                        <div className="col-md-6 col-12 mob-change">
+                          <button
+                            type="submit"
+                            className="btn btn-dark validate"
+                            style={{ marginLeft: 14 }}
+                            disabled={checkoutUpdateLoading}
+                          >
+                            {addressForm.values.delivery_type === 1
+                              ? addressForm.values.address_id === null
+                                ? "SAVE ADDRESS"
+                                : "Choose Address"
+                              : "PICK FROM STORE"}
+                            {checkoutUpdateLoading ? (
+                              <>
+                                &nbsp;
+                                <div
+                                  class="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span class="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              </>
+                            ) : null}
+                          </button>
                         </div>
-                      ) : null}
+                      </div>
+                      {/* ) : null} */}
                       <div className="card-body p-6">
                         <div className="d-flex row align-items-center">
                           <div className="col-md-10">
@@ -954,23 +999,8 @@ function Index() {
                                 {giftWrappingStatus ? (
                                   <span
                                     onClick={() => {
-                                      changeGiftWrappingStatus(false).then(
-                                        (response) => {
-                                          console.log(response);
-                                          handleOnSubmit();
-                                        }
-                                      );
-                                      // console.log(!giftWrappingStatus)
-                                      // setGiftWrappingStatus(!giftWrappingStatus);
-                                      // handleOnSubmit();
-                                      // setGiftWrappingStatus((prevStatus) => {
-                                      //   // Toggle the previous state
-                                      //   const newStatus = !prevStatus;
-                                      //   // Call handleOnSubmit with the updated status
-
-                                      //   // Return the new status to update the state
-                                      //   return newStatus;
-                                      // });
+                                      setGiftWrappingStatus(false);
+                                      handleOnSubmit();
                                     }}
                                   >
                                     Remove
@@ -984,6 +1014,8 @@ function Index() {
                               type="text"
                               maxLength={200}
                               className="form-control"
+                              name="gift_message"
+                              onChange={addressForm.handleChange}
                               // onChange={(event) => {
                               //   setMessage(event.target.value);
                               //   setMessageLength(event.target.value.length);
@@ -1139,7 +1171,8 @@ function Index() {
                                   className="btn btn-bgc mb-1"
                                   disabled={
                                     payemntAccordianStatus === "hide" ||
-                                    addressForm.values.payment_type == ""
+                                    addressForm.values.payment_type == null ||
+                                    finalLoading
                                       ? true
                                       : false
                                   }
@@ -1148,6 +1181,19 @@ function Index() {
                                   }}
                                 >
                                   SECURE CHECKOUT
+                                  {finalLoading ? (
+                                    <>
+                                      &nbsp;
+                                      <div
+                                        class="spinner-border spinner-border-sm"
+                                        role="status"
+                                      >
+                                        <span class="visually-hidden">
+                                          Loading...
+                                        </span>
+                                      </div>
+                                    </>
+                                  ) : null}
                                 </button>
                               </div>
                             </div>
