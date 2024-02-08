@@ -2302,3 +2302,16 @@ body.checkout .ReactFlagsSelect-module_selectOptions__3LNBJ {
 .scroll-container2::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
 }
+body.product-details .desktop-thumbs .slick-slider .slick-next {
+  position: absolute;
+  left: 45%;
+  top: calc(10% + -20px);
+}
+body.product-details img.topArrow {
+  margin: 4px;
+  margin-left: 10px;
+}
+body.product-details img.bottomArrow {
+  margin: 7px;
+  margin-left: 10px;
+}

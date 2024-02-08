@@ -840,7 +840,7 @@ function Index() {
                           </div> */}
                           <div className="row">
                             <div className="col-12">
-                              <div className="d-grid mt-5">
+                              <div className="d-grid mt-5 fix-checkout">
                                 <button
                                   type="button"
                                   className="btn btn-bgc mb-1"
