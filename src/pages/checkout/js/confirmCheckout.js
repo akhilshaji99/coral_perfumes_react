@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import getUserToken from "../../../utils/userToken";
 
-const confirmCheckout = async (scrollToPaymentComponent) => {
+const confirmCheckout = async () => {
   try {
     var bodyFormData = new FormData();
     bodyFormData.append("token", getUserToken());
@@ -16,7 +16,7 @@ const confirmCheckout = async (scrollToPaymentComponent) => {
         window.location.href = response?.data?.data;
       }
     } else {
-      scrollToPaymentComponent();
+      // scrollToPaymentComponent();
       toast((t) => (
         <AlerMessage
           t={t}

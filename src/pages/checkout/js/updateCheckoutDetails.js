@@ -2,12 +2,15 @@ import request from "../../../utils/request";
 import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 
-const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
+const UpdateCheckoutDetails = async (
+  checkoutUpdateParams,
+  giftWrappingStatus
+) => {
   try {
     const response = await request.post("update_checkout_details/", {
       delivery_type: checkoutUpdateParams.delivery_type,
       payment_type: checkoutUpdateParams.payment_type,
-      gift_wrap: checkoutUpdateParams.gift_wrapping,
+      gift_wrap: giftWrappingStatus,
       fullname: checkoutUpdateParams.fullname,
       mobile_number: checkoutUpdateParams.mobile_number,
       country_data: checkoutUpdateParams.country_code,
@@ -18,10 +21,10 @@ const UpdateCheckoutDetails = async (checkoutUpdateParams) => {
       city: checkoutUpdateParams.city,
       emirate_id: checkoutUpdateParams.emirate_id,
       delivery_instruction_message: checkoutUpdateParams.instructions,
-      address_id: "",
+      address_id: checkoutUpdateParams.address_id,
       gift_message: "",
       is_whatsapp_number: 1,
-      store_id: "",
+      store_id: checkoutUpdateParams?.store_store_id,
       // token: getUserOrGuestToken(),
     });
     if (response.data.status) {

@@ -1,7 +1,18 @@
 import CCode from "../../../assets/checkout/c_code.svg";
 import deviceImageRender from "../../../utils/deviceImageRender";
+import $ from "jquery";
 
-function CartDetails({ cartDetails }) {
+function CartDetails({
+  cartDetails,
+  //Promocode
+  promoCodeId,
+  setPromoCode,
+  promoCode,
+  applyPrmocode,
+  removePrmocode,
+  setShowPrmoCodeFlag,
+  //#End of promocode
+}) {
   return (
     <div className="col-lg-4 col-md-5">
       <div className=" card checkout-right-code">
@@ -18,15 +29,42 @@ function CartDetails({ cartDetails }) {
                     type="text"
                     className="form-control input-trans"
                     placeholder="Coupon Code"
-                    defaultValue=""
+                    value={promoCode}
+                    disabled={promoCodeId != null ? true : false}
+                    onChange={(e) => setPromoCode(e.target.value)}
                   />
                   <div className="apply-cd">
-                    <button className="btn">Apply</button>
+                    {promoCodeId == null ? (
+                      <button className="btn" onClick={applyPrmocode}>
+                        Apply
+                      </button>
+                    ) : (
+                      <button
+                        className="btn"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          removePrmocode(promoCodeId);
+                        }}
+                        style={{
+                          color: "black",
+                          "text-decoration": "underline",
+                        }}
+                      >
+                        Remove
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
-            <p className="available-code-label mb-0">
+            <p
+              className="available-code-label mb-0"
+              onClick={(e) => {
+                setShowPrmoCodeFlag(true);
+                $("#promocodeModal").toggle();
+                $("#promocodeModal").toggleClass("modal fade modal");
+              }}
+            >
               <small>View Available Promo Codes</small>
             </p>
           </div>
