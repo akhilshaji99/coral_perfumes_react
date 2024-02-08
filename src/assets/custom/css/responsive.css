@@ -453,8 +453,8 @@
   .visit-text {
     width:50%;
     background-color: #000;
-    max-height: 349px;
-    display: flex;
+    max-height: max-content;
+    display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -464,6 +464,7 @@
   .viisit-img img {
     width: 100%;
     height: 235px;
+    object-fit: cover;
   }
   .visit-text a {
     margin-top: 15px;
@@ -515,6 +516,7 @@
   .store-details-slider {
     padding-bottom: 20px;
 }
+
   .row-details h2 {
     font-size: 17px;
     line-height: 42px;
@@ -875,12 +877,13 @@ body.cart .my-bag-card .list-group:last-child {
   border-bottom-right-radius: 0px !important;
   border-bottom-width: 0;
   position: fixed;
-  bottom: 70px;
+  bottom: 56px;
   left: 0;
   right: 0;
   background-color: #fff;
   width: 100%;
   padding: 0px 20px;
+  z-index: 9999;
 }
 body.checkout footer.footer {
   display: none;
@@ -1053,6 +1056,10 @@ body.cart footer.footer {
   .mob-view .input-group .form-control {
     padding: 5px 20px !important;
   }
+  input.form-control.rounded.mob-search-box {
+    padding: 9px 20px !important;
+    border-radius: 9px !important;
+}
   .row.search-container.row.search-top {
     padding: 0px 25px;
   }
@@ -1104,6 +1111,9 @@ body.cart footer.footer {
   .fixed-top-margin {
     margin-top: 5px;
   }
+  body.products .fixed-top-margin {
+    margin-top: 0px;
+}
   body.cart .fixed-top-margin {
     margin-top: 5px;
   }
@@ -1583,6 +1593,9 @@ body.product-details div#collapseTwo .accordion-body {
 body.address-book .fixed-top-margin.main-layout main br {
   display: none;
 }
+body.cart section.my-bag {
+  padding-bottom: 110px !important;
+}
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px) {
@@ -1599,9 +1612,7 @@ body.address-book .fixed-top-margin.main-layout main br {
   .container-fluid.cc-margin.w-deals {
     padding: 0 15px;
   }
-  body.products .col-lg-3.col-md-4.product-filter-sidebar aside.mb-6.mb-md-0 {
-    display: none;
-}
+ 
 
 .container-new .visit-row {
   margin-top: 0px;
