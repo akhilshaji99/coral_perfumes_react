@@ -48,14 +48,14 @@ function AddressListComponent({
                   <div className="col-lg-11 col-md-10 col-9 px-lg-0">
                     {/* address */}
                     <p className="mb-0">
-                      {componentDatas.first_name} {componentDatas.last_name}
+                      {componentDatas.full_name}
                       <br />
-                      {componentDatas.flat_name} ,{" "}
-                      {componentDatas.building_number}
+                      {componentDatas.address}
                       <br />
-                      {componentDatas.street_address}, {componentDatas.emirate},
+                      {componentDatas.street_address}, {componentDatas.zajel_city} ({componentDatas?.phone_country_code}),
                       <br />
-                      {componentDatas.phone_number}
+                      {componentDatas.phone_number} <br/>
+                      {componentDatas?.email}
                     </p>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ function AddressListComponent({
                 <div className="col-md-12">
                   <a
                     onClick={(e) => {
-                       editAddress(componentDatas);
+                      editAddress(componentDatas);
                     }}
                   >
                     <svg
@@ -87,37 +87,39 @@ function AddressListComponent({
                   </a>
                 </div>
                 {!componentDatas.default_address ? (
-                <div className="col-md-12">
-                  <a
-                    onClick={(e) => {
-                      setAddAddressListFlag(false);
+                  <div className="col-md-12">
+                    <a
+                      onClick={(e) => {
+                        setAddAddressListFlag(false);
 
-                      deleteUserAddress(componentDatas.id).then((response) => {
-                        setAddAddressListFlag(true);
-                      });
-                    }}
-                    className="text-danger "
-                    // data-bs-toggle="modal"
-                    // data-bs-target="#deleteModal"
-                    style={{ marginLeft: "10px" }}
-                  >
-                    <svg
-                      width={21}
-                      height={29}
-                      viewBox="0 0 21 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                        deleteUserAddress(componentDatas.id).then(
+                          (response) => {
+                            setAddAddressListFlag(true);
+                          }
+                        );
+                      }}
+                      className="text-danger "
+                      // data-bs-toggle="modal"
+                      // data-bs-target="#deleteModal"
+                      style={{ marginLeft: "10px" }}
                     >
-                      <path
-                        d="M1.24173 19.2132L9.72702 27.6985M1.24173 27.6985L9.72702 19.2132"
-                        stroke="black"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                </div>
-                 ) : (
+                      <svg
+                        width={21}
+                        height={29}
+                        viewBox="0 0 21 29"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.24173 19.2132L9.72702 27.6985M1.24173 27.6985L9.72702 19.2132"
+                          stroke="black"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                ) : (
                   ""
                 )}
               </div>

@@ -89,7 +89,7 @@ service.interceptors.response.use(
   (error) => {
     // console.log(error?.response?.status)
     if (error?.response?.status === 404) {
-      window.location.href = `/404`;
+      // window.location.href = `/404`;
       return error?.response;
     }
     if (error?.response?.status === 401) {

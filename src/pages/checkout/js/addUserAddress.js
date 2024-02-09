@@ -6,20 +6,20 @@ import getUserToken from "../../../utils/userToken";
 const addNewAddress = async (formValues) => {
   try {
     const response = await request.post("add_user_address/", {
-      flat_name: formValues.flat_name,
-      street_address: formValues.street_address,
-      building_number: formValues.building_number,
-      postal_code: formValues.postal_code,
-      phone_number: formValues.phone_number,
-      emirate: formValues.emirate,
+      // flat_name: formValues.flat_name,
+      // street_address: formValues.street_address,
+      // building_number: formValues.building_number,
+      // postal_code: formValues.postal_code,
       token: getUserToken(),
-      first_name: formValues.first_name,
-      last_name: formValues.last_name,
+      fullname: formValues.fullname,
+      phone_number: formValues.phone_number,
       email: formValues.email,
-      address_id: formValues.address_id,
-      city: formValues.city,
-      floor_number: formValues.floor_number,
       country_data: formValues.country_datas,
+      address: formValues.address,
+      street_name: formValues.street_name,
+      emirate: formValues.emirate,
+      city: formValues.city,
+      address_label: formValues.address_label,
     });
     if (response.data.status) {
       toast((t) => (

@@ -25,6 +25,7 @@ import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import AddNewAddressModal from "../checkout/blocks/AddNewAddressModal";
 import $ from "jquery";
+import { Link } from "react-router-dom";
 
 function Index() {
   const [countryCodes, setCountryCodes] = useState([]);
@@ -101,6 +102,10 @@ function Index() {
       addressForm.setFieldValue("address_label", sel_addrs_label);
       addressForm.setFieldValue("address_id", response?.data?.address_id);
       addressForm.setFieldValue("payment_type", response?.data?.payment_type);
+      addressForm.setFieldValue(
+        "gift_message",
+        response?.data?.gift_wrap_message
+      );
 
       if (response?.data?.address_id || response?.data?.store_id) {
         setpaymentAccordianStatus("show");
@@ -123,7 +128,7 @@ function Index() {
         //Setting city data
         let sel_city = response?.data?.default_address?.account_address?.city
           ? response?.data?.default_address?.account_address?.city
-          : data[0].value;
+          : data[0]?.value;
         setCityDefaultValue({ label: sel_city, value: sel_city });
         addressForm.setFieldValue("city", sel_city);
         //#End
@@ -146,10 +151,7 @@ function Index() {
   //Checkout Update
   const checkoutValidation = yup.object().shape({
     fullname: yup.string().required("Name is required"),
-    mobile_number: yup
-      .string()
-      .required("Mobile number is required")
-      .matches(/^[0-9]{10}$/, "Invalid mobile number"),
+    mobile_number: yup.string().required("Mobile number is required"),
     email: yup
       .string()
       .email("Enter valid email")
@@ -330,21 +332,23 @@ function Index() {
             <div className="container-md-fluid">
               <div className="row align-items-center">
                 <div className="col-2 col-md-4   sm-none">
-                  <a
-                    href="#"
+                  <Link
+                    to={"/cart"}
                     className="btn btn-dark"
                     style={{ marginLeft: 14 }}
                   >
                     Back to Shopping{" "}
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-4 col-md-4  d-md-none">
-                  <a href="#">
+                  <Link to={"/cart"}>
                     <img src={backButton} />
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-4 col-md-4  logo-checkout">
-                  <img src={Logo} alt="logo-img" />
+                  <Link to={"/"}>
+                    <img src={Logo} alt="logo-img" />
+                  </Link>
                 </div>
                 <div className="col-4 col-md-4  secu-check sm-none">
                   <ul>
@@ -440,7 +444,8 @@ function Index() {
                                   <input
                                     type="text"
                                     className={`form-control ${
-                                      addressForm?.errors?.fullname
+                                      addressForm?.errors?.fullname &&
+                                      addressForm.submitCount > 0
                                         ? "is-invalid"
                                         : ""
                                     }`}
@@ -451,9 +456,17 @@ function Index() {
                                   />
                                 </div>
                               </div>
+                              {addressForm.isSubmitting}
                               <div className="col-md-6 col-12">
                                 <div className="mb-lg-0">
-                                  <div className="adrs-ph">
+                                  <div
+                                    className={`adrs-ph form-control ${
+                                      addressForm?.errors?.mobile_number &&
+                                      addressForm.submitCount > 0
+                                        ? "is-invalid"
+                                        : ""
+                                    }`}
+                                  >
                                     <ReactFlagsSelect
                                       selected={
                                         addressForm.values.country_code
@@ -471,11 +484,6 @@ function Index() {
                                       type="text"
                                       placeholder="Mob Number"
                                       name="mobile_number"
-                                      className={`form-control ${
-                                        addressForm?.errors?.mobile_number
-                                          ? "is-invalid"
-                                          : ""
-                                      }`}
                                       value={addressForm.values.mobile_number}
                                       onChange={addressForm.handleChange}
                                     />
@@ -600,7 +608,8 @@ function Index() {
                                       placeholder="Address (Room, Flat, Building)"
                                       name="address"
                                       className={`form-control ${
-                                        addressForm?.errors?.address
+                                        addressForm?.errors?.address &&
+                                        addressForm.submitCount > 0
                                           ? "is-invalid"
                                           : ""
                                       }`}
@@ -616,7 +625,8 @@ function Index() {
                                       placeholder="Street Name"
                                       name="street_name"
                                       className={`form-control ${
-                                        addressForm?.errors?.street_name
+                                        addressForm?.errors?.street_name &&
+                                        addressForm.submitCount > 0
                                           ? "is-invalid"
                                           : ""
                                       }`}
@@ -978,7 +988,6 @@ function Index() {
                                     // value={addressForm.values.gift_wrapping}
                                     onClick={() => {
                                       setGiftWrappingStatus(true);
-                                      handleOnSubmit();
                                     }}
                                   />
                                 </div>
@@ -1000,7 +1009,10 @@ function Index() {
                                   <span
                                     onClick={() => {
                                       setGiftWrappingStatus(false);
-                                      handleOnSubmit();
+                                      addressForm.setFieldValue(
+                                        "gift_message",
+                                        ""
+                                      );
                                     }}
                                   >
                                     Remove
@@ -1009,27 +1021,20 @@ function Index() {
                               </div>
                             </div>
                           </div>
-                          <div className="col-md-10">
-                            <input
-                              type="text"
-                              maxLength={200}
-                              className="form-control"
-                              name="gift_message"
-                              onChange={addressForm.handleChange}
-                              // onChange={(event) => {
-                              //   setMessage(event.target.value);
-                              //   setMessageLength(event.target.value.length);
-                              // }}
-                              // onBlur={(event) => {
-                              //   fetchCheckoutDetailsForMessage(
-                              //     event.target.value
-                              //   );
-                              // }}
-                              // value={message}
-                              placeholder="Your Message"
-                              style={{ width: "99.25%" }}
-                            />
-                          </div>
+                          {giftWrappingStatus ? (
+                            <div className="col-md-10">
+                              <input
+                                type="text"
+                                maxLength={200}
+                                className="form-control"
+                                name="gift_message"
+                                onChange={addressForm.handleChange}
+                                value={addressForm.values.gift_message}
+                                placeholder="Your Message"
+                                style={{ width: "99.25%" }}
+                              />
+                            </div>
+                          ) : null}
                         </div>
                       </div>
                     </div>
