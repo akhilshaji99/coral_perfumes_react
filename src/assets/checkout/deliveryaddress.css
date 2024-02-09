@@ -22,7 +22,7 @@ body.checkout_v2 .fixed-top-margin {
   padding-bottom: 12px !important;
 }
 section.delivery-adrs-top {
-  padding: 50px 0px;
+  padding: 15px 0px 35px 0px;
 }
 body.deliv-address ul li {
   list-style-type: none;
@@ -283,14 +283,20 @@ label.checkout-tab-label.l-2 {
   font-weight: 700;
   line-height: 14px;
   color: #000;
+  font-family: var(--fc-font-regular);
+  text-transform: uppercase;
+  line-height: 23px;
 }
 .display-add a {
   color: #000;
+  text-transform: uppercase;
+  font-family: var(--fc-font-bold);
 }
 .display-add {
   min-height: 100px;
   display: flex;
   align-items: center;
+  justify-content: end;
 }
 .edit-txt a {
   display: none;
@@ -312,6 +318,7 @@ overflow-y: auto;
 .secure-checkout-top {
  padding-top: 0px; 
  border-top: none; 
+ border-top: solid 1px #c9c5c5;
 }
 body.checkout_v2 .ReactFlagsSelect-module_filterBox__3m8EU input {
   font-size: 12px;
@@ -325,10 +332,19 @@ body.checkout_v2 .ReactFlagsSelect-module_filterBox__3m8EU {
 body.checkout_v2 .ReactFlagsSelect-module_selectOptions__3LNBJ {
 max-height: 220px;
 }
+.checkout-adrs.checkout-adrs.accordion-collapse.collapse {
+  padding-top: 0px !important;
+  margin-top: 0px;
+}
+img.check_addr_edit {
+  display: none;
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .card.checkout-right-code .cart-details-img {
     width: 30px;
   }
+  .display-sub {
+    width: 100%;}
 }
 @media screen and (max-width: 767px) {
   .checkout-adrs {
@@ -403,7 +419,7 @@ max-height: 220px;
     width: 100%;
   }
   body.checkout_v2 section.delivery-adrs-top {
-    padding: 50px 0px;
+    padding: 25px 0px;
     padding-bottom: 128px;
 }
 .fix-checkout {
@@ -439,5 +455,12 @@ body.checkout_v2  footer.footer {
 }
 body.checkout_v2  .btn-bgc {
   width: 100%;
+}
+.secure-checkout-top {
+  border-top: none
+ }
+ .checkout-adrs.checkout-adrs.accordion-collapse.collapse {
+
+  padding-bottom: 0px !important;
 }
 }
