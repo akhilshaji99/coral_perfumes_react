@@ -453,7 +453,8 @@
   .visit-text {
     width:50%;
     background-color: #000;
-    max-height: max-content;
+    min-height: 235px;
+    max-height: 235px;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -1595,6 +1596,9 @@ body.address-book .fixed-top-margin.main-layout main br {
 }
 body.cart section.my-bag {
   padding-bottom: 110px !important;
+}
+.store-single-img-width {
+  height: auto;
 }
 }
 

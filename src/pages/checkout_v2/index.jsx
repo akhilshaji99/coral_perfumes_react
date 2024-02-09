@@ -435,7 +435,7 @@ function Index() {
                         <div className="mb-1">
                           <div className="card-body p-1">
                             <div className="row g-5 m-2 mts">
-                              <div className="col-md-12 col-12">
+                              <div className="col-md-12 col-12 mt-0">
                                 <div className="mb-lg-0">
                                   <input
                                     type="text"
@@ -964,7 +964,7 @@ function Index() {
                         </div>
                       </div>
                       {/* ) : null} */}
-                      <div className="card-body p-6">
+                      <div className="card-body p-6 pt-1">
                         <div className="d-flex row align-items-center">
                           <div className="col-md-10">
                             <div className="row align-items-center">
