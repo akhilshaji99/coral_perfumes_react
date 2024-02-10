@@ -728,11 +728,6 @@ function Index() {
                                           }
                                           )
                                         </p>
-                                        <img
-                                          src={Edit}
-                                          alt="edit"
-                                          className="check_addr_edit"
-                                        />
                                       </div>
                                       <div className="edit-txt">
                                         <p>
@@ -749,11 +744,6 @@ function Index() {
                                             ? "Home"
                                             : "Work"}
                                         </p>
-                                        <img
-                                          src={Bag}
-                                          alt="edit"
-                                          className="check_addr_del"
-                                        />
                                       </div>
                                     </div>
                                   </div>
@@ -1173,7 +1163,13 @@ function Index() {
                               <div className="d-grid mt-5 fix-checkout">
                                 <button
                                   type="button"
-                                  className="btn btn-bgc mb-1"
+                                  className={`btn btn-bgc mb-1 ${
+                                    payemntAccordianStatus === "hide" ||
+                                    addressForm.values.payment_type == null ||
+                                    finalLoading
+                                      ? ""
+                                      : "secure-checkout-button"
+                                  }`}
                                   disabled={
                                     payemntAccordianStatus === "hide" ||
                                     addressForm.values.payment_type == null ||
