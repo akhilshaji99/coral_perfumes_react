@@ -35,7 +35,8 @@ function ProductCarousel({ sliderImages, stock_status }) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: sliderImages.length < 4 ? sliderImages.length : 4,
+    slidesToShow:
+      sliderImages && sliderImages.length < 4 ? sliderImages.length : 4,
     slidesToScroll: 1,
     vertical: true,
     autoplay: true,

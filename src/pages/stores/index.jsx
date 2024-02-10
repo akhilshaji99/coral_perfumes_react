@@ -13,6 +13,7 @@ function Index() {
   const [emirates, setEmirates] = useState([]);
   const [emirate, setEmirate] = useState("");
   const [label, setLabel] = useState("");
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getEmirates().then((response) => {
@@ -24,6 +25,7 @@ function Index() {
     });
     getStores().then((response) => {
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setStores(response?.data?.data);
       }
     });
@@ -42,7 +44,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <div className="container-new">
           <div className="choose-row">
             <div className="visit-tittle">

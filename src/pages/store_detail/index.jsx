@@ -11,6 +11,7 @@ import Carousel from "react-multi-carousel";
 function Index() {
   const [gallery_images, setGallery_images] = useState([]);
   const [storeDetails, setStoreDetails] = useState();
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   const urlParams = useParams([]);
   console.log("urlParams", urlParams?.id);
@@ -24,6 +25,7 @@ function Index() {
         "store-details-by-id/" + urlParams?.id + "/"
       );
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setGallery_images(response?.data?.data?.gallery_images);
         setStoreDetails(response?.data);
         // console.log(response?.data?.data?.gallery_images)
@@ -35,7 +37,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
 
         <div className="container-new">
           <div className="title-page">

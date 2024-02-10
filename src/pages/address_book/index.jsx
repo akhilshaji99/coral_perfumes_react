@@ -14,21 +14,25 @@ function Index() {
   const [editAddressInfo, setEditAddressInfo] = useState(null);
   const [addAddressFlag, setAddAddressFlag] = useState(false);
   const [addAddressListFlag, setAddAddressListFlag] = useState(true);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     if (addAddressListFlag) {
       getAddressList().then((response) => {
         if (response?.data) {
+          setBreadCrumbDatas(response?.bread_crumb_data)
           setAddressList(response?.data);
         }
       });
     }
   }, [addAddressListFlag]);
+
   const markDefaultAddress = () => {
     MakeDefaultAddress(defaultAddress).then((response) => {
       if (response) {
         getAddressList().then((response) => {
           if (response?.data) {
+            setBreadCrumbDatas(response?.bread_crumb_data)
             setAddressList(response?.data);
           }
         });
@@ -53,7 +57,7 @@ function Index() {
       <br />
       <section>
         <div className="container-md-fluid">
-          <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
           <div className="row">
             <MyAccountSidebar />
             <AddAddress

@@ -31,6 +31,7 @@ function Index() {
   const [profile, setProfile] = useState(null);
   const [genders, setGenders] = useState(null);
   const [refetch, setRefetch] = useState(false);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -110,6 +111,7 @@ function Index() {
     try {
       const response = await request.post("get_user_profile/");
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setProfile(response?.data?.data);
         const genderList = response?.data?.data.gender_values;
         var result = Object.keys(genderList).map((key) => [
@@ -140,7 +142,7 @@ function Index() {
   return (
     <main>
       {/* section */}
-      <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
 
       <section>
         <div className="container-fluid">

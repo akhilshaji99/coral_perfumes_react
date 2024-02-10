@@ -16,6 +16,7 @@ function Index() {
   const [errorMessages, setErrorMessages] = useState(null);
   const [cancelledError, setCancelledError] = useState(null);
   const [returnedError, setReturnedError] = useState(null);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getOrders();
@@ -30,6 +31,7 @@ function Index() {
         bodyFormData
       );
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         if (
           response?.data?.data?.cancelled_orders_data?.data &&
           response?.data?.data?.cancelled_orders_data?.data.length <= 0
@@ -78,7 +80,7 @@ function Index() {
   return (
     <section>
       <div className="container-fluid">
-        <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <div className="row">
           <MyAccountSidebar />
           <div className="col-lg-9 col-md-9 col-12 prd-0">

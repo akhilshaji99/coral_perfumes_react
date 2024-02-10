@@ -10,6 +10,8 @@ function Index() {
   const [wishListMessages, setWishListMessages] = useState(null);
   const [reFetchApi, setReFetchApi] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+
   useEffect(() => {
     getWishlistDatas();
   }, []);
@@ -26,6 +28,7 @@ function Index() {
       const response = await request.post("get_user_wishlists/");
       setReFetchApi(false);
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setWishList(response?.data?.data);
         setWishListMessages(response?.data?.message);
       }
@@ -52,7 +55,7 @@ function Index() {
         )
       ) : (
         <main>
-          <BreadCrumps />
+          <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
 
           <section>
             <div className="container-fluid">

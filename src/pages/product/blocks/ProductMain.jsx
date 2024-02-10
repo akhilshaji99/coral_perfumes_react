@@ -19,6 +19,7 @@ function ProductMain({
   passingDataToParent,
   priceRangeFilter,
   passPageToParent,
+  setBreadCrumbDatas,
 }) {
   const urlParams = useParams([]);
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function ProductMain({
   const [relevanceFilter, setRelevanceFilter] = useState("");
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState(null);
 
   // useEffect(() => {
   //   if (count !== 0 && count !== productList.length) {
@@ -151,7 +153,9 @@ function ProductMain({
           }
         );
         if (response?.data) {
+          setTitle(response?.data?.page_title);
           setCount(response?.data?.total_count);
+          setBreadCrumbDatas(response?.data?.bread_crumb_data);
           setPageCount(response?.data?.count);
           passingDataToParent(
             response?.data?.minimum_price,
@@ -180,7 +184,7 @@ function ProductMain({
           <div className="container-fluid px-0 mb-5">
             <div className="row sortHeader">
               <div className="col-md-5">
-                <h5>Brands</h5>
+                <h5>{title}</h5>
               </div>
               <div className="col-md-7 text-end">
                 <div className="row align-items-center d-space-around">

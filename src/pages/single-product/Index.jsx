@@ -41,6 +41,7 @@ function Index() {
   const [ratingType, setRatingType] = useState("product");
   const [refetch, setRefetch] = useState(false);
   const [FbtDatas, setFbtDatas] = useState(null);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getProductDetails();
@@ -57,6 +58,7 @@ function Index() {
           "get_product_variants/" + product_slug + "/",
           bodyFormData
         );
+        setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setDatasToState(response);
       }
     } catch (error) {
@@ -191,7 +193,7 @@ function Index() {
   // var whatsappLink = "whatsapp://send?text=" + whatsappMessage;
   return (
     <>
-      <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <RatingModal
         setRefetch={setRefetch}
         currentVariant={currentVariant}

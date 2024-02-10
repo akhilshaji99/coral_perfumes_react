@@ -19,6 +19,8 @@ function Index() {
   const [status, seStatus] = useState(false);
   const [errorMessages, setErrorMessages] = useState(null);
   const [resetOrderProgress, setResetOrderProgress] = useState(false);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+
   // const [ordeStatus, setOrderStatus] = useState(false);
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function Index() {
       bodyFormData.append("token", getUserToken());
       const response = await request.post("get_user_orders/", bodyFormData);
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         if (buttonActive === 1) {
           setActiveOrders(response?.data?.data?.ongoing_orders);
         } else {
@@ -62,7 +65,7 @@ function Index() {
   return (
     <section>
       <div className="container-fluid">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <OrderCancelModal
           refetchApi={refetchApi}
           modalData={modalData}

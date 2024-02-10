@@ -8,6 +8,7 @@ function Index() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [priceRangeFilter, setPriceRangeFilter] = useState({});
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   //Creating filter array
   const checkCategoryFilter = (checkedValue, attribute) => {
@@ -55,7 +56,7 @@ function Index() {
       <main>
         <div className="container-fluid">
           <div className="d-none d-sm-block">
-            <BreadCrumps />
+            <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
           </div>
           <div className="row gx-10">
             <div className="col-lg-3 col-md-4 product-filter-sidebar">
@@ -75,6 +76,7 @@ function Index() {
                 passingDataToParent={passingDataToParent}
                 priceRangeFilter={priceRangeFilter}
                 passPageToParent={passPageToParent}
+                setBreadCrumbDatas={setBreadCrumbDatas}
               />
             </div>
           </div>
