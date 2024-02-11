@@ -56,12 +56,12 @@ const Router = () => {
         { path: "cart", element: <Cart /> },
         {
           path: "checkout",
-          element: userDatas ? <CheckOut /> : <Navigate to="/login" />,
-        },
-        {
-          path: "checkout_v2",
           element: userDatas ? <Checkout_v2 /> : <Navigate to="/login" />,
         },
+        // {
+        //   path: "checkout_v2",
+        //   element: userDatas ? <Checkout_v2 /> : <Navigate to="/login" />,
+        // },
 
         {
           path: "wishlist",
