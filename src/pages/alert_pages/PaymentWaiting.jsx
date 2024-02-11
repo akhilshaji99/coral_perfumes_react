@@ -4,16 +4,22 @@ import request from "../../utils/request";
 import PaymentSuccess from "./PaymentSuccess";
 import PaymentFailed from "./PaymentFailed";
 import loader from "../../assets/img/loader.gif";
+import { useDispatch } from "react-redux";
+import { changeCartCount } from "../../redux/cart/cartCount";
 
 function PaymentWaiting() {
   const [loading, setLoading] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState(null);
   const [responseMessage, setResponseMessage] = useState(null);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
     const payement_type = window.location.pathname.split("/")[1];
-    if (payement_type === "tamara" || payement_type==="payment-tamara-cancel") {
+    if (
+      payement_type === "tamara" ||
+      payement_type === "payment-tamara-cancel"
+    ) {
       getTamaraResponse();
     }
     if (payement_type === "tap") {
@@ -121,6 +127,7 @@ function PaymentWaiting() {
           setLoading(false);
           if (response?.data?.status) {
             setPaymentStatus(response?.data?.status);
+            dispatch(changeCartCount(0));
           } else {
             setPaymentStatus(response?.data?.status);
           }
