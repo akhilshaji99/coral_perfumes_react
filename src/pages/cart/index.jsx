@@ -24,6 +24,7 @@ function Index() {
   const [promoCode, setPromoCode] = useState("");
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     cartFetchFunctionCall();
@@ -39,6 +40,7 @@ function Index() {
     getCartDatas().then((response) => {
       console.log(response);
       if (response?.status) {
+        setBreadCrumbDatas(response?.bread_crumb_data)
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
@@ -67,7 +69,7 @@ function Index() {
       ) : (
         <section className="my-bag">
           <div className="container-fluid">
-            <BreadCrumps />
+            <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
             {/* row */}
             <div className="row">
               <div className="col-12">
