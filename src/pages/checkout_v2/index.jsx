@@ -954,7 +954,8 @@ function Index() {
                       )}
                       {/* {checkoutDatas?.address_id === null ||
                       parseInt(addressForm.values.delivery_type) === 2 ? ( */}
-                      {checkoutDatas?.address_id === null  || saveAddressStatus ||
+                      {checkoutDatas?.address_id === null ||
+                      saveAddressStatus ||
                       addressForm.values.delivery_type === 2 ? (
                         <div className="row align-items-center mt-5 ml-5 pb-5">
                           <div className="col-md-6 col-12 mob-change">
@@ -991,21 +992,23 @@ function Index() {
                         <div className="d-flex row align-items-center">
                           <div className="col-md-10">
                             <div className="row align-items-center">
-                              <div className="col-2 col-md-1">
-                                <div className="form-check">
-                                  <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="gift_wrapping"
-                                    checked={giftWrappingStatus}
-                                    // value={addressForm.values.gift_wrapping}
-                                    onClick={() => {
-                                      setGiftWrappingStatus(true);
-                                      setGiftWrapLoader(true);
-                                    }}
-                                  />
+                              {checkoutDatas?.gift_wrap_content ? (
+                                <div className="col-2 col-md-1">
+                                  <div className="form-check">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="gift_wrapping"
+                                      checked={giftWrappingStatus}
+                                      // value={addressForm.values.gift_wrapping}
+                                      onClick={() => {
+                                        setGiftWrappingStatus(true);
+                                        setGiftWrapLoader(true);
+                                      }}
+                                    />
+                                  </div>
                                 </div>
-                              </div>
+                              ) : null}
                               <div className="col-10 col-md-9 p-0">
                                 <h5 className="h6 pt-2">
                                   {checkoutDatas?.gift_wrap_content}{" "}
