@@ -465,7 +465,7 @@ img.check_addr_edit {
 }
 .secure-checkout-button {
   background: #76bc21 !important;
-  color: #fff !important;
+  color: #000  !important;
 }
 .chk_secure {
   color: #000;

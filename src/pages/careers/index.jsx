@@ -10,6 +10,7 @@ function Index() {
   const [banners, setBanners] = useState({});
   const [jobcategories, setJobcategories] = useState([]);
   const [footerbanner, setFooterbanner] = useState({});
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getCareerList();
@@ -21,6 +22,7 @@ function Index() {
       //   dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.get("api/career-home-page/");
       if (response.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setBanners(response.data.banners);
         setFooterbanner(response.data.footer_banner);
         setJobcategories(response.data.job_categories);
@@ -34,7 +36,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <div className="container-new">
           <div className="title-page">
             <h1>Careers</h1>

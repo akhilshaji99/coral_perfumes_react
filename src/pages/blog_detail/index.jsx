@@ -9,6 +9,7 @@ import deviceImageRender from "../../utils/deviceImageRender";
 function Index() {
   const queryParameters = new URLSearchParams(window.location.search);
   const blog_slug = queryParameters.get("slug");
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   const [blog, setBlog] = useState({});
 
@@ -23,6 +24,7 @@ function Index() {
       //   dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.get("api/blog/" + blog_slug + "/");
       if (response.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setBlog(response.data.data);
         console.log("blogs", response.data.data);
       }
@@ -34,7 +36,7 @@ function Index() {
     <>
       <div className="page-new">
         <section className="sm-none">
-          <BreadCrumps />
+          <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
 
           <div className="container-new">
             <div className="blog-detail-page">

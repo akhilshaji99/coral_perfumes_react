@@ -19,6 +19,7 @@ import request from "../../utils/request";
 function Index() {
   const [accordianIndex, setAccordianIndex] = useState("");
   const [responseDatas, setResponseDatas] = useState(null);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getPrivateLabelDetails();
@@ -28,6 +29,7 @@ function Index() {
     try {
       const response = await request.get("api/get-private-label/");
       if (response.data) {
+        setBreadCrumbDatas(response?.data?.data?.bread_crumb_data)
         setResponseDatas(response.data.data);
       }
     } catch (error) {
@@ -36,7 +38,7 @@ function Index() {
   };
   return (
     <>
-      <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
       <div className="private-page">
         <div className="container-new pb-10">
           <div className="row mian-pg">

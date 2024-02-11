@@ -7,11 +7,14 @@ import BreadCrumps from "../common/BreadCrumps";
 
 function Index() {
   const [faq, setFaq] = useState("<></>");
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+
   useEffect(() => {
     getFaq().then((response) => {
       console.log("faq", response);
 
       if (response?.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         console.log("response?.data?.data", response?.data?.data);
         setFaq(response?.data?.data);
       }
@@ -76,7 +79,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <div className="container-new">
           <div className="title-page">
             <h1>FREQUENTLY ASKED QUESTIONS </h1>

@@ -10,7 +10,7 @@ import RoundImageList from "./blocks/RoundImageList";
 
 function Index() {
   const [blogs, setBlogs] = useState([]);
-
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   useEffect(() => {
     getBlogList();
   }, []);
@@ -22,6 +22,7 @@ function Index() {
       const response = await request.get("api/blogs/");
       if (response.data) {
         setBlogs(response.data.data);
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         console.log("blogs", response.data.data);
         // setBanners(response.data.banners);
         // setFooterbanner(response.data.footer_banner);
@@ -37,7 +38,7 @@ function Index() {
     <>
       <div className="page-new">
         <section className="sm-none">
-          <BreadCrumps />
+          <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
           <div className="container-new">
             <div className="title-page">
               <h1>Insights </h1>

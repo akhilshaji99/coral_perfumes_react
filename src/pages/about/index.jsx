@@ -10,6 +10,7 @@ import { changeFooterDatas } from "../../redux/footer/footerSlice";
 
 function Index() {
   const [aboutDatas, setAboutDatas] = useState(null);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     getAboutDetails();
@@ -19,6 +20,7 @@ function Index() {
     try {
       const response = await request.get("about");
       if (response.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setAboutDatas(response?.data?.data);
         dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
       }
@@ -30,7 +32,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <section>
           <div className="container-new">
             <div className="title-page">

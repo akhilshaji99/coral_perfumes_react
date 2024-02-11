@@ -15,6 +15,7 @@ function Index() {
   const [banners, setBanners] = useState({});
   const [jobDetails, setJobDetails] = useState({});
   const [validationMessages, setValidationMessages] = useState(null);
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   // const [submitStatus, setSubmiStatus] = useState(false);
 
   const urlParams = useParams([]);
@@ -25,6 +26,7 @@ function Index() {
     try {
       const response = await request.get("job-detail/" + urlParams?.id + "/");
       if (response.data) {
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setBanners(response.data.banner_image);
         setJobDetails(response.data.job_details);
         console.log("jobDetails", jobDetails);
@@ -95,7 +97,7 @@ function Index() {
   return (
     <>
       <div className="page-new">
-        <BreadCrumps />
+        <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
         <div className="container-new">
           <div className="title-page">
             <h1>Careers</h1>

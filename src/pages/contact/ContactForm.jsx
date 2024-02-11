@@ -5,6 +5,8 @@ import request from "../../utils/request";
 import { useState, useRef, useEffect } from "react";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
+import breadCrumb from "../common/js/breadCrumb";
+
 function ContactForm() {
   const [validationMessages, setValidationMessages] = useState(null);
   const [formDatas, setFormDatas] = useState({
@@ -13,16 +15,22 @@ function ContactForm() {
     phone: "",
     message: "",
   });
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    console.log(name)
+    console.log(name);
     setFormDatas((formDatas) => ({
       ...formDatas,
-      [name]:value,
+      [name]: value,
     }));
   };
 
+  useEffect(() => {
+    breadCrumb().then((response) => {
+      setBreadCrumbDatas(response?.bread_crumb_data);
+    });
+  }, []);
   const validateForm = () => {
     const errors = {};
 
@@ -42,53 +50,53 @@ function ContactForm() {
     //   errors.phone = "Invalid phone number format";
     // }
 
-   
-
     setValidationMessages(errors);
     return Object.keys(errors).length === 0;
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-    try {
-      var formDataToSend = new FormData();
-      console.log(formDatas.cv);
-      formDataToSend.append("name", formDatas.name);
-      formDataToSend.append("email", formDatas.email);
-      formDataToSend.append("phone", formDatas.phone);
-      formDataToSend.append("message", formDatas.message);
-      console.log("formDataToSend", formDataToSend);
-      const response = await request.post("api/submit-contact-form/", formDataToSend);
-      if (response?.data?.status) {
-        toast((t) => (
-          <AlerMessage
-            t={t}
-            toast={toast}
-            status={true}
-            title={"Success"}
-            message={response?.data?.message}
-          />
-        ));
-        setValidationMessages([]);
-        setFormDatas({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        })
-
-      } else {
-        console.log('error',response?.data?.errors)
-        setValidationMessages(response?.data?.errors);
+      try {
+        var formDataToSend = new FormData();
+        console.log(formDatas.cv);
+        formDataToSend.append("name", formDatas.name);
+        formDataToSend.append("email", formDatas.email);
+        formDataToSend.append("phone", formDatas.phone);
+        formDataToSend.append("message", formDatas.message);
+        console.log("formDataToSend", formDataToSend);
+        const response = await request.post(
+          "api/submit-contact-form/",
+          formDataToSend
+        );
+        if (response?.data?.status) {
+          toast((t) => (
+            <AlerMessage
+              t={t}
+              toast={toast}
+              status={true}
+              title={"Success"}
+              message={response?.data?.message}
+            />
+          ));
+          setValidationMessages([]);
+          setFormDatas({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        } else {
+          console.log("error", response?.data?.errors);
+          setValidationMessages(response?.data?.errors);
+        }
+      } catch (error) {
+        console.log("error", error);
       }
-    } catch (error) {
-      console.log("error", error);
     }
-  }
   };
   return (
-    <>  
-      {window.location.pathname === "/contact" ? <BreadCrumps /> : null}
+    <>
+      {window.location.pathname === "/contact" ? <BreadCrumps breadCrumbDatas={breadCrumbDatas}/> : null}
       <div className="container pt-10">
         <div className="row ">
           <div className="col-md-12">
@@ -98,8 +106,7 @@ function ContactForm() {
           </div>
           <div className="col-md-6">
             <div className="lets-form">
-         
-                <form action="#" method="post" onSubmit={handleSubmit}>
+              <form action="#" method="post" onSubmit={handleSubmit}>
                 <div className="form-group  mb-8">
                   <input
                     type="text"
@@ -110,8 +117,9 @@ function ContactForm() {
                     value={formDatas.name}
                     onChange={handleChange}
                   />
-                    <p className="form-validation-message">{validationMessages?.name}</p>
-
+                  <p className="form-validation-message">
+                    {validationMessages?.name}
+                  </p>
                 </div>
                 <div className="form-group mb-8">
                   <input
@@ -123,8 +131,9 @@ function ContactForm() {
                     value={formDatas.email}
                     onChange={handleChange}
                   />
-                    <p className="form-validation-message">{validationMessages?.email}</p>
-
+                  <p className="form-validation-message">
+                    {validationMessages?.email}
+                  </p>
                 </div>
                 <div className="form-group mb-8">
                   <input
@@ -135,10 +144,10 @@ function ContactForm() {
                     placeholder="055 923 8088"
                     value={formDatas.phone}
                     onChange={handleChange}
-                    
                   />
-                    <p className="form-validation-message">{validationMessages?.phone}</p>
-
+                  <p className="form-validation-message">
+                    {validationMessages?.phone}
+                  </p>
                 </div>
                 <div className="form-group mb-8">
                   <textarea
@@ -151,8 +160,9 @@ function ContactForm() {
                     value={formDatas.message}
                     onChange={handleChange}
                   />
-                    <p className="form-validation-message">{validationMessages?.message}</p>
-
+                  <p className="form-validation-message">
+                    {validationMessages?.message}
+                  </p>
                 </div>
                 <button
                   className="btn btn-dark col-md-6 col-12 address-button"
@@ -161,7 +171,6 @@ function ContactForm() {
                   SEND
                 </button>
               </form>
-             
             </div>
           </div>
           <div className="col-md-6 lest-img">
@@ -247,20 +256,20 @@ function ContactForm() {
                   fill="black"
                 />
               </svg>
-              <div className="add-heading"><h2>United States America</h2>
-              <p>
-                {" "}
-                Coral Perfumes LLC 
-                Coral Springs, florida 33065,
-                United States of America
-              </p>
-              <a href="mailto:info@coralperfumes.com">
-                Email: info@coralperfumes.com
+              <div className="add-heading">
+                <h2>United States America</h2>
+                <p>
+                  {" "}
+                  Coral Perfumes LLC Coral Springs, florida 33065, United States
+                  of America
+                </p>
+                <a href="mailto:info@coralperfumes.com">
+                  Email: info@coralperfumes.com
                 </a>
               </div>
             </div>
             <div className="col-md-4 d-flex loc-svg-1">
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={40}
                 height={24}
@@ -272,21 +281,21 @@ function ContactForm() {
                   fill="black"
                 />
               </svg>
-              <div className="add-heading"><h2>MYANMAR</h2>
-              <p>
-                {" "}
-                Coral Perfumes myanmar <br></br>
-                yangon, myanmar
-                <br></br>phone: +95 9442652475 <br></br>+95 9973050806
-                
-              </p>
-              <a href="mailto:myanmar@coralperfumes.com">
-                Email:myanmar@coralperfumes.com
+              <div className="add-heading">
+                <h2>MYANMAR</h2>
+                <p>
+                  {" "}
+                  Coral Perfumes myanmar <br></br>
+                  yangon, myanmar
+                  <br></br>phone: +95 9442652475 <br></br>+95 9973050806
+                </p>
+                <a href="mailto:myanmar@coralperfumes.com">
+                  Email:myanmar@coralperfumes.com
                 </a>
               </div>
             </div>
             <div className="col-md-3 d-flex loc-svg-2">
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={80}
                 height={24}
@@ -298,14 +307,14 @@ function ContactForm() {
                   fill="black"
                 />
               </svg>
-              <div className="add-heading"><h2>INDIA</h2>
-              <p>
-                {" "}
-                Coral Perfumes private limited
-                door no. SIEK 13 Industrial estate
-                kallimel p.o  mavelikara, alleppey, kerala,INDIA
-                <br></br>phone: 04792359555
-              </p>
+              <div className="add-heading">
+                <h2>INDIA</h2>
+                <p>
+                  {" "}
+                  Coral Perfumes private limited door no. SIEK 13 Industrial
+                  estate kallimel p.o mavelikara, alleppey, kerala,INDIA
+                  <br></br>phone: 04792359555
+                </p>
               </div>
             </div>
           </div>
