@@ -14,6 +14,7 @@ import GuestLoginModal from "./blocks/GuestLoginModal";
 import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
 import BagEmpty from "../alert_pages/BagEmpty";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 function Index() {
@@ -40,7 +41,7 @@ function Index() {
     getCartDatas().then((response) => {
       console.log(response);
       if (response?.status) {
-        setBreadCrumbDatas(response?.bread_crumb_data)
+        setBreadCrumbDatas(response?.bread_crumb_data);
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
@@ -69,7 +70,7 @@ function Index() {
       ) : (
         <section className="my-bag">
           <div className="container-fluid">
-            <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
+            <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
             {/* row */}
             <div className="row">
               <div className="col-12">
@@ -113,7 +114,9 @@ function Index() {
                               {cartData?.product_variant?.name}
                             </h6>
                             <p className="mb-0" id="hide-mob-brand-name">
-                              {cartData?.product_variant?.brand_name}
+                              <Link to={cartData?.product_variant?.brand_link} style={{color:'#76bc21'}}>
+                                {cartData?.product_variant?.brand_name}
+                              </Link>
                             </p>
                             <ul id="price-my-bag">
                               <li>

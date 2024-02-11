@@ -356,7 +356,7 @@ function Index() {
                     className="btn btn-dark"
                     style={{ marginLeft: 14 }}
                   >
-                    Back to Shopping{" "}
+                    {checkoutDatas?.back_btn_label}
                   </Link>
                 </div>
                 <div className="col-4 col-md-4  d-md-none">
@@ -373,11 +373,11 @@ function Index() {
                   <ul>
                     <li>
                       <img className="secure-img" src={SecCheck} alt="img" />
-                      <a href="#">Secure Checkout</a>
+                      <label className="chk_secure">Secure Checkout</label>
                     </li>
                     <li>
                       <img className="safe-img" src={SafeCheck} alt="img" />
-                      <a href="#">100% safe</a>
+                      <label className="chk_secure">100% safe</label>
                     </li>
                   </ul>
                 </div>

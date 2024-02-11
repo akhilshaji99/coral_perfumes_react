@@ -467,3 +467,6 @@ img.check_addr_edit {
   background: #76bc21 !important;
   color: #fff !important;
 }
+.chk_secure {
+  color: #000;
+}
