@@ -46,7 +46,7 @@ function Index() {
   const [status, setStatus] = useState(false);
   const [apiLoading, setApiLoading] = useState(false);
   const [gitWrapLoader, setGiftWrapLoader] = useState(false);
-  const [saveAddressStatus, setSaveAddressStatus] = useState(true);
+  const [saveAddressStatus, setSaveAddressStatus] = useState(false);
   const [fetchLoader, setFetchLoader] = useState(true);
 
   const changeDeliveryType = (del_type) => {
@@ -80,12 +80,12 @@ function Index() {
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
-      if (response?.data?.address_id === null) {
-        setSaveAddressStatus(true);
-      }
-      if (response?.data?.delivery_type === 1) {
-        setSaveAddressStatus(false);
-      }
+      // if (response?.data?.address_id === null) {
+      //   setSaveAddressStatus(true);
+      // }
+      // if (response?.data?.delivery_type === 1) {
+      //   setSaveAddressStatus(false);
+      // }
       //Setting initial states
       addressForm.setFieldValue(
         "fullname",
@@ -954,7 +954,7 @@ function Index() {
                       )}
                       {/* {checkoutDatas?.address_id === null ||
                       parseInt(addressForm.values.delivery_type) === 2 ? ( */}
-                      {(saveAddressStatus && !fetchLoader) ||
+                      {checkoutDatas?.address_id === null  || saveAddressStatus ||
                       addressForm.values.delivery_type === 2 ? (
                         <div className="row align-items-center mt-5 ml-5 pb-5">
                           <div className="col-md-6 col-12 mob-change">
