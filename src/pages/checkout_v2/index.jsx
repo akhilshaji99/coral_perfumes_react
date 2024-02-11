@@ -89,7 +89,8 @@ function Index() {
       //Setting initial states
       addressForm.setFieldValue(
         "fullname",
-        response?.data?.default_address?.account_address?.full_name
+        response?.data?.default_address?.account_address?.full_name ||
+          response?.data?.user_data?.full_name
       );
       addressForm.setFieldValue(
         "address",
@@ -118,7 +119,10 @@ function Index() {
         "gift_message",
         response?.data?.gift_wrap_message
       );
-
+      addressForm.setFieldValue(
+        "whatsap_no_flag",
+        response?.data?.is_whatsapp_number || 1 // Use event.target.checked to get the checked state
+      );
       if (response?.data?.address_id || response?.data?.store_id) {
         setpaymentAccordianStatus("show");
       }
@@ -169,8 +173,16 @@ function Index() {
       .string()
       .email("Enter valid email")
       .required("Email is required"),
-    address: yup.string().required("Address is required"),
-    street_name: yup.string().required("Street Name is required"),
+    // address: yup.string().required("Address is required"),
+    address: yup.string().when("delivery_type", ([delivery_type]) => {
+      if (delivery_type === 1)
+        return yup.string().required("Address is required");
+    }),
+    street_name: yup.string().when("delivery_type", ([delivery_type]) => {
+      if (delivery_type === 1)
+        return yup.string().required("Street Name is required");
+    }),
+    // street_name: yup.string().required("Street Name is required"),
   });
 
   const handleOnSubmit = (type = null) => {
@@ -230,6 +242,7 @@ function Index() {
       store_store_id: "",
       delivery_type: "",
       address_id: "",
+      whatsap_no_flag: 1,
     },
     validationSchema: checkoutValidation,
     onSubmit: handleOnSubmit,
@@ -373,18 +386,22 @@ function Index() {
                   <ul>
                     <li>
                       <img className="secure-img" src={SecCheck} alt="img" />
-                      <label className="chk_secure">Secure Checkout</label>
+                      <label className="chk_secure">
+                        {checkoutDatas?.header_lable_1}
+                      </label>
                     </li>
                     <li>
                       <img className="safe-img" src={SafeCheck} alt="img" />
-                      <label className="chk_secure">100% safe</label>
+                      <label className="chk_secure">
+                        {checkoutDatas?.header_lable_2}
+                      </label>
                     </li>
                   </ul>
                 </div>
                 <div className="col-4 col-md-4  secu-check d-md-none">
                   <div className="seimg-checkout">
                     <img className="safe-img" src={SafeCheck} alt="img" />
-                    <a href="#">100% safe</a>
+                    <a href="#">{checkoutDatas?.header_lable_2}</a>
                   </div>
                 </div>
               </div>
@@ -507,6 +524,19 @@ function Index() {
                                       onChange={addressForm.handleChange}
                                     />
                                   </div>
+                                  <input
+                                    type="checkbox"
+                                    name="whatsap_no_flag"
+                                    className="mt-2"
+                                    checked={addressForm.values.whatsap_no_flag}
+                                    onClick={(event) => {
+                                      addressForm.setFieldValue(
+                                        "whatsap_no_flag",
+                                        event.target.checked // Use event.target.checked to get the checked state
+                                      );
+                                    }}
+                                  />
+                                  <span>WhatsApp Number</span>
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">

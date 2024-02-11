@@ -23,7 +23,7 @@ const UpdateCheckoutDetails = async (
       delivery_instruction_message: checkoutUpdateParams.instructions,
       address_id: checkoutUpdateParams.address_id,
       gift_message: checkoutUpdateParams?.gift_message,
-      is_whatsapp_number: 1,
+      is_whatsapp_number: checkoutUpdateParams?.whatsap_no_flag,
       store_id: checkoutUpdateParams?.store_store_id,
       // token: getUserOrGuestToken(),
     });
