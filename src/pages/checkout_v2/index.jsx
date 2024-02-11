@@ -44,6 +44,10 @@ function Index() {
   const [promoCodeId, setPromoCodeId] = useState(null);
   const [addAddressListFlag, setAddAddressListFlag] = useState(false);
   const [status, setStatus] = useState(false);
+  const [apiLoading, setApiLoading] = useState(false);
+  const [gitWrapLoader, setGiftWrapLoader] = useState(false);
+  const [saveAddressStatus, setSaveAddressStatus] = useState(true);
+  const [fetchLoader, setFetchLoader] = useState(true);
 
   const changeDeliveryType = (del_type) => {
     addressForm.setFieldValue("delivery_type", del_type);
@@ -70,10 +74,18 @@ function Index() {
   }, []);
 
   const fetchCheckoutApi = () => {
+    setApiLoading(false);
+    setFetchLoader(true);
     getCheckOutDetails().then(async (response) => {
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
+      if (response?.data?.address_id === null) {
+        setSaveAddressStatus(true);
+      }
+      if (response?.data?.delivery_type === 1) {
+        setSaveAddressStatus(false);
+      }
       //Setting initial states
       addressForm.setFieldValue(
         "fullname",
@@ -142,7 +154,8 @@ function Index() {
       //#End
       setPromoCode(response?.data?.cart_items?.voucher_code);
       setPromoCodeId(response?.data?.cart_items?.voucher_id);
-
+      setApiLoading(true);
+      setFetchLoader(false);
       //Set Values
     });
   };
@@ -180,6 +193,7 @@ function Index() {
           }
         }
         setCheckoutUpdateLoading(false);
+        setGiftWrapLoader(false);
         //   setConfirmButtonStatus(true);
         //   setCartItems(response?.data?.data?.cart_items);
         //   setPaymentTypes(response?.data?.data?.payment_types);
@@ -267,10 +281,15 @@ function Index() {
   };
   //#End of emirate city
 
-  const changeGiftWrappingStatus = async (status) => {
-    setGiftWrappingStatus(status);
-    return status;
-  };
+  // const changeGiftWrappingStatus = async (status) => {
+  //   setGiftWrappingStatus(status);
+  //   return status;
+  // };
+  useEffect(() => {
+    if (apiLoading) {
+      handleOnSubmit();
+    }
+  }, [giftWrappingStatus]);
 
   // useEffect(() => {
   //   if (apiLoading === true) {
@@ -533,6 +552,7 @@ function Index() {
                           tabIndex={0}
                           onClick={() => {
                             changeDeliveryType(1);
+                            setSaveAddressStatus(true);
                           }}
                         >
                           Delivery Address
@@ -934,36 +954,39 @@ function Index() {
                       )}
                       {/* {checkoutDatas?.address_id === null ||
                       parseInt(addressForm.values.delivery_type) === 2 ? ( */}
-                      <div className="row align-items-center mt-5 ml-5 pb-5">
-                        <div className="col-md-6 col-12 mob-change">
-                          <button
-                            type="submit"
-                            className="btn btn-dark validate"
-                            style={{ marginLeft: 14 }}
-                            disabled={checkoutUpdateLoading}
-                          >
-                            {addressForm.values.delivery_type === 1
-                              ? addressForm.values.address_id === null
-                                ? "SAVE ADDRESS"
-                                : "Choose Address"
-                              : "PICK FROM STORE"}
-                            {checkoutUpdateLoading ? (
-                              <>
-                                &nbsp;
-                                <div
-                                  class="spinner-border spinner-border-sm"
-                                  role="status"
-                                >
-                                  <span class="visually-hidden">
-                                    Loading...
-                                  </span>
-                                </div>
-                              </>
-                            ) : null}
-                          </button>
+                      {(saveAddressStatus && !fetchLoader) ||
+                      addressForm.values.delivery_type === 2 ? (
+                        <div className="row align-items-center mt-5 ml-5 pb-5">
+                          <div className="col-md-6 col-12 mob-change">
+                            <button
+                              type="submit"
+                              className="btn btn-dark validate"
+                              style={{ marginLeft: 14 }}
+                              disabled={checkoutUpdateLoading && !gitWrapLoader}
+                            >
+                              {addressForm.values.delivery_type === 1
+                                ? addressForm.values.address_id === null
+                                  ? "SAVE ADDRESS"
+                                  : "Choose Address"
+                                : "PICK FROM STORE"}
+                              {checkoutUpdateLoading && !gitWrapLoader ? (
+                                <>
+                                  &nbsp;
+                                  <div
+                                    class="spinner-border spinner-border-sm"
+                                    role="status"
+                                  >
+                                    <span class="visually-hidden">
+                                      Loading...
+                                    </span>
+                                  </div>
+                                </>
+                              ) : null}
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      {/* ) : null} */}
+                      ) : null}
+                      {/* ) : null}  */}
                       <div className="card-body p-6 pt-1">
                         <div className="d-flex row align-items-center">
                           <div className="col-md-10">
@@ -978,13 +1001,25 @@ function Index() {
                                     // value={addressForm.values.gift_wrapping}
                                     onClick={() => {
                                       setGiftWrappingStatus(true);
+                                      setGiftWrapLoader(true);
                                     }}
                                   />
                                 </div>
                               </div>
                               <div className="col-10 col-md-9 p-0">
                                 <h5 className="h6 pt-2">
-                                  {checkoutDatas?.gift_wrap_content}
+                                  {checkoutDatas?.gift_wrap_content}{" "}
+                                  &nbsp;&nbsp;
+                                  {gitWrapLoader ? (
+                                    <div
+                                      class="spinner-border spinner-border-sm"
+                                      role="status"
+                                    >
+                                      <span class="visually-hidden">
+                                        Loading...
+                                      </span>
+                                    </div>
+                                  ) : null}
                                 </h5>
                               </div>
                               <div
@@ -999,6 +1034,7 @@ function Index() {
                                   <span
                                     onClick={() => {
                                       setGiftWrappingStatus(false);
+                                      setGiftWrapLoader(true);
                                       addressForm.setFieldValue(
                                         "gift_message",
                                         ""
