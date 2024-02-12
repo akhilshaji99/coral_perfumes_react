@@ -47,7 +47,7 @@ function Index() {
                 <h1>{responseDatas?.private_label?.page_title}</h1>{" "}
               </div>
               <div className="enquirys-btn sm-none">
-                <a href="#" className="btn btn-dark w-50  mt-2 mb-2">
+                <a href="#quick_enq" className="btn btn-dark w-50  mt-2 mb-2">
                   Quick Enquiry
                 </a>
               </div>

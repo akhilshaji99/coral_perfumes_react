@@ -97,7 +97,7 @@ function ContactForm() {
   return (
     <>
       {window.location.pathname === "/contact" ? <BreadCrumps breadCrumbDatas={breadCrumbDatas}/> : null}
-      <div className="container pt-10">
+      <div className="container pt-10"   id="quick_enq">
         <div className="row ">
           <div className="col-md-12">
             <div className="lets-tittle">

@@ -339,6 +339,9 @@ body.checkout .ReactFlagsSelect-module_selectOptions__3LNBJ {
 img.check_addr_edit {
   display: none;
 }
+.adrs-ph.form-control {
+  padding: 1px;
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .card.checkout-right-code .cart-details-img {
     width: 30px;
