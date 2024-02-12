@@ -52,10 +52,15 @@ function AddressListComponent({
                       <br />
                       {componentDatas.address}
                       <br />
-                      {componentDatas.street_address}, {componentDatas.zajel_city} ({componentDatas?.phone_country_code}),
+                      {componentDatas.street_address},{" "}
+                      {componentDatas.zajel_city} (
+                      {componentDatas?.phone_country_code}),
                       <br />
-                      {componentDatas.phone_number} <br/>
-                      {componentDatas?.email}
+                      {componentDatas.phone_number} <br />
+                      {componentDatas?.email} <br/>
+                      {componentDatas?.address_home_office === "1"
+                        ? "Home"
+                        : "Work"}
                     </p>
                   </div>
                 </div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import getAddressList from "../js/getAddressList";
 import AddressListComponent from "./AddressListComponent";
 import MakeDefaultAddress from "../js/makeDefaultAddress";
-import AddAddress from "../../address_book/blocks/AddAddress";
+import AddAddressV2 from "../../address_book/blocks/AddAddressV2";
 function AddNewAddressModal({
   componentDatas,
   setAddAddressListFlag,
@@ -18,13 +18,18 @@ function AddNewAddressModal({
 
   useEffect(() => {
     if (addAddressListFlag) {
-      getAddressList().then((response) => {
-        if (response?.data) {
-          setAddressList(response?.data);
-        }
-      });
+      fetchAddressDatas();
     }
   }, [addAddressListFlag]);
+
+  const fetchAddressDatas = () => {
+    getAddressList().then((response) => {
+      if (response?.data) {
+        setAddressList(response?.data);
+      }
+    });
+  };
+
   const handleModalClose = () => {
     setAddAddressListFlag(false);
 
@@ -52,9 +57,20 @@ function AddNewAddressModal({
     });
   };
 
+  useEffect(() => {
+    if (addAddressListFlag) {
+      fetchAddressDatas();
+    }
+  }, [addAddressListFlag]);
+
+  const resetEditAddressFlag = () => {
+    setEditAddressInfo(null);
+    setEditAddressFlag(false);
+  };
+
   return (
     <>
-      <AddAddress
+      {/* <AddAddress
         addAddressFlag={addAddressFlag}
         setAddAddressFlag={setAddAddressFlag}
         setAddAddressListFlag={setAddAddressListFlag}
@@ -62,6 +78,12 @@ function AddNewAddressModal({
         editAddressInfo={editAddressInfo}
         setEditAddressFlag={setEditAddressFlag}
         setEditAddressInfo={setEditAddressInfo}
+      /> */}
+      <AddAddressV2
+        fetchAddressDatas={fetchAddressDatas}
+        editAddressFlag={editAddressFlag}
+        editAddressInfo={editAddressInfo}
+        resetEditAddressFlag={resetEditAddressFlag}
       />
       <div
         className="modal fade bd-example-modal-lg"
@@ -104,12 +126,11 @@ function AddNewAddressModal({
               <div className="col-12 change-pop">
                 <a
                   onClick={(e) => {
-                    setAddAddressListFlag(false);
+                    e.preventDefault();
                     $("#addressModal").toggle();
                     $("#addressModal").toggleClass("modal fade modal");
                     setAddAddressFlag(true);
                     $("#AddAddress").toggle();
-                    $("#AddAddress").toggleClass("modal fade modal");
                   }}
                 >
                   + Add new address
