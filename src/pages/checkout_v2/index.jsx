@@ -1227,7 +1227,7 @@ function Index() {
                               </div>
                             </div>
                           </div> */}
-                          <div className="row">
+                          <div className="row sm-none">
                             <div className="col-12">
                               <div className="d-grid mt-5 fix-checkout">
                                 <button
@@ -1272,6 +1272,47 @@ function Index() {
                       </div>
                     </div>
                   </div>
+                  <div className="row lg-none">
+                            <div className="col-12">
+                              <div className="d-grid mt-5 fix-checkout">
+                                <button
+                                  type="button"
+                                  className={`btn btn-bgc mb-1 ${
+                                    payemntAccordianStatus === "hide" ||
+                                    addressForm.values.payment_type == null ||
+                                    finalLoading
+                                      ? ""
+                                      : "secure-checkout-button"
+                                  }`}
+                                  disabled={
+                                    payemntAccordianStatus === "hide" ||
+                                    addressForm.values.payment_type == null ||
+                                    finalLoading
+                                      ? true
+                                      : false
+                                  }
+                                  onClick={() => {
+                                    handleOnSubmit("final_submit");
+                                  }}
+                                >
+                                  SECURE CHECKOUT
+                                  {finalLoading ? (
+                                    <>
+                                      &nbsp;
+                                      <div
+                                        class="spinner-border spinner-border-sm"
+                                        role="status"
+                                      >
+                                        <span class="visually-hidden">
+                                          Loading...
+                                        </span>
+                                      </div>
+                                    </>
+                                  ) : null}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
                 </div>
               </div>
               <CartDetails

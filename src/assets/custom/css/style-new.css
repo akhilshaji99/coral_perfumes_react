@@ -2097,9 +2097,7 @@ body.address-book .form-check .form-check-input {
 body.orders .form-check .form-check-input {
   border: solid 2px #000 !important;
 }
-.order-flex h5 {
-  width: 40%;
-}
+
 .order-flex {
   width: 100%;
   display: flex;
@@ -2317,4 +2315,19 @@ body.product-details img.topArrow {
 body.product-details img.bottomArrow {
   margin: 7px;
   margin-left: 10px;
+}
+body.home .card-footer.price-footer button.btn.btn-dark.w-100.col-md-10 {
+  background-color: #76bc21;
+  border-color: #76bc21;
+  color: #000;
+}
+body.address-book .mb-3 input.form-check-input.ml-2 {
+  margin-left: 30px;
+}
+.card.address-card svg {
+  cursor: pointer;
+}
+body.product-details .card-body.fbt-product-box .product-img {
+  height: 170px;
+  cursor: default;
 }

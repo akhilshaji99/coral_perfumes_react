@@ -362,7 +362,7 @@ body.products .discount-percentage {
 }
 .store-single-img-width {
   width: 100% !important;
-      height: 488px;
+      /*height: 488px;*/
 }
 .products-filter-active {
   border-radius: 0 !important;
