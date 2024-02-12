@@ -11,13 +11,12 @@ import Select from "react-select";
 // const phoneRegExp =
 //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const newAddressFormSchema = yup.object().shape({
-  emirate: yup.string().required(),
-  fullname: yup.string().required(),
-  email: yup.string().email().required(),
-  address: yup.string().required(),
-  street_name: yup.string().required(),
-  // city: yup.string().required(),
-  phone_number: yup.string().required(),
+  // emirate: yup.string().required(),
+  // fullname: yup.string().required(),
+  // email: yup.string().email().required(),
+  // address: yup.string().required(),
+  // street_name: yup.string().required(),
+  // phone_number: yup.string().required(),
 });
 
 function getStyles(errors, fieldName) {
@@ -109,17 +108,41 @@ function AddAddress({
       getEmirates().then((response) => {
         if (response?.data) {
           setEmirates(response?.data);
+
+          let sel_emirate_id = editAddressFlag
+            ? editAddressInfo?.emirate_id
+            : response?.data[0]?.id;
+          console.log(sel_emirate_id);
           addressForm.setValues({
-            emirate: response?.data ? [0]?.id : "",
+            emirate: sel_emirate_id,
           });
-          formatCities(response?.data[0]?.areas).then((data) => {
+
+          let chk_emirates = response?.data[0]?.areas;
+          if (editAddressFlag) {
+            emirates.forEach((emirate) => {
+              if (parseInt(emirate.id) === parseInt(sel_emirate_id)) {
+                chk_emirates = emirate?.areas;
+                return;
+              }
+            });
+          }
+
+          formatCities(chk_emirates).then((data) => {
             setEmirateCityDatas(data);
             // console.log(data[0]["value"]);
             // addressForm.setFieldValue("city", data[0]["value"]);
-            setCityDefaultValue({
-              label: data[0]["value"],
-              value: data[0]["value"],
-            });
+            if (editAddressFlag) {
+              setCityDefaultValue({
+                label: editAddressInfo?.zajel_city,
+                value: editAddressInfo?.zajel_city,
+              });
+            } else {
+              setCityDefaultValue({
+                label: data[0]["value"],
+                value: data[0]["value"],
+              });
+            }
+
             //#End
           });
         }
@@ -154,24 +177,21 @@ function AddAddress({
 
   useEffect(() => {
     if (editAddressFlag) {
-      // addressForm.setValues({
-      //   postal_code: editAddressFlag ? editAddressInfo?.postal_code : "",
-      //   phone_number: editAddressFlag ? editAddressInfo?.phone_number : "",
-      //   flat_name: editAddressFlag ? editAddressInfo?.first_name : "",
-      //   emirate: editAddressFlag ? editAddressInfo?.emirate_id : "",
-      //   street_address: editAddressFlag ? editAddressInfo?.street_address : "",
-      //   building_number: editAddressFlag
-      //     ? editAddressInfo?.building_number
-      //     : "",
-      //   first_name: editAddressFlag ? editAddressInfo?.first_name : "",
-      //   last_name: editAddressFlag ? editAddressInfo?.last_name : "",
-      //   email: editAddressFlag ? editAddressInfo?.email : "",
-      //   address_id: editAddressFlag ? editAddressInfo?.id : "",
-      //   city: editAddressFlag ? editAddressInfo?.city : "",
-      //   floor_number: editAddressFlag ? editAddressInfo?.floor_number : "",
-      // });
+      addressForm.setFieldValue({
+        fullname: editAddressFlag ? editAddressInfo?.full_name : "",
+        phone_number: editAddressFlag ? editAddressInfo?.phone_number : "",
+        email: editAddressFlag ? editAddressInfo?.email : "",
+        address: editAddressFlag ? editAddressInfo?.address : "",
+        street_name: editAddressFlag ? editAddressInfo?.street_address : "",
+        city: editAddressFlag ? editAddressInfo?.city : "",
+        address_label: editAddressFlag
+          ? editAddressInfo?.address_home_office
+          : "",
+      });
+      setSelectedCountryCode(editAddressInfo);
     }
   }, [editAddressFlag]);
+
   const resetForm = () => {
     addressForm.setValues({
       fullname: "",
@@ -334,9 +354,7 @@ function AddAddress({
                           setCityDefaultValue(data[0]);
                         });
                       }}
-                      // onChange={(event) => {
-
-                      // }}
+                      value={addressForm.values.emirate}
                       style={getStyles(addressForm.errors, "emirate")}
                     >
                       {emirates.map((emirate, index) => {
