@@ -25,6 +25,8 @@ const UpdateCheckoutDetails = async (
       gift_message: checkoutUpdateParams?.gift_message,
       is_whatsapp_number: checkoutUpdateParams?.whatsap_no_flag,
       store_id: checkoutUpdateParams?.store_store_id,
+      wtsap_mobile_number: checkoutUpdateParams?.wtsap_mobile_number,
+      wtsap_country_code: checkoutUpdateParams.wtsap_country_code,
       // token: getUserOrGuestToken(),
     });
     if (response.data.status) {

@@ -66,6 +66,12 @@ function Index() {
       phone_code: countryCodes[code].primary,
     });
   };
+  const onWhatsapCountrySelect = (code) => {
+    addressForm.setFieldValue("wtsap_country_code", {
+      country_code: code,
+      phone_code: countryCodes[code].primary,
+    });
+  };
   //#End of Country code
 
   //Checkout fetch
@@ -121,8 +127,17 @@ function Index() {
       );
       addressForm.setFieldValue(
         "whatsap_no_flag",
-        response?.data?.is_whatsapp_number || 1 // Use event.target.checked to get the checked state
+        response?.data?.user_data?.is_whatsapp_number // Use event.target.checked to get the checked state
       );
+      addressForm.setFieldValue(
+        "wtsap_mobile_number",
+        response?.data?.user_data?.whatsapp_number // Use event.target.checked to get the checked state
+      );
+      addressForm.setFieldValue(
+        "wtsap_country_code",
+        response?.data?.user_data?.wtsp_country_data // Use event.target.checked to get the checked state
+      );
+
       if (response?.data?.address_id || response?.data?.store_id) {
         setpaymentAccordianStatus("show");
       }
@@ -227,6 +242,10 @@ function Index() {
         country_code: "AE",
         phone_code: "+971",
       },
+      wtsap_country_code: {
+        country_code: "AE",
+        phone_code: "+971",
+      },
       mobile_number: "",
       email: "",
       address: "",
@@ -243,6 +262,7 @@ function Index() {
       delivery_type: "",
       address_id: "",
       whatsap_no_flag: 1,
+      wtsap_mobile_number: "",
     },
     validationSchema: checkoutValidation,
     onSubmit: handleOnSubmit,
@@ -492,7 +512,6 @@ function Index() {
                                   />
                                 </div>
                               </div>
-                              {addressForm.isSubmitting}
                               <div className="col-md-6 col-12">
                                 <div className="mb-lg-0">
                                   <div
@@ -524,19 +543,6 @@ function Index() {
                                       onChange={addressForm.handleChange}
                                     />
                                   </div>
-                                  <input
-                                    type="checkbox"
-                                    name="whatsap_no_flag"
-                                    className="mt-2"
-                                    checked={addressForm.values.whatsap_no_flag}
-                                    onClick={(event) => {
-                                      addressForm.setFieldValue(
-                                        "whatsap_no_flag",
-                                        event.target.checked // Use event.target.checked to get the checked state
-                                      );
-                                    }}
-                                  />
-                                  <span>WhatsApp Number</span>
                                 </div>
                               </div>
                               <div className="col-md-6 col-12">
@@ -553,6 +559,53 @@ function Index() {
                                     value={addressForm.values.email}
                                     onChange={addressForm.handleChange}
                                   />
+                                </div>
+                              </div>
+                              <div className="col-md-12 col-12">
+                                <div className="mb-lg-0">
+                                  <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name="whatsap_no_flag"
+                                    checked={addressForm.values.whatsap_no_flag}
+                                    value={addressForm.values.whatsap_no_flag}
+                                    onClick={(event) => {
+                                      addressForm.setFieldValue(
+                                        "whatsap_no_flag",
+                                        !event.target.value // Use event.target.checked to get the checked state
+                                      );
+                                      setStatus(!status);
+                                    }}
+                                  />
+                                  <label className="option-lb ps-5">
+                                    WhatsApp Number
+                                  </label>
+                                  {!addressForm.values.whatsap_no_flag ? (
+                                    <div className={`adrs-ph form-control`}>
+                                      <ReactFlagsSelect
+                                        selected={
+                                          addressForm.values.wtsap_country_code
+                                            ?.country_code
+                                        }
+                                        onSelect={onWhatsapCountrySelect}
+                                        className="country-list"
+                                        customLabels={countryCodes}
+                                        countries={Object.keys(countryCodes)}
+                                        searchable={true}
+                                        placeholder="Country"
+                                        showSecondaryOptionLabel={true}
+                                      />
+                                      <input
+                                        type="text"
+                                        placeholder="WhatsApp Number"
+                                        name="wtsap_mobile_number"
+                                        value={
+                                          addressForm.values.wtsap_mobile_number
+                                        }
+                                        onChange={addressForm.handleChange}
+                                      />
+                                    </div>
+                                  ) : null}
                                 </div>
                               </div>
                             </div>
@@ -1273,46 +1326,44 @@ function Index() {
                     </div>
                   </div>
                   <div className="row lg-none">
-                            <div className="col-12">
-                              <div className="d-grid mt-5 fix-checkout">
-                                <button
-                                  type="button"
-                                  className={`btn btn-bgc mb-1 ${
-                                    payemntAccordianStatus === "hide" ||
-                                    addressForm.values.payment_type == null ||
-                                    finalLoading
-                                      ? ""
-                                      : "secure-checkout-button"
-                                  }`}
-                                  disabled={
-                                    payemntAccordianStatus === "hide" ||
-                                    addressForm.values.payment_type == null ||
-                                    finalLoading
-                                      ? true
-                                      : false
-                                  }
-                                  onClick={() => {
-                                    handleOnSubmit("final_submit");
-                                  }}
-                                >
-                                  SECURE CHECKOUT
-                                  {finalLoading ? (
-                                    <>
-                                      &nbsp;
-                                      <div
-                                        class="spinner-border spinner-border-sm"
-                                        role="status"
-                                      >
-                                        <span class="visually-hidden">
-                                          Loading...
-                                        </span>
-                                      </div>
-                                    </>
-                                  ) : null}
-                                </button>
+                    <div className="col-12">
+                      <div className="d-grid mt-5 fix-checkout">
+                        <button
+                          type="button"
+                          className={`btn btn-bgc mb-1 ${
+                            payemntAccordianStatus === "hide" ||
+                            addressForm.values.payment_type == null ||
+                            finalLoading
+                              ? ""
+                              : "secure-checkout-button"
+                          }`}
+                          disabled={
+                            payemntAccordianStatus === "hide" ||
+                            addressForm.values.payment_type == null ||
+                            finalLoading
+                              ? true
+                              : false
+                          }
+                          onClick={() => {
+                            handleOnSubmit("final_submit");
+                          }}
+                        >
+                          SECURE CHECKOUT
+                          {finalLoading ? (
+                            <>
+                              &nbsp;
+                              <div
+                                class="spinner-border spinner-border-sm"
+                                role="status"
+                              >
+                                <span class="visually-hidden">Loading...</span>
                               </div>
-                            </div>
-                          </div>
+                            </>
+                          ) : null}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <CartDetails

@@ -93,14 +93,14 @@ function BoughtTogether({ FbtDatas }) {
                   max: 3000,
                   min: 1480,
                 },
-                items: 2,
+                items: 2.5,
               },
               desktop: {
                 breakpoint: {
                   max: 1680,
                   min: 1024,
                 },
-                items: 2,
+                items: 2.5,
               },
               mobile: {
                 breakpoint: {
@@ -108,14 +108,14 @@ function BoughtTogether({ FbtDatas }) {
                   min: 0,
                 },
 
-                items: 2,
+                items: 2.5,
               },
               tablet: {
                 breakpoint: {
                   max: 1024,
                   min: 464,
                 },
-                items: 2,
+                items: 2.5,
               },
             }}
             rewind={false}

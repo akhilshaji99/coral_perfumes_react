@@ -219,7 +219,7 @@ function DesktopSpec({
           <div className="col-md-5">
             {FbtDatas && FbtDatas?.products?.length > 0 ? (
               <>
-                <h2 className="p-d">bought together</h2>
+                <h2 className="p-d">frequently bought together</h2>
                 <BoughtTogether FbtDatas={FbtDatas} />
               </>
             ) : null}
