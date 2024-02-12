@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 function BoughtTogether({ FbtDatas }) {
   const [unCheckedFbt, setUncheckedFbt] = useState([]);
   const [status, setStatus] = useState(false);
+  const [buttonText, setButtonText] = useState(FbtDatas?.button_title);
+  const [fbtResponse, setFbtResponse] = useState(null);
 
   const fbtAddToCart = async () => {
     try {
@@ -52,14 +54,17 @@ function BoughtTogether({ FbtDatas }) {
         unCheckedFbt.push(product_id);
       }
       setUncheckedFbt(unCheckedFbt);
-      console.log("unCheckedFbt", unCheckedFbt);
+      // console.log("unCheckedFbt", unCheckedFbt);
       setStatus(!status);
       const response = await request.post("fbt_uncheck/", {
         unchecked_products: unCheckedFbt,
         fbt_id: FbtDatas?.id,
       });
-      if (response?.data?.status) {
-      }
+      // if (response?.data?.status) {
+      //   console.log(response?.data);
+      setButtonText(response?.data?.fbt_data?.button_title);
+      setFbtResponse(response?.data?.fbt_data);
+      // }
     } catch (error) {
       console.log("error", error);
     }
@@ -185,11 +190,12 @@ function BoughtTogether({ FbtDatas }) {
         </div>
         <button
           className="btn btn-dark w-100 mt-2 fbt-add-to-cart"
+          disabled={fbtResponse?.total_amount <= 0}
           onClick={() => {
             fbtAddToCart();
           }}
         >
-          {FbtDatas?.button_title}
+          {buttonText}
         </button>
       </div>
     </>
