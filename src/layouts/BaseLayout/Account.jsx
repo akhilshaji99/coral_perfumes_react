@@ -93,8 +93,10 @@ function Account({
   const navigate = useNavigate();
 
   const searchBoxEnterPress = () => {
-    performSearch(query);
+    // performSearch(query);
     if (result?.see_all_item) {
+      setIsComponentVisible(false);
+      setResult("")
       navigate(result?.see_all_item?.link);
     }
   };

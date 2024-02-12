@@ -60,7 +60,7 @@ function Index() {
         <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
           <div className="row">
             <MyAccountSidebar />
-            <AddAddress
+            {/* <AddAddress
               addAddressFlag={addAddressFlag}
               setAddAddressFlag={setAddAddressFlag}
               setAddAddressListFlag={setAddAddressListFlag}
@@ -68,7 +68,7 @@ function Index() {
               editAddressInfo={editAddressInfo}
               setEditAddressFlag={setEditAddressFlag}
               setEditAddressInfo={setEditAddressInfo}
-            />
+            /> */}
             <div className="col-lg-9 col-md-9 col-12">
               <div className="py-6 p-md-6 p-lg-10">
                 {/* heading */}
