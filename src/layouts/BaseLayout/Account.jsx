@@ -90,11 +90,15 @@ function Account({
     }, 500);
     setStatus(!status);
   };
+  const navigate = useNavigate();
+
   const searchBoxEnterPress = () => {
     performSearch(query);
+    if (result?.see_all_item) {
+      navigate(result?.see_all_item?.link);
+    }
   };
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState(() => {
     const userDatas = JSON.parse(localStorage.getItem("userDatas"));
