@@ -54,22 +54,24 @@ function BrandRating({ refetch, currentVariant, setRatingType }) {
                       <div className="col-md-12">
                         {/* address */}
                         <div className="row">
-                          <p className="brand-author">
-                            {component.submitted_by_name}
-                          </p>
-                        </div>
-                        <div className="row">
                           <div className="col-md-6">
-                            <div className="row">
-                              <p className=" brand-rating-message">
-                                {component.message}
-                              </p>
-                            </div>
+                            <p className="brand-author">
+                              {component.submitted_by_name}
+                            </p>
                           </div>
                           <div className="col-md-6 pr-0">
                             <p className="brand-rating-date">
                               {component.submitted_date}
                             </p>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="row">
+                              <p className=" brand-rating-message">
+                                {component.message}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
