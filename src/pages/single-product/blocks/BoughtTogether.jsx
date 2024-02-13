@@ -18,6 +18,7 @@ function BoughtTogether({ FbtDatas }) {
     try {
       const response = await request.post("add_to_cart_fbt/", {
         id: FbtDatas?.id,
+        unCheckedFbt: unCheckedFbt,
       });
       if (!response?.data?.status) {
         toast((t) => (
