@@ -238,7 +238,7 @@
 
   .react-multi-carousel-list.container-with-dots.fbt-product-plus
     .react-multiple-carousel__arrow--left {
-    left: calc(0% + 1px);
+    left: calc(-3% + 1px);
     top: 103px;
   }
   .react-multi-carousel-list.container-with-dots.fbt-product-plus
@@ -247,8 +247,9 @@
     top: 103px;
   }
   h4.fbt-ellipsis-text {
-    max-height: 70px;
-  }
+    max-height: 45px;
+    line-height: 23px;
+}
 
   body.checkout .remove-cd button {
     font-size: 12px;

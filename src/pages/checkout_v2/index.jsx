@@ -562,7 +562,7 @@ function Index() {
                                 </div>
                               </div>
                               <div className="col-md-12 col-12">
-                                <div className="mb-lg-0">
+                                <div className="mb-lg-0 point-app">
                                   <input
                                     className="form-check-input"
                                     type="radio"
