@@ -1893,12 +1893,12 @@ body.orders .orders-card a {
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus
   .product-grid.slick-slider-alignment {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus
   .react-multiple-carousel__arrow--left {
-  left: calc(0% + 1px);
+  left: calc(-2% + 1px);
   top: 120px;
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus
@@ -2331,3 +2331,18 @@ body.product-details .card-body.fbt-product-box .product-img {
   height: 170px;
   cursor: default;
 }
+
+body.product-details .plus-button {
+  left: 36%;
+}
+.mb-lg-0.point-app input.form-check-input {
+  cursor: pointer;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus {
+  width: 90%;
+  position: static;
+}
+.react-multi-carousel-list.container-with-dots.fbt-product-plus li {
+  position: static !important;
+}
+

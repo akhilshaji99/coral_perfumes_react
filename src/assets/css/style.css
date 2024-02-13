@@ -30240,6 +30240,7 @@ body {
   font-size: 12px;
   font-family: var(--fc-font-regular);
   text-transform: capitalize;
+  text-align: justify;
 }
 @media only screen and (min-width: 768px) and (max-width: 1380px) {
   .wallet-banner h1 {
