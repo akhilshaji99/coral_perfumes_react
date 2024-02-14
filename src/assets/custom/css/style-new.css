@@ -2346,3 +2346,11 @@ body.product-details .plus-button {
   position: static !important;
 }
 
+body.product-details div#product-tab-pane .my-8 {
+  margin-top: 15px !important;
+}
+body.product-details div#details-tab-pane  .my-8 {
+  margin-top: 15px !important;
+}
+
+

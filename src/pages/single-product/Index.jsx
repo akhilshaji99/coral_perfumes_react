@@ -446,7 +446,7 @@ function Index() {
                   </div>
                 </div>
               </div>
-              <div className="row py-5">
+              <div className="row py-2">
                 {/* large screen button */}
                 {currentVariant ? (
                   <div className="col-xl-6 col-12 mb-3 d-none d-sm-block">
@@ -633,7 +633,7 @@ function Index() {
                               {productVariant?.main_label}
                             </span>
                             <div className="col-md-12 scrollable-area">
-                              <div className="mb-5 variant-box">
+                              <div className="mb-1 variant-box">
                                 {productVariant?.sub_datas?.map(
                                   (variant, index_inner) => {
                                     return (

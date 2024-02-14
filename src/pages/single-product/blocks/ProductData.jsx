@@ -19,7 +19,7 @@ function ProductData({ productDatas, currentVariant }) {
 
   return (
     <>
-      <div className="row py-5">
+      <div className="row py-2">
         <div className="col-xl-9 col-sm-12">
           <div className="info-box">
             {productDatas?.order_delivery_message ? (
@@ -155,7 +155,7 @@ function ProductData({ productDatas, currentVariant }) {
         </div>
       ) : null}
       {productDatas?.store_pickup_flag ? (
-        <div className="row py-5">
+        <div className="row py-2">
           <div className="col-xl-9 col-sm-12">
             <div className="info-box">
               {productDatas?.message_1 ? (

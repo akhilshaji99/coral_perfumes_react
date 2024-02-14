@@ -16,7 +16,7 @@ function DesktopSpec({
   const secondHalf = productDatas?.descriptive_attributes.slice(midpoint);
   return (
     <>
-      <div className="container-fluid d-none d-sm-block">
+      <div className="container-fluid d-none d-sm-block pt-2">
         <div className="row">
           <div className="col-md-7">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
