@@ -185,7 +185,7 @@ function BoughtTogether({ FbtDatas }) {
                       </div>
                     </div>
                   </div>
-                  <div class="plus-button">+</div>
+                  {/* <div class="plus-button">+</div> */}
                 </div>
               );
             })}
