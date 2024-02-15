@@ -213,12 +213,14 @@ function Index() {
           setpaymentAccordianStatus("show");
           if (type === "final_submit") {
             confirmCheckout().then((data) => {
+              console.log(data);
               setFinalLoading(false);
             });
           } else {
             fetchCheckoutApi();
           }
         }
+        setFinalLoading(false);
         setCheckoutUpdateLoading(false);
         setGiftWrapLoader(false);
         //   setConfirmButtonStatus(true);
@@ -461,7 +463,6 @@ function Index() {
                           href="#"
                           className="fs-5 text-inherit collapsed h4"
                           data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseTwo-1"
                           aria-expanded="true"
                           aria-controls="flush-collapseTwo-1"
                         >
@@ -487,11 +488,7 @@ function Index() {
                           </button>
                         </a>
                       </div>
-                      <div
-                        id="flush-collapseTwo-1"
-                        className="accordion-collapse collapse show "
-                        data-bs-parent="#accordionFlushExample"
-                      >
+                      <div className="accordion-collapse collapse show ">
                         <div className="mb-1">
                           <div className="card-body p-1">
                             <div className="row g-5 m-2 mts">
@@ -1282,7 +1279,29 @@ function Index() {
                           </div> */}
                           <div className="row sm-none">
                             <div className="col-12">
-                              <div className="d-grid mt-5 fix-checkout">
+                              <div
+                                className="d-grid mt-5 fix-checkout"
+                                onClick={() => {
+                                  if (
+                                    payemntAccordianStatus === "hide" ||
+                                    addressForm.values.payment_type == null ||
+                                    finalLoading
+                                  ) {
+                                    toast((t) => (
+                                      <AlerMessage
+                                        t={t}
+                                        toast={toast}
+                                        status={false}
+                                        title={"Error"}
+                                        message={
+                                          "Please choose a payment method."
+                                        }
+                                      />
+                                    ));
+                                  }
+                                  // handleOnSubmit("final_submit");
+                                }}
+                              >
                                 <button
                                   type="button"
                                   className={`btn btn-bgc mb-1 ${
