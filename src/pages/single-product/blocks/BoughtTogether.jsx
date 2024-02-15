@@ -65,6 +65,8 @@ function BoughtTogether({ FbtDatas }) {
       //   console.log(response?.data);
       setButtonText(response?.data?.fbt_data?.button_title);
       setFbtResponse(response?.data?.fbt_data);
+      FbtDatas.products = response?.data?.fbt_data?.products;
+      console.log(response?.data?.fbt_data?.products);
       // }
     } catch (error) {
       console.log("error", error);
@@ -183,11 +185,11 @@ function BoughtTogether({ FbtDatas }) {
                       </div>
                     </div>
                   </div>
+                  <div class="plus-button">+</div>
                 </div>
               );
             })}
           </Carousel>
-          <div class="plus-button">+</div>
         </div>
         <button
           className="btn btn-dark w-100 mt-2 fbt-add-to-cart"
