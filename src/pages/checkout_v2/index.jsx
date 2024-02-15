@@ -575,7 +575,7 @@ function Index() {
                                     }}
                                   />
                                   <label className="option-lb ps-5">
-                                    WhatsApp Number
+                                    {checkoutDatas?.user_data?.wtsp_label_title}
                                   </label>
                                   {!addressForm.values.whatsap_no_flag ? (
                                     <div className={`adrs-ph form-control`}>
