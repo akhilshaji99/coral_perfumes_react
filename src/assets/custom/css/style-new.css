@@ -1984,6 +1984,9 @@ button.btn.btn-dark.mt-2.fbt-add-to-cart {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  background-color: #71b520;
+  border-color: #75bb21;
+  color: #000;
 }
 div#flush-collapseOne .promo-code-label {
   color: #0aad0a;
@@ -2355,4 +2358,12 @@ body.product-details div#details-tab-pane  .my-8 {
 .brand-rating-date, .brand-rating-message {
   text-transform: none;
 }
-
+.react-multi-carousel-list.container-with-dots.fbt-product-plus .react-multi-carousel-item::after {
+  content: '+';
+  position: absolute;
+  top: 104px;
+  right: -3px;
+  font-size: 26px;
+  color: black;
+  font-weight: 800;
+}
