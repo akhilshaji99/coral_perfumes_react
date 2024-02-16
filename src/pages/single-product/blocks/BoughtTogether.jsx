@@ -6,6 +6,8 @@ import request from "../../../utils/request";
 import { useState } from "react";
 import AlerMessage from "../../common/AlerMessage";
 import toast from "react-hot-toast";
+import getUserOrGuestToken from "../../../utils/userOrGuestToken";
+
 // import { useEffect, useState } from "react";
 
 function BoughtTogether({ FbtDatas }) {
@@ -19,6 +21,7 @@ function BoughtTogether({ FbtDatas }) {
       const response = await request.post("add_to_cart_fbt/", {
         id: FbtDatas?.id,
         unCheckedFbt: unCheckedFbt,
+        token: getUserOrGuestToken(),
       });
       if (!response?.data?.status) {
         toast((t) => (
