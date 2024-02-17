@@ -53,16 +53,11 @@ function CategoryTop({ componentDatas }) {
               responsive={{
                 desktop: {
                   breakpoint: {
-                    max: 1300,
+                    max: 3000,
                     min: 1024,
                   },
                   items: 6,
                   partialVisibilityGutter: 40,
-                },
-                superLargeDesktop: {
-                  // the naming can be any, depends on you.
-                  breakpoint: { max: 1301, min: 3000 },
-                  items: 8,
                 },
                 mobile: {
                   breakpoint: {

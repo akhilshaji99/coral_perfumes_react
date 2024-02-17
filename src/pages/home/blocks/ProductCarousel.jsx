@@ -58,17 +58,17 @@ function ProductCarousel({ componentDatas }) {
               renderButtonGroupOutside={false}
               renderDotsOutside={false}
               responsive={{
-                largescreen: {
-                  breakpoint: {
-                    max: 3000,
-                    min: 1480,
-                  },
-                  items: 5,
-                  partialVisibilityGutter: 40,
-                },
+                // largescreen: {
+                //   breakpoint: {
+                //     max: 3000,
+                //     min: 1480,
+                //   },
+                //   items: 5,
+                //   partialVisibilityGutter: 40,
+                // },
                 desktop: {
                   breakpoint: {
-                    max: 1680,
+                    max: 3000,
                     min: 1024,
                   },
                   items: 4,
