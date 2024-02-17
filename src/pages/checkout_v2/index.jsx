@@ -263,7 +263,7 @@ function Index() {
       store_store_id: "",
       delivery_type: "",
       address_id: "",
-      whatsap_no_flag: 1,
+      whatsap_no_flag: '',
       wtsap_mobile_number: "",
     },
     validationSchema: checkoutValidation,
