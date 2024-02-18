@@ -92,6 +92,7 @@ function CategoryTop({ componentDatas }) {
               })}
             </Carousel>
           </div>
+          
           <div className="mob_tab_slider">
             <Slider {...settings}>
               {componentDatas.datas?.map((category, index) => {
