@@ -80,23 +80,25 @@ function Index() {
       setFbtDatas(response?.data?.fbt_data);
     }
     if (response?.data?.attribute_datas) {
-      const dataArray = [];
-      let i = 0;
-      for (const key in response?.data?.attribute_datas) {
-        dataArray.push({
-          main_label: key,
-          layout: null,
-          sub_datas: [],
-        });
-        for (const key_sub in response?.data?.attribute_datas[key]["values"]) {
-          dataArray[i].sub_datas.push(
-            response?.data?.attribute_datas[key]["values"][key_sub]
-          );
-        }
-        i++;
-      }
+      // const dataArray = [];
+      // let i = 0;
+      // for (const key in response?.data?.attribute_datas) {
+      //   dataArray.push({
+      //     main_label: key,
+      //     layout: null,
+      //     sub_datas: [],
+      //   });
+      //   for (const key_sub in response?.data?.attribute_datas[key]["values"]) {
+      //     dataArray[i].sub_datas.push(
+      //       response?.data?.attribute_datas[key]["values"][key_sub]
+      //     );
+      //   }
+      //   i++;
+      // }
       // console.log(dataArray);
-      setproductVariants(dataArray);
+      setproductVariants(
+        response?.data?.attribute_datas?.data?.values?.current_variant
+      );
     }
     if (response?.data?.product_data.recommended_products) {
       setRecProducts(response?.data?.product_data.recommended_products);
@@ -620,89 +622,72 @@ function Index() {
                   </div>
                 ) : null}
               </div>
-
-              <div className="row">
-                <div className="col-md-12">
-                  {productVariants?.map((productVariant, index) => {
-                    return (
-                      <>
-                        {/* {productVariant?.layout === "layout_1" ? ( */}
-                        {productVariant.sub_datas.length > 0 ? (
-                          <div className="row" key={index}>
-                            <span className="select-size">
-                              {productVariant?.main_label}
-                            </span>
-                            <div className="col-md-12 scrollable-area">
-                              <div className="mb-1 variant-box">
-                                {productVariant?.sub_datas?.map(
-                                  (variant, index_inner) => {
-                                    return (
-                                      <button
-                                        key={index_inner}
-                                        type="button"
-                                        className={`btn btn-outline-secondary btn-variant ${
-                                          variant?.active === true
-                                            ? `variant-active`
-                                            : null
-                                        }`}
-                                        onClick={() => {
-                                          changeProductVariant(
-                                            variant?.slug
-                                            // productVariant?.attribute_name,
-                                            // variant?.value
-                                          );
-                                        }}
-                                        disabled={
-                                          variant?.availabilty === false
-                                        }
-                                      >
-                                        {variant?.label}
-                                        {variant.layout === "layout_1" ? (
-                                          <span>
-                                            <br />
-                                            {variant?.current_amount}
-                                            <br />
-                                            <del>
-                                              {variant?.original_amount}
-                                            </del>
-                                          </span>
-                                        ) : null}
-                                      </button>
-                                    );
-                                  }
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ) : null}
-                        {/* ) : productVariant?.layout === "layout_2" ? (
-                      <div className="row" key={index}>
+              {productVariants ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="row" key={1}>
                         <span className="select-size">
-                          {productVariant?.attribute_name}
+                          {productVariants?.attribute_label}
                         </span>
-                        <div className="col-md-7">
-                          <div className="mb-5 variant-box">
-                            {productVariant?.variants?.map(
+                        <div className="col-md-12 scrollable-area">
+                          <div className="mb-1 variant-box">
+                            <button
+                              key={1}
+                              type="button"
+                              className={`btn btn-outline-secondary btn-variant ${
+                                productVariants?.active === true
+                                  ? `variant-active`
+                                  : null
+                              }`}
+                              onClick={() => {
+                                changeProductVariant(
+                                  productVariants?.variant_slug
+                                  // productVariant?.attribute_name,
+                                  // variant?.value
+                                );
+                              }}
+                              // disabled={variant?.availabilty === false}
+                            >
+                              {productVariants?.value_label}
+                              {/* {variant.layout === "layout_1" ? ( */}
+                              {/* <span>
+                                    <br />
+                                    100
+                                    <br />
+                                    <del>1000</del>
+                                  </span> */}
+                              {/* ) : null} */}
+                            </button>
+                            {Object.keys(productVariants?.other_values)?.map(
                               (variant, index_inner) => {
                                 return (
                                   <button
                                     key={index_inner}
                                     type="button"
                                     className={`btn btn-outline-secondary btn-variant ${
-                                      activeVariant[
-                                        productVariant?.attribute_name
-                                      ] === variant?.value
+                                      productVariants?.other_values[variant]
+                                        ?.active === true
                                         ? `variant-active`
                                         : null
                                     }`}
                                     onClick={() => {
                                       changeProductVariant(
-                                        productVariant?.attribute_name,
-                                        variant?.value
+                                        productVariants?.other_values[variant]
+                                          ?.variant_slug
                                       );
                                     }}
+                                    // disabled={variant?.availabilty === false}
                                   >
-                                    {variant?.value}
+                                    {variant}
+                                    {/* {variant.layout === "layout_1" ? ( */}
+                                    {/* <span>
+                                    <br />
+                                    100
+                                    <br />
+                                    <del>1000</del>
+                                  </span> */}
+                                    {/* ) : null} */}
                                   </button>
                                 );
                               }
@@ -710,12 +695,96 @@ function Index() {
                           </div>
                         </div>
                       </div>
-                    ) : null} */}
-                      </>
-                    );
-                  })}
-                </div>
-              </div>
+                    </div>
+                  </div>
+                  {productVariants?.other_attributes?.map(
+                    (other_attribute, index) => {
+                      return (
+                        <div class="row">
+                          <span class="select-size">
+                            {other_attribute?.attribute_label}
+                          </span>
+                          <div class="col-md-12 scrollable-area">
+                            <div class="mb-1 variant-box">
+                              <button
+                                type="button"
+                                class={`btn btn-outline-secondary btn-variant ${
+                                  other_attribute?.active === true
+                                    ? `variant-active`
+                                    : null
+                                }`}
+                                onClick={() => {
+                                  changeProductVariant(
+                                    other_attribute?.variant_slug
+                                  );
+                                }}
+                              >
+                                {other_attribute?.value_label}
+                                {other_attribute?.layout === "layout_1" ? (
+                                  <span>
+                                    <br />
+                                    {other_attribute?.current_amount}
+                                    <br />
+                                    <del>
+                                      {" "}
+                                      {other_attribute?.original_amount}
+                                    </del>
+                                  </span>
+                                ) : null}
+                              </button>
+                              {Object.keys(other_attribute?.other_values)?.map(
+                                (other_value, index_inner) => {
+                                  return (
+                                    <button
+                                      type="button"
+                                      class={`btn btn-outline-secondary btn-variant ${
+                                        other_attribute?.other_values[
+                                          other_value
+                                        ]?.active === true
+                                          ? `variant-active`
+                                          : null
+                                      }`}
+                                      onClick={() => {
+                                        changeProductVariant(
+                                          other_attribute?.other_values[
+                                            other_value
+                                          ]?.variant_slug
+                                        );
+                                      }}
+                                    >
+                                      {other_value}
+                                      {other_attribute?.layout ===
+                                      "layout_1" ? (
+                                        <span>
+                                          <br />
+                                          {
+                                            other_attribute?.other_values[
+                                              other_value
+                                            ]?.current_amount
+                                          }
+                                          <br />
+                                          <del>
+                                            {" "}
+                                            {
+                                              other_attribute?.other_values[
+                                                other_value
+                                              ]?.original_amount
+                                            }
+                                          </del>
+                                        </span>
+                                      ) : null}
+                                    </button>
+                                  );
+                                }
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  )}
+                </>
+              ) : null}
 
               {/* <div className="row py-5">
                 <span className="select-size pb-5">Color</span>

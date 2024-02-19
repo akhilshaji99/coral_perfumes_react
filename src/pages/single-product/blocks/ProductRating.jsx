@@ -103,7 +103,7 @@ function ProductRating({ refetch, currentVariant, setRatingType }) {
                   $("#ratingModal").toggleClass("modal fade modal");
                 }}
               >
-                Rate
+                Write A Review
               </button>
             </div>
           </div>

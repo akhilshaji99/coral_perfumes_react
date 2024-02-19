@@ -263,7 +263,7 @@ function Index() {
       store_store_id: "",
       delivery_type: "",
       address_id: "",
-      whatsap_no_flag: '',
+      whatsap_no_flag: "",
       wtsap_mobile_number: "",
     },
     validationSchema: checkoutValidation,
@@ -466,7 +466,7 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseTwo-1"
                         >
-                          <button type="button" className="btn btn-default">
+                          {/* <button type="button" className="btn btn-default">
                             <span className="accordion-arrow">
                               <svg
                                 width={18}
@@ -485,7 +485,7 @@ function Index() {
                                 />
                               </svg>
                             </span>
-                          </button>
+                          </button> */}
                         </a>
                       </div>
                       <div className="accordion-collapse collapse show ">
@@ -558,53 +558,61 @@ function Index() {
                                   />
                                 </div>
                               </div>
-                              <div className="col-md-12 col-12">
-                                <div className="mb-lg-0 point-app">
-                                  <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="whatsap_no_flag"
-                                    checked={addressForm.values.whatsap_no_flag}
-                                    value={addressForm.values.whatsap_no_flag}
-                                    onClick={(event) => {
-                                      addressForm.setFieldValue(
-                                        "whatsap_no_flag",
-                                        !event.target.value // Use event.target.checked to get the checked state
-                                      );
-                                      setStatus(!status);
-                                    }}
-                                  />
-                                  <label className="option-lb ps-5">
-                                    {checkoutDatas?.user_data?.wtsp_label_title}
-                                  </label>
-                                  {!addressForm.values.whatsap_no_flag ? (
-                                    <div className={`adrs-ph form-control`}>
-                                      <ReactFlagsSelect
-                                        selected={
-                                          addressForm.values.wtsap_country_code
-                                            ?.country_code
-                                        }
-                                        onSelect={onWhatsapCountrySelect}
-                                        className="country-list"
-                                        customLabels={countryCodes}
-                                        countries={Object.keys(countryCodes)}
-                                        searchable={true}
-                                        placeholder="Country"
-                                        showSecondaryOptionLabel={true}
-                                      />
-                                      <input
-                                        type="text"
-                                        placeholder="WhatsApp Number"
-                                        name="wtsap_mobile_number"
-                                        value={
-                                          addressForm.values.wtsap_mobile_number
-                                        }
-                                        onChange={addressForm.handleChange}
-                                      />
-                                    </div>
-                                  ) : null}
+                              {checkoutDatas?.user_data?.wtsp_label_title ? (
+                                <div className="col-md-12 col-12">
+                                  <div className="mb-lg-0 point-app">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="whatsap_no_flag"
+                                      checked={
+                                        addressForm.values.whatsap_no_flag
+                                      }
+                                      value={addressForm.values.whatsap_no_flag}
+                                      onClick={(event) => {
+                                        addressForm.setFieldValue(
+                                          "whatsap_no_flag",
+                                          !addressForm.values.whatsap_no_flag // Use event.target.checked to get the checked state
+                                        );
+                                        setStatus(!status);
+                                      }}
+                                    />
+                                    <label className="option-lb ps-5">
+                                      {
+                                        checkoutDatas?.user_data
+                                          ?.wtsp_label_title
+                                      }
+                                    </label>
+                                    {!addressForm.values.whatsap_no_flag ? (
+                                      <div className={`adrs-ph form-control`}>
+                                        <ReactFlagsSelect
+                                          selected={
+                                            addressForm.values
+                                              .wtsap_country_code?.country_code
+                                          }
+                                          onSelect={onWhatsapCountrySelect}
+                                          className="country-list"
+                                          customLabels={countryCodes}
+                                          countries={Object.keys(countryCodes)}
+                                          searchable={true}
+                                          placeholder="Country"
+                                          showSecondaryOptionLabel={true}
+                                        />
+                                        <input
+                                          type="text"
+                                          placeholder="WhatsApp Number"
+                                          name="wtsap_mobile_number"
+                                          value={
+                                            addressForm.values
+                                              .wtsap_mobile_number
+                                          }
+                                          onChange={addressForm.handleChange}
+                                        />
+                                      </div>
+                                    ) : null}
+                                  </div>
                                 </div>
-                              </div>
+                              ) : null}
                             </div>
                           </div>
                         </div>
@@ -669,7 +677,7 @@ function Index() {
                           aria-expanded="true"
                           aria-controls="flush-collapseTwo"
                         >
-                          <button type="button" className="btn btn-default">
+                          {/* <button type="button" className="btn btn-default">
                             <span className="accordion-arrow">
                               <svg
                                 width={18}
@@ -688,7 +696,7 @@ function Index() {
                                 />
                               </svg>
                             </span>
-                          </button>
+                          </button> */}
                         </a>
                         {/* <div
                           id="tab-content1"
@@ -1150,7 +1158,7 @@ function Index() {
                   </form>
                   <div className="accordion-item checkout-adrs">
                     <div className="d-flex justify-content-between align-items-center adrs-info">
-                      <h4 className="pt-3 ps-3 "> PAYMENT TYPE</h4>
+                      <h4 className="pt-3 ps-3 "> CHOOSE PAYMENT METHOD</h4>
                       <a
                         href="javascript:;"
                         className="fs-5 text-inherit collapsed"
