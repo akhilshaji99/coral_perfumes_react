@@ -122,9 +122,17 @@ function Index() {
   //   // return allVariants;
   // };
 
-  const changeProductVariant = async (variant_slug) => {
+  const changeProductVariant = async (
+    variant_slug,
+    label_string,
+    label_value
+  ) => {
     const response = await request.post(
-      "get_product_by_variants/" + variant_slug + "/"
+      "get_product_by_variants/" + variant_slug + "/",
+      {
+        label_string: label_string,
+        label_value: label_value,
+      }
     );
     setDatasToState(response);
     // console.log(response);
@@ -642,7 +650,9 @@ function Index() {
                               }`}
                               onClick={() => {
                                 changeProductVariant(
-                                  productVariants?.variant_slug
+                                  productVariants?.variant_slug,
+                                  productVariants?.attribute_label,
+                                  productVariants?.value_label
                                   // productVariant?.attribute_name,
                                   // variant?.value
                                 );
@@ -674,7 +684,9 @@ function Index() {
                                     onClick={() => {
                                       changeProductVariant(
                                         productVariants?.other_values[variant]
-                                          ?.variant_slug
+                                          ?.variant_slug,
+                                        productVariants?.attribute_label,
+                                        variant
                                       );
                                     }}
                                     // disabled={variant?.availabilty === false}
@@ -715,7 +727,9 @@ function Index() {
                                 }`}
                                 onClick={() => {
                                   changeProductVariant(
-                                    other_attribute?.variant_slug
+                                    other_attribute?.variant_slug,
+                                    other_attribute?.attribute_label,
+                                    other_attribute?.value_label
                                   );
                                 }}
                               >
@@ -748,7 +762,9 @@ function Index() {
                                         changeProductVariant(
                                           other_attribute?.other_values[
                                             other_value
-                                          ]?.variant_slug
+                                          ]?.variant_slug,
+                                          other_attribute?.attribute_label,
+                                          other_value
                                         );
                                       }}
                                     >
