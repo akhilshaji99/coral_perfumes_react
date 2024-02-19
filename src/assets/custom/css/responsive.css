@@ -3,7 +3,7 @@
     max-width: 88% !important;
   }
   .footer .nav .nav-item .nav-link {
-    font-size: 15px;
+    font-size: 16px;
   }
   .product-desc-section h1 {
     font-size: 27px;
@@ -11,6 +11,24 @@
   .footer h6 {
     font-size: 14px;
   }
+  .vat-included {
+    font-size: 12px;
+  }
+  .return-policy-div a {
+    font-size: 14px;
+  }
+  .dashboard-row h6 {
+    font-size: 21px;
+}
+.dashboard-row p {
+  font-size: 16px;
+}
+.my-bag-text h6 {
+  font-size: 18px;
+}
+.p-d-c.footer-text p, a {
+  font-size: 15px;
+}
   .navbar .navbar-nav .nav-item .nav-link {
     font-size: 17px;
   }
@@ -27,7 +45,7 @@
     font-size: 13px;
   }
   .category-top-img h3 {
-    font-size: 17px;
+    font-size: 19px;
   }
   .order-top-row {
     font-size: 16px;
@@ -42,7 +60,7 @@
     max-height: 300px;
   }
   .product-grid h4 {
-    font-size: 18px;
+    font-size: 19px;
   }
   .checkout-left-card h4 {
     font-size: 21px;
@@ -54,8 +72,22 @@
     font-size: 15px;
   }
   .cart-summary-label {
-    font-size: 14px;
+    font-size: 15px;
   }
+  .alert-box-success h1 {
+    font-size: 20px;
+  }
+  .order-details h3, .returned-haed h3 {
+    font-size: 17px !important;
+}
+body.home .wallet-card {
+ max-width: 185px;
+}
+body.home .wallet-card h3 {
+  line-height: 40px;
+}
+  .alert-box-success p {
+    font-size: 14px;}
   body.blog .container-new {
     width: 100%;
     max-width: 90%;
@@ -86,6 +118,9 @@
   .nav-category .nav-item .nav-link {
     font-size: 21px;
   }
+  .category-top h1 {
+    font-size: 28px;
+}
 }
 @media (max-width: 1440px) {
   .container-new {
@@ -277,6 +312,21 @@
     margin: 0 auto;
   }
 }
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+
+  .discounted-price {
+    font-size: 12px !important;
+  }
+  .selling-price {
+    font-size: 12px !important;
+  }
+  .discount-percentage {
+    font-size: 12px !important;
+  }
+  button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
+    font-size: 12px !important;
+  }
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container-new {
     width: 90%;
@@ -334,6 +384,9 @@
     flex-wrap: wrap;
     width: 95%;
   }
+  button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
+    font-size: 11px;
+}
   .selling-price {
     font-size: 13px;
   }
@@ -390,7 +443,21 @@
   nav.fixed-top.bg-white {
     padding-bottom: 0px;
   }
-  
+  .add-to-bag-btn svg {
+    margin-left: 5px;
+}
+.discounted-price {
+  font-size: 12px !important;
+}
+.selling-price {
+  font-size: 12px !important;
+}
+.discount-percentage {
+  font-size: 12px !important;
+}
+button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
+  font-size: 12px !important;
+}
   .wallet-banner h1 {
     font-size: 30px !important;
   }
@@ -417,6 +484,11 @@
 }
   body.order-details .order-img img {
     height: 85px;
+  }
+  .side-fixed {
+    margin-top: 0px;
+    position: static;
+    width: auto;
   }
   .request-ret h3 {
     padding-right: 10px;

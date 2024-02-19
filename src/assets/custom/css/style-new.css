@@ -2367,3 +2367,8 @@ body.product-details div#details-tab-pane  .my-8 {
   color: black;
   font-weight: 800;
 }
+.side-fixed {
+  margin-top: -4%;
+  position: fixed;
+  width: 58.33333333%;
+}
