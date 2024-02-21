@@ -1162,6 +1162,19 @@ function Index() {
                       <a
                         href="javascript:;"
                         className="fs-5 text-inherit collapsed"
+                        onClick={() => {
+                          if (payemntAccordianStatus === "hide") {
+                            toast((t) => (
+                              <AlerMessage
+                                t={t}
+                                toast={toast}
+                                status={false}
+                                title={"Error"}
+                                message={"Please save your address."}
+                              />
+                            ));
+                          }
+                        }}
                       >
                         <button type="button" className="btn btn-default">
                           <span className="accordion-arrow">
@@ -1302,12 +1315,13 @@ function Index() {
                                         status={false}
                                         title={"Error"}
                                         message={
-                                          "Please choose a payment method."
+                                          payemntAccordianStatus === "hide"
+                                            ? "Please save your address."
+                                            : "Please choose a payment method."
                                         }
                                       />
                                     ));
                                   }
-                                  // handleOnSubmit("final_submit");
                                 }}
                               >
                                 <button
@@ -1354,7 +1368,30 @@ function Index() {
                   </div>
                   <div className="row lg-none">
                     <div className="col-12">
-                      <div className="d-grid mt-5 fix-checkout">
+                      <div
+                        className="d-grid mt-5 fix-checkout"
+                        onClick={() => {
+                          if (
+                            payemntAccordianStatus === "hide" ||
+                            addressForm.values.payment_type == null ||
+                            finalLoading
+                          ) {
+                            toast((t) => (
+                              <AlerMessage
+                                t={t}
+                                toast={toast}
+                                status={false}
+                                title={"Error"}
+                                message={
+                                  payemntAccordianStatus === "hide"
+                                    ? "Please save your address."
+                                    : "Please choose a payment method."
+                                }
+                              />
+                            ));
+                          }
+                        }}
+                      >
                         <button
                           type="button"
                           className={`btn btn-bgc mb-1 ${
