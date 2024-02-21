@@ -60,7 +60,6 @@ function Index() {
         );
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setDatasToState(response);
-        window.scrollTo(0, 0);
       }
     } catch (error) {
       console.log("error", error);

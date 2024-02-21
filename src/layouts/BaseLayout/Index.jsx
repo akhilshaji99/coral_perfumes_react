@@ -14,7 +14,11 @@ const BaseLayout = () => {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    console.log('window.location.href',window.location.href)
+    // window.scrollTo(0, 1);
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+  }, 1);
     document.body.className = "";
     document.body.classList.add(
       window.location.pathname.split("/")[1] === ""
