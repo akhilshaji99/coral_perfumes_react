@@ -51,6 +51,7 @@ function PaymentWaiting() {
           setLoading(false);
           if (response?.data?.status) {
             setPaymentStatus(response?.data?.status);
+            dispatch(changeCartCount(0));
           } else {
             setPaymentStatus(response?.data?.status);
           }
@@ -77,6 +78,7 @@ function PaymentWaiting() {
           setLoading(false);
           if (response?.data?.status) {
             setPaymentStatus(response?.data?.status);
+            dispatch(changeCartCount(0));
           } else {
             setPaymentStatus(response?.data?.status);
           }
@@ -103,6 +105,7 @@ function PaymentWaiting() {
           setLoading(false);
           if (response?.data?.status) {
             setPaymentStatus(response?.data?.status);
+            dispatch(changeCartCount(0));
           } else {
             setPaymentStatus(response?.data?.status);
           }
