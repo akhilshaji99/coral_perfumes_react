@@ -922,6 +922,16 @@ button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
     padding: 5px;
     display: block;
   }
+  body.stores a.dropdown-toggle.text-dark.btn-filter {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 87px;
+}
+body.stores .product-custom-dropdown .dropdown-menu {
+ 
+  right: -13px;
+}
   nav.fixed-top .icon-input input.icon-input__text-field::placeholder {
     font-weight: 900;
   }
