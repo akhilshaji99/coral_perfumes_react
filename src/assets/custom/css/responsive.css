@@ -504,6 +504,7 @@ button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
   }
   .nav-pills-dark img.megamenu-ads {
     padding-right: 0px;
+    margin-bottom: 0px;
 }
   body.checkout div#flush-collapseOne input.form-control {
     padding: 7px 10px !important;
@@ -1358,7 +1359,7 @@ body.cart footer.footer {
   }
 
   .custom-badge2 {
-    left: -10%;
+    left: -8%;
   }
   .text-size {
     font-size: 1.75rem;
@@ -1381,6 +1382,28 @@ body.cart footer.footer {
     left: 15px;
     top: 110px;
   }
+  body.product-details .out-of-stock-badge {
+    position: absolute;
+    text-transform: capitalize;
+    z-index: 10;
+    left: 15px;
+    top: 146px;
+}
+body.product-details .accordion-collapse.collapse.show .accordion-body {
+  padding-top: 0px;
+}
+body.product-details .accordion-button {
+  padding-bottom: 20px;
+}
+.offcanvas-body.mob-account-sidebar ul.nav.flex-column.nav-pills.nav-pills-dark {
+  padding-top: 3px;
+}
+.offcanvas-body.mob-account-sidebar  ul.nav.flex-column.nav-pills.nav-pills-dark .dropdown-item {
+  padding: 10px 20px;
+}
+.offcanvas-body.mob-account-sidebar  .img-nav-link {
+  padding: 8px 20px;
+}
   .badge.out-of-stock-badge.left-badge {
     position: absolute;
     text-transform: capitalize;
@@ -1626,7 +1649,7 @@ body.cart footer.footer {
     margin-top: 10px;
   }
   body.order-details .row.order-top-row label {
-    font-size: 8px;
+    font-size: 11px;
   }
   body.order-details .order-middle-row p {
     padding-top: 6px;
