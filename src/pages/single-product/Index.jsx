@@ -19,7 +19,7 @@ import BreadCrumps from "../common/BreadCrumps";
 import toast from "react-hot-toast";
 import AlerMessage from "../common/AlerMessage";
 import RatingModal from "./blocks/RatingModal";
-import NotifyIcon from "../../assets/icons/notify.svg";
+import NotifyIcon from "../../assets/icons/notifyv2.svg";
 import notify from "../cart/js/notify";
 import { useNavigate } from "react-router-dom";
 
