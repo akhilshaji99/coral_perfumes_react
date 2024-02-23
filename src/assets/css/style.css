@@ -26727,7 +26727,7 @@ span.dropdown-text.store-color {
   text-transform: uppercase;
 }
 .discounted-price {
-  color: rgba(0, 0, 0, 0.33);
+  color: #fa6338;
   font-size: 16px;
   font-family: var(--fc-font-regular);
   text-decoration: line-through;

@@ -1969,6 +1969,11 @@ body.cart p.promo-code-label {
 .change-pop a {
   cursor: pointer;
 }
+body.checkout .change-pop a {
+  cursor: pointer;
+  font-size: 15px;
+  font-family: var(--fc-font-bold);
+}
 .conatiner.pd-detail .col-md-5 .p-d {
   padding-bottom: 20px;
 }
