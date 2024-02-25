@@ -238,11 +238,10 @@ function ProductMain({
                       relevanceFilter={relevanceFilter}
                     />
                   </div>
-                  {!loading ? (
-                    <div className="col-md-3 col-12">
-                      <h6>{count} Items</h6>
-                    </div>
-                  ) : null}
+
+                  <div className="col-md-3 col-12">
+                    {!loading ? <h6>{count} Items</h6> : null}
+                  </div>
                 </div>
               </div>
             </div>

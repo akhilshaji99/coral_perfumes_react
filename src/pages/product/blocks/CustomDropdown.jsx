@@ -12,11 +12,15 @@ const CustomDropdown = ({ applyRelevanceFilter, relevanceFilter }) => {
 
   const filterDatas = [
     { label: "Sort Relevance", value: "" },
-    { label: "Price-Low To High", value: "low_to_high" },
+    { label: "Price-Low to High", value: "low_to_high" },
     { label: "Price-High to Low", value: "high_to_low" },
     { label: "New", value: "new" },
   ];
 
+  const getLabelByValue = (value) => {
+    const option = filterDatas.find((option) => option.value === value);
+    return option ? option.label : "";
+  };
   return (
     <div className="dropdown product-custom-dropdown">
       <a
@@ -24,7 +28,7 @@ const CustomDropdown = ({ applyRelevanceFilter, relevanceFilter }) => {
         type="button"
         onClick={toggleDropdown}
       >
-        Sort By Relevance{" "}
+        {getLabelByValue(relevanceFilter)}
         <svg
           className="regular-sort-icon"
           width={24}

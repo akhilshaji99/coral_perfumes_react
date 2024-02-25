@@ -15,7 +15,7 @@ import $ from "jquery";
 const prifileFormSchema = yup.object().shape({
   phone_number: yup.string().required(),
   first_name: yup.string().required(),
-  last_name: yup.string().required(),
+  // last_name: yup.string().required(),
   email: yup.string().required(),
   // date_of_birth: yup.string().required(),
   gender: yup.string().required(),
@@ -82,7 +82,7 @@ function Index() {
     initialValues: {
       phone_number: "",
       first_name: "",
-      last_name: "",
+      // last_name: "",
       email: "",
       gender: "",
       date_of_birth: null,
@@ -123,7 +123,7 @@ function Index() {
         profileForm.setValues({
           phone_number: response?.data?.data?.phone_number,
           first_name: response?.data?.data?.first_name,
-          last_name: response?.data?.data?.last_name,
+          // last_name: response?.data?.data?.last_name,
           email: response?.data?.data?.email,
           gender: response?.data?.data?.gender,
           date_of_birth: response?.data?.data?.date_of_birth,
@@ -180,7 +180,7 @@ function Index() {
                           style={getStyles(profileForm.errors, "first_name")}
                         />
                       </div>
-                      <div className="mb-30 col">
+                      {/* <div className="mb-30 col">
                         <input
                           type="text"
                           className="form-control"
@@ -190,7 +190,7 @@ function Index() {
                           onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "last_name")}
                         />
-                      </div>
+                      </div> */}
                       <div className="mb-5 col">
                         <input
                           type="text"

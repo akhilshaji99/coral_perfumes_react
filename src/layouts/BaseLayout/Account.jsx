@@ -195,7 +195,7 @@ function Account({
                   <input
                     className="form-control rounded mob-search-box"
                     type="text"
-                    placeholder="Search for products"
+                    placeholder="Search for product or brand"
                     value={query}
                     onChange={handleInputChange}
                     onKeyPress={(event) => {
