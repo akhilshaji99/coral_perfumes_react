@@ -27773,7 +27773,7 @@ span.dropdown-text.store-color {
   letter-spacing: 1.08px;
   text-transform: capitalize;
   border-radius: 0;
-  /* z-index: 9999; */
+ z-index: 2; 
 }
 .alert-btn {
   background-color: transparent;

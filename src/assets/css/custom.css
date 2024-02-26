@@ -301,6 +301,7 @@ body.products .discount-percentage {
   letter-spacing: 1.08px;
   text-transform: capitalize;
   border-radius: 0;
+  z-index: 1;
 }
 .prod-notify-me {
   color: #f22f2f;
