@@ -9,16 +9,18 @@ import { Toaster } from "react-hot-toast";
 import MobileMyAccount from "../../pages/common/MobileMyAccount";
 import MobileMenu from "./Mobilemenu";
 import request from "../../utils/request";
+import { useNavigate } from "react-router-dom";
 
 const BaseLayout = () => {
+  const navigate = useNavigate();
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    console.log('window.location.href',window.location.href)
+    console.log("window.location.href", window.location.href);
     // window.scrollTo(0, 1);
-    setTimeout(function() {
+    setTimeout(function () {
       window.scrollTo(0, 0);
-  }, 1);
+    }, 1);
     document.body.className = "";
     document.body.classList.add(
       window.location.pathname.split("/")[1] === ""
@@ -42,8 +44,14 @@ const BaseLayout = () => {
 
   const changeMyAccountMenuStatus = (status = null) => {
     //For my account
+    console.log("hereee");
     setMobileMenuStatus(false);
-    setMyAccountStatus(status === false ? status : !myAccountStatus);
+    if (localStorage.getItem("userDatas")) {
+      setMyAccountStatus(status === false ? status : !myAccountStatus);
+    } else {
+      navigate("/login");
+    }
+
     //for category
     // setMyAccountStatus(false);
     // setMobileMenuStatus(status === false ? status : !mobileMenuStatus);

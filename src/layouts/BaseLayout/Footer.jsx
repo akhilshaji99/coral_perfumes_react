@@ -349,11 +349,11 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
     {
       title: "Profile",
       onClick: ({ id }) => {
-        if (localStorage.getItem("userDatas")) {
-          changeMyAccountMenuStatus();
-        } else {
-          navigate("/login");
-        }
+        // if (localStorage.getItem("userDatas")) {
+        changeMyAccountMenuStatus();
+        // } else {
+        //   navigate("/login");
+        // }
       },
       icon: (
         <svg

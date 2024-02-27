@@ -11,6 +11,7 @@ function SingleOrder() {
   const [showOrderCancelFlag, setShowOrderCancelFlag] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [modalType, setModalType] = useState("cancel");
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     getOrderDatas();
@@ -28,6 +29,8 @@ function SingleOrder() {
       bodyFormData.append("order_id", order_id);
       const response = await request.post("get_order_details/", bodyFormData);
       if (response?.data) {
+        console.log('response?.data?.bread_crumb_data',response?.data)
+        setBreadCrumbDatas(response?.data?.bread_crumb_data)
         setOrderDetails(response?.data?.data);
       }
     } catch (error) {
@@ -37,7 +40,7 @@ function SingleOrder() {
   return (
     <section>
       <div className="container-fluid">
-        <BreadCrumps />
+        <BreadCrumps  breadCrumbDatas={breadCrumbDatas}/>
         <div className="row">
           <MyAccountSidebar />
           <OrderCancelModal
