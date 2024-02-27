@@ -27667,7 +27667,7 @@ span.dropdown-text.store-color {
   text-transform: capitalize;
 }
 .product-single-discounted-price {
-  color: #000;
+  color: #fa6338;
   font-family: var(--fc-font-regular);
   font-size: 18px;
   line-height: 185%; /* 33.3px */
