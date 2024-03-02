@@ -220,7 +220,7 @@ function Index() {
             fetchCheckoutApi();
           }
         }
-        setFinalLoading(false);
+        // setFinalLoading(false);
         setCheckoutUpdateLoading(false);
         setGiftWrapLoader(false);
         //   setConfirmButtonStatus(true);
