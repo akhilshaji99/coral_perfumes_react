@@ -201,6 +201,29 @@ function Index() {
     productDescription + "\n\n" + productUrl
   );
   // var whatsappLink = "whatsapp://send?text=" + whatsappMessage;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById("product-description");
+      const slider = document.getElementById("product-details-slider");
+      if (section) {
+        const descriptionHeight = section.offsetHeight;
+        const sliderHeight = slider.offsetHeight;
+        if (descriptionHeight > sliderHeight) {
+          console.log("need fixed class");
+        }
+        // console.log("descriptionHeight", descriptionHeight);
+        // console.log("sliderHeight", sliderHeight);
+        // setSectionHeight(height);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
       <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
@@ -211,14 +234,14 @@ function Index() {
         refetch={refetch}
       />
       <div className="conatiner pd-detail">
-        <div className="row mb-5 ">
+        <div className="row mb-5  ">
           <ProductCarousel
             sliderImages={currentVariant?.variant_images}
             stock_status={currentVariant?.stock_status}
           />
 
           <div className="col-md-5">
-            <div className="product-desc-section">
+            <div className="product-desc-section" id="product-description">
               <h2 className="product-author">
                 <Link to={"/" + currentVariant?.brand_link}>
                   {currentVariant?.brand_name}

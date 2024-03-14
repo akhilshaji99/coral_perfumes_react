@@ -87,7 +87,7 @@ function ProductCarousel({ sliderImages, stock_status }) {
         </div>
       </div>
       <div className="col-md-5 ">
-        <div className="product-showcase d-none d-sm-block">
+        <div className="product-showcase d-none d-sm-block" id="product-details-slider">
           {activeImage ? (
             <>
               <div className="product-active-image-wrapper">
