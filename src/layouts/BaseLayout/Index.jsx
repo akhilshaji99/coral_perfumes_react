@@ -76,7 +76,7 @@ const BaseLayout = () => {
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <div className="">
-        <nav className="fixed-top bg-white ">
+        <nav className="fixed-top bg-white " id="product_slider_fix">
           <TopHeader />
           <Account
             changeMyAccountMenuStatus={changeMobileMenuStatus}

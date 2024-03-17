@@ -203,6 +203,7 @@ function Index() {
   // var whatsappLink = "whatsapp://send?text=" + whatsappMessage;
 
   useEffect(() => {
+    let removeTouchFlag = false;
     const handleScroll = () => {
       const section = document.getElementById("product-description");
       const slider = document.getElementById("product-details-slider");
@@ -210,20 +211,70 @@ function Index() {
         const descriptionHeight = section.offsetHeight;
         const sliderHeight = slider.offsetHeight;
         if (descriptionHeight > sliderHeight) {
-          console.log("need fixed class");
+          var touchElement = document.getElementById("product_slider_fix");
+          var otherElement = section;
+          //Remove
+          var faq_section_touchElement =
+            document.getElementById("faq_section_touch");
+          var slider_fixed_remove_touchElement = document.getElementById(
+            "slider_fixed_remove_touch"
+          );
+          //#End
+          var isTouching = false;
+
+          var touchRect = touchElement.getBoundingClientRect();
+          var otherRect = otherElement.getBoundingClientRect();
+
+          var remSliderReact =
+            slider_fixed_remove_touchElement.getBoundingClientRect();
+          var removeTabRect = faq_section_touchElement.getBoundingClientRect();
+
+          var currentTouching =
+            touchRect.top < otherRect.bottom &&
+            touchRect.bottom > otherRect.top &&
+            touchRect.left < otherRect.right &&
+            touchRect.right > otherRect.left;
+
+          //Remove on footer touch
+          var removetabTouchFlag =
+            remSliderReact.top < removeTabRect.bottom &&
+            remSliderReact.bottom > removeTabRect.top &&
+            remSliderReact.left < removeTabRect.right &&
+            remSliderReact.right > removeTabRect.left;
+
+          if (removetabTouchFlag) {
+            removeTouchFlag = true;
+          }
+          if (window.scrollY === 0) {
+            removeTouchFlag = flashSale;
+          }
+
+          if (removeTouchFlag) {
+            handleTouch(false);
+          } else {
+            if (currentTouching) {
+              handleTouch(true);
+            } else {
+              handleTouch(false);
+            }
+          }
         }
-        // console.log("descriptionHeight", descriptionHeight);
-        // console.log("sliderHeight", sliderHeight);
-        // setSectionHeight(height);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  function handleTouch(isTouching) {
+    var vertical_sidebar = document.getElementById("slider_fixed_remove_touch");
+    if (isTouching) {
+      vertical_sidebar.classList.add("side-fixed");
+    } else {
+      vertical_sidebar.classList.remove("side-fixed");
+    }
+  }
   return (
     <>
       <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
@@ -233,12 +284,16 @@ function Index() {
         ratingType={ratingType}
         refetch={refetch}
       />
-      <div className="conatiner pd-detail">
+      <div className="conatiner pd-detail" id="single-prod-details">
         <div className="row mb-5  ">
-          <ProductCarousel
-            sliderImages={currentVariant?.variant_images}
-            stock_status={currentVariant?.stock_status}
-          />
+          <div className="col-md-7">
+            <div className="row" id="slider_fixed_remove_touch">
+              <ProductCarousel
+                sliderImages={currentVariant?.variant_images}
+                stock_status={currentVariant?.stock_status}
+              />
+            </div>
+          </div>
 
           <div className="col-md-5">
             <div className="product-desc-section" id="product-description">

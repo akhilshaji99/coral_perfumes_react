@@ -16,7 +16,10 @@ function DesktopSpec({
   const secondHalf = productDatas?.descriptive_attributes.slice(midpoint);
   return (
     <>
-      <div className="container-fluid d-none d-sm-block pt-2">
+      <div
+        className="container-fluid d-none d-sm-block pt-2"
+        id="faq_section_touch"
+      >
         <div className="row">
           <div className="col-md-7">
             <ul className="nav nav-pills nav-lb-tab" id="myTab" role="tablist">
@@ -138,12 +141,12 @@ function DesktopSpec({
         />
         <div className="row py-2 ">
           <div className=" col-xl-7 col-12 ">
-            <Link to={'/'+productDatas?.type_banner_link}>
-            <img
-              className="img-fluid get-img"
-              src={deviceImgeRender(productDatas?.type_banner_image)}
-              alt=""
-            />
+            <Link to={"/" + productDatas?.type_banner_link}>
+              <img
+                className="img-fluid get-img"
+                src={deviceImgeRender(productDatas?.type_banner_image)}
+                alt=""
+              />
             </Link>
           </div>
           <div className="col-xl-5 col-12 return-policy-div">

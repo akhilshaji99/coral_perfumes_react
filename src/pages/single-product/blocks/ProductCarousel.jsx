@@ -66,7 +66,7 @@ function ProductCarousel({ sliderImages, stock_status }) {
   }, [sliderImages]);
   return (
     <>
-      <div className="col-md-2 single-product-row">
+      <div className="col-md-4 single-product-row">
         <div className="desktop-thumbs">
           <Slider {...settings} className="slick-product-carosal">
             {sliderImages?.map((sliderImage, index) => {
@@ -86,8 +86,11 @@ function ProductCarousel({ sliderImages, stock_status }) {
           </Slider>
         </div>
       </div>
-      <div className="col-md-5 ">
-        <div className="product-showcase d-none d-sm-block" id="product-details-slider">
+      <div className="col-md-8 ">
+        <div
+          className="product-showcase d-none d-sm-block"
+          id="product-details-slider"
+        >
           {activeImage ? (
             <>
               <div className="product-active-image-wrapper">
