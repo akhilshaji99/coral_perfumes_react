@@ -913,7 +913,7 @@ function Index() {
                                   // name="store_emirate_id"
                                 >
                                   {emirates?.map((emirate) => {
-                                    return (
+                                    return emirate?.store_availability_status ? (
                                       <option
                                         value={emirate?.id}
                                         selected={
@@ -924,7 +924,7 @@ function Index() {
                                       >
                                         {emirate?.name}
                                       </option>
-                                    );
+                                    ) : null;
                                   })}
                                 </select>
                               </div>

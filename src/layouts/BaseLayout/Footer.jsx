@@ -480,7 +480,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
               </div>
               <div className="col-md-3 col-2">
                 <a
-                  href={footerDatas?.social_media?.whatsapp_number}
+                  href={`https://wa.me/${footerDatas?.social_media?.whatsapp_number}`}
                   target="_blank"
                 >
                   <img src={WhatsappIcon} alt="Whatsapp" />
@@ -544,8 +544,26 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                 <ul className="nav flex-column mb-5">
                   {footerDatas?.help?.map((helpData, index) => {
                     return (
-                      <li className="nav-item mb-2" key={index}>
-                        <Link to={helpData?.link} className="nav-link">
+                      <li
+                        className="nav-item mb-2"
+                        key={index}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (localStorage.getItem("userDatas")) {
+                            navigate("/dashboard");
+                          } else {
+                            navigate("/login");
+                          }
+                        }}
+                      >
+                        <Link
+                          to={
+                            helpData?.flag === "my_account"
+                              ? "javascript:;"
+                              : helpData?.link
+                          }
+                          className="nav-link"
+                        >
                           {helpData?.title}
                           <span className="footer-link-seperator">
                             &nbsp; | &nbsp;

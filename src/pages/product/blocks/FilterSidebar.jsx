@@ -34,15 +34,15 @@ function FilterSidebar({
 
   const getProductFilters = async () => {
     try {
+      let link_split = window.location.href.split("?");
       if (urlParams?.link_type && urlParams?.link_value) {
-        const response = await request.get(
+        const response = await request.post(
           "filterable-attributes/" +
             urlParams?.link_type +
             "/" +
             urlParams?.link_value,
           {
-            categorySearchValue,
-            categorySearchKey,
+            link_filter: link_split.length > 1 ? link_split[1] : "",
           }
         );
         if (response.data) {
