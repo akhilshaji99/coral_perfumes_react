@@ -96,7 +96,7 @@ function DesktopSpec({
             </div>
           </div>
           <div className="col-md-5">
-            <h2 className="p-d">Product Detail</h2>
+            <h2 className="p-d">Product Details</h2>
             <div className="row p-ul">
               <div className="col-md-6 p">
                 <ul>
