@@ -29,7 +29,7 @@ function Index() {
     try {
       const response = await request.get("api/get-private-label/");
       if (response.data) {
-        setBreadCrumbDatas(response?.data?.data?.bread_crumb_data)
+        setBreadCrumbDatas(response?.data?.data?.bread_crumb_data);
         setResponseDatas(response.data.data);
       }
     } catch (error) {
@@ -38,7 +38,7 @@ function Index() {
   };
   return (
     <>
-      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <div className="private-page">
         <div className="container-new pb-10">
           <div className="row mian-pg">
@@ -79,12 +79,14 @@ function Index() {
                 <div className="develo-scent">
                   <h2>{responseDatas?.private_label?.heading2}</h2>
                   <div className="pt-5 txt-end lg-none">
-                <img
-                  src={deviceImageRender(responseDatas?.private_label?.image2)}
-                  alt="it-work"
-                  className="work-it-img"
-                />
-              </div>
+                    <img
+                      src={deviceImageRender(
+                        responseDatas?.private_label?.image2
+                      )}
+                      alt="it-work"
+                      className="work-it-img"
+                    />
+                  </div>
                   <div className="accordion-scent">
                     <div className="accordion-item-scent">
                       <button
@@ -207,40 +209,52 @@ function Index() {
             <div className="row">
               <div className="col-12 col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                 <div className="quality-imgs"><img src={img3} alt="best-quality" /></div> 
-                 <div> <h4>{responseDatas?.private_label?.card_title1}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content1,
-                    }}
-                  ></div>
+                  <div className="quality-imgs">
+                    <img src={img3} alt="best-quality" />
+                  </div>
+                  <div>
+                    {" "}
+                    <h4>{responseDatas?.private_label?.card_title1}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content1,
+                      }}
+                    ></div>
                   </div>
                 </div>
               </div>
               <div className="col-12  col-md-4 btr-right">
                 <div className="quality-text">
-                <div className="quality-imgs"><img src={img4} alt="best-quality" /></div>
-                  <div><h4>{responseDatas?.private_label?.card_title2}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content2,
-                    }}
-                  ></div>
-              </div>
+                  <div className="quality-imgs">
+                    <img src={img4} alt="best-quality" />
+                  </div>
+                  <div>
+                    <h4>{responseDatas?.private_label?.card_title2}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content2,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div className="col-12  col-md-4 bdr-top bdr-sm">
                 <div className="quality-text">
-                <div className="quality-imgs"> <img src={img5} alt="best-quality" /></div> 
-                 <div><h4>{responseDatas?.private_label?.card_title3}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content3,
-                    }}
-                  ></div></div> 
+                  <div className="quality-imgs">
+                    {" "}
+                    <img src={img5} alt="best-quality" />
+                  </div>
+                  <div>
+                    <h4>{responseDatas?.private_label?.card_title3}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content3,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
-              
+
               {/* <div className="col-6 col-md-4 btr-right lg-nones bdr-top">
                 <div className="quality-text">
                   <img src={img6} alt="best-quality" />
@@ -258,35 +272,49 @@ function Index() {
             <div className="row">
               <div className="col-12 col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                <div className="quality-imgs"> <img src={img7} alt="best-quality" /></div> 
-                 <div><h4>{responseDatas?.private_label?.card_title4}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content4,
-                    }}
-                  ></div></div> 
+                  <div className="quality-imgs">
+                    {" "}
+                    <img src={img7} alt="best-quality" />
+                  </div>
+                  <div>
+                    <h4>{responseDatas?.private_label?.card_title4}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content4,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div className="col-12  col-md-4 btr-right bdr-sm">
                 <div className="quality-text">
-                <div className="quality-imgs"><img src={img8} alt="best-quality" /></div>
-                 <div><h4>{responseDatas?.private_label?.card_title5}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content5,
-                    }}
-                  ></div></div> 
+                  <div className="quality-imgs">
+                    <img src={img8} alt="best-quality" />
+                  </div>
+                  <div>
+                    <h4>{responseDatas?.private_label?.card_title5}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content5,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div className="col-12 col-md-4 ">
                 <div className="quality-text">
-                <div className="quality-imgs"> <img src={img9} alt="best-quality" /></div>
-                 <div><h4>{responseDatas?.private_label?.card_title6}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: responseDatas?.private_label?.card_content6,
-                    }}
-                  ></div></div> 
+                  <div className="quality-imgs">
+                    {" "}
+                    <img src={img9} alt="best-quality" />
+                  </div>
+                  <div>
+                    <h4>{responseDatas?.private_label?.card_title6}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: responseDatas?.private_label?.card_content6,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -368,7 +396,7 @@ function Index() {
         </section>
       </div>
       {/*-Let’s Connect*/}
-      <ContactForm />
+      <ContactForm section_status={"hide"} />
     </>
   );
 }

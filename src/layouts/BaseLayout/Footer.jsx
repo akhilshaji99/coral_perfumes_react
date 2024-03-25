@@ -548,11 +548,13 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                         className="nav-item mb-2"
                         key={index}
                         onClick={(e) => {
-                          e.preventDefault();
-                          if (localStorage.getItem("userDatas")) {
-                            navigate("/dashboard");
-                          } else {
-                            navigate("/login");
+                          if (helpData?.flag === "my_account") {
+                            e.preventDefault();
+                            if (localStorage.getItem("userDatas")) {
+                              navigate("/dashboard");
+                            } else {
+                              navigate("/login");
+                            }
                           }
                         }}
                       >
