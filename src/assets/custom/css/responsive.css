@@ -17,6 +17,16 @@
   .return-policy-div a {
     font-size: 14px;
   }
+  .ads-banner {
+    background-repeat: no-repeat;
+    background-size: 100% 100%, cover;
+    background-position: center center;
+    padding: 10% 0;
+    min-height: 519px;
+    height: 100%;
+    margin: 0 30px;
+    border-radius: 9px !important;
+}
   .dashboard-row h6 {
     font-size: 21px;
 }
