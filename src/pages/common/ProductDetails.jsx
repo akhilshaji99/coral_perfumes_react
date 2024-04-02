@@ -56,15 +56,13 @@ function ProductDetails({ product, setReFetchApi = null }) {
           />
         </div>
         <div className="card-footer border-0">
-          <h4
-            onClick={() => {
-              navigate(`/product-details/?slug=${product?.slug}`);
-            }}
-            className="ellipsis-text {
-"
-          >
-            {product.name}
-          </h4>
+        <div className="row mt-2" style={{minHeight:"50px"}}>
+            <div className="col xs-12 md-6">
+              <div  className="overflow-wrap  ">
+                <p  className="mb-0 fs-5 text-dark fw-normal">{product.name}</p>
+              </div>
+            </div>
+          </div>
           <div className="row custom-row1 mb-5 ">
             <div className="col-md-4 col-6 px-0">
               <h5 className="selling-price">
