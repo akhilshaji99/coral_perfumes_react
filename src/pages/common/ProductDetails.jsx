@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function ProductDetails({ product, setReFetchApi = null }) {
   const navigate = useNavigate();
   const [status, setStatus] = useState(false);
@@ -24,7 +23,9 @@ function ProductDetails({ product, setReFetchApi = null }) {
             </span>
           ) : null}
           {!product?.stock_status ? (
-            <span className="badge out-of-stock-badge left-badge">Out Of Stock</span>
+            <span className="badge out-of-stock-badge left-badge">
+              Out Of Stock
+            </span>
           ) : null}
           <WishlistIcon
             product_slug={product?.slug}
@@ -56,9 +57,9 @@ function ProductDetails({ product, setReFetchApi = null }) {
         </div>
         <div className="card-footer border-0">
           <h4
-          onClick={()=>{
-            navigate(`/product-details/?slug=${product?.slug}`);
-          }}
+            onClick={() => {
+              navigate(`/product-details/?slug=${product?.slug}`);
+            }}
             className="ellipsis-text {
 "
           >
@@ -71,14 +72,18 @@ function ProductDetails({ product, setReFetchApi = null }) {
               </h5>
             </div>
             <div className="col-md-4 col-6 px-0">
-              <h5 className="discounted-price">
-                {product?.currency_code} {product.original_amount}
-              </h5>
+              {product?.original_amount ? (
+                <h5 className="discounted-price">
+                  {product?.currency_code} {product.original_amount}
+                </h5>
+              ) : null}
             </div>
             <div className="col-md-4 px-0">
-              <h5 className="discount-percentage">
-                {product.discount_percentage}% off
-              </h5>
+              {product?.discount_percentage ? (
+                <h5 className="discount-percentage">
+                  {product.discount_percentage}% off
+                </h5>
+              ) : null}
             </div>
           </div>
         </div>
