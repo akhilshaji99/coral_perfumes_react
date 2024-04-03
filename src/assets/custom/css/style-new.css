@@ -238,6 +238,9 @@ ul li {
 .viisit-img {
   width: 50%;
 }
+.viisit-img img {
+  width: 100%;
+}
 .visit-text {
   width: 50%;
   height: 100%;
