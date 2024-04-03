@@ -1,4 +1,4 @@
-let base_url = "https://www.coralperfumes.com/";
+let base_url = "https://coralecom-react.cloud6.ae/";
 
 export const redirectMap = {
   "/products/category/perfumes": `${base_url}/product-category/perfumes/`,
