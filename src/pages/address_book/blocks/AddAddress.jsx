@@ -129,7 +129,7 @@ function AddAddress({
 
           formatCities(chk_emirates).then((data) => {
             setEmirateCityDatas(data);
-            // console.log(data[0]["value"]);
+        
             // addressForm.setFieldValue("city", data[0]["value"]);
             if (editAddressFlag) {
               setCityDefaultValue({
