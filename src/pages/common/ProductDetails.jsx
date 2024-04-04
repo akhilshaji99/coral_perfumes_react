@@ -58,7 +58,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
         <div className="card-footer border-0">
         <div className="row mt-2" style={{minHeight:"50px"}}>
             <div className="col xs-12 md-6">
-              <div  className="overflow-wrap  ">
+              <div  className="product-title-truncated ">
                 <p  className="mb-0 fs-5 text-dark fw-normal">{product.name}</p>
               </div>
             </div>
