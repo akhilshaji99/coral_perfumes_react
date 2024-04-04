@@ -33,6 +33,9 @@ import NotFound from "../pages/not_found/index";
 import PrivateLabel from "../pages/PrivateLabel/index";
 import ContactForm from "../pages/contact/ContactForm";
 import Checkout_v2 from "../pages/checkout_v2/index";
+import RedirectComponent from "../components/RedirectComponent";
+
+
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -168,10 +171,15 @@ const Router = () => {
           path: "contact",
           element: <ContactForm />,
         },
-        // {
-        //   path: "404",
-        //   element: <NotFound />,
-        // },
+        {
+          path: "/product-category/*",
+          element: <RedirectComponent redirectUrl="/products/category/" />,
+        },
+        {
+          path: "/perfume-brands/*",
+          element: <RedirectComponent redirectUrl="/products/brands/" />,
+        },
+        
       ],
     },
   ];

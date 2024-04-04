@@ -13,10 +13,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import $ from "jquery";
 
 const prifileFormSchema = yup.object().shape({
-  phone_number: yup.string().required(),
+  phone_number: yup.string().nullable(),
   first_name: yup.string().required(),
   // last_name: yup.string().required(),
-  email: yup.string().required(),
+  email: yup.string().nullable(),
   // date_of_birth: yup.string().required(),
   gender: yup.string().required(),
 });
@@ -219,7 +219,7 @@ function Index() {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder=""
+                          placeholder="Phone"
                           name="phone_number"
                           disabled={true}
                           value={profileForm.values.phone_number}

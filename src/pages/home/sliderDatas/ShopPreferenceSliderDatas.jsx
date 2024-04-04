@@ -6,6 +6,7 @@ function ShopPreferenceSliderDatas({ preference, index }) {
       <NavLink to={preference?.link}>
         <div className="thumbnails">
           <img
+            className="shop-preference-img"
             src={deviceImageRender(
               preference.desktop_image,
               preference.mobile_image

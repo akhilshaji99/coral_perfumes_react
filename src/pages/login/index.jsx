@@ -113,7 +113,7 @@ function Login() {
         social_type: provider,
       };
       const response = await request.post("web-social-login/", bodyFormData);
-
+    
       if (response.data.status) {
         localStorage.clear();
         const userData = {

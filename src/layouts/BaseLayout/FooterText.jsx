@@ -9,8 +9,7 @@ function FooterText() {
     (state) => state.footerDatas.isApiCompleted
   );
 
-  // console.log(footerDatas.title);
-  // console.log(isApiCompleted);
+
 
   const [footerContent, setFooterContent] = useState(null);
   const [footerTitle, setFooterTitle] = useState(null);
