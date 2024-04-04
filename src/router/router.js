@@ -1,4 +1,4 @@
-import { useRoutes, Navigate, } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import HomePage from "../pages/home/index";
 import LoginPage from "../pages/login/index";
 import ProductPage from "../pages/product/index";
@@ -34,6 +34,8 @@ import PrivateLabel from "../pages/PrivateLabel/index";
 import ContactForm from "../pages/contact/ContactForm";
 import Checkout_v2 from "../pages/checkout_v2/index";
 import RedirectComponent from "../components/RedirectComponent";
+
+
 
 const Router = () => {
   const userDatas = JSON.parse(localStorage.getItem("userDatas"));
@@ -170,10 +172,14 @@ const Router = () => {
           element: <ContactForm />,
         },
         {
-          path: "/products/category/*",
-          element: <RedirectComponent />,
+          path: "/product-category/*",
+          element: <RedirectComponent redirectUrl="/products/category/" />,
         },
-     
+        {
+          path: "/perfume-brands/*",
+          element: <RedirectComponent redirectUrl="/products/brands/" />,
+        },
+        
       ],
     },
   ];
