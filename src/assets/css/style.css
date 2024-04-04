@@ -26377,6 +26377,10 @@ span.dropdown-text.store-color {
   max-height: 208px;
 }
 
+.shop-preference-img{
+  border-radius: 15px !important;
+}
+
 /* .black {
   text-align: center;
   background: #000;
