@@ -15,6 +15,7 @@ function AdsBanner({ componentDatas }) {
     <>
       <div className="conatiner-lg-fluid cc-margin">
         <Link to={componentDatas?.datas?.[0].link}>
+          
           <div className="ads-banner" style={backgroundImage} />
         </Link>
       </div>

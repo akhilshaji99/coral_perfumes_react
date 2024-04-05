@@ -42,6 +42,7 @@ function Index() {
         <div className="container-new">
           <div className="title-page">
             <h1> {storeDetails?.data?.store_name}</h1>
+   
           </div>
           <section className="slider-owl-sect">
             <div className="container-new">
@@ -131,12 +132,15 @@ function Index() {
                 ></div>
               </div>
               <div className="store-hours">
+                
                 <h2>{storeDetails?.data?.timing_title} </h2>
                 <div
+                style={{lineHeight:'30px',fontWeight:'bold',}}
                   dangerouslySetInnerHTML={{
                     __html: storeDetails?.data?.working_hours,
                   }}
                 ></div>
+                
               </div>
               <div className="store-contact">
                 <h2>{storeDetails?.data?.location_title}</h2>

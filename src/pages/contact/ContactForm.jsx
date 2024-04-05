@@ -9,6 +9,7 @@ import breadCrumb from "../common/js/breadCrumb";
 
 function ContactForm({ section_status = null }) {
   const [validationMessages, setValidationMessages] = useState(null);
+  const [isLoading, setisLoading] = useState(false);
   const [formDatas, setFormDatas] = useState({
     name: "",
     email: "",
@@ -55,7 +56,9 @@ function ContactForm({ section_status = null }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
+      setisLoading(true);
       try {
         var formDataToSend = new FormData();
         console.log(formDatas.cv);
@@ -91,6 +94,8 @@ function ContactForm({ section_status = null }) {
         }
       } catch (error) {
         console.log("error", error);
+      } finally {
+        setisLoading(false);
       }
     }
   };
@@ -166,12 +171,32 @@ function ContactForm({ section_status = null }) {
                     {validationMessages?.message}
                   </p>
                 </div>
-                <button
-                  className="btn btn-dark col-md-6 col-12 address-button"
-                  type="submit"
-                >
-                  SEND
-                </button>
+                {!isLoading ? (
+                  <button
+                    className="btn btn-dark col-md-6 col-12 address-button"
+                    type="submit"
+                  >
+                    SEND
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-dark col-md-6 col-12 address-button disabled "
+                    type="submit"
+                  >
+                    <span>
+                      <>
+                        &nbsp;
+                        <div
+                          class="spinner-border spinner-border-sm "
+                          role="status"
+                        >
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </>
+                    </span>
+                    <span className="m-3"> SENDING... </span>
+                  </button>
+                )}
               </form>
             </div>
           </div>
