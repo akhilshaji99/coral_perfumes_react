@@ -5,3 +5,11 @@
   -webkit-box-orient: vertical;  
   overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+  .product-title-truncated {
+    line-clamp: 3 !important;
+    -webkit-line-clamp: 3 !important;
+ 
+  }
+}
