@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 function ProductData({ productDatas, currentVariant }) {
   const [dropdownOpen, setDropDownOpen] = useState(false);
+  const [emirateSelected, setEmirateSelected] = useState('Dubai')
 
   const toggleDropdown = () => {
     setDropDownOpen(!dropdownOpen);
@@ -83,7 +84,7 @@ function ProductData({ productDatas, currentVariant }) {
                           toggleDropdown();
                         }}
                       >
-                        Dubai
+                        {emirateSelected}
                       </a>
                       {/* Render the dropdown content based on the state */}
                       {dropdownOpen && (
@@ -92,13 +93,14 @@ function ProductData({ productDatas, currentVariant }) {
                           style={{ display: "block" }}
                         >
                           {/* Add your dropdown items here */}
-                          {productDatas?.emirates_list?.map(
+                          {productDatas?.emirates_list?.filter(emirate => emirate.name !== emirateSelected).map(
                             (emirate, index) => {
                               return (
                                 <label
                                   key={index}
                                   className="dropdown-item dropdown-item-custom"
                                   onClick={() => {
+                                    setEmirateSelected(emirate?.name)
                                     // applyRelevanceFilter(emirate.id);
                                     setDropDownOpen(!dropdownOpen);
                                   }}

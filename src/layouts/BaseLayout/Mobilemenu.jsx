@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../assets/icons/back_button.svg";
 import MobileHeader from "../../layouts/BaseLayout/MobileHeader";
-
+import AppStore from "../../assets/img/icons/App_Store.svg";
+import Gplay from "../../assets/img/icons/Play_Store.svg";
 function MobileMenu({
   mobileMenuStatus,
   setMobileMenuStatus,
@@ -18,6 +19,7 @@ function MobileMenu({
 }) {
   const [showSubMenus, setShowSubMenus] = useState(false);
   const [subMenuDatas, setSubMenuDatas] = useState(null);
+  const languageDirection = localStorage.getItem("languageDirection");
   const navigate = useNavigate();
 
   const handleClick = (link) => {
@@ -87,6 +89,7 @@ function MobileMenu({
                               </span>
                             ) : null}
                             {item.name}
+
                             <span className="mob-arrow d-inline-block d-sm-none d-flex justify-content-end">
                               <svg
                                 width={5}
@@ -108,6 +111,72 @@ function MobileMenu({
                         </li>
                       ))
                     : null}
+
+                  <li
+                    className="nav-item w-100"
+                    onClick={() => {
+                      localStorage.setItem(
+                        "languageDirection",
+                        languageDirection === "ltr" ? "rtl" : "ltr"
+                      );
+                      window.location.reload();
+                    }}
+                  >
+                    <a href="javascript:;" className="nav-link">
+                      Switch Language &nbsp;
+                      <span className="my-accnt-language-name">
+                        {languageDirection === null ||
+                        languageDirection === "ltr"
+                          ? "Arabic"
+                          : "English"}
+                      </span>
+                      <span className="mob-arrow  d-inline-block d-sm-none d-flex justify-content-end ">
+                        <svg
+                          width={5}
+                          height={10}
+                          viewBox="0 0 5 10"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0.977539 1L3.77482 4.29293C4.10517 4.68182 4.10517 5.31818 3.77482 5.70707L0.977539 9"
+                            stroke="black"
+                            strokeMiterlimit={10}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  </li>
+                  <li className="nav-item w-100">
+                    <div className="app-dwnld-title ">
+                      <p className="nav-link  border-0">Download Our Apps</p>
+
+                      <div className="nav-app-icons nav-link  border-0 mt-0 pt-0">
+                        <div className="row ">
+                          <div className="col-md-8 col-8">
+                            <div className="row app-pay ">
+                              <div className="col-md-6 col-6 p-0 ">
+                                <img
+                                  src={Gplay}
+                                  alt="foot_logo"
+                                  className="nav-gplay-logo"
+                                />
+                              </div>
+                              <div className="col-md-6 col-6 ">
+                                <img
+                                  src={AppStore}
+                                  alt="foot_logo"
+                                  className="nav-apple-logo"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
