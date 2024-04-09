@@ -96,7 +96,7 @@ function Account({
     // performSearch(query);
     if (result?.see_all_item) {
       setIsComponentVisible(false);
-      setResult("")
+      setResult("");
       navigate(result?.see_all_item?.link);
     }
   };
@@ -613,8 +613,8 @@ function Account({
                               src={
                                 languageDirection === null ||
                                 languageDirection === "ltr"
-                                  ? ArabLang
-                                  : EngLang
+                                  ? EngLang
+                                  : ArabLang
                               }
                               alt="Coral perfumes"
                             />
