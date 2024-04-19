@@ -5,7 +5,7 @@ function RedirectComponent(props) {
 
   const url = window.location.pathname;
   const splittedUrl = url.split("/");
-  const endPart = splittedUrl[splittedUrl.length - 1];
+  const endPart = splittedUrl[splittedUrl.length - 2];
 
   return window.location.replace(`${redirectUrl + endPart}/`);
 }
