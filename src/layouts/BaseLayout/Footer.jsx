@@ -619,7 +619,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                     disabled={!(formik.isValid && formik.dirty)}
                     className="btn btn-light w-100"
                   >
-                    Sign Up
+                    Submit
                   </button>
                   {/* </NavLink> */}
                 </div>

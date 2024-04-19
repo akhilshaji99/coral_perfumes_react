@@ -10,7 +10,7 @@ function OrderHeader({ ongoingOrder, orderType = null }) {
         </h3>
         {orderType === null ? (
           <h4>
-            <Link to={"/order-details?order_id=" + ongoingOrder?.id}>
+            <Link to={"/order-details?order_id=" + ongoingOrder?.order_no}>
               View Details
             </Link>
           </h4>
