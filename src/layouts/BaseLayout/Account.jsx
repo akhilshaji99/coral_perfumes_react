@@ -613,7 +613,7 @@ function Account({
                               src={
                                 languageDirection === null ||
                                 languageDirection === "ltr"
-                                  ? EngLang
+                                  ? ArabLang
                                   : ArabLang
                               }
                               alt="Coral perfumes"
@@ -625,7 +625,7 @@ function Account({
                               ? "ENG-AED"
                               : "ARB-AED"}
                           </div>
-                          <div className="col-md-1">
+                          {/* <div className="col-md-1">
                             <svg
                               width={8}
                               height={4}
@@ -641,11 +641,11 @@ function Account({
                                 strokeLinejoin="round"
                               />
                             </svg>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </a>
-                    <div
+                    {/* <div
                       className="dropdown-menu lang-dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
@@ -669,7 +669,7 @@ function Account({
                         <img src={EngLang} alt="Coral Perfumes" />
                         <span>ENG-AED</span>
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
