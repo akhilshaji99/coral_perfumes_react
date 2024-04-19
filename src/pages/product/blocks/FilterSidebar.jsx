@@ -273,7 +273,7 @@ function FilterSidebar({
                                     onClick={() => {
                                       checkCategoryFilter(
                                         filterData?.slug,
-                                        productFilter?.name
+                                        productFilter?.slug
                                       );
                                     }}
                                   >
