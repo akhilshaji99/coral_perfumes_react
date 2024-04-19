@@ -10,7 +10,7 @@
 @media only screen and (max-width: 600px) {
   .product-title-truncated {
     line-clamp: 3 !important;
-    -webkit-line-clamp: 3 !important;
+    -webkit-line-clamp: 2 !important;
     text-overflow: ellipsis !important;
     max-height: calc(1.5em * 3);
     overflow: hidden;

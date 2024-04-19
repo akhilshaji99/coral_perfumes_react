@@ -59,7 +59,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
         <div className="row mt-2" style={{minHeight:"50px"}}>
             <div className="col xs-12 md-6">
               <div  className="product-title-truncated ">
-                <p  className="mb-0 fs-5 text-dark fw-normal">{product.name}</p>
+                <p  className="mb-0 fs-5 text-dark fw-normal product-title-truncated">{product.name}</p>
               </div>
             </div>
           </div>
