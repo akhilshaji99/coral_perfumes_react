@@ -26656,11 +26656,17 @@ span.dropdown-text.store-color {
   .product-grid .selling-price,
   .discounted-price,
   .discount-percentage {
-    font-size: 12px !important;
-    padding-left: 5px;
+    font-size: 14px !important;
+    padding-left: 0px;
     /* text-align: left; */
     font-family: var(--fc-font-regular);
   }
+  body.products .product-grid {
+    padding-bottom: 10px;
+  }
+  .col-lg-3.col-md-4.product-filter-sidebar aside.mb-6.mb-md-0 {
+    margin-bottom: 0px !important;
+}
   .discount-percentage {
     display: flex;
     justify-content: space-between;
@@ -27098,7 +27104,7 @@ span.dropdown-text.store-color {
 }
 .ads-banner {
   background-repeat: no-repeat;
-  background-size: 100% 100%, cover;
+  background-size: cover;
   background-position: center center;
   padding: 18% 0;
   min-height: 480px;
