@@ -74,7 +74,7 @@ ul li {
 }
 .container-new {
   width: 100%;
-  max-width: 1300px;
+  max-width: 90%;
   margin: 0 auto;
 }
 .info-text p {
@@ -246,10 +246,16 @@ ul li {
   height: 100%;
   background-color: #000;
   max-height: max-content;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  padding-top: 30px;
+  position: relative;
+}
+.visit-pg {
+  min-height: 145px;
+  max-height: 145px;
+  overflow: auto;
 }
 .choose-row {
   display: flex;
@@ -280,6 +286,8 @@ ul li {
   font-family: "BrandonText-Bold", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  position: absolute;
+        bottom: 30px;
 }
 .visit-text h2 {
   color: #fff;
@@ -287,8 +295,8 @@ ul li {
   font-size: 25px;
   font-style: normal;
   font-weight: 450;
-  line-height: 40px;
-  text-transform: lowercase;
+  line-height: 32px;
+  text-transform: capitalize;
 }
 .visit-text h2::first-letter {
   text-transform: uppercase;
@@ -1752,6 +1760,7 @@ button.order-btn-inactive {
 h2.product-author a {
   color: #80ba66;
   font-size: 18px;
+  text-transform: uppercase;
 }
 .rc-slider-handle {
   border: solid 2px #000000 !important;

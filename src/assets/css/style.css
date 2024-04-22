@@ -26623,7 +26623,7 @@ span.dropdown-text.store-color {
     text-transform: capitalize;
   }
   .carousel-product-margin {
-    margin: 0 7.5px;
+    margin: 0 5.5px !important;
   }
   .product-img {
     height: 140px !important;

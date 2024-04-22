@@ -79,6 +79,7 @@ function Index() {
                       </div>
                       <div className="visit-text">
                         <div class="ms-9 me-9">
+                        <div className="visit-pg">
                           <h2>{store?.store_name} </h2>
                           <p
                             dangerouslySetInnerHTML={{
@@ -86,6 +87,7 @@ function Index() {
                             }}
                           ></p>
                           <p>{store?.store_location}</p>
+                          </div>
                           <Link to={`/stores-detail/${store?.title_slug}`}>
                             VISIT US{" "}
                           </Link>
