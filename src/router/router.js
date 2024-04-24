@@ -94,8 +94,8 @@ const Router = () => {
           path: "dashboard",
           element: userDatas ? <DashBoard /> : <Navigate to="/login" />,
         },
-        { path: "stores", element: <Stores /> },
-        { path: "stores-detail/:id", element: <StoresDetails /> },
+        { path: "coral-perfumes-showrooms", element: <Stores /> },
+        { path: "coral-perfumes-showrooms/:id", element: <StoresDetails /> },
         { path: "about", element: <About /> },
         { path: "blog-details/*", element: <BlogDetails /> },
         { path: "blog", element: <Blog /> },
@@ -164,11 +164,11 @@ const Router = () => {
           element: <TermsConditions />,
         },
         {
-          path: "prvt-label",
+          path: "perfume-manufacturer-in-uae",
           element: <PrivateLabel />,
         },
         {
-          path: "contact",
+          path: "contact-us",
           element: <ContactForm />,
         },
         {

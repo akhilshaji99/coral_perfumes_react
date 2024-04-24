@@ -584,7 +584,7 @@ function Account({
                   </svg>
                 </div>
                 <div className="list-inline-item me-5">
-                  <NavLink className="text-center" to="/stores">
+                  <NavLink className="text-center" to="/coral-perfumes-showrooms">
                     <img
                       src={Store}
                       className="img-fluid imgs-header"

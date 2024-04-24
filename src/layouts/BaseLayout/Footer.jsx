@@ -251,7 +251,7 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
     },
     {
       title: "Store",
-      onClick: ({ id }) => navigate("/stores"),
+      onClick: ({ id }) => navigate("/coral-perfumes-showrooms"),
       icon: (
         <svg
           width={27}

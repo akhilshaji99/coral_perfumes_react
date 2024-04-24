@@ -101,7 +101,7 @@ function ContactForm({ section_status = null }) {
   };
   return (
     <>
-      {window.location.pathname === "/contact" ? (
+      {window.location.pathname === "/contact-us" ? (
         <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       ) : null}
       <div className="container pt-10" id="quick_enq">

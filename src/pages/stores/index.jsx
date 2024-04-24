@@ -88,7 +88,7 @@ function Index() {
                           ></p>
                           <p>{store?.store_location}</p>
                           </div>
-                          <Link to={`/stores-detail/${store?.title_slug}`}>
+                          <Link to={`/coral-perfumes-showrooms/${store?.title_slug}`}>
                             VISIT US{" "}
                           </Link>
                         </div>
