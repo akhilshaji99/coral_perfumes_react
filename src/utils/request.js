@@ -69,20 +69,45 @@ service.interceptors.response.use(
       }
 
       // Open Graph (og) tags
-      meta = document.createElement("meta");
-      meta.property = "og:type";
-      meta.content = metaData.og_type;
-      head.appendChild(meta);
+      var newMetaTag_title = document.createElement("meta");
+      newMetaTag_title.setAttribute("property", "og:title");
+      newMetaTag_title.setAttribute("content", metaData.og_title);
+      document.head.appendChild(newMetaTag_title);
 
-      meta = document.createElement("meta");
-      meta.property = "og:description";
-      meta.content = metaData.og_description;
-      head.appendChild(meta);
+      var newMetaTag = document.createElement("meta");
+      newMetaTag.setAttribute("property", "og:type");
+      newMetaTag.setAttribute("content", metaData.og_type);
+      document.head.appendChild(newMetaTag);
 
-      meta = document.createElement("meta");
-      meta.property = "og:site_name";
-      meta.content = metaData.og_sitename;
-      head.appendChild(meta);
+      var newMetaTag_desc = document.createElement("meta");
+      newMetaTag_desc.setAttribute("property", "og:description");
+      newMetaTag_desc.setAttribute("content", metaData.og_description);
+      document.head.appendChild(newMetaTag_desc);
+
+      var newMetaTag_site = document.createElement("meta");
+      newMetaTag_site.setAttribute("property", "og:site_name");
+      newMetaTag_site.setAttribute("content", metaData.og_site_name);
+      document.head.appendChild(newMetaTag_site);
+
+      var newMetaTag_url = document.createElement("meta");
+      newMetaTag_url.setAttribute("property", "og:url");
+      newMetaTag_url.setAttribute("content", metaData.og_url);
+      document.head.appendChild(newMetaTag_url);
+
+      var newMetaTag_image = document.createElement("meta");
+      newMetaTag_image.setAttribute("property", "og:image");
+      newMetaTag_image.setAttribute("content", metaData.og_image);
+      document.head.appendChild(newMetaTag_image);
+
+      var newMetaTag_image_height = document.createElement("meta");
+      newMetaTag_image_height.setAttribute("property", "og:image:height");
+      newMetaTag_image_height.setAttribute("content", metaData.og_image_height);
+      document.head.appendChild(newMetaTag_image_height);
+
+      var newMetaTag_image_width = document.createElement("meta");
+      newMetaTag_image_width.setAttribute("property", "og:image:width");
+      newMetaTag_image_width.setAttribute("content", metaData.og_image_width);
+      document.head.appendChild(newMetaTag_image_width);
     }
     return response;
   },
