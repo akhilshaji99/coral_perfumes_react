@@ -149,7 +149,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                     key={index}
                     onClick={() => {
                       closeModal();
-                      navigate(`/product-details/?slug=${product?.slug}`);
+                      navigate(`/product/${product?.slug}`);
                       setQuery(product.name);
                       // setQuery(result);
                     }}

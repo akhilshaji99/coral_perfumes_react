@@ -1,4 +1,3 @@
-
 import { NavLink } from "react-router-dom";
 import deviceImageRender from "../../../utils/deviceImageRender";
 function RoundImageList({ blog }) {
@@ -23,9 +22,7 @@ function RoundImageList({ blog }) {
                   __html: blog.content1,
                 }}
               ></div>
-                  <NavLink to={`/product-details/?slug=${blog?.slug}`}>
-              Know more 
-            </NavLink>
+              <NavLink to={`/product/${blog?.slug}`}>Know more</NavLink>
             </div>
           </div>
           <div className="shelf-life">
@@ -45,9 +42,7 @@ function RoundImageList({ blog }) {
                   __html: blog.content2,
                 }}
               ></div>
-                 <NavLink to={`/product-details/?slug=${blog?.slug}`}>
-              Know more 
-            </NavLink>
+              <NavLink to={`/product/${blog?.slug}`}>Know more</NavLink>
             </div>
           </div>
         </div>

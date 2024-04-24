@@ -51,7 +51,7 @@ function FlashSaleSliderDatas({ product, index }) {
             <a href="#!">
               {" "}
               <div className="product-img">
-                <NavLink to={`/product-details/?slug=${product?.slug}`}>
+                <NavLink to={`/product/${product?.slug}`}>
                   <img
                     src={deviceImageRender(product?.product_listing_image)}
                     alt="Coral Perfumes"
@@ -70,7 +70,7 @@ function FlashSaleSliderDatas({ product, index }) {
           <h4
             className="ellipsis-text"
             onClick={() => {
-              navigate(`/product-details/?slug=${product?.slug}`);
+              navigate(`/product/${product?.slug}`);
             }}
           >
             {product.name}

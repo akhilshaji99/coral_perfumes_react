@@ -159,7 +159,7 @@ function BoughtTogether({ FbtDatas }) {
                         </span>
                         <div className="text-center position-relative ">
                           <NavLink
-                            to={`/product-details/?slug=${fbtProduct?.slug}`}
+                            to={`/product/${fbtProduct?.slug}`}
                           >
                             <div className="product-img">
                               <img

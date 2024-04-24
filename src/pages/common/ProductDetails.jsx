@@ -39,7 +39,7 @@ function ProductDetails({ product, setReFetchApi = null }) {
             }}
           />
           <div className="text-center position-relative ">
-            <NavLink to={`/product-details/?slug=${product?.slug}`}>
+            <NavLink to={`/product/${product?.slug}`}>
               <div className="product-img">
                 <img
                   src={deviceImageRender(product.listing_image)}

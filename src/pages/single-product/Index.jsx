@@ -48,8 +48,8 @@ function Index() {
   }, [window.location.href]);
 
   const getProductDetails = async () => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const product_slug = queryParameters.get("slug");
+    // const queryParameters = new URLSearchParams(window.location.search);
+    const product_slug = window.location.pathname?.split("/")[2] || "";
     try {
       if (product_slug) {
         var bodyFormData = new FormData();
