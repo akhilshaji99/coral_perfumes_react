@@ -32,12 +32,7 @@ function SearchResult({ setResult, result, setQuery, query }) {
                 className="col-auto search-tag"
                 onClick={() => {
                   closeModal();
-                  navigate(
-                    "/" +
-                      block.link +
-                      "/" +
-                      Math.random().toString(36).slice(2, 7)
-                  );
+                  navigate("/" + block.link);
                   setQuery(block.title);
                   localStorage.setItem("link_items", block?.link_items);
                   // setQuery(result);
