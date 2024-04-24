@@ -3,8 +3,7 @@
   RewriteBase /
   # Redirect http://coralperfumes.com/ to https://www.coralperfumes.com/
   RewriteCond %{HTTP_HOST} ^coralperfumes\.com$ [NC]
-  RewriteCond %{HTTPS} off
-  RewriteRule ^ https://www.coralperfumes.com%{REQUEST_URI} [L,R=301]
+  RewriteRule ^(.*)$ https://www.coralperfumes.com/$1 [R=301,L]
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
