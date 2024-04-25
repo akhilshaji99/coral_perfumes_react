@@ -5,6 +5,10 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+  text-transform: lowercase;
+}
+.product-title-truncated:first-letter{
+  text-transform: uppercase !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -14,6 +18,5 @@
     text-overflow: ellipsis !important;
     max-height: calc(1.5em * 3);
     overflow: hidden;
-   
   }
 }
