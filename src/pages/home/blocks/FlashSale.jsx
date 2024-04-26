@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CountdownTimer from "react-component-countdown-timer";
-import { useState } from "react";
+import CountDownTimer from "./CountDownTimer";
+import { useState, useEffect } from "react";
 import flashSale from "../../../assets/img/flash/flash-sale.gif";
 import FlashSaleSliderDatas from "../sliderDatas/FlashSaleSliderDatas";
 import Slider from "react-slick";
@@ -15,29 +15,7 @@ function FlashSale({ componentDatas }) {
 
   const products = componentDatas?.datas?.[0]?.products;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
-  let counterValue = 0;
-  const inputDate = new Date(timeEnd);
-  const customTimeZoneOffset = -5.5; // -5 hours and -30 minutes
-  const customTimeZoneOffsetMilliseconds =
-    customTimeZoneOffset * 60 * 60 * 1000;
-  const adjustedDate = new Date(
-    inputDate.getTime() + customTimeZoneOffsetMilliseconds
-  );
-
-  const formattedDateTime = adjustedDate.toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    timeZoneName: "short",
-  });
-
-  var msDiff = new Date(formattedDateTime) - new Date(); //Future date - current date
-  counterValue = Math.floor(msDiff / 1000);
-  //#End
+  // const timeEnd = "2024-04-26T19:13:00+04:00";
 
   var settings = {
     dots: false,
@@ -54,6 +32,11 @@ function FlashSale({ componentDatas }) {
       },
     ],
   };
+
+  const handleCountdownEnd = () => {
+    setFlashSaleEnd(true);
+  };
+
   return (
     <>
       {!falseSaleEnd ? (
@@ -91,7 +74,11 @@ function FlashSale({ componentDatas }) {
                       <span className="timer-text">Ends In</span>{" "}
                     </div>
                     <div className="col-6 px-0">
-                      <CountdownTimer
+                      <CountDownTimer
+                        timeEnd={timeEnd}
+                        handleCountdownEnd={handleCountdownEnd}
+                      />
+                      {/* <CountdownTimer
                         className="digital-text"
                         responsive={true}
                         hideDay={true}
@@ -100,7 +87,7 @@ function FlashSale({ componentDatas }) {
                         onEnd={() => {
                           setFlashSaleEnd(true);
                         }}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -139,8 +126,12 @@ function FlashSale({ componentDatas }) {
                           <span className="timer-text">Ends In</span>{" "}
                         </div>
                         <div className="col-md-5">
-                          <CountdownTimer
-                            className="digital-text"
+                          <CountDownTimer
+                            timeEnd={timeEnd}
+                            handleCountdownEnd={handleCountdownEnd}
+                          />
+                          {/* <CountdownTimer
+                            // className="digital-text"
                             responsive={true}
                             hideDay={true}
                             size={25}
@@ -148,7 +139,7 @@ function FlashSale({ componentDatas }) {
                             onEnd={() => {
                               setFlashSaleEnd(true);
                             }}
-                          />
+                          /> */}
                         </div>
                       </div>
                     </div>
