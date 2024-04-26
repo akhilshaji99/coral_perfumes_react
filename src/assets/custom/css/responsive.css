@@ -315,6 +315,15 @@ body.home .wallet-card h3 {
     width: 90%;
     margin: 0 auto;
   }
+  .product-single-price{
+    font-size: 20px;
+  }
+  .product-single-discounted-price{
+    font-size: 20px;
+  }
+  .product-single-discounted{
+    font-size: 18px;
+  }
 }
 @media only screen and (max-width: 1200px) {
   .container-new {
@@ -336,6 +345,18 @@ body.home .wallet-card h3 {
   button.btn.btn-dark.w-100.mt-2.add-to-bag-btn {
     font-size: 12px !important;
   }
+  .product-single-price{
+    font-size: 17px;
+    line-height: 280%;
+  }
+  .product-single-discounted-price {
+    font-size: 17px;
+    line-height: 280%;
+  }
+  .product-single-discounted {
+    font-size: 15px;
+    line-height: 300%;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container-new {
@@ -351,13 +372,16 @@ body.home .wallet-card h3 {
   }
   .product-single-discounted-price {
     font-size: 11px;
+    line-height: 290%;
   }
   .product-single-discounted {
     font-size: 11px;
+    line-height: 300%;
   }
   .product-single-price {
     color: #000;
     font-size: 12px;
+    line-height: 290%;
   }
   .right-gallery-one img:nth-child(1) {
     padding-bottom: 1px;
@@ -1777,7 +1801,6 @@ body.cart section.my-bag {
   .container-fluid.cc-margin.w-deals {
     padding: 0 15px;
   }
- 
 
 .container-new .visit-row {
   margin-top: 0px;

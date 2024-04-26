@@ -148,6 +148,14 @@ const Router = () => {
           element: <NotFound />,
         },
         {
+          path: "perfume-in-uae",
+          element: <HomePage />,
+        },
+        {
+          path: "shopping-at-coral-perfumes-stores",
+          element: <Stores />,
+        },
+        {
           path: "faq",
           element: <Faq />,
         },

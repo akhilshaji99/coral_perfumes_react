@@ -1,7 +1,7 @@
 import "../../assets/css/404.css";
 import "../../assets/custom/css/style-new.css";
 import "../../assets/custom/css/responsive.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
@@ -132,15 +132,13 @@ function Index() {
                 ></div>
               </div>
               <div className="store-hours">
-                
                 <h2>{storeDetails?.data?.timing_title} </h2>
                 <div
-                style={{lineHeight:'30px',fontWeight:'bold',}}
-                  dangerouslySetInnerHTML={{
-                    __html: storeDetails?.data?.working_hours,
-                  }}
-                ></div>
-                
+                  style={{lineHeight:'30px',fontWeight:'bold',}}
+                    dangerouslySetInnerHTML={{
+                      __html: storeDetails?.data?.working_hours,
+                    }}
+                  ></div>     
               </div>
               <div className="store-contact">
                 <h2>{storeDetails?.data?.location_title}</h2>

@@ -5,11 +5,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  text-transform: lowercase;
 }
-.product-title-truncated:first-letter{
-  text-transform: uppercase !important;
-}
+
 
 @media only screen and (max-width: 600px) {
   .product-title-truncated {
