@@ -598,6 +598,7 @@ thead,
 tr {
   border: 0 solid;
   border-color: inherit;
+  padding: 8px !important;
 }
 label {
   display: inline-block;
@@ -27461,8 +27462,11 @@ span.dropdown-text.store-color {
 .product-desc-section h1 {
   color: #000;
   font-size: 24px;
-  text-transform: capitalize;
+  text-transform: lowercase;
   font-weight: 600;
+}
+.product-desc-section h1::first-letter{
+  text-transform: capitalize;
 }
 .product-desc-section h2 {
   color: #000;
@@ -27660,9 +27664,9 @@ span.dropdown-text.store-color {
 }
 .product-single-price {
   color: #000;
-  font-size: 18px;
+  font-size: 26px;
   font-family: var(--fc-font-bold);
-  line-height: 185%; /* 33.3px */
+  line-height: 250%; /* 33.3px */
   text-transform: uppercase;
 }
 .vat-included {
@@ -27676,16 +27680,16 @@ span.dropdown-text.store-color {
 .product-single-discounted-price {
   color: #fa6338;
   font-family: var(--fc-font-regular);
-  font-size: 18px;
-  line-height: 185%; /* 33.3px */
+  font-size: 26px;
+  line-height: 250%; /* 33.3px */
   text-decoration: line-through;
   text-transform: uppercase;
 }
 .product-single-discounted {
   color: #80ba27;
   font-family: var(--fc-font-bold);
-  font-size: 18px;
-  line-height: 185%; /* 33.3px */
+  font-size: 24px;
+  line-height: 270%; /* 33.3px */
   text-transform: uppercase;
 }
 .btn-checkout {
