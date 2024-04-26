@@ -920,7 +920,7 @@ function Index() {
           refetch={refetch}
           FbtDatas={FbtDatas}
         />
-        {recProducts != null ? (
+        {recProducts !== null ? (
           <RecommendedProducts
             componentDatas={recProducts}
             rec_section_title={productDatas?.recommonded_products_title}
