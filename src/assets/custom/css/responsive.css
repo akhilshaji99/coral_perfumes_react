@@ -1347,6 +1347,9 @@ body.cart footer.footer {
   body.home .row.mob-view .input-group {
     display: block;
   }
+  body.product .row.mob-view .input-group {
+    display: block;
+  }
   button.btn-ongoing {
     /*margin-top: 20px;*/
     margin-top: 20px;
