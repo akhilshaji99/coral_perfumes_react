@@ -7,16 +7,16 @@ import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
 
 function Index() {
-  const queryParameters = new URLSearchParams(window.location.search);
-  const blog_slug = queryParameters.get("slug");
+  const blog_slug = window.location.pathname.split("/")[2];
+
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   const [blog, setBlog] = useState({});
 
   useEffect(() => {
     getBlogDetals();
-    console.log(blog_slug);
-  }, []);
+  }, [window.location.href]);
+
   const getBlogDetals = async () => {
     try {
       //   var bodyFormData = new FormData();
@@ -24,7 +24,7 @@ function Index() {
       //   dispatch(changeApiCallStatus(false)); // Change api call status
       const response = await request.get("api/blog/" + blog_slug + "/");
       if (response.data) {
-        setBreadCrumbDatas(response?.data?.bread_crumb_data)
+        setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setBlog(response.data.data);
         console.log("blogs", response.data.data);
       }
@@ -36,7 +36,7 @@ function Index() {
     <>
       <div className="page-new">
         <section className="sm-none">
-          <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
+          <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
 
           <div className="container-new">
             <div className="blog-detail-page">
