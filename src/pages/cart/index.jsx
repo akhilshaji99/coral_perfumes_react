@@ -14,7 +14,8 @@ import GuestLoginModal from "./blocks/GuestLoginModal";
 import PromoCodeModal from "../checkout/blocks/PromoCodeModal";
 import BagEmpty from "../alert_pages/BagEmpty";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Li } from "react-flags-select";
 // import { useSelector } from "react-redux";
 
 function Index() {
@@ -26,7 +27,6 @@ function Index() {
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
-
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -98,23 +98,34 @@ function Index() {
                         <div className="row align-items-center px-0">
                           <div className="col-md-2 col-3">
                             <div className="my-bag-img">
-                              <img
-                                src={deviceImageRender(
-                                  cartData?.product_variant
-                                    ?.product_listing_image
-                                )}
-                                alt="Ecommerce"
-                                className="img-fluid"
-                              />
+                              <Link
+                                to={`/product/${cartData?.product_variant?.slug}`}
+                              >
+                                <img
+                                  src={deviceImageRender(
+                                    cartData?.product_variant
+                                      ?.product_listing_image
+                                  )}
+                                  alt="Ecommerce"
+                                  className="img-fluid"
+                                />
+                              </Link>
                             </div>
                           </div>
                           {/* <div className="col-xl-1 col-1"></div> */}
                           <div className="col-md-8 col-8  my-bag-text">
-                            <h6 className="mb-0">
-                              {cartData?.product_variant?.name}
-                            </h6>
+                            <Link
+                              to={`/product/${cartData?.product_variant?.slug}`}
+                            >
+                              <h6 className="mb-0">
+                                {cartData?.product_variant?.name}
+                              </h6>
+                            </Link>
                             <p className="mb-0" id="hide-mob-brand-name">
-                              <Link to={cartData?.product_variant?.brand_link} style={{color:'#76bc21'}}>
+                              <Link
+                                to={cartData?.product_variant?.brand_link}
+                                style={{ color: "#76bc21" }}
+                              >
                                 {cartData?.product_variant?.brand_name}
                               </Link>
                             </p>
@@ -141,7 +152,6 @@ function Index() {
                                 </h5>
                               </li>
                             </ul>
-
                             <div className="row ">
                               <div className="col-md-3">
                                 <div className="input-group-custom input-spinner  my-bag-spinner">
@@ -204,7 +214,6 @@ function Index() {
                                 AED {cartData?.product_variant?.original_amount}
                               </div>
                             </div> */}
-
                             {/* text */}
                           </div>
                           {/* input group */}
