@@ -26646,7 +26646,7 @@ span.dropdown-text.store-color {
     color: #000;
     font-family: Arial;
     font-size: 14px !important;
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     text-transform: capitalize;
     text-align: center !important;
     padding-top: 1px !important;
@@ -26707,9 +26707,9 @@ span.dropdown-text.store-color {
 }
 .product-grid h4 {
   color: #000;
-  font-family: Arial;
-  font-weight: 600;
-  font-size: 16px;
+  font-family: "BrandonText-Light", sans-serif;
+  font-weight: 400;
+  font-size: 1.09375rem;
   font-style: normal;
   line-height: 185%; /* 29.6px */
   text-transform: capitalize;
