@@ -1,3 +1,8 @@
+@media only screen and (min-width: 2600px) and (min-height: 1650px) {
+  .product-single-price {
+    font-size: 24px;
+  }
+}
 @media (min-width: 1600px) {
   footer.footer .container {
     max-width: 90% !important;
@@ -380,7 +385,7 @@ body.home .wallet-card h3 {
   }
   .product-single-price {
     color: #000;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 290%;
   }
   .right-gallery-one img:nth-child(1) {
@@ -1438,7 +1443,7 @@ body.cart footer.footer {
     text-transform: capitalize;
     z-index: 10;
     left: 15px;
-    top: 110px;
+    top: 140px;
   }
   body.product-details .out-of-stock-badge {
     position: absolute;
