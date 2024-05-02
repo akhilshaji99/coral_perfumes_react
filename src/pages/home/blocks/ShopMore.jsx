@@ -15,12 +15,15 @@ function ShopMore({ componentDatas }) {
     initialSlide: 0,
     autoplay: false, // Enable auto-play
     autoplaySpeed: 3500,
+    swipeToSlide: true, // Allow swipe to slide
+    swipe: true, // Enable touch swipe
+    touchThreshold: 10, // Adjust touch threshold for smoother scrolling
     responsive: [
       {
         breakpoint: 768, // Tablet and mobile view
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
     ],

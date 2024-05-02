@@ -13,12 +13,15 @@ function CategoryTop({ componentDatas }) {
     infinite: true,
     speed: 500,
     initialSlide: 0.5,
+    swipeToSlide: true, // Allow swipe to slide
+    swipe: true, // Enable touch swipe
+    touchThreshold: 10, // Adjust touch threshold for smoother scrolling
     responsive: [
       {
         breakpoint: 768, // Tablet and mobile view
         settings: {
           slidesToShow: 4,
-          // slidesToScroll: 3.5,
+          slidesToScroll: 1,
         },
       },
     ],
