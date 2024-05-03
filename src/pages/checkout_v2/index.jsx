@@ -53,6 +53,8 @@ function Index() {
     addressForm.setFieldValue("delivery_type", del_type);
   };
 
+  const hardCodedCoutries = { AE: { primary: "+971" } };
+
   //Country code
   useEffect(() => {
     getCountryCodes().then((data) => {
@@ -526,8 +528,8 @@ function Index() {
                                       }
                                       onSelect={onCountrySelect}
                                       className="country-list"
-                                      customLabels={countryCodes}
-                                      countries={Object.keys(countryCodes)}
+                                      customLabels={hardCodedCoutries}
+                                      countries={Object.keys(hardCodedCoutries)}
                                       searchable={true}
                                       placeholder="Country"
                                       showSecondaryOptionLabel={true}
@@ -588,7 +590,7 @@ function Index() {
                                         height="1.3rem"
                                         viewBox="0 0 1219.547 1225.016"
                                         id="whatsapp"
-                                        style={{marginLeft: "10px"}}
+                                        style={{ marginLeft: "10px" }}
                                       >
                                         <path
                                           fill="#E0E0E0"
