@@ -2210,7 +2210,8 @@ body.cart .my-bag-img {
   }
 
 .bg-cutom-banner{
-  background-color: #88b48d;
+  background-color: #000000;
+  color: white;
 }
 .custom-mega-menu ul li a {
   position: relative;
