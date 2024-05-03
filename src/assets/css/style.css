@@ -3840,7 +3840,7 @@ fieldset:disabled .btn {
   --fc-btn-disabled-border-color: #f0f3f2;
 }
 .btn-dark {
-  --fc-btn-color: #fff;
+  --fc-btn-color: #ffffff;
   --fc-btn-bg: #000;
   --fc-btn-border-color: #000;
   --fc-btn-hover-color: #fff;
@@ -26592,7 +26592,7 @@ span.dropdown-text.store-color {
   background: #fff;
   box-shadow: none !important;
   border: unset !important;
-  padding: 43px 80px;
+  padding: 2px 80px;
 }
 .rec-products-container h1 {
   line-height: normal;
@@ -27173,9 +27173,10 @@ span.dropdown-text.store-color {
     transform: scale(0.75);
   }
   .product-desc-section .btn-checkout {
-    font-size: 14px !important;
+    font-size: 17px !important;
     padding: 12px 20px;
-    color: #fff;
+    color: black;
+    padding-left: 36px;
   }
   .timer-box {
     border-radius: 9px;
@@ -27695,11 +27696,13 @@ span.dropdown-text.store-color {
 .btn-checkout {
   padding: 8px 20px;
   border-radius: 9px;
-  background: #000;
+  background: #76bc21;
   text-transform: uppercase;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  border-width: 0;
+  color: black;
 }
 .btn-checkout svg {
   margin-left: 20px;
