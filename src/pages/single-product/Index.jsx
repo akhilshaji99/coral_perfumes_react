@@ -22,6 +22,7 @@ import RatingModal from "./blocks/RatingModal";
 import NotifyIcon from "../../assets/icons/notifyv2.svg";
 import notify from "../cart/js/notify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function Index() {
   const dispatch = useDispatch();
@@ -43,6 +44,8 @@ function Index() {
   const [FbtDatas, setFbtDatas] = useState(null);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
+  const [metaDatas, setMetaDatas] = useState(null);
+
   useEffect(() => {
     getProductDetails();
   }, [window.location.href]);
@@ -60,6 +63,7 @@ function Index() {
         );
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setDatasToState(response);
+        console.log("metaaa", response?.data?.meta_data);
       }
     } catch (error) {
       console.log("error", error);
@@ -277,6 +281,25 @@ function Index() {
   // }
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content="Test Meta Buy Perfumes in Dubai, UAE. Coral Perfumes is the leading perfume brand in Middle East, Offering perfumes at the best price. Shop Online Now"
+        />
+        <meta
+          property="og:title"
+          content="Test Meta Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes"
+        />
+        <meta
+          property="og:description"
+          content=" Test Meta 2 Buy Perfumes in Dubai, UAE. Coral Perfumes is the leading perfume brand in Middle East, Offering perfumes at the best price. Shop Online Now"
+        />
+        <meta
+          property="og:image"
+          content="https://www.coralperfumes.com/meta_logo.png"
+        />
+      </Helmet>
       <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <RatingModal
         setRefetch={setRefetch}

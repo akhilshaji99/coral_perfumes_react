@@ -28,14 +28,14 @@ service.interceptors.response.use(
   (response) => {
     if (response?.data?.meta_data) {
       // const metaTags = document.getElementById("metaTags");
-      const head = document.getElementsByTagName('head')[0];
-      console.log(head)
-      const metaTags = `
-        <meta property="og:title" content="Locate Perfume Store near me | Coral Perfumes Dubai, UAE" />
-        <meta property="og:description" content="hop perfumes from the top online perfume in Dubai with multiple brand with affordable price we delivery Perfumes all over UAE & Saudi Arabia." />
-        <meta property="og:image" content="https://coralperfumes.cloud6.ae/media/product_listing/product_listing_1711376379.webp" />
-      `;
-      head.insertAdjacentHTML('beforeend', metaTags);
+      // const head = document.getElementsByTagName('head')[0];
+      // console.log(head)
+      // const metaTags = `
+      //   <meta property="og:title" content="Locate Perfume Store near me | Coral Perfumes Dubai, UAE" />
+      //   <meta property="og:description" content="hop perfumes from the top online perfume in Dubai with multiple brand with affordable price we delivery Perfumes all over UAE & Saudi Arabia." />
+      //   <meta property="og:image" content="https://coralperfumes.cloud6.ae/media/product_listing/product_listing_1711376379.webp" />
+      // `;
+      // head.insertAdjacentHTML('beforeend', metaTags);
       // let metaData = response?.data?.meta_data;
       // console.log(response?.data?.meta_data);
       // var metaData = {
