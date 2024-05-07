@@ -13,6 +13,7 @@ function NotFound() {
   const [pageData, setPageData] = useState({});
   const [text, setText] = useState("");
   const [categories , setCategories]  = useState([])
+  const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
   useEffect(() => {
     get404PageContent();
@@ -21,9 +22,11 @@ function NotFound() {
     try {
       const response = await request.get("empty_page_categories");
       if (response.data) {
+        console.log('res:', response);
         setPageData(response.data.data);
         setText(pageData["404_text"]);
         setCategories(response.data.data.categories)
+        setBreadCrumbDatas(response.data.bread_crumb_data)
         console.log('categories',categories)
         console.log("setPageData", response.data.data);
       }
@@ -33,7 +36,7 @@ function NotFound() {
   };
   return (
     <div className="page-new">
-      <BreadCrumps />
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <div className="container">
         <div className="row-40">
           <img src={error_img1} alt="erroe img" />
