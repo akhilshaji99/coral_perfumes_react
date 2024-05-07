@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import sortIcon from "../../../assets/img/icons/filter-mob-new.svg";
 
-const EmiratesDropdown = ({ setEmirate,emirates ,label,setLabel}) => {
+const EmiratesDropdown = ({ setEmirate, emirates, label, setLabel }) => {
   // Create a state variable to manage the visibility of the dropdown content
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -9,8 +9,6 @@ const EmiratesDropdown = ({ setEmirate,emirates ,label,setLabel}) => {
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
-
-
 
   return (
     <div className="dropdown product-custom-dropdown">
@@ -44,20 +42,21 @@ const EmiratesDropdown = ({ setEmirate,emirates ,label,setLabel}) => {
         <div className="dropdown-menu" style={{ display: "block" }}>
           {/* Add your dropdown items here */}
           {emirates.map((emirate, index) => {
-            return (
+            return emirate.store_availability_status ? (
               <label
                 key={index}
                 className="dropdown-item dropdown-item-custom"
                 onClick={() => {
                   console.log(emirate.name);
+                  console.log(emirate.store_availability_status);
                   setEmirate(emirate.id);
-                  setLabel(emirate.name)
+                  setLabel(emirate.name);
                   setDropdownOpen(!isDropdownOpen);
                 }}
               >
                 {emirate.name}
               </label>
-            );
+            ) : null;
           })}
         </div>
       )}
