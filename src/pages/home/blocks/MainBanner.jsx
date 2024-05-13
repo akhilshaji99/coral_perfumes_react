@@ -63,18 +63,20 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         >
           {banners.map((banner, index) => {
             return (
-              <img
-                src={deviceImageRender(
-                  banner?.desktop_image,
-                  banner?.mobile_image
-                )}
-                alt={banner.image_alt}
-                style={{
-                  display: "block",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
+              <Link to={banner?.link}>
+                <img
+                  src={deviceImageRender(
+                    banner?.desktop_image,
+                    banner?.mobile_image
+                  )}
+                  alt={banner.image_alt}
+                  style={{
+                    display: "block",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              </Link>
             );
           })}
         </Carousel>
@@ -217,8 +219,10 @@ function MainBanner({ componentDatas, exclusive_deals }) {
                 <button
                   type="submit"
                   onClick={() => {
-                     navigator.clipboard.writeText(exclusive_deals?.discount_code);
-                      toast((t) => (
+                    navigator.clipboard.writeText(
+                      exclusive_deals?.discount_code
+                    );
+                    toast((t) => (
                       <AlerMessage
                         t={t}
                         toast={toast}
