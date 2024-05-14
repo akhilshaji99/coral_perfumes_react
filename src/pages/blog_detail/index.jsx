@@ -27,6 +27,7 @@ function Index() {
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setBlog(response.data.data);
         console.log("blogs", response.data.data);
+        console.log("slug", blog_slug);
       }
     } catch (error) {
       console.log("error", error);

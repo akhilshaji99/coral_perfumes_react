@@ -17,6 +17,7 @@ import StoresDetails from "../pages/store_detail/index";
 import About from "../pages/about/index";
 import Blog from "../pages/blog/index";
 import BlogDetails from "../pages/blog_detail/index";
+import BlogDetailsNew from "../pages/blog_details_new/index"
 import Careers from "../pages/careers/index";
 import CareerDetail from "../pages/career_detail/index";
 
@@ -101,6 +102,23 @@ const Router = () => {
         { path: "blog", element: <Blog /> },
         { path: "careers", element: <Careers /> },
         { path: "career-detail/:id", element: <CareerDetail /> },
+        //old blog routes redirecting
+        { path: "guide-to-applying-perfume-best-perfume-in-uae/", element: <BlogDetailsNew />},
+        { path: "discover-the-best-perfumes-for-women/", element: <BlogDetailsNew />},
+        { path: "discover-the-scent-of-luxury-top-10-perfume-brands-in-uae/", element: <BlogDetailsNew />},
+        { path: "discover-the-top-10-perfumes-in-dubai-you-must-experience/", element: <BlogDetailsNew />},
+        { path: "enchanting-perfume-gift-sets-for-this-christmas-at-coral-perfumes-in-dubai/", element: <BlogDetailsNew />},
+        { path: "best-niche-perfume-for-women/", element: <BlogDetailsNew />},
+        { path: "benefits-of-wearing-long-lasting-perfume/", element: <BlogDetailsNew />},
+        { path: "world-of-men-fragrance-buy-perfume-for-men/", element: <BlogDetailsNew />},
+        { path: "where-to-buy-original-perfume-in-dubai/", element: <BlogDetailsNew />},
+        { path: "6-useful-tips-to-choose-the-right-perfume/", element: <BlogDetailsNew />},
+        { path: "concentrated-perfume-oils-in-uae/", element: <BlogDetailsNew />},
+        { path: "arabic-fragrance-lovers/", element: <BlogDetailsNew />},
+        { path: "difference-between-eau-de-perfume-and-eau-de-toilette/", element: <BlogDetailsNew />},
+        { path: "tips-to-make-perfume-fragrances-last-longer/", element: <BlogDetailsNew />},
+        { path: "people-love-to-wear-perfumes/", element: <BlogDetailsNew />},
+        { path: "best-winter-perfume-for-women/", element: <BlogDetailsNew />},
 
         {
           path: "alert",

@@ -629,11 +629,13 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
               <div className="col-md-8 col-8">
                 <div className="row app-pay">
                   <div className="col-md-6 col-6">
-                    <img
-                      src={AppStore}
-                      alt="foot_logo"
-                      className="footer-apple-logo"
-                    />
+                    <Link to="https://apps.apple.com/tn/developer/coral-perfumes/id1609370778">
+                      <img
+                        src={AppStore}
+                        alt="foot_logo"
+                        className="footer-apple-logo"
+                      />
+                    </Link>
                   </div>
                   <div className="col-md-6 col-6">
                     <img
