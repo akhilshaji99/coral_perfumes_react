@@ -1,9 +1,12 @@
 import request from "../../../utils/request";
 
-const getStores = async (id) => {
+const getStores = async (id1, id2) => {
   try {
-    if(id){
-      return await request.get("api/store/"+id+"/");
+    if(id1 && id2){
+      return await request.get("api/store/"+id1+"/"+id2+"/");
+      
+    }else if(id1){
+    return await request.get("api/store/"+id1+"/");
 
     }else{
     return await request.get("api/store");
@@ -15,3 +18,4 @@ const getStores = async (id) => {
 };
 
 export default getStores;
+
