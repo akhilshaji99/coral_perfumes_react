@@ -212,9 +212,15 @@ ul li {
   width: 55%;
 }
 .choose-emirates {
-  width: 45%;
+  width: 15%;
   display: flex;
   justify-content: end;
+}
+.choose-countries {
+  width: 15%;
+  display: flex;
+  justify-content: end;
+  margin-left: 207px;
 }
 .visit-row {
   display: flex;
