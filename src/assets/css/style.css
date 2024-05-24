@@ -27665,10 +27665,13 @@ span.dropdown-text.store-color {
 }
 .product-single-price {
   color: #000;
-  font-size: 26px;
+  font-size: 23px;
   font-family: var(--fc-font-bold);
   line-height: 250%; /* 33.3px */
   text-transform: uppercase;
+}
+.product-desc-section .row.full-views {
+  align-items: baseline;
 }
 .vat-included {
   color: #000;
@@ -27681,7 +27684,7 @@ span.dropdown-text.store-color {
 .product-single-discounted-price {
   color: #fa6338;
   font-family: var(--fc-font-regular);
-  font-size: 26px;
+  font-size: 23px;
   line-height: 250%; /* 33.3px */
   text-decoration: line-through;
   text-transform: uppercase;
@@ -27689,7 +27692,7 @@ span.dropdown-text.store-color {
 .product-single-discounted {
   color: #80ba27;
   font-family: var(--fc-font-bold);
-  font-size: 24px;
+  font-size: 23px;
   line-height: 270%; /* 33.3px */
   text-transform: uppercase;
 }
