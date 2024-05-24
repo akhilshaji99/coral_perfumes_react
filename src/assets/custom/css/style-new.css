@@ -209,18 +209,14 @@ ul li {
   display: flex;
 }
 .visit-tittle {
-  width: 55%;
+  width: 50%;
 }
 .choose-emirates {
-  width: 15%;
   display: flex;
-  justify-content: end;
 }
 .choose-countries {
-  width: 15%;
   display: flex;
-  justify-content: end;
-  margin-left: 207px;
+  margin-left: 0px !important;
 }
 .visit-row {
   display: flex;
@@ -266,6 +262,7 @@ ul li {
 .choose-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .visit-text p {
   color: #fff;
@@ -1832,7 +1829,7 @@ a {
 }
 .return-policy-div h1,
 h6 {
-  padding-bottom: 25px;
+  padding-bottom: 10px;
 }
 .form-group.has-search .product-search-icon-close {
   position: absolute;
@@ -2395,4 +2392,14 @@ body.product-details div#details-tab-pane  .my-8 {
   margin-top: -4%;
   position: fixed;
   width: 58.33333333%;
+}
+.store-hours table {
+  border: none;
+}
+.store-address p br {
+  display: none;
+}
+.row-details .store-contact {
+  width: 100%;
+  padding-top: 0;
 }
