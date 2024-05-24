@@ -1,13 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  # Redirect from www to non-www
-  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-  RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
-
-  # Redirect the specific URL to the correct one
-  RewriteRule ^return-policy$ https://coralperfumes.com/return-policy [L,R=301]
-
   # Redirect http://coralperfumes.com/ to https://www.coralperfumes.com/
   RewriteCond %{HTTP_HOST} ^coralperfumes\.com$ [NC]
   RewriteRule ^(.*)$ https://www.coralperfumes.com/$1 [R=301,L]

@@ -638,11 +638,13 @@ function Footer({ changeMobileMenuStatus, changeMyAccountMenuStatus }) {
                     </Link>
                   </div>
                   <div className="col-md-6 col-6">
-                    <img
-                      src={Gplay}
-                      alt="foot_logo"
-                      className="footer-gplay-logo"
-                    />
+                    <Link to="https://play.google.com/store/apps/details?id=com.coralperfumes.app&pli=1">
+                      <img
+                        src={Gplay}
+                        alt="foot_logo"
+                        className="footer-gplay-logo"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>

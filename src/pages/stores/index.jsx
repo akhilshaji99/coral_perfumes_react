@@ -107,17 +107,16 @@ function Index() {
                   />
                 </div>
               </div>
-            ) : (
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-dark"
-                  onClick={handleViewAllClick}
-                >
-                  View all
-                </button>
-              </div>
-            )}
+            ) : null}
+            <div>
+              <button
+                type="button"
+                className="btn btn-dark"
+                onClick={handleViewAllClick}
+              >
+                View all
+              </button>
+            </div>
           </div>
         </div>
 
