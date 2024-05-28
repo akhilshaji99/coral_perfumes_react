@@ -4,10 +4,11 @@ import CountdownTimer from "react-component-countdown-timer";
 import { Link } from "react-router-dom";
 
 function BannerFlashSale({ componentDatas }) {
+  const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [hideBanner, setHideBanner] = useState(false);
+  const [hideBanner, setHideBanner] = useState(true);
   let counterValue = 0;
 
   const backgroundImage = {
@@ -46,23 +47,36 @@ function BannerFlashSale({ componentDatas }) {
     const currentDate = new Date();
     const timeDifferenceInMilliseconds =
       endDate.getTime() - currentDate.getTime();
-    const hour = Math.floor(timeDifferenceInMilliseconds / (1000 * 60 * 60));
+
+    const days = Math.floor(
+      timeDifferenceInMilliseconds / (1000 * 60 * 60 * 24)
+    );
+    const hours = Math.floor(
+      (timeDifferenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutes = Math.floor(
       (timeDifferenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60)
     );
     const seconds = Math.floor(
       (timeDifferenceInMilliseconds % (1000 * 60)) / 1000
     );
-    if (hour <= 0 && minutes <= 0 && seconds <= 0) {
+
+    if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
       setHideBanner(true);
+      return;
     }
-    setHours(hour);
+    setHideBanner(false);
+
+    setDays(days);
+    setHours(hours);
     setMinutes(minutes);
     setSeconds(seconds);
   };
+
   useEffect(() => {
-    setInterval(timer, 1000);
-  });
+    const interval = setInterval(timer, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -81,7 +95,6 @@ function BannerFlashSale({ componentDatas }) {
                   <CountdownTimer
                     className="digital-text"
                     responsive={true}
-                    hideDay={true}
                     size={25}
                     count={counterValue}
                     // onEnd={() => {
@@ -96,8 +109,19 @@ function BannerFlashSale({ componentDatas }) {
               <div className="row align-items-center d-end">
                 <div className="col-md-1 col-4">
                   <div className="timer-card">
+                    <h1>{days}</h1>
+                  </div>
+                  <p className="mt-2 timer-text-color">Days</p>
+                </div>
+                <div className="col-md-1 cc-col-1 d-none d-sm-block">
+                  {" "}
+                  <span className="time-seperator blink-hard">:</span>
+                </div>
+                <div className="col-md-1 col-4">
+                  <div className="timer-card">
                     <h1>{hours}</h1>
                   </div>
+                  <p className="mt-2 timer-text-color">Hours</p>
                 </div>
                 <div className="col-md-1 cc-col-1 d-none d-sm-block">
                   {" "}
@@ -107,6 +131,7 @@ function BannerFlashSale({ componentDatas }) {
                   <div className="timer-card">
                     <h1>{minutes}</h1>
                   </div>
+                  <p className="mt-2 timer-text-color">Minutes</p>
                 </div>
                 <div className="col-md-1 cc-col-1 d-none d-sm-block">
                   {" "}
@@ -116,6 +141,7 @@ function BannerFlashSale({ componentDatas }) {
                   <div className="timer-card">
                     <h1>{seconds}</h1>
                   </div>
+                  <p className="mt-2 timer-text-color">Seconds</p>
                 </div>
               </div>
             </div>
