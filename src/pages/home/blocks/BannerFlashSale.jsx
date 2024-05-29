@@ -1,3 +1,4 @@
+
 import deviceImageRender from "../../../utils/deviceImageRender";
 import { useEffect, useState } from "react";
 import CountdownTimer from "react-component-countdown-timer";
@@ -9,7 +10,7 @@ function BannerFlashSale({ componentDatas }) {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [hideBanner, setHideBanner] = useState(true);
-  let counterValue = 0;
+  const [isStarting, setIsStarting] = useState(false);
 
   const backgroundImage = {
     backgroundImage:
@@ -20,33 +21,33 @@ function BannerFlashSale({ componentDatas }) {
       ) +
       `")`,
   };
+
+  const timeStart = componentDatas?.datas?.[0]?.start_time;
   const timeEnd = componentDatas?.datas?.[0]?.end_time;
-  const inputDate = new Date(timeEnd);
+
+  const startDate = new Date(timeStart);
+  const endDate = new Date(timeEnd);
+
   const customTimeZoneOffset = -5.5; // -5 hours and -30 minutes
   const customTimeZoneOffsetMilliseconds =
     customTimeZoneOffset * 60 * 60 * 1000;
-  const adjustedDate = new Date(
-    inputDate.getTime() + customTimeZoneOffsetMilliseconds
-  );
-  const formattedDateTime = adjustedDate.toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    timeZoneName: "short",
-  });
-  const endDate = new Date(formattedDateTime);
 
-  var msDiff = new Date(formattedDateTime) - new Date(); //Future date - current date
-  counterValue = Math.floor(msDiff / 1000);
+  const adjustedStartDate = new Date(
+    startDate.getTime() + customTimeZoneOffsetMilliseconds
+  );
+  const adjustedEndDate = new Date(
+    endDate.getTime() + customTimeZoneOffsetMilliseconds
+  );
 
   const timer = async () => {
     const currentDate = new Date();
-    const timeDifferenceInMilliseconds =
-      endDate.getTime() - currentDate.getTime();
+    let timeDifferenceInMilliseconds = adjustedEndDate.getTime() - currentDate.getTime();
+    let isStarting = false;
+
+    if (currentDate < adjustedStartDate) {
+      timeDifferenceInMilliseconds = adjustedStartDate.getTime() - currentDate.getTime();
+      isStarting = true;
+    }
 
     const days = Math.floor(
       timeDifferenceInMilliseconds / (1000 * 60 * 60 * 24)
@@ -66,6 +67,7 @@ function BannerFlashSale({ componentDatas }) {
       return;
     }
     setHideBanner(false);
+    setIsStarting(isStarting);
 
     setDays(days);
     setHours(hours);
@@ -89,17 +91,14 @@ function BannerFlashSale({ componentDatas }) {
             <div className="container d-block d-sm-none mob-count ">
               <div className="row align-items-center d-end px-5 timer-row">
                 <div className="col-3 px-0 text-end">
-                  <span className="mob-time-break">ends in</span>
+                  <span className="mob-time-break">{isStarting ? "starts in" : "ends in"}</span>
                 </div>
                 <div className="col-4">
                   <CountdownTimer
                     className="digital-text"
                     responsive={true}
                     size={25}
-                    count={counterValue}
-                    // onEnd={() => {
-                    //   setFlashSaleEnd(true);
-                    // }}
+                    count={(days * 86400) + (hours * 3600) + (minutes * 60) + seconds}
                   />
                 </div>
                 <div className="col-1"></div>
@@ -107,6 +106,9 @@ function BannerFlashSale({ componentDatas }) {
             </div>
             <div className="container my-5 d-none d-lg-block">
               <div className="row align-items-center d-end">
+                <div className="ends-in-lg">
+                  <p>{isStarting ? "starts in" : "ends in"}</p>
+                </div>
                 <div className="col-md-1 col-4">
                   <div className="timer-card">
                     <h1>{days}</h1>
@@ -151,4 +153,5 @@ function BannerFlashSale({ componentDatas }) {
     </>
   );
 }
+
 export default BannerFlashSale;
