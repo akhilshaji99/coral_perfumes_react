@@ -10228,6 +10228,7 @@ fieldset:disabled .btn {
 .my-5 {
   margin-bottom: 1.25rem !important;
   margin-top: 1.25rem !important;
+  margin-left: 160px;
 }
 .my-6 {
   margin-bottom: 1.5rem !important;
@@ -27082,7 +27083,7 @@ span.dropdown-text.store-color {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 103.5%; /* 15.525px */
   letter-spacing: 1.05px;
   text-transform: uppercase;
@@ -27102,6 +27103,11 @@ span.dropdown-text.store-color {
 .d-end {
   display: flex !important;
   justify-content: flex-end !important;
+}
+.ends-in-lg p{
+  margin-left: 46.5rem;
+  margin-bottom: 20px;
+  font-size: larger;
 }
 .ads-banner {
   background-repeat: no-repeat;
@@ -27463,7 +27469,7 @@ span.dropdown-text.store-color {
 .product-desc-section h1 {
   color: #000;
   font-size: 24px;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
   font-weight: 600;
 }
 .product-desc-section h1::first-letter{
@@ -29915,7 +29921,7 @@ body {
   color: #80BA27 !important;
 } */
 .mob-count .digital-text {
-  color: var(--fc-white) !important;
+  color: black !important;
   text-align: center;
   font-family: "DS-Digital Bold";
   font-style: normal;
@@ -29931,7 +29937,7 @@ body {
 }
 .mob-count .count {
   background: transparent !important;
-  color: var(--fc-white) !important;
+  color: black!important;
   font-size: 35px !important;
 }
 .mob-count .mob-time-break {

@@ -238,7 +238,7 @@ function MainBanner({ componentDatas, exclusive_deals }) {
                 </button>
               </div>
               <div className="modal-footer border-0 justify-content-center t-c">
-                <Link to={exclusive_deals?.terms_link}>
+                <Link to={"https://www.coralperfumes.com/terms-conditions"}>
                   {exclusive_deals?.terms_title}
                 </Link>
               </div>
