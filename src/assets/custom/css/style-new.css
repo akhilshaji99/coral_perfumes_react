@@ -2403,3 +2403,41 @@ body.product-details div#details-tab-pane  .my-8 {
   width: 100%;
   padding-top: 0;
 }
+.ft-icon-fixed {
+  position: relative;
+}
+.ft-icon-fixed a {
+  position: fixed;
+  right: 2px;
+  bottom: 45px;
+  background-color: #0aad0a;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.st0 {
+  fill: #ffffff;
+}
+.st1 {
+  fill: #ffffff;
+}
+.icon svg {
+  width: 30px;
+}
+.modal-content.discount-modal.p-4 .my-5 {
+margin-left: 0px; 
+}
+section.banner-flashsale.container-lg-fluid .my-5 {
+  margin-left: 10px; 
+}
+section.banner-flashsale.container-lg-fluid .ends-in-lg p{
+  text-align: center;
+}
+.dropdown-menu.show.pb-0 .row.g-5.ads-block {
+  display: flex;
+  justify-content: space-between;
+}
