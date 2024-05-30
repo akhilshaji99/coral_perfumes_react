@@ -142,6 +142,25 @@ body.home .wallet-card h3 {
     width: 100%;
     max-width: 1150px;
   }
+  .ModalBtn.offer-button {
+    right: -150px !important;
+    top: 200px !important;
+}
+.dropdown-menu.show.pb-0 .row.g-5.ads-block .menu-thumbnails {
+  width: 100px;
+   height: 100px;
+ }
+button.ModalBtn.offer-button {
+  padding: 2px 17px;
+  border: none;
+  font-size: 12px;
+}
+.ft-icon-fixed a {
+  right: 2px;
+  bottom: 25px;
+  width: 45px;
+  height: 45px;
+}
   .store-single-img-width {
     height: 470px;
   }
@@ -552,6 +571,13 @@ a.dropdown-toggle.text-dark.btn-filter {
   .image-list-one img {
     height: 246px;
 }
+.ft-icon-fixed a {
+  right: 2px;
+  bottom: 113px;
+  width: 45px;
+  height: 45px;
+}
+
   body.order-details .order-img img {
     height: 85px;
   }
