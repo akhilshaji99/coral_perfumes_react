@@ -401,6 +401,9 @@ button.ModalBtn.offer-button {
     width: 90%;
     margin: 0 auto;
   }
+  body.product .flash-sale-box h2 {
+    font-size: 12px;
+  }
   .product-grid h4 {
     white-space: wrap;
     overflow: hidden;
@@ -1853,6 +1856,9 @@ body.cart section.my-bag {
 .view-all {
   margin-left: 7px;
   margin-top: -4px;
+}
+body.product .flash-sale-box h2 {
+  font-size: 10px !important;
 }
 section.banner-flashsale.container-lg-fluid .row.align-items-center.d-end.px-5.timer-row {
   justify-content: center !important;

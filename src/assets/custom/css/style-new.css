@@ -2440,3 +2440,6 @@ section.banner-flashsale.container-lg-fluid .ends-in-lg p{
 div#desktop-menu .custom-mega-menu .my-5.d-none.d-lg-block {
   margin-left: 0px;
 }
+body.product .flash-sale-box {
+  background: #e02327;
+}
