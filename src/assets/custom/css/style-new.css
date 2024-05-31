@@ -2437,7 +2437,6 @@ section.banner-flashsale.container-lg-fluid .my-5 {
 section.banner-flashsale.container-lg-fluid .ends-in-lg p{
   text-align: center;
 }
-.dropdown-menu.show.pb-0 .row.g-5.ads-block {
-  display: flex;
-  justify-content: space-between;
+div#desktop-menu .custom-mega-menu .my-5.d-none.d-lg-block {
+  margin-left: 0px;
 }
