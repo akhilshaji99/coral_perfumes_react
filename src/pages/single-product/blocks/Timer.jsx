@@ -65,7 +65,7 @@ function Timer({ flash_sale }) {
               <div className="row align-items-center">
                 <div className="col-xl-6 col-sm-4 col-4">
                   <h2>
-                    flash sale &nbsp;&nbsp;
+                  Super Sale &nbsp;&nbsp;
                     <span>
                       <svg
                         width={15}

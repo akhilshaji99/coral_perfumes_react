@@ -142,6 +142,10 @@ body.home .wallet-card h3 {
     width: 100%;
     max-width: 1150px;
   }
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 17px;
+    padding-right: 17px;
+}
   .ModalBtn.offer-button {
     right: -150px !important;
     top: 200px !important;
@@ -396,6 +400,9 @@ button.ModalBtn.offer-button {
   .container-new {
     width: 90%;
     margin: 0 auto;
+  }
+  body.product .flash-sale-box h2 {
+    font-size: 12px;
   }
   .product-grid h4 {
     white-space: wrap;
@@ -1850,6 +1857,17 @@ body.cart section.my-bag {
   margin-left: 7px;
   margin-top: -4px;
 }
+body.product .flash-sale-box h2 {
+  font-size: 10px !important;
+}
+section.banner-flashsale.container-lg-fluid .row.align-items-center.d-end.px-5.timer-row {
+  justify-content: center !important;
+}
+section.collect-banner .mob-inspired {
+  padding: 35px 20px 15px 20px;
+}
+section.banner-flashsale.container-lg-fluid .mob-count .mob-time-break {
+  color: #070707 !important;}
 }
 
 @media only screen and (min-width: 321px) and (max-width: 769px) {
