@@ -39,9 +39,6 @@ function Timer({ flash_sale }) {
     const seconds = Math.floor(
       (timeDifferenceInMilliseconds % (1000 * 60)) / 1000
     );
-    console.log("hour", hour);
-    console.log("minutes", minutes);
-    console.log("seconds", seconds);
 
     if (hour <= 0 && minutes <= 0 && seconds <= 0) {
       setHideBanner(true);
