@@ -395,3 +395,6 @@ body.products .discount-percentage {
 .timer-text-color {
   color: #000 !important;
 }
+body.personal-info div#changePhone button.btn.btn-dark.w-100.my-5{
+  margin-left: 0px;
+  }
