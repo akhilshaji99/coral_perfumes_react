@@ -11,6 +11,7 @@ import AlerMessage from "../common/AlerMessage";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import $ from "jquery";
+import SaveBirthdayPopup from "./SaveBirthdayPopup";
 
 const prifileFormSchema = yup.object().shape({
   phone_number: yup.string().nullable(),
@@ -27,23 +28,28 @@ function getStyles(errors, fieldName) {
     };
   }
 }
+
 function Index() {
   const [profile, setProfile] = useState(null);
   const [genders, setGenders] = useState(null);
   const [refetch, setRefetch] = useState(false);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
-
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    profileForm.values.date_of_birth = date;
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(
+    localStorage.getItem("isSubmitted") === "true" ? true : false
+  );
+  // const [isDateSaved, setIsDateSaved] = useState(
+  //   localStorage.getItem("isDateSaved") === "true" ? true : false
+  // );
+  const handleOnSubmit = (values) => {
+      saveProfile(values);
   };
 
-  const handleOnSubmit = async (values) => {
+  const saveProfile = async (values) => {
     try {
       const date = new Date(values.date_of_birth);
       const formattedDate = date.toLocaleDateString("en-GB");
+      console.log('date:', formattedDate);
       const response = await request.post("get_user_profile/", {
         ...values,
         date_of_birth: formattedDate,
@@ -76,6 +82,9 @@ function Index() {
     } catch (error) {
       console.log("error", error);
     }
+    if (response.show_popup) {
+      setShowConfirmation(true);
+    }
   };
 
   const profileForm = useFormik({
@@ -93,6 +102,15 @@ function Index() {
     validateOnBlur: true, // Enable validation on blur
     validateOnChange: false,
   });
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    console.log('dob:', date);
+    setSelectedDate(date);
+    profileForm.setFieldValue("date_of_birth", date);
+  };
+
   useEffect(() => {
     getProfile();
   }, []);
@@ -111,7 +129,7 @@ function Index() {
     try {
       const response = await request.post("get_user_profile/");
       if (response?.data) {
-        setBreadCrumbDatas(response?.data?.bread_crumb_data)
+        setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setProfile(response?.data?.data);
         const genderList = response?.data?.data.gender_values;
         var result = Object.keys(genderList).map((key) => [
@@ -129,8 +147,10 @@ function Index() {
           date_of_birth: response?.data?.data?.date_of_birth,
         });
         const isoDate = response?.data?.data?.date_of_birth;
-        const dateObject = new Date(isoDate);
-        setSelectedDate(dateObject);
+        if (isoDate) {
+          const dateObject = new Date(isoDate);
+          setSelectedDate(dateObject);
+        }
       }
     } catch (error) {
       console.log("error", error);
@@ -142,7 +162,7 @@ function Index() {
   return (
     <main>
       {/* section */}
-      <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
+      <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
 
       <section>
         <div className="container-fluid">
@@ -254,32 +274,39 @@ function Index() {
                           })}
                         </select>
                       </div>
-                      <div className="mb-30 col">
-                        {/* <input
-                          type="date"
-                          className="form-control"
-                          placeholder="My Birthdays"
-                          name="date_of_birth"
-                          value={profileForm.values.date_of_birth}
-                          onChange={profileForm.handleChange}
-                          // style={getStyles(profileForm.errors, "date_of_birth")}
-
-                        /> */}
-                        <DatePicker
-                          selected={selectedDate}
-                          onChange={handleDateChange}
-                          showYearDropdown
-                          showMonthDropdown
-                          dateFormatCalendar="MMMM"
-                          yearDropdownItemNumber={100}
-                          scrollableYearDropdown
-                          placeholderText="My Birthday"
-                          maxDate={new Date()}
-                          dateFormat="dd/MM/yyyy"
-                          isClearable
-                          className="form-control"
-                          style={{ width: "100%" }}
-                        />
+                      <div className="mb-30 col birthday-div">
+                        {isSubmitted ? (
+                          // If form is submitted, display the selected date and "My Birthday" text
+                          <>
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={
+                                selectedDate
+                                  ? selectedDate.toLocaleDateString("en-GB")
+                                  : ""
+                              }
+                              readOnly
+                            />
+                            <span className="birthday">My Birthday</span>
+                          </>
+                        ) : (
+                          // Otherwise, display the date picker
+                          <DatePicker
+                            selected={selectedDate}
+                            onChange={handleDateChange}
+                            showYearDropdown
+                            showMonthDropdown
+                            dateFormatCalendar="MMMM"
+                            yearDropdownItemNumber={100}
+                            scrollableYearDropdown
+                            placeholderText="My Birthday"
+                            maxDate={new Date()}
+                            dateFormat="dd/MM/yyyy"
+                            className="form-control"
+                            style={{ width: "100%" }}
+                          />
+                        )}
                       </div>
                       <div className="d-flex justify-content-center w-100">
                         <div className="col-md-3 text-center btn-100">
@@ -289,11 +316,12 @@ function Index() {
                         </div>
                       </div>
                     </form>
-                    {/* <div className="row justify-content-center">
-                      <div className="col-md-3 text-center">
-                        <button className="btn btn-dark w-100" >Save</button>
-                      </div>
-                    </div> */}
+                    <SaveBirthdayPopup
+                      show={showConfirmation}
+                      setShowConfirmation={setShowConfirmation}
+                      // setIsDateSaved={setIsDateSaved} 
+                      setIsSubmitted={setIsSubmitted}// Pass setIsDateSaved to the popup
+                    />
                   </div>
                 </div>
               </div>
