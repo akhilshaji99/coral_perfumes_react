@@ -35,9 +35,7 @@ function Index() {
   const [refetch, setRefetch] = useState(false);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(
-    localStorage.getItem("isSubmitted") === "true" ? true : false
-  );
+  const [isSubmitted, setIsSubmitted] = useState(false);
   // const [isDateSaved, setIsDateSaved] = useState(
   //   localStorage.getItem("isDateSaved") === "true" ? true : false
   // );
@@ -47,16 +45,20 @@ function Index() {
 
   const saveProfile = async (values) => {
     try {
-      const date = new Date(values.date_of_birth);
-      const formattedDate = date.toLocaleDateString("en-GB");
-      console.log('date:', formattedDate);
+      let formattedDate = null
+      if (values.date_of_birth) {
+        const date = new Date(values.date_of_birth);
+        formattedDate = date.toLocaleDateString("en-GB");
+      }
       const response = await request.post("get_user_profile/", {
         ...values,
         date_of_birth: formattedDate,
       });
-      if (response.show_popup) {
+      if (response.data.show_popup) {
         setShowConfirmation(true);
-        setIsSubmitted(true);
+      if (response.data.data.date_of_birth){
+        setIsSubmitted(true)
+      }
       }
       if (response.data.status) {
         toast((t) => (
@@ -129,6 +131,9 @@ function Index() {
   const getProfile = async () => {
     try {
       const response = await request.post("get_user_profile/");
+      if (response.data.data.date_of_birth){
+        setIsSubmitted(true)
+      }
       if (response?.data) {
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setProfile(response?.data?.data);
@@ -151,6 +156,8 @@ function Index() {
         if (isoDate) {
           const dateObject = new Date(isoDate);
           setSelectedDate(dateObject);
+        } else{
+          setSelectedDate(null)
         }
       }
     } catch (error) {
