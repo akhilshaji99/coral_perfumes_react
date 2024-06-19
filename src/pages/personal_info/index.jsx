@@ -54,6 +54,10 @@ function Index() {
         ...values,
         date_of_birth: formattedDate,
       });
+      if (response.show_popup) {
+        setShowConfirmation(true);
+        setIsSubmitted(true);
+      }
       if (response.data.status) {
         toast((t) => (
           <AlerMessage
@@ -81,9 +85,6 @@ function Index() {
       }
     } catch (error) {
       console.log("error", error);
-    }
-    if (response.show_popup) {
-      setShowConfirmation(true);
     }
   };
 

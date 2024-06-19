@@ -8,8 +8,8 @@ const SaveBirthdayPopup = ({
   const handleConfirm = () => {
     setShowConfirmation(false);
     // setIsDateSaved(true); 
-    setIsSubmitted(true);
-    localStorage.setItem('isSubmitted', 'true');
+    // setIsSubmitted(true);
+    // localStorage.setItem('isSubmitted', 'true');
   };
 
   // If show is false, return null to hide the component
