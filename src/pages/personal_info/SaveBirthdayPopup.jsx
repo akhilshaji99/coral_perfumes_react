@@ -3,10 +3,11 @@ import React from "react";
 const SaveBirthdayPopup = ({
   show,
   setShowConfirmation,
-  setIsSubmitted
+  
 }) => {
   const handleConfirm = () => {
     setShowConfirmation(false);
+  
     // setIsDateSaved(true); 
     // setIsSubmitted(true);
     // localStorage.setItem('isSubmitted', 'true');
