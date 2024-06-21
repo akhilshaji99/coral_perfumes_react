@@ -36,16 +36,18 @@ function Index() {
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loader, setLoader] = useState(false);
   // const [isDateSaved, setIsDateSaved] = useState(
   //   localStorage.getItem("isDateSaved") === "true" ? true : false
   // );
   const handleOnSubmit = (values) => {
-      saveProfile(values);
+    saveProfile(values);
   };
 
   const saveProfile = async (values) => {
     try {
-      let formattedDate = null
+      setLoader(true);
+      let formattedDate = null;
       if (values.date_of_birth) {
         const date = new Date(values.date_of_birth);
         formattedDate = date.toLocaleDateString("en-GB");
@@ -56,9 +58,9 @@ function Index() {
       });
       if (response.data.show_popup) {
         setShowConfirmation(true);
-      if (response.data.data.date_of_birth){
-        setIsSubmitted(true)
-      }
+        if (response.data.data.date_of_birth) {
+          setIsSubmitted(true);
+        }
       }
       if (response.data.status) {
         toast((t) => (
@@ -85,7 +87,9 @@ function Index() {
           />
         ));
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log("error", error);
     }
   };
@@ -109,7 +113,7 @@ function Index() {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
-    console.log('dob:', date);
+    console.log("dob:", date);
     setSelectedDate(date);
     profileForm.setFieldValue("date_of_birth", date);
   };
@@ -131,8 +135,8 @@ function Index() {
   const getProfile = async () => {
     try {
       const response = await request.post("get_user_profile/");
-      if (response.data.data.date_of_birth){
-        setIsSubmitted(true)
+      if (response.data.data.date_of_birth) {
+        setIsSubmitted(true);
       }
       if (response?.data) {
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
@@ -156,8 +160,8 @@ function Index() {
         if (isoDate) {
           const dateObject = new Date(isoDate);
           setSelectedDate(dateObject);
-        } else{
-          setSelectedDate(null)
+        } else {
+          setSelectedDate(null);
         }
       }
     } catch (error) {
@@ -319,7 +323,21 @@ function Index() {
                       <div className="d-flex justify-content-center w-100">
                         <div className="col-md-3 text-center btn-100">
                           <button type="submit" className="btn btn-dark w-100">
-                            Save
+                            {loader ? (
+                              <>
+                                &nbsp;
+                                <div
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                >
+                                  <span className="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              </>
+                            ) : (
+                              "Save"
+                            )}
                           </button>
                         </div>
                       </div>
@@ -327,8 +345,8 @@ function Index() {
                     <SaveBirthdayPopup
                       show={showConfirmation}
                       setShowConfirmation={setShowConfirmation}
-                      // setIsDateSaved={setIsDateSaved} 
-                      setIsSubmitted={setIsSubmitted}// Pass setIsDateSaved to the popup
+                      // setIsDateSaved={setIsDateSaved}
+                      setIsSubmitted={setIsSubmitted} // Pass setIsDateSaved to the popup
                     />
                   </div>
                 </div>
