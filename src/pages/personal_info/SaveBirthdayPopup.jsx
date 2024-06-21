@@ -1,5 +1,6 @@
 import React from "react";
-
+import birthday1 from "../../assets/img/Group 8760.png";
+import birthday2 from "../../assets/img/BACKGROUND3.png";
 const SaveBirthdayPopup = ({
   show,
   setShowConfirmation,
@@ -22,13 +23,13 @@ const SaveBirthdayPopup = ({
     <div className="popupOverlay">
       <div className="popupContent">
         <img
-          src="/BACKGROUND2.png"
+          src={birthday2}
           alt="Background"
           className="backgroundImg"
         />
         <div className="yellowSection">
           <img
-            src="/Group 8760.png"
+            src={birthday1}
             alt="Center"
             className="centerImage"
           />
