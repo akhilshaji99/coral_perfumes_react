@@ -111,6 +111,8 @@ function Index() {
   });
 
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isPhoneEditable, setIsPhoneEditable] = useState(false);
+  const [isEmailEditable, setIsEmailEditable] = useState(false)
 
   const handleDateChange = (date) => {
     console.log("dob:", date);
@@ -127,6 +129,18 @@ function Index() {
       getProfile();
     }
   }, [refetch]);
+
+  useEffect(() => {
+    if (profileForm.values.phone_number) {
+      setIsPhoneEditable(true);
+    }
+  }, [profileForm.values.phone_number]);
+
+  useEffect(() => {
+    if (profileForm.values.email) {
+      setIsEmailEditable(true);
+    }
+  }, [profileForm.values.email]);
 
   const refetchProfileApi = () => {
     getProfile();
@@ -162,6 +176,10 @@ function Index() {
           setSelectedDate(dateObject);
         } else {
           setSelectedDate(null);
+        }
+        const isPhone = response?.data?.phone_number
+        if (isPhone) {
+          setIsPhoneEditable(true)
         }
       }
     } catch (error) {
@@ -227,25 +245,28 @@ function Index() {
                         <input
                           type="text"
                           className="form-control"
-                          name="email"
                           placeholder="Email"
-                          disabled={true}
+                          name="email"
+                          disabled={isEmailEditable}
                           value={profileForm.values.email}
+                          onChange={(e) => {
+                            profileForm.handleChange(e);
+                          }}
                           // onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "email")}
                         />
-                        <a
-                          href="javascript:;"
-                          // data-bs-toggle="modal"
-                          // data-bs-target="#changeEmail"
-                          className="change-btn"
-                          onClick={(e) => {
-                            $("#changeEmail").toggle();
-                            $("#changeEmail").toggleClass("modal fade modal");
-                          }}
-                        >
-                          Change Email
-                        </a>
+                        {isEmailEditable && (
+                          <a
+                            href="javascript:;"
+                            className="change-btn"
+                            onClick={(e) => {
+                              $("#changeEmail").toggle();
+                              $("#changeEmail").toggleClass("modal fade modal");
+                            }}
+                          >
+                            Change Email
+                          </a>
+                        )}
                       </div>
                       <div className="mb-5 col">
                         <input
@@ -253,23 +274,26 @@ function Index() {
                           className="form-control"
                           placeholder="Phone"
                           name="phone_number"
-                          disabled={true}
+                          disabled={isPhoneEditable}
                           value={profileForm.values.phone_number}
+                          onChange={(e) => {
+                            profileForm.handleChange(e);
+                          }}
                           // onChange={profileForm.handleChange}
                           style={getStyles(profileForm.errors, "phone_number")}
                         />
-                        <a
-                          href="javascript:;"
-                          // data-bs-toggle="modal"
-                          // data-bs-target="#changePhone"
-                          className="change-btn"
-                          onClick={(e) => {
-                            $("#changePhone").toggle();
-                            $("#changePhone").toggleClass("modal fade modal");
-                          }}
-                        >
-                          Change Phone
-                        </a>
+                        {isPhoneEditable && (
+                          <a
+                            href="javascript:;"
+                            className="change-btn"
+                            onClick={(e) => {
+                              $("#changePhone").toggle();
+                              $("#changePhone").toggleClass("modal fade modal");
+                            }}
+                          >
+                            Change Phone
+                          </a>
+                        )}
                       </div>
                       <div className="mb-30 col">
                         <select
