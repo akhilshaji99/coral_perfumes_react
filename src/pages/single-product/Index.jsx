@@ -22,6 +22,7 @@ import RatingModal from "./blocks/RatingModal";
 import NotifyIcon from "../../assets/icons/notifyv2.svg";
 import notify from "../cart/js/notify";
 import { useNavigate } from "react-router-dom";
+import { Seo } from "../../components/Seo";
 
 function Index() {
   const dispatch = useDispatch();
@@ -43,7 +44,19 @@ function Index() {
   const [FbtDatas, setFbtDatas] = useState(null);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
 
-  const [metaDatas, setMetaDatas] = useState(null);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
 
   useEffect(() => {
     getProductDetails();
@@ -63,6 +76,35 @@ function Index() {
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setDatasToState(response);
         console.log("metaaa", response?.data?.meta_data);
+
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
+
       }
     } catch (error) {
       console.log("error", error);
@@ -280,6 +322,7 @@ function Index() {
   // }
   return (
     <>
+      <Seo {...metaTags} />
       <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <RatingModal
         setRefetch={setRefetch}

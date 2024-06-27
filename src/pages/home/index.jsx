@@ -6,6 +6,7 @@ import { changeFooterDatas } from "../../redux/footer/footerSlice";
 import { changeApiCallStatus } from "../../redux/footer/footerSlice";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch } from "react-redux";
+import { Seo } from "../../components/Seo";
 
 const MainBanner = lazy(() => import("./blocks/MainBanner"));
 const Deals = lazy(() => import("./blocks/Deals"));
@@ -27,6 +28,19 @@ function Index() {
   const [homeContent, setHomeContent] = useState([]);
   const [homeComponents, setHomeComponents] = useState([]);
   const [apiLoader, setApiLoader] = useState(true);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
   useEffect(() => {
     getHomeContent();
   }, []);
@@ -46,6 +60,36 @@ function Index() {
 
         setHomeComponents(mainKeys);
         setHomeContent(response.data?.data);
+        
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
+
+
         setApiLoader(false);
       }
     } catch (error) {
@@ -55,6 +99,7 @@ function Index() {
   };
   return (
     <>
+      <Seo {...metaTags} />
       {!apiLoader ? (
         <main style={{ minHeight: "500px" }}>
           {homeComponents?.map((component, index) => {

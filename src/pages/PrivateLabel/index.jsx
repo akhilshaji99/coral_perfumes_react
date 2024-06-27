@@ -15,11 +15,25 @@ import BreadCrumps from "../common/BreadCrumps";
 import ContactForm from "../contact/ContactForm";
 import deviceImageRender from "../../utils/deviceImageRender";
 import request from "../../utils/request";
+import { Seo } from "../../components/Seo";
 
 function Index() {
   const [accordianIndex, setAccordianIndex] = useState("");
   const [responseDatas, setResponseDatas] = useState(null);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
 
   useEffect(() => {
     getPrivateLabelDetails();
@@ -31,6 +45,34 @@ function Index() {
       if (response.data) {
         setBreadCrumbDatas(response?.data?.data?.bread_crumb_data);
         setResponseDatas(response.data.data);
+
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
       }
     } catch (error) {
       console.log("error", error);
@@ -38,6 +80,7 @@ function Index() {
   };
   return (
     <>
+      <Seo {...metaTags} />
       <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
       <div className="private-page">
         <div className="container-new pb-10">

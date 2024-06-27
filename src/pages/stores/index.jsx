@@ -9,6 +9,7 @@ import EmiratesDropdown from "./blocks/EmiratesDropdown";
 import { Link } from "react-router-dom";
 import getCountries from "../checkout/js/getCountriesList";
 import CountriesDropdown from "./blocks/CountriesDropdown";
+import { Seo } from "../../components/Seo";
 
 function Index() {
   const [stores, setStores] = useState([]);
@@ -20,6 +21,19 @@ function Index() {
   const [countryLabel, setCountryLabel] = useState("");
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
   const [rerenderKey, setRerenderKey] = useState(0);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
 
   useEffect(() => {
     getEmirates().then((response) => {
@@ -42,6 +56,34 @@ function Index() {
       if (response?.data) {
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setStores(response?.data?.data);
+
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
       }
     });
   }, [rerenderKey]);
@@ -79,6 +121,7 @@ function Index() {
 
   return (
     <>
+      <Seo {...metaTags} />
       <div className="page-new">
         <BreadCrumps breadCrumbDatas={breadCrumbDatas} />
         <div className="container-new">
