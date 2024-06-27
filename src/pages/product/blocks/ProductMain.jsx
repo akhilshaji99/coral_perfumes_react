@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { changeFooterDatas } from "../../../redux/footer/footerSlice";
 import { changeApiCallStatus } from "../../../redux/footer/footerSlice";
 import { useDispatch } from "react-redux";
+import { Seo } from "../../../components/Seo";
 
 function ProductMain({
   filterArray,
@@ -31,6 +32,19 @@ function ProductMain({
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(null);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
 
   // useEffect(() => {
   //   if (count !== 0 && count !== productList.length) {
@@ -169,6 +183,34 @@ function ProductMain({
           dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
           dispatch(changeApiCallStatus(true)); // Change api call status
         }
+
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
       }
     } catch (error) {
       console.log("error", error);
@@ -178,6 +220,7 @@ function ProductMain({
   };
   return (
     <>
+      <Seo {...metaTags} />
       <section className="">
         <ProductBanner />
         <div className="mt-4">

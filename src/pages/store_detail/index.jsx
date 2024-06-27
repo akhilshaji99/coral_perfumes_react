@@ -7,11 +7,25 @@ import request from "../../utils/request";
 import deviceImageRender from "../../utils/deviceImageRender";
 import BreadCrumps from "../common/BreadCrumps";
 import Carousel from "react-multi-carousel";
+import { Seo } from "../../components/Seo";
 
 function Index() {
   const [gallery_images, setGallery_images] = useState([]);
   const [storeDetails, setStoreDetails] = useState();
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+  const [metaTags, setMetaTags] = useState({
+    title: '',
+    meta_description: '',
+    meta_keywords: '',
+    og_type: '',
+    og_title: '',
+    og_description: '',
+    og_url: '',
+    og_image: '',
+    og_image_height: '',
+    og_image_width: '',
+    og_site_name: ''
+  });
 
   const urlParams = useParams([]);
   console.log("urlParams", urlParams?.id);
@@ -29,6 +43,33 @@ function Index() {
         setGallery_images(response?.data?.data?.gallery_images);
         setStoreDetails(response?.data);
         // console.log(response?.data?.data?.gallery_images)
+        const {
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        } = response.data?.meta_data;
+
+        setMetaTags({
+          title,
+          meta_description,
+          meta_keywords,
+          og_type,
+          og_title,
+          og_description,
+          og_url,
+          og_image,
+          og_image_height,
+          og_image_width,
+          og_site_name
+        });
       }
     } catch (error) {
       console.log("error", error);
@@ -36,6 +77,7 @@ function Index() {
   };
   return (
     <>
+      <Seo {...metaTags} />
       <div className="page-new">
       <BreadCrumps breadCrumbDatas={breadCrumbDatas}/>
 
