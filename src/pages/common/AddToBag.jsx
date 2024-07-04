@@ -2,18 +2,28 @@ import addToCart from "../cart/js/addToCart";
 import { useDispatch } from "react-redux";
 import NotifyIcon from "../../assets/icons/notify.svg";
 import notify from "../cart/js/notify";
+import $ from "jquery";
 
-function AddToBag({ variant_id, stock_status }) {
+function AddToBag({ variant_id, stock_status, handleCloseBogoModal, setShowPrmoCodeFlag, giveawayProduct }) {
   const dispatch = useDispatch();
-
+  const handleClose = () => {
+    setShowPrmoCodeFlag(false);
+    $("#promocodeModal").toggle();
+    $("#promocodeModal").toggleClass("modal modal fade");
+    $("#promocodeModal").hide();
+    handleCloseBogoModal();
+  }
   return (
     <button
       className="btn btn-dark w-100 mt-2 add-to-bag-btn"
       onClick={() => {
         if (stock_status) {
-          addToCart(variant_id, 1, dispatch);
+          addToCart(variant_id, 1, dispatch, giveawayProduct);
         } else {
           notify(variant_id);
+        }
+        if (giveawayProduct){
+          handleClose()
         }
       }}
     >

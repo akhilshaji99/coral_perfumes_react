@@ -85,6 +85,7 @@ function Index() {
     setApiLoading(false);
     setFetchLoader(true);
     getCheckOutDetails().then(async (response) => {
+      console.log('checkout :', response.data);
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
@@ -215,7 +216,7 @@ function Index() {
           setpaymentAccordianStatus("show");
           if (type === "final_submit") {
             confirmCheckout().then((data) => {
-              console.log(data);
+              console.log("pay",data);
               setFinalLoading(false);
             });
           } else {

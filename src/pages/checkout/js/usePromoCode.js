@@ -37,6 +37,7 @@ const UsePromoCode = async (voucher_id=null,voucher_code=null) => {
         />
       ));
     }
+    return response
   } catch (error) {
     toast((t) => (
       <AlerMessage

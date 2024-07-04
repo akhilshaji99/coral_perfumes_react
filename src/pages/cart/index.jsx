@@ -27,6 +27,7 @@ function Index() {
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+  const [isGiveawayProduct, setIsGiveawayProduct] = useState(false)
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -37,9 +38,10 @@ function Index() {
     }
   }, [showPrmoCodeFlag]);
 
+
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
-      console.log(response);
+      console.log('cart fetched:',response);
       if (response?.status) {
         setBreadCrumbDatas(response?.bread_crumb_data);
         setCartItems(response?.data?.shopping_cart_items);
@@ -86,6 +88,7 @@ function Index() {
               setShowPrmoCodeFlag={setShowPrmoCodeFlag}
               showPrmoCodeFlag={showPrmoCodeFlag}
               setPromoCode={setPromoCode}
+              cartFetchFunctionCall={cartFetchFunctionCall}
             />
             {/* row */}
             <div className="row">

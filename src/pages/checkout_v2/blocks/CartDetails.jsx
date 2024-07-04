@@ -12,7 +12,9 @@ function CartDetails({
   removePrmocode,
   setShowPrmoCodeFlag,
   //#End of promocode
-}) {
+})
+ {
+  console.log('cart data',cartDetails);
   return (
     <div className="col-lg-4 col-md-5">
       <div className=" card checkout-right-code">
@@ -43,7 +45,7 @@ function CartDetails({
                         className="btn"
                         onClick={(e) => {
                           e.preventDefault();
-                          removePrmocode(promoCodeId);
+                          removePrmocode(promoCodeId, promoCode);
                         }}
                         style={{
                           color: "black",

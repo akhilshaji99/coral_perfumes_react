@@ -120,6 +120,7 @@ function Index() {
     }
     if (response?.data?.current_variant) {
       setCurrentVariant(response.data.current_variant);
+      console.log('current variant:', response?.data?.current_variant);
     }
     if (response?.data?.fbt_data) {
       setFbtDatas(response?.data?.fbt_data);

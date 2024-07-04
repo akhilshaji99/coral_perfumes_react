@@ -12,6 +12,7 @@ const getCheckOutDetails = async () => {
     }
     if (response?.data?.status) {
       return response.data;
+      
     }
   } catch (error) {
     console.log("error", error);
