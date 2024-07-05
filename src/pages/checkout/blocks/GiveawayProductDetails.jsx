@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function GiveawayProductDetails({ product, handleCloseBogoModal, setShowPrmoCodeFlag}) {
+function GiveawayProductDetails({ product, handleCloseBogoModal, setShowPrmoCodeFlag, cartFetchFunctionCall }) {
   const navigate = useNavigate();
   const [status, setStatus] = useState(false);
   const [giveawayProduct, setGiveawayProduct] = useState(true)
@@ -35,6 +35,8 @@ function GiveawayProductDetails({ product, handleCloseBogoModal, setShowPrmoCode
             handleCloseBogoModal={handleCloseBogoModal}
             setShowPrmoCodeFlag={setShowPrmoCodeFlag}
             giveawayProduct={giveawayProduct}
+            cartFetchFunctionCall={cartFetchFunctionCall}
+            
           />
         </div>
         <div className="card-footer border-0">

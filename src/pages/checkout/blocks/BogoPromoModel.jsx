@@ -2,7 +2,7 @@ import React from "react";
 import $ from "jquery";
 import GiveawayProductCarousel from "./GiveawayProductCarousel";
 
-const BogoPromoModal = ({ showBogoModal, handleCloseBogoModal, products, setShowPrmoCodeFlag }) => {
+const BogoPromoModal = ({ showBogoModal, handleCloseBogoModal, products, setShowPrmoCodeFlag, cartFetchFunctionCall }) => {
   console.log('giveaway:', products);
 
 
@@ -27,7 +27,11 @@ const BogoPromoModal = ({ showBogoModal, handleCloseBogoModal, products, setShow
       style={{ display: showBogoModal ? "block" : "none" }}
     >
       {products.length > 0 ? (
-              <GiveawayProductCarousel products={products} handleCloseBogoModal={handleCloseBogoModal} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />
+              <GiveawayProductCarousel products={products} 
+              handleCloseBogoModal={handleCloseBogoModal} 
+              setShowPrmoCodeFlag={setShowPrmoCodeFlag} 
+              cartFetchFunctionCall={cartFetchFunctionCall}
+              />
             ) : (
               <p>No products available</p>
             )}

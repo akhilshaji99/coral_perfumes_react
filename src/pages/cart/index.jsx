@@ -27,7 +27,6 @@ function Index() {
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
-  const [isGiveawayProduct, setIsGiveawayProduct] = useState(false)
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -38,10 +37,9 @@ function Index() {
     }
   }, [showPrmoCodeFlag]);
 
-
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
-      console.log('cart fetched:',response);
+      console.log("cart fetched:", response);
       if (response?.status) {
         setBreadCrumbDatas(response?.bread_crumb_data);
         setCartItems(response?.data?.shopping_cart_items);
@@ -133,82 +131,102 @@ function Index() {
                               </Link>
                             </p>
                             <ul id="price-my-bag">
-                              <li>
-                                <h5 className="selling-price">
-                                  AED {cartData?.product_variant?.price_amount}
-                                </h5>
-                              </li>
-                              <li>
-                                <h5 className="discounted-price">
-                                  AED{" "}
-                                  {cartData?.product_variant?.original_amount}
-                                </h5>
-                              </li>
-                              <li>
-                                {" "}
-                                <h5 className="discount-percentage">
-                                  {
-                                    cartData?.product_variant
-                                      ?.discount_percentage
-                                  }
-                                  % Off
-                                </h5>
-                              </li>
+                              {!cartData?.giveaway_product ? (
+                                <li>
+                                  <h5 className="selling-price">
+                                    AED{" "}
+                                    {cartData?.product_variant?.price_amount}
+                                  </h5>
+                                </li>
+                              ) : (
+                                <li>
+                                  <h5 className="selling-price">AED 0</h5>
+                                </li>
+                              )}
+                              {!cartData?.giveaway_product ? (
+                                <li>
+                                  <h5 className="discounted-price">
+                                    AED{" "}
+                                    {cartData?.product_variant?.original_amount}
+                                  </h5>
+                                </li>
+                              ) : (
+                                <li>
+                                  <h5 className="discounted-price">
+                                    AED{" "}
+                                    {cartData?.product_variant?.price_amount}
+                                  </h5>
+                                </li>
+                              )}
+                              {!cartData?.giveaway_product && (
+                                <li>
+                                  {" "}
+                                  <h5 className="discount-percentage">
+                                    {
+                                      cartData?.product_variant
+                                        ?.discount_percentage
+                                    }
+                                    % Off
+                                  </h5>
+                                </li>
+                              )}
                             </ul>
-                            <div className="row ">
-                              <div className="col-md-3">
-                                <div className="input-group-custom input-spinner  my-bag-spinner">
-                                  <img
-                                    type="button"
-                                    defaultValue="-"
-                                    className="img-fluid cart-icon-minus"
-                                    style={{
-                                      cursor:
-                                        cartData?.quantity <= 1
-                                          ? "not-allowed"
-                                          : "pointer",
-                                    }}
-                                    onClick={() => {
-                                      if (cartData?.quantity <= 1) {
-                                        return;
-                                      } else {
-                                        cartDecrement(cartData?.id).then(
+                            {!cartData?.giveaway_product && (
+                              <div className="row">
+                                <div className="col-md-3">
+                                  <div className="input-group-custom input-spinner my-bag-spinner">
+                                    <img
+                                      type="button"
+                                      defaultValue="-"
+                                      className="img-fluid cart-icon-minus"
+                                      style={{
+                                        cursor:
+                                          cartData?.quantity <= 1
+                                            ? "not-allowed"
+                                            : "pointer",
+                                      }}
+                                      onClick={() => {
+                                        if (cartData?.quantity <= 1) {
+                                          return;
+                                        } else {
+                                          cartDecrement(cartData?.id).then(
+                                            (response) => {
+                                              if (response) {
+                                                cartFetchFunctionCall();
+                                              }
+                                            }
+                                          );
+                                        }
+                                      }}
+                                      src={minusIcon}
+                                      alt="Coral Perfumes"
+                                    />
+                                    <input
+                                      type="button"
+                                      className="quantity-field1 form-control-sm form-input1"
+                                      value={cartData?.quantity}
+                                    />
+                                    <img
+                                      type="button"
+                                      defaultValue="+"
+                                      className="img-fluid cart-icon-plus"
+                                      data-field="quantity"
+                                      onClick={() => {
+                                        cartIncrement(cartData?.id).then(
                                           (response) => {
                                             if (response) {
                                               cartFetchFunctionCall();
                                             }
                                           }
                                         );
-                                      }
-                                    }}
-                                    src={minusIcon}
-                                    alt="Coral Perfumes"
-                                  />
-                                  <input
-                                    type="button"
-                                    className="quantity-field1 form-control-sm form-input1"
-                                    value={cartData?.quantity}
-                                  />
-                                  <img
-                                    type="button"
-                                    defaultValue="+"
-                                    className="img-fluid cart-icon-plus"
-                                    data-field="quantity"
-                                    onClick={() => {
-                                      cartIncrement(cartData?.id).then(
-                                        (response) => {
-                                          if (response) {
-                                            cartFetchFunctionCall();
-                                          }
-                                        }
-                                      );
-                                    }}
-                                    src={plusIcon}
-                                    alt="Coral Perfumes"
-                                  />
+                                      }}
+                                      src={plusIcon}
+                                      alt="Coral Perfumes"
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
+                            )}
                             {/* <div className="col-2 text-lg-end text-start text-md-end col-md-2">
                               <span className="fw-bold">
                                 AED {cartData?.product_variant?.price_amount}

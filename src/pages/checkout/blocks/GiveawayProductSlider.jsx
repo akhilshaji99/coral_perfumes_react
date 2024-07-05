@@ -1,6 +1,6 @@
 import GiveawayProductDetails from "./GiveawayProductDetails";
 
-function GiveawayProductSliderDatas({ product, handleCloseBogoModal, setShowPrmoCodeFlag}) {
+function GiveawayProductSliderDatas({ product, handleCloseBogoModal, setShowPrmoCodeFlag, cartFetchFunctionCall }) {
   return (
     <div className="product-grid slick-slider-alignment">
       <div className="product-grid carousel-product-margin">
@@ -16,6 +16,7 @@ function GiveawayProductSliderDatas({ product, handleCloseBogoModal, setShowPrmo
           }}
           handleCloseBogoModal={handleCloseBogoModal}
           setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+          cartFetchFunctionCall={cartFetchFunctionCall}
         />
       </div>
     </div>

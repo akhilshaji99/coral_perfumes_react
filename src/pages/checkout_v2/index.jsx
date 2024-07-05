@@ -48,7 +48,6 @@ function Index() {
   const [gitWrapLoader, setGiftWrapLoader] = useState(false);
   const [saveAddressStatus, setSaveAddressStatus] = useState(false);
   const [fetchLoader, setFetchLoader] = useState(true);
-
   const changeDeliveryType = (del_type) => {
     addressForm.setFieldValue("delivery_type", del_type);
   };

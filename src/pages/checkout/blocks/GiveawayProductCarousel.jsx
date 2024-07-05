@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
 import GiveawayProductSliderDatas from "./GiveawayProductSlider";
 
-function GiveawayProductCarousel({ products, handleCloseBogoModal, setShowPrmoCodeFlag }) {
+function GiveawayProductCarousel({ products, handleCloseBogoModal, setShowPrmoCodeFlag, cartFetchFunctionCall }) {
 
   var settings = {
     dots: false,
@@ -108,7 +108,11 @@ function GiveawayProductCarousel({ products, handleCloseBogoModal, setShowPrmoCo
               swipeable
             >
               {products?.map((product) => {
-                return <GiveawayProductSliderDatas product={product} handleCloseBogoModal={handleCloseBogoModal} setShowPrmoCodeFlag={setShowPrmoCodeFlag} />;
+                return <GiveawayProductSliderDatas product={product} 
+                handleCloseBogoModal={handleCloseBogoModal} 
+                setShowPrmoCodeFlag={setShowPrmoCodeFlag} 
+                cartFetchFunctionCall={cartFetchFunctionCall}
+                />;
               })}
             </Carousel>
           </div>

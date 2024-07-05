@@ -124,6 +124,7 @@ function PromoCodeModal({
   setShowPrmoCodeFlag,
   setPromoCode,
   fetchCheckoutApi = null,
+  cartFetchFunctionCall
 }) {
   const [promoCodes, setPromoCodes] = useState([]);
   const [showBogoModal, setShowBogoModal] = useState(false);
@@ -138,12 +139,8 @@ function PromoCodeModal({
     try {
       getPromoCodes().then((response) => {
         if (response?.data) {
+          console.log('promocodes:', response);
           setPromoCodes(response?.data);
-          const codes = response?.data
-          const bogoPromo = codes.find(code => code.giveaway_products);
-          if (bogoPromo) {
-            setProducts(bogoPromo.giveaway_products);
-          }
         }
       });
     } catch (error) {
@@ -154,7 +151,12 @@ function PromoCodeModal({
   const applyPromoCode = (promo_id, code, discount_value_type) => {
     setPromoCode(code);
     UsePromoCode(promo_id,null).then((response) => {
-      if (discount_value_type == 6 && response.data.status ) {
+      if (discount_value_type == 6 && response.data.status) {
+        const giveaway_product = promoCodes.find(promo => promo.id === promo_id && promo.giveaway_products);
+        if (giveaway_product) {
+          console.log('pro:', giveaway_product);
+          setProducts(giveaway_product.giveaway_products);
+        }
         setShowBogoModal(true);
       }
       setShowPrmoCodeFlag(false);
@@ -239,6 +241,9 @@ function PromoCodeModal({
         handleCloseBogoModal={handleCloseBogoModal}
         products={products}
         setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+        cartFetchFunctionCall={cartFetchFunctionCall}
+        
+        
       />
     </>
   );

@@ -59,6 +59,11 @@ function Index() {
   const [storePickupStoreName, setStorePickupStoreName] = useState("");
   const [cityDefaultValue, setCityDefaultValue] = useState(null);
   const [countryCodes, setContryCodes] = useState([]);
+  const [shouldRerender, setShouldRerender] = useState(false);
+  const handleRerender = () => {
+    setShouldRerender(!shouldRerender);
+    console.log('render activated');
+  };
 
   const scrollToComponent = () => {
     if (componentToScrollRef.current) {
