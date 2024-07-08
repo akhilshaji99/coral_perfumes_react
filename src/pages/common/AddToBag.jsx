@@ -4,7 +4,7 @@ import NotifyIcon from "../../assets/icons/notify.svg";
 import notify from "../cart/js/notify";
 import $ from "jquery";
 
-function AddToBag({ variant_id, stock_status, handleCloseBogoModal, setShowPrmoCodeFlag, giveawayProduct, cartFetchFunctionCall }) {
+function AddToBag({ variant_id, stock_status, handleCloseBogoModal, setShowPrmoCodeFlag, giveawayProduct }) {
   const dispatch = useDispatch();
   const handleClose = () => {
     setShowPrmoCodeFlag(false);
@@ -12,7 +12,6 @@ function AddToBag({ variant_id, stock_status, handleCloseBogoModal, setShowPrmoC
     $("#promocodeModal").toggleClass("modal modal fade");
     $("#promocodeModal").hide();
     handleCloseBogoModal();
-    cartFetchFunctionCall();
     }
   return (
     <button

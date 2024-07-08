@@ -6,19 +6,52 @@ import toast from "react-hot-toast";
 import AlerMessage from "../../common/AlerMessage";
 import UsePromoCode from "../../checkout/js/usePromoCode";
 import RemovePromoCode from "../../checkout/js/removePromoCode";
+import cartRemove from "../js/cartRemove";
 function CartSummary({
   cartDatas,
   setShowPrmoCodeFlag,
   promoCode,
   setPromoCode,
   cartFetchFunctionCall,
+  giveawayProductId,
 }) {
   const navigate = useNavigate();
-  const removePromocode = (id) => {
-    RemovePromoCode(id, null).then((response) => {
-      cartFetchFunctionCall();
+  const removeGiveawayProduct = () => {
+    cartRemove(giveawayProductId).then((response) => {
+      if (response?.status) {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={true}
+            title={"Success"}
+            message={"Giveaway product removed successfully."}
+          />
+        ));
+        cartFetchFunctionCall();
+      } else {
+        toast((t) => (
+          <AlerMessage
+            t={t}
+            toast={toast}
+            status={false}
+            title={"Error"}
+            message={"Failed to remove giveaway product."}
+          />
+        ));
+      }
     });
   };
+
+  const removePromocode = (id) => {
+    RemovePromoCode(id, null).then((response) => {
+        cartFetchFunctionCall();
+        if (giveawayProductId) {
+          removeGiveawayProduct();
+        }
+    });
+  };
+
   const applyPromocode = () => {
     if (promoCode == "") {
       toast((t) => (

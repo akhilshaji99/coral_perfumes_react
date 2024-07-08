@@ -27,6 +27,7 @@ function Index() {
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
+  const [giveawayProductId, setGiveawayProductId] = useState("")
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -46,6 +47,10 @@ function Index() {
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
         setCartEmptyMessages(response?.message);
+        const giveawayProductIds = response?.data?.shopping_cart_items
+          .filter(item => item.giveaway_product)
+          .map(item => item.id);
+        setGiveawayProductId(giveawayProductIds);
       } else {
         setCartItems(response?.data);
       }

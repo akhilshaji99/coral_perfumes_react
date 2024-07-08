@@ -21,7 +21,7 @@ const cartRemove = async (product_variant_id, dispatch = null) => {
       //     message={response?.data?.message}
       //   />
       // ));
-      return true;
+      return response;
     } else {
       toast((t) => (
         <AlerMessage
