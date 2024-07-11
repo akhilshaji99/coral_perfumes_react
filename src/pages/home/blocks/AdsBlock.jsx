@@ -16,7 +16,7 @@ function AdsBlock({ componentDatas }) {
                   }`}
                   key={index}
                 >
-                  <Link to={adBlock?.link}>
+                  <Link to={'/'+adBlock?.link}>
                     <img
                       src={deviceImageRender(
                         adBlock?.desktop_image,
@@ -39,7 +39,7 @@ function AdsBlock({ componentDatas }) {
                   index % 2 === 0 ? `mob-inspired` : "mob-collect-banner"
                 }`}
               >
-                <a href={adBlock?.link}>
+                <a href={'/'+adBlock?.link}>
                   <img
                     src={deviceImageRender(
                       adBlock?.desktop_image,

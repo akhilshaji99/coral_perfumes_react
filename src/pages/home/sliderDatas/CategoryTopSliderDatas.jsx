@@ -3,8 +3,8 @@ import deviceImageRender from "../../../utils/deviceImageRender";
 
 function CategoryTopSliderDatas({ category, index }) {
   return (
-    <div className="category-top-img" draggable="false"  key={index}>
-      <NavLink to={category?.link}>
+    <div className="category-top-img" draggable="false" key={index}>
+      <NavLink to={"/" + category?.link}>
         <img
           draggable="false"
           className="category-slider-img-drag"

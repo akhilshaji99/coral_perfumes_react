@@ -14,7 +14,7 @@ function AdsBanner({ componentDatas }) {
   return (
     <>
       <div className="conatiner-lg-fluid cc-margin">
-        <Link to={componentDatas?.datas?.[0].link}>
+        <Link to={'/'+componentDatas?.datas?.[0].link}>
           
           <div className="ads-banner" style={backgroundImage} />
         </Link>

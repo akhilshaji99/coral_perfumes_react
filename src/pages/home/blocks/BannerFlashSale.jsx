@@ -83,7 +83,7 @@ function BannerFlashSale({ componentDatas }) {
   return (
     <>
       {!hideBanner ? (
-        <Link to={componentDatas?.datas?.[0]?.link}>
+        <Link to={'/'+componentDatas?.datas?.[0]?.link}>
           <section
             className="banner-flashsale container-lg-fluid"
             style={backgroundImage}

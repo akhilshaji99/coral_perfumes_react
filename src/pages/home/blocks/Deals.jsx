@@ -9,7 +9,7 @@ function Deals({ componentDatas }) {
 
   return (
     <>
-      <Link to={componentDatas?.datas?.[0].link}>
+      <Link to={'/'+componentDatas?.datas?.[0].link}>
         <div className="container-fluid cc-margin w-deals">
           <img
             className="deals-banner"
