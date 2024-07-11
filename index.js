@@ -60,9 +60,14 @@ app.get("/*", async (req, res, next) => {
     // Inject meta tags
     let modifiedHtmlData = htmlData
       .replace(
+        "__META_CANONICAL_URL__",
+        "https://www.coralperfumes.com" + req.path
+      )
+      .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
         `<title>${post?.meta_data?.title}</title>`
       )
+
       .replace("__META_OG_TITLE__", post?.meta_data?.og_title)
       .replace("__META_DESCRIPTION__", post?.meta_data?.meta_description)
       .replace("__META_KEYWORDS__", post?.meta_data?.meta_keywords)
