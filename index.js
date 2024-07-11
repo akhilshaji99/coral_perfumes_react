@@ -6,6 +6,7 @@ const axios = require("axios");
 
 const PORT = process.env.PORT || 3001;
 const indexPath = path.resolve(__dirname, "./build", "index.html");
+const backend_url = "https://coral-ecom.cloud6.ae/";
 
 // static resources should just be served as they are
 app.use(express.static(path.resolve(__dirname, "./build"), { maxAge: "30d" }));
@@ -13,46 +14,43 @@ app.use(express.static(path.resolve(__dirname, "./build"), { maxAge: "30d" }));
 // here we serve the index.html page
 app.get("/*", async (req, res, next) => {
   try {
+    console.log("req", req);
     const htmlData = fs.readFileSync(indexPath, "utf8");
     const current_path = req.path.split("/")[1];
     console.log("current_path", current_path);
     // Perform the API call
-    let url = "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/home";
+    let url = backend_url + "coral-api/get_meta_data/home";
     if (current_path === "about") {
-      url = "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/about";
+      url = backend_url + "coral-api/get_meta_data/about";
     }
     if (current_path === "perfume-manufacturer-in-uae") {
-      url =
-        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/private_label";
+      url = backend_url + "coral-api/get_meta_data/private_label";
     }
     if (current_path === "product") {
       const product_slug = req.path.split("/")[2];
       url =
-        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/product-details/" +
-        product_slug;
+        backend_url + "coral-api/get_meta_data/product-details/" + product_slug;
     }
     if (current_path === "blog-details") {
       const blog_slug = req.path.split("/")[2];
-      url =
-        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/blog-details" +
-        blog_slug;
+      url = backend_url + "coral-api/get_meta_data/blog-details" + blog_slug;
     }
     if (current_path === "products") {
       const product_type = req.path.split("/")[2];
       if (product_type === "brands") {
         const brand_slug = req.path.split("/")[3];
         url =
-          "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/products-brands/" +
-          brand_slug;
+          backend_url + "coral-api/get_meta_data/products-brands/" + brand_slug;
       }
       if (product_type === "category") {
         const category_slug = req.path.split("/")[3];
         url =
-          "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/products-category/" +
+          backend_url +
+          "coral-api/get_meta_data/products-category/" +
           category_slug;
       }
     }
-    
+
     const apiResponse = await axios.get(url);
     const post = apiResponse?.data;
     // if (!post) {
