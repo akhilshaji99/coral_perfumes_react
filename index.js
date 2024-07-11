@@ -15,34 +15,66 @@ app.get("/*", async (req, res, next) => {
   try {
     const htmlData = fs.readFileSync(indexPath, "utf8");
     const current_path = req.path.split("/")[1];
-    console.log('current_path',current_path)
+    console.log("current_path", current_path);
     // Perform the API call
     let url = "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/home";
-    if (current_path === "products") {
+    if (current_path === "about") {
       url = "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/about";
     }
-
+    if (current_path === "perfume-manufacturer-in-uae") {
+      url =
+        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/private_label";
+    }
+    if (current_path === "product") {
+      const product_slug = req.path.split("/")[2];
+      url =
+        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/product-details/" +
+        product_slug;
+    }
+    if (current_path === "blog-details") {
+      const blog_slug = req.path.split("/")[2];
+      url =
+        "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/blog-details" +
+        blog_slug;
+    }
+    if (current_path === "products") {
+      const product_type = req.path.split("/")[2];
+      if (product_type === "brands") {
+        const brand_slug = req.path.split("/")[3];
+        url =
+          "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/products-brands/" +
+          brand_slug;
+      }
+      if (product_type === "category") {
+        const category_slug = req.path.split("/")[3];
+        url =
+          "https://coral-ecom.cloud6.ae/coral-api/get_meta_data/products-category/" +
+          category_slug;
+      }
+    }
+    
     const apiResponse = await axios.get(url);
-    const post = apiResponse.data;
+    const post = apiResponse?.data;
     // if (!post) {
     //     return res.status(404).json({ error: 'Post not found' });
     // }
+    // console.log('post.meta_data',post.meta_data)
     // Inject meta tags
     let modifiedHtmlData = htmlData
       .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
-        `<title>${post.meta_data.title}</title>`
+        `<title>${post?.meta_data?.title}</title>`
       )
-      .replace("__META_OG_TITLE__", post.meta_data.og_title)
-      .replace("__META_DESCRIPTION__", post.meta_data.meta_description)
-      .replace("__META_KEYWORDS__", post.meta_data.meta_keywords)
-      .replace("__META_OG_TYPE__", post.meta_data.og_type)
-      .replace("__META_OG_URL__", post.meta_data.og_url)
-      .replace("__META_OG_IMAGE__", post.meta_data.og_image)
-      .replace("__META_OG_IMAGE_HEIGHT__", post.meta_data.og_image_height)
-      .replace("__META_OG_IMAGE_WIDTH__", post.meta_data.og_image_width)
-      .replace("__META_OG_DESCRIPTION__", post.meta_data.og_description)
-      .replace("__META_OG_SITE_NAME__", post.meta_data.og_site_name);
+      .replace("__META_OG_TITLE__", post?.meta_data?.og_title)
+      .replace("__META_DESCRIPTION__", post?.meta_data?.meta_description)
+      .replace("__META_KEYWORDS__", post?.meta_data?.meta_keywords)
+      .replace("__META_OG_TYPE__", post?.meta_data?.og_type)
+      .replace("__META_OG_URL__", post?.meta_data?.og_url)
+      .replace("__META_OG_IMAGE__", post?.meta_data?.og_image)
+      .replace("__META_OG_IMAGE_HEIGHT__", post?.meta_data?.og_image_height)
+      .replace("__META_OG_IMAGE_WIDTH__", post?.meta_data?.og_image_width)
+      .replace("__META_OG_DESCRIPTION__", post?.meta_data?.og_description)
+      .replace("__META_OG_SITE_NAME__", post?.meta_data?.og_site_name);
 
     return res.send(modifiedHtmlData);
   } catch (err) {
