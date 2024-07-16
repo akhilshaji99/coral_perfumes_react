@@ -6,7 +6,7 @@ const axios = require("axios");
 
 const PORT = process.env.PORT || 3001;
 const indexPath = path.resolve(__dirname, "./build", "index.html");
-const backend_url = "https://coral-ecom.cloud6.ae/";
+const backend_url = "https://coralperfumes.cloud6.ae/";
 
 // static resources should just be served as they are
 app.use(express.static(path.resolve(__dirname, "./build"), { maxAge: "30d" }));
@@ -61,7 +61,7 @@ app.get("/*", async (req, res, next) => {
     let modifiedHtmlData = htmlData
       .replace(
         "__META_CANONICAL_URL__",
-        "https://coralecom-meta-react.cloud6.ae" + req.path
+        "https://coralperfumes.com/" + req.path
       )
       .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
