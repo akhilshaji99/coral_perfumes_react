@@ -72,7 +72,7 @@ app.get("/*", async (req, res, next) => {
       .replace("__META_DESCRIPTION__", post?.meta_data?.meta_description)
       .replace("__META_KEYWORDS__", post?.meta_data?.meta_keywords)
       .replace("__META_OG_TYPE__", post?.meta_data?.og_type)
-      .replace("__META_OG_URL__", 'https://coralecom-meta-react.cloud6.ae')
+      .replace("__META_OG_URL__", 'https://coralperfumes.com')
       .replace("__META_OG_IMAGE__", post?.meta_data?.og_image)
       .replace("__META_OG_IMAGE_HEIGHT__", post?.meta_data?.og_image_height)
       .replace("__META_OG_IMAGE_WIDTH__", post?.meta_data?.og_image_width)
