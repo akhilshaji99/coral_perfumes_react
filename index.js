@@ -59,10 +59,10 @@ app.get("/*", async (req, res, next) => {
     // console.log('post.meta_data',post.meta_data)
     // Inject meta tags
     let modifiedHtmlData = htmlData
-      // .replace(
-      //   "__META_CANONICAL_URL__",
-      //   "https://coralperfumes.com" + req.path
-      // )
+      .replace(
+        "__META_DY_CANONICAL_URL__",
+        "https://www.coralperfumes.com" + req.path
+      )
       .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
         `<title>${post?.meta_data?.title}</title>`
@@ -72,7 +72,7 @@ app.get("/*", async (req, res, next) => {
       .replace("__META_DESCRIPTION__", post?.meta_data?.meta_description)
       .replace("__META_KEYWORDS__", post?.meta_data?.meta_keywords)
       .replace("__META_OG_TYPE__", post?.meta_data?.og_type)
-      .replace("__META_OG_URL__", 'https://coralperfumes.com')
+      .replace("__META_OG_URL__", 'https://www.coralperfumes.com')
       .replace("__META_OG_IMAGE__", post?.meta_data?.og_image)
       .replace("__META_OG_IMAGE_HEIGHT__", post?.meta_data?.og_image_height)
       .replace("__META_OG_IMAGE_WIDTH__", post?.meta_data?.og_image_width)
