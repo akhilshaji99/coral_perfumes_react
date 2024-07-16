@@ -48,7 +48,6 @@ function Index() {
   const [gitWrapLoader, setGiftWrapLoader] = useState(false);
   const [saveAddressStatus, setSaveAddressStatus] = useState(false);
   const [fetchLoader, setFetchLoader] = useState(true);
-
   const changeDeliveryType = (del_type) => {
     addressForm.setFieldValue("delivery_type", del_type);
   };
@@ -85,6 +84,7 @@ function Index() {
     setApiLoading(false);
     setFetchLoader(true);
     getCheckOutDetails().then(async (response) => {
+      console.log('checkout :', response.data);
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
@@ -215,7 +215,7 @@ function Index() {
           setpaymentAccordianStatus("show");
           if (type === "final_submit") {
             confirmCheckout().then((data) => {
-              console.log(data);
+              console.log("pay",data);
               setFinalLoading(false);
             });
           } else {

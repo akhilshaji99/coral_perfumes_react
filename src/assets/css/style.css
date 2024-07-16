@@ -30545,3 +30545,14 @@ body.product-details .slick-arrow {
   font-weight: bold;
   z-index: 5;
 }
+.product-img-giveaway {
+  height: 180px;
+}
+.giveaway-close-btn {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  border: none;
+  background: none;
+  font-size: 32px;
+}

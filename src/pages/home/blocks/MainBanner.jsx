@@ -63,7 +63,7 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         >
           {banners.map((banner, index) => {
             return (
-              <Link to={banner?.link}>
+              <Link to={'/'+banner?.link}>
                 <img
                   src={deviceImageRender(
                     banner?.desktop_image,
@@ -132,7 +132,7 @@ function MainBanner({ componentDatas, exclusive_deals }) {
         >
           {banners.map((banner, index) => {
             return (
-              <Link to={banner?.link}>
+              <Link to={'/'+banner?.link}>
                 <img
                   src={deviceImageRender(
                     banner?.desktop_image,

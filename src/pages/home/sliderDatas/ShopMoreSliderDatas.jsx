@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function ShopMoreSliderDatas({ item, index }) {
   return (
     <div className="" key={index}>
-      <NavLink to={item?.link}>
+      <NavLink to={'/'+item?.link}>
         <div className="thumbnails">
           <img
             src={deviceImageRender(item.desktop_image, item.mobile_image)}

@@ -13,6 +13,7 @@ function CartDetails({
   setShowPrmoCodeFlag,
   //#End of promocode
 }) {
+  console.log("checkout data", cartDetails);
   return (
     <div className="col-lg-4 col-md-5">
       <div className=" card checkout-right-code">
@@ -43,7 +44,7 @@ function CartDetails({
                         className="btn"
                         onClick={(e) => {
                           e.preventDefault();
-                          removePrmocode(promoCodeId);
+                          removePrmocode(promoCodeId, promoCode);
                         }}
                         style={{
                           color: "black",
@@ -89,11 +90,27 @@ function CartDetails({
                     <h4 className="mb-0">{cartData?.variant?.name}</h4>
                     <h6 className="mb-0">
                       {cartData?.variant?.currency_code}{" "}
-                      {cartData?.variant?.price_amount}{" "}
+                      {cartData?.giveaway_product ? (
+                        <>
+                          <h6>0</h6>
+                        </>
+                      ) : (
+                        <>
+                          {cartData?.variant?.price_amount}
+                        </>
+                      )}
                       {cartData?.variant?.original_amount ? (
                         <span>
                           {cartData?.variant?.currency_code}{" "}
+                          {cartData?.giveaway_product ? (
+                        <>
+                          {cartData?.variant?.price_amount}
+                        </>
+                      ) : (
+                        <>
                           {cartData?.variant?.original_amount}
+                        </>
+                      )}
                         </span>
                       ) : null}
                     </h6>

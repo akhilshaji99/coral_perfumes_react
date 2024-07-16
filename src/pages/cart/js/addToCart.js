@@ -8,11 +8,12 @@ import deviceCheck from "../../../utils/deviceCheck";
 import { changeCartDrawerFlag } from "../../../redux/cart/cartSlice";
 import { changeCartCount } from "../../../redux/cart/cartCount";
 
-const addToCart = async (product_variant_id, quantity, dispatch) => {
+const addToCart = async (product_variant_id, quantity, dispatch, giveawayProduct) => {
   try {
     const response = await request.post("add_to_cart/", {
       product_variant_id,
       quantity,
+      giveawayProduct,
       token: getUserOrGuestToken(),
     });
     console.log(response.data.status);
