@@ -61,7 +61,7 @@ app.get("/*", async (req, res, next) => {
     let modifiedHtmlData = htmlData
       .replace(
         "__META_CANONICAL_URL__",
-        "https://coralperfumes.com/" + req.path
+        "https://coralperfumes.com" + req.path
       )
       .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
