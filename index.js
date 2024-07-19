@@ -14,7 +14,6 @@ app.use(express.static(path.resolve(__dirname, "./build"), { maxAge: "30d" }));
 // here we serve the index.html page
 app.get("/*", async (req, res, next) => {
   try {
-    console.log("req", req);
     const htmlData = fs.readFileSync(indexPath, "utf8");
     const current_path = req.path.split("/")[1];
     console.log("current_path", current_path);
@@ -25,6 +24,27 @@ app.get("/*", async (req, res, next) => {
     }
     if (current_path === "perfume-manufacturer-in-uae") {
       url = backend_url + "coral-api/get_meta_data/private_label";
+    }
+    if (current_path === "coral-perfumes-showrooms") {
+      url = backend_url + "coral-api/get_meta_data/store-list";
+    }
+    if (current_path === "careers") {
+      url = backend_url + "coral-api/get_meta_data/careers";
+    }
+    if (current_path === "contact-us") {
+      url = backend_url + "coral-api/get_meta_data/contact-us";
+    }
+    if (current_path === "return-policy") {
+      url = backend_url + "coral-api/get_meta_data/return-policy";
+    }
+    if (current_path === "privacy-policy") {
+      url = backend_url + "coral-api/get_meta_data/privacy-policy";
+    }
+    if (current_path === "terms-conditions") {
+      url = backend_url + "coral-api/get_meta_data/terms-conditions";
+    }
+    if (current_path === "faq") {
+      url = backend_url + "coral-api/get_meta_data/faq";
     }
     if (current_path === "product") {
       const product_slug = req.path.split("/")[2];
@@ -53,6 +73,7 @@ app.get("/*", async (req, res, next) => {
 
     const apiResponse = await axios.get(url);
     const post = apiResponse?.data;
+    console.log(post?.meta_data)
     // if (!post) {
     //     return res.status(404).json({ error: 'Post not found' });
     // }
