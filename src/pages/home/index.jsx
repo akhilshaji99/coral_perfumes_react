@@ -60,6 +60,7 @@ function Index() {
 
         setHomeComponents(mainKeys);
         setHomeContent(response.data?.data);
+        console.log('home:', response);
         
         const {
           title,

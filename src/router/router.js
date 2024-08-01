@@ -46,7 +46,11 @@ const Router = () => {
       path: "/",
       element: <BaseLayout />,
       children: [
-        { path: "/", element: <HomePage /> },
+        {
+          path: "/",
+          element: <Navigate to="/home" />,
+        },
+        { path: "/home", element: <HomePage /> },
         {
           path: "login/*",
           element: userDatas ? <Navigate to="/" /> : <LoginPage />,

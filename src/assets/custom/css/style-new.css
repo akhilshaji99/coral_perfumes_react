@@ -1904,7 +1904,7 @@ body.orders .orders-card a {
     padding: 7px 10px;
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus img {
-  width: 60%;
+  width: 100%;
 }
 .react-multi-carousel-list.container-with-dots.fbt-product-plus
   .product-grid.slick-slider-alignment {
@@ -2442,4 +2442,12 @@ div#desktop-menu .custom-mega-menu .my-5.d-none.d-lg-block {
 }
 body.product .flash-sale-box {
   background: #e02327;
+}
+.category-top {
+  min-height: 280px;
+}
+@media only screen and (min-width: 321px) and (max-width: 769px) {
+  .category-top {
+    min-height: 175px;
+  }
 }

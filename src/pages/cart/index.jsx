@@ -1,3 +1,4 @@
+import React from "react";
 import BreadCrumps from "../common/BreadCrumps";
 import { useEffect, useCallback } from "react";
 import { useState } from "react";
@@ -16,18 +17,21 @@ import BagEmpty from "../alert_pages/BagEmpty";
 import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { Li } from "react-flags-select";
+import RemovePromoCode from "../checkout/js/removePromoCode";
 // import { useSelector } from "react-redux";
 
 function Index() {
   const dispatch = useDispatch();
   const [cartDatas, setcartDatas] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [fbtProducts, setFbtProducts] = useState([]);
   const [showPrmoCodeFlag, setShowPrmoCodeFlag] = useState(false);
   const [promoCode, setPromoCode] = useState("");
   const [cartEmptyMessages, setCartEmptyMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadCrumbDatas, setBreadCrumbDatas] = useState([]);
-  const [giveawayProductId, setGiveawayProductId] = useState("")
+  const [giveawayProductId, setGiveawayProductId] = useState("");
+  const [isFbtProduct, setIsFbtProudct] = useState(false);
   useEffect(() => {
     cartFetchFunctionCall();
   }, []);
@@ -41,22 +45,87 @@ function Index() {
   const cartFetchFunctionCall = () => {
     getCartDatas().then((response) => {
       console.log("cart fetched:", response);
+
       if (response?.status) {
         setBreadCrumbDatas(response?.bread_crumb_data);
         setCartItems(response?.data?.shopping_cart_items);
         setcartDatas(response?.data);
         setPromoCode(response?.data?.voucher_code);
         setCartEmptyMessages(response?.message);
-        const giveawayProductIds = response?.data?.shopping_cart_items
-          .filter(item => item.giveaway_product)
-          .map(item => item.id);
-        setGiveawayProductId(giveawayProductIds);
+
+        if (response?.data?.shopping_cart_items) {
+          const giveawayProductIds = response.data.shopping_cart_items
+            .filter((item) => item.giveaway_product)
+            .map((item) => item.id);
+          setGiveawayProductId(giveawayProductIds);
+
+          const fbtItems = response.data.shopping_cart_items.filter(
+            (item) => item.fbt_data && item.fbt_data.items
+          );
+
+          let fbtProducts = [];
+          if (fbtItems.length > 0) {
+            fbtProducts = fbtItems.flatMap((item) => item.fbt_data.items || []);
+          }
+          setFbtProducts(fbtProducts);
+          console.log("fbt products:", fbtProducts);
+        }
       } else {
         setCartItems(response?.data);
       }
+
       setLoading(false);
     });
   };
+
+  const removePromocode = (id) => {
+    RemovePromoCode(id, null)
+      .then((response) => {
+        if (response?.status) {
+          console.log("Promo code removed:", response);
+          setPromoCode(""); // Clear the promo code state
+          cartFetchFunctionCall(); // Refresh cart data
+        } else {
+          console.error("Failed to remove promo code:", response?.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error removing promo code:", error);
+      });
+  };
+
+  const removeGiveawayProduct = (giveawayProductId) => {
+    giveawayProductId.forEach((id) => {
+      cartRemove(id, dispatch)
+        .then((response) => {
+          cartFetchFunctionCall();
+        })
+        .catch((error) => {
+          console.error(`Error removing giveaway product ${id}:`, error);
+        });
+    });
+  };
+
+  const handleCartRemove = (cartData) => {
+    cartRemove(cartData?.id, dispatch)
+      .then((response) => {
+        if (response) {
+          if (cartDatas?.voucher_id) {
+            removePromocode(cartDatas.voucher_id);
+            removeGiveawayProduct(giveawayProductId);
+          } else {
+            cartFetchFunctionCall();
+          }
+        }
+        if (response) {
+          setIsFbtProudct(response?.data?.fbt_product)
+        }
+      })
+      .catch((error) => {
+        console.error("Error removing cart item:", error);
+      });
+  };
+
   // const isDataListEmpty = cartItems.length === 0;
   return (
     <>
@@ -98,6 +167,9 @@ function Index() {
               <div className="col-lg-8 col-md-7">
                 <ul className="list-group list-group-flush">
                   {cartItems?.map((cartData, index) => {
+                    const matchedFbtProduct = fbtProducts.find(
+                      (product) => product.id === cartData?.product_variant?.id && cartData?.fbt_id
+                    );
                     return (
                       <li className="list-group-item  my-bag-card" key={index}>
                         {/* row */}
@@ -136,46 +208,72 @@ function Index() {
                               </Link>
                             </p>
                             <ul id="price-my-bag">
-                              {!cartData?.giveaway_product ? (
-                                <li>
-                                  <h5 className="selling-price">
-                                    AED{" "}
-                                    {cartData?.product_variant?.price_amount}
-                                  </h5>
-                                </li>
+                              {matchedFbtProduct ? (
+                                <>
+                                  <li>
+                                    <h5 className="selling-price">
+                                      AED {matchedFbtProduct.offer_price}
+                                    </h5>
+                                  </li>
+                                  <li>
+                                    <h5 className="discounted-price">
+                                      AED {matchedFbtProduct.price_amount}
+                                    </h5>
+                                  </li>
+                                </>
                               ) : (
-                                <li>
-                                  <h5 className="selling-price">AED 0</h5>
-                                </li>
-                              )}
-                              {!cartData?.giveaway_product ? (
-                                <li>
-                                  <h5 className="discounted-price">
-                                    AED{" "}
-                                    {cartData?.product_variant?.original_amount}
-                                  </h5>
-                                </li>
-                              ) : (
-                                <li>
-                                  <h5 className="discounted-price">
-                                    AED{" "}
-                                    {cartData?.product_variant?.price_amount}
-                                  </h5>
-                                </li>
-                              )}
-                              {!cartData?.giveaway_product && (
-                                <li>
-                                  {" "}
-                                  <h5 className="discount-percentage">
-                                    {
-                                      cartData?.product_variant
-                                        ?.discount_percentage
-                                    }
-                                    % Off
-                                  </h5>
-                                </li>
+                                <>
+                                  {!cartData?.giveaway_product ? (
+                                    <li>
+                                      <h5 className="selling-price">
+                                        AED{" "}
+                                        {
+                                          cartData?.product_variant
+                                            ?.price_amount
+                                        }
+                                      </h5>
+                                    </li>
+                                  ) : (
+                                    <li>
+                                      <h5 className="selling-price">AED 0</h5>
+                                    </li>
+                                  )}
+                                  {!cartData?.giveaway_product ? (
+                                    <li>
+                                      <h5 className="discounted-price">
+                                        AED{" "}
+                                        {
+                                          cartData?.product_variant
+                                            ?.original_amount
+                                        }
+                                      </h5>
+                                    </li>
+                                  ) : (
+                                    <li>
+                                      <h5 className="discounted-price">
+                                        AED{" "}
+                                        {
+                                          cartData?.product_variant
+                                            ?.price_amount
+                                        }
+                                      </h5>
+                                    </li>
+                                  )}
+                                  {!cartData?.giveaway_product && (
+                                    <li>
+                                      <h5 className="discount-percentage">
+                                        {
+                                          cartData?.product_variant
+                                            ?.discount_percentage
+                                        }
+                                        % Off
+                                      </h5>
+                                    </li>
+                                  )}
+                                </>
                               )}
                             </ul>
+
                             {!cartData?.giveaway_product && (
                               <div className="row">
                                 <div className="col-md-3">
@@ -247,30 +345,12 @@ function Index() {
                             {/* input */}
 
                             <div className="mt-2 my-bag-remove-btn">
-                              <a
-                                onClick={() => {
-                                  cartRemove(cartData?.id).then((response) => {
-                                    if (response) {
-                                      cartFetchFunctionCall();
-                                    }
-                                  });
-                                }}
-                              >
+                              <a onClick={() => handleCartRemove(cartData)}>
                                 <img src={RemoveBtn} alt="Coral Perfumes" />
                               </a>
                             </div>
                             <div className="mt-2 my-bag-remove-btn mob-remove  ">
-                              <a
-                                onClick={() => {
-                                  cartRemove(cartData?.id, dispatch).then(
-                                    (response) => {
-                                      if (response) {
-                                        cartFetchFunctionCall();
-                                      }
-                                    }
-                                  );
-                                }}
-                              >
+                              <a onClick={() => handleCartRemove(cartData)}>
                                 <img src={RemoveBtn} alt="Coral Perfumes" />
                               </a>
                             </div>
@@ -288,6 +368,7 @@ function Index() {
                 setPromoCode={setPromoCode}
                 setShowPrmoCodeFlag={setShowPrmoCodeFlag}
                 cartFetchFunctionCall={cartFetchFunctionCall}
+                giveawayProductId={giveawayProductId}
               />
             </div>
           </div>

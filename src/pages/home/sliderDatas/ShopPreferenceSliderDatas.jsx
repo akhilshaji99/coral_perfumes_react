@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function ShopPreferenceSliderDatas({ preference, index }) {
   return (
     <div key={index}>
-      <NavLink to={preference?.link}>
+      <NavLink to={"/" + preference?.link}>
         <div className="thumbnails">
           <img
             className="shop-preference-img"

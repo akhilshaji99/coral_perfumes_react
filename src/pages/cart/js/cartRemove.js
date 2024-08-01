@@ -21,6 +21,7 @@ const cartRemove = async (product_variant_id, dispatch = null) => {
       //     message={response?.data?.message}
       //   />
       // ));
+      console.log('cart item deleted:', response);
       return response;
     } else {
       toast((t) => (

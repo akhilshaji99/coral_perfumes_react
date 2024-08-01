@@ -15,6 +15,7 @@ function BoughtTogether({ FbtDatas }) {
   const [status, setStatus] = useState(false);
   const [buttonText, setButtonText] = useState(FbtDatas?.button_title);
   const [fbtResponse, setFbtResponse] = useState(null);
+  const [checked, setChecked] = useState(true);
 
   const fbtAddToCart = async () => {
     try {
@@ -68,6 +69,13 @@ function BoughtTogether({ FbtDatas }) {
       //   console.log(response?.data);
       setButtonText(response?.data?.fbt_data?.button_title);
       setFbtResponse(response?.data?.fbt_data);
+      if (response?.data?.fbt_data?.is_offer === false) {
+        setChecked(false);
+      }
+      else {
+        setChecked(true);
+      }
+      console.log("unchecked:", response);
       FbtDatas.products = response?.data?.fbt_data?.products;
       console.log(response?.data?.fbt_data?.products);
       // }
@@ -158,9 +166,7 @@ function BoughtTogether({ FbtDatas }) {
                           />
                         </span>
                         <div className="text-center position-relative ">
-                          <NavLink
-                            to={`/product/${fbtProduct?.slug}`}
-                          >
+                          <NavLink to={`/product/${fbtProduct?.slug}`}>
                             <div className="product-img">
                               <img
                                 src={deviceImageRender(
@@ -177,14 +183,29 @@ function BoughtTogether({ FbtDatas }) {
                         <h4 className="fbt-ellipsis-text">
                           {fbtProduct?.name}
                         </h4>
-                        <div className="row custom-row1 mb-2 ">
-                          <div className="col-md-6 col-12 px-0">
-                            <h5 className="fbt-selling-price">
+                        {checked ? (
+                          <div className="row custom-row1 mb-2 ">
+                            <div className="col-md-6 col-12 px-0">
+                              <h5 className="fbt-selling-price">
+                                {FbtDatas?.currency_code}{" "}
+                                {fbtProduct?.price_amount}
+                              </h5>
+                            </div>
+                            <div className="fbt-original-price">
                               {FbtDatas?.currency_code}{" "}
-                              {fbtProduct?.price_amount}
-                            </h5>
+                              {fbtProduct?.original_amount}
+                            </div>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="row custom-row1 mb-2 ">
+                            <div className="col-md-6 col-12 px-0">
+                              <h5 className="fbt-selling-price">
+                                {FbtDatas?.currency_code}{" "}
+                                {fbtProduct?.price_amount}
+                              </h5>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -201,7 +222,12 @@ function BoughtTogether({ FbtDatas }) {
             fbtAddToCart();
           }}
         >
-          {buttonText}
+          {buttonText}{" "}
+          {checked ? (
+            <span className="total-original-amount">
+              ({FbtDatas?.currency_code} {FbtDatas?.total_original_amount})
+            </span>
+          ) : null}
         </button>
       </div>
     </>

@@ -11,6 +11,7 @@ function CartDetails({
   applyPrmocode,
   removePrmocode,
   setShowPrmoCodeFlag,
+  fbtProducts,
   //#End of promocode
 }) {
   console.log("checkout data", cartDetails);
@@ -75,6 +76,9 @@ function CartDetails({
         </h5>
         <ul className="list-group list-group-flush list-br px-6">
           {cartDetails?.checkout_checkoutline?.map((cartData, index) => {
+            const matchedFbtProduct = fbtProducts.find(
+              (product) => product.id === cartData?.variant?.id && cartData?.fbt_id
+            );
             return (
               <li className="list-group-item py-3 ps-0" key={index}>
                 <div className="row align-items-center d-flex justify-content-space-between">
@@ -89,30 +93,33 @@ function CartDetails({
                   <div className="col-8 col-lg-8 col-xs-8 col-md-8 ">
                     <h4 className="mb-0">{cartData?.variant?.name}</h4>
                     <h6 className="mb-0">
-                      {cartData?.variant?.currency_code}{" "}
-                      {cartData?.giveaway_product ? (
+                      {matchedFbtProduct ? (
                         <>
-                          <h6>0</h6>
+                          AED {matchedFbtProduct.offer_price}
+                          <span>AED {matchedFbtProduct.price_amount}</span>
                         </>
                       ) : (
                         <>
-                          {cartData?.variant?.price_amount}
-                        </>
-                      )}
-                      {cartData?.variant?.original_amount ? (
-                        <span>
                           {cartData?.variant?.currency_code}{" "}
                           {cartData?.giveaway_product ? (
-                        <>
-                          {cartData?.variant?.price_amount}
-                        </>
-                      ) : (
-                        <>
-                          {cartData?.variant?.original_amount}
+                            <>
+                              <h6>0</h6>
+                            </>
+                          ) : (
+                            <>{cartData?.variant?.price_amount}</>
+                          )}
+                          {cartData?.variant?.original_amount ? (
+                            <span>
+                              {cartData?.variant?.currency_code}{" "}
+                              {cartData?.giveaway_product ? (
+                                <>{cartData?.variant?.price_amount}</>
+                              ) : (
+                                <>{cartData?.variant?.original_amount}</>
+                              )}
+                            </span>
+                          ) : null}
                         </>
                       )}
-                        </span>
-                      ) : null}
                     </h6>
                     <span style={{ textDecoration: "none" }}>Qty:</span>{" "}
                     {cartData?.quantity}

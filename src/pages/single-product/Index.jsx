@@ -75,7 +75,7 @@ function Index() {
         );
         setBreadCrumbDatas(response?.data?.bread_crumb_data);
         setDatasToState(response);
-        console.log("metaaa", response?.data?.meta_data);
+        console.log("metaaa", response);
 
         const {
           title,
@@ -124,6 +124,7 @@ function Index() {
     }
     if (response?.data?.fbt_data) {
       setFbtDatas(response?.data?.fbt_data);
+      console.log('fbt:', response);
     }
     if (response?.data?.attribute_datas) {
       // const dataArray = [];

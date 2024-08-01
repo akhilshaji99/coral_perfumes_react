@@ -2,8 +2,11 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
 import ProductSliderDatas from "../sliderDatas/ProductSliderDatas";
+import { useNavigate } from "react-router-dom";
 
 function ProductCarousel({ componentDatas }) {
+  console.log("product carousel:", componentDatas?.comp_id);
+  const navigate = useNavigate();
   const dynamicBackground = {
     background: componentDatas?.bg_color,
   };
@@ -35,7 +38,7 @@ function ProductCarousel({ componentDatas }) {
             <div className="col-md-8 ">
               <div className="row">
                 <div className="col-md-6">
-                  <h1 className="mb-5 flash-sale"> {componentDatas?.title} </h1>
+                  <h1 className="mb-5 flash-sale">{componentDatas?.title}</h1>
                 </div>
               </div>
             </div>
@@ -108,8 +111,29 @@ function ProductCarousel({ componentDatas }) {
                 return <ProductSliderDatas product={product} index={index} />;
               })}
             </Carousel>
+            <div
+              className="col-md-4 text-end"
+              style={{ width: "auto", paddingRight: "12px" }}
+            >
+              <button
+                type="button"
+                className="btn btn-dark small-btn"
+                onClick={() => navigate("products/" + componentDatas?.comp_id)}
+              >
+                View all
+              </button>
+            </div>
           </div>
           <div className="mob_tab_slider">
+            <a
+              href={"products/" + componentDatas?.comp_id}
+              style={{
+                color: "black",
+                marginLeft: "22rem"
+              }}
+            >
+              View all
+            </a>
             <Slider {...settings} className="prod-carosal-mob-padding">
               {componentDatas?.datas?.[0]?.products?.map((product, index) => {
                 return <ProductSliderDatas product={product} index={index} />;

@@ -19,7 +19,7 @@ const addToCart = async (product_variant_id, quantity, dispatch, giveawayProduct
     console.log(response.data.status);
     if (response.data.status) {
       dispatch(changeCartCount(response?.data?.data?.total_items_count));
-      if (deviceCheck() === "Desktop") {
+      if (deviceCheck() === "Desktop" && !giveawayProduct) {
         $("#cartDrawer").show();
         $("#cartDrawer").toggleClass("show");
         dispatch(changeCartDrawerFlag(true));

@@ -355,6 +355,9 @@ button.ModalBtn.offer-button {
   .choose-countries {
     margin-left: 172px;
   }
+  .product-desc-section h2 {
+    font-size: 14px;
+  }
 }
 @media only screen and (max-width: 1200px) {
   .container-new {
@@ -394,7 +397,10 @@ button.ModalBtn.offer-button {
   }
   .row.full-views {
     align-items: baseline;
-}
+  }
+  .product-desc-section h2 {
+    font-size: 15px;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container-new {
@@ -429,6 +435,9 @@ button.ModalBtn.offer-button {
   }
   .right-gallery-one img:nth-child(2) {
     padding-top: 1px;
+  }
+  .product-desc-section h2 {
+    font-size: 12px;
   }
   .visit-text a {
     margin-top: 25px;
@@ -1530,6 +1539,9 @@ body.cart footer.footer {
   }
   .line-break {
     width: 65px;
+  }
+  .category-top-img .line-break {
+    width: 95px;
   }
   .mob-info-sidebar {
     padding-top: 95px !important;

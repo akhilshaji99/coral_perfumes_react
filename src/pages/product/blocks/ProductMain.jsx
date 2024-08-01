@@ -33,17 +33,17 @@ function ProductMain({
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(null);
   const [metaTags, setMetaTags] = useState({
-    title: '',
-    meta_description: '',
-    meta_keywords: '',
-    og_type: '',
-    og_title: '',
-    og_description: '',
-    og_url: '',
-    og_image: '',
-    og_image_height: '',
-    og_image_width: '',
-    og_site_name: ''
+    title: "",
+    meta_description: "",
+    meta_keywords: "",
+    og_type: "",
+    og_title: "",
+    og_description: "",
+    og_url: "",
+    og_image: "",
+    og_image_height: "",
+    og_image_width: "",
+    og_site_name: "",
   });
 
   // useEffect(() => {
@@ -145,29 +145,33 @@ function ProductMain({
     try {
       setLoading(true);
       let link_split = window.location.href.split("?");
-      if (urlParams?.link_type && urlParams?.link_value) {
+      if (
+        urlParams?.comp_id ||
+        (urlParams?.link_type && urlParams?.link_value)
+      ) {
         dispatch(changeApiCallStatus(false)); // Change api call status
-        const response = await request.post(
-          "productsbycategory/" +
+        const apiUrl = urlParams?.comp_id
+          ? "productsbycategory/" + urlParams?.comp_id
+          : "productsbycategory/" +
             urlParams?.link_type +
             "/" +
-            urlParams?.link_value,
-          {
-            page: page_number,
-            filterArray,
-            priceRange: priceRangeFilter,
-            sortRelevance: relevanceFilter,
-            token: getUserToken(),
-            slug_items: window.location.pathname.includes(
-              "/products/search/items"
-            )
-              ? localStorage.getItem("link_items")
-              : "",
-            link_filter: link_split.length > 1 ? link_split[1] : "",
-          }
-        );
+            urlParams?.link_value;
+        const response = await request.post(apiUrl, {
+          page: page_number,
+          filterArray,
+          priceRange: priceRangeFilter,
+          sortRelevance: relevanceFilter,
+          token: getUserToken(),
+          slug_items: window.location.pathname.includes(
+            "/products/search/items"
+          )
+            ? localStorage.getItem("link_items")
+            : "",
+          link_filter: link_split.length > 1 ? link_split[1] : "",
+        });
         if (response?.data) {
           setTitle(response?.data?.page_title);
+          console.log("test pro:", response);
           setCount(response?.data?.total_count);
           setBreadCrumbDatas(response?.data?.bread_crumb_data);
           setPageCount(response?.data?.count);
@@ -179,6 +183,7 @@ function ProductMain({
             setProductList((prev) => [
               ...new Set([...prev, ...response?.data?.data]),
             ]);
+            console.log("products:", response);
           }
           dispatch(changeFooterDatas(response?.data?.footer_data)); //Add footer datas to redux
           dispatch(changeApiCallStatus(true)); // Change api call status
@@ -195,7 +200,7 @@ function ProductMain({
           og_image,
           og_image_height,
           og_image_width,
-          og_site_name
+          og_site_name,
         } = response.data?.meta_data;
 
         setMetaTags({
@@ -209,7 +214,7 @@ function ProductMain({
           og_image,
           og_image_height,
           og_image_width,
-          og_site_name
+          og_site_name,
         });
       }
     } catch (error) {
@@ -218,6 +223,7 @@ function ProductMain({
       setLoading(false);
     }
   };
+
   return (
     <>
       <Seo {...metaTags} />

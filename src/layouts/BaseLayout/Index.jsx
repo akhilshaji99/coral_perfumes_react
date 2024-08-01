@@ -65,6 +65,7 @@ const BaseLayout = () => {
     try {
       const response = await request.get("get_menus/");
       setMenuItems(response.data);
+      console.log('menu:', response?.data);
     } catch (error) {
       console.log("error", error);
     }

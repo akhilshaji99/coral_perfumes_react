@@ -48,6 +48,7 @@ function Index() {
   const [gitWrapLoader, setGiftWrapLoader] = useState(false);
   const [saveAddressStatus, setSaveAddressStatus] = useState(false);
   const [fetchLoader, setFetchLoader] = useState(true);
+  const [fbtProducts, setFbtProducts] = useState([])
   const changeDeliveryType = (del_type) => {
     addressForm.setFieldValue("delivery_type", del_type);
   };
@@ -87,6 +88,18 @@ function Index() {
       setCheckoutDatas(response?.data);
       setCartDetails(response?.data?.cart_items);
       setEmirates(response?.data?.emirates);
+      console.log('checkout:', response);
+      if (response?.data?.cart_items?.checkout_checkoutline) {
+        const fbtItems = response.data.cart_items.checkout_checkoutline.filter(
+          (item) => item.fbt_data && item.fbt_data.items
+        );
+        let fbtProducts = [];
+        if (fbtItems.length > 0) {
+          fbtProducts = fbtItems.flatMap((item) => item.fbt_data.items || []);
+        }
+        setFbtProducts(fbtProducts);
+        console.log("fbt products checkout:", fbtProducts);
+      }
       // if (response?.data?.address_id === null) {
       //   setSaveAddressStatus(true);
       // }
@@ -1484,6 +1497,7 @@ function Index() {
                 applyPrmocode={applyPrmocode}
                 removePrmocode={removePrmocode}
                 setShowPrmoCodeFlag={setShowPrmoCodeFlag}
+                fbtProducts={fbtProducts}
                 //#End of promo code
               />
             </div>

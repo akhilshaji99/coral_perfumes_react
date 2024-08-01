@@ -35,16 +35,19 @@ function FilterSidebar({
   const getProductFilters = async () => {
     try {
       let link_split = window.location.href.split("?");
-      if (urlParams?.link_type && urlParams?.link_value) {
-        const response = await request.post(
-          "filterable-attributes/" +
+      if (
+        urlParams?.comp_id ||
+        (urlParams?.link_type && urlParams?.link_value)
+      ) {
+        const apiUrl = urlParams?.comp_id
+          ? "filterable-attributes/" + urlParams?.comp_id
+          : "filterable-attributes/" +
             urlParams?.link_type +
             "/" +
-            urlParams?.link_value,
-          {
-            link_filter: link_split.length > 1 ? link_split[1] : "",
-          }
-        );
+            urlParams?.link_value;
+        const response = await request.post(apiUrl, {
+          link_filter: link_split.length > 1 ? link_split[1] : "",
+        });
         if (response.data) {
           setProductFilters(response?.data?.data);
           localStorage.setItem(
