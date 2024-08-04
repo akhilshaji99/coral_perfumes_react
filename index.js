@@ -26,7 +26,11 @@ app.get("/*", async (req, res, next) => {
       url = backend_url + "coral-api/get_meta_data/private_label";
     }
     if (current_path === "coral-perfumes-showrooms") {
+      let store_split=req.path.split("/");
       url = backend_url + "coral-api/get_meta_data/store-list";
+      if(store_split.length===3){
+        url = backend_url + "coral-api/get_meta_data/store-detail/"+store_split[2];
+      }
     }
     if (current_path === "careers") {
       url = backend_url + "coral-api/get_meta_data/careers";
@@ -73,7 +77,7 @@ app.get("/*", async (req, res, next) => {
 
     const apiResponse = await axios.get(url);
     const post = apiResponse?.data;
-    console.log(post?.meta_data)
+    // console.log(post?.meta_data)
     // if (!post) {
     //     return res.status(404).json({ error: 'Post not found' });
     // }
