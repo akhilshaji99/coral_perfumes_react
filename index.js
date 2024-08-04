@@ -85,24 +85,23 @@ app.get("/*", async (req, res, next) => {
     // Inject meta tags
     let modifiedHtmlData = htmlData
       .replace(
-        "__META_DY_CANONICAL_URL__",
+        "https://www.coralperfumes.com",
         "https://www.coralperfumes.com" + req.path
       )
       .replace(
         "<title>Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes</title>",
         `<title>${post?.meta_data?.title}</title>`
       )
-
-      .replace("__META_OG_TITLE__", post?.meta_data?.og_title)
-      .replace("__META_DESCRIPTION__", post?.meta_data?.meta_description)
-      .replace("__META_KEYWORDS__", post?.meta_data?.meta_keywords)
-      .replace("__META_OG_TYPE__", post?.meta_data?.og_type)
-      .replace("__META_OG_URL__", 'https://www.coralperfumes.com')
-      .replace("__META_OG_IMAGE__", post?.meta_data?.og_image)
-      .replace("__META_OG_IMAGE_HEIGHT__", post?.meta_data?.og_image_height)
-      .replace("__META_OG_IMAGE_WIDTH__", post?.meta_data?.og_image_width)
-      .replace("__META_OG_DESCRIPTION__", post?.meta_data?.og_description)
-      .replace("__META_OG_SITE_NAME__", post?.meta_data?.og_site_name);
+      .replace("Perfumes In Dubai | Buy Perfumes Online UAE - Coral Perfumes", post?.meta_data?.og_title)
+      .replace("Buy Perfumes in Dubai, UAE. Coral Perfumes is the leading perfume brand in Middle East, Offering perfumes at the best price. Shop Online Now", post?.meta_data?.meta_description)
+      .replace("Perfumes In Dubai, Buy Perfumes Online In UAE, perfumes, perfumes Dubai, buy perfume In Dubai, buy perfume online Dubai, buy perfumes online UAE, online perfume in Dubai, buy perfume online in Dubai.", post?.meta_data?.meta_keywords)
+      .replace("Website", post?.meta_data?.og_type)
+      .replace("https://www.coralperfumes.com", 'https://www.coralperfumes.com')
+      .replace("https://www.coralperfumes.com/meta_logo.png", post?.meta_data?.og_image)
+      .replace("628", post?.meta_data?.og_image_height)
+      .replace("1200", post?.meta_data?.og_image_width)
+      .replace("Buy Perfumes in Dubai, UAE. Coral Perfumes is the leading perfume brand in Middle East, Offering perfumes at the best price. Shop Online Now", post?.meta_data?.og_description)
+      .replace("Coral Perfumes", post?.meta_data?.og_site_name);
 
     return res.send(modifiedHtmlData);
   } catch (err) {
