@@ -28,9 +28,9 @@ app.get("/*", async (req, res, next) => {
     if (current_path === "coral-perfumes-showrooms") {
       let store_split=req.path.split("/");
       url = backend_url + "coral-api/get_meta_data/store-list";
-      // if(store_split.length===3){
-      //   url = backend_url + "coral-api/get_meta_data/store-detail/"+store_split[2];
-      // }
+      if(store_split.length===3){
+        url = backend_url + "coral-api/get_meta_data/store-detail/"+store_split[2];
+      }
     }
     if (current_path === "careers") {
       url = backend_url + "coral-api/get_meta_data/careers";
