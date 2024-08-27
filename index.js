@@ -38,6 +38,9 @@ app.get("/*", async (req, res, next) => {
     if (current_path === "careers") {
       url = backend_url + "coral-api/get_meta_data/careers";
     }
+    if (current_path === "blog") {
+      url = backend_url + "coral-api/get_meta_data/blogs";
+    }
     if (current_path === "contact-us") {
       url = backend_url + "coral-api/get_meta_data/contact-us";
     }
