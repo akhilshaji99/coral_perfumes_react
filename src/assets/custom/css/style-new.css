@@ -2443,3 +2443,9 @@ div#desktop-menu .custom-mega-menu .my-5.d-none.d-lg-block {
 body.product .flash-sale-box {
   background: #e02327;
 }
+
+.visit-pg {
+  max-height: max-content;
+  min-height: 315px;
+  overflow: auto;
+}

@@ -2275,3 +2275,9 @@ section.banner-flashsale.container-lg-fluid .mob-count .mob-time-break {
 .bottom-nav {
   z-index: 9999 !important;
 }
+
+@media (max-width: 1400px) {
+  .visit-pg {
+    min-height: 258px;
+  } 
+}
