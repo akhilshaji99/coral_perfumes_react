@@ -4,6 +4,13 @@ Disallow: /signup
 Disallow: /account/ 
 Disallow: /brand/ 
 Disallow: /products/autosuggest
+Disallow: /search/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /my-account/
+Disallow: /order-received/
+Disallow: /*?add-to-cart=
+Disallow: /*?add_to_wishlist=
 User-agent: Googlebot Allow: /
 User-agent: Bingbot Allow: /
 User-agent: AdsBot Mobile Web Allow: /
