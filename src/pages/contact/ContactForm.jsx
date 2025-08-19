@@ -242,7 +242,7 @@ function ContactForm({ section_status = null }) {
                 />
               </svg>
               <div>
-                <a href="tel:+971563298222"> +971563298222</a>
+                <a href="tel:+971504883041"> +971504883041</a>
                 <a href="tel:+971 4 3217 112">+971 4 3217 112</a>
               </div>
             </div>
