@@ -152,7 +152,26 @@ function Index() {
     if (response?.data?.product_data.category_products) {
       setCategoryProducts(response?.data?.product_data.category_products);
     }
+
+    const p = response?.data?.current_variant;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'view_item',
+      ecommerce: {
+        currency: 'AED',
+        value: p?.price_amount || 0,
+        item_list_name: response?.data?.page_title || 'Product Details',
+        items: [{
+          item_id: p?.product_id,
+          item_name: p?.name,
+          price: p?.price_amount,
+          item_variant: p?.slug,
+          item_brand: p?.brand_name || 'Unknown',
+        }],
+      },
+    });
   };
+
 
   // const formatProductVariant = (allVariants) => {
   //   allVariants.forEach((variant) => {
@@ -768,11 +787,10 @@ function Index() {
                             <button
                               key={1}
                               type="button"
-                              className={`btn btn-outline-secondary btn-variant ${
-                                productVariants?.active === true
-                                  ? `variant-active`
-                                  : null
-                              }`}
+                              className={`btn btn-outline-secondary btn-variant ${productVariants?.active === true
+                                ? `variant-active`
+                                : null
+                                }`}
                               onClick={() => {
                                 changeProductVariant(
                                   productVariants?.variant_slug,
@@ -782,7 +800,7 @@ function Index() {
                                   // variant?.value
                                 );
                               }}
-                              // disabled={variant?.availabilty === false}
+                            // disabled={variant?.availabilty === false}
                             >
                               {productVariants?.value_label}
                               {/* {variant.layout === "layout_1" ? ( */}
@@ -800,12 +818,11 @@ function Index() {
                                   <button
                                     key={index_inner}
                                     type="button"
-                                    className={`btn btn-outline-secondary btn-variant ${
-                                      productVariants?.other_values[variant]
-                                        ?.active === true
-                                        ? `variant-active`
-                                        : null
-                                    }`}
+                                    className={`btn btn-outline-secondary btn-variant ${productVariants?.other_values[variant]
+                                      ?.active === true
+                                      ? `variant-active`
+                                      : null
+                                      }`}
                                     onClick={() => {
                                       changeProductVariant(
                                         productVariants?.other_values[variant]
@@ -814,7 +831,7 @@ function Index() {
                                         variant
                                       );
                                     }}
-                                    // disabled={variant?.availabilty === false}
+                                  // disabled={variant?.availabilty === false}
                                   >
                                     {variant}
                                     {/* {variant.layout === "layout_1" ? ( */}
@@ -845,11 +862,10 @@ function Index() {
                             <div class="mb-1 variant-box">
                               <button
                                 type="button"
-                                class={`btn btn-outline-secondary btn-variant ${
-                                  other_attribute?.active === true
-                                    ? `variant-active`
-                                    : null
-                                }`}
+                                class={`btn btn-outline-secondary btn-variant ${other_attribute?.active === true
+                                  ? `variant-active`
+                                  : null
+                                  }`}
                                 onClick={() => {
                                   changeProductVariant(
                                     other_attribute?.variant_slug,
@@ -876,13 +892,12 @@ function Index() {
                                   return (
                                     <button
                                       type="button"
-                                      class={`btn btn-outline-secondary btn-variant ${
-                                        other_attribute?.other_values[
-                                          other_value
-                                        ]?.active === true
-                                          ? `variant-active`
-                                          : null
-                                      }`}
+                                      class={`btn btn-outline-secondary btn-variant ${other_attribute?.other_values[
+                                        other_value
+                                      ]?.active === true
+                                        ? `variant-active`
+                                        : null
+                                        }`}
                                       onClick={() => {
                                         changeProductVariant(
                                           other_attribute?.other_values[
@@ -895,7 +910,7 @@ function Index() {
                                     >
                                       {other_value}
                                       {other_attribute?.layout ===
-                                      "layout_1" ? (
+                                        "layout_1" ? (
                                         <span>
                                           <br />
                                           {
